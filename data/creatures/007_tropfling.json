@@ -1,0 +1,1286 @@
+[
+ {
+  "id": "tropfling",
+  "dex": 7,
+  "name": "Tropfling",
+  "category": "Quellwesen",
+  "types": [
+   "water"
+  ],
+  "baseStats": {
+   "hp": 65,
+   "atk": 38,
+   "def": 55,
+   "spa": 49,
+   "spd": 77,
+   "spe": 34
+  },
+  "abilities": [
+   "sturzbach"
+  ],
+  "captureRate": 45,
+  "baseExp": 102,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.875,
+  "heightM": 0.4,
+  "weightKg": 7.4,
+  "evYield": {
+   "spd": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "rempler"
+   },
+   {
+    "level": 1,
+    "move": "wasserstrahl"
+   },
+   {
+    "level": 4,
+    "move": "aufwind"
+   },
+   {
+    "level": 7,
+    "move": "nebelsog"
+   },
+   {
+    "level": 10,
+    "move": "blasenschauer"
+   },
+   {
+    "level": 13,
+    "move": "sturzbach"
+   },
+   {
+    "level": 17,
+    "move": "regentanz"
+   },
+   {
+    "level": 21,
+    "move": "aquaklinge"
+   },
+   {
+    "level": 25,
+    "move": "druckwelle"
+   },
+   {
+    "level": 30,
+    "move": "tiefenstroemung"
+   },
+   {
+    "level": 36,
+    "move": "sturmlauf"
+   }
+  ],
+  "tmMoves": [
+   "druckwelle",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "regentanz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "wellenotter",
+    "method": {
+     "kind": "level",
+     "level": 16
+    }
+   }
+  ],
+  "dexEntry": "Sein Koerper besteht zu grossen Teilen aus lebendigem Quellwasser.",
+  "canGigantic": false,
+  "habitat": [
+   "wetland",
+   "coastal"
+  ],
+  "model": {
+   "rig": "blob",
+   "palette": {
+    "primary": "#63b6e0",
+    "secondary": "#3b7ea8",
+    "accent": "#d7f0ff",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      0
+     ],
+     "size": [
+      0.26,
+      0.2392,
+      0.26
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3562,
+      0.013
+     ],
+     "size": [
+      0.1924,
+      0.182,
+      0.1924
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0808,
+      0.378,
+      0.1515
+     ],
+     "size": [
+      0.0468,
+      0.0468,
+      0.0468
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0808,
+      0.378,
+      0.1805
+     ],
+     "size": [
+      0.0234,
+      0.0257,
+      0.0234
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0808,
+      0.378,
+      0.1515
+     ],
+     "size": [
+      0.0468,
+      0.0468,
+      0.0468
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0808,
+      0.378,
+      0.1805
+     ],
+     "size": [
+      0.0234,
+      0.0257,
+      0.0234
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "snout",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3016,
+      0.1765
+     ],
+     "size": [
+      0.07,
+      0.05,
+      0.04
+     ],
+     "color": "dark",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "sphere",
+     "pos": [
+      -0.13,
+      0.0765,
+      0.0312
+     ],
+     "size": [
+      0.09,
+      0.0675,
+      0.108
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "sphere",
+     "pos": [
+      0.13,
+      0.0765,
+      0.0312
+     ],
+     "size": [
+      0.09,
+      0.0675,
+      0.108
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.52,
+      -0.08
+     ],
+     "size": [
+      0.12,
+      0.1,
+      0.12
+     ],
+     "color": "secondary",
+     "detail": 2,
+     "emissive": 0
+    }
+   ]
+  },
+  "hiddenAbility": "regenhaut",
+  "cry": {
+   "baseHz": 600,
+   "kind": "trill"
+  }
+ },
+ {
+  "id": "wellenotter",
+  "dex": 8,
+  "name": "Wellenotter",
+  "category": "Flussjaeger",
+  "types": [
+   "water"
+  ],
+  "baseStats": {
+   "hp": 64,
+   "atk": 70,
+   "def": 72,
+   "spa": 66,
+   "spd": 76,
+   "spe": 72
+  },
+  "abilities": [
+   "sturzbach"
+  ],
+  "captureRate": 45,
+  "baseExp": 134,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.875,
+  "heightM": 1.0,
+  "weightKg": 26.8,
+  "evYield": {
+   "spd": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "hieb"
+   },
+   {
+    "level": 1,
+    "move": "wasserstrahl"
+   },
+   {
+    "level": 4,
+    "move": "schutzschirm"
+   },
+   {
+    "level": 7,
+    "move": "regentanz"
+   },
+   {
+    "level": 10,
+    "move": "blasenschauer"
+   },
+   {
+    "level": 13,
+    "move": "tiefenstroemung"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "aquaklinge"
+   },
+   {
+    "level": 25,
+    "move": "sturzbach"
+   },
+   {
+    "level": 30,
+    "move": "sturmflut"
+   },
+   {
+    "level": 34,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   }
+  ],
+  "tmMoves": [
+   "druckwelle",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "regentanz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "fluthueter",
+    "method": {
+     "kind": "level",
+     "level": 34
+    }
+   }
+  ],
+  "dexEntry": "Mit seinem flachen Schweif steuert es selbst reissende Stroemungen.",
+  "canGigantic": false,
+  "habitat": [
+   "wetland",
+   "coastal",
+   "lake"
+  ],
+  "model": {
+   "rig": "quadruped",
+   "palette": {
+    "primary": "#4f9ecd",
+    "secondary": "#2f6b91",
+    "accent": "#c8e8f7",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.4976,
+      0
+     ],
+     "size": [
+      0.32,
+      0.28,
+      0.52
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.4416,
+      0.26
+     ],
+     "size": [
+      0.256,
+      0.21,
+      0.26
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.6516,
+      0.494
+     ],
+     "size": [
+      0.28,
+      0.26,
+      0.28
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.5788,
+      0.6956
+     ],
+     "size": [
+      0.11,
+      0.09,
+      0.16
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1456,
+      0.6932,
+      0.6788
+     ],
+     "size": [
+      0.0672,
+      0.0672,
+      0.0672
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1456,
+      0.6932,
+      0.7205
+     ],
+     "size": [
+      0.0336,
+      0.037,
+      0.0336
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1456,
+      0.6932,
+      0.6788
+     ],
+     "size": [
+      0.0672,
+      0.0672,
+      0.0672
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1456,
+      0.6932,
+      0.7205
+     ],
+     "size": [
+      0.0336,
+      0.037,
+      0.0336
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      -0.1568,
+      0.8388,
+      0.466
+     ],
+     "size": [
+      0.06,
+      0.09,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      0.1568,
+      0.8388,
+      0.466
+     ],
+     "size": [
+      0.06,
+      0.09,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      -0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legFrontLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2048,
+      0.282,
+      0.3016
+     ],
+     "size": [
+      0.095,
+      0.12,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.132,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.2048,
+      0.0713,
+      0.3016
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legFrontRight",
+     "shape": "capsule",
+     "pos": [
+      0.2048,
+      0.282,
+      0.3016
+     ],
+     "size": [
+      0.095,
+      0.12,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.132,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.2048,
+      0.0713,
+      0.3016
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2048,
+      0.282,
+      -0.3016
+     ],
+     "size": [
+      0.095,
+      0.12,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.132,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.2048,
+      0.0713,
+      -0.3016
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.2048,
+      0.282,
+      -0.3016
+     ],
+     "size": [
+      0.095,
+      0.12,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.132,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.2048,
+      0.0713,
+      -0.3016
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "box",
+     "pos": [
+      0,
+      0.5312,
+      -0.494
+     ],
+     "size": [
+      0.08,
+      0.06,
+      0.4
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.22000000000000003
+     ],
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "tailTip",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.7512,
+      -0.854
+     ],
+     "size": [
+      0.12,
+      0.06,
+      0.14
+     ],
+     "color": "secondary",
+     "parent": "tail",
+     "emissive": 0,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "regenhaut",
+  "cry": {
+   "baseHz": 430,
+   "kind": "trill"
+  },
+  "prevo": "tropfling"
+ },
+ {
+  "id": "fluthueter",
+  "dex": 9,
+  "name": "Fluthueter",
+  "category": "Gezeitenhueter",
+  "types": [
+   "water",
+   "psychic"
+  ],
+  "baseStats": {
+   "hp": 85,
+   "atk": 55,
+   "def": 78,
+   "spa": 133,
+   "spd": 90,
+   "spe": 93
+  },
+  "abilities": [
+   "sturzbach"
+  ],
+  "captureRate": 45,
+  "baseExp": 171,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.875,
+  "heightM": 1.7,
+  "weightKg": 79.5,
+  "evYield": {
+   "spa": 3
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "blasenschauer"
+   },
+   {
+    "level": 1,
+    "move": "kratzer"
+   },
+   {
+    "level": 4,
+    "move": "nebelschleier"
+   },
+   {
+    "level": 7,
+    "move": "nebelsog"
+   },
+   {
+    "level": 10,
+    "move": "gedankenstoss"
+   },
+   {
+    "level": 13,
+    "move": "sturzbach"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "telekinese"
+   },
+   {
+    "level": 25,
+    "move": "tiefenstroemung"
+   },
+   {
+    "level": 30,
+    "move": "sturmflut"
+   },
+   {
+    "level": 34,
+    "move": "psychoklinge"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   },
+   {
+    "level": 44,
+    "move": "psychosturm"
+   },
+   {
+    "level": 50,
+    "move": "flutsturz"
+   }
+  ],
+  "tmMoves": [
+   "druckwelle",
+   "erholung",
+   "gedankenstoss",
+   "kampfgeist",
+   "panzerschutz",
+   "psychosturm",
+   "regentanz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Es spuert Gezeiten voraus und warnt Fischer vor kommenden Stuermen.",
+  "canGigantic": true,
+  "habitat": [
+   "coastal",
+   "lake"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#3f8fc4",
+    "secondary": "#22587f",
+    "accent": "#a7e6ff",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.96,
+      0
+     ],
+     "size": [
+      0.38,
+      0.46,
+      0.33
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.914,
+      0.2046
+     ],
+     "size": [
+      0.2736,
+      0.2852,
+      0.1386
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.6135,
+      0.0
+     ],
+     "size": [
+      0.32,
+      0.31,
+      0.32
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      1.5453,
+      0.2496
+     ],
+     "size": [
+      0.1,
+      0.08,
+      0.13
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1536,
+      1.6569,
+      0.224
+     ],
+     "size": [
+      0.0832,
+      0.0832,
+      0.0832
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1536,
+      1.6569,
+      0.2756
+     ],
+     "size": [
+      0.0416,
+      0.0458,
+      0.0416
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1536,
+      1.6569,
+      0.224
+     ],
+     "size": [
+      0.0832,
+      0.0832,
+      0.0832
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1536,
+      1.6569,
+      0.2756
+     ],
+     "size": [
+      0.0416,
+      0.0458,
+      0.0416
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.908,
+      -0.048
+     ],
+     "size": [
+      0.16,
+      0.34,
+      0.16
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -0.4,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.361,
+      1.1532,
+      0
+     ],
+     "size": [
+      0.12,
+      0.29,
+      0.12
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.29,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.361,
+      0.5732,
+      0
+     ],
+     "size": [
+      0.15,
+      0.15,
+      0.15
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.361,
+      1.1532,
+      0
+     ],
+     "size": [
+      0.12,
+      0.29,
+      0.12
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.29,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.361,
+      0.5732,
+      0
+     ],
+     "size": [
+      0.15,
+      0.15,
+      0.15
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1748,
+      0.546,
+      0
+     ],
+     "size": [
+      0.14,
+      0.25,
+      0.14
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.275,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.1748,
+      0.07,
+      0.098
+     ],
+     "size": [
+      0.154,
+      0.077,
+      0.238
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1748,
+      0.546,
+      0
+     ],
+     "size": [
+      0.14,
+      0.25,
+      0.14
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.275,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.1748,
+      0.07,
+      0.098
+     ],
+     "size": [
+      0.154,
+      0.077,
+      0.238
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.73,
+      -0.297
+     ],
+     "size": [
+      0.1,
+      0.07,
+      0.48
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.264
+     ],
+     "rot": [
+      -0.5,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "tailTip",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.018,
+      -0.753
+     ],
+     "size": [
+      0.17,
+      0.08,
+      0.2
+     ],
+     "color": "accent",
+     "parent": "tail",
+     "emissive": 0,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "wasserschlund",
+  "giganticMove": "gmax_water",
+  "fieldScale": 1.1,
+  "cry": {
+   "baseHz": 300,
+   "kind": "hum"
+  },
+  "prevo": "wellenotter"
+ }
+]

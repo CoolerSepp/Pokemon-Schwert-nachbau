@@ -1,0 +1,252 @@
+[
+ {
+  "id": "glockenblume",
+  "dex": 55,
+  "name": "Glockenblume",
+  "category": "Lockpflanze",
+  "types": [
+   "grass",
+   "poison"
+  ],
+  "baseStats": {
+   "hp": 86,
+   "atk": 46,
+   "def": 71,
+   "spa": 61,
+   "spd": 93,
+   "spe": 38
+  },
+  "abilities": [
+   "immunsystem"
+  ],
+  "captureRate": 90,
+  "baseExp": 126,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 1.1,
+  "weightKg": 16.5,
+  "evYield": {
+   "spd": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 1,
+    "move": "rankenhieb"
+   },
+   {
+    "level": 4,
+    "move": "grimasse"
+   },
+   {
+    "level": 7,
+    "move": "dornenwall"
+   },
+   {
+    "level": 10,
+    "move": "saeurespritzer"
+   },
+   {
+    "level": 13,
+    "move": "samenbombe"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "giftklinge"
+   },
+   {
+    "level": 25,
+    "move": "wurzelgriff"
+   },
+   {
+    "level": 30,
+    "move": "photonenbluete"
+   },
+   {
+    "level": 34,
+    "move": "schlammwelle"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "energieentzug",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "schlammwelle",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Ihr suesser Duft lockt Beute direkt in den Kelch.",
+  "canGigantic": false,
+  "habitat": [
+   "wetland",
+   "forest"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#8fc44b",
+    "secondary": "#c98fd8",
+    "accent": "#e8e0a0",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.95,
+      0
+     ],
+     "size": [
+      0.285,
+      0.285,
+      0.285
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 1.0
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.0497,
+      0
+     ],
+     "size": [
+      0.2223,
+      0.2109,
+      0.2223
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 1.0
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1,
+      1.0708,
+      0.1556
+     ],
+     "size": [
+      0.0485,
+      0.0485,
+      0.0485
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1,
+      1.0708,
+      0.1856
+     ],
+     "size": [
+      0.0242,
+      0.0266,
+      0.0242
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1,
+      1.0708,
+      0.1556
+     ],
+     "size": [
+      0.0485,
+      0.0485,
+      0.0485
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1,
+      1.0708,
+      0.1856
+     ],
+     "size": [
+      0.0242,
+      0.0266,
+      0.0242
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.7505,
+      0
+     ],
+     "size": [
+      0.4,
+      0.6,
+      0.4
+     ],
+     "color": "primary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.24,
+      0
+     ],
+     "opacity": 1.0,
+     "flatShading": true,
+     "detail": 2
+    }
+   ],
+   "hover": 0.15
+  },
+  "hiddenAbility": "duftlockung",
+  "cry": {
+   "baseHz": 440,
+   "kind": "hum"
+  }
+ }
+]

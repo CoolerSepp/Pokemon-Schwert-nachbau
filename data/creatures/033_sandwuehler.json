@@ -1,0 +1,861 @@
+[
+ {
+  "id": "sandwuehler",
+  "dex": 33,
+  "name": "Sandwuehler",
+  "category": "Graeber",
+  "types": [
+   "ground"
+  ],
+  "baseStats": {
+   "hp": 47,
+   "atk": 67,
+   "def": 50,
+   "spa": 29,
+   "spd": 37,
+   "spe": 50
+  },
+  "abilities": [
+   "sandschleuder"
+  ],
+  "captureRate": 200,
+  "baseExp": 90,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 0.5,
+  "weightKg": 12.4,
+  "evYield": {
+   "atk": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "bindungsschlag"
+   },
+   {
+    "level": 1,
+    "move": "schlammschuss"
+   },
+   {
+    "level": 4,
+    "move": "windschritt"
+   },
+   {
+    "level": 7,
+    "move": "sandsturm_ruf"
+   },
+   {
+    "level": 10,
+    "move": "kratzer"
+   },
+   {
+    "level": 13,
+    "move": "erdstoss"
+   },
+   {
+    "level": 17,
+    "move": "sandwirbel"
+   },
+   {
+    "level": 21,
+    "move": "grabklaue"
+   },
+   {
+    "level": 25,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 30,
+    "move": "wuchtschlag"
+   }
+  ],
+  "tmMoves": [
+   "erdbeben",
+   "erdstoss",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "sandsturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "duenenklaue",
+    "method": {
+     "kind": "level",
+     "level": 24
+    }
+   }
+  ],
+  "dexEntry": "Es graebt Tunnel, die ganze Duenenlandschaften durchziehen.",
+  "canGigantic": false,
+  "habitat": [
+   "desert",
+   "rocky"
+  ],
+  "model": {
+   "rig": "quadruped",
+   "palette": {
+    "primary": "#d8b884",
+    "secondary": "#a8884f",
+    "accent": "#f0e0bd",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.3226,
+      0
+     ],
+     "size": [
+      0.192,
+      0.168,
+      0.288
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.289,
+      0.144
+     ],
+     "size": [
+      0.1536,
+      0.126,
+      0.144
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.415,
+      0.2736
+     ],
+     "size": [
+      0.168,
+      0.156,
+      0.168
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.3713,
+      0.3946
+     ],
+     "size": [
+      0.13,
+      0.1,
+      0.2
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0874,
+      0.4399,
+      0.3845
+     ],
+     "size": [
+      0.0403,
+      0.0403,
+      0.0403
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0874,
+      0.4399,
+      0.4095
+     ],
+     "size": [
+      0.0202,
+      0.0222,
+      0.0202
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0874,
+      0.4399,
+      0.3845
+     ],
+     "size": [
+      0.0403,
+      0.0403,
+      0.0403
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0874,
+      0.4399,
+      0.4095
+     ],
+     "size": [
+      0.0202,
+      0.0222,
+      0.0202
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "legFrontLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1229,
+      0.1932,
+      0.167
+     ],
+     "size": [
+      0.057,
+      0.084,
+      0.057
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.09240000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1229,
+      0.0427,
+      0.167
+     ],
+     "size": [
+      0.0673,
+      0.0456,
+      0.0741
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legFrontRight",
+     "shape": "capsule",
+     "pos": [
+      0.1229,
+      0.1932,
+      0.167
+     ],
+     "size": [
+      0.057,
+      0.084,
+      0.057
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.09240000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1229,
+      0.0427,
+      0.167
+     ],
+     "size": [
+      0.0673,
+      0.0456,
+      0.0741
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1229,
+      0.1932,
+      -0.167
+     ],
+     "size": [
+      0.057,
+      0.084,
+      0.057
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.09240000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1229,
+      0.0427,
+      -0.167
+     ],
+     "size": [
+      0.0673,
+      0.0456,
+      0.0741
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1229,
+      0.1932,
+      -0.167
+     ],
+     "size": [
+      0.057,
+      0.084,
+      0.057
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.09240000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1229,
+      0.0427,
+      -0.167
+     ],
+     "size": [
+      0.0673,
+      0.0456,
+      0.0741
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.3427,
+      -0.2736
+     ],
+     "size": [
+      0.06,
+      0.06,
+      0.2
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.11000000000000001
+     ],
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "arenafalle",
+  "cry": {
+   "baseHz": 440,
+   "kind": "growl"
+  }
+ },
+ {
+  "id": "duenenklaue",
+  "dex": 34,
+  "name": "Duenenklaue",
+  "category": "Duenenjaeger",
+  "types": [
+   "ground"
+  ],
+  "baseStats": {
+   "hp": 71,
+   "atk": 106,
+   "def": 85,
+   "spa": 46,
+   "spd": 63,
+   "spe": 84
+  },
+  "abilities": [
+   "sandschleuder"
+  ],
+  "captureRate": 90,
+  "baseExp": 146,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 1.4,
+  "weightKg": 52.0,
+  "evYield": {
+   "atk": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "rempler"
+   },
+   {
+    "level": 1,
+    "move": "schlammschuss"
+   },
+   {
+    "level": 4,
+    "move": "kampfgeist"
+   },
+   {
+    "level": 7,
+    "move": "sandwirbel"
+   },
+   {
+    "level": 10,
+    "move": "verzweiflung"
+   },
+   {
+    "level": 13,
+    "move": "erdstoss"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "grabklaue"
+   },
+   {
+    "level": 25,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 30,
+    "move": "felsspalte"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   }
+  ],
+  "tmMoves": [
+   "erdbeben",
+   "erdstoss",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "sandsturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Seine Klauen zerteilen Sandstein wie trockenes Brot.",
+  "canGigantic": false,
+  "habitat": [
+   "desert"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#c9a670",
+    "secondary": "#94743f",
+    "accent": "#e8d5aa",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.882,
+      0
+     ],
+     "size": [
+      0.357,
+      0.441,
+      0.315
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.8379,
+      0.1953
+     ],
+     "size": [
+      0.257,
+      0.2734,
+      0.1323
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.5125,
+      0.0
+     ],
+     "size": [
+      0.315,
+      0.3045,
+      0.315
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1512,
+      1.5552,
+      0.2205
+     ],
+     "size": [
+      0.0819,
+      0.0819,
+      0.0819
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1512,
+      1.5552,
+      0.2713
+     ],
+     "size": [
+      0.041,
+      0.045,
+      0.041
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1512,
+      1.5552,
+      0.2205
+     ],
+     "size": [
+      0.0819,
+      0.0819,
+      0.0819
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1512,
+      1.5552,
+      0.2713
+     ],
+     "size": [
+      0.041,
+      0.045,
+      0.041
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "horn",
+     "shape": "cone",
+     "pos": [
+      -0.126,
+      1.7866,
+      0.0
+     ],
+     "size": [
+      0.06,
+      0.2,
+      0.06
+     ],
+     "color": "light",
+     "parent": "head",
+     "rot": [
+      -0.2,
+      0,
+      0.34
+     ],
+     "detail": 1
+    },
+    {
+     "role": "horn",
+     "shape": "cone",
+     "pos": [
+      0.126,
+      1.7866,
+      0.0
+     ],
+     "size": [
+      0.06,
+      0.2,
+      0.06
+     ],
+     "color": "light",
+     "parent": "head",
+     "rot": [
+      -0.2,
+      0,
+      -0.34
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.3392,
+      1.0672,
+      0
+     ],
+     "size": [
+      0.1155,
+      0.2625,
+      0.1155
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2625,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.3392,
+      0.5422,
+      0
+     ],
+     "size": [
+      0.1444,
+      0.1444,
+      0.1444
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.3392,
+      1.0672,
+      0
+     ],
+     "size": [
+      0.1155,
+      0.2625,
+      0.1155
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2625,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.3392,
+      0.5422,
+      0
+     ],
+     "size": [
+      0.1444,
+      0.1444,
+      0.1444
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1642,
+      0.4851,
+      0
+     ],
+     "size": [
+      0.1365,
+      0.2205,
+      0.1365
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.24255000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.1642,
+      0.0683,
+      0.0955
+     ],
+     "size": [
+      0.1502,
+      0.0751,
+      0.2321
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1642,
+      0.4851,
+      0
+     ],
+     "size": [
+      0.1365,
+      0.2205,
+      0.1365
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.24255000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.1642,
+      0.0683,
+      0.0955
+     ],
+     "size": [
+      0.1502,
+      0.0751,
+      0.2321
+     ],
+     "color": "accent",
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "arenafalle",
+  "cry": {
+   "baseHz": 280,
+   "kind": "roar"
+  },
+  "prevo": "sandwuehler"
+ }
+]

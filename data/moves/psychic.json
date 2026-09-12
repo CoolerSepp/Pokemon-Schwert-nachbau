@@ -1,0 +1,205 @@
+[
+ {
+  "id": "gedankenstoss",
+  "name": "Gedankenstoss",
+  "type": "psychic",
+  "category": "special",
+  "power": 50,
+  "accuracy": 100,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein mentaler Stoss.",
+  "contact": false,
+  "animation": "psywave",
+  "sound": "psychic"
+ },
+ {
+  "id": "psychoklinge",
+  "name": "Psychoklinge",
+  "type": "psychic",
+  "category": "special",
+  "power": 85,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Klinge aus Gedankenkraft, die gegen die Verteidigung wirkt.",
+  "contact": false,
+  "animation": "slash",
+  "sound": "psychic",
+  "effect": {
+   "usesPhysicalDefense": true
+  }
+ },
+ {
+  "id": "telekinese",
+  "name": "Telekinese",
+  "type": "psychic",
+  "category": "special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Hebt den Gegner an und schleudert ihn zu Boden.",
+  "contact": false,
+  "animation": "psywave",
+  "sound": "psychic",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spd",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 0.2
+  }
+ },
+ {
+  "id": "psychosturm",
+  "name": "Psychosturm",
+  "type": "psychic",
+  "category": "special",
+  "power": 110,
+  "accuracy": 90,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Sturm reiner Gedankenkraft.",
+  "contact": false,
+  "animation": "burst",
+  "sound": "psychic"
+ },
+ {
+  "id": "gmax_psychic",
+  "name": "Geistesbeben",
+  "type": "psychic",
+  "category": "special",
+  "power": 165,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Welle aus purer Gedankenkraft.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "psychic",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spa",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 1.0
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "barriere",
+  "name": "Barriere",
+  "type": "psychic",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Errichtet einen Schild gegen physische Angriffe.",
+  "contact": false,
+  "animation": "shield",
+  "sound": "buff",
+  "effect": {
+   "screen": "physical",
+   "screenTurns": 5
+  }
+ },
+ {
+  "id": "hypnoseblick",
+  "name": "Hypnoseblick",
+  "type": "psychic",
+  "category": "status",
+  "power": 0,
+  "accuracy": 60,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Versetzt den Gegner in tiefen Schlaf.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "psychic",
+  "effect": {
+   "status": "sleep",
+   "statusChance": 1.0
+  }
+ },
+ {
+  "id": "meditation",
+  "name": "Meditation",
+  "type": "psychic",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Sammelt Gedanken - Spezial-Angriff und Spezial-Verteidigung steigen.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "spa",
+     "stages": 1
+    },
+    {
+     "target": "self",
+     "stat": "spd",
+     "stages": 1
+    }
+   ]
+  }
+ },
+ {
+  "id": "spiegelschild",
+  "name": "Spiegelschild",
+  "type": "psychic",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Errichtet einen Schild gegen Spezial-Angriffe.",
+  "contact": false,
+  "animation": "shield",
+  "sound": "buff",
+  "effect": {
+   "screen": "special",
+   "screenTurns": 5
+  }
+ },
+ {
+  "id": "verwirrstrahl",
+  "name": "Verwirrstrahl",
+  "type": "psychic",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Strahl, der den Gegner verwirrt.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "psychic",
+  "effect": {
+   "confuse": true
+  }
+ }
+]

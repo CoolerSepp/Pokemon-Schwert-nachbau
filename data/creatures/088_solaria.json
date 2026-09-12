@@ -1,0 +1,399 @@
+[
+ {
+  "id": "solaria",
+  "dex": 88,
+  "name": "Solaria",
+  "category": "Sonnenherrin",
+  "types": [
+   "fire",
+   "fairy"
+  ],
+  "baseStats": {
+   "hp": 99,
+   "atk": 66,
+   "def": 91,
+   "spa": 162,
+   "spd": 114,
+   "spe": 108
+  },
+  "abilities": [
+   "duerreherz"
+  ],
+  "captureRate": 3,
+  "baseExp": 205,
+  "growthRate": "slow",
+  "genderRatio": null,
+  "heightM": 3.0,
+  "weightKg": 68.0,
+  "evYield": {
+   "spa": 3
+  },
+  "baseFriendship": 0,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 1,
+    "move": "funkenflug"
+   },
+   {
+    "level": 4,
+    "move": "kampfgeist"
+   },
+   {
+    "level": 7,
+    "move": "hitzeschild"
+   },
+   {
+    "level": 10,
+    "move": "feenstaub"
+   },
+   {
+    "level": 13,
+    "move": "glutwelle"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "zauberschein"
+   },
+   {
+    "level": 25,
+    "move": "aschewolke"
+   },
+   {
+    "level": 30,
+    "move": "infernosalve"
+   },
+   {
+    "level": 34,
+    "move": "elfenstoss"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   },
+   {
+    "level": 44,
+    "move": "sternenregen"
+   },
+   {
+    "level": 50,
+    "move": "solarstrahl_feuer"
+   }
+  ],
+  "tmMoves": [
+   "duerre",
+   "erholung",
+   "glutwelle",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag",
+   "zauberschein"
+  ],
+  "evolutions": [],
+  "dexEntry": "Mit ausgebreiteten Schwingen soll sie einst einen ganzen Winter beendet haben.",
+  "canGigantic": false,
+  "habitat": [
+   "mountain",
+   "endgame"
+  ],
+  "model": {
+   "rig": "flyer",
+   "palette": {
+    "primary": "#ffb84b",
+    "secondary": "#d8722b",
+    "accent": "#fff0a0",
+    "dark": "#2a2320",
+    "light": "#fff6d8",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#ffd86b"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      1.47,
+      0
+     ],
+     "size": [
+      0.546,
+      0.588,
+      0.714
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.9698,
+      0.3927
+     ],
+     "size": [
+      0.462,
+      0.462,
+      0.462
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.9236,
+      0.8085
+     ],
+     "size": [
+      0.126,
+      0.336,
+      0.126
+     ],
+     "color": "light",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.2541,
+      2.0622,
+      0.6791
+     ],
+     "size": [
+      0.1109,
+      0.1109,
+      0.1109
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.2541,
+      2.0622,
+      0.7479
+     ],
+     "size": [
+      0.0554,
+      0.061,
+      0.0554
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.2541,
+      2.0622,
+      0.6791
+     ],
+     "size": [
+      0.1109,
+      0.1109,
+      0.1109
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.2541,
+      2.0622,
+      0.7479
+     ],
+     "size": [
+      0.0554,
+      0.061,
+      0.0554
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      2.3856,
+      0.3003
+     ],
+     "size": [
+      0.18,
+      0.5,
+      0.18
+     ],
+     "color": "glow",
+     "parent": "head",
+     "rot": [
+      -0.5,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "wingLeft",
+     "shape": "box",
+     "pos": [
+      -0.4641,
+      1.617,
+      0
+     ],
+     "size": [
+      1.15,
+      0.07,
+      0.7
+     ],
+     "color": "glow",
+     "anchor": [
+      -1.058,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "wingRight",
+     "shape": "box",
+     "pos": [
+      0.4641,
+      1.617,
+      0
+     ],
+     "size": [
+      1.15,
+      0.07,
+      0.7
+     ],
+     "color": "glow",
+     "anchor": [
+      1.058,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "box",
+     "pos": [
+      0,
+      1.47,
+      -0.6783
+     ],
+     "size": [
+      0.336,
+      0.084,
+      0.63
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      0,
+      -0.5670000000000001
+     ],
+     "rot": [
+      0.2,
+      0,
+      0
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2075,
+      1.029,
+      0
+     ],
+     "size": [
+      0.0735,
+      0.21,
+      0.0735
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.21000000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.2075,
+      1.029,
+      0
+     ],
+     "size": [
+      0.0735,
+      0.21,
+      0.0735
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.21000000000000002,
+      0
+     ],
+     "detail": 1
+    }
+   ],
+   "hover": 1.2
+  },
+  "fieldScale": 1.7,
+  "cry": {
+   "baseHz": 260,
+   "kind": "screech"
+  }
+ }
+]

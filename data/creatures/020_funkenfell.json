@@ -1,0 +1,977 @@
+[
+ {
+  "id": "funkenfell",
+  "dex": 20,
+  "name": "Funkenfell",
+  "category": "Blitznager",
+  "types": [
+   "electric"
+  ],
+  "baseStats": {
+   "hp": 36,
+   "atk": 52,
+   "def": 34,
+   "spa": 45,
+   "spd": 36,
+   "spe": 65
+  },
+  "abilities": [
+   "statikfeld"
+  ],
+  "captureRate": 190,
+  "baseExp": 86,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 0.4,
+  "weightKg": 5.8,
+  "evYield": {
+   "spe": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "stromstoss"
+   },
+   {
+    "level": 1,
+    "move": "verzweiflung"
+   },
+   {
+    "level": 4,
+    "move": "aufwind"
+   },
+   {
+    "level": 7,
+    "move": "gewitterfront"
+   },
+   {
+    "level": 10,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 13,
+    "move": "funkenkralle"
+   },
+   {
+    "level": 17,
+    "move": "laehmstrahl"
+   },
+   {
+    "level": 21,
+    "move": "entladung"
+   },
+   {
+    "level": 25,
+    "move": "blitzschlag"
+   },
+   {
+    "level": 30,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 36,
+    "move": "wuchtschlag"
+   }
+  ],
+  "tmMoves": [
+   "blitzschlag",
+   "erholung",
+   "gewitterfront",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "voltnager",
+    "method": {
+     "kind": "level",
+     "level": 20
+    }
+   }
+  ],
+  "dexEntry": "Bei Aufregung springen Funken zwischen seinen Backentaschen ueber.",
+  "canGigantic": false,
+  "habitat": [
+   "grassland",
+   "forest"
+  ],
+  "model": {
+   "rig": "quadruped",
+   "palette": {
+    "primary": "#f2d24b",
+    "secondary": "#c9a022",
+    "accent": "#3b3320",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#fff08a"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.2688,
+      0
+     ],
+     "size": [
+      0.16,
+      0.14,
+      0.24
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2408,
+      0.12
+     ],
+     "size": [
+      0.128,
+      0.105,
+      0.12
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3458,
+      0.228
+     ],
+     "size": [
+      0.14,
+      0.13,
+      0.14
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.3094,
+      0.3288
+     ],
+     "size": [
+      0.055,
+      0.045,
+      0.075
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0728,
+      0.3666,
+      0.3204
+     ],
+     "size": [
+      0.0336,
+      0.0336,
+      0.0336
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0728,
+      0.3666,
+      0.3412
+     ],
+     "size": [
+      0.0168,
+      0.0185,
+      0.0168
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0728,
+      0.3666,
+      0.3204
+     ],
+     "size": [
+      0.0336,
+      0.0336,
+      0.0336
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0728,
+      0.3666,
+      0.3412
+     ],
+     "size": [
+      0.0168,
+      0.0185,
+      0.0168
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      -0.0784,
+      0.4394,
+      0.214
+     ],
+     "size": [
+      0.07,
+      0.17,
+      0.05
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      0.0784,
+      0.4394,
+      0.214
+     ],
+     "size": [
+      0.07,
+      0.17,
+      0.05
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      -0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legFrontLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1024,
+      0.161,
+      0.1392
+     ],
+     "size": [
+      0.0475,
+      0.07,
+      0.0475
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.07700000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1024,
+      0.0356,
+      0.1392
+     ],
+     "size": [
+      0.056,
+      0.038,
+      0.0618
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legFrontRight",
+     "shape": "capsule",
+     "pos": [
+      0.1024,
+      0.161,
+      0.1392
+     ],
+     "size": [
+      0.0475,
+      0.07,
+      0.0475
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.07700000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1024,
+      0.0356,
+      0.1392
+     ],
+     "size": [
+      0.056,
+      0.038,
+      0.0618
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1024,
+      0.161,
+      -0.1392
+     ],
+     "size": [
+      0.0475,
+      0.07,
+      0.0475
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.07700000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1024,
+      0.0356,
+      -0.1392
+     ],
+     "size": [
+      0.056,
+      0.038,
+      0.0618
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1024,
+      0.161,
+      -0.1392
+     ],
+     "size": [
+      0.0475,
+      0.07,
+      0.0475
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.07700000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1024,
+      0.0356,
+      -0.1392
+     ],
+     "size": [
+      0.056,
+      0.038,
+      0.0618
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.2856,
+      -0.228
+     ],
+     "size": [
+      0.05,
+      0.05,
+      0.24
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.132
+     ],
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "tailTip",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.4176,
+      -0.444
+     ],
+     "size": [
+      0.1,
+      0.12,
+      0.06
+     ],
+     "color": "glow",
+     "parent": "tail",
+     "emissive": 0.9,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "blitzfaenger",
+  "cry": {
+   "baseHz": 760,
+   "kind": "chirp"
+  }
+ },
+ {
+  "id": "voltnager",
+  "dex": 21,
+  "name": "Voltnager",
+  "category": "Hochspannung",
+  "types": [
+   "electric"
+  ],
+  "baseStats": {
+   "hp": 70,
+   "atk": 43,
+   "def": 68,
+   "spa": 112,
+   "spd": 77,
+   "spe": 75
+  },
+  "abilities": [
+   "statikfeld"
+  ],
+  "captureRate": 75,
+  "baseExp": 142,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 1.0,
+  "weightKg": 24.2,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "letztes_aufbaeumen"
+   },
+   {
+    "level": 1,
+    "move": "stromstoss"
+   },
+   {
+    "level": 4,
+    "move": "schreckruf"
+   },
+   {
+    "level": 7,
+    "move": "laehmstrahl"
+   },
+   {
+    "level": 10,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 13,
+    "move": "blitzschlag"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "funkenkralle"
+   },
+   {
+    "level": 25,
+    "move": "entladung"
+   },
+   {
+    "level": 30,
+    "move": "voltstoss"
+   },
+   {
+    "level": 34,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   }
+  ],
+  "tmMoves": [
+   "blitzschlag",
+   "erholung",
+   "gewitterfront",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Ein einziger Sprung von ihm kann ein ganzes Umspannwerk lahmlegen.",
+  "canGigantic": true,
+  "habitat": [
+   "grassland",
+   "industrial"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#e8c63b",
+    "secondary": "#b88f1a",
+    "accent": "#3b3320",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#fff5a0"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.672,
+      0
+     ],
+     "size": [
+      0.272,
+      0.336,
+      0.24
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.6384,
+      0.1488
+     ],
+     "size": [
+      0.1958,
+      0.2083,
+      0.1008
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.1524,
+      0.0
+     ],
+     "size": [
+      0.24,
+      0.232,
+      0.24
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1152,
+      1.1849,
+      0.168
+     ],
+     "size": [
+      0.0624,
+      0.0624,
+      0.0624
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1152,
+      1.1849,
+      0.2067
+     ],
+     "size": [
+      0.0312,
+      0.0343,
+      0.0312
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1152,
+      1.1849,
+      0.168
+     ],
+     "size": [
+      0.0624,
+      0.0624,
+      0.0624
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1152,
+      1.1849,
+      0.2067
+     ],
+     "size": [
+      0.0312,
+      0.0343,
+      0.0312
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      -0.144,
+      1.338,
+      0.0
+     ],
+     "size": [
+      0.08,
+      0.22,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      0.3
+     ],
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      0.144,
+      1.338,
+      0.0
+     ],
+     "size": [
+      0.08,
+      0.22,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      -0.3
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2584,
+      0.8131,
+      0
+     ],
+     "size": [
+      0.088,
+      0.2,
+      0.088
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.2584,
+      0.4131,
+      0
+     ],
+     "size": [
+      0.11,
+      0.11,
+      0.11
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.2584,
+      0.8131,
+      0
+     ],
+     "size": [
+      0.088,
+      0.2,
+      0.088
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.2584,
+      0.4131,
+      0
+     ],
+     "size": [
+      0.11,
+      0.11,
+      0.11
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1251,
+      0.3696,
+      0
+     ],
+     "size": [
+      0.104,
+      0.168,
+      0.104
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.18480000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.1251,
+      0.052,
+      0.0728
+     ],
+     "size": [
+      0.1144,
+      0.0572,
+      0.1768
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1251,
+      0.3696,
+      0
+     ],
+     "size": [
+      0.104,
+      0.168,
+      0.104
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.18480000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.1251,
+      0.052,
+      0.0728
+     ],
+     "size": [
+      0.1144,
+      0.0572,
+      0.1768
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.504,
+      -0.216
+     ],
+     "size": [
+      0.07,
+      0.07,
+      0.36
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.198
+     ],
+     "rot": [
+      -0.5,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "tailTip",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.72,
+      -0.558
+     ],
+     "size": [
+      0.13,
+      0.16,
+      0.08
+     ],
+     "color": "glow",
+     "parent": "tail",
+     "emissive": 1.0,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "hochspannung",
+  "giganticMove": "gmax_electric",
+  "cry": {
+   "baseHz": 500,
+   "kind": "screech"
+  },
+  "prevo": "funkenfell"
+ }
+]

@@ -1,0 +1,717 @@
+[
+ {
+  "id": "glutkohle",
+  "dex": 22,
+  "name": "Glutkohle",
+  "category": "Kohlewesen",
+  "types": [
+   "fire"
+  ],
+  "baseStats": {
+   "hp": 54,
+   "atk": 39,
+   "def": 58,
+   "spa": 36,
+   "spd": 45,
+   "spe": 24
+  },
+  "abilities": [
+   "lodernd"
+  ],
+  "captureRate": 190,
+  "baseExp": 82,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 0.4,
+  "weightKg": 12.5,
+  "evYield": {
+   "def": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "bindungsschlag"
+   },
+   {
+    "level": 1,
+    "move": "funkenflug"
+   },
+   {
+    "level": 4,
+    "move": "kampfgeist"
+   },
+   {
+    "level": 7,
+    "move": "duerre"
+   },
+   {
+    "level": 10,
+    "move": "flammenwirbel"
+   },
+   {
+    "level": 13,
+    "move": "feuerklaue"
+   },
+   {
+    "level": 17,
+    "move": "brandmal"
+   },
+   {
+    "level": 21,
+    "move": "glutwelle"
+   },
+   {
+    "level": 25,
+    "move": "aschewolke"
+   },
+   {
+    "level": 30,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 36,
+    "move": "sturmlauf"
+   }
+  ],
+  "tmMoves": [
+   "duerre",
+   "erholung",
+   "glutwelle",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "aschebrand",
+    "method": {
+     "kind": "level",
+     "level": 22
+    }
+   }
+  ],
+  "dexEntry": "Im Inneren glimmt seit Jahrhunderten dieselbe Glut.",
+  "canGigantic": false,
+  "habitat": [
+   "volcanic",
+   "cave"
+  ],
+  "model": {
+   "rig": "blob",
+   "palette": {
+    "primary": "#5b4a44",
+    "secondary": "#3b302c",
+    "accent": "#ff8f3b",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#ffa83b"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.1885,
+      0
+     ],
+     "size": [
+      0.1984,
+      0.1786,
+      0.1984
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2718,
+      0.0099
+     ],
+     "size": [
+      0.1468,
+      0.1389,
+      0.1468
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0617,
+      0.2885,
+      0.1156
+     ],
+     "size": [
+      0.0357,
+      0.0357,
+      0.0357
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0617,
+      0.2885,
+      0.1378
+     ],
+     "size": [
+      0.0179,
+      0.0196,
+      0.0179
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0617,
+      0.2885,
+      0.1156
+     ],
+     "size": [
+      0.0357,
+      0.0357,
+      0.0357
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0617,
+      0.2885,
+      0.1378
+     ],
+     "size": [
+      0.0179,
+      0.0196,
+      0.0179
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "snout",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2301,
+      0.1347
+     ],
+     "size": [
+      0.0434,
+      0.031,
+      0.0248
+     ],
+     "color": "dark",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "sphere",
+     "pos": [
+      -0.0992,
+      0.0527,
+      0.0238
+     ],
+     "size": [
+      0.062,
+      0.0465,
+      0.0744
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "sphere",
+     "pos": [
+      0.0992,
+      0.0527,
+      0.0238
+     ],
+     "size": [
+      0.062,
+      0.0465,
+      0.0744
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.68,
+      0
+     ],
+     "size": [
+      0.12,
+      0.16,
+      0.12
+     ],
+     "color": "glow",
+     "detail": 2,
+     "emissive": 0.9
+    }
+   ]
+  },
+  "hiddenAbility": "hitzeresistenz",
+  "cry": {
+   "baseHz": 340,
+   "kind": "hum"
+  }
+ },
+ {
+  "id": "aschebrand",
+  "dex": 23,
+  "name": "Aschebrand",
+  "category": "Schlotwesen",
+  "types": [
+   "fire"
+  ],
+  "baseStats": {
+   "hp": 73,
+   "atk": 47,
+   "def": 65,
+   "spa": 114,
+   "spd": 75,
+   "spe": 78
+  },
+  "abilities": [
+   "lodernd"
+  ],
+  "captureRate": 75,
+  "baseExp": 145,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 1.3,
+  "weightKg": 48.0,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 1,
+    "move": "flammenwirbel"
+   },
+   {
+    "level": 4,
+    "move": "nebelschleier"
+   },
+   {
+    "level": 7,
+    "move": "duerre"
+   },
+   {
+    "level": 10,
+    "move": "funkenflug"
+   },
+   {
+    "level": 13,
+    "move": "feuerklaue"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "aschewolke"
+   },
+   {
+    "level": 25,
+    "move": "glutwelle"
+   },
+   {
+    "level": 30,
+    "move": "solarstrahl_feuer"
+   },
+   {
+    "level": 34,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "duerre",
+   "erholung",
+   "glutwelle",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Aus den Schloten auf seinem Ruecken steigt bestaendig heisse Asche.",
+  "canGigantic": false,
+  "habitat": [
+   "volcanic",
+   "industrial"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#4d3f39",
+    "secondary": "#2e2724",
+    "accent": "#ff7f2b",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#ff9b2b"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.798,
+      0
+     ],
+     "size": [
+      0.323,
+      0.399,
+      0.285
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.7581,
+      0.1767
+     ],
+     "size": [
+      0.2326,
+      0.2474,
+      0.1197
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.3685,
+      0.0
+     ],
+     "size": [
+      0.285,
+      0.2755,
+      0.285
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1368,
+      1.407,
+      0.1995
+     ],
+     "size": [
+      0.0741,
+      0.0741,
+      0.0741
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1368,
+      1.407,
+      0.2454
+     ],
+     "size": [
+      0.037,
+      0.0408,
+      0.037
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1368,
+      1.407,
+      0.1995
+     ],
+     "size": [
+      0.0741,
+      0.0741,
+      0.0741
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1368,
+      1.407,
+      0.2454
+     ],
+     "size": [
+      0.037,
+      0.0408,
+      0.037
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.6302,
+      -0.0427
+     ],
+     "size": [
+      0.14,
+      0.26,
+      0.14
+     ],
+     "color": "glow",
+     "parent": "head",
+     "rot": [
+      -0.4,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.3069,
+      0.9656,
+      0
+     ],
+     "size": [
+      0.1045,
+      0.2375,
+      0.1045
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2375,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.3069,
+      0.4906,
+      0
+     ],
+     "size": [
+      0.1306,
+      0.1306,
+      0.1306
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.3069,
+      0.9656,
+      0
+     ],
+     "size": [
+      0.1045,
+      0.2375,
+      0.1045
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2375,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.3069,
+      0.4906,
+      0
+     ],
+     "size": [
+      0.1306,
+      0.1306,
+      0.1306
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1486,
+      0.4389,
+      0
+     ],
+     "size": [
+      0.1235,
+      0.1995,
+      0.1235
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.21945,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.1486,
+      0.0617,
+      0.0864
+     ],
+     "size": [
+      0.1358,
+      0.0679,
+      0.2099
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1486,
+      0.4389,
+      0
+     ],
+     "size": [
+      0.1235,
+      0.1995,
+      0.1235
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.21945,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.1486,
+      0.0617,
+      0.0864
+     ],
+     "size": [
+      0.1358,
+      0.0679,
+      0.2099
+     ],
+     "color": "accent",
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "hitzeresistenz",
+  "cry": {
+   "baseHz": 280,
+   "kind": "growl"
+  },
+  "prevo": "glutkohle"
+ }
+]

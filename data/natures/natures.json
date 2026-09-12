@@ -1,0 +1,152 @@
+[
+ {
+  "id": "atk_def",
+  "name": "Draufgaengerisch",
+  "up": "atk",
+  "down": "def"
+ },
+ {
+  "id": "atk_spa",
+  "name": "Robust",
+  "up": "atk",
+  "down": "spa"
+ },
+ {
+  "id": "atk_spd",
+  "name": "Ruppig",
+  "up": "atk",
+  "down": "spd"
+ },
+ {
+  "id": "atk_spe",
+  "name": "Bedaechtig",
+  "up": "atk",
+  "down": "spe"
+ },
+ {
+  "id": "def_atk",
+  "name": "Behutsam",
+  "up": "def",
+  "down": "atk"
+ },
+ {
+  "id": "def_spa",
+  "name": "Standhaft",
+  "up": "def",
+  "down": "spa"
+ },
+ {
+  "id": "def_spd",
+  "name": "Starrsinnig",
+  "up": "def",
+  "down": "spd"
+ },
+ {
+  "id": "def_spe",
+  "name": "Traege",
+  "up": "def",
+  "down": "spe"
+ },
+ {
+  "id": "spa_atk",
+  "name": "Verspielt",
+  "up": "spa",
+  "down": "atk"
+ },
+ {
+  "id": "spa_def",
+  "name": "Grueblerisch",
+  "up": "spa",
+  "down": "def"
+ },
+ {
+  "id": "spa_spd",
+  "name": "Flatterhaft",
+  "up": "spa",
+  "down": "spd"
+ },
+ {
+  "id": "spa_spe",
+  "name": "Versonnen",
+  "up": "spa",
+  "down": "spe"
+ },
+ {
+  "id": "spd_atk",
+  "name": "Achtsam",
+  "up": "spd",
+  "down": "atk"
+ },
+ {
+  "id": "spd_def",
+  "name": "Sanftmuetig",
+  "up": "spd",
+  "down": "def"
+ },
+ {
+  "id": "spd_spa",
+  "name": "Stoisch",
+  "up": "spd",
+  "down": "spa"
+ },
+ {
+  "id": "spd_spe",
+  "name": "Geduldig",
+  "up": "spd",
+  "down": "spe"
+ },
+ {
+  "id": "spe_atk",
+  "name": "Flink",
+  "up": "spe",
+  "down": "atk"
+ },
+ {
+  "id": "spe_def",
+  "name": "Rastlos",
+  "up": "spe",
+  "down": "def"
+ },
+ {
+  "id": "spe_spa",
+  "name": "Uebermuetig",
+  "up": "spe",
+  "down": "spa"
+ },
+ {
+  "id": "spe_spd",
+  "name": "Zappelig",
+  "up": "spe",
+  "down": "spd"
+ },
+ {
+  "id": "neutral_0",
+  "name": "Ausgeglichen",
+  "up": null,
+  "down": null
+ },
+ {
+  "id": "neutral_1",
+  "name": "Gelassen",
+  "up": null,
+  "down": null
+ },
+ {
+  "id": "neutral_2",
+  "name": "Schlicht",
+  "up": null,
+  "down": null
+ },
+ {
+  "id": "neutral_3",
+  "name": "Gutmuetig",
+  "up": null,
+  "down": null
+ },
+ {
+  "id": "neutral_4",
+  "name": "Ernst",
+  "up": null,
+  "down": null
+ }
+]

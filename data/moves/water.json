@@ -1,0 +1,211 @@
+[
+ {
+  "id": "aquaklinge",
+  "name": "Aquaklinge",
+  "type": "water",
+  "category": "physical",
+  "power": 70,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 1,
+  "target": "opponent",
+  "description": "Eine Klinge aus Wasser, die zuerst trifft.",
+  "contact": true,
+  "animation": "slash",
+  "sound": "water"
+ },
+ {
+  "id": "sturzbach",
+  "name": "Sturzbach",
+  "type": "water",
+  "category": "physical",
+  "power": 85,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein reissender Strom, der mitreisst.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "water",
+  "effect": {
+   "flinchChance": 0.2
+  }
+ },
+ {
+  "id": "blasenschauer",
+  "name": "Blasenschauer",
+  "type": "water",
+  "category": "special",
+  "power": 25,
+  "accuracy": 95,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Schauer aus Blasen, der mehrfach trifft.",
+  "contact": false,
+  "animation": "multiProjectile",
+  "sound": "water",
+  "effect": {
+   "multiHit": [
+    2,
+    4
+   ]
+  }
+ },
+ {
+  "id": "wasserstrahl",
+  "name": "Wasserstrahl",
+  "type": "water",
+  "category": "special",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein scharfer Wasserstrahl.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "water"
+ },
+ {
+  "id": "druckwelle",
+  "name": "Druckwelle",
+  "type": "water",
+  "category": "special",
+  "power": 65,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Welle aus verdichtetem Wasser.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "water"
+ },
+ {
+  "id": "tiefenstroemung",
+  "name": "Tiefenstroemung",
+  "type": "water",
+  "category": "special",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine kalte Stroemung, die den Spezial-Angriff senkt.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "water",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spa",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 0.5
+  }
+ },
+ {
+  "id": "sturmflut",
+  "name": "Sturmflut",
+  "type": "water",
+  "category": "special",
+  "power": 95,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Bei Regen unaufhaltsam.",
+  "contact": false,
+  "animation": "wave",
+  "sound": "water",
+  "effect": {
+   "doublePowerIfWeather": [
+    "rain",
+    "heavyRain",
+    "thunderstorm"
+   ]
+  }
+ },
+ {
+  "id": "flutsturz",
+  "name": "Flutsturz",
+  "type": "water",
+  "category": "special",
+  "power": 110,
+  "accuracy": 80,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine gewaltige Flutwelle.",
+  "contact": false,
+  "animation": "wave",
+  "sound": "water"
+ },
+ {
+  "id": "gmax_water",
+  "name": "Sintflut",
+  "type": "water",
+  "category": "special",
+  "power": 170,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Flutwelle, die das Kampffeld ueberschwemmt.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "water",
+  "effect": {
+   "weather": "heavyRain",
+   "weatherTurns": 4
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "nebelsog",
+  "name": "Nebelsog",
+  "type": "water",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Dichter Nebel senkt die Genauigkeit des Gegners stark.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "accuracy",
+     "stages": -2
+    }
+   ]
+  }
+ },
+ {
+  "id": "regentanz",
+  "name": "Regentanz",
+  "type": "water",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "field",
+  "description": "Ruft anhaltenden Regen herbei.",
+  "contact": false,
+  "animation": "weather",
+  "sound": "water",
+  "effect": {
+   "weather": "rain",
+   "weatherTurns": 5
+  }
+ }
+]

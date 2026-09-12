@@ -1,0 +1,291 @@
+[
+ {
+  "id": "quallenlicht",
+  "dex": 48,
+  "name": "Quallenlicht",
+  "category": "Leuchtqualle",
+  "types": [
+   "water",
+   "electric"
+  ],
+  "baseStats": {
+   "hp": 69,
+   "atk": 45,
+   "def": 57,
+   "spa": 95,
+   "spd": 83,
+   "spe": 71
+  },
+  "abilities": [
+   "blitzfaenger"
+  ],
+  "captureRate": 60,
+  "baseExp": 134,
+  "growthRate": "slow",
+  "genderRatio": 0.5,
+  "heightM": 1.2,
+  "weightKg": 22.0,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "blasenschauer"
+   },
+   {
+    "level": 1,
+    "move": "kratzer"
+   },
+   {
+    "level": 4,
+    "move": "erholung"
+   },
+   {
+    "level": 7,
+    "move": "nebelsog"
+   },
+   {
+    "level": 10,
+    "move": "stromstoss"
+   },
+   {
+    "level": 13,
+    "move": "tiefenstroemung"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "blitzschlag"
+   },
+   {
+    "level": 25,
+    "move": "aquaklinge"
+   },
+   {
+    "level": 30,
+    "move": "sturmflut"
+   },
+   {
+    "level": 34,
+    "move": "entladung"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "blitzschlag",
+   "druckwelle",
+   "erholung",
+   "gewitterfront",
+   "kampfgeist",
+   "panzerschutz",
+   "regentanz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Nachts erhellen ganze Schwaerme die Buchten wie ein zweiter Sternenhimmel.",
+  "canGigantic": false,
+  "habitat": [
+   "coastal",
+   "lake"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#7fd8e0",
+    "secondary": "#4b9bb0",
+    "accent": "#fff08a",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#a0ffff"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.1,
+      0
+     ],
+     "size": [
+      0.3,
+      0.3,
+      0.3
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.75
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.205,
+      0
+     ],
+     "size": [
+      0.234,
+      0.222,
+      0.234
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.75
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1053,
+      1.2272,
+      0.1638
+     ],
+     "size": [
+      0.051,
+      0.051,
+      0.051
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1053,
+      1.2272,
+      0.1954
+     ],
+     "size": [
+      0.0255,
+      0.0281,
+      0.0255
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1053,
+      1.2272,
+      0.1638
+     ],
+     "size": [
+      0.051,
+      0.051,
+      0.051
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1053,
+      1.2272,
+      0.1954
+     ],
+     "size": [
+      0.0255,
+      0.0281,
+      0.0255
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.89,
+      0
+     ],
+     "size": [
+      0.42,
+      0.7,
+      0.42
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.27999999999999997,
+      0
+     ],
+     "opacity": 0.55,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.2,
+      1.2,
+      0.18
+     ],
+     "size": [
+      0.05,
+      0.05,
+      0.05
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      -0.24,
+      1.15,
+      -0.14
+     ],
+     "size": [
+      0.05,
+      0.05,
+      0.05
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    }
+   ],
+   "hover": 0.7
+  },
+  "hiddenAbility": "regenhaut",
+  "cry": {
+   "baseHz": 520,
+   "kind": "hum"
+  }
+ }
+]

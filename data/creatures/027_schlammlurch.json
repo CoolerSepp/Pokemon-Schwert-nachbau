@@ -1,0 +1,853 @@
+[
+ {
+  "id": "schlammlurch",
+  "dex": 27,
+  "name": "Schlammlurch",
+  "category": "Moorwesen",
+  "types": [
+   "water",
+   "ground"
+  ],
+  "baseStats": {
+   "hp": 61,
+   "atk": 44,
+   "def": 70,
+   "spa": 36,
+   "spd": 52,
+   "spe": 27
+  },
+  "abilities": [
+   "sturzbach"
+  ],
+  "captureRate": 190,
+  "baseExp": 93,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 0.4,
+  "weightKg": 11.2,
+  "evYield": {
+   "def": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "hieb"
+   },
+   {
+    "level": 1,
+    "move": "wasserstrahl"
+   },
+   {
+    "level": 4,
+    "move": "schreckruf"
+   },
+   {
+    "level": 7,
+    "move": "regentanz"
+   },
+   {
+    "level": 10,
+    "move": "schlammschuss"
+   },
+   {
+    "level": 13,
+    "move": "tiefenstroemung"
+   },
+   {
+    "level": 17,
+    "move": "nebelsog"
+   },
+   {
+    "level": 21,
+    "move": "grabklaue"
+   },
+   {
+    "level": 25,
+    "move": "aquaklinge"
+   },
+   {
+    "level": 30,
+    "move": "druckwelle"
+   },
+   {
+    "level": 36,
+    "move": "sturmlauf"
+   }
+  ],
+  "tmMoves": [
+   "druckwelle",
+   "erdbeben",
+   "erdstoss",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "regentanz",
+   "sandsturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "sumpfhueter",
+    "method": {
+     "kind": "level",
+     "level": 24
+    }
+   }
+  ],
+  "dexEntry": "Es verbirgt sich im Moor und atmet ueber die feuchte Haut.",
+  "canGigantic": false,
+  "habitat": [
+   "wetland"
+  ],
+  "model": {
+   "rig": "quadruped",
+   "palette": {
+    "primary": "#6b8f7a",
+    "secondary": "#47604f",
+    "accent": "#c4b88f",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3226,
+      0
+     ],
+     "size": [
+      0.192,
+      0.168,
+      0.288
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.289,
+      0.144
+     ],
+     "size": [
+      0.1536,
+      0.126,
+      0.144
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.415,
+      0.2736
+     ],
+     "size": [
+      0.168,
+      0.156,
+      0.168
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.3713,
+      0.3946
+     ],
+     "size": [
+      0.066,
+      0.054,
+      0.09
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0874,
+      0.4399,
+      0.3845
+     ],
+     "size": [
+      0.0403,
+      0.0403,
+      0.0403
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0874,
+      0.4399,
+      0.4095
+     ],
+     "size": [
+      0.0202,
+      0.0222,
+      0.0202
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0874,
+      0.4399,
+      0.3845
+     ],
+     "size": [
+      0.0403,
+      0.0403,
+      0.0403
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0874,
+      0.4399,
+      0.4095
+     ],
+     "size": [
+      0.0202,
+      0.0222,
+      0.0202
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "legFrontLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1229,
+      0.1932,
+      0.167
+     ],
+     "size": [
+      0.057,
+      0.084,
+      0.057
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.09240000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1229,
+      0.0427,
+      0.167
+     ],
+     "size": [
+      0.0673,
+      0.0456,
+      0.0741
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legFrontRight",
+     "shape": "capsule",
+     "pos": [
+      0.1229,
+      0.1932,
+      0.167
+     ],
+     "size": [
+      0.057,
+      0.084,
+      0.057
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.09240000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1229,
+      0.0427,
+      0.167
+     ],
+     "size": [
+      0.0673,
+      0.0456,
+      0.0741
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1229,
+      0.1932,
+      -0.167
+     ],
+     "size": [
+      0.057,
+      0.084,
+      0.057
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.09240000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1229,
+      0.0427,
+      -0.167
+     ],
+     "size": [
+      0.0673,
+      0.0456,
+      0.0741
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1229,
+      0.1932,
+      -0.167
+     ],
+     "size": [
+      0.057,
+      0.084,
+      0.057
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.09240000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1229,
+      0.0427,
+      -0.167
+     ],
+     "size": [
+      0.0673,
+      0.0456,
+      0.0741
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "box",
+     "pos": [
+      0,
+      0.3427,
+      -0.2736
+     ],
+     "size": [
+      0.06,
+      0.05,
+      0.26
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.14300000000000002
+     ],
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "regenhaut",
+  "cry": {
+   "baseHz": 380,
+   "kind": "growl"
+  }
+ },
+ {
+  "id": "sumpfhueter",
+  "dex": 28,
+  "name": "Sumpfhueter",
+  "category": "Moorwacht",
+  "types": [
+   "water",
+   "ground"
+  ],
+  "baseStats": {
+   "hp": 88,
+   "atk": 86,
+   "def": 91,
+   "spa": 86,
+   "spd": 77,
+   "spe": 50
+  },
+  "abilities": [
+   "sturzbach"
+  ],
+  "captureRate": 60,
+  "baseExp": 153,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 1.5,
+  "weightKg": 78.0,
+  "evYield": {
+   "def": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "blasenschauer"
+   },
+   {
+    "level": 1,
+    "move": "hieb"
+   },
+   {
+    "level": 4,
+    "move": "knurren"
+   },
+   {
+    "level": 7,
+    "move": "regentanz"
+   },
+   {
+    "level": 10,
+    "move": "schlammschuss"
+   },
+   {
+    "level": 13,
+    "move": "druckwelle"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "grabklaue"
+   },
+   {
+    "level": 25,
+    "move": "sturzbach"
+   },
+   {
+    "level": 30,
+    "move": "flutsturz"
+   },
+   {
+    "level": 34,
+    "move": "erdstoss"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   }
+  ],
+  "tmMoves": [
+   "druckwelle",
+   "erdbeben",
+   "erdstoss",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "regentanz",
+   "sandsturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Es haelt das Gleichgewicht der Moore, indem es Zufluesse aufstaut.",
+  "canGigantic": true,
+  "habitat": [
+   "wetland"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#5c8069",
+    "secondary": "#36503f",
+    "accent": "#b8ab7f",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.966,
+      0
+     ],
+     "size": [
+      0.391,
+      0.483,
+      0.345
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.9177,
+      0.2139
+     ],
+     "size": [
+      0.2815,
+      0.2995,
+      0.1449
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.6566,
+      0.0
+     ],
+     "size": [
+      0.345,
+      0.3335,
+      0.345
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1656,
+      1.7033,
+      0.2415
+     ],
+     "size": [
+      0.0897,
+      0.0897,
+      0.0897
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1656,
+      1.7033,
+      0.2971
+     ],
+     "size": [
+      0.0449,
+      0.0493,
+      0.0449
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1656,
+      1.7033,
+      0.2415
+     ],
+     "size": [
+      0.0897,
+      0.0897,
+      0.0897
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1656,
+      1.7033,
+      0.2971
+     ],
+     "size": [
+      0.0449,
+      0.0493,
+      0.0449
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.9734,
+      -0.0517
+     ],
+     "size": [
+      0.14,
+      0.18,
+      0.14
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -0.4,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.3715,
+      1.1689,
+      0
+     ],
+     "size": [
+      0.1265,
+      0.2875,
+      0.1265
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2875,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.3715,
+      0.5939,
+      0
+     ],
+     "size": [
+      0.1581,
+      0.1581,
+      0.1581
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.3715,
+      1.1689,
+      0
+     ],
+     "size": [
+      0.1265,
+      0.2875,
+      0.1265
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2875,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.3715,
+      0.5939,
+      0
+     ],
+     "size": [
+      0.1581,
+      0.1581,
+      0.1581
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1799,
+      0.5313,
+      0
+     ],
+     "size": [
+      0.1495,
+      0.2415,
+      0.1495
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.26565,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.1799,
+      0.0747,
+      0.1046
+     ],
+     "size": [
+      0.1645,
+      0.0822,
+      0.2541
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1799,
+      0.5313,
+      0
+     ],
+     "size": [
+      0.1495,
+      0.2415,
+      0.1495
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.26565,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.1799,
+      0.0747,
+      0.1046
+     ],
+     "size": [
+      0.1645,
+      0.0822,
+      0.2541
+     ],
+     "color": "accent",
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "regenhaut",
+  "giganticMove": "gmax_water",
+  "cry": {
+   "baseHz": 240,
+   "kind": "roar"
+  },
+  "prevo": "schlammlurch"
+ }
+]

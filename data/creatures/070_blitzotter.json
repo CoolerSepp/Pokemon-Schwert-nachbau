@@ -1,0 +1,493 @@
+[
+ {
+  "id": "blitzotter",
+  "dex": 70,
+  "name": "Blitzotter",
+  "category": "Stromjaeger",
+  "types": [
+   "electric",
+   "water"
+  ],
+  "baseStats": {
+   "hp": 62,
+   "atk": 85,
+   "def": 56,
+   "spa": 68,
+   "spd": 61,
+   "spe": 116
+  },
+  "abilities": [
+   "statikfeld"
+  ],
+  "captureRate": 75,
+  "baseExp": 143,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 1.2,
+  "weightKg": 31.0,
+  "evYield": {
+   "spe": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "hieb"
+   },
+   {
+    "level": 1,
+    "move": "stromstoss"
+   },
+   {
+    "level": 4,
+    "move": "kampfgeist"
+   },
+   {
+    "level": 7,
+    "move": "volttempo"
+   },
+   {
+    "level": 10,
+    "move": "blasenschauer"
+   },
+   {
+    "level": 13,
+    "move": "entladung"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "sturzbach"
+   },
+   {
+    "level": 25,
+    "move": "funkenkralle"
+   },
+   {
+    "level": 30,
+    "move": "voltstoss"
+   },
+   {
+    "level": 34,
+    "move": "tiefenstroemung"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "blitzschlag",
+   "druckwelle",
+   "erholung",
+   "gewitterfront",
+   "kampfgeist",
+   "panzerschutz",
+   "regentanz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Es laedt das Wasser um sich auf und betaeubt damit ganze Fischschwaerme.",
+  "canGigantic": false,
+  "habitat": [
+   "lake",
+   "coastal"
+  ],
+  "model": {
+   "rig": "quadruped",
+   "palette": {
+    "primary": "#5bb0c9",
+    "secondary": "#2f7a94",
+    "accent": "#ffe04b",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#fff08a"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.5376,
+      0
+     ],
+     "size": [
+      0.32,
+      0.28,
+      0.48
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.4816,
+      0.24
+     ],
+     "size": [
+      0.256,
+      0.21,
+      0.24
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.6916,
+      0.456
+     ],
+     "size": [
+      0.28,
+      0.26,
+      0.28
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.6188,
+      0.6576
+     ],
+     "size": [
+      0.11,
+      0.09,
+      0.15
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1456,
+      0.7332,
+      0.6408
+     ],
+     "size": [
+      0.0672,
+      0.0672,
+      0.0672
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1456,
+      0.7332,
+      0.6825
+     ],
+     "size": [
+      0.0336,
+      0.037,
+      0.0336
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1456,
+      0.7332,
+      0.6408
+     ],
+     "size": [
+      0.0672,
+      0.0672,
+      0.0672
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1456,
+      0.7332,
+      0.6825
+     ],
+     "size": [
+      0.0336,
+      0.037,
+      0.0336
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      -0.1568,
+      0.8788,
+      0.428
+     ],
+     "size": [
+      0.06,
+      0.1,
+      0.05
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      0.1568,
+      0.8788,
+      0.428
+     ],
+     "size": [
+      0.06,
+      0.1,
+      0.05
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      -0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legFrontLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2048,
+      0.322,
+      0.2784
+     ],
+     "size": [
+      0.095,
+      0.14,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.15400000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.2048,
+      0.0713,
+      0.2784
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legFrontRight",
+     "shape": "capsule",
+     "pos": [
+      0.2048,
+      0.322,
+      0.2784
+     ],
+     "size": [
+      0.095,
+      0.14,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.15400000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.2048,
+      0.0713,
+      0.2784
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2048,
+      0.322,
+      -0.2784
+     ],
+     "size": [
+      0.095,
+      0.14,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.15400000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.2048,
+      0.0713,
+      -0.2784
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.2048,
+      0.322,
+      -0.2784
+     ],
+     "size": [
+      0.095,
+      0.14,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.15400000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.2048,
+      0.0713,
+      -0.2784
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "box",
+     "pos": [
+      0,
+      0.5712,
+      -0.456
+     ],
+     "size": [
+      0.09,
+      0.06,
+      0.42
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.231
+     ],
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "tailTip",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.8022,
+      -0.834
+     ],
+     "size": [
+      0.13,
+      0.07,
+      0.15
+     ],
+     "color": "glow",
+     "parent": "tail",
+     "emissive": 0.9,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "sturzbach",
+  "cry": {
+   "baseHz": 560,
+   "kind": "trill"
+  }
+ }
+]

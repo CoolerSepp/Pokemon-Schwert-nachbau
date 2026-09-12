@@ -1,0 +1,130 @@
+[
+ {
+  "id": "schattenstoss",
+  "name": "Schattenstoss",
+  "type": "ghost",
+  "category": "physical",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 30,
+  "priority": 1,
+  "target": "opponent",
+  "description": "Ein Stoss aus dem Schatten, der stets zuerst trifft.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "ghost"
+ },
+ {
+  "id": "nachtklaue",
+  "name": "Nachtklaue",
+  "type": "ghost",
+  "category": "physical",
+  "power": 70,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Krallen aus purer Finsternis.",
+  "contact": true,
+  "animation": "slash",
+  "sound": "ghost"
+ },
+ {
+  "id": "phantomschlag",
+  "name": "Phantomschlag",
+  "type": "ghost",
+  "category": "physical",
+  "power": 95,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Angriff, der auch Normal-Typen trifft.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "ghost",
+  "effect": {
+   "ignoreImmunity": [
+    "normal"
+   ]
+  }
+ },
+ {
+  "id": "seelenfeuer",
+  "name": "Seelenfeuer",
+  "type": "ghost",
+  "category": "special",
+  "power": 85,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein kaltes Feuer, das Verbrennungen verursacht.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "ghost",
+  "effect": {
+   "status": "burn",
+   "statusChance": 0.3
+  }
+ },
+ {
+  "id": "gmax_ghost",
+  "name": "Seelenschlund",
+  "type": "ghost",
+  "category": "special",
+  "power": 165,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Schlund aus Finsternis verschlingt alles.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "ghost",
+  "giganticOnly": true
+ },
+ {
+  "id": "entsetzen",
+  "name": "Entsetzen",
+  "type": "ghost",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Grauen senkt den Angriff des Gegners stark.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "atk",
+     "stages": -2
+    }
+   ]
+  }
+ },
+ {
+  "id": "fluch",
+  "name": "Fluch",
+  "type": "ghost",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Fluch, der jede Runde KP raubt.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "ghost",
+  "effect": {
+   "trap": true,
+   "trapDamage": 0.125
+  }
+ }
+]

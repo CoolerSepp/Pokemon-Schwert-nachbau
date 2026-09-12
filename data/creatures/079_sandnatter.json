@@ -1,0 +1,424 @@
+[
+ {
+  "id": "sandnatter",
+  "dex": 79,
+  "name": "Sandnatter",
+  "category": "Wuestennatter",
+  "types": [
+   "ground",
+   "dark"
+  ],
+  "baseStats": {
+   "hp": 55,
+   "atk": 85,
+   "def": 56,
+   "spa": 71,
+   "spd": 57,
+   "spe": 111
+  },
+  "abilities": [
+   "sandschleuder"
+  ],
+  "captureRate": 90,
+  "baseExp": 139,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 2.6,
+  "weightKg": 38.0,
+  "evYield": {
+   "spe": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "rempler"
+   },
+   {
+    "level": 1,
+    "move": "schlammschuss"
+   },
+   {
+    "level": 4,
+    "move": "knurren"
+   },
+   {
+    "level": 7,
+    "move": "sandwirbel"
+   },
+   {
+    "level": 10,
+    "move": "finsterschlag"
+   },
+   {
+    "level": 13,
+    "move": "erdstoss"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "hinterhalt"
+   },
+   {
+    "level": 25,
+    "move": "grabklaue"
+   },
+   {
+    "level": 30,
+    "move": "erdbeben"
+   },
+   {
+    "level": 34,
+    "move": "dunkelwoge"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "dunkelwoge",
+   "erdbeben",
+   "erdstoss",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "sandsturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Sie bewegt sich unter der Sandoberflaeche und schlaegt ohne Vorwarnung zu.",
+  "canGigantic": false,
+  "habitat": [
+   "desert"
+  ],
+  "model": {
+   "rig": "serpentine",
+   "palette": {
+    "primary": "#c9a86b",
+    "secondary": "#94783f",
+    "accent": "#5b4433",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      0.0
+     ],
+     "size": [
+      0.26,
+      0.2392,
+      0.273
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      -0.32
+     ],
+     "size": [
+      0.2522,
+      0.232,
+      0.2648
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      -0.64
+     ],
+     "size": [
+      0.2395,
+      0.2203,
+      0.2514
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      -0.96
+     ],
+     "size": [
+      0.2238,
+      0.2059,
+      0.235
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      -1.28
+     ],
+     "size": [
+      0.2058,
+      0.1893,
+      0.2161
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      -1.6
+     ],
+     "size": [
+      0.1859,
+      0.1711,
+      0.1952
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      -1.92
+     ],
+     "size": [
+      0.1644,
+      0.1513,
+      0.1726
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      -2.24
+     ],
+     "size": [
+      0.1414,
+      0.1301,
+      0.1485
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.247,
+      -2.56
+     ],
+     "size": [
+      0.117,
+      0.1076,
+      0.1229
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.377,
+      0.39
+     ],
+     "size": [
+      0.25,
+      0.23,
+      0.3
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.3425,
+      0.645
+     ],
+     "size": [
+      0.08,
+      0.14,
+      0.08
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1375,
+      0.4184,
+      0.57
+     ],
+     "size": [
+      0.06,
+      0.06,
+      0.06
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1375,
+      0.4184,
+      0.6072
+     ],
+     "size": [
+      0.03,
+      0.033,
+      0.03
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1375,
+      0.4184,
+      0.57
+     ],
+     "size": [
+      0.06,
+      0.06,
+      0.06
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1375,
+      0.4184,
+      0.6072
+     ],
+     "size": [
+      0.03,
+      0.033,
+      0.03
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.423,
+      0.12
+     ],
+     "size": [
+      0.24,
+      0.3,
+      0.24
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -1.2,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "tailTip",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.247,
+      -2.716
+     ],
+     "size": [
+      0.08,
+      0.2,
+      0.08
+     ],
+     "color": "accent",
+     "rot": [
+      -1.5708,
+      0,
+      0
+     ],
+     "emissive": 0,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "einschuechtern",
+  "cry": {
+   "baseHz": 380,
+   "kind": "screech"
+  }
+ }
+]

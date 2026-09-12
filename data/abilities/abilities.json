@@ -1,0 +1,483 @@
+[
+ {
+  "id": "lodernd",
+  "name": "Lodernd",
+  "description": "Verstaerkt Feuer-Attacken deutlich, wenn die KP niedrig sind.",
+  "effects": [
+   {
+    "kind": "typeBoostLowHp",
+    "type": "fire",
+    "threshold": 0.334,
+    "multiplier": 1.5
+   }
+  ]
+ },
+ {
+  "id": "sturzbach",
+  "name": "Sturzbach",
+  "description": "Verstaerkt Wasser-Attacken deutlich, wenn die KP niedrig sind.",
+  "effects": [
+   {
+    "kind": "typeBoostLowHp",
+    "type": "water",
+    "threshold": 0.334,
+    "multiplier": 1.5
+   }
+  ]
+ },
+ {
+  "id": "wildwuchs",
+  "name": "Wildwuchs",
+  "description": "Verstaerkt Pflanzen-Attacken deutlich, wenn die KP niedrig sind.",
+  "effects": [
+   {
+    "kind": "typeBoostLowHp",
+    "type": "grass",
+    "threshold": 0.334,
+    "multiplier": 1.5
+   }
+  ]
+ },
+ {
+  "id": "hochspannung",
+  "name": "Hochspannung",
+  "description": "Verstaerkt Elektro-Attacken deutlich, wenn die KP niedrig sind.",
+  "effects": [
+   {
+    "kind": "typeBoostLowHp",
+    "type": "electric",
+    "threshold": 0.334,
+    "multiplier": 1.5
+   }
+  ]
+ },
+ {
+  "id": "schwarmkraft",
+  "name": "Schwarmkraft",
+  "description": "Verstaerkt Kaefer-Attacken deutlich, wenn die KP niedrig sind.",
+  "effects": [
+   {
+    "kind": "typeBoostLowHp",
+    "type": "bug",
+    "threshold": 0.334,
+    "multiplier": 1.5
+   }
+  ]
+ },
+ {
+  "id": "duerreherz",
+  "name": "Duerreherz",
+  "description": "Ruft beim Betreten des Feldes gleissenden Sonnenschein hervor.",
+  "effects": [
+   {
+    "kind": "weatherOnEntry",
+    "weather": "harshSun",
+    "turns": 5
+   }
+  ]
+ },
+ {
+  "id": "regenmacher",
+  "name": "Regenmacher",
+  "description": "Ruft beim Betreten des Feldes Regen hervor.",
+  "effects": [
+   {
+    "kind": "weatherOnEntry",
+    "weather": "rain",
+    "turns": 5
+   }
+  ]
+ },
+ {
+  "id": "sandaufwirbler",
+  "name": "Sandaufwirbler",
+  "description": "Ruft beim Betreten des Feldes einen Sandsturm hervor.",
+  "effects": [
+   {
+    "kind": "weatherOnEntry",
+    "weather": "sandstorm",
+    "turns": 5
+   },
+   {
+    "kind": "noWeatherDamage"
+   }
+  ]
+ },
+ {
+  "id": "schneetreiber",
+  "name": "Schneetreiber",
+  "description": "Ruft beim Betreten des Feldes Schneefall hervor.",
+  "effects": [
+   {
+    "kind": "weatherOnEntry",
+    "weather": "snow",
+    "turns": 5
+   },
+   {
+    "kind": "noWeatherDamage"
+   }
+  ]
+ },
+ {
+  "id": "blitzfaenger",
+  "name": "Blitzfaenger",
+  "description": "Elektro-Attacken heilen statt zu schaden.",
+  "effects": [
+   {
+    "kind": "immuneToType",
+    "type": "electric",
+    "heal": 0.25
+   }
+  ]
+ },
+ {
+  "id": "feuerfaenger",
+  "name": "Feuerfaenger",
+  "description": "Feuer-Attacken erhoehen stattdessen den Spezial-Angriff.",
+  "effects": [
+   {
+    "kind": "immuneToType",
+    "type": "fire",
+    "boostStat": "spa"
+   }
+  ]
+ },
+ {
+  "id": "wasserschlund",
+  "name": "Wasserschlund",
+  "description": "Wasser-Attacken heilen statt zu schaden.",
+  "effects": [
+   {
+    "kind": "immuneToType",
+    "type": "water",
+    "heal": 0.25
+   }
+  ]
+ },
+ {
+  "id": "erdverbunden",
+  "name": "Erdverbunden",
+  "description": "Boden-Attacken richten keinen Schaden an.",
+  "effects": [
+   {
+    "kind": "immuneToType",
+    "type": "ground"
+   }
+  ]
+ },
+ {
+  "id": "immunsystem",
+  "name": "Immunsystem",
+  "description": "Schuetzt vor Vergiftung.",
+  "effects": [
+   {
+    "kind": "statusImmunity",
+    "status": [
+     "poison",
+     "toxic"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "hitzeresistenz",
+  "name": "Hitzeresistenz",
+  "description": "Schuetzt vor Verbrennungen.",
+  "effects": [
+   {
+    "kind": "statusImmunity",
+    "status": [
+     "burn"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "wachsamkeit",
+  "name": "Wachsamkeit",
+  "description": "Schuetzt vor Schlaf.",
+  "effects": [
+   {
+    "kind": "statusImmunity",
+    "status": [
+     "sleep"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "frostkern",
+  "name": "Frostkern",
+  "description": "Schuetzt vor Einfrieren.",
+  "effects": [
+   {
+    "kind": "statusImmunity",
+    "status": [
+     "freeze"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "robustheit",
+  "name": "Robustheit",
+  "description": "Schuetzt vor allen Statusproblemen.",
+  "effects": [
+   {
+    "kind": "statusImmunity",
+    "status": [
+     "burn",
+     "freeze",
+     "paralysis",
+     "poison",
+     "toxic",
+     "sleep"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "statikfeld",
+  "name": "Statikfeld",
+  "description": "Kann Angreifer bei Beruehrung laehmen.",
+  "effects": [
+   {
+    "kind": "contactStatus",
+    "status": "paralysis",
+    "chance": 0.3
+   }
+  ]
+ },
+ {
+  "id": "dornenhaut",
+  "name": "Dornenhaut",
+  "description": "Kann Angreifer bei Beruehrung vergiften.",
+  "effects": [
+   {
+    "kind": "contactStatus",
+    "status": "poison",
+    "chance": 0.3
+   }
+  ]
+ },
+ {
+  "id": "gluthaut",
+  "name": "Gluthaut",
+  "description": "Kann Angreifer bei Beruehrung verbrennen.",
+  "effects": [
+   {
+    "kind": "contactStatus",
+    "status": "burn",
+    "chance": 0.3
+   }
+  ]
+ },
+ {
+  "id": "einschuechtern",
+  "name": "Einschuechtern",
+  "description": "Senkt beim Betreten des Feldes den Angriff des Gegners.",
+  "effects": [
+   {
+    "kind": "intimidate",
+    "stages": 1
+   }
+  ]
+ },
+ {
+  "id": "kampfeswille",
+  "name": "Kampfeswille",
+  "description": "Erhoeht beim Betreten des Feldes den Angriff.",
+  "effects": [
+   {
+    "kind": "statOnEntry",
+    "stat": "atk",
+    "stages": 1
+   }
+  ]
+ },
+ {
+  "id": "siegesrausch",
+  "name": "Siegesrausch",
+  "description": "Erhoeht den Angriff nach jedem Sieg.",
+  "effects": [
+   {
+    "kind": "statOnKo",
+    "stat": "atk",
+    "stages": 1
+   }
+  ]
+ },
+ {
+  "id": "aufwindkoerper",
+  "name": "Aufwindkoerper",
+  "description": "Erhoeht die Initiative nach jedem Sieg.",
+  "effects": [
+   {
+    "kind": "statOnKo",
+    "stat": "spe",
+    "stages": 1
+   }
+  ]
+ },
+ {
+  "id": "sandschleuder",
+  "name": "Sandschleuder",
+  "description": "Verdoppelt die Initiative im Sandsturm.",
+  "effects": [
+   {
+    "kind": "speedInWeather",
+    "weather": [
+     "sandstorm"
+    ],
+    "multiplier": 2
+   },
+   {
+    "kind": "noWeatherDamage"
+   }
+  ]
+ },
+ {
+  "id": "schneeschuh",
+  "name": "Schneeschuh",
+  "description": "Verdoppelt die Initiative bei Schnee.",
+  "effects": [
+   {
+    "kind": "speedInWeather",
+    "weather": [
+     "snow",
+     "blizzard"
+    ],
+    "multiplier": 2
+   },
+   {
+    "kind": "noWeatherDamage"
+   }
+  ]
+ },
+ {
+  "id": "regenhaut",
+  "name": "Regenhaut",
+  "description": "Regeneriert KP bei Regen.",
+  "effects": [
+   {
+    "kind": "healInWeather",
+    "weather": [
+     "rain",
+     "heavyRain",
+     "thunderstorm"
+    ],
+    "fraction": 0.0625
+   }
+  ]
+ },
+ {
+  "id": "chlorophyllwuchs",
+  "name": "Chlorophyllwuchs",
+  "description": "Verdoppelt die Initiative bei Sonnenschein.",
+  "effects": [
+   {
+    "kind": "speedInWeather",
+    "weather": [
+     "harshSun"
+    ],
+    "multiplier": 2
+   }
+  ]
+ },
+ {
+  "id": "filterpanzer",
+  "name": "Filterpanzer",
+  "description": "Schwaecht sehr effektive Attacken ab.",
+  "effects": [
+   {
+    "kind": "damageReduction",
+    "multiplier": 0.75,
+    "condition": "superEffective"
+   }
+  ]
+ },
+ {
+  "id": "dickpanzer",
+  "name": "Dickpanzer",
+  "description": "Verhindert Volltreffer.",
+  "effects": [
+   {
+    "kind": "critImmunity"
+   }
+  ]
+ },
+ {
+  "id": "klarblick",
+  "name": "Klarblick",
+  "description": "Ignoriert Statusveraenderungen des Gegners.",
+  "effects": [
+   {
+    "kind": "ignoreStatChanges"
+   }
+  ]
+ },
+ {
+  "id": "fausthieb",
+  "name": "Fausthieb",
+  "description": "Verstaerkt Schlagattacken.",
+  "effects": [
+   {
+    "kind": "powerPunch",
+    "multiplier": 1.2
+   }
+  ]
+ },
+ {
+  "id": "zielsicher",
+  "name": "Zielsicher",
+  "description": "Erhoeht die Genauigkeit aller Attacken.",
+  "effects": [
+   {
+    "kind": "accuracyBoost",
+    "multiplier": 1.3
+   }
+  ]
+ },
+ {
+  "id": "arenafalle",
+  "name": "Arenafalle",
+  "description": "Verhindert die Flucht des Gegners.",
+  "effects": [
+   {
+    "kind": "preventEscape"
+   }
+  ]
+ },
+ {
+  "id": "wetterfest",
+  "name": "Wetterfest",
+  "description": "Immun gegen Wetterschaden.",
+  "effects": [
+   {
+    "kind": "noWeatherDamage"
+   }
+  ]
+ },
+ {
+  "id": "duftlockung",
+  "name": "Duftlockung",
+  "description": "Lockt vermehrt Pflanzen-Kreaturen an.",
+  "effects": [
+   {
+    "kind": "encounterLure",
+    "typeBias": "grass"
+   }
+  ]
+ },
+ {
+  "id": "magnetfalle",
+  "name": "Magnetfalle",
+  "description": "Lockt vermehrt Stahl-Kreaturen an.",
+  "effects": [
+   {
+    "kind": "encounterLure",
+    "typeBias": "steel"
+   }
+  ]
+ }
+]

@@ -1,0 +1,145 @@
+[
+ {
+  "id": "fluegelschlag",
+  "name": "Fluegelschlag",
+  "type": "flying",
+  "category": "physical",
+  "power": 60,
+  "accuracy": 100,
+  "pp": 35,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Schlaegt mit ausgebreiteten Fluegeln zu.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "flying"
+ },
+ {
+  "id": "sturzflug",
+  "name": "Sturzflug",
+  "type": "flying",
+  "category": "physical",
+  "power": 120,
+  "accuracy": 100,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein toedlicher Sturzflug mit Rueckstoss.",
+  "contact": true,
+  "animation": "charge",
+  "sound": "flying",
+  "effect": {
+   "recoil": 0.33
+  }
+ },
+ {
+  "id": "himmelsangriff",
+  "name": "Himmelsangriff",
+  "type": "flying",
+  "category": "physical",
+  "power": 140,
+  "accuracy": 90,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Steigt auf und stuerzt in der naechsten Runde herab.",
+  "contact": true,
+  "animation": "charge",
+  "sound": "flying",
+  "effect": {
+   "chargeTurn": true,
+   "chargeMessage": "{user} steigt hoch in die Luft!"
+  }
+ },
+ {
+  "id": "windstoss",
+  "name": "Windstoss",
+  "type": "flying",
+  "category": "special",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 35,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Stoss aus komprimierter Luft.",
+  "contact": false,
+  "animation": "wave",
+  "sound": "flying"
+ },
+ {
+  "id": "luftschnitt",
+  "name": "Luftschnitt",
+  "type": "flying",
+  "category": "special",
+  "power": 75,
+  "accuracy": 95,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Scharfe Luftklingen lassen zurueckschrecken.",
+  "contact": false,
+  "animation": "slash",
+  "sound": "flying",
+  "effect": {
+   "flinchChance": 0.3
+  }
+ },
+ {
+  "id": "orkanboee",
+  "name": "Orkanboee",
+  "type": "flying",
+  "category": "special",
+  "power": 100,
+  "accuracy": 80,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Wirbelsturm, der verwirren kann.",
+  "contact": false,
+  "animation": "spiral",
+  "sound": "flying",
+  "effect": {
+   "confuseChance": 0.3
+  }
+ },
+ {
+  "id": "gmax_flying",
+  "name": "Himmelszorn",
+  "type": "flying",
+  "category": "special",
+  "power": 165,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Orkan von planetarischem Ausmass.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "flying",
+  "giganticOnly": true
+ },
+ {
+  "id": "aufwinden",
+  "name": "Aufwinden",
+  "type": "flying",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 15,
+  "priority": 0,
+  "target": "self",
+  "description": "Steigt auf und erhoeht Ausweichen stark.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "wind",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "evasion",
+     "stages": 2
+    }
+   ]
+  }
+ }
+]

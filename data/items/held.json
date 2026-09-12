@@ -1,0 +1,424 @@
+[
+ {
+  "id": "ueberreste",
+  "name": "Ueberreste",
+  "category": "held",
+  "description": "Regeneriert jede Runde ein wenig KP.",
+  "price": 4000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 70,
+  "effect": {
+   "kind": "heldHealEachTurn",
+   "fraction": 0.0625
+  },
+  "color": "#c9b08f"
+ },
+ {
+  "id": "notfallbeere",
+  "name": "Notfallbeere",
+  "category": "held",
+  "description": "Heilt automatisch, wenn die KP niedrig sind.",
+  "price": 300,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 71,
+  "effect": {
+   "kind": "heldPinch",
+   "fraction": 0.25,
+   "threshold": 0.25
+  },
+  "color": "#ff4b6b"
+ },
+ {
+  "id": "schaerfling",
+  "name": "Schaerfling",
+  "category": "held",
+  "description": "Erhoeht die Volltrefferquote.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 72,
+  "effect": {
+   "kind": "heldCritBoost",
+   "stages": 1
+  },
+  "color": "#e3e3e3"
+ },
+ {
+  "id": "muskelband",
+  "name": "Muskelband",
+  "category": "held",
+  "description": "Erhoeht den Angriff um 10 Prozent.",
+  "price": 4000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 73,
+  "effect": {
+   "kind": "heldStatBoost",
+   "stat": "atk",
+   "multiplier": 1.1
+  },
+  "color": "#d84b4b"
+ },
+ {
+  "id": "weisheitsbrille",
+  "name": "Weisheitsbrille",
+  "category": "held",
+  "description": "Erhoeht den Spezial-Angriff um 10 Prozent.",
+  "price": 4000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 74,
+  "effect": {
+   "kind": "heldStatBoost",
+   "stat": "spa",
+   "multiplier": 1.1
+  },
+  "color": "#4b9bd8"
+ },
+ {
+  "id": "schutzamulett",
+  "name": "Schutzamulett",
+  "category": "held",
+  "description": "Schuetzt vor allen Statusproblemen.",
+  "price": 5000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 75,
+  "effect": {
+   "kind": "heldStatusGuard",
+   "status": "all"
+  },
+  "color": "#ffd8a0"
+ },
+ {
+  "id": "gluecksei",
+  "name": "Glueckssei",
+  "category": "held",
+  "description": "Erhoeht die erhaltenen Erfahrungspunkte deutlich.",
+  "price": 0,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 76,
+  "effect": {
+   "kind": "heldExpBoost",
+   "multiplier": 1.5
+  },
+  "color": "#fff0b0",
+  "sellPrice": 0
+ },
+ {
+  "id": "bluetenkelch",
+  "name": "Bluetenkelch",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ grass um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "grass",
+   "multiplier": 1.2
+  },
+  "color": "#4bd86b"
+ },
+ {
+  "id": "chitinsplitter",
+  "name": "Chitinsplitter",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ bug um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "bug",
+   "multiplier": 1.2
+  },
+  "color": "#9bd82b"
+ },
+ {
+  "id": "drachenzahn",
+  "name": "Drachenzahn",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ dragon um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "dragon",
+   "multiplier": 1.2
+  },
+  "color": "#4b6bd8"
+ },
+ {
+  "id": "erdkern",
+  "name": "Erdkern",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ ground um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "ground",
+   "multiplier": 1.2
+  },
+  "color": "#c9a06b"
+ },
+ {
+  "id": "federkiel",
+  "name": "Federkiel",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ flying um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "flying",
+   "multiplier": 1.2
+  },
+  "color": "#d8e9ff"
+ },
+ {
+  "id": "feenband",
+  "name": "Feenband",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ fairy um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "fairy",
+   "multiplier": 1.2
+  },
+  "color": "#ffb0e9"
+ },
+ {
+  "id": "frostkristall",
+  "name": "Frostkristall",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ ice um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "ice",
+   "multiplier": 1.2
+  },
+  "color": "#a0e9ff"
+ },
+ {
+  "id": "geistlinse",
+  "name": "Geistlinse",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ psychic um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "psychic",
+   "multiplier": 1.2
+  },
+  "color": "#ff6bd8"
+ },
+ {
+  "id": "giftfläschchen",
+  "name": "Giftflaeschchen",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ poison um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "poison",
+   "multiplier": 1.2
+  },
+  "color": "#8f2bd8"
+ },
+ {
+  "id": "hartstein",
+  "name": "Hartstein",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ rock um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "rock",
+   "multiplier": 1.2
+  },
+  "color": "#8f8f8f"
+ },
+ {
+  "id": "holzkohle",
+  "name": "Holzkohle",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ fire um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "fire",
+   "multiplier": 1.2
+  },
+  "color": "#3b2b2b"
+ },
+ {
+  "id": "kampfguertel",
+  "name": "Kampfguertel",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ fighting um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "fighting",
+   "multiplier": 1.2
+  },
+  "color": "#d86b2b"
+ },
+ {
+  "id": "magnetkern",
+  "name": "Magnetkern",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ electric um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "electric",
+   "multiplier": 1.2
+  },
+  "color": "#d8d82b"
+ },
+ {
+  "id": "meerwassertropfen",
+  "name": "Meerestropfen",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ water um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "water",
+   "multiplier": 1.2
+  },
+  "color": "#2b6bd8"
+ },
+ {
+  "id": "metallmantel",
+  "name": "Metallmantel",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ steel um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "steel",
+   "multiplier": 1.2
+  },
+  "color": "#b0b0c9"
+ },
+ {
+  "id": "nebelkerze",
+  "name": "Nebelkerze",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ ghost um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "ghost",
+   "multiplier": 1.2
+  },
+  "color": "#6b4b8f"
+ },
+ {
+  "id": "schattentuch",
+  "name": "Schattentuch",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ dark um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "dark",
+   "multiplier": 1.2
+  },
+  "color": "#2b2b3b"
+ },
+ {
+  "id": "seidenband",
+  "name": "Seidenband",
+  "category": "held",
+  "description": "Verstaerkt Attacken vom Typ normal um 20 Prozent.",
+  "price": 2000,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": false,
+  "sortOrder": 80,
+  "effect": {
+   "kind": "heldTypeBoost",
+   "type": "normal",
+   "multiplier": 1.2
+  },
+  "color": "#e9e0d8"
+ }
+]

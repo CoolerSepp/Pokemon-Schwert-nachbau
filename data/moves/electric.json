@@ -1,0 +1,197 @@
+[
+ {
+  "id": "funkenkralle",
+  "name": "Funkenkralle",
+  "type": "electric",
+  "category": "physical",
+  "power": 75,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Elektrisch aufgeladene Krallen.",
+  "contact": true,
+  "animation": "slash",
+  "sound": "electric",
+  "effect": {
+   "status": "paralysis",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "voltstoss",
+  "name": "Voltstoss",
+  "type": "electric",
+  "category": "physical",
+  "power": 120,
+  "accuracy": 100,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Ansturm unter Hochspannung mit Rueckstoss.",
+  "contact": true,
+  "animation": "charge",
+  "sound": "electric",
+  "effect": {
+   "recoil": 0.33
+  }
+ },
+ {
+  "id": "stromstoss",
+  "name": "Stromstoss",
+  "type": "electric",
+  "category": "special",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 30,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein leichter Stromschlag.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "electric",
+  "effect": {
+   "status": "paralysis",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "entladung",
+  "name": "Entladung",
+  "type": "electric",
+  "category": "special",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine ungerichtete Entladung.",
+  "contact": false,
+  "animation": "burst",
+  "sound": "electric",
+  "effect": {
+   "status": "paralysis",
+   "statusChance": 0.3
+  }
+ },
+ {
+  "id": "blitzschlag",
+  "name": "Blitzschlag",
+  "type": "electric",
+  "category": "special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein kraftvoller Blitz.",
+  "contact": false,
+  "animation": "bolt",
+  "sound": "electric",
+  "effect": {
+   "status": "paralysis",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "donnerkeil",
+  "name": "Donnerkeil",
+  "type": "electric",
+  "category": "special",
+  "power": 120,
+  "accuracy": 70,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein gewaltiger Donnerschlag - bei Regen unfehlbar.",
+  "contact": false,
+  "animation": "bolt",
+  "sound": "electric",
+  "effect": {
+   "status": "paralysis",
+   "statusChance": 0.3
+  }
+ },
+ {
+  "id": "gmax_electric",
+  "name": "Sturmgewalt",
+  "type": "electric",
+  "category": "special",
+  "power": 170,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Gewitter von gigantischer Staerke.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "electric",
+  "effect": {
+   "weather": "thunderstorm",
+   "weatherTurns": 4
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "gewitterfront",
+  "name": "Gewitterfront",
+  "type": "electric",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "field",
+  "description": "Zieht ein schweres Gewitter heran.",
+  "contact": false,
+  "animation": "weather",
+  "sound": "electric",
+  "effect": {
+   "weather": "thunderstorm",
+   "weatherTurns": 5
+  }
+ },
+ {
+  "id": "laehmstrahl",
+  "name": "Laehmstrahl",
+  "type": "electric",
+  "category": "status",
+  "power": 0,
+  "accuracy": 90,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Laehmt den Gegner zuverlaessig.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "electric",
+  "effect": {
+   "status": "paralysis",
+   "statusChance": 1.0
+  }
+ },
+ {
+  "id": "volttempo",
+  "name": "Volttempo",
+  "type": "electric",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 30,
+  "priority": 0,
+  "target": "self",
+  "description": "Elektrische Impulse erhoehen die Initiative stark.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "spe",
+     "stages": 2
+    }
+   ]
+  }
+ }
+]

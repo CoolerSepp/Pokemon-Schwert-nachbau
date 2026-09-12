@@ -1,0 +1,323 @@
+[
+ {
+  "id": "wasserharfe",
+  "dex": 94,
+  "name": "Wasserharfe",
+  "category": "Klangwesen",
+  "types": [
+   "water",
+   "fairy"
+  ],
+  "baseStats": {
+   "hp": 69,
+   "atk": 45,
+   "def": 72,
+   "spa": 111,
+   "spd": 85,
+   "spe": 84
+  },
+  "abilities": [
+   "sturzbach"
+  ],
+  "captureRate": 60,
+  "baseExp": 149,
+  "growthRate": "slow",
+  "genderRatio": 0.25,
+  "heightM": 1.3,
+  "weightKg": 14.0,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 90,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "kratzer"
+   },
+   {
+    "level": 1,
+    "move": "wasserstrahl"
+   },
+   {
+    "level": 4,
+    "move": "kampfgeist"
+   },
+   {
+    "level": 7,
+    "move": "regentanz"
+   },
+   {
+    "level": 10,
+    "move": "feenstaub"
+   },
+   {
+    "level": 13,
+    "move": "aquaklinge"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "elfenstoss"
+   },
+   {
+    "level": 25,
+    "move": "sturzbach"
+   },
+   {
+    "level": 30,
+    "move": "sturmflut"
+   },
+   {
+    "level": 34,
+    "move": "zauberschein"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "druckwelle",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "regentanz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag",
+   "zauberschein"
+  ],
+  "evolutions": [],
+  "dexEntry": "Der Klang ihrer Stimme laesst Wasserflaechen in Mustern erzittern.",
+  "canGigantic": false,
+  "habitat": [
+   "lake",
+   "coastal"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#8fd8e6",
+    "secondary": "#4b9bb0",
+    "accent": "#ffd8f2",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#c4f7ff"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.155,
+      0
+     ],
+     "size": [
+      0.315,
+      0.315,
+      0.315
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 1.0
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.2653,
+      0
+     ],
+     "size": [
+      0.2457,
+      0.2331,
+      0.2457
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 1.0
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1106,
+      1.2886,
+      0.172
+     ],
+     "size": [
+      0.0536,
+      0.0536,
+      0.0536
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1106,
+      1.2886,
+      0.2052
+     ],
+     "size": [
+      0.0268,
+      0.0295,
+      0.0268
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1106,
+      1.2886,
+      0.172
+     ],
+     "size": [
+      0.0536,
+      0.0536,
+      0.0536
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1106,
+      1.2886,
+      0.2052
+     ],
+     "size": [
+      0.0268,
+      0.0295,
+      0.0268
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.9345,
+      0
+     ],
+     "size": [
+      0.4,
+      0.56,
+      0.4
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.22400000000000003,
+      0
+     ],
+     "opacity": 0.7,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.4,
+      1.6,
+      0
+     ],
+     "size": [
+      0.06,
+      0.06,
+      0.06
+     ],
+     "color": "glow",
+     "emissive": 0.9,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2992,
+      1.155,
+      0
+     ],
+     "size": [
+      0.05,
+      0.26,
+      0.05
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      -0.13,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.5
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.2992,
+      1.155,
+      0
+     ],
+     "size": [
+      0.05,
+      0.26,
+      0.05
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      -0.13,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.5
+     ],
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "robustheit",
+  "cry": {
+   "baseHz": 640,
+   "kind": "trill"
+  }
+ }
+]

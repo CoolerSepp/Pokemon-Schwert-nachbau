@@ -1,0 +1,274 @@
+[
+ {
+  "id": "perlenmuschel",
+  "dex": 80,
+  "name": "Perlenmuschel",
+  "category": "Riffhueter",
+  "types": [
+   "water"
+  ],
+  "baseStats": {
+   "hp": 66,
+   "atk": 35,
+   "def": 51,
+   "spa": 46,
+   "spd": 72,
+   "spe": 35
+  },
+  "abilities": [
+   "dickpanzer"
+  ],
+  "captureRate": 150,
+  "baseExp": 98,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 0.4,
+  "weightKg": 18.0,
+  "evYield": {
+   "spd": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "blasenschauer"
+   },
+   {
+    "level": 1,
+    "move": "rempler"
+   },
+   {
+    "level": 4,
+    "move": "schreckruf"
+   },
+   {
+    "level": 7,
+    "move": "regentanz"
+   },
+   {
+    "level": 10,
+    "move": "wasserstrahl"
+   },
+   {
+    "level": 13,
+    "move": "sturzbach"
+   },
+   {
+    "level": 17,
+    "move": "nebelsog"
+   },
+   {
+    "level": 21,
+    "move": "druckwelle"
+   },
+   {
+    "level": 25,
+    "move": "aquaklinge"
+   },
+   {
+    "level": 30,
+    "move": "tiefenstroemung"
+   },
+   {
+    "level": 36,
+    "move": "wuchtschlag"
+   }
+  ],
+  "tmMoves": [
+   "druckwelle",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "regentanz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Die Perle in ihrem Inneren waechst mit jedem Jahr ein Stueck.",
+  "canGigantic": false,
+  "habitat": [
+   "coastal"
+  ],
+  "model": {
+   "rig": "blob",
+   "palette": {
+    "primary": "#e6dcc9",
+    "secondary": "#b8a88f",
+    "accent": "#fff6e6",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2006,
+      0
+     ],
+     "size": [
+      0.2112,
+      0.1309,
+      0.2112
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2893,
+      0.0106
+     ],
+     "size": [
+      0.1563,
+      0.1478,
+      0.1563
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0656,
+      0.3071,
+      0.1231
+     ],
+     "size": [
+      0.038,
+      0.038,
+      0.038
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0656,
+      0.3071,
+      0.1467
+     ],
+     "size": [
+      0.019,
+      0.0209,
+      0.019
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0656,
+      0.3071,
+      0.1231
+     ],
+     "size": [
+      0.038,
+      0.038,
+      0.038
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0656,
+      0.3071,
+      0.1467
+     ],
+     "size": [
+      0.019,
+      0.0209,
+      0.019
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "sphere",
+     "pos": [
+      -0.1056,
+      0.0561,
+      0.0253
+     ],
+     "size": [
+      0.066,
+      0.0495,
+      0.0792
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "sphere",
+     "pos": [
+      0.1056,
+      0.0561,
+      0.0253
+     ],
+     "size": [
+      0.066,
+      0.0495,
+      0.0792
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.42,
+      0.1
+     ],
+     "size": [
+      0.11,
+      0.11,
+      0.11
+     ],
+     "color": "light",
+     "detail": 2,
+     "emissive": 0.4
+    }
+   ]
+  },
+  "hiddenAbility": "sturzbach",
+  "cry": {
+   "baseHz": 480,
+   "kind": "hum"
+  }
+ }
+]

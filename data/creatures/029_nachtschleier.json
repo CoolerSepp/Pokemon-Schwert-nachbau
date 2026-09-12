@@ -1,0 +1,628 @@
+[
+ {
+  "id": "nachtschleier",
+  "dex": 29,
+  "name": "Nachtschleier",
+  "category": "Schemen",
+  "types": [
+   "ghost"
+  ],
+  "baseStats": {
+   "hp": 36,
+   "atk": 38,
+   "def": 31,
+   "spa": 71,
+   "spd": 37,
+   "spe": 72
+  },
+  "abilities": [
+   "wachsamkeit"
+  ],
+  "captureRate": 190,
+  "baseExp": 91,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 0.7,
+  "weightKg": 1.2,
+  "evYield": {
+   "spe": 1
+  },
+  "baseFriendship": 60,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "bindungsschlag"
+   },
+   {
+    "level": 1,
+    "move": "schattenstoss"
+   },
+   {
+    "level": 4,
+    "move": "schreckruf"
+   },
+   {
+    "level": 7,
+    "move": "entsetzen"
+   },
+   {
+    "level": 10,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 13,
+    "move": "seelenfeuer"
+   },
+   {
+    "level": 17,
+    "move": "fluch"
+   },
+   {
+    "level": 21,
+    "move": "nachtklaue"
+   },
+   {
+    "level": 25,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 30,
+    "move": "sturmlauf"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "nachtklaue",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "geisterfuerst",
+    "method": {
+     "kind": "levelNight",
+     "level": 32
+    }
+   }
+  ],
+  "dexEntry": "Wer es anblickt, erinnert sich am naechsten Morgen an nichts mehr.",
+  "canGigantic": false,
+  "habitat": [
+   "cave",
+   "ruins"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#6b5b8f",
+    "secondary": "#463b63",
+    "accent": "#c4b0ff",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#d8c0ff"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.825,
+      0
+     ],
+     "size": [
+      0.225,
+      0.225,
+      0.225
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.82
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.9038,
+      0
+     ],
+     "size": [
+      0.1755,
+      0.1665,
+      0.1755
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.82
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.079,
+      0.9204,
+      0.1228
+     ],
+     "size": [
+      0.0382,
+      0.0382,
+      0.0382
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.079,
+      0.9204,
+      0.1466
+     ],
+     "size": [
+      0.0191,
+      0.021,
+      0.0191
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.079,
+      0.9204,
+      0.1228
+     ],
+     "size": [
+      0.0382,
+      0.0382,
+      0.0382
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.079,
+      0.9204,
+      0.1466
+     ],
+     "size": [
+      0.0191,
+      0.021,
+      0.0191
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.6675,
+      0
+     ],
+     "size": [
+      0.255,
+      0.375,
+      0.255
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.15000000000000002,
+      0
+     ],
+     "opacity": 0.7,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.3,
+      1.35,
+      0
+     ],
+     "size": [
+      0.07,
+      0.07,
+      0.07
+     ],
+     "color": "glow",
+     "emissive": 0.9,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      -0.3,
+      1.2,
+      0.1
+     ],
+     "size": [
+      0.055,
+      0.055,
+      0.055
+     ],
+     "color": "glow",
+     "emissive": 0.9,
+     "detail": 2,
+     "parent": null
+    }
+   ],
+   "hover": 0.55
+  },
+  "hiddenAbility": "arenafalle",
+  "cry": {
+   "baseHz": 300,
+   "kind": "hum"
+  }
+ },
+ {
+  "id": "geisterfuerst",
+  "dex": 30,
+  "name": "Geisterfuerst",
+  "category": "Nachtfuerst",
+  "types": [
+   "ghost",
+   "dark"
+  ],
+  "baseStats": {
+   "hp": 82,
+   "atk": 48,
+   "def": 76,
+   "spa": 116,
+   "spd": 88,
+   "spe": 85
+  },
+  "abilities": [
+   "arenafalle"
+  ],
+  "captureRate": 45,
+  "baseExp": 158,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 1.6,
+  "weightKg": 3.4,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 60,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "dauerschlag"
+   },
+   {
+    "level": 1,
+    "move": "schattenstoss"
+   },
+   {
+    "level": 4,
+    "move": "aufwind"
+   },
+   {
+    "level": 7,
+    "move": "entsetzen"
+   },
+   {
+    "level": 10,
+    "move": "finsterschlag"
+   },
+   {
+    "level": 13,
+    "move": "nachtklaue"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "dunkelwoge"
+   },
+   {
+    "level": 25,
+    "move": "seelenfeuer"
+   },
+   {
+    "level": 30,
+    "move": "phantomschlag"
+   },
+   {
+    "level": 34,
+    "move": "hinterhalt"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "dunkelwoge",
+   "erholung",
+   "kampfgeist",
+   "nachtklaue",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Es herrscht ueber die Schatten alter Ruinen und duldet keine Eindringlinge.",
+  "canGigantic": true,
+  "habitat": [
+   "ruins",
+   "cave"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#54467f",
+    "secondary": "#2e2547",
+    "accent": "#b09bff",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#c4a8ff"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.375,
+      0
+     ],
+     "size": [
+      0.375,
+      0.375,
+      0.375
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.86
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.5063,
+      0
+     ],
+     "size": [
+      0.2925,
+      0.2775,
+      0.2925
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.86
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1316,
+      1.534,
+      0.2047
+     ],
+     "size": [
+      0.0638,
+      0.0638,
+      0.0638
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1316,
+      1.534,
+      0.2443
+     ],
+     "size": [
+      0.0319,
+      0.0351,
+      0.0319
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1316,
+      1.534,
+      0.2047
+     ],
+     "size": [
+      0.0638,
+      0.0638,
+      0.0638
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1316,
+      1.534,
+      0.2443
+     ],
+     "size": [
+      0.0319,
+      0.0351,
+      0.0319
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.1125,
+      0
+     ],
+     "size": [
+      0.425,
+      0.625,
+      0.425
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.25,
+      0
+     ],
+     "opacity": 0.75,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.46,
+      1.9,
+      0
+     ],
+     "size": [
+      0.09,
+      0.09,
+      0.09
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      -0.46,
+      1.7,
+      0.1
+     ],
+     "size": [
+      0.075,
+      0.075,
+      0.075
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.3562,
+      1.375,
+      0
+     ],
+     "size": [
+      0.06,
+      0.28,
+      0.06
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      -0.14,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.5
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.3562,
+      1.375,
+      0
+     ],
+     "size": [
+      0.06,
+      0.28,
+      0.06
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      -0.14,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.5
+     ],
+     "detail": 1
+    }
+   ],
+   "hover": 0.9
+  },
+  "hiddenAbility": "einschuechtern",
+  "giganticMove": "gmax_ghost",
+  "cry": {
+   "baseHz": 190,
+   "kind": "hum"
+  },
+  "prevo": "nachtschleier"
+ }
+]

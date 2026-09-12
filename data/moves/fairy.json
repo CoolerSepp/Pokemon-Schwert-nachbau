@@ -1,0 +1,151 @@
+[
+ {
+  "id": "elfenstoss",
+  "name": "Elfenstoss",
+  "type": "fairy",
+  "category": "physical",
+  "power": 90,
+  "accuracy": 90,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Stoss voller Feenkraft.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "fairy"
+ },
+ {
+  "id": "feenstaub",
+  "name": "Feenstaub",
+  "type": "fairy",
+  "category": "special",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Glitzernder Staub.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "fairy"
+ },
+ {
+  "id": "zauberschein",
+  "name": "Zauberschein",
+  "type": "fairy",
+  "category": "special",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Lichtschein, der die Spezial-Verteidigung senkt.",
+  "contact": false,
+  "animation": "burst",
+  "sound": "fairy",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spd",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 0.3
+  }
+ },
+ {
+  "id": "sternenregen",
+  "name": "Sternenregen",
+  "type": "fairy",
+  "category": "special",
+  "power": 110,
+  "accuracy": 90,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Regen aus Sternenlicht.",
+  "contact": false,
+  "animation": "multiProjectile",
+  "sound": "fairy"
+ },
+ {
+  "id": "gmax_fairy",
+  "name": "Sternenzorn",
+  "type": "fairy",
+  "category": "special",
+  "power": 165,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Der Zorn der Sterne entlaedt sich.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "fairy",
+  "effect": {
+   "heal": 0.25
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "charmeblick",
+  "name": "Charmeblick",
+  "type": "fairy",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein bezaubernder Blick senkt den Angriff stark.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "atk",
+     "stages": -2
+    }
+   ]
+  }
+ },
+ {
+  "id": "mondlicht",
+  "name": "Mondlicht",
+  "type": "fairy",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 10,
+  "priority": 0,
+  "target": "self",
+  "description": "Heilt KP - bei Nacht besonders wirksam.",
+  "contact": false,
+  "animation": "heal",
+  "sound": "heal",
+  "effect": {
+   "heal": 0.5
+  }
+ },
+ {
+  "id": "schutzlied",
+  "name": "Schutzlied",
+  "type": "fairy",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 10,
+  "priority": 0,
+  "target": "self",
+  "description": "Ein Lied befreit das gesamte Team von Statusproblemen.",
+  "contact": false,
+  "animation": "heal",
+  "sound": "heal",
+  "effect": {
+   "healPartyStatus": true
+  }
+ }
+]

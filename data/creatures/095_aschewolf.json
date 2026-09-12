@@ -1,0 +1,537 @@
+[
+ {
+  "id": "aschewolf",
+  "dex": 95,
+  "name": "Aschewolf",
+  "category": "Glutjaeger",
+  "types": [
+   "fire",
+   "dark"
+  ],
+  "baseStats": {
+   "hp": 83,
+   "atk": 119,
+   "def": 84,
+   "spa": 52,
+   "spd": 75,
+   "spe": 85
+  },
+  "abilities": [
+   "lodernd"
+  ],
+  "captureRate": 45,
+  "baseExp": 159,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 1.5,
+  "weightKg": 62.0,
+  "evYield": {
+   "atk": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "funkenflug"
+   },
+   {
+    "level": 1,
+    "move": "rempler"
+   },
+   {
+    "level": 4,
+    "move": "knurren"
+   },
+   {
+    "level": 7,
+    "move": "duerre"
+   },
+   {
+    "level": 10,
+    "move": "finsterschlag"
+   },
+   {
+    "level": 13,
+    "move": "feuerklaue"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "dunkelwoge"
+   },
+   {
+    "level": 25,
+    "move": "glutwelle"
+   },
+   {
+    "level": 30,
+    "move": "rueckstossflamme"
+   },
+   {
+    "level": 34,
+    "move": "nachtjagd"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   }
+  ],
+  "tmMoves": [
+   "duerre",
+   "dunkelwoge",
+   "erholung",
+   "glutwelle",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Es jagt in verbrannten Waeldern, wo seine Spur unsichtbar bleibt.",
+  "canGigantic": true,
+  "habitat": [
+   "volcanic",
+   "forest"
+  ],
+  "model": {
+   "rig": "quadruped",
+   "palette": {
+    "primary": "#7a4b3b",
+    "secondary": "#3b241d",
+    "accent": "#ff8f3b",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#ffa84b"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.672,
+      0
+     ],
+     "size": [
+      0.4,
+      0.35,
+      0.6
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.602,
+      0.3
+     ],
+     "size": [
+      0.32,
+      0.2625,
+      0.3
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.8645,
+      0.57
+     ],
+     "size": [
+      0.35,
+      0.325,
+      0.35
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.7735,
+      0.822
+     ],
+     "size": [
+      0.1375,
+      0.1125,
+      0.1875
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.182,
+      0.9165,
+      0.801
+     ],
+     "size": [
+      0.084,
+      0.084,
+      0.084
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.182,
+      0.9165,
+      0.8531
+     ],
+     "size": [
+      0.042,
+      0.0462,
+      0.042
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.182,
+      0.9165,
+      0.801
+     ],
+     "size": [
+      0.084,
+      0.084,
+      0.084
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.182,
+      0.9165,
+      0.8531
+     ],
+     "size": [
+      0.042,
+      0.0462,
+      0.042
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      -0.196,
+      1.0985,
+      0.535
+     ],
+     "size": [
+      0.09,
+      0.22,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "horn",
+     "shape": "cone",
+     "pos": [
+      -0.147,
+      1.144,
+      0.605
+     ],
+     "size": [
+      0.05,
+      0.18,
+      0.05
+     ],
+     "color": "glow",
+     "parent": "head",
+     "rot": [
+      -0.25,
+      0,
+      0.3
+     ],
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      0.196,
+      1.0985,
+      0.535
+     ],
+     "size": [
+      0.09,
+      0.22,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      -0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "horn",
+     "shape": "cone",
+     "pos": [
+      0.147,
+      1.144,
+      0.605
+     ],
+     "size": [
+      0.05,
+      0.18,
+      0.05
+     ],
+     "color": "glow",
+     "parent": "head",
+     "rot": [
+      -0.25,
+      0,
+      -0.3
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legFrontLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.256,
+      0.4025,
+      0.348
+     ],
+     "size": [
+      0.1187,
+      0.175,
+      0.1187
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.19250000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.256,
+      0.0891,
+      0.348
+     ],
+     "size": [
+      0.1401,
+      0.095,
+      0.1544
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legFrontRight",
+     "shape": "capsule",
+     "pos": [
+      0.256,
+      0.4025,
+      0.348
+     ],
+     "size": [
+      0.1187,
+      0.175,
+      0.1187
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.19250000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.256,
+      0.0891,
+      0.348
+     ],
+     "size": [
+      0.1401,
+      0.095,
+      0.1544
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.256,
+      0.4025,
+      -0.348
+     ],
+     "size": [
+      0.1187,
+      0.175,
+      0.1187
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.19250000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.256,
+      0.0891,
+      -0.348
+     ],
+     "size": [
+      0.1401,
+      0.095,
+      0.1544
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.256,
+      0.4025,
+      -0.348
+     ],
+     "size": [
+      0.1187,
+      0.175,
+      0.1187
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.19250000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.256,
+      0.0891,
+      -0.348
+     ],
+     "size": [
+      0.1401,
+      0.095,
+      0.1544
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.714,
+      -0.57
+     ],
+     "size": [
+      0.09,
+      0.09,
+      0.46
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.25300000000000006
+     ],
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "tailTip",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.967,
+      -0.984
+     ],
+     "size": [
+      0.13,
+      0.13,
+      0.13
+     ],
+     "color": "glow",
+     "parent": "tail",
+     "emissive": 0.9,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "einschuechtern",
+  "giganticMove": "gmax_fire",
+  "cry": {
+   "baseHz": 220,
+   "kind": "roar"
+  }
+ }
+]

@@ -1,0 +1,136 @@
+[
+ {
+  "id": "steinhagel",
+  "name": "Steinhagel",
+  "type": "rock",
+  "category": "physical",
+  "power": 25,
+  "accuracy": 90,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Hagel aus Geroell, der mehrfach trifft.",
+  "contact": false,
+  "animation": "multiProjectile",
+  "sound": "rock",
+  "effect": {
+   "multiHit": [
+    2,
+    5
+   ]
+  }
+ },
+ {
+  "id": "steinwurf",
+  "name": "Steinwurf",
+  "type": "rock",
+  "category": "physical",
+  "power": 50,
+  "accuracy": 90,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Wirft einen Stein auf den Gegner.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "rock"
+ },
+ {
+  "id": "felsklinge",
+  "name": "Felsklinge",
+  "type": "rock",
+  "category": "physical",
+  "power": 75,
+  "accuracy": 90,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Scharfe Steinkanten mit hoher Volltrefferquote.",
+  "contact": false,
+  "animation": "slash",
+  "sound": "rock",
+  "effect": {
+   "critStages": 1
+  }
+ },
+ {
+  "id": "gesteinslawine",
+  "name": "Gesteinslawine",
+  "type": "rock",
+  "category": "physical",
+  "power": 100,
+  "accuracy": 80,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Lawine aus Gestein.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "rock",
+  "effect": {
+   "flinchChance": 0.2
+  }
+ },
+ {
+  "id": "gmax_rock",
+  "name": "Gebirgssturz",
+  "type": "rock",
+  "category": "physical",
+  "power": 170,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein ganzes Gebirge stuerzt herab.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "rock",
+  "effect": {
+   "weather": "sandstorm",
+   "weatherTurns": 4
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "granitwall",
+  "name": "Granitwall",
+  "type": "rock",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Errichtet einen Steinwall - Verteidigung stark erhoeht.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "def",
+     "stages": 2
+    }
+   ]
+  }
+ },
+ {
+  "id": "sandpanzer",
+  "name": "Sandpanzer",
+  "type": "rock",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 15,
+  "priority": 0,
+  "target": "self",
+  "description": "Bei Sandsturm regeneriert sich der Anwender.",
+  "contact": false,
+  "animation": "heal",
+  "sound": "heal",
+  "effect": {
+   "heal": 0.5
+  }
+ }
+]

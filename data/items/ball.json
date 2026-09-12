@@ -1,0 +1,136 @@
+[
+ {
+  "id": "meisterkugel",
+  "name": "Meisterkugel",
+  "category": "ball",
+  "description": "Faengt jede Kreatur ohne Fehlschlag.",
+  "price": 0,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 0,
+  "effect": {
+   "kind": "catch",
+   "rate": 255,
+   "special": "master"
+  },
+  "color": "#8f4be3",
+  "sellPrice": 0
+ },
+ {
+  "id": "fangkugel",
+  "name": "Fangkugel",
+  "category": "ball",
+  "description": "Ein einfaches Geraet zum Fangen wilder Kreaturen.",
+  "price": 200,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 1,
+  "effect": {
+   "kind": "catch",
+   "rate": 1.0
+  },
+  "color": "#e34b4b"
+ },
+ {
+  "id": "superkugel",
+  "name": "Superkugel",
+  "category": "ball",
+  "description": "Eine verbesserte Fangkugel.",
+  "price": 600,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 2,
+  "effect": {
+   "kind": "catch",
+   "rate": 1.5
+  },
+  "color": "#4b8fe3"
+ },
+ {
+  "id": "hyperkugel",
+  "name": "Hyperkugel",
+  "category": "ball",
+  "description": "Eine hochwertige Fangkugel.",
+  "price": 1200,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 3,
+  "effect": {
+   "kind": "catch",
+   "rate": 2.0
+  },
+  "color": "#e3c04b"
+ },
+ {
+  "id": "netzkugel",
+  "name": "Netzkugel",
+  "category": "ball",
+  "description": "Besonders wirksam bei Wasser- und Kaefer-Kreaturen.",
+  "price": 1000,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 4,
+  "effect": {
+   "kind": "catch",
+   "rate": 1.0,
+   "special": "net"
+  },
+  "color": "#4be3b0"
+ },
+ {
+  "id": "nachtkugel",
+  "name": "Nachtkugel",
+  "category": "ball",
+  "description": "Besonders wirksam bei Nacht und in Hoehlen.",
+  "price": 1000,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 5,
+  "effect": {
+   "kind": "catch",
+   "rate": 1.0,
+   "special": "dusk"
+  },
+  "color": "#2b2b4b"
+ },
+ {
+  "id": "flinkkugel",
+  "name": "Flinkkugel",
+  "category": "ball",
+  "description": "Sehr wirksam im ersten Zug eines Kampfes.",
+  "price": 1000,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 6,
+  "effect": {
+   "kind": "catch",
+   "rate": 1.0,
+   "special": "quick"
+  },
+  "color": "#4bd8e3"
+ },
+ {
+  "id": "zeitkugel",
+  "name": "Zeitkugel",
+  "category": "ball",
+  "description": "Wird mit jeder Runde wirksamer.",
+  "price": 1000,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 7,
+  "effect": {
+   "kind": "catch",
+   "rate": 1.0,
+   "special": "timer"
+  },
+  "color": "#e3844b"
+ }
+]

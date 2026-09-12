@@ -1,0 +1,114 @@
+[
+ {
+  "id": "drachenklaue",
+  "name": "Drachenklaue",
+  "type": "dragon",
+  "category": "physical",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Scharfe Drachenkrallen.",
+  "contact": true,
+  "animation": "slash",
+  "sound": "dragon"
+ },
+ {
+  "id": "urdrachenzorn",
+  "name": "Urdrachenzorn",
+  "type": "dragon",
+  "category": "physical",
+  "power": 120,
+  "accuracy": 90,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Der Zorn der Urdrachen entfesselt sich.",
+  "contact": true,
+  "animation": "charge",
+  "sound": "dragon",
+  "effect": {
+   "confuseChance": 0.5
+  }
+ },
+ {
+  "id": "drachenhauch",
+  "name": "Drachenhauch",
+  "type": "dragon",
+  "category": "special",
+  "power": 60,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Hauch, der laehmen kann.",
+  "contact": false,
+  "animation": "wave",
+  "sound": "dragon",
+  "effect": {
+   "status": "paralysis",
+   "statusChance": 0.3
+  }
+ },
+ {
+  "id": "drachenpuls",
+  "name": "Drachenpuls",
+  "type": "dragon",
+  "category": "special",
+  "power": 85,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Druckwelle aus Drachenenergie.",
+  "contact": false,
+  "animation": "beam",
+  "sound": "dragon"
+ },
+ {
+  "id": "gmax_dragon",
+  "name": "Drachenapokalypse",
+  "type": "dragon",
+  "category": "special",
+  "power": 175,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Der vereinte Zorn aller Drachen.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "dragon",
+  "giganticOnly": true
+ },
+ {
+  "id": "drachentanz",
+  "name": "Drachentanz",
+  "type": "dragon",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Ein Tanz, der Angriff und Initiative erhoeht.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "atk",
+     "stages": 1
+    },
+    {
+     "target": "self",
+     "stat": "spe",
+     "stages": 1
+    }
+   ]
+  }
+ }
+]

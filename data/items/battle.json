@@ -1,0 +1,101 @@
+[
+ {
+  "id": "angriffsplus",
+  "name": "Angriffsplus",
+  "category": "battle",
+  "description": "Erhoeht den Angriff im Kampf.",
+  "price": 900,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 50,
+  "effect": {
+   "kind": "statBoost",
+   "stat": "atk",
+   "stages": 1
+  },
+  "color": "#ff6b4b"
+ },
+ {
+  "id": "abwehrplus",
+  "name": "Abwehrplus",
+  "category": "battle",
+  "description": "Erhoeht die Verteidigung im Kampf.",
+  "price": 900,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 51,
+  "effect": {
+   "kind": "statBoost",
+   "stat": "def",
+   "stages": 1
+  },
+  "color": "#4b9bff"
+ },
+ {
+  "id": "spezialplus",
+  "name": "Spezialplus",
+  "category": "battle",
+  "description": "Erhoeht den Spezial-Angriff im Kampf.",
+  "price": 900,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 52,
+  "effect": {
+   "kind": "statBoost",
+   "stat": "spa",
+   "stages": 1
+  },
+  "color": "#c74bff"
+ },
+ {
+  "id": "tempoplus",
+  "name": "Tempoplus",
+  "category": "battle",
+  "description": "Erhoeht die Initiative im Kampf.",
+  "price": 900,
+  "usableInBattle": true,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 53,
+  "effect": {
+   "kind": "statBoost",
+   "stat": "spe",
+   "stages": 1
+  },
+  "color": "#4bffb0"
+ },
+ {
+  "id": "fluchtseil",
+  "name": "Fluchtseil",
+  "category": "battle",
+  "description": "Ermoeglicht die Flucht aus jedem wilden Kampf.",
+  "price": 550,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 54,
+  "effect": {
+   "kind": "escape"
+  },
+  "color": "#c9a06b"
+ },
+ {
+  "id": "schutzspray",
+  "name": "Schutzspray",
+  "category": "battle",
+  "description": "Haelt schwache wilde Kreaturen fuer 200 Schritte fern.",
+  "price": 700,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 55,
+  "effect": {
+   "kind": "repel",
+   "steps": 200
+  },
+  "color": "#9bd84b"
+ }
+]

@@ -1,0 +1,474 @@
+[
+ {
+  "id": "goldpanzer",
+  "dex": 72,
+  "name": "Goldpanzer",
+  "category": "Schatzwesen",
+  "types": [
+   "steel",
+   "ground"
+  ],
+  "baseStats": {
+   "hp": 98,
+   "atk": 79,
+   "def": 113,
+   "spa": 57,
+   "spd": 83,
+   "spe": 40
+  },
+  "abilities": [
+   "dickpanzer"
+  ],
+  "captureRate": 50,
+  "baseExp": 150,
+  "growthRate": "slow",
+  "genderRatio": 0.5,
+  "heightM": 1.1,
+  "weightKg": 168.0,
+  "evYield": {
+   "def": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "metallklaue"
+   },
+   {
+    "level": 1,
+    "move": "verzweiflung"
+   },
+   {
+    "level": 4,
+    "move": "grimasse"
+   },
+   {
+    "level": 7,
+    "move": "stahlglanz"
+   },
+   {
+    "level": 10,
+    "move": "schlammschuss"
+   },
+   {
+    "level": 13,
+    "move": "eisenhieb"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "erdstoss"
+   },
+   {
+    "level": 25,
+    "move": "magnetsalve"
+   },
+   {
+    "level": 30,
+    "move": "schrottlawine"
+   },
+   {
+    "level": 34,
+    "move": "grabklaue"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   }
+  ],
+  "tmMoves": [
+   "eisenhieb",
+   "erdbeben",
+   "erdstoss",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "sandsturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Sein Panzer ist mit echtem Gold durchsetzt - Diebe kommen selten weit.",
+  "canGigantic": false,
+  "habitat": [
+   "cave",
+   "desert"
+  ],
+  "model": {
+   "rig": "quadruped",
+   "palette": {
+    "primary": "#d8b84b",
+    "secondary": "#a8861f",
+    "accent": "#f2e08f",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "dodeca",
+     "pos": [
+      0,
+      0.5376,
+      0
+     ],
+     "size": [
+      0.32,
+      0.28,
+      0.48
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.4816,
+      0.24
+     ],
+     "size": [
+      0.256,
+      0.21,
+      0.24
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.6916,
+      0.456
+     ],
+     "size": [
+      0.28,
+      0.26,
+      0.28
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.6188,
+      0.6576
+     ],
+     "size": [
+      0.11,
+      0.09,
+      0.15
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1456,
+      0.7332,
+      0.6408
+     ],
+     "size": [
+      0.0672,
+      0.0672,
+      0.0672
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1456,
+      0.7332,
+      0.6825
+     ],
+     "size": [
+      0.0336,
+      0.037,
+      0.0336
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1456,
+      0.7332,
+      0.6408
+     ],
+     "size": [
+      0.0672,
+      0.0672,
+      0.0672
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1456,
+      0.7332,
+      0.6825
+     ],
+     "size": [
+      0.0336,
+      0.037,
+      0.0336
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "horn",
+     "shape": "cone",
+     "pos": [
+      -0.1176,
+      0.9152,
+      0.484
+     ],
+     "size": [
+      0.06,
+      0.16,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -0.25,
+      0,
+      0.3
+     ],
+     "detail": 1
+    },
+    {
+     "role": "horn",
+     "shape": "cone",
+     "pos": [
+      0.1176,
+      0.9152,
+      0.484
+     ],
+     "size": [
+      0.06,
+      0.16,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -0.25,
+      0,
+      -0.3
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legFrontLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2048,
+      0.322,
+      0.2784
+     ],
+     "size": [
+      0.095,
+      0.14,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.15400000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.2048,
+      0.0713,
+      0.2784
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legFrontRight",
+     "shape": "capsule",
+     "pos": [
+      0.2048,
+      0.322,
+      0.2784
+     ],
+     "size": [
+      0.095,
+      0.14,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.15400000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.2048,
+      0.0713,
+      0.2784
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2048,
+      0.322,
+      -0.2784
+     ],
+     "size": [
+      0.095,
+      0.14,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.15400000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.2048,
+      0.0713,
+      -0.2784
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.2048,
+      0.322,
+      -0.2784
+     ],
+     "size": [
+      0.095,
+      0.14,
+      0.095
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.15400000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.2048,
+      0.0713,
+      -0.2784
+     ],
+     "size": [
+      0.1121,
+      0.076,
+      0.1235
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.5712,
+      -0.456
+     ],
+     "size": [
+      0.07,
+      0.07,
+      0.24
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.132
+     ],
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "sandschleuder",
+  "cry": {
+   "baseHz": 240,
+   "kind": "growl"
+  }
+ }
+]

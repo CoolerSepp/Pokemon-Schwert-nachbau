@@ -1,0 +1,490 @@
+[
+ {
+  "id": "wolkenlamm",
+  "dex": 52,
+  "name": "Wolkenlamm",
+  "category": "Wolkenwesen",
+  "types": [
+   "fairy",
+   "flying"
+  ],
+  "baseStats": {
+   "hp": 81,
+   "atk": 49,
+   "def": 73,
+   "spa": 62,
+   "spd": 92,
+   "spe": 45
+  },
+  "abilities": [
+   "robustheit"
+  ],
+  "captureRate": 90,
+  "baseExp": 129,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 0.9,
+  "weightKg": 14.0,
+  "evYield": {
+   "spd": 2
+  },
+  "baseFriendship": 90,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "feenstaub"
+   },
+   {
+    "level": 1,
+    "move": "rempler"
+   },
+   {
+    "level": 4,
+    "move": "knurren"
+   },
+   {
+    "level": 7,
+    "move": "charmeblick"
+   },
+   {
+    "level": 10,
+    "move": "windstoss"
+   },
+   {
+    "level": 13,
+    "move": "zauberschein"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "luftschnitt"
+   },
+   {
+    "level": 25,
+    "move": "elfenstoss"
+   },
+   {
+    "level": 30,
+    "move": "sternenregen"
+   },
+   {
+    "level": 34,
+    "move": "fluegelschlag"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "luftschnitt",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag",
+   "zauberschein"
+  ],
+  "evolutions": [],
+  "dexEntry": "Sein Vlies saugt Nebel auf und gibt ihn als feinen Regen wieder ab.",
+  "canGigantic": false,
+  "habitat": [
+   "mountain",
+   "meadow"
+  ],
+  "model": {
+   "rig": "quadruped",
+   "palette": {
+    "primary": "#f2f0ff",
+    "secondary": "#c4c0e0",
+    "accent": "#ffd8a0",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.457,
+      0
+     ],
+     "size": [
+      0.272,
+      0.238,
+      0.408
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.4094,
+      0.204
+     ],
+     "size": [
+      0.2176,
+      0.1785,
+      0.204
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.5879,
+      0.3876
+     ],
+     "size": [
+      0.238,
+      0.221,
+      0.238
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.526,
+      0.559
+     ],
+     "size": [
+      0.0935,
+      0.0765,
+      0.1275
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1238,
+      0.6232,
+      0.5447
+     ],
+     "size": [
+      0.0571,
+      0.0571,
+      0.0571
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1238,
+      0.6232,
+      0.5801
+     ],
+     "size": [
+      0.0286,
+      0.0314,
+      0.0286
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1238,
+      0.6232,
+      0.5447
+     ],
+     "size": [
+      0.0571,
+      0.0571,
+      0.0571
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1238,
+      0.6232,
+      0.5801
+     ],
+     "size": [
+      0.0286,
+      0.0314,
+      0.0286
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      -0.1333,
+      0.747,
+      0.3638
+     ],
+     "size": [
+      0.07,
+      0.14,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      0.1333,
+      0.747,
+      0.3638
+     ],
+     "size": [
+      0.07,
+      0.14,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      -0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legFrontLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1741,
+      0.2737,
+      0.2366
+     ],
+     "size": [
+      0.0808,
+      0.119,
+      0.0808
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.13090000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1741,
+      0.0606,
+      0.2366
+     ],
+     "size": [
+      0.0953,
+      0.0646,
+      0.105
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legFrontRight",
+     "shape": "capsule",
+     "pos": [
+      0.1741,
+      0.2737,
+      0.2366
+     ],
+     "size": [
+      0.0808,
+      0.119,
+      0.0808
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.13090000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1741,
+      0.0606,
+      0.2366
+     ],
+     "size": [
+      0.0953,
+      0.0646,
+      0.105
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1741,
+      0.2737,
+      -0.2366
+     ],
+     "size": [
+      0.0808,
+      0.119,
+      0.0808
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.13090000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1741,
+      0.0606,
+      -0.2366
+     ],
+     "size": [
+      0.0953,
+      0.0646,
+      0.105
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1741,
+      0.2737,
+      -0.2366
+     ],
+     "size": [
+      0.0808,
+      0.119,
+      0.0808
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.13090000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1741,
+      0.0606,
+      -0.2366
+     ],
+     "size": [
+      0.0953,
+      0.0646,
+      0.105
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.4855,
+      -0.3876
+     ],
+     "size": [
+      0.08,
+      0.08,
+      0.16
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.08800000000000001
+     ],
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "tailTip",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.5735,
+      -0.5316
+     ],
+     "size": [
+      0.12,
+      0.12,
+      0.12
+     ],
+     "color": "light",
+     "parent": "tail",
+     "emissive": 0,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "regenmacher",
+  "cry": {
+   "baseHz": 560,
+   "kind": "trill"
+  }
+ }
+]

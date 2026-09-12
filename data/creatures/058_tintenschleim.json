@@ -1,0 +1,592 @@
+[
+ {
+  "id": "tintenschleim",
+  "dex": 58,
+  "name": "Tintenschleim",
+  "category": "Schlickwesen",
+  "types": [
+   "poison"
+  ],
+  "baseStats": {
+   "hp": 63,
+   "atk": 33,
+   "def": 53,
+   "spa": 40,
+   "spd": 70,
+   "spe": 29
+  },
+  "abilities": [
+   "immunsystem"
+  ],
+  "captureRate": 190,
+  "baseExp": 92,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 0.6,
+  "weightKg": 22.0,
+  "evYield": {
+   "spd": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "giftstachel"
+   },
+   {
+    "level": 1,
+    "move": "hieb"
+   },
+   {
+    "level": 4,
+    "move": "erholung"
+   },
+   {
+    "level": 7,
+    "move": "toxinstoss"
+   },
+   {
+    "level": 10,
+    "move": "saeurespritzer"
+   },
+   {
+    "level": 13,
+    "move": "giftklinge"
+   },
+   {
+    "level": 17,
+    "move": "saeureschleier"
+   },
+   {
+    "level": 21,
+    "move": "schlammwelle"
+   },
+   {
+    "level": 25,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 30,
+    "move": "wuchtschlag"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "schlammwelle",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "schlickmonarch",
+    "method": {
+     "kind": "level",
+     "level": 30
+    }
+   }
+  ],
+  "dexEntry": "Es loest Metall auf und ernaehrt sich von den Rueckstaenden.",
+  "canGigantic": false,
+  "habitat": [
+   "industrial",
+   "wetland"
+  ],
+  "model": {
+   "rig": "blob",
+   "palette": {
+    "primary": "#8f5bb0",
+    "secondary": "#5b2f7a",
+    "accent": "#c9a0e0",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2189,
+      0
+     ],
+     "size": [
+      0.2304,
+      0.1797,
+      0.2304
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3156,
+      0.0115
+     ],
+     "size": [
+      0.1705,
+      0.1613,
+      0.1705
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0716,
+      0.335,
+      0.1343
+     ],
+     "size": [
+      0.0415,
+      0.0415,
+      0.0415
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0716,
+      0.335,
+      0.16
+     ],
+     "size": [
+      0.0207,
+      0.0228,
+      0.0207
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0716,
+      0.335,
+      0.1343
+     ],
+     "size": [
+      0.0415,
+      0.0415,
+      0.0415
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0716,
+      0.335,
+      0.16
+     ],
+     "size": [
+      0.0207,
+      0.0228,
+      0.0207
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "snout",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2673,
+      0.1564
+     ],
+     "size": [
+      0.09,
+      0.06,
+      0.05
+     ],
+     "color": "dark",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "sphere",
+     "pos": [
+      -0.1152,
+      0.0612,
+      0.0276
+     ],
+     "size": [
+      0.072,
+      0.054,
+      0.0864
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "sphere",
+     "pos": [
+      0.1152,
+      0.0612,
+      0.0276
+     ],
+     "size": [
+      0.072,
+      0.054,
+      0.0864
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "dornenhaut",
+  "cry": {
+   "baseHz": 340,
+   "kind": "hum"
+  }
+ },
+ {
+  "id": "schlickmonarch",
+  "dex": 59,
+  "name": "Schlickmonarch",
+  "category": "Schlickfuerst",
+  "types": [
+   "poison",
+   "dark"
+  ],
+  "baseStats": {
+   "hp": 98,
+   "atk": 85,
+   "def": 91,
+   "spa": 81,
+   "spd": 80,
+   "spe": 51
+  },
+  "abilities": [
+   "immunsystem"
+  ],
+  "captureRate": 45,
+  "baseExp": 156,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 1.8,
+  "weightKg": 124.0,
+  "evYield": {
+   "hp": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "hieb"
+   },
+   {
+    "level": 1,
+    "move": "saeurespritzer"
+   },
+   {
+    "level": 4,
+    "move": "knurren"
+   },
+   {
+    "level": 7,
+    "move": "toxinstoss"
+   },
+   {
+    "level": 10,
+    "move": "finsterschlag"
+   },
+   {
+    "level": 13,
+    "move": "schlammwelle"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "dunkelwoge"
+   },
+   {
+    "level": 25,
+    "move": "giftklinge"
+   },
+   {
+    "level": 30,
+    "move": "verwesung"
+   },
+   {
+    "level": 34,
+    "move": "hinterhalt"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   }
+  ],
+  "tmMoves": [
+   "dunkelwoge",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "schlammwelle",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Ganze Fabrikhallen wurden schon von seinem Sekret zersetzt.",
+  "canGigantic": true,
+  "habitat": [
+   "industrial"
+  ],
+  "model": {
+   "rig": "blob",
+   "palette": {
+    "primary": "#7a4b9b",
+    "secondary": "#3f1d5b",
+    "accent": "#b88fd8",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.456,
+      0
+     ],
+     "size": [
+      0.48,
+      0.384,
+      0.48
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.6576,
+      0.024
+     ],
+     "size": [
+      0.3552,
+      0.336,
+      0.3552
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1492,
+      0.6979,
+      0.2797
+     ],
+     "size": [
+      0.0864,
+      0.0864,
+      0.0864
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1492,
+      0.6979,
+      0.3333
+     ],
+     "size": [
+      0.0432,
+      0.0475,
+      0.0432
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1492,
+      0.6979,
+      0.2797
+     ],
+     "size": [
+      0.0864,
+      0.0864,
+      0.0864
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1492,
+      0.6979,
+      0.3333
+     ],
+     "size": [
+      0.0432,
+      0.0475,
+      0.0432
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "snout",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.5568,
+      0.3259
+     ],
+     "size": [
+      0.16,
+      0.1,
+      0.08
+     ],
+     "color": "dark",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "sphere",
+     "pos": [
+      -0.24,
+      0.1275,
+      0.0576
+     ],
+     "size": [
+      0.15,
+      0.1125,
+      0.18
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "sphere",
+     "pos": [
+      0.24,
+      0.1275,
+      0.0576
+     ],
+     "size": [
+      0.15,
+      0.1125,
+      0.18
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.3,
+      1.0,
+      0.1
+     ],
+     "size": [
+      0.14,
+      0.14,
+      0.14
+     ],
+     "color": "accent",
+     "detail": 2,
+     "emissive": 0
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.28,
+      0.9,
+      -0.12
+     ],
+     "size": [
+      0.12,
+      0.12,
+      0.12
+     ],
+     "color": "accent",
+     "detail": 2,
+     "emissive": 0
+    }
+   ]
+  },
+  "hiddenAbility": "einschuechtern",
+  "giganticMove": "gmax_poison",
+  "fieldScale": 1.2,
+  "cry": {
+   "baseHz": 180,
+   "kind": "growl"
+  },
+  "prevo": "tintenschleim"
+ }
+]

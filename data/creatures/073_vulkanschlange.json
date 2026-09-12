@@ -1,0 +1,443 @@
+[
+ {
+  "id": "vulkanschlange",
+  "dex": 73,
+  "name": "Vulkanschlange",
+  "category": "Glutschlange",
+  "types": [
+   "fire",
+   "dragon"
+  ],
+  "baseStats": {
+   "hp": 75,
+   "atk": 56,
+   "def": 74,
+   "spa": 118,
+   "spd": 86,
+   "spe": 96
+  },
+  "abilities": [
+   "lodernd"
+  ],
+  "captureRate": 40,
+  "baseExp": 162,
+  "growthRate": "slow",
+  "genderRatio": 0.5,
+  "heightM": 3.4,
+  "weightKg": 148.0,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 1,
+    "move": "flammenwirbel"
+   },
+   {
+    "level": 4,
+    "move": "knurren"
+   },
+   {
+    "level": 7,
+    "move": "brandmal"
+   },
+   {
+    "level": 10,
+    "move": "dauerschlag"
+   },
+   {
+    "level": 13,
+    "move": "glutwelle"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "drachenhauch"
+   },
+   {
+    "level": 25,
+    "move": "aschewolke"
+   },
+   {
+    "level": 30,
+    "move": "infernosalve"
+   },
+   {
+    "level": 34,
+    "move": "drachenpuls"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "drachenklaue",
+   "duerre",
+   "erholung",
+   "glutwelle",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Sie nistet in erloschenen Kratern und erwacht bei jedem Beben.",
+  "canGigantic": true,
+  "habitat": [
+   "volcanic"
+  ],
+  "model": {
+   "rig": "serpentine",
+   "palette": {
+    "primary": "#c95b2f",
+    "secondary": "#7a2b15",
+    "accent": "#ffb03b",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#ff8f2b"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      0.0
+     ],
+     "size": [
+      0.325,
+      0.299,
+      0.3413
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      -0.4
+     ],
+     "size": [
+      0.3168,
+      0.2914,
+      0.3326
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      -0.8
+     ],
+     "size": [
+      0.3032,
+      0.279,
+      0.3184
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      -1.2
+     ],
+     "size": [
+      0.2866,
+      0.2637,
+      0.3009
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      -1.6
+     ],
+     "size": [
+      0.2676,
+      0.2462,
+      0.2809
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      -2.0
+     ],
+     "size": [
+      0.2465,
+      0.2268,
+      0.2588
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      -2.4
+     ],
+     "size": [
+      0.2237,
+      0.2058,
+      0.2349
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      -2.8
+     ],
+     "size": [
+      0.1993,
+      0.1833,
+      0.2092
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      -3.2
+     ],
+     "size": [
+      0.1734,
+      0.1595,
+      0.1821
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3087,
+      -3.6
+     ],
+     "size": [
+      0.1462,
+      0.1346,
+      0.1536
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.4712,
+      0.4875
+     ],
+     "size": [
+      0.3125,
+      0.2875,
+      0.375
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.4281,
+      0.8063
+     ],
+     "size": [
+      0.1,
+      0.175,
+      0.1
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1719,
+      0.523,
+      0.7125
+     ],
+     "size": [
+      0.075,
+      0.075,
+      0.075
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1719,
+      0.523,
+      0.759
+     ],
+     "size": [
+      0.0375,
+      0.0413,
+      0.0375
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1719,
+      0.523,
+      0.7125
+     ],
+     "size": [
+      0.075,
+      0.075,
+      0.075
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1719,
+      0.523,
+      0.759
+     ],
+     "size": [
+      0.0375,
+      0.0413,
+      0.0375
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.5287,
+      0.15
+     ],
+     "size": [
+      0.28,
+      0.36,
+      0.28
+     ],
+     "color": "glow",
+     "parent": "head",
+     "rot": [
+      -1.2,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "tailTip",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.3087,
+      -3.795
+     ],
+     "size": [
+      0.1,
+      0.25,
+      0.1
+     ],
+     "color": "accent",
+     "rot": [
+      -1.5708,
+      0,
+      0
+     ],
+     "emissive": 0,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "duerreherz",
+  "giganticMove": "gmax_dragon",
+  "fieldScale": 1.2,
+  "cry": {
+   "baseHz": 200,
+   "kind": "roar"
+  }
+ }
+]

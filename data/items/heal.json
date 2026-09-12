@@ -1,0 +1,238 @@
+[
+ {
+  "id": "trank",
+  "name": "Trank",
+  "category": "heal",
+  "description": "Stellt 20 KP einer Kreatur wieder her.",
+  "price": 200,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 10,
+  "effect": {
+   "kind": "healHp",
+   "amount": 20
+  },
+  "color": "#ff8f6b"
+ },
+ {
+  "id": "supertrank",
+  "name": "Supertrank",
+  "category": "heal",
+  "description": "Stellt 60 KP einer Kreatur wieder her.",
+  "price": 700,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 11,
+  "effect": {
+   "kind": "healHp",
+   "amount": 60
+  },
+  "color": "#ff6b8f"
+ },
+ {
+  "id": "hypertrank",
+  "name": "Hypertrank",
+  "category": "heal",
+  "description": "Stellt 120 KP einer Kreatur wieder her.",
+  "price": 1500,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 12,
+  "effect": {
+   "kind": "healHp",
+   "amount": 120
+  },
+  "color": "#c96bff"
+ },
+ {
+  "id": "top_trank",
+  "name": "Top-Trank",
+  "category": "heal",
+  "description": "Stellt alle KP einer Kreatur wieder her.",
+  "price": 2800,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 13,
+  "effect": {
+   "kind": "healHp",
+   "amount": "full"
+  },
+  "color": "#6bc9ff"
+ },
+ {
+  "id": "gegengift",
+  "name": "Gegengift",
+  "category": "heal",
+  "description": "Heilt eine Vergiftung.",
+  "price": 200,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 20,
+  "effect": {
+   "kind": "healStatus",
+   "status": [
+    "poison",
+    "toxic"
+   ]
+  },
+  "color": "#9b6bff"
+ },
+ {
+  "id": "brandsalbe",
+  "name": "Brandsalbe",
+  "category": "heal",
+  "description": "Heilt eine Verbrennung.",
+  "price": 200,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 21,
+  "effect": {
+   "kind": "healStatus",
+   "status": [
+    "burn"
+   ]
+  },
+  "color": "#ff9b4b"
+ },
+ {
+  "id": "auftaumittel",
+  "name": "Auftaumittel",
+  "category": "heal",
+  "description": "Taut eine eingefrorene Kreatur auf.",
+  "price": 200,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 22,
+  "effect": {
+   "kind": "healStatus",
+   "status": [
+    "freeze"
+   ]
+  },
+  "color": "#7fd8ff"
+ },
+ {
+  "id": "wachmacher",
+  "name": "Wachmacher",
+  "category": "heal",
+  "description": "Weckt eine schlafende Kreatur.",
+  "price": 200,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 23,
+  "effect": {
+   "kind": "healStatus",
+   "status": [
+    "sleep"
+   ]
+  },
+  "color": "#ffe24b"
+ },
+ {
+  "id": "nervenstaerker",
+  "name": "Nervenstaerker",
+  "category": "heal",
+  "description": "Heilt eine Laehmung.",
+  "price": 200,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 24,
+  "effect": {
+   "kind": "healStatus",
+   "status": [
+    "paralysis"
+   ]
+  },
+  "color": "#ffd84b"
+ },
+ {
+  "id": "allheilmittel",
+  "name": "Allheilmittel",
+  "category": "heal",
+  "description": "Heilt alle Statusprobleme.",
+  "price": 600,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 25,
+  "effect": {
+   "kind": "healStatus",
+   "status": "all"
+  },
+  "color": "#ffffff"
+ },
+ {
+  "id": "beleber",
+  "name": "Beleber",
+  "category": "heal",
+  "description": "Belebt eine kampfunfaehige Kreatur mit halben KP.",
+  "price": 1500,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 30,
+  "effect": {
+   "kind": "revive",
+   "fraction": 0.5
+  },
+  "color": "#ffe9a0"
+ },
+ {
+  "id": "top_beleber",
+  "name": "Top-Beleber",
+  "category": "heal",
+  "description": "Belebt eine kampfunfaehige Kreatur mit vollen KP.",
+  "price": 4000,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 31,
+  "effect": {
+   "kind": "revive",
+   "fraction": 1.0
+  },
+  "color": "#fff6cf"
+ },
+ {
+  "id": "aether",
+  "name": "Aether",
+  "category": "heal",
+  "description": "Fuellt 10 AP einer Attacke auf.",
+  "price": 1200,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 40,
+  "effect": {
+   "kind": "restorePp",
+   "amount": 10
+  },
+  "color": "#a0ffe9"
+ },
+ {
+  "id": "top_aether",
+  "name": "Top-Aether",
+  "category": "heal",
+  "description": "Fuellt alle AP aller Attacken auf.",
+  "price": 4500,
+  "usableInBattle": true,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 41,
+  "effect": {
+   "kind": "restorePp",
+   "amount": "full",
+   "allMoves": true
+  },
+  "color": "#cfffe9"
+ }
+]

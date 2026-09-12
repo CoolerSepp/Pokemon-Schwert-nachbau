@@ -1,0 +1,399 @@
+[
+ {
+  "id": "dornenranke",
+  "dex": 78,
+  "name": "Dornenranke",
+  "category": "Rankenwesen",
+  "types": [
+   "grass"
+  ],
+  "baseStats": {
+   "hp": 73,
+   "atk": 93,
+   "def": 73,
+   "spa": 41,
+   "spd": 62,
+   "spe": 78
+  },
+  "abilities": [
+   "wildwuchs"
+  ],
+  "captureRate": 90,
+  "baseExp": 134,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 2.4,
+  "weightKg": 32.0,
+  "evYield": {
+   "atk": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "blattschnitt"
+   },
+   {
+    "level": 1,
+    "move": "dauerschlag"
+   },
+   {
+    "level": 4,
+    "move": "kampfgeist"
+   },
+   {
+    "level": 7,
+    "move": "dornenwall"
+   },
+   {
+    "level": 10,
+    "move": "rankenhieb"
+   },
+   {
+    "level": 13,
+    "move": "samenbombe"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "energieentzug"
+   },
+   {
+    "level": 25,
+    "move": "wurzelgriff"
+   },
+   {
+    "level": 30,
+    "move": "photonenbluete"
+   },
+   {
+    "level": 34,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "energieentzug",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Ihre Ranken durchbrechen Mauerwerk auf der Suche nach Sonnenlicht.",
+  "canGigantic": false,
+  "habitat": [
+   "forest",
+   "ruins"
+  ],
+  "model": {
+   "rig": "serpentine",
+   "palette": {
+    "primary": "#5b8f3f",
+    "secondary": "#3b6b28",
+    "accent": "#c9a04b",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2346,
+      0.0
+     ],
+     "size": [
+      0.247,
+      0.2272,
+      0.2594
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2346,
+      -0.304
+     ],
+     "size": [
+      0.2396,
+      0.2204,
+      0.2516
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2346,
+      -0.608
+     ],
+     "size": [
+      0.2275,
+      0.2093,
+      0.2389
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2346,
+      -0.912
+     ],
+     "size": [
+      0.2126,
+      0.1956,
+      0.2232
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2346,
+      -1.216
+     ],
+     "size": [
+      0.1955,
+      0.1799,
+      0.2053
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2346,
+      -1.52
+     ],
+     "size": [
+      0.1766,
+      0.1625,
+      0.1855
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2346,
+      -1.824
+     ],
+     "size": [
+      0.1562,
+      0.1437,
+      0.164
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2346,
+      -2.128
+     ],
+     "size": [
+      0.1343,
+      0.1236,
+      0.141
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2346,
+      -2.432
+     ],
+     "size": [
+      0.1111,
+      0.1023,
+      0.1167
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3581,
+      0.3705
+     ],
+     "size": [
+      0.2375,
+      0.2185,
+      0.285
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.3254,
+      0.6127
+     ],
+     "size": [
+      0.076,
+      0.133,
+      0.076
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1306,
+      0.3975,
+      0.5415
+     ],
+     "size": [
+      0.057,
+      0.057,
+      0.057
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1306,
+      0.3975,
+      0.5768
+     ],
+     "size": [
+      0.0285,
+      0.0314,
+      0.0285
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1306,
+      0.3975,
+      0.5415
+     ],
+     "size": [
+      0.057,
+      0.057,
+      0.057
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1306,
+      0.3975,
+      0.5768
+     ],
+     "size": [
+      0.0285,
+      0.0314,
+      0.0285
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tailTip",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.2346,
+      -2.5802
+     ],
+     "size": [
+      0.09,
+      0.24,
+      0.09
+     ],
+     "color": "accent",
+     "rot": [
+      -1.5708,
+      0,
+      0
+     ],
+     "emissive": 0,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "dornenhaut",
+  "cry": {
+   "baseHz": 300,
+   "kind": "hum"
+  }
+ }
+]

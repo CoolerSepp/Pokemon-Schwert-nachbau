@@ -1,0 +1,66 @@
+[
+ {
+  "id": "beere_blau",
+  "name": "Blaue Beere",
+  "category": "ingredient",
+  "description": "Eine Zutat fuer Mahlzeiten im Lager.",
+  "price": 80,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 120,
+  "effect": {
+   "kind": "friendship",
+   "amount": 4
+  },
+  "color": "#4b6bd8"
+ },
+ {
+  "id": "beere_gelb",
+  "name": "Gelbe Beere",
+  "category": "ingredient",
+  "description": "Eine Zutat fuer Mahlzeiten im Lager.",
+  "price": 80,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 120,
+  "effect": {
+   "kind": "friendship",
+   "amount": 4
+  },
+  "color": "#d8c94b"
+ },
+ {
+  "id": "beere_gruen",
+  "name": "Gruene Beere",
+  "category": "ingredient",
+  "description": "Eine Zutat fuer Mahlzeiten im Lager.",
+  "price": 80,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 120,
+  "effect": {
+   "kind": "friendship",
+   "amount": 4
+  },
+  "color": "#4bd86b"
+ },
+ {
+  "id": "beere_rot",
+  "name": "Rote Beere",
+  "category": "ingredient",
+  "description": "Eine Zutat fuer Mahlzeiten im Lager.",
+  "price": 80,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 120,
+  "effect": {
+   "kind": "friendship",
+   "amount": 4
+  },
+  "color": "#d84b4b"
+ }
+]

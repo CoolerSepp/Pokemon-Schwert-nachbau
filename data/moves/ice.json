@@ -1,0 +1,181 @@
+[
+ {
+  "id": "eissplitter",
+  "name": "Eissplitter",
+  "type": "ice",
+  "category": "physical",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 30,
+  "priority": 1,
+  "target": "opponent",
+  "description": "Splitter, die stets zuerst treffen.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "ice"
+ },
+ {
+  "id": "frostbiss",
+  "name": "Frostbiss",
+  "type": "ice",
+  "category": "physical",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein eiskalter Biss.",
+  "contact": true,
+  "animation": "bite",
+  "sound": "ice",
+  "effect": {
+   "status": "freeze",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "frostwind",
+  "name": "Frostwind",
+  "type": "ice",
+  "category": "special",
+  "power": 55,
+  "accuracy": 95,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eisiger Wind, der die Initiative senkt.",
+  "contact": false,
+  "animation": "wave",
+  "sound": "ice",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spe",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 1.0
+  }
+ },
+ {
+  "id": "eislanze",
+  "name": "Eislanze",
+  "type": "ice",
+  "category": "special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Lanze aus Eis.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "ice",
+  "effect": {
+   "status": "freeze",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "blizzardbrise",
+  "name": "Blizzardbrise",
+  "type": "ice",
+  "category": "special",
+  "power": 110,
+  "accuracy": 70,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein toedlicher Schneesturm - im Blizzard unfehlbar.",
+  "contact": false,
+  "animation": "wave",
+  "sound": "ice",
+  "effect": {
+   "status": "freeze",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "gmax_ice",
+  "name": "Ewiger Frost",
+  "type": "ice",
+  "category": "special",
+  "power": 170,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Blizzard, der alles erstarren laesst.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "ice",
+  "effect": {
+   "weather": "blizzard",
+   "weatherTurns": 4
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "frostpanzer",
+  "name": "Frostpanzer",
+  "type": "ice",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Eine Eisschicht erhoeht die Verteidigung stark.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "def",
+     "stages": 2
+    }
+   ]
+  }
+ },
+ {
+  "id": "kaeltestarre",
+  "name": "Kaeltestarre",
+  "type": "ice",
+  "category": "status",
+  "power": 0,
+  "accuracy": 85,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Laesst den Gegner einfrieren.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "ice",
+  "effect": {
+   "status": "freeze",
+   "statusChance": 1.0
+  }
+ },
+ {
+  "id": "schneesturm_ruf",
+  "name": "Schneeruf",
+  "type": "ice",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 10,
+  "priority": 0,
+  "target": "field",
+  "description": "Laesst Schnee fallen.",
+  "contact": false,
+  "animation": "weather",
+  "sound": "wind",
+  "effect": {
+   "weather": "snow",
+   "weatherTurns": 5
+  }
+ }
+]

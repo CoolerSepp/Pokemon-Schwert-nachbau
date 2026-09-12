@@ -1,0 +1,219 @@
+[
+ {
+  "id": "rankenhieb",
+  "name": "Rankenhieb",
+  "type": "grass",
+  "category": "physical",
+  "power": 45,
+  "accuracy": 100,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Peitschende Ranken.",
+  "contact": true,
+  "animation": "whip",
+  "sound": "grass"
+ },
+ {
+  "id": "blattschnitt",
+  "name": "Blattschnitt",
+  "type": "grass",
+  "category": "physical",
+  "power": 55,
+  "accuracy": 95,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Scharfe Blaetter mit hoher Volltrefferquote.",
+  "contact": false,
+  "animation": "slash",
+  "sound": "grass",
+  "effect": {
+   "critStages": 1
+  }
+ },
+ {
+  "id": "samenbombe",
+  "name": "Samenbombe",
+  "type": "grass",
+  "category": "physical",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein harter Samen wird abgefeuert.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "grass"
+ },
+ {
+  "id": "gmax_grass",
+  "name": "Urwaldgriff",
+  "type": "grass",
+  "category": "physical",
+  "power": 165,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Riesige Ranken umschliessen das gesamte Feld.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "grass",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spe",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 1.0
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "energieentzug",
+  "name": "Energieentzug",
+  "type": "grass",
+  "category": "special",
+  "power": 75,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Entzieht dem Gegner Lebensenergie.",
+  "contact": false,
+  "animation": "drain",
+  "sound": "heal",
+  "effect": {
+   "drain": 0.5
+  }
+ },
+ {
+  "id": "wurzelgriff",
+  "name": "Wurzelgriff",
+  "type": "grass",
+  "category": "special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Wurzeln brechen aus dem Boden hervor.",
+  "contact": false,
+  "animation": "groundSlam",
+  "sound": "grass"
+ },
+ {
+  "id": "photonenbluete",
+  "name": "Photonenbluete",
+  "type": "grass",
+  "category": "special",
+  "power": 120,
+  "accuracy": 100,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Buendelt Sonnenlicht zu einem Strahl.",
+  "contact": false,
+  "animation": "beam",
+  "sound": "grass",
+  "effect": {
+   "chargeTurn": true,
+   "chargeMessage": "{user} saugt Sonnenlicht auf!"
+  }
+ },
+ {
+  "id": "bluetenstaub",
+  "name": "Bluetenstaub",
+  "type": "grass",
+  "category": "status",
+  "power": 0,
+  "accuracy": 75,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Versetzt den Gegner in Schlaf.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "grass",
+  "effect": {
+   "status": "sleep",
+   "statusChance": 1.0
+  }
+ },
+ {
+  "id": "dornenwall",
+  "name": "Dornenwall",
+  "type": "grass",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Ein Dornenwall erhoeht die Verteidigung.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "def",
+     "stages": 2
+    }
+   ]
+  }
+ },
+ {
+  "id": "giftpuder",
+  "name": "Giftpuder",
+  "type": "grass",
+  "category": "status",
+  "power": 0,
+  "accuracy": 75,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Vergiftet den Gegner mit Sporen.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "poison",
+  "effect": {
+   "status": "poison",
+   "statusChance": 1.0
+  }
+ },
+ {
+  "id": "wachstum",
+  "name": "Wachstum",
+  "type": "grass",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Der Koerper waechst - Angriff und Spezial-Angriff steigen.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "atk",
+     "stages": 1
+    },
+    {
+     "target": "self",
+     "stat": "spa",
+     "stages": 1
+    }
+   ]
+  }
+ }
+]

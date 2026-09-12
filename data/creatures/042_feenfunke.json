@@ -1,0 +1,639 @@
+[
+ {
+  "id": "feenfunke",
+  "dex": 42,
+  "name": "Feenfunke",
+  "category": "Lichtwesen",
+  "types": [
+   "fairy"
+  ],
+  "baseStats": {
+   "hp": 44,
+   "atk": 29,
+   "def": 40,
+   "spa": 68,
+   "spd": 48,
+   "spe": 49
+  },
+  "abilities": [
+   "robustheit"
+  ],
+  "captureRate": 190,
+  "baseExp": 89,
+  "growthRate": "fast",
+  "genderRatio": 0.25,
+  "heightM": 0.3,
+  "weightKg": 1.1,
+  "evYield": {
+   "spa": 1
+  },
+  "baseFriendship": 100,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 1,
+    "move": "feenstaub"
+   },
+   {
+    "level": 4,
+    "move": "schreckruf"
+   },
+   {
+    "level": 7,
+    "move": "schutzlied"
+   },
+   {
+    "level": 10,
+    "move": "dauerschlag"
+   },
+   {
+    "level": 13,
+    "move": "elfenstoss"
+   },
+   {
+    "level": 17,
+    "move": "mondlicht"
+   },
+   {
+    "level": 21,
+    "move": "zauberschein"
+   },
+   {
+    "level": 25,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 30,
+    "move": "sturmlauf"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag",
+   "zauberschein"
+  ],
+  "evolutions": [
+   {
+    "to": "lichtfee",
+    "method": {
+     "kind": "friendship",
+     "min": 200
+    }
+   }
+  ],
+  "dexEntry": "Es naehrt sich von froehlichen Gefuehlen und leuchtet dann heller.",
+  "canGigantic": false,
+  "habitat": [
+   "meadow",
+   "forest"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#ffc0e0",
+    "secondary": "#e08fc4",
+    "accent": "#fff0b0",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#ffe8ff"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.66,
+      0
+     ],
+     "size": [
+      0.18,
+      0.18,
+      0.18
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 1.0
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.723,
+      0
+     ],
+     "size": [
+      0.1404,
+      0.1332,
+      0.1404
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 1.0
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0632,
+      0.7363,
+      0.0983
+     ],
+     "size": [
+      0.0306,
+      0.0306,
+      0.0306
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0632,
+      0.7363,
+      0.1173
+     ],
+     "size": [
+      0.0153,
+      0.0168,
+      0.0153
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0632,
+      0.7363,
+      0.0983
+     ],
+     "size": [
+      0.0306,
+      0.0306,
+      0.0306
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0632,
+      0.7363,
+      0.1173
+     ],
+     "size": [
+      0.0153,
+      0.0168,
+      0.0153
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.534,
+      0
+     ],
+     "size": [
+      0.204,
+      0.3,
+      0.204
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.12,
+      0
+     ],
+     "opacity": 0.8,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.26,
+      1.05,
+      0
+     ],
+     "size": [
+      0.05,
+      0.05,
+      0.05
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      -0.22,
+      0.92,
+      0.12
+     ],
+     "size": [
+      0.04,
+      0.04,
+      0.04
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    }
+   ],
+   "hover": 0.5
+  },
+  "hiddenAbility": "wachsamkeit",
+  "cry": {
+   "baseHz": 880,
+   "kind": "trill"
+  }
+ },
+ {
+  "id": "lichtfee",
+  "dex": 43,
+  "name": "Lichtfee",
+  "category": "Sternenwesen",
+  "types": [
+   "fairy"
+  ],
+  "baseStats": {
+   "hp": 72,
+   "atk": 50,
+   "def": 68,
+   "spa": 115,
+   "spd": 87,
+   "spe": 76
+  },
+  "abilities": [
+   "robustheit"
+  ],
+  "captureRate": 60,
+  "baseExp": 150,
+  "growthRate": "fast",
+  "genderRatio": 0.25,
+  "heightM": 1.1,
+  "weightKg": 6.4,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 100,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "feenstaub"
+   },
+   {
+    "level": 1,
+    "move": "hieb"
+   },
+   {
+    "level": 4,
+    "move": "schreckruf"
+   },
+   {
+    "level": 7,
+    "move": "mondlicht"
+   },
+   {
+    "level": 10,
+    "move": "verzweiflung"
+   },
+   {
+    "level": 13,
+    "move": "zauberschein"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "elfenstoss"
+   },
+   {
+    "level": 25,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 30,
+    "move": "sternenregen"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag",
+   "zauberschein"
+  ],
+  "evolutions": [],
+  "dexEntry": "In klaren Naechten tanzen ganze Schwaerme ueber den Bergseen.",
+  "canGigantic": true,
+  "habitat": [
+   "meadow"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#ffb0d8",
+    "secondary": "#d87fb8",
+    "accent": "#fff0a0",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#fff0ff"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.1,
+      0
+     ],
+     "size": [
+      0.3,
+      0.3,
+      0.3
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 1.0
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.205,
+      0
+     ],
+     "size": [
+      0.234,
+      0.222,
+      0.234
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 1.0
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1053,
+      1.2272,
+      0.1638
+     ],
+     "size": [
+      0.051,
+      0.051,
+      0.051
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1053,
+      1.2272,
+      0.1954
+     ],
+     "size": [
+      0.0255,
+      0.0281,
+      0.0255
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1053,
+      1.2272,
+      0.1638
+     ],
+     "size": [
+      0.051,
+      0.051,
+      0.051
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1053,
+      1.2272,
+      0.1954
+     ],
+     "size": [
+      0.0255,
+      0.0281,
+      0.0255
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.89,
+      0
+     ],
+     "size": [
+      0.34,
+      0.5,
+      0.34
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.2,
+      0
+     ],
+     "opacity": 0.85,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.42,
+      1.7,
+      0
+     ],
+     "size": [
+      0.07,
+      0.07,
+      0.07
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      -0.38,
+      1.5,
+      0.14
+     ],
+     "size": [
+      0.06,
+      0.06,
+      0.06
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.05,
+      2.0,
+      -0.1
+     ],
+     "size": [
+      0.05,
+      0.05,
+      0.05
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.285,
+      1.1,
+      0
+     ],
+     "size": [
+      0.05,
+      0.22,
+      0.05
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      -0.11,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.5
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.285,
+      1.1,
+      0
+     ],
+     "size": [
+      0.05,
+      0.22,
+      0.05
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      -0.11,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.5
+     ],
+     "detail": 1
+    }
+   ],
+   "hover": 0.85
+  },
+  "hiddenAbility": "klarblick",
+  "giganticMove": "gmax_fairy",
+  "cry": {
+   "baseHz": 700,
+   "kind": "trill"
+  },
+  "prevo": "feenfunke"
+ }
+]

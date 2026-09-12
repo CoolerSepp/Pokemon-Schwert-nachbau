@@ -1,0 +1,468 @@
+[
+ {
+  "id": "abgrundschrecken",
+  "dex": 97,
+  "name": "Abgrundschrecken",
+  "category": "Tiefenwesen",
+  "types": [
+   "dark",
+   "dragon"
+  ],
+  "baseStats": {
+   "hp": 97,
+   "atk": 134,
+   "def": 94,
+   "spa": 64,
+   "spd": 71,
+   "spe": 80
+  },
+  "abilities": [
+   "einschuechtern"
+  ],
+  "captureRate": 25,
+  "baseExp": 173,
+  "growthRate": "slow",
+  "genderRatio": 0.5,
+  "heightM": 5.2,
+  "weightKg": 240.0,
+  "evYield": {
+   "atk": 3
+  },
+  "baseFriendship": 20,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "finsterschlag"
+   },
+   {
+    "level": 1,
+    "move": "kratzer"
+   },
+   {
+    "level": 4,
+    "move": "aufwind"
+   },
+   {
+    "level": 7,
+    "move": "gemeinheit"
+   },
+   {
+    "level": 10,
+    "move": "bindungsschlag"
+   },
+   {
+    "level": 13,
+    "move": "nachtjagd"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "drachenhauch"
+   },
+   {
+    "level": 25,
+    "move": "hinterhalt"
+   },
+   {
+    "level": 30,
+    "move": "abgrund"
+   },
+   {
+    "level": 34,
+    "move": "drachenklaue"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   },
+   {
+    "level": 44,
+    "move": "urdrachenzorn"
+   },
+   {
+    "level": 50,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "drachenklaue",
+   "dunkelwoge",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Aus den tiefsten Spalten der Region gestiegen - niemand weiss, wie tief sie reichen.",
+  "canGigantic": true,
+  "habitat": [
+   "endgame",
+   "cave"
+  ],
+  "model": {
+   "rig": "serpentine",
+   "palette": {
+    "primary": "#2f2b47",
+    "secondary": "#171427",
+    "accent": "#c94b6b",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#ff5b7f"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      0.0
+     ],
+     "size": [
+      0.416,
+      0.3827,
+      0.4368
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -0.512
+     ],
+     "size": [
+      0.4069,
+      0.3743,
+      0.4272
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -1.024
+     ],
+     "size": [
+      0.392,
+      0.3606,
+      0.4116
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -1.536
+     ],
+     "size": [
+      0.3736,
+      0.3437,
+      0.3923
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -2.048
+     ],
+     "size": [
+      0.3526,
+      0.3244,
+      0.3702
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -2.56
+     ],
+     "size": [
+      0.3293,
+      0.303,
+      0.3458
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -3.072
+     ],
+     "size": [
+      0.3041,
+      0.2798,
+      0.3193
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -3.584
+     ],
+     "size": [
+      0.2771,
+      0.255,
+      0.291
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -4.096
+     ],
+     "size": [
+      0.2486,
+      0.2287,
+      0.261
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -4.608
+     ],
+     "size": [
+      0.2186,
+      0.2011,
+      0.2295
+     ],
+     "color": "secondary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "tail",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3952,
+      -5.12
+     ],
+     "size": [
+      0.1872,
+      0.1722,
+      0.1966
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.6032,
+      0.624
+     ],
+     "size": [
+      0.4,
+      0.368,
+      0.48
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.548,
+      1.032
+     ],
+     "size": [
+      0.128,
+      0.224,
+      0.128
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.22,
+      0.6694,
+      0.912
+     ],
+     "size": [
+      0.096,
+      0.096,
+      0.096
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.22,
+      0.6694,
+      0.9715
+     ],
+     "size": [
+      0.048,
+      0.0528,
+      0.048
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.22,
+      0.6694,
+      0.912
+     ],
+     "size": [
+      0.096,
+      0.096,
+      0.096
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.22,
+      0.6694,
+      0.9715
+     ],
+     "size": [
+      0.048,
+      0.0528,
+      0.048
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.6768,
+      0.192
+     ],
+     "size": [
+      0.4,
+      0.5,
+      0.4
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -1.2,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "tailTip",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.3952,
+      -5.3696
+     ],
+     "size": [
+      0.14,
+      0.34,
+      0.14
+     ],
+     "color": "accent",
+     "rot": [
+      -1.5708,
+      0,
+      0
+     ],
+     "emissive": 0,
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "arenafalle",
+  "giganticMove": "gmax_dark",
+  "fieldScale": 1.5,
+  "cry": {
+   "baseHz": 120,
+   "kind": "roar"
+  }
+ }
+]

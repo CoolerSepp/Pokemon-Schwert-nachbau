@@ -1,0 +1,811 @@
+[
+ {
+  "id": "kampffaust",
+  "dex": 40,
+  "name": "Kampffaust",
+  "category": "Ringkaempfer",
+  "types": [
+   "fighting"
+  ],
+  "baseStats": {
+   "hp": 60,
+   "atk": 71,
+   "def": 54,
+   "spa": 36,
+   "spd": 42,
+   "spe": 42
+  },
+  "abilities": [
+   "kampfeswille"
+  ],
+  "captureRate": 180,
+  "baseExp": 98,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.75,
+  "heightM": 0.9,
+  "weightKg": 28.0,
+  "evYield": {
+   "atk": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "bindungsschlag"
+   },
+   {
+    "level": 1,
+    "move": "faustschlag"
+   },
+   {
+    "level": 4,
+    "move": "knurren"
+   },
+   {
+    "level": 7,
+    "move": "kampfschrei"
+   },
+   {
+    "level": 10,
+    "move": "tritthagel"
+   },
+   {
+    "level": 13,
+    "move": "kraftstoss"
+   },
+   {
+    "level": 17,
+    "move": "fokusstand"
+   },
+   {
+    "level": 21,
+    "move": "durchbruch"
+   },
+   {
+    "level": 25,
+    "move": "konterhieb"
+   },
+   {
+    "level": 30,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 36,
+    "move": "sturmlauf"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "kraftstoss",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "ringmeister",
+    "method": {
+     "kind": "level",
+     "level": 28
+    }
+   }
+  ],
+  "dexEntry": "Es trainiert taeglich gegen Felsen, bis seine Knoechel hart wie Stein sind.",
+  "canGigantic": false,
+  "habitat": [
+   "urban",
+   "mountain"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#c97f5b",
+    "secondary": "#8f4f2f",
+    "accent": "#e8d8c4",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.714,
+      0
+     ],
+     "size": [
+      0.289,
+      0.357,
+      0.255
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.6783,
+      0.1581
+     ],
+     "size": [
+      0.2081,
+      0.2213,
+      0.1071
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.2244,
+      0.0
+     ],
+     "size": [
+      0.255,
+      0.2465,
+      0.255
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1224,
+      1.2589,
+      0.1785
+     ],
+     "size": [
+      0.0663,
+      0.0663,
+      0.0663
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1224,
+      1.2589,
+      0.2196
+     ],
+     "size": [
+      0.0331,
+      0.0365,
+      0.0331
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1224,
+      1.2589,
+      0.1785
+     ],
+     "size": [
+      0.0663,
+      0.0663,
+      0.0663
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1224,
+      1.2589,
+      0.2196
+     ],
+     "size": [
+      0.0331,
+      0.0365,
+      0.0331
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2746,
+      0.8639,
+      0
+     ],
+     "size": [
+      0.0935,
+      0.2125,
+      0.0935
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2125,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.2746,
+      0.4389,
+      0
+     ],
+     "size": [
+      0.1169,
+      0.1169,
+      0.1169
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.2746,
+      0.8639,
+      0
+     ],
+     "size": [
+      0.0935,
+      0.2125,
+      0.0935
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.2125,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.2746,
+      0.4389,
+      0
+     ],
+     "size": [
+      0.1169,
+      0.1169,
+      0.1169
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1329,
+      0.3927,
+      0
+     ],
+     "size": [
+      0.1105,
+      0.1785,
+      0.1105
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.19635,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.1329,
+      0.0553,
+      0.0774
+     ],
+     "size": [
+      0.1216,
+      0.0608,
+      0.1878
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1329,
+      0.3927,
+      0
+     ],
+     "size": [
+      0.1105,
+      0.1785,
+      0.1105
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.19635,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.1329,
+      0.0553,
+      0.0774
+     ],
+     "size": [
+      0.1216,
+      0.0608,
+      0.1878
+     ],
+     "color": "accent",
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "fausthieb",
+  "cry": {
+   "baseHz": 420,
+   "kind": "growl"
+  }
+ },
+ {
+  "id": "ringmeister",
+  "dex": 41,
+  "name": "Ringmeister",
+  "category": "Ringmeister",
+  "types": [
+   "fighting"
+  ],
+  "baseStats": {
+   "hp": 89,
+   "atk": 122,
+   "def": 89,
+   "spa": 50,
+   "spd": 73,
+   "spe": 67
+  },
+  "abilities": [
+   "kampfeswille"
+  ],
+  "captureRate": 60,
+  "baseExp": 157,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.75,
+  "heightM": 1.7,
+  "weightKg": 92.0,
+  "evYield": {
+   "atk": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "dauerschlag"
+   },
+   {
+    "level": 1,
+    "move": "faustschlag"
+   },
+   {
+    "level": 4,
+    "move": "grimasse"
+   },
+   {
+    "level": 7,
+    "move": "fokusstand"
+   },
+   {
+    "level": 10,
+    "move": "tritthagel"
+   },
+   {
+    "level": 13,
+    "move": "durchbruch"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "kraftstoss"
+   },
+   {
+    "level": 25,
+    "move": "konterhieb"
+   },
+   {
+    "level": 30,
+    "move": "gebirgsschlag"
+   },
+   {
+    "level": 34,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "kraftstoss",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Es fordert jeden heraus, der stark genug aussieht - und verliert selten.",
+  "canGigantic": true,
+  "habitat": [
+   "urban"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#b56a48",
+    "secondary": "#70391f",
+    "accent": "#e0ccb4",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      1.092,
+      0
+     ],
+     "size": [
+      0.442,
+      0.546,
+      0.39
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.0374,
+      0.2418
+     ],
+     "size": [
+      0.3182,
+      0.3385,
+      0.1638
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.8727,
+      0.0
+     ],
+     "size": [
+      0.39,
+      0.377,
+      0.39
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1872,
+      1.9254,
+      0.273
+     ],
+     "size": [
+      0.1014,
+      0.1014,
+      0.1014
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1872,
+      1.9254,
+      0.3359
+     ],
+     "size": [
+      0.0507,
+      0.0558,
+      0.0507
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1872,
+      1.9254,
+      0.273
+     ],
+     "size": [
+      0.1014,
+      0.1014,
+      0.1014
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1872,
+      1.9254,
+      0.3359
+     ],
+     "size": [
+      0.0507,
+      0.0558,
+      0.0507
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      2.2308,
+      -0.0585
+     ],
+     "size": [
+      0.1,
+      0.2,
+      0.1
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "rot": [
+      -0.4,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.4199,
+      1.3213,
+      0
+     ],
+     "size": [
+      0.143,
+      0.325,
+      0.143
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.325,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.4199,
+      0.6713,
+      0
+     ],
+     "size": [
+      0.1788,
+      0.1788,
+      0.1788
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.4199,
+      1.3213,
+      0
+     ],
+     "size": [
+      0.143,
+      0.325,
+      0.143
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.325,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.4199,
+      0.6713,
+      0
+     ],
+     "size": [
+      0.1788,
+      0.1788,
+      0.1788
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2033,
+      0.6006,
+      0
+     ],
+     "size": [
+      0.169,
+      0.273,
+      0.169
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.30030000000000007,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.2033,
+      0.0845,
+      0.1183
+     ],
+     "size": [
+      0.1859,
+      0.093,
+      0.2873
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.2033,
+      0.6006,
+      0
+     ],
+     "size": [
+      0.169,
+      0.273,
+      0.169
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.30030000000000007,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.2033,
+      0.0845,
+      0.1183
+     ],
+     "size": [
+      0.1859,
+      0.093,
+      0.2873
+     ],
+     "color": "accent",
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "fausthieb",
+  "giganticMove": "gmax_fighting",
+  "cry": {
+   "baseHz": 250,
+   "kind": "roar"
+  },
+  "prevo": "kampffaust"
+ }
+]

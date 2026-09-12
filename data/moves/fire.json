@@ -1,0 +1,241 @@
+[
+ {
+  "id": "feuerklaue",
+  "name": "Feuerklaue",
+  "type": "fire",
+  "category": "physical",
+  "power": 75,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Brennende Krallen zerfetzen den Gegner.",
+  "contact": true,
+  "animation": "slash",
+  "sound": "fire",
+  "effect": {
+   "status": "burn",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "rueckstossflamme",
+  "name": "Rueckstossflamme",
+  "type": "fire",
+  "category": "physical",
+  "power": 120,
+  "accuracy": 100,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine gewaltige Feuerattacke mit Rueckstoss.",
+  "contact": true,
+  "animation": "charge",
+  "sound": "fire",
+  "effect": {
+   "recoil": 0.33
+  }
+ },
+ {
+  "id": "flammenwirbel",
+  "name": "Flammenwirbel",
+  "type": "fire",
+  "category": "special",
+  "power": 35,
+  "accuracy": 85,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Umschliesst den Gegner mit Feuer und haelt ihn fest.",
+  "contact": false,
+  "animation": "spiral",
+  "sound": "fire",
+  "effect": {
+   "trap": true,
+   "trapDamage": 0.0625
+  }
+ },
+ {
+  "id": "funkenflug",
+  "name": "Funkenflug",
+  "type": "fire",
+  "category": "special",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Kleine Funken, die den Gegner verbrennen koennen.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "fire",
+  "effect": {
+   "status": "burn",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "aschewolke",
+  "name": "Aschewolke",
+  "type": "fire",
+  "category": "special",
+  "power": 65,
+  "accuracy": 95,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Heisse Asche, die die Genauigkeit senkt.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "fire",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "accuracy",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 0.4
+  }
+ },
+ {
+  "id": "glutwelle",
+  "name": "Glutwelle",
+  "type": "fire",
+  "category": "special",
+  "power": 70,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Welle heisser Luft.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "fire",
+  "effect": {
+   "status": "burn",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "infernosalve",
+  "name": "Infernosalve",
+  "type": "fire",
+  "category": "special",
+  "power": 110,
+  "accuracy": 85,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein loderndes Inferno.",
+  "contact": false,
+  "animation": "beam",
+  "sound": "fire",
+  "effect": {
+   "status": "burn",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "solarstrahl_feuer",
+  "name": "Sonnenlanze",
+  "type": "fire",
+  "category": "special",
+  "power": 130,
+  "accuracy": 90,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Buendelt Sonnenlicht und entlaedt es in der naechsten Runde.",
+  "contact": false,
+  "animation": "beam",
+  "sound": "fire",
+  "effect": {
+   "chargeTurn": true,
+   "chargeMessage": "{user} sammelt gleissende Hitze!"
+  }
+ },
+ {
+  "id": "gmax_fire",
+  "name": "Weltenbrand",
+  "type": "fire",
+  "category": "special",
+  "power": 170,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Feuersbrunst von unvorstellbarem Ausmass.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "fire",
+  "effect": {
+   "weather": "harshSun",
+   "weatherTurns": 4
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "brandmal",
+  "name": "Brandmal",
+  "type": "fire",
+  "category": "status",
+  "power": 0,
+  "accuracy": 85,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Versengt den Gegner und fuegt ihm Verbrennungen zu.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "fire",
+  "effect": {
+   "status": "burn",
+   "statusChance": 1.0
+  }
+ },
+ {
+  "id": "duerre",
+  "name": "Duerre",
+  "type": "fire",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "field",
+  "description": "Laesst die Sonne unbarmherzig brennen.",
+  "contact": false,
+  "animation": "weather",
+  "sound": "wind",
+  "effect": {
+   "weather": "harshSun",
+   "weatherTurns": 5
+  }
+ },
+ {
+  "id": "hitzeschild",
+  "name": "Hitzeschild",
+  "type": "fire",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Erhoeht die Spezial-Verteidigung durch einen Hitzeschleier.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "spd",
+     "stages": 2
+    }
+   ]
+  }
+ }
+]

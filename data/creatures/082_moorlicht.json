@@ -1,0 +1,290 @@
+[
+ {
+  "id": "moorlicht",
+  "dex": 82,
+  "name": "Moorlicht",
+  "category": "Irrlicht",
+  "types": [
+   "ghost",
+   "fire"
+  ],
+  "baseStats": {
+   "hp": 53,
+   "atk": 55,
+   "def": 51,
+   "spa": 109,
+   "spd": 57,
+   "spe": 105
+  },
+  "abilities": [
+   "arenafalle"
+  ],
+  "captureRate": 75,
+  "baseExp": 138,
+  "growthRate": "slow",
+  "genderRatio": 0.5,
+  "heightM": 0.9,
+  "weightKg": 1.0,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 60,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "letztes_aufbaeumen"
+   },
+   {
+    "level": 1,
+    "move": "schattenstoss"
+   },
+   {
+    "level": 4,
+    "move": "schreckruf"
+   },
+   {
+    "level": 7,
+    "move": "fluch"
+   },
+   {
+    "level": 10,
+    "move": "flammenwirbel"
+   },
+   {
+    "level": 13,
+    "move": "nachtklaue"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "feuerklaue"
+   },
+   {
+    "level": 25,
+    "move": "seelenfeuer"
+   },
+   {
+    "level": 30,
+    "move": "phantomschlag"
+   },
+   {
+    "level": 34,
+    "move": "aschewolke"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   }
+  ],
+  "tmMoves": [
+   "duerre",
+   "erholung",
+   "glutwelle",
+   "kampfgeist",
+   "nachtklaue",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Es fuehrt Wanderer vom Weg ab - manche sagen, aus purer Neugier.",
+  "canGigantic": false,
+  "habitat": [
+   "wetland",
+   "ruins"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#5b7a6b",
+    "secondary": "#33473f",
+    "accent": "#8fffc4",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#a0ffd8"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.935,
+      0
+     ],
+     "size": [
+      0.255,
+      0.255,
+      0.255
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.65
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.0243,
+      0
+     ],
+     "size": [
+      0.1989,
+      0.1887,
+      0.1989
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.65
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0895,
+      1.0431,
+      0.1392
+     ],
+     "size": [
+      0.0434,
+      0.0434,
+      0.0434
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0895,
+      1.0431,
+      0.1661
+     ],
+     "size": [
+      0.0217,
+      0.0238,
+      0.0217
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0895,
+      1.0431,
+      0.1392
+     ],
+     "size": [
+      0.0434,
+      0.0434,
+      0.0434
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0895,
+      1.0431,
+      0.1661
+     ],
+     "size": [
+      0.0217,
+      0.0238,
+      0.0217
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.7565,
+      0
+     ],
+     "size": [
+      0.3,
+      0.44,
+      0.3
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.17600000000000002,
+      0
+     ],
+     "opacity": 0.5,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.26,
+      1.25,
+      0
+     ],
+     "size": [
+      0.07,
+      0.07,
+      0.07
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      -0.22,
+      1.1,
+      0.1
+     ],
+     "size": [
+      0.06,
+      0.06,
+      0.06
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    }
+   ],
+   "hover": 0.95
+  },
+  "hiddenAbility": "hitzeresistenz",
+  "cry": {
+   "baseHz": 420,
+   "kind": "hum"
+  }
+ }
+]

@@ -1,0 +1,395 @@
+[
+ {
+  "id": "steinwaechter",
+  "dex": 68,
+  "name": "Steinwaechter",
+  "category": "Ruinenwacht",
+  "types": [
+   "rock",
+   "steel"
+  ],
+  "baseStats": {
+   "hp": 98,
+   "atk": 83,
+   "def": 111,
+   "spa": 64,
+   "spd": 88,
+   "spe": 46
+  },
+  "abilities": [
+   "dickpanzer"
+  ],
+  "captureRate": 40,
+  "baseExp": 157,
+  "growthRate": "slow",
+  "genderRatio": null,
+  "heightM": 2.3,
+  "weightKg": 320.0,
+  "evYield": {
+   "def": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "bindungsschlag"
+   },
+   {
+    "level": 1,
+    "move": "steinwurf"
+   },
+   {
+    "level": 4,
+    "move": "kampfgeist"
+   },
+   {
+    "level": 7,
+    "move": "granitwall"
+   },
+   {
+    "level": 10,
+    "move": "metallklaue"
+   },
+   {
+    "level": 13,
+    "move": "felsklinge"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "eisenhieb"
+   },
+   {
+    "level": 25,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 30,
+    "move": "gesteinslawine"
+   },
+   {
+    "level": 34,
+    "move": "magnetsalve"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "eisenhieb",
+   "erholung",
+   "felsklinge",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Seit Jahrhunderten bewacht es dieselbe Ruine, ohne sich zu ruehren.",
+  "canGigantic": false,
+  "habitat": [
+   "ruins"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#9b9384",
+    "secondary": "#5b564b",
+    "accent": "#b0a88f",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "box",
+     "pos": [
+      0,
+      1.218,
+      0
+     ],
+     "size": [
+      0.493,
+      0.609,
+      0.435
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.1571,
+      0.2697
+     ],
+     "size": [
+      0.355,
+      0.3776,
+      0.1827
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "box",
+     "pos": [
+      0,
+      2.0887,
+      0.0
+     ],
+     "size": [
+      0.435,
+      0.4205,
+      0.435
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.2088,
+      2.1476,
+      0.3045
+     ],
+     "size": [
+      0.1131,
+      0.1131,
+      0.1131
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.2088,
+      2.1476,
+      0.3746
+     ],
+     "size": [
+      0.0566,
+      0.0622,
+      0.0566
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.2088,
+      2.1476,
+      0.3045
+     ],
+     "size": [
+      0.1131,
+      0.1131,
+      0.1131
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.2088,
+      2.1476,
+      0.3746
+     ],
+     "size": [
+      0.0566,
+      0.0622,
+      0.0566
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.4683,
+      1.4738,
+      0
+     ],
+     "size": [
+      0.1595,
+      0.3625,
+      0.1595
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.3625,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.4683,
+      0.7488,
+      0
+     ],
+     "size": [
+      0.1994,
+      0.1994,
+      0.1994
+     ],
+     "color": "secondary",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.4683,
+      1.4738,
+      0
+     ],
+     "size": [
+      0.1595,
+      0.3625,
+      0.1595
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.3625,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.4683,
+      0.7488,
+      0
+     ],
+     "size": [
+      0.1994,
+      0.1994,
+      0.1994
+     ],
+     "color": "secondary",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2268,
+      0.6699,
+      0
+     ],
+     "size": [
+      0.1885,
+      0.3045,
+      0.1885
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.33495,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.2268,
+      0.0943,
+      0.1319
+     ],
+     "size": [
+      0.2074,
+      0.1037,
+      0.3205
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.2268,
+      0.6699,
+      0
+     ],
+     "size": [
+      0.1885,
+      0.3045,
+      0.1885
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.33495,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.2268,
+      0.0943,
+      0.1319
+     ],
+     "size": [
+      0.2074,
+      0.1037,
+      0.3205
+     ],
+     "color": "accent",
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "robustheit",
+  "fieldScale": 1.25,
+  "cry": {
+   "baseHz": 160,
+   "kind": "roar"
+  }
+ }
+]

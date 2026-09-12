@@ -1,0 +1,140 @@
+[
+ {
+  "id": "finsterschlag",
+  "name": "Finsterschlag",
+  "type": "dark",
+  "category": "physical",
+  "power": 45,
+  "accuracy": 100,
+  "pp": 25,
+  "priority": 1,
+  "target": "opponent",
+  "description": "Ein Schlag aus dem Hinterhalt, der zuerst trifft.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "dark"
+ },
+ {
+  "id": "nachtjagd",
+  "name": "Nachtjagd",
+  "type": "dark",
+  "category": "physical",
+  "power": 70,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Bei Nacht besonders wirkungsvoll.",
+  "contact": true,
+  "animation": "slash",
+  "sound": "dark"
+ },
+ {
+  "id": "hinterhalt",
+  "name": "Hinterhalt",
+  "type": "dark",
+  "category": "physical",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein hinterhaeltiger Biss.",
+  "contact": true,
+  "animation": "bite",
+  "sound": "dark",
+  "effect": {
+   "flinchChance": 0.2
+  }
+ },
+ {
+  "id": "gmax_dark",
+  "name": "Ewige Nacht",
+  "type": "dark",
+  "category": "physical",
+  "power": 165,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Die Nacht selbst greift an.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "dark",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "atk",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 1.0
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "dunkelwoge",
+  "name": "Dunkelwoge",
+  "type": "dark",
+  "category": "special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Woge aus Finsternis, die den Spezial-Angriff senkt.",
+  "contact": false,
+  "animation": "wave",
+  "sound": "dark",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spa",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 0.2
+  }
+ },
+ {
+  "id": "abgrund",
+  "name": "Abgrund",
+  "type": "dark",
+  "category": "special",
+  "power": 110,
+  "accuracy": 85,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Oeffnet einen Abgrund aus purer Finsternis.",
+  "contact": false,
+  "animation": "burst",
+  "sound": "dark"
+ },
+ {
+  "id": "gemeinheit",
+  "name": "Gemeinheit",
+  "type": "dark",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine List senkt die Verteidigung des Gegners stark.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "def",
+     "stages": -2
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,290 @@
+[
+ {
+  "id": "traumwolke",
+  "dex": 71,
+  "name": "Traumwolke",
+  "category": "Schwebewesen",
+  "types": [
+   "psychic",
+   "flying"
+  ],
+  "baseStats": {
+   "hp": 70,
+   "atk": 46,
+   "def": 62,
+   "spa": 102,
+   "spd": 78,
+   "spe": 80
+  },
+  "abilities": [
+   "klarblick"
+  ],
+  "captureRate": 75,
+  "baseExp": 140,
+  "growthRate": "slow",
+  "genderRatio": 0.5,
+  "heightM": 1.4,
+  "weightKg": 3.8,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 1,
+    "move": "gedankenstoss"
+   },
+   {
+    "level": 4,
+    "move": "erholung"
+   },
+   {
+    "level": 7,
+    "move": "spiegelschild"
+   },
+   {
+    "level": 10,
+    "move": "windstoss"
+   },
+   {
+    "level": 13,
+    "move": "psychoklinge"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "luftschnitt"
+   },
+   {
+    "level": 25,
+    "move": "telekinese"
+   },
+   {
+    "level": 30,
+    "move": "psychosturm"
+   },
+   {
+    "level": 34,
+    "move": "fluegelschlag"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "gedankenstoss",
+   "kampfgeist",
+   "luftschnitt",
+   "panzerschutz",
+   "psychosturm",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Sie sammelt die Traeume Schlafender und gibt sie als Farbspiel wieder.",
+  "canGigantic": false,
+  "habitat": [
+   "meadow",
+   "mountain"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#c4b8f2",
+    "secondary": "#8f7fd8",
+    "accent": "#fff0b0",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#e0d8ff"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.21,
+      0
+     ],
+     "size": [
+      0.33,
+      0.33,
+      0.33
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.9
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.3255,
+      0
+     ],
+     "size": [
+      0.2574,
+      0.2442,
+      0.2574
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.9
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1158,
+      1.3499,
+      0.1802
+     ],
+     "size": [
+      0.0561,
+      0.0561,
+      0.0561
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1158,
+      1.3499,
+      0.215
+     ],
+     "size": [
+      0.0281,
+      0.0309,
+      0.0281
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1158,
+      1.3499,
+      0.1802
+     ],
+     "size": [
+      0.0561,
+      0.0561,
+      0.0561
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1158,
+      1.3499,
+      0.215
+     ],
+     "size": [
+      0.0281,
+      0.0309,
+      0.0281
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.979,
+      0
+     ],
+     "size": [
+      0.44,
+      0.5,
+      0.44
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.2,
+      0
+     ],
+     "opacity": 0.7,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.36,
+      1.5,
+      0.1
+     ],
+     "size": [
+      0.06,
+      0.06,
+      0.06
+     ],
+     "color": "glow",
+     "emissive": 0.9,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      -0.32,
+      1.35,
+      -0.1
+     ],
+     "size": [
+      0.06,
+      0.06,
+      0.06
+     ],
+     "color": "glow",
+     "emissive": 0.9,
+     "detail": 2,
+     "parent": null
+    }
+   ],
+   "hover": 1.1
+  },
+  "hiddenAbility": "wachsamkeit",
+  "cry": {
+   "baseHz": 460,
+   "kind": "hum"
+  }
+ }
+]

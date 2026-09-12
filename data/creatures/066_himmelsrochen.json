@@ -1,0 +1,304 @@
+[
+ {
+  "id": "himmelsrochen",
+  "dex": 66,
+  "name": "Himmelsrochen",
+  "category": "Luftsegler",
+  "types": [
+   "water",
+   "flying"
+  ],
+  "baseStats": {
+   "hp": 95,
+   "atk": 52,
+   "def": 78,
+   "spa": 67,
+   "spd": 110,
+   "spe": 50
+  },
+  "abilities": [
+   "regenhaut"
+  ],
+  "captureRate": 60,
+  "baseExp": 145,
+  "growthRate": "slow",
+  "genderRatio": 0.5,
+  "heightM": 1.8,
+  "weightKg": 52.0,
+  "evYield": {
+   "spd": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "letztes_aufbaeumen"
+   },
+   {
+    "level": 1,
+    "move": "wasserstrahl"
+   },
+   {
+    "level": 4,
+    "move": "aufwind"
+   },
+   {
+    "level": 7,
+    "move": "regentanz"
+   },
+   {
+    "level": 10,
+    "move": "windstoss"
+   },
+   {
+    "level": 13,
+    "move": "sturzbach"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "fluegelschlag"
+   },
+   {
+    "level": 25,
+    "move": "tiefenstroemung"
+   },
+   {
+    "level": 30,
+    "move": "flutsturz"
+   },
+   {
+    "level": 34,
+    "move": "luftschnitt"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   }
+  ],
+  "tmMoves": [
+   "druckwelle",
+   "erholung",
+   "kampfgeist",
+   "luftschnitt",
+   "panzerschutz",
+   "regentanz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Es gleitet ueber Wasserflaechen, als waere die Luft ein zweites Meer.",
+  "canGigantic": false,
+  "habitat": [
+   "coastal",
+   "lake"
+  ],
+  "model": {
+   "rig": "aquatic",
+   "palette": {
+    "primary": "#6bb0d8",
+    "secondary": "#3f7a9b",
+    "accent": "#e8f4ff",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      1.1,
+      0
+     ],
+     "size": [
+      0.312,
+      0.312,
+      0.624
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.178,
+      0.5304
+     ],
+     "size": [
+      0.26,
+      0.26,
+      0.26
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.156,
+      1.2248,
+      0.6734
+     ],
+     "size": [
+      0.0624,
+      0.0624,
+      0.0624
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.156,
+      1.2248,
+      0.7121
+     ],
+     "size": [
+      0.0312,
+      0.0343,
+      0.0312
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.156,
+      1.2248,
+      0.6734
+     ],
+     "size": [
+      0.0624,
+      0.0624,
+      0.0624
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.156,
+      1.2248,
+      0.7121
+     ],
+     "size": [
+      0.0312,
+      0.0343,
+      0.0312
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "wingLeft",
+     "shape": "box",
+     "pos": [
+      -0.2808,
+      1.0532,
+      0.0936
+     ],
+     "size": [
+      0.6,
+      0.05,
+      0.4
+     ],
+     "color": "accent",
+     "anchor": [
+      -0.51,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.35
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "wingRight",
+     "shape": "box",
+     "pos": [
+      0.2808,
+      1.0532,
+      0.0936
+     ],
+     "size": [
+      0.6,
+      0.05,
+      0.4
+     ],
+     "color": "accent",
+     "anchor": [
+      0.51,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.35
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.1,
+      -0.624
+     ],
+     "size": [
+      0.16,
+      0.3,
+      0.06
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      -0.048
+     ],
+     "rot": [
+      -1.5708,
+      0,
+      0
+     ],
+     "flatShading": true,
+     "detail": 1
+    }
+   ],
+   "hover": 0.9
+  },
+  "hiddenAbility": "zielsicher",
+  "cry": {
+   "baseHz": 380,
+   "kind": "hum"
+  }
+ }
+]

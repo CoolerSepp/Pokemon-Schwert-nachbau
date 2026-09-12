@@ -1,0 +1,174 @@
+[
+ {
+  "id": "tritthagel",
+  "name": "Tritthagel",
+  "type": "fighting",
+  "category": "physical",
+  "power": 25,
+  "accuracy": 90,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Mehrere schnelle Tritte.",
+  "contact": true,
+  "animation": "multiStrike",
+  "sound": "fighting",
+  "effect": {
+   "multiHit": [
+    2,
+    4
+   ]
+  }
+ },
+ {
+  "id": "faustschlag",
+  "name": "Faustschlag",
+  "type": "fighting",
+  "category": "physical",
+  "power": 50,
+  "accuracy": 100,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein gerader Fausthieb.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "fighting"
+ },
+ {
+  "id": "konterhieb",
+  "name": "Konterhieb",
+  "type": "fighting",
+  "category": "physical",
+  "power": 70,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 1,
+  "target": "opponent",
+  "description": "Ein schneller Konter mit erhoehter Prioritaet.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "fighting"
+ },
+ {
+  "id": "kraftstoss",
+  "name": "Kraftstoss",
+  "type": "fighting",
+  "category": "physical",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein wuchtiger Stoss mit vollem Gewicht.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "fighting"
+ },
+ {
+  "id": "durchbruch",
+  "name": "Durchbruch",
+  "type": "fighting",
+  "category": "physical",
+  "power": 85,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Durchbricht Schutzschilde und senkt die Verteidigung.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "fighting",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "def",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 1.0
+  }
+ },
+ {
+  "id": "gebirgsschlag",
+  "name": "Gebirgsschlag",
+  "type": "fighting",
+  "category": "physical",
+  "power": 120,
+  "accuracy": 80,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Schlag mit der Wucht eines Berges.",
+  "contact": true,
+  "animation": "charge",
+  "sound": "fighting",
+  "effect": {
+   "recoil": 0.2
+  }
+ },
+ {
+  "id": "gmax_fighting",
+  "name": "Kolossfaust",
+  "type": "fighting",
+  "category": "physical",
+  "power": 170,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Faust von der Groesse eines Gebaeudes.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "fighting",
+  "giganticOnly": true
+ },
+ {
+  "id": "fokusstand",
+  "name": "Fokusstand",
+  "type": "fighting",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Erhoeht die Volltrefferquote deutlich.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "critStages": 2
+  }
+ },
+ {
+  "id": "kampfschrei",
+  "name": "Kampfschrei",
+  "type": "fighting",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Ein Schrei, der Angriff und Verteidigung erhoeht.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "atk",
+     "stages": 1
+    },
+    {
+     "target": "self",
+     "stat": "def",
+     "stages": 1
+    }
+   ]
+  }
+ }
+]

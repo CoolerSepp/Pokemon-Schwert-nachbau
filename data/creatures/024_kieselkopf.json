@@ -1,0 +1,1013 @@
+[
+ {
+  "id": "kieselkopf",
+  "dex": 24,
+  "name": "Kieselkopf",
+  "category": "Geroellwesen",
+  "types": [
+   "rock"
+  ],
+  "baseStats": {
+   "hp": 52,
+   "atk": 40,
+   "def": 64,
+   "spa": 34,
+   "spd": 48,
+   "spe": 24
+  },
+  "abilities": [
+   "dickpanzer"
+  ],
+  "captureRate": 230,
+  "baseExp": 84,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 0.4,
+  "weightKg": 26.0,
+  "evYield": {
+   "def": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 1,
+    "move": "steinwurf"
+   },
+   {
+    "level": 4,
+    "move": "aufwind"
+   },
+   {
+    "level": 7,
+    "move": "sandpanzer"
+   },
+   {
+    "level": 10,
+    "move": "steinhagel"
+   },
+   {
+    "level": 13,
+    "move": "felsklinge"
+   },
+   {
+    "level": 17,
+    "move": "granitwall"
+   },
+   {
+    "level": 21,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 25,
+    "move": "sturmlauf"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "felsklinge",
+   "kampfgeist",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "felsbrocken",
+    "method": {
+     "kind": "level",
+     "level": 22
+    }
+   }
+  ],
+  "dexEntry": "Es rollt Haenge hinab und waechst dabei durch anhaftendes Geroell.",
+  "canGigantic": false,
+  "habitat": [
+   "rocky",
+   "cave",
+   "mountain"
+  ],
+  "model": {
+   "rig": "blob",
+   "palette": {
+    "primary": "#9b9184",
+    "secondary": "#6d6459",
+    "accent": "#c4bbaa",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "dodeca",
+     "pos": [
+      0,
+      0.2006,
+      0
+     ],
+     "size": [
+      0.2112,
+      0.207,
+      0.2112
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.2893,
+      0.0106
+     ],
+     "size": [
+      0.1563,
+      0.1478,
+      0.1563
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0656,
+      0.3071,
+      0.1231
+     ],
+     "size": [
+      0.038,
+      0.038,
+      0.038
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0656,
+      0.3071,
+      0.1467
+     ],
+     "size": [
+      0.019,
+      0.0209,
+      0.019
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0656,
+      0.3071,
+      0.1231
+     ],
+     "size": [
+      0.038,
+      0.038,
+      0.038
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0656,
+      0.3071,
+      0.1467
+     ],
+     "size": [
+      0.019,
+      0.0209,
+      0.019
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "snout",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.245,
+      0.1434
+     ],
+     "size": [
+      0.0462,
+      0.033,
+      0.0264
+     ],
+     "color": "dark",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "sphere",
+     "pos": [
+      -0.1056,
+      0.0561,
+      0.0253
+     ],
+     "size": [
+      0.066,
+      0.0495,
+      0.0792
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "sphere",
+     "pos": [
+      0.1056,
+      0.0561,
+      0.0253
+     ],
+     "size": [
+      0.066,
+      0.0495,
+      0.0792
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "sandschleuder",
+  "cry": {
+   "baseHz": 260,
+   "kind": "growl"
+  }
+ },
+ {
+  "id": "felsbrocken",
+  "dex": 25,
+  "name": "Felsbrocken",
+  "category": "Blockwesen",
+  "types": [
+   "rock",
+   "ground"
+  ],
+  "baseStats": {
+   "hp": 84,
+   "atk": 64,
+   "def": 94,
+   "spa": 56,
+   "spd": 78,
+   "spe": 36
+  },
+  "abilities": [
+   "dickpanzer"
+  ],
+  "captureRate": 120,
+  "baseExp": 132,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 1.1,
+  "weightKg": 128.0,
+  "evYield": {
+   "def": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "steinwurf"
+   },
+   {
+    "level": 1,
+    "move": "verzweiflung"
+   },
+   {
+    "level": 4,
+    "move": "aufwind"
+   },
+   {
+    "level": 7,
+    "move": "sandpanzer"
+   },
+   {
+    "level": 10,
+    "move": "schlammschuss"
+   },
+   {
+    "level": 13,
+    "move": "felsklinge"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "grabklaue"
+   },
+   {
+    "level": 25,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 30,
+    "move": "gesteinslawine"
+   },
+   {
+    "level": 34,
+    "move": "erdstoss"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "erdbeben",
+   "erdstoss",
+   "erholung",
+   "felsklinge",
+   "kampfgeist",
+   "panzerschutz",
+   "sandsturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "bergkoloss",
+    "method": {
+     "kind": "level",
+     "level": 38
+    }
+   }
+  ],
+  "dexEntry": "Sein Koerper besteht aus verdichtetem Gestein mehrerer Erdzeitalter.",
+  "canGigantic": false,
+  "habitat": [
+   "rocky",
+   "mountain"
+  ],
+  "model": {
+   "rig": "blob",
+   "palette": {
+    "primary": "#8a8075",
+    "secondary": "#5c544a",
+    "accent": "#b5ab99",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "dodeca",
+     "pos": [
+      0,
+      0.3192,
+      0
+     ],
+     "size": [
+      0.336,
+      0.3226,
+      0.336
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.4603,
+      0.0168
+     ],
+     "size": [
+      0.2486,
+      0.2352,
+      0.2486
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1044,
+      0.4885,
+      0.1958
+     ],
+     "size": [
+      0.0605,
+      0.0605,
+      0.0605
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1044,
+      0.4885,
+      0.2333
+     ],
+     "size": [
+      0.0302,
+      0.0333,
+      0.0302
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1044,
+      0.4885,
+      0.1958
+     ],
+     "size": [
+      0.0605,
+      0.0605,
+      0.0605
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1044,
+      0.4885,
+      0.2333
+     ],
+     "size": [
+      0.0302,
+      0.0333,
+      0.0302
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "snout",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3898,
+      0.2281
+     ],
+     "size": [
+      0.0735,
+      0.0525,
+      0.042
+     ],
+     "color": "dark",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "sphere",
+     "pos": [
+      -0.168,
+      0.0893,
+      0.0403
+     ],
+     "size": [
+      0.105,
+      0.0788,
+      0.126
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "sphere",
+     "pos": [
+      0.168,
+      0.0893,
+      0.0403
+     ],
+     "size": [
+      0.105,
+      0.0788,
+      0.126
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      0
+     ],
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "sandschleuder",
+  "cry": {
+   "baseHz": 190,
+   "kind": "growl"
+  },
+  "prevo": "kieselkopf"
+ },
+ {
+  "id": "bergkoloss",
+  "dex": 26,
+  "name": "Bergkoloss",
+  "category": "Gebirgswacht",
+  "types": [
+   "rock",
+   "ground"
+  ],
+  "baseStats": {
+   "hp": 120,
+   "atk": 90,
+   "def": 115,
+   "spa": 63,
+   "spd": 96,
+   "spe": 44
+  },
+  "abilities": [
+   "dickpanzer"
+  ],
+  "captureRate": 45,
+  "baseExp": 169,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 2.6,
+  "weightKg": 420.0,
+  "evYield": {
+   "hp": 3
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "bindungsschlag"
+   },
+   {
+    "level": 1,
+    "move": "steinwurf"
+   },
+   {
+    "level": 4,
+    "move": "windschritt"
+   },
+   {
+    "level": 7,
+    "move": "sandpanzer"
+   },
+   {
+    "level": 10,
+    "move": "schlammschuss"
+   },
+   {
+    "level": 13,
+    "move": "felsklinge"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "grabklaue"
+   },
+   {
+    "level": 25,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 30,
+    "move": "gesteinslawine"
+   },
+   {
+    "level": 34,
+    "move": "erdstoss"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   },
+   {
+    "level": 44,
+    "move": "felsspalte"
+   },
+   {
+    "level": 50,
+    "move": "sprengsatz"
+   }
+  ],
+  "tmMoves": [
+   "erdbeben",
+   "erdstoss",
+   "erholung",
+   "felsklinge",
+   "kampfgeist",
+   "panzerschutz",
+   "sandsturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Schlafend ist es von einem echten Felsvorsprung kaum zu unterscheiden.",
+  "canGigantic": true,
+  "habitat": [
+   "mountain"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#7a7168",
+    "secondary": "#4d453d",
+    "accent": "#a89e8b",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "dodeca",
+     "pos": [
+      0,
+      1.26,
+      0
+     ],
+     "size": [
+      0.51,
+      0.63,
+      0.45
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.197,
+      0.279
+     ],
+     "size": [
+      0.3672,
+      0.3906,
+      0.189
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "dodeca",
+     "pos": [
+      0,
+      2.1608,
+      0.0
+     ],
+     "size": [
+      0.45,
+      0.435,
+      0.45
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.216,
+      2.2217,
+      0.315
+     ],
+     "size": [
+      0.117,
+      0.117,
+      0.117
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.216,
+      2.2217,
+      0.3875
+     ],
+     "size": [
+      0.0585,
+      0.0644,
+      0.0585
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.216,
+      2.2217,
+      0.315
+     ],
+     "size": [
+      0.117,
+      0.117,
+      0.117
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.216,
+      2.2217,
+      0.3875
+     ],
+     "size": [
+      0.0585,
+      0.0644,
+      0.0585
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "horn",
+     "shape": "cone",
+     "pos": [
+      -0.18,
+      2.5522,
+      0.0
+     ],
+     "size": [
+      0.1,
+      0.3,
+      0.1
+     ],
+     "color": "light",
+     "parent": "head",
+     "rot": [
+      -0.2,
+      0,
+      0.34
+     ],
+     "detail": 1
+    },
+    {
+     "role": "horn",
+     "shape": "cone",
+     "pos": [
+      0.18,
+      2.5522,
+      0.0
+     ],
+     "size": [
+      0.1,
+      0.3,
+      0.1
+     ],
+     "color": "light",
+     "parent": "head",
+     "rot": [
+      -0.2,
+      0,
+      -0.34
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.4845,
+      1.5246,
+      0
+     ],
+     "size": [
+      0.165,
+      0.375,
+      0.165
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.375,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.4845,
+      0.7746,
+      0
+     ],
+     "size": [
+      0.2063,
+      0.2063,
+      0.2063
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.4845,
+      1.5246,
+      0
+     ],
+     "size": [
+      0.165,
+      0.375,
+      0.165
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.375,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.4845,
+      0.7746,
+      0
+     ],
+     "size": [
+      0.2063,
+      0.2063,
+      0.2063
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2346,
+      0.693,
+      0
+     ],
+     "size": [
+      0.195,
+      0.315,
+      0.195
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.34650000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.2346,
+      0.0975,
+      0.1365
+     ],
+     "size": [
+      0.2145,
+      0.1073,
+      0.3315
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.2346,
+      0.693,
+      0
+     ],
+     "size": [
+      0.195,
+      0.315,
+      0.195
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.34650000000000003,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.2346,
+      0.0975,
+      0.1365
+     ],
+     "size": [
+      0.2145,
+      0.1073,
+      0.3315
+     ],
+     "color": "accent",
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "sandaufwirbler",
+  "giganticMove": "gmax_rock",
+  "fieldScale": 1.35,
+  "cry": {
+   "baseHz": 140,
+   "kind": "roar"
+  },
+  "prevo": "felsbrocken"
+ }
+]

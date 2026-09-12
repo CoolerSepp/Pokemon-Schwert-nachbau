@@ -1,0 +1,889 @@
+[
+ {
+  "id": "eisbaerchen",
+  "dex": 63,
+  "name": "Eisbaerchen",
+  "category": "Frostbaer",
+  "types": [
+   "ice"
+  ],
+  "baseStats": {
+   "hp": 61,
+   "atk": 52,
+   "def": 69,
+   "spa": 38,
+   "spd": 54,
+   "spe": 26
+  },
+  "abilities": [
+   "frostkern"
+  ],
+  "captureRate": 120,
+  "baseExp": 96,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 0.7,
+  "weightKg": 38.0,
+  "evYield": {
+   "def": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "frostwind"
+   },
+   {
+    "level": 1,
+    "move": "kratzer"
+   },
+   {
+    "level": 4,
+    "move": "grimasse"
+   },
+   {
+    "level": 7,
+    "move": "frostpanzer"
+   },
+   {
+    "level": 10,
+    "move": "eissplitter"
+   },
+   {
+    "level": 13,
+    "move": "eislanze"
+   },
+   {
+    "level": 17,
+    "move": "kaeltestarre"
+   },
+   {
+    "level": 21,
+    "move": "frostbiss"
+   },
+   {
+    "level": 25,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 30,
+    "move": "sturmlauf"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "frostwind",
+   "kampfgeist",
+   "panzerschutz",
+   "schneesturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "frostkoloss",
+    "method": {
+     "kind": "level",
+     "level": 34
+    }
+   }
+  ],
+  "dexEntry": "Sein dichtes Fell haelt selbst minus vierzig Grad muehelos stand.",
+  "canGigantic": false,
+  "habitat": [
+   "snow"
+  ],
+  "model": {
+   "rig": "quadruped",
+   "palette": {
+    "primary": "#eef6ff",
+    "secondary": "#b8cfe0",
+    "accent": "#8fb0c4",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3871,
+      0
+     ],
+     "size": [
+      0.2304,
+      0.2016,
+      0.3456
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.3468,
+      0.1728
+     ],
+     "size": [
+      0.1843,
+      0.1512,
+      0.1728
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.498,
+      0.3283
+     ],
+     "size": [
+      0.2016,
+      0.1872,
+      0.2016
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.4455,
+      0.4735
+     ],
+     "size": [
+      0.0792,
+      0.0648,
+      0.108
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1048,
+      0.5279,
+      0.4614
+     ],
+     "size": [
+      0.0484,
+      0.0484,
+      0.0484
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1048,
+      0.5279,
+      0.4914
+     ],
+     "size": [
+      0.0242,
+      0.0266,
+      0.0242
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1048,
+      0.5279,
+      0.4614
+     ],
+     "size": [
+      0.0484,
+      0.0484,
+      0.0484
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1048,
+      0.5279,
+      0.4914
+     ],
+     "size": [
+      0.0242,
+      0.0266,
+      0.0242
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      -0.1129,
+      0.6327,
+      0.3082
+     ],
+     "size": [
+      0.07,
+      0.11,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "ear",
+     "shape": "cone",
+     "pos": [
+      0.1129,
+      0.6327,
+      0.3082
+     ],
+     "size": [
+      0.07,
+      0.11,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      0,
+      0,
+      -0.22
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legFrontLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1475,
+      0.2318,
+      0.2004
+     ],
+     "size": [
+      0.0684,
+      0.1008,
+      0.0684
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.11088,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1475,
+      0.0513,
+      0.2004
+     ],
+     "size": [
+      0.0807,
+      0.0547,
+      0.0889
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legFrontRight",
+     "shape": "capsule",
+     "pos": [
+      0.1475,
+      0.2318,
+      0.2004
+     ],
+     "size": [
+      0.0684,
+      0.1008,
+      0.0684
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.11088,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1475,
+      0.0513,
+      0.2004
+     ],
+     "size": [
+      0.0807,
+      0.0547,
+      0.0889
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1475,
+      0.2318,
+      -0.2004
+     ],
+     "size": [
+      0.0684,
+      0.1008,
+      0.0684
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.11088,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.1475,
+      0.0513,
+      -0.2004
+     ],
+     "size": [
+      0.0807,
+      0.0547,
+      0.0889
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1475,
+      0.2318,
+      -0.2004
+     ],
+     "size": [
+      0.0684,
+      0.1008,
+      0.0684
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.11088,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.1475,
+      0.0513,
+      -0.2004
+     ],
+     "size": [
+      0.0807,
+      0.0547,
+      0.0889
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.4113,
+      -0.3283
+     ],
+     "size": [
+      0.06,
+      0.06,
+      0.12
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      0,
+      -0.066
+     ],
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "detail": 2
+    }
+   ]
+  },
+  "hiddenAbility": "dickpanzer",
+  "cry": {
+   "baseHz": 420,
+   "kind": "growl"
+  }
+ },
+ {
+  "id": "frostkoloss",
+  "dex": 64,
+  "name": "Frostkoloss",
+  "category": "Eistitan",
+  "types": [
+   "ice",
+   "fighting"
+  ],
+  "baseStats": {
+   "hp": 94,
+   "atk": 128,
+   "def": 89,
+   "spa": 59,
+   "spd": 72,
+   "spe": 73
+  },
+  "abilities": [
+   "frostkern"
+  ],
+  "captureRate": 45,
+  "baseExp": 165,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 2.4,
+  "weightKg": 275.0,
+  "evYield": {
+   "atk": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "doppelhieb"
+   },
+   {
+    "level": 1,
+    "move": "frostwind"
+   },
+   {
+    "level": 4,
+    "move": "kampfgeist"
+   },
+   {
+    "level": 7,
+    "move": "schneesturm_ruf"
+   },
+   {
+    "level": 10,
+    "move": "tritthagel"
+   },
+   {
+    "level": 13,
+    "move": "frostbiss"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "durchbruch"
+   },
+   {
+    "level": 25,
+    "move": "eislanze"
+   },
+   {
+    "level": 30,
+    "move": "blizzardbrise"
+   },
+   {
+    "level": 34,
+    "move": "kraftstoss"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "frostwind",
+   "kampfgeist",
+   "kraftstoss",
+   "panzerschutz",
+   "schneesturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Ein einziger Hieb von ihm spaltet meterdicke Eisschollen.",
+  "canGigantic": true,
+  "habitat": [
+   "snow",
+   "mountain"
+  ],
+  "model": {
+   "rig": "biped",
+   "palette": {
+    "primary": "#e0eefa",
+    "secondary": "#9bb8cf",
+    "accent": "#6b8fa8",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      1.344,
+      0
+     ],
+     "size": [
+      0.544,
+      0.672,
+      0.48
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.2768,
+      0.2976
+     ],
+     "size": [
+      0.3917,
+      0.4166,
+      0.2016
+     ],
+     "color": "secondary",
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      2.3048,
+      0.0
+     ],
+     "size": [
+      0.48,
+      0.464,
+      0.48
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.2304,
+      2.3698,
+      0.336
+     ],
+     "size": [
+      0.1248,
+      0.1248,
+      0.1248
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.2304,
+      2.3698,
+      0.4134
+     ],
+     "size": [
+      0.0624,
+      0.0686,
+      0.0624
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.2304,
+      2.3698,
+      0.336
+     ],
+     "size": [
+      0.1248,
+      0.1248,
+      0.1248
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.2304,
+      2.3698,
+      0.4134
+     ],
+     "size": [
+      0.0624,
+      0.0686,
+      0.0624
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      2.7456,
+      -0.072
+     ],
+     "size": [
+      0.12,
+      0.2,
+      0.12
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -0.4,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "armLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.5168,
+      1.6262,
+      0
+     ],
+     "size": [
+      0.176,
+      0.4,
+      0.176
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.4,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      -0.5168,
+      0.8262,
+      0
+     ],
+     "size": [
+      0.22,
+      0.22,
+      0.22
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "armRight",
+     "shape": "capsule",
+     "pos": [
+      0.5168,
+      1.6262,
+      0
+     ],
+     "size": [
+      0.176,
+      0.4,
+      0.176
+     ],
+     "color": "primary",
+     "anchor": [
+      0,
+      -0.4,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.16
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "sphere",
+     "pos": [
+      0.5168,
+      0.8262,
+      0
+     ],
+     "size": [
+      0.22,
+      0.22,
+      0.22
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.2502,
+      0.7392,
+      0
+     ],
+     "size": [
+      0.208,
+      0.336,
+      0.208
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.36960000000000004,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      -0.2502,
+      0.104,
+      0.1456
+     ],
+     "size": [
+      0.2288,
+      0.1144,
+      0.3536
+     ],
+     "color": "accent",
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.2502,
+      0.7392,
+      0
+     ],
+     "size": [
+      0.208,
+      0.336,
+      0.208
+     ],
+     "color": "dark",
+     "anchor": [
+      0,
+      -0.36960000000000004,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "decor",
+     "shape": "box",
+     "pos": [
+      0.2502,
+      0.104,
+      0.1456
+     ],
+     "size": [
+      0.2288,
+      0.1144,
+      0.3536
+     ],
+     "color": "accent",
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "kampfeswille",
+  "giganticMove": "gmax_ice",
+  "fieldScale": 1.3,
+  "cry": {
+   "baseHz": 150,
+   "kind": "roar"
+  },
+  "prevo": "eisbaerchen"
+ }
+]

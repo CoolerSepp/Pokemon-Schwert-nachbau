@@ -1,0 +1,315 @@
+[
+ {
+  "id": "luminis",
+  "dex": 92,
+  "name": "Luminis",
+  "category": "Sternenkind",
+  "types": [
+   "fairy",
+   "psychic"
+  ],
+  "baseStats": {
+   "hp": 88,
+   "atk": 66,
+   "def": 91,
+   "spa": 147,
+   "spd": 107,
+   "spe": 101
+  },
+  "abilities": [
+   "robustheit"
+  ],
+  "captureRate": 3,
+  "baseExp": 192,
+  "growthRate": "slow",
+  "genderRatio": null,
+  "heightM": 0.6,
+  "weightKg": 2.4,
+  "evYield": {
+   "spa": 3
+  },
+  "baseFriendship": 100,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "feenstaub"
+   },
+   {
+    "level": 1,
+    "move": "letztes_aufbaeumen"
+   },
+   {
+    "level": 4,
+    "move": "schreckruf"
+   },
+   {
+    "level": 7,
+    "move": "charmeblick"
+   },
+   {
+    "level": 10,
+    "move": "gedankenstoss"
+   },
+   {
+    "level": 13,
+    "move": "elfenstoss"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "telekinese"
+   },
+   {
+    "level": 25,
+    "move": "zauberschein"
+   },
+   {
+    "level": 30,
+    "move": "sternenregen"
+   },
+   {
+    "level": 34,
+    "move": "psychoklinge"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   },
+   {
+    "level": 44,
+    "move": "psychosturm"
+   },
+   {
+    "level": 50,
+    "move": "pausenlos"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "gedankenstoss",
+   "kampfgeist",
+   "panzerschutz",
+   "psychosturm",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag",
+   "zauberschein"
+  ],
+  "evolutions": [],
+  "dexEntry": "Man sagt, es erfuellt einen einzigen Wunsch - aber nur einen ehrlichen.",
+  "canGigantic": false,
+  "habitat": [
+   "endgame"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#fff0d8",
+    "secondary": "#e0c4ff",
+    "accent": "#ffd86b",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#fffae0"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.21,
+      0
+     ],
+     "size": [
+      0.33,
+      0.33,
+      0.33
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.92
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.3255,
+      0
+     ],
+     "size": [
+      0.2574,
+      0.2442,
+      0.2574
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.92
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1158,
+      1.3499,
+      0.1802
+     ],
+     "size": [
+      0.0561,
+      0.0561,
+      0.0561
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1158,
+      1.3499,
+      0.215
+     ],
+     "size": [
+      0.0281,
+      0.0309,
+      0.0281
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1158,
+      1.3499,
+      0.1802
+     ],
+     "size": [
+      0.0561,
+      0.0561,
+      0.0561
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1158,
+      1.3499,
+      0.215
+     ],
+     "size": [
+      0.0281,
+      0.0309,
+      0.0281
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.979,
+      0
+     ],
+     "size": [
+      0.36,
+      0.56,
+      0.36
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.22400000000000003,
+      0
+     ],
+     "opacity": 0.75,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.42,
+      1.7,
+      0
+     ],
+     "size": [
+      0.08,
+      0.08,
+      0.08
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      -0.4,
+      1.55,
+      0.14
+     ],
+     "size": [
+      0.07,
+      0.07,
+      0.07
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.06,
+      1.95,
+      -0.12
+     ],
+     "size": [
+      0.065,
+      0.065,
+      0.065
+     ],
+     "color": "glow",
+     "emissive": 1.0,
+     "detail": 2,
+     "parent": null
+    }
+   ],
+   "hover": 1.0
+  },
+  "fieldScale": 0.9,
+  "cry": {
+   "baseHz": 900,
+   "kind": "trill"
+  }
+ }
+]

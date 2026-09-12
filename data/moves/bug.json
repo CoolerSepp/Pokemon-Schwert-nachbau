@@ -1,0 +1,144 @@
+[
+ {
+  "id": "zangenklemme",
+  "name": "Zangenklemme",
+  "type": "bug",
+  "category": "physical",
+  "power": 45,
+  "accuracy": 100,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Kneift mit harten Zangen zu.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "bug"
+ },
+ {
+  "id": "saugstich",
+  "name": "Saugstich",
+  "type": "bug",
+  "category": "physical",
+  "power": 65,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Stich, der Lebensenergie absaugt.",
+  "contact": true,
+  "animation": "drain",
+  "sound": "heal",
+  "effect": {
+   "drain": 0.5
+  }
+ },
+ {
+  "id": "schwarmbiss",
+  "name": "Schwarmbiss",
+  "type": "bug",
+  "category": "physical",
+  "power": 70,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Schwarm greift gemeinsam an.",
+  "contact": true,
+  "animation": "bite",
+  "sound": "bug"
+ },
+ {
+  "id": "gmax_bug",
+  "name": "Schwarmfinale",
+  "type": "bug",
+  "category": "physical",
+  "power": 160,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Schwarm von Millionen greift an.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "bug",
+  "giganticOnly": true
+ },
+ {
+  "id": "kaefersturm",
+  "name": "Kaefersturm",
+  "type": "bug",
+  "category": "special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Sturm aus Insekten senkt die Spezial-Verteidigung.",
+  "contact": false,
+  "animation": "spiral",
+  "sound": "bug",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spd",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 0.3
+  }
+ },
+ {
+  "id": "fadenschuss",
+  "name": "Fadenschuss",
+  "type": "bug",
+  "category": "status",
+  "power": 0,
+  "accuracy": 95,
+  "pp": 40,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein klebriger Faden senkt die Initiative stark.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spe",
+     "stages": -2
+    }
+   ]
+  }
+ },
+ {
+  "id": "panzerschale",
+  "name": "Panzerschale",
+  "type": "bug",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 15,
+  "priority": 0,
+  "target": "self",
+  "description": "Der Chitinpanzer haertet aus - Verteidigung und Spezial-Verteidigung steigen.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "def",
+     "stages": 1
+    },
+    {
+     "target": "self",
+     "stat": "spd",
+     "stages": 1
+    }
+   ]
+  }
+ }
+]

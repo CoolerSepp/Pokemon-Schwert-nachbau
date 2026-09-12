@@ -1,0 +1,137 @@
+[
+ {
+  "id": "blattstein",
+  "name": "Blattstein",
+  "category": "evolution",
+  "description": "Ein Stein mit dem Muster eines Blattes.",
+  "price": 3000,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 60,
+  "effect": {
+   "kind": "evolve"
+  },
+  "color": "#4bd84b"
+ },
+ {
+  "id": "donnerstein",
+  "name": "Donnerstein",
+  "category": "evolution",
+  "description": "Ein knisternder Stein voller Elektrizitaet.",
+  "price": 3000,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 60,
+  "effect": {
+   "kind": "evolve"
+  },
+  "color": "#ffd82b"
+ },
+ {
+  "id": "eisstein",
+  "name": "Eisstein",
+  "category": "evolution",
+  "description": "Ein niemals schmelzender Stein.",
+  "price": 3000,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 60,
+  "effect": {
+   "kind": "evolve"
+  },
+  "color": "#a0e9ff"
+ },
+ {
+  "id": "feenstein",
+  "name": "Feenstein",
+  "category": "evolution",
+  "description": "Ein Stein voller Feenenergie.",
+  "price": 3000,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 60,
+  "effect": {
+   "kind": "evolve"
+  },
+  "color": "#ff9bd8"
+ },
+ {
+  "id": "feuerstein",
+  "name": "Feuerstein",
+  "category": "evolution",
+  "description": "Ein gluehender Stein, der bestimmte Kreaturen entwickelt.",
+  "price": 3000,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 60,
+  "effect": {
+   "kind": "evolve"
+  },
+  "color": "#ff5a2b"
+ },
+ {
+  "id": "finsterstein",
+  "name": "Finsterstein",
+  "category": "evolution",
+  "description": "Ein Stein, der Licht zu verschlucken scheint.",
+  "price": 3000,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 60,
+  "effect": {
+   "kind": "evolve"
+  },
+  "color": "#4b3b6b"
+ },
+ {
+  "id": "mondstein",
+  "name": "Mondstein",
+  "category": "evolution",
+  "description": "Ein Stein, der im Dunkeln schimmert.",
+  "price": 3000,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 60,
+  "effect": {
+   "kind": "evolve"
+  },
+  "color": "#b0a0ff"
+ },
+ {
+  "id": "sonnenstein",
+  "name": "Sonnenstein",
+  "category": "evolution",
+  "description": "Ein Stein, der Sonnenlicht speichert.",
+  "price": 3000,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 60,
+  "effect": {
+   "kind": "evolve"
+  },
+  "color": "#ffb02b"
+ },
+ {
+  "id": "wasserstein",
+  "name": "Wasserstein",
+  "category": "evolution",
+  "description": "Ein Stein voller Wasserenergie.",
+  "price": 3000,
+  "usableInBattle": false,
+  "usableInField": true,
+  "consumable": true,
+  "sortOrder": 60,
+  "effect": {
+   "kind": "evolve"
+  },
+  "color": "#2b8fff"
+ }
+]

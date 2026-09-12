@@ -1,0 +1,150 @@
+[
+ {
+  "id": "metallklaue",
+  "name": "Metallklaue",
+  "type": "steel",
+  "category": "physical",
+  "power": 50,
+  "accuracy": 95,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Stahlkrallen, die den eigenen Angriff steigern koennen.",
+  "contact": true,
+  "animation": "slash",
+  "sound": "steel",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "atk",
+     "stages": 1
+    }
+   ],
+   "statChangeChance": 0.3
+  }
+ },
+ {
+  "id": "eisenhieb",
+  "name": "Eisenhieb",
+  "type": "steel",
+  "category": "physical",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein harter Schlag mit stahlharten Gliedern.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "steel",
+  "effect": {
+   "flinchChance": 0.3
+  }
+ },
+ {
+  "id": "stahlbrecher",
+  "name": "Stahlbrecher",
+  "type": "steel",
+  "category": "physical",
+  "power": 100,
+  "accuracy": 95,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein wuchtiger Schlag, der die Verteidigung senkt.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "steel",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "def",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 0.5
+  }
+ },
+ {
+  "id": "schrottlawine",
+  "name": "Schrottlawine",
+  "type": "steel",
+  "category": "physical",
+  "power": 120,
+  "accuracy": 85,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Lawine aus Metallteilen.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "steel"
+ },
+ {
+  "id": "gmax_steel",
+  "name": "Stahlkoloss",
+  "type": "steel",
+  "category": "physical",
+  "power": 170,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Koloss aus purem Stahl.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "steel",
+  "giganticOnly": true
+ },
+ {
+  "id": "magnetsalve",
+  "name": "Magnetsalve",
+  "type": "steel",
+  "category": "special",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Magnetische Geschosse.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "steel",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spe",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 0.3
+  }
+ },
+ {
+  "id": "stahlglanz",
+  "name": "Stahlglanz",
+  "type": "steel",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Poliert den Panzer - Verteidigung stark erhoeht.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "def",
+     "stages": 2
+    }
+   ]
+  }
+ }
+]

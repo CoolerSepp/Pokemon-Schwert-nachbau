@@ -1,0 +1,348 @@
+[
+ {
+  "id": "tiefseelicht",
+  "dex": 74,
+  "name": "Tiefseelicht",
+  "category": "Abgrundwesen",
+  "types": [
+   "water",
+   "dark"
+  ],
+  "baseStats": {
+   "hp": 77,
+   "atk": 45,
+   "def": 68,
+   "spa": 114,
+   "spd": 89,
+   "spe": 75
+  },
+  "abilities": [
+   "arenafalle"
+  ],
+  "captureRate": 50,
+  "baseExp": 150,
+  "growthRate": "slow",
+  "genderRatio": 0.5,
+  "heightM": 1.6,
+  "weightKg": 74.0,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "verzweiflung"
+   },
+   {
+    "level": 1,
+    "move": "wasserstrahl"
+   },
+   {
+    "level": 4,
+    "move": "nebelschleier"
+   },
+   {
+    "level": 7,
+    "move": "regentanz"
+   },
+   {
+    "level": 10,
+    "move": "finsterschlag"
+   },
+   {
+    "level": 13,
+    "move": "tiefenstroemung"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "dunkelwoge"
+   },
+   {
+    "level": 25,
+    "move": "sturzbach"
+   },
+   {
+    "level": 30,
+    "move": "flutsturz"
+   },
+   {
+    "level": 34,
+    "move": "hinterhalt"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "druckwelle",
+   "dunkelwoge",
+   "erholung",
+   "kampfgeist",
+   "panzerschutz",
+   "regentanz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Das Leuchtorgan ueber seinem Maul lockt Beute in voelliger Dunkelheit an.",
+  "canGigantic": false,
+  "habitat": [
+   "coastal",
+   "cave"
+  ],
+  "model": {
+   "rig": "aquatic",
+   "palette": {
+    "primary": "#2f4b6b",
+    "secondary": "#1a2b3f",
+    "accent": "#7fe0d8",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#8ff0e8"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.744,
+      0
+     ],
+     "size": [
+      0.288,
+      0.288,
+      0.576
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 3
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.816,
+      0.4896
+     ],
+     "size": [
+      0.24,
+      0.24,
+      0.24
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.144,
+      0.8592,
+      0.6216
+     ],
+     "size": [
+      0.0576,
+      0.0576,
+      0.0576
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.144,
+      0.8592,
+      0.6573
+     ],
+     "size": [
+      0.0288,
+      0.0317,
+      0.0288
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.144,
+      0.8592,
+      0.6216
+     ],
+     "size": [
+      0.0576,
+      0.0576,
+      0.0576
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.144,
+      0.8592,
+      0.6573
+     ],
+     "size": [
+      0.0288,
+      0.0317,
+      0.0288
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.768,
+      0.6816
+     ],
+     "size": [
+      0.1,
+      0.18,
+      0.1
+     ],
+     "color": "secondary",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 2
+    },
+    {
+     "role": "fin",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.0176,
+      -0.0576
+     ],
+     "size": [
+      0.06,
+      0.34,
+      0.34
+     ],
+     "color": "accent",
+     "rot": [
+      -0.35,
+      0,
+      0
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "wingLeft",
+     "shape": "box",
+     "pos": [
+      -0.2592,
+      0.7008,
+      0.0864
+     ],
+     "size": [
+      0.288,
+      0.06,
+      0.192
+     ],
+     "color": "accent",
+     "anchor": [
+      -0.24479999999999996,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.35
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "wingRight",
+     "shape": "box",
+     "pos": [
+      0.2592,
+      0.7008,
+      0.0864
+     ],
+     "size": [
+      0.288,
+      0.06,
+      0.192
+     ],
+     "color": "accent",
+     "anchor": [
+      0.24479999999999996,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.35
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.744,
+      -0.576
+     ],
+     "size": [
+      0.36,
+      0.408,
+      0.096
+     ],
+     "color": "accent",
+     "anchor": [
+      0,
+      0,
+      -0.07680000000000001
+     ],
+     "rot": [
+      -1.5708,
+      0,
+      0
+     ],
+     "flatShading": true,
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "wachsamkeit",
+  "cry": {
+   "baseHz": 220,
+   "kind": "hum"
+  }
+ }
+]

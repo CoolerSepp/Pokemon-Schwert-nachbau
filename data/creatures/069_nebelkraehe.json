@@ -1,0 +1,388 @@
+[
+ {
+  "id": "nebelkraehe",
+  "dex": 69,
+  "name": "Nebelkraehe",
+  "category": "Schattenvogel",
+  "types": [
+   "dark",
+   "flying"
+  ],
+  "baseStats": {
+   "hp": 61,
+   "atk": 81,
+   "def": 60,
+   "spa": 70,
+   "spd": 58,
+   "spe": 112
+  },
+  "abilities": [
+   "einschuechtern"
+  ],
+  "captureRate": 90,
+  "baseExp": 141,
+  "growthRate": "mediumFast",
+  "genderRatio": 0.5,
+  "heightM": 1.1,
+  "weightKg": 12.5,
+  "evYield": {
+   "spe": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "bindungsschlag"
+   },
+   {
+    "level": 1,
+    "move": "finsterschlag"
+   },
+   {
+    "level": 4,
+    "move": "kampfgeist"
+   },
+   {
+    "level": 7,
+    "move": "gemeinheit"
+   },
+   {
+    "level": 10,
+    "move": "windstoss"
+   },
+   {
+    "level": 13,
+    "move": "nachtjagd"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "fluegelschlag"
+   },
+   {
+    "level": 25,
+    "move": "hinterhalt"
+   },
+   {
+    "level": 30,
+    "move": "abgrund"
+   },
+   {
+    "level": 34,
+    "move": "luftschnitt"
+   },
+   {
+    "level": 39,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "dunkelwoge",
+   "erholung",
+   "kampfgeist",
+   "luftschnitt",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Sie stiehlt glaenzende Gegenstaende und versteckt sie in hohen Nestern.",
+  "canGigantic": false,
+  "habitat": [
+   "ruins",
+   "urban"
+  ],
+  "model": {
+   "rig": "flyer",
+   "palette": {
+    "primary": "#3f3b4b",
+    "secondary": "#232029",
+    "accent": "#b0544b",
+    "dark": "#2a2320",
+    "light": "#e0dce6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.77,
+      0
+     ],
+     "size": [
+      0.286,
+      0.308,
+      0.374
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.0318,
+      0.2057
+     ],
+     "size": [
+      0.242,
+      0.242,
+      0.242
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.0076,
+      0.4235
+     ],
+     "size": [
+      0.066,
+      0.176,
+      0.066
+     ],
+     "color": "light",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1331,
+      1.0802,
+      0.3557
+     ],
+     "size": [
+      0.0581,
+      0.0581,
+      0.0581
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1331,
+      1.0802,
+      0.3917
+     ],
+     "size": [
+      0.029,
+      0.0319,
+      0.029
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1331,
+      1.0802,
+      0.3557
+     ],
+     "size": [
+      0.0581,
+      0.0581,
+      0.0581
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1331,
+      1.0802,
+      0.3917
+     ],
+     "size": [
+      0.029,
+      0.0319,
+      0.029
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.2496,
+      0.1573
+     ],
+     "size": [
+      0.08,
+      0.18,
+      0.08
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -0.5,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "wingLeft",
+     "shape": "box",
+     "pos": [
+      -0.2431,
+      0.847,
+      0
+     ],
+     "size": [
+      0.528,
+      0.055,
+      0.352
+     ],
+     "color": "secondary",
+     "anchor": [
+      -0.48576,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "wingRight",
+     "shape": "box",
+     "pos": [
+      0.2431,
+      0.847,
+      0
+     ],
+     "size": [
+      0.528,
+      0.055,
+      0.352
+     ],
+     "color": "secondary",
+     "anchor": [
+      0.48576,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "box",
+     "pos": [
+      0,
+      0.77,
+      -0.3553
+     ],
+     "size": [
+      0.176,
+      0.044,
+      0.33
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      0,
+      -0.29700000000000004
+     ],
+     "rot": [
+      0.2,
+      0,
+      0
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1087,
+      0.539,
+      0
+     ],
+     "size": [
+      0.0385,
+      0.11,
+      0.0385
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.11000000000000001,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1087,
+      0.539,
+      0
+     ],
+     "size": [
+      0.0385,
+      0.11,
+      0.0385
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.11000000000000001,
+      0
+     ],
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "wachsamkeit",
+  "cry": {
+   "baseHz": 480,
+   "kind": "screech"
+  }
+ }
+]

@@ -1,0 +1,1166 @@
+[
+ {
+  "id": "federflaum",
+  "dex": 12,
+  "name": "Federflaum",
+  "category": "Kleinvogel",
+  "types": [
+   "normal",
+   "flying"
+  ],
+  "baseStats": {
+   "hp": 34,
+   "atk": 50,
+   "def": 32,
+   "spa": 47,
+   "spd": 32,
+   "spe": 67
+  },
+  "abilities": [
+   "kampfeswille"
+  ],
+  "captureRate": 255,
+  "baseExp": 84,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 0.3,
+  "weightKg": 1.9,
+  "evYield": {
+   "spe": 1
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "kratzer"
+   },
+   {
+    "level": 1,
+    "move": "letztes_aufbaeumen"
+   },
+   {
+    "level": 4,
+    "move": "erholung"
+   },
+   {
+    "level": 7,
+    "move": "nebelschleier"
+   },
+   {
+    "level": 10,
+    "move": "windstoss"
+   },
+   {
+    "level": 13,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 17,
+    "move": "grimasse"
+   },
+   {
+    "level": 21,
+    "move": "fluegelschlag"
+   },
+   {
+    "level": 25,
+    "move": "wuchtschlag"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "luftschnitt",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "windschwinge",
+    "method": {
+     "kind": "level",
+     "level": 18
+    }
+   }
+  ],
+  "dexEntry": "Ein alltaeglicher Anblick ueber Feldern - flink, neugierig und laut.",
+  "canGigantic": false,
+  "habitat": [
+   "grassland",
+   "urban",
+   "forest"
+  ],
+  "model": {
+   "rig": "flyer",
+   "palette": {
+    "primary": "#cfd8e6",
+    "secondary": "#8fa3bd",
+    "accent": "#e8b03b",
+    "dark": "#2a2320",
+    "light": "#fff6e0",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.42,
+      0
+     ],
+     "size": [
+      0.156,
+      0.168,
+      0.204
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.5628,
+      0.1122
+     ],
+     "size": [
+      0.132,
+      0.132,
+      0.132
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.5496,
+      0.231
+     ],
+     "size": [
+      0.036,
+      0.096,
+      0.036
+     ],
+     "color": "light",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.0726,
+      0.5892,
+      0.194
+     ],
+     "size": [
+      0.0317,
+      0.0317,
+      0.0317
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.0726,
+      0.5892,
+      0.2137
+     ],
+     "size": [
+      0.0158,
+      0.0174,
+      0.0158
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.0726,
+      0.5892,
+      0.194
+     ],
+     "size": [
+      0.0317,
+      0.0317,
+      0.0317
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.0726,
+      0.5892,
+      0.2137
+     ],
+     "size": [
+      0.0158,
+      0.0174,
+      0.0158
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.6816,
+      0.0858
+     ],
+     "size": [
+      0.06,
+      0.12,
+      0.06
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -0.5,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "wingLeft",
+     "shape": "box",
+     "pos": [
+      -0.1326,
+      0.462,
+      0
+     ],
+     "size": [
+      0.288,
+      0.03,
+      0.192
+     ],
+     "color": "secondary",
+     "anchor": [
+      -0.26496,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "wingRight",
+     "shape": "box",
+     "pos": [
+      0.1326,
+      0.462,
+      0
+     ],
+     "size": [
+      0.288,
+      0.03,
+      0.192
+     ],
+     "color": "secondary",
+     "anchor": [
+      0.26496,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "box",
+     "pos": [
+      0,
+      0.42,
+      -0.1938
+     ],
+     "size": [
+      0.096,
+      0.024,
+      0.18
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      0,
+      -0.162
+     ],
+     "rot": [
+      0.2,
+      0,
+      0
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.0593,
+      0.294,
+      0
+     ],
+     "size": [
+      0.021,
+      0.06,
+      0.021
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.06,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.0593,
+      0.294,
+      0
+     ],
+     "size": [
+      0.021,
+      0.06,
+      0.021
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.06,
+      0
+     ],
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "zielsicher",
+  "cry": {
+   "baseHz": 820,
+   "kind": "chirp"
+  }
+ },
+ {
+  "id": "windschwinge",
+  "dex": 13,
+  "name": "Windschwinge",
+  "category": "Gleiter",
+  "types": [
+   "normal",
+   "flying"
+  ],
+  "baseStats": {
+   "hp": 54,
+   "atk": 80,
+   "def": 52,
+   "spa": 63,
+   "spd": 55,
+   "spe": 96
+  },
+  "abilities": [
+   "kampfeswille"
+  ],
+  "captureRate": 120,
+  "baseExp": 128,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 0.9,
+  "weightKg": 15.4,
+  "evYield": {
+   "spe": 2
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "dauerschlag"
+   },
+   {
+    "level": 1,
+    "move": "verzweiflung"
+   },
+   {
+    "level": 4,
+    "move": "aufwind"
+   },
+   {
+    "level": 7,
+    "move": "schreckruf"
+   },
+   {
+    "level": 10,
+    "move": "windstoss"
+   },
+   {
+    "level": 13,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "luftschnitt"
+   },
+   {
+    "level": 30,
+    "move": "pausenlos"
+   },
+   {
+    "level": 34,
+    "move": "fluegelschlag"
+   },
+   {
+    "level": 39,
+    "move": "sprengsatz"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "luftschnitt",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [
+   {
+    "to": "sturmaar",
+    "method": {
+     "kind": "level",
+     "level": 36
+    }
+   }
+  ],
+  "dexEntry": "Es nutzt Aufwinde so geschickt, dass es stundenlang nicht schlagen muss.",
+  "canGigantic": false,
+  "habitat": [
+   "grassland",
+   "mountain"
+  ],
+  "model": {
+   "rig": "flyer",
+   "palette": {
+    "primary": "#b6c3d6",
+    "secondary": "#71869f",
+    "accent": "#e8a33b",
+    "dark": "#2a2320",
+    "light": "#fff6e0",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      0.665,
+      0
+     ],
+     "size": [
+      0.247,
+      0.266,
+      0.323
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      0.8911,
+      0.1777
+     ],
+     "size": [
+      0.209,
+      0.209,
+      0.209
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.8702,
+      0.3658
+     ],
+     "size": [
+      0.057,
+      0.152,
+      0.057
+     ],
+     "color": "light",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.115,
+      0.9329,
+      0.3072
+     ],
+     "size": [
+      0.0502,
+      0.0502,
+      0.0502
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.115,
+      0.9329,
+      0.3383
+     ],
+     "size": [
+      0.0251,
+      0.0276,
+      0.0251
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.115,
+      0.9329,
+      0.3072
+     ],
+     "size": [
+      0.0502,
+      0.0502,
+      0.0502
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.115,
+      0.9329,
+      0.3383
+     ],
+     "size": [
+      0.0251,
+      0.0276,
+      0.0251
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.0792,
+      0.1359
+     ],
+     "size": [
+      0.08,
+      0.2,
+      0.08
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -0.5,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "wingLeft",
+     "shape": "box",
+     "pos": [
+      -0.2099,
+      0.7315,
+      0
+     ],
+     "size": [
+      0.456,
+      0.0475,
+      0.304
+     ],
+     "color": "secondary",
+     "anchor": [
+      -0.41952,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "wingRight",
+     "shape": "box",
+     "pos": [
+      0.2099,
+      0.7315,
+      0
+     ],
+     "size": [
+      0.456,
+      0.0475,
+      0.304
+     ],
+     "color": "secondary",
+     "anchor": [
+      0.41952,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "box",
+     "pos": [
+      0,
+      0.665,
+      -0.3069
+     ],
+     "size": [
+      0.152,
+      0.038,
+      0.285
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      0,
+      -0.2565
+     ],
+     "rot": [
+      0.2,
+      0,
+      0
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.0939,
+      0.4655,
+      0
+     ],
+     "size": [
+      0.0333,
+      0.095,
+      0.0333
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.095,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.0939,
+      0.4655,
+      0
+     ],
+     "size": [
+      0.0333,
+      0.095,
+      0.0333
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.095,
+      0
+     ],
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "zielsicher",
+  "cry": {
+   "baseHz": 620,
+   "kind": "screech"
+  },
+  "prevo": "federflaum"
+ },
+ {
+  "id": "sturmaar",
+  "dex": 14,
+  "name": "Sturmaar",
+  "category": "Sturmjaeger",
+  "types": [
+   "normal",
+   "flying"
+  ],
+  "baseStats": {
+   "hp": 85,
+   "atk": 121,
+   "def": 87,
+   "spa": 51,
+   "spd": 68,
+   "spe": 100
+  },
+  "abilities": [
+   "einschuechtern"
+  ],
+  "captureRate": 45,
+  "baseExp": 164,
+  "growthRate": "mediumSlow",
+  "genderRatio": 0.5,
+  "heightM": 1.6,
+  "weightKg": 42.0,
+  "evYield": {
+   "atk": 3
+  },
+  "baseFriendship": 70,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "kratzer"
+   },
+   {
+    "level": 1,
+    "move": "verzweiflung"
+   },
+   {
+    "level": 4,
+    "move": "windschritt"
+   },
+   {
+    "level": 7,
+    "move": "knurren"
+   },
+   {
+    "level": 10,
+    "move": "windstoss"
+   },
+   {
+    "level": 13,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 17,
+    "move": "sturmlauf"
+   },
+   {
+    "level": 21,
+    "move": "fluegelschlag"
+   },
+   {
+    "level": 30,
+    "move": "sprengsatz"
+   },
+   {
+    "level": 34,
+    "move": "luftschnitt"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   },
+   {
+    "level": 44,
+    "move": "sturzflug"
+   },
+   {
+    "level": 50,
+    "move": "titanenstoss"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "kampfgeist",
+   "luftschnitt",
+   "panzerschutz",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "Sein Ruf kuendigt Unwetter an; Seefahrer kehren dann sofort um.",
+  "canGigantic": true,
+  "habitat": [
+   "mountain",
+   "coastal"
+  ],
+  "model": {
+   "rig": "flyer",
+   "palette": {
+    "primary": "#93a3ba",
+    "secondary": "#4d6076",
+    "accent": "#e08a23",
+    "dark": "#2a2320",
+    "light": "#fff0d0",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "capsule",
+     "pos": [
+      0,
+      1.05,
+      0
+     ],
+     "size": [
+      0.39,
+      0.42,
+      0.51
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.407,
+      0.2805
+     ],
+     "size": [
+      0.33,
+      0.33,
+      0.33
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "snout",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.374,
+      0.5775
+     ],
+     "size": [
+      0.09,
+      0.24,
+      0.09
+     ],
+     "color": "light",
+     "parent": "head",
+     "rot": [
+      1.5708,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1815,
+      1.473,
+      0.4851
+     ],
+     "size": [
+      0.0792,
+      0.0792,
+      0.0792
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1815,
+      1.473,
+      0.5342
+     ],
+     "size": [
+      0.0396,
+      0.0436,
+      0.0396
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1815,
+      1.473,
+      0.4851
+     ],
+     "size": [
+      0.0792,
+      0.0792,
+      0.0792
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1815,
+      1.473,
+      0.5342
+     ],
+     "size": [
+      0.0396,
+      0.0436,
+      0.0396
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "crest",
+     "shape": "cone",
+     "pos": [
+      0,
+      1.704,
+      0.2145
+     ],
+     "size": [
+      0.12,
+      0.34,
+      0.12
+     ],
+     "color": "accent",
+     "parent": "head",
+     "rot": [
+      -0.5,
+      0,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "wingLeft",
+     "shape": "box",
+     "pos": [
+      -0.3315,
+      1.155,
+      0
+     ],
+     "size": [
+      0.72,
+      0.075,
+      0.48
+     ],
+     "color": "secondary",
+     "anchor": [
+      -0.6624,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "wingRight",
+     "shape": "box",
+     "pos": [
+      0.3315,
+      1.155,
+      0
+     ],
+     "size": [
+      0.72,
+      0.075,
+      0.48
+     ],
+     "color": "secondary",
+     "anchor": [
+      0.6624,
+      0,
+      0
+     ],
+     "rot": [
+      0,
+      0,
+      -0.18
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "box",
+     "pos": [
+      0,
+      1.05,
+      -0.4845
+     ],
+     "size": [
+      0.24,
+      0.06,
+      0.45
+     ],
+     "color": "secondary",
+     "anchor": [
+      0,
+      0,
+      -0.40499999999999997
+     ],
+     "rot": [
+      0.2,
+      0,
+      0
+     ],
+     "flatShading": true,
+     "detail": 1
+    },
+    {
+     "role": "legBackLeft",
+     "shape": "capsule",
+     "pos": [
+      -0.1482,
+      0.735,
+      0
+     ],
+     "size": [
+      0.0525,
+      0.15,
+      0.0525
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.15000000000000002,
+      0
+     ],
+     "detail": 1
+    },
+    {
+     "role": "legBackRight",
+     "shape": "capsule",
+     "pos": [
+      0.1482,
+      0.735,
+      0
+     ],
+     "size": [
+      0.0525,
+      0.15,
+      0.0525
+     ],
+     "color": "light",
+     "anchor": [
+      0,
+      -0.15000000000000002,
+      0
+     ],
+     "detail": 1
+    }
+   ]
+  },
+  "hiddenAbility": "zielsicher",
+  "giganticMove": "gmax_flying",
+  "fieldScale": 1.2,
+  "cry": {
+   "baseHz": 380,
+   "kind": "screech"
+  },
+  "prevo": "windschwinge"
+ }
+]

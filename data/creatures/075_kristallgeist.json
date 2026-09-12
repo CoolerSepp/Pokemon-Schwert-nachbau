@@ -1,0 +1,290 @@
+[
+ {
+  "id": "kristallgeist",
+  "dex": 75,
+  "name": "Kristallgeist",
+  "category": "Frostschemen",
+  "types": [
+   "ghost",
+   "ice"
+  ],
+  "baseStats": {
+   "hp": 69,
+   "atk": 49,
+   "def": 63,
+   "spa": 112,
+   "spd": 81,
+   "spe": 84
+  },
+  "abilities": [
+   "frostkern"
+  ],
+  "captureRate": 55,
+  "baseExp": 147,
+  "growthRate": "slow",
+  "genderRatio": 0.5,
+  "heightM": 1.4,
+  "weightKg": 2.6,
+  "evYield": {
+   "spa": 2
+  },
+  "baseFriendship": 60,
+  "learnset": [
+   {
+    "level": 1,
+    "move": "rempler"
+   },
+   {
+    "level": 1,
+    "move": "schattenstoss"
+   },
+   {
+    "level": 4,
+    "move": "aufwind"
+   },
+   {
+    "level": 7,
+    "move": "fluch"
+   },
+   {
+    "level": 10,
+    "move": "frostwind"
+   },
+   {
+    "level": 13,
+    "move": "nachtklaue"
+   },
+   {
+    "level": 17,
+    "move": "wuchtschlag"
+   },
+   {
+    "level": 21,
+    "move": "eislanze"
+   },
+   {
+    "level": 25,
+    "move": "seelenfeuer"
+   },
+   {
+    "level": 30,
+    "move": "phantomschlag"
+   },
+   {
+    "level": 34,
+    "move": "frostbiss"
+   },
+   {
+    "level": 39,
+    "move": "pausenlos"
+   }
+  ],
+  "tmMoves": [
+   "erholung",
+   "frostwind",
+   "kampfgeist",
+   "nachtklaue",
+   "panzerschutz",
+   "schneesturm_ruf",
+   "schutzschirm",
+   "windschritt",
+   "wuchtschlag"
+  ],
+  "evolutions": [],
+  "dexEntry": "In Eishoehlen erscheint es als Spiegelung, die sich selbststaendig bewegt.",
+  "canGigantic": false,
+  "habitat": [
+   "snow",
+   "cave"
+  ],
+  "model": {
+   "rig": "floater",
+   "palette": {
+    "primary": "#a8d8e6",
+    "secondary": "#5b8fa8",
+    "accent": "#e8f7ff",
+    "dark": "#2a2320",
+    "light": "#f3efe6",
+    "eye": "#fbfbf7",
+    "pupil": "#22201d",
+    "glow": "#c4f0ff"
+   },
+   "parts": [
+    {
+     "role": "body",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.155,
+      0
+     ],
+     "size": [
+      0.315,
+      0.315,
+      0.315
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.8
+    },
+    {
+     "role": "head",
+     "shape": "sphere",
+     "pos": [
+      0,
+      1.2653,
+      0
+     ],
+     "size": [
+      0.2457,
+      0.2331,
+      0.2457
+     ],
+     "color": "primary",
+     "flatShading": true,
+     "detail": 2,
+     "opacity": 0.8
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      -0.1106,
+      1.2886,
+      0.172
+     ],
+     "size": [
+      0.0536,
+      0.0536,
+      0.0536
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      -0.1106,
+      1.2886,
+      0.2052
+     ],
+     "size": [
+      0.0268,
+      0.0295,
+      0.0268
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "eye",
+     "shape": "sphere",
+     "pos": [
+      0.1106,
+      1.2886,
+      0.172
+     ],
+     "size": [
+      0.0536,
+      0.0536,
+      0.0536
+     ],
+     "color": "eye",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "pupil",
+     "shape": "sphere",
+     "pos": [
+      0.1106,
+      1.2886,
+      0.2052
+     ],
+     "size": [
+      0.0268,
+      0.0295,
+      0.0268
+     ],
+     "color": "pupil",
+     "parent": "head",
+     "detail": 1
+    },
+    {
+     "role": "tail",
+     "shape": "cone",
+     "pos": [
+      0,
+      0.9345,
+      0
+     ],
+     "size": [
+      0.38,
+      0.6,
+      0.38
+     ],
+     "color": "secondary",
+     "rot": [
+      3.14159,
+      0,
+      0
+     ],
+     "anchor": [
+      0,
+      -0.24,
+      0
+     ],
+     "opacity": 0.6,
+     "flatShading": true,
+     "detail": 2
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      0.34,
+      1.55,
+      0
+     ],
+     "size": [
+      0.07,
+      0.11,
+      0.07
+     ],
+     "color": "glow",
+     "emissive": 0.9,
+     "detail": 2,
+     "parent": null
+    },
+    {
+     "role": "orb",
+     "shape": "sphere",
+     "pos": [
+      -0.3,
+      1.4,
+      0.12
+     ],
+     "size": [
+      0.06,
+      0.1,
+      0.06
+     ],
+     "color": "glow",
+     "emissive": 0.9,
+     "detail": 2,
+     "parent": null
+    }
+   ],
+   "hover": 1.0
+  },
+  "hiddenAbility": "arenafalle",
+  "cry": {
+   "baseHz": 340,
+   "kind": "hum"
+  }
+ }
+]

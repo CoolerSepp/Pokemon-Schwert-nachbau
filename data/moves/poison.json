@@ -1,0 +1,163 @@
+[
+ {
+  "id": "giftstachel",
+  "name": "Giftstachel",
+  "type": "poison",
+  "category": "physical",
+  "power": 50,
+  "accuracy": 100,
+  "pp": 25,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein giftiger Stachel.",
+  "contact": false,
+  "animation": "strike",
+  "sound": "poison",
+  "effect": {
+   "status": "poison",
+   "statusChance": 0.3
+  }
+ },
+ {
+  "id": "giftklinge",
+  "name": "Giftklinge",
+  "type": "poison",
+  "category": "physical",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine vergiftete Klinge mit hoher Volltrefferquote.",
+  "contact": true,
+  "animation": "slash",
+  "sound": "poison",
+  "effect": {
+   "critStages": 1,
+   "status": "poison",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "saeurespritzer",
+  "name": "Saeurespritzer",
+  "type": "poison",
+  "category": "special",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 30,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Aetzende Saeure.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "poison",
+  "effect": {
+   "status": "poison",
+   "statusChance": 0.1
+  }
+ },
+ {
+  "id": "schlammwelle",
+  "name": "Schlammwelle",
+  "type": "poison",
+  "category": "special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Welle aus giftigem Schlamm.",
+  "contact": false,
+  "animation": "wave",
+  "sound": "poison",
+  "effect": {
+   "status": "poison",
+   "statusChance": 0.3
+  }
+ },
+ {
+  "id": "verwesung",
+  "name": "Verwesung",
+  "type": "poison",
+  "category": "special",
+  "power": 95,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Angriff, der bei vergifteten Zielen doppelt wirkt.",
+  "contact": false,
+  "animation": "burst",
+  "sound": "poison",
+  "effect": {
+   "doublePowerIfStatus": [
+    "poison",
+    "toxic"
+   ]
+  }
+ },
+ {
+  "id": "gmax_poison",
+  "name": "Seuchenwolke",
+  "type": "poison",
+  "category": "special",
+  "power": 160,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine gewaltige Giftwolke.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "poison",
+  "effect": {
+   "status": "toxic",
+   "statusChance": 0.5
+  },
+  "giganticOnly": true
+ },
+ {
+  "id": "saeureschleier",
+  "name": "Saeureschleier",
+  "type": "poison",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Aetzende Daempfe senken die Spezial-Verteidigung.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spd",
+     "stages": -2
+    }
+   ]
+  }
+ },
+ {
+  "id": "toxinstoss",
+  "name": "Toxinstoss",
+  "type": "poison",
+  "category": "status",
+  "power": 0,
+  "accuracy": 90,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Fuegt eine sich verstaerkende Vergiftung zu.",
+  "contact": false,
+  "animation": "statusCloud",
+  "sound": "poison",
+  "effect": {
+   "status": "toxic",
+   "statusChance": 1.0
+  }
+ }
+]

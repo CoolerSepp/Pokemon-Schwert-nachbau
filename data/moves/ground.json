@@ -1,0 +1,150 @@
+[
+ {
+  "id": "erdstoss",
+  "name": "Erdstoss",
+  "type": "ground",
+  "category": "physical",
+  "power": 60,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Stoss aus dem Boden.",
+  "contact": false,
+  "animation": "groundSlam",
+  "sound": "ground"
+ },
+ {
+  "id": "grabklaue",
+  "name": "Grabklaue",
+  "type": "ground",
+  "category": "physical",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Graebt sich unter den Gegner und schlaegt zu.",
+  "contact": true,
+  "animation": "burrow",
+  "sound": "ground",
+  "effect": {
+   "chargeTurn": true,
+   "chargeMessage": "{user} graebt sich ein!"
+  }
+ },
+ {
+  "id": "erdbeben",
+  "name": "Bodenbeben",
+  "type": "ground",
+  "category": "physical",
+  "power": 100,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein heftiges Beben erschuettert das Kampffeld.",
+  "contact": false,
+  "animation": "groundSlam",
+  "sound": "ground"
+ },
+ {
+  "id": "felsspalte",
+  "name": "Felsspalte",
+  "type": "ground",
+  "category": "physical",
+  "power": 120,
+  "accuracy": 75,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Reisst den Boden auf - gewaltige Wucht.",
+  "contact": false,
+  "animation": "groundSlam",
+  "sound": "ground"
+ },
+ {
+  "id": "gmax_ground",
+  "name": "Kontinentalbruch",
+  "type": "ground",
+  "category": "physical",
+  "power": 175,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Der Boden bricht auf wie ein Kontinent.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "ground",
+  "giganticOnly": true
+ },
+ {
+  "id": "schlammschuss",
+  "name": "Schlammschuss",
+  "type": "ground",
+  "category": "special",
+  "power": 55,
+  "accuracy": 95,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Schlamm senkt die Initiative des Gegners.",
+  "contact": false,
+  "animation": "projectile",
+  "sound": "ground",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spe",
+     "stages": -1
+    }
+   ],
+   "statChangeChance": 1.0
+  }
+ },
+ {
+  "id": "sandsturm_ruf",
+  "name": "Sandruf",
+  "type": "ground",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 10,
+  "priority": 0,
+  "target": "field",
+  "description": "Wirbelt einen Sandsturm auf.",
+  "contact": false,
+  "animation": "weather",
+  "sound": "wind",
+  "effect": {
+   "weather": "sandstorm",
+   "weatherTurns": 5
+  }
+ },
+ {
+  "id": "sandwirbel",
+  "name": "Sandwirbel",
+  "type": "ground",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Sand in den Augen senkt die Genauigkeit.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "accuracy",
+     "stages": -1
+    }
+   ]
+  }
+ }
+]

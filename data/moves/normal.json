@@ -1,0 +1,470 @@
+[
+ {
+  "id": "bindungsschlag",
+  "name": "Bindungsschlag",
+  "type": "normal",
+  "category": "physical",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Die Staerke haengt von der Zuneigung zum Trainer ab.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "normal",
+  "effect": {
+   "powerFromFriendship": true
+  }
+ },
+ {
+  "id": "letztes_aufbaeumen",
+  "name": "Letztes Aufbaeumen",
+  "type": "normal",
+  "category": "physical",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Je weniger KP, desto schwaecher der Angriff.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "normal",
+  "effect": {
+   "powerFromHp": true
+  }
+ },
+ {
+  "id": "dauerschlag",
+  "name": "Dauerschlag",
+  "type": "normal",
+  "category": "physical",
+  "power": 15,
+  "accuracy": 85,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Trifft zwei- bis fuenfmal hintereinander.",
+  "contact": true,
+  "animation": "multiStrike",
+  "sound": "normal",
+  "effect": {
+   "multiHit": [
+    2,
+    5
+   ]
+  }
+ },
+ {
+  "id": "doppelhieb",
+  "name": "Doppelhieb",
+  "type": "normal",
+  "category": "physical",
+  "power": 35,
+  "accuracy": 90,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Zwei aufeinanderfolgende Schlaege.",
+  "contact": true,
+  "animation": "multiStrike",
+  "sound": "normal",
+  "effect": {
+   "multiHit": [
+    2,
+    2
+   ]
+  }
+ },
+ {
+  "id": "hieb",
+  "name": "Schnellhieb",
+  "type": "normal",
+  "category": "physical",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 30,
+  "priority": 1,
+  "target": "opponent",
+  "description": "Ein schneller Hieb, der stets zuerst trifft.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "normal"
+ },
+ {
+  "id": "kratzer",
+  "name": "Kratzer",
+  "type": "normal",
+  "category": "physical",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 35,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Harte Krallen kratzen den Gegner.",
+  "contact": true,
+  "animation": "slash",
+  "sound": "slash"
+ },
+ {
+  "id": "rempler",
+  "name": "Rempler",
+  "type": "normal",
+  "category": "physical",
+  "power": 40,
+  "accuracy": 100,
+  "pp": 35,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein simpler Koerperstoss.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "normal"
+ },
+ {
+  "id": "verzweiflung",
+  "name": "Verzweiflung",
+  "type": "normal",
+  "category": "physical",
+  "power": 50,
+  "accuracy": 100,
+  "pp": 10,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Wird nur eingesetzt, wenn keine AP mehr uebrig sind.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "normal",
+  "effect": {
+   "recoil": 0.25
+  }
+ },
+ {
+  "id": "wuchtschlag",
+  "name": "Wuchtschlag",
+  "type": "normal",
+  "category": "physical",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein schwerer Schlag mit vollem Koerpereinsatz.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "normal"
+ },
+ {
+  "id": "sturmlauf",
+  "name": "Sturmlauf",
+  "type": "normal",
+  "category": "physical",
+  "power": 90,
+  "accuracy": 85,
+  "pp": 15,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein ungebremster Ansturm, der auch dem Anwender zusetzt.",
+  "contact": true,
+  "animation": "charge",
+  "sound": "normal",
+  "effect": {
+   "recoil": 0.25
+  }
+ },
+ {
+  "id": "titanenstoss",
+  "name": "Titanenstoss",
+  "type": "normal",
+  "category": "physical",
+  "power": 120,
+  "accuracy": 90,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein gewaltiger Stoss mit voller Wucht.",
+  "contact": true,
+  "animation": "strike",
+  "sound": "normal"
+ },
+ {
+  "id": "pausenlos",
+  "name": "Pausenlos",
+  "type": "normal",
+  "category": "physical",
+  "power": 140,
+  "accuracy": 90,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein verheerender Angriff, nach dem der Anwender ruhen muss.",
+  "contact": true,
+  "animation": "charge",
+  "sound": "normal",
+  "effect": {
+   "rechargeTurn": true
+  }
+ },
+ {
+  "id": "gmax_normal",
+  "name": "Titanensturm",
+  "type": "normal",
+  "category": "physical",
+  "power": 160,
+  "accuracy": 0,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein alles ueberrollender Ansturm in Titanengroesse.",
+  "contact": false,
+  "animation": "gigantic",
+  "sound": "normal",
+  "giganticOnly": true
+ },
+ {
+  "id": "sprengsatz",
+  "name": "Sprengsatz",
+  "type": "normal",
+  "category": "physical",
+  "power": 180,
+  "accuracy": 100,
+  "pp": 5,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine gewaltige Detonation, die den Anwender kampfunfaehig macht.",
+  "contact": false,
+  "animation": "explosion",
+  "sound": "explosion",
+  "effect": {
+   "recoil": 1.0
+  }
+ },
+ {
+  "id": "aufwind",
+  "name": "Aufwind",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 15,
+  "priority": 0,
+  "target": "self",
+  "description": "Ein Rueckenwind, der Angriff und Spezial-Angriff steigert.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "atk",
+     "stages": 1
+    },
+    {
+     "target": "self",
+     "stat": "spa",
+     "stages": 1
+    }
+   ]
+  }
+ },
+ {
+  "id": "erholung",
+  "name": "Erholung",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 10,
+  "priority": 0,
+  "target": "self",
+  "description": "Stellt die Haelfte der maximalen KP wieder her.",
+  "contact": false,
+  "animation": "heal",
+  "sound": "heal",
+  "effect": {
+   "heal": 0.5
+  }
+ },
+ {
+  "id": "grimasse",
+  "name": "Grimasse",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Eine Fratze, die den Gegner langsamer macht.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "spe",
+     "stages": -2
+    }
+   ]
+  }
+ },
+ {
+  "id": "kampfgeist",
+  "name": "Kampfgeist",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Sammelt Kraft und erhoeht den Angriff stark.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "atk",
+     "stages": 2
+    }
+   ]
+  }
+ },
+ {
+  "id": "knurren",
+  "name": "Knurren",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 40,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Ein Knurren, das den Angriff des Gegners senkt.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "atk",
+     "stages": -1
+    }
+   ]
+  }
+ },
+ {
+  "id": "nebelschleier",
+  "name": "Nebelschleier",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": 0,
+  "target": "opponent",
+  "description": "Senkt die Genauigkeit des Gegners deutlich.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "debuff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "opponent",
+     "stat": "accuracy",
+     "stages": -1
+    }
+   ]
+  }
+ },
+ {
+  "id": "panzerschutz",
+  "name": "Panzerschutz",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 20,
+  "priority": 0,
+  "target": "self",
+  "description": "Haertet den Koerper und erhoeht die Verteidigung stark.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "def",
+     "stages": 2
+    }
+   ]
+  }
+ },
+ {
+  "id": "schreckruf",
+  "name": "Schreckruf",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 100,
+  "pp": 20,
+  "priority": -6,
+  "target": "opponent",
+  "description": "Ein greller Ruf, der den Gegner zum Rueckzug zwingt.",
+  "contact": false,
+  "animation": "debuff",
+  "sound": "wind",
+  "effect": {
+   "forceSwitch": true
+  }
+ },
+ {
+  "id": "schutzschirm",
+  "name": "Schutzschirm",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 10,
+  "priority": 4,
+  "target": "self",
+  "description": "Wehrt Angriffe in dieser Runde vollstaendig ab.",
+  "contact": false,
+  "animation": "shield",
+  "sound": "buff",
+  "effect": {
+   "protect": true
+  }
+ },
+ {
+  "id": "windschritt",
+  "name": "Windschritt",
+  "type": "normal",
+  "category": "status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 30,
+  "priority": 0,
+  "target": "self",
+  "description": "Lockert die Glieder und erhoeht die Initiative stark.",
+  "contact": false,
+  "animation": "buff",
+  "sound": "buff",
+  "effect": {
+   "statChanges": [
+    {
+     "target": "self",
+     "stat": "spe",
+     "stages": 2
+    }
+   ]
+  }
+ }
+]

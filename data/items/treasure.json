@@ -1,0 +1,54 @@
+[
+ {
+  "id": "perle",
+  "name": "Perle",
+  "category": "treasure",
+  "description": "Kann bei Haendlern gut verkauft werden.",
+  "price": 0,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 110,
+  "color": "#f0f0ff",
+  "sellPrice": 700
+ },
+ {
+  "id": "grossperle",
+  "name": "Grosse Perle",
+  "category": "treasure",
+  "description": "Sehr wertvoll bei Haendlern.",
+  "price": 0,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 111,
+  "color": "#fffff0",
+  "sellPrice": 2800
+ },
+ {
+  "id": "nugget",
+  "name": "Nugget",
+  "category": "treasure",
+  "description": "Ein Klumpen aus reinem Gold.",
+  "price": 0,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 112,
+  "color": "#ffd000",
+  "sellPrice": 3000
+ },
+ {
+  "id": "sternenstaub",
+  "name": "Sternenstaub",
+  "category": "treasure",
+  "description": "Feiner, glitzernder Sand.",
+  "price": 0,
+  "usableInBattle": false,
+  "usableInField": false,
+  "consumable": true,
+  "sortOrder": 113,
+  "color": "#d8b0ff",
+  "sellPrice": 1000
+ }
+]
