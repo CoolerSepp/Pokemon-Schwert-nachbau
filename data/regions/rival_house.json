@@ -1,0 +1,135 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "rivalen_mutter",
+   "pos": [
+    8.6,
+    6.0
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Nachbarin",
+   "dialogue": "rivalen_mutter",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#c24b6b",
+    "shirt": "#4b8f7a",
+    "pants": "#3f3f4a",
+    "accent": "#f0e0c4",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "startdorf",
+   "trigger": {
+    "x": 5.8,
+    "z": 0,
+    "width": 2.4,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_rival"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    7,
+    3
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    7,
+    2.2
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "rival_house",
+ "name": "Nachbarhaus",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  14,
+  12
+ ],
+ "seed": 1103,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "home",
+ "interiorStyle": {
+  "wallColor": "#f0e4d8",
+  "floorColor": "#9b7346",
+  "accentColor": "#7a4f6b",
+  "wallHeight": 3.0,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 7,
+    "z": 0,
+    "width": 2.4,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "table",
+    "pos": [
+     4.5,
+     6.5
+    ]
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     4.5,
+     8.0
+    ],
+    "rotation": 3.141592653589793
+   },
+   {
+    "kind": "sofa",
+    "pos": [
+     11,
+     7.5
+    ],
+    "rotation": -1.5707963267948966,
+    "color": "#8f4b6b"
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     2.0,
+     9.8
+    ],
+    "rotation": 1.5707963267948966
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     12.2,
+     10.4
+    ]
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     2.0,
+     2.4
+    ]
+   }
+  ]
+ }
+}

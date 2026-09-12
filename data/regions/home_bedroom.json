@@ -1,0 +1,114 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [],
+ "items": [],
+ "connections": [
+  {
+   "to": "home_ground",
+   "trigger": {
+    "x": 4.3,
+    "z": 0,
+    "width": 2.4,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_bedroom"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    4.0,
+    6.6
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_ground",
+   "pos": [
+    5.5,
+    2.2
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "home_bedroom",
+ "name": "Dein Zimmer",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  11,
+  10
+ ],
+ "seed": 1102,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "home",
+ "interiorStyle": {
+  "wallColor": "#e0e8f0",
+  "floorColor": "#c99a6b",
+  "accentColor": "#4b6b8f",
+  "wallHeight": 2.8,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 5.5,
+    "z": 0,
+    "width": 2.2,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "bed",
+    "pos": [
+     2.4,
+     7.2
+    ],
+    "rotation": 0,
+    "color": "#4bbf9b"
+   },
+   {
+    "kind": "computer",
+    "pos": [
+     8.4,
+     8.0
+    ],
+    "rotation": 3.141592653589793
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     8.6,
+     3.0
+    ],
+    "rotation": -1.5707963267948966
+   },
+   {
+    "kind": "rug",
+    "pos": [
+     5.5,
+     5
+    ],
+    "color": "#8f6bbf"
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     1.4,
+     1.6
+    ]
+   }
+  ]
+ },
+ "ambience": {
+  "fogNear": 20,
+  "fogFar": 50
+ }
+}

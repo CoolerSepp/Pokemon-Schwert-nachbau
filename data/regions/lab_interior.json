@@ -1,0 +1,212 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "professorin",
+   "pos": [
+    11,
+    12.0
+   ],
+   "facing": 3.141592653589793,
+   "name": "Professorin Farnholz",
+   "dialogue": "professorin",
+   "role": "professor",
+   "appearance": {
+    "skin": "#e0b894",
+    "hair": "#c4c4c4",
+    "shirt": "#ffffff",
+    "pants": "#5f6b7a",
+    "accent": "#8fc4e0",
+    "hat": "none",
+    "height": 1.02
+   }
+  },
+  {
+   "id": "assistent",
+   "pos": [
+    4.6,
+    8.4
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Assistent",
+   "dialogue": "lab_assistent",
+   "appearance": {
+    "skin": "#c99a6b",
+    "hair": "#3a2a1c",
+    "shirt": "#ffffff",
+    "pants": "#4a4a52",
+    "accent": "#7fc4a0",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "startdorf",
+   "trigger": {
+    "x": 9.5,
+    "z": 0,
+    "width": 3.0,
+    "depth": 1.8
+   },
+   "spawnPoint": "from_lab"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    11,
+    3
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    11,
+    2.4
+   ],
+   "facing": 0
+  },
+  {
+   "id": "starterwahl",
+   "pos": [
+    11,
+    7.4
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "lab_interior",
+ "name": "Forschungsstation",
+ "kind": "lab",
+ "biome": "urban",
+ "size": [
+  22,
+  16
+ ],
+ "seed": 1106,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "lab",
+ "interiorStyle": {
+  "wallColor": "#e4eaee",
+  "floorColor": "#c9d2d8",
+  "accentColor": "#5f8fae",
+  "wallHeight": 4.0,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 11,
+    "z": 0,
+    "width": 3.0,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "machine",
+    "pos": [
+     3.2,
+     12.4
+    ],
+    "rotation": 0
+   },
+   {
+    "kind": "machine",
+    "pos": [
+     6.2,
+     12.4
+    ],
+    "rotation": 0
+   },
+   {
+    "kind": "machine",
+    "pos": [
+     18.6,
+     12.4
+    ],
+    "rotation": 0
+   },
+   {
+    "kind": "computer",
+    "pos": [
+     15.6,
+     12.6
+    ],
+    "rotation": 0
+   },
+   {
+    "kind": "table",
+    "pos": [
+     11,
+     9.5
+    ],
+    "rotation": 0
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     1.6,
+     5.5
+    ],
+    "rotation": 1.5707963267948966
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     20.4,
+     5.5
+    ],
+    "rotation": -1.5707963267948966
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     2.0,
+     2.2
+    ]
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     20.0,
+     2.2
+    ]
+   },
+   {
+    "kind": "crateStack",
+    "pos": [
+     18.4,
+     3.2
+    ]
+   }
+  ]
+ },
+ "triggers": [
+  {
+   "id": "lab_starter_trigger",
+   "pos": [
+    11,
+    7.4
+   ],
+   "radius": 3.2,
+   "once": true,
+   "requires": {
+    "storyStage": 1
+   },
+   "action": {
+    "kind": "cutscene",
+    "cutscene": "starterwahl"
+   }
+  }
+ ]
+}

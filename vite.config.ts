@@ -21,7 +21,7 @@ export default defineConfig({
         // Rolldown (Vite 8): Three.js in einen eigenen, langfristig cachebaren
         // Chunk auslagern, damit Spielcode-Updates den Vendor-Chunk nicht
         // invalidieren.
-        advancedChunks: {
+        codeSplitting: {
           groups: [{ name: 'three', test: /[\\/]node_modules[\\/]three[\\/]/ }],
         },
       },

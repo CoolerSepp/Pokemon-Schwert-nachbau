@@ -1,0 +1,692 @@
+{
+ "props": [
+  {
+   "kind": "fence",
+   "pos": [
+    7.9,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    11.7,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    15.5,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    19.299999999999997,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    23.1,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    26.900000000000002,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    30.7,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    34.5,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    38.3,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    42.1,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 9
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    69.9,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    73.7,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    77.5,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    81.3,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    85.1,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    88.9,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    92.7,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    96.5,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    100.3,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    104.1,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 9
+  },
+  {
+   "kind": "well",
+   "pos": [
+    56,
+    46
+   ],
+   "rotation": 0,
+   "scale": 1.3,
+   "variant": 0
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    46,
+    30
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    66,
+    30
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    46,
+    62
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    66,
+    62
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    48,
+    52
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    64,
+    52
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    12,
+    32
+   ],
+   "rotation": 0.4,
+   "scale": 1.2,
+   "variant": 1
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    100,
+    32
+   ],
+   "rotation": 1.4,
+   "scale": 1.15,
+   "variant": 2
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    14,
+    90
+   ],
+   "rotation": 2.1,
+   "scale": 1.25,
+   "variant": 3
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    98,
+    90
+   ],
+   "rotation": 0.7,
+   "scale": 1.2,
+   "variant": 4
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    42,
+    44
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 1
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    70,
+    44
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 2
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    40,
+    68
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    72,
+    68
+   ],
+   "rotation": 0,
+   "scale": 1.3,
+   "variant": 4
+  },
+  {
+   "kind": "sign",
+   "pos": [
+    52,
+    12
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "statue",
+   "pos": [
+    56,
+    88
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 0.9,
+   "variant": 0
+  }
+ ],
+ "buildings": [
+  {
+   "kind": "center",
+   "pos": [
+    30,
+    48
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "center_quellheim",
+   "spawnPoint": "entrance",
+   "label": "Heilstation",
+   "doorOffset": [
+    0,
+    4.6
+   ]
+  },
+  {
+   "kind": "shop",
+   "pos": [
+    82,
+    48
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "shop_quellheim",
+   "spawnPoint": "entrance",
+   "label": "Warenlager",
+   "doorOffset": [
+    0,
+    3.8
+   ]
+  },
+  {
+   "kind": "gym",
+   "pos": [
+    56,
+    74
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "gym_quellheim",
+   "spawnPoint": "entrance",
+   "label": "Arena von Quellheim",
+   "doorOffset": [
+    0,
+    6.4
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    18,
+    76
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 2,
+   "interior": "haus_quellheim_1",
+   "spawnPoint": "entrance",
+   "label": "Wohnhaus",
+   "doorOffset": [
+    0,
+    2.8
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    94,
+    76
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 9,
+   "interior": "haus_quellheim_2",
+   "spawnPoint": "entrance",
+   "label": "Wohnhaus",
+   "doorOffset": [
+    0,
+    2.8
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    20,
+    18
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 4,
+   "label": "Wohnhaus"
+  },
+  {
+   "kind": "house",
+   "pos": [
+    92,
+    18
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 6,
+   "label": "Wohnhaus"
+  }
+ ],
+ "npcs": [
+  {
+   "id": "quellheim_fuehrer",
+   "pos": [
+    56,
+    22
+   ],
+   "facing": 3.141592653589793,
+   "name": "Stadtfuehrer",
+   "dialogue": "quellheim_fuehrer",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#4a3524",
+    "shirt": "#4b6b9b",
+    "pants": "#3a3a42",
+    "accent": "#e0d8c4",
+    "hat": "cap"
+   }
+  },
+  {
+   "id": "quellheim_kind",
+   "pos": [
+    66,
+    56
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Kind",
+   "dialogue": "quellheim_kind",
+   "wander": 6,
+   "appearance": {
+    "skin": "#f0cfa8",
+    "hair": "#c24b4b",
+    "shirt": "#ffd84b",
+    "pants": "#4b6b8f",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 0.76
+   }
+  },
+  {
+   "id": "quellheim_trainerin",
+   "pos": [
+    84,
+    66
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Schuelerin Mira",
+   "trainer": "schuelerin_mira",
+   "minStoryStage": 4,
+   "appearance": {
+    "skin": "#e8c19b",
+    "hair": "#2b2b2b",
+    "shirt": "#8f4bbf",
+    "pants": "#3f3f4a",
+    "accent": "#ffffff",
+    "hat": "none",
+    "height": 0.94
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "quellheim_disk",
+   "item": "td19",
+   "pos": [
+    100,
+    88
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "route_1",
+   "trigger": {
+    "x": 48,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_quellheim"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    56,
+    10
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route1",
+   "pos": [
+    56,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route2",
+   "pos": [
+    56,
+    92
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_center",
+   "pos": [
+    30,
+    40
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_shop",
+   "pos": [
+    82,
+    40
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_gym",
+   "pos": [
+    56,
+    64
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_haus1",
+   "pos": [
+    20,
+    74
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_haus2",
+   "pos": [
+    92,
+    74
+   ],
+   "facing": -1.5707963267948966
+  }
+ ],
+ "id": "quellheim",
+ "name": "Quellheim",
+ "kind": "town",
+ "biome": "grassland",
+ "size": [
+  112,
+  98
+ ],
+ "seed": 1301,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 1.8,
+  "frequency": 0.04,
+  "octaves": 3,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      56,
+      2
+     ],
+     [
+      56,
+      94
+     ]
+    ],
+    "width": 9
+   },
+   {
+    "points": [
+     [
+      10,
+      46
+     ],
+     [
+      102,
+      46
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "music": "town",
+ "mapPos": [
+  50,
+  58
+ ],
+ "description": "Eine Stadt rund um eine uralte Quelle - Heimat der ersten Arena.",
+ "weather": [
+  "clear",
+  "cloudy",
+  "rain"
+ ],
+ "ambience": {
+  "fogNear": 65,
+  "fogFar": 340
+ }
+}

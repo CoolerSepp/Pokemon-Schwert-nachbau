@@ -1,0 +1,119 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "dorf_sammler",
+   "pos": [
+    6.8,
+    5.2
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Sammler",
+   "dialogue": "dorf_sammler",
+   "appearance": {
+    "skin": "#c99a6b",
+    "hair": "#4a3524",
+    "shirt": "#c2a04b",
+    "pants": "#4a4a52",
+    "accent": "#e0d8c4",
+    "hat": "cap"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "startdorf",
+   "trigger": {
+    "x": 4.4,
+    "z": 0,
+    "width": 2.2,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_house_a"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    5.5,
+    3
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    5.5,
+    2.2
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "house_a",
+ "name": "Wohnhaus",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  11,
+  9
+ ],
+ "seed": 1104,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "home",
+ "interiorStyle": {
+  "wallColor": "#e6d8c0",
+  "floorColor": "#a8763f",
+  "accentColor": "#5f7a4f",
+  "wallHeight": 2.9,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 5.5,
+    "z": 0,
+    "width": 2.2,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "table",
+    "pos": [
+     3.6,
+     5.4
+    ]
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     3.6,
+     6.8
+    ],
+    "rotation": 3.141592653589793
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     9.0,
+     6.6
+    ],
+    "rotation": -1.5707963267948966
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     1.5,
+     7.4
+    ]
+   }
+  ]
+ }
+}

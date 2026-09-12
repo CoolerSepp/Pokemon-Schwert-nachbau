@@ -1,0 +1,114 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "quellheim_tipp",
+   "pos": [
+    6.4,
+    6.6
+   ],
+   "facing": 3.141592653589793,
+   "name": "Alte Trainerin",
+   "dialogue": "quellheim_tipp",
+   "appearance": {
+    "skin": "#e8c19b",
+    "hair": "#cfcfcf",
+    "shirt": "#8f6b9b",
+    "pants": "#4a4a52",
+    "accent": "#ffe0a0",
+    "hat": "none",
+    "height": 0.94
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "quellheim",
+   "trigger": {
+    "x": 4.4,
+    "z": 0,
+    "width": 2.2,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_haus2"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    5.5,
+    3
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    5.5,
+    2.2
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "haus_quellheim_2",
+ "name": "Wohnhaus",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  11,
+  9
+ ],
+ "seed": 1305,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "home",
+ "interiorStyle": {
+  "wallColor": "#e0e0ec",
+  "floorColor": "#9b7346",
+  "accentColor": "#4b6b8f",
+  "wallHeight": 2.9,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 5.5,
+    "z": 0,
+    "width": 2.2,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "sofa",
+    "pos": [
+     8.2,
+     5.6
+    ],
+    "rotation": -1.5707963267948966,
+    "color": "#4b6b8f"
+   },
+   {
+    "kind": "tv",
+    "pos": [
+     2.2,
+     5.6
+    ],
+    "rotation": 1.5707963267948966
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     9.4,
+     7.6
+    ]
+   }
+  ]
+ }
+}

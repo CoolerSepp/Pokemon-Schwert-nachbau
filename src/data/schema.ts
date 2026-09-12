@@ -420,8 +420,8 @@ export const AREA_KINDS = [
 export type AreaKind = (typeof AREA_KINDS)[number];
 
 export const BIOMES = [
-  'grassland', 'forest', 'rocky', 'snow', 'desert', 'wetland',
-  'urban', 'cave', 'volcanic', 'coastal', 'meadow', 'industrial', 'ruins',
+  'grassland', 'meadow', 'forest', 'rocky', 'mountain', 'snow', 'desert',
+  'wetland', 'coastal', 'cave', 'volcanic', 'urban', 'industrial', 'ruins',
 ] as const;
 export type Biome = (typeof BIOMES)[number];
 
@@ -547,6 +547,8 @@ export interface AreaData {
   music: string;
   /** Innenraeume haben kein Wetter. */
   indoor?: boolean;
+  /** Gestaltung eines Innenraums (Waende, Boden, Moebel). */
+  interiorStyle?: InteriorStyle;
   /** Erlaubte Wetterarten in diesem Gebiet. */
   weather?: WeatherKind[];
   /** Gras-Zonen fuer Begegnungen. */
@@ -571,6 +573,26 @@ export interface AreaData {
   /** Story-Trigger im Gebiet. */
   triggers?: AreaTrigger[];
   description?: string;
+}
+
+export interface InteriorStyle {
+  wallColor: string;
+  floorColor: string;
+  accentColor: string;
+  wallHeight: number;
+  /** Deckenflaeche zeichnen (bei Innenraeumen sinnvoll). */
+  ceiling?: boolean;
+  /** Tuer-Oeffnungen in der Aussenwand. */
+  exits?: { x: number; z: number; width: number; side: 'north' | 'south' | 'east' | 'west' }[];
+  /** Moebel und Einrichtung. */
+  furniture?: {
+    kind: 'bed' | 'table' | 'chair' | 'shelf' | 'counter' | 'tv' | 'plant' | 'rug'
+      | 'stairs' | 'machine' | 'computer' | 'sofa' | 'lamp' | 'crateStack' | 'podium';
+    pos: [number, number];
+    rotation?: number;
+    scale?: number;
+    color?: string;
+  }[];
 }
 
 export interface AreaTrigger {

@@ -1,0 +1,1079 @@
+{
+ "props": [
+  {
+   "kind": "fence",
+   "pos": [
+    9.727272727272727,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    13.181818181818182,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    16.636363636363637,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    20.09090909090909,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    23.545454545454547,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    27.0,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    30.454545454545457,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    33.90909090909091,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    37.36363636363636,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    40.81818181818182,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 9
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    44.27272727272727,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 10
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    47.72727272727273,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 11
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    51.18181818181819,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    54.63636363636364,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    58.090909090909086,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 14
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    61.54545454545455,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 15
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    65.0,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 16
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    68.45454545454545,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 17
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    71.9090909090909,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 18
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    75.36363636363636,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 19
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    78.81818181818181,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 20
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    82.27272727272728,
+    6.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 21
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    7.8
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    11.399999999999999
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    15.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    18.6
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    22.2
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    25.8
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    29.400000000000002
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    33.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    36.599999999999994
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    40.199999999999996
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 9
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    43.800000000000004
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 10
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    47.4
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 11
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    51.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    54.6
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    58.199999999999996
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 14
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    61.800000000000004
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 15
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    65.4
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 16
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    69.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 17
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    72.60000000000001
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 18
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    8.0,
+    76.2
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 19
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    7.8
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    11.399999999999999
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    15.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    18.6
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    22.2
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    25.8
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    29.400000000000002
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    33.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    36.599999999999994
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    40.199999999999996
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 9
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    43.800000000000004
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 10
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    47.4
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 11
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    51.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    54.6
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    58.199999999999996
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 14
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    61.800000000000004
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 15
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    65.4
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 16
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    69.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 17
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    72.60000000000001
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 18
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.0,
+    76.2
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 19
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    14,
+    16
+   ],
+   "rotation": 0.3,
+   "scale": 1.2,
+   "variant": 1
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    78,
+    14
+   ],
+   "rotation": 1.1,
+   "scale": 1.1,
+   "variant": 2
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    16,
+    66
+   ],
+   "rotation": 2.2,
+   "scale": 1.3,
+   "variant": 3
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    80,
+    68
+   ],
+   "rotation": 0.8,
+   "scale": 1.15,
+   "variant": 4
+  },
+  {
+   "kind": "well",
+   "pos": [
+    46,
+    34
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "sign",
+   "pos": [
+    42,
+    74
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    38,
+    40
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    54,
+    40
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    30,
+    32
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 1
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    62,
+    32
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 2
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    34,
+    52
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    58,
+    52
+   ],
+   "rotation": 0,
+   "scale": 1.3,
+   "variant": 4
+  },
+  {
+   "kind": "mailbox",
+   "pos": [
+    36,
+    22
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "mailbox",
+   "pos": [
+    56,
+    22
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    40,
+    46
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    52,
+    46
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 1
+  }
+ ],
+ "buildings": [
+  {
+   "kind": "house",
+   "pos": [
+    32,
+    24
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "home_ground",
+   "spawnPoint": "entrance",
+   "label": "Dein Zuhause",
+   "doorOffset": [
+    0,
+    3.4
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    60,
+    24
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 3,
+   "interior": "rival_house",
+   "spawnPoint": "entrance",
+   "label": "Haus der Nachbarn",
+   "doorOffset": [
+    0,
+    3.4
+   ]
+  },
+  {
+   "kind": "lab",
+   "pos": [
+    46,
+    64
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "lab_interior",
+   "spawnPoint": "entrance",
+   "label": "Forschungsstation",
+   "doorOffset": [
+    0,
+    5.0
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    20,
+    46
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 5,
+   "interior": "house_a",
+   "spawnPoint": "entrance",
+   "label": "Wohnhaus",
+   "doorOffset": [
+    0,
+    2.8
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    72,
+    46
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 7,
+   "interior": "house_b",
+   "spawnPoint": "entrance",
+   "label": "Wohnhaus",
+   "doorOffset": [
+    0,
+    2.8
+   ]
+  }
+ ],
+ "npcs": [
+  {
+   "id": "dorf_alt",
+   "pos": [
+    40,
+    38
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Alter Nachbar",
+   "dialogue": "startdorf_alt",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#cfcfcf",
+    "shirt": "#6b7a8f",
+    "pants": "#4a4a52",
+    "accent": "#e0d8c4",
+    "hat": "none",
+    "height": 0.95
+   }
+  },
+  {
+   "id": "dorf_kind",
+   "pos": [
+    56,
+    44
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Kind",
+   "dialogue": "startdorf_kind",
+   "wander": 4,
+   "appearance": {
+    "skin": "#f0cfa8",
+    "hair": "#8a5a2b",
+    "shirt": "#4bbf7a",
+    "pants": "#3f5f8f",
+    "accent": "#ffe08a",
+    "hat": "cap",
+    "height": 0.78
+   }
+  },
+  {
+   "id": "dorf_wache",
+   "pos": [
+    46,
+    72
+   ],
+   "facing": 3.141592653589793,
+   "name": "Wegweiser",
+   "dialogue": "startdorf_wache",
+   "maxStoryStage": 2,
+   "appearance": {
+    "skin": "#c99a6b",
+    "hair": "#2b2b2b",
+    "shirt": "#8f6b3f",
+    "pants": "#3a3a42",
+    "accent": "#c4b08a",
+    "hat": "beanie"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "route_1",
+   "trigger": {
+    "x": 38,
+    "z": 81,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_startdorf"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    46,
+    20
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_home",
+   "pos": [
+    38,
+    22
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_rival",
+   "pos": [
+    54,
+    22
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_lab",
+   "pos": [
+    46,
+    56
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_route1",
+   "pos": [
+    46,
+    76
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_house_a",
+   "pos": [
+    22,
+    44
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_house_b",
+   "pos": [
+    70,
+    44
+   ],
+   "facing": -1.5707963267948966
+  }
+ ],
+ "id": "startdorf",
+ "name": "Startdorf",
+ "kind": "town",
+ "biome": "meadow",
+ "size": [
+  92,
+  84
+ ],
+ "seed": 1001,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 1.4,
+  "frequency": 0.045,
+  "octaves": 3,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      46,
+      2
+     ],
+     [
+      46,
+      80
+     ]
+    ],
+    "width": 8
+   },
+   {
+    "points": [
+     [
+      24,
+      34
+     ],
+     [
+      68,
+      34
+     ]
+    ],
+    "width": 5
+   }
+  ]
+ },
+ "music": "town",
+ "mapPos": [
+  50,
+  88
+ ],
+ "description": "Ein ruhiges Dorf am suedlichen Rand der Region Aetheria.",
+ "weather": [
+  "clear",
+  "cloudy",
+  "rain"
+ ],
+ "triggers": [
+  {
+   "id": "startdorf_prof_ruf",
+   "pos": [
+    46,
+    50
+   ],
+   "radius": 6,
+   "once": true,
+   "requires": {
+    "storyStage": 1
+   },
+   "action": {
+    "kind": "cutscene",
+    "cutscene": "prolog_labor"
+   }
+  }
+ ],
+ "ambience": {
+  "fogNear": 60,
+  "fogFar": 320
+ }
+}

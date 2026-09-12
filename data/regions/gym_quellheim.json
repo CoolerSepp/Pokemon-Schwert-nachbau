@@ -1,0 +1,194 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "gym1_minion_1",
+   "pos": [
+    9,
+    14
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Arena-Trainer Ben",
+   "trainer": "arena1_ben",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#4a3524",
+    "shirt": "#7fc44b",
+    "pants": "#3f5f33",
+    "accent": "#ffffff",
+    "hat": "cap"
+   }
+  },
+  {
+   "id": "gym1_minion_2",
+   "pos": [
+    21,
+    22
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Arena-Trainerin Lin",
+   "trainer": "arena1_lin",
+   "appearance": {
+    "skin": "#f0cfa8",
+    "hair": "#2b2b2b",
+    "shirt": "#7fc44b",
+    "pants": "#3f5f33",
+    "accent": "#ffffff",
+    "hat": "none",
+    "height": 0.93
+   }
+  },
+  {
+   "id": "gym1_leader",
+   "pos": [
+    15,
+    34
+   ],
+   "facing": 3.141592653589793,
+   "name": "Arenaleiterin Thalia",
+   "trainer": "arenaleiterin_thalia",
+   "role": "gymLeader",
+   "appearance": {
+    "skin": "#e0b894",
+    "hair": "#4f8a42",
+    "shirt": "#d8e8cf",
+    "pants": "#5f7a4f",
+    "accent": "#7fc44b",
+    "hat": "band",
+    "height": 1.02
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "quellheim",
+   "trigger": {
+    "x": 13,
+    "z": 0,
+    "width": 4.0,
+    "depth": 2.0
+   },
+   "spawnPoint": "from_gym"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    15,
+    4
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    15,
+    3.2
+   ],
+   "facing": 0
+  },
+  {
+   "id": "leader",
+   "pos": [
+    15,
+    30
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "gym_quellheim",
+ "name": "Arena von Quellheim",
+ "kind": "stadium",
+ "biome": "urban",
+ "size": [
+  30,
+  44
+ ],
+ "seed": 1306,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "gym",
+ "interiorStyle": {
+  "wallColor": "#d8e8cf",
+  "floorColor": "#6b9b4f",
+  "accentColor": "#7fc44b",
+  "wallHeight": 7.0,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 15,
+    "z": 0,
+    "width": 4.0,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "podium",
+    "pos": [
+     15,
+     36
+    ],
+    "color": "#7fc44b"
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     3.0,
+     8.0
+    ],
+    "scale": 1.4
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     27.0,
+     8.0
+    ],
+    "scale": 1.4
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     3.0,
+     30.0
+    ],
+    "scale": 1.4
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     27.0,
+     30.0
+    ],
+    "scale": 1.4
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     6.0,
+     20.0
+    ]
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     24.0,
+     20.0
+    ]
+   }
+  ]
+ },
+ "ambience": {
+  "fogNear": 40,
+  "fogFar": 120
+ }
+}

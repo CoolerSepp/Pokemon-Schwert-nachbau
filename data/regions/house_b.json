@@ -1,0 +1,122 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "dorf_heilerin",
+   "pos": [
+    6.6,
+    7.0
+   ],
+   "facing": 3.141592653589793,
+   "name": "Heilkundige",
+   "dialogue": "dorf_heilerin",
+   "role": "heal",
+   "appearance": {
+    "skin": "#e8c19b",
+    "hair": "#2b2b2b",
+    "shirt": "#4b8fbf",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "startdorf",
+   "trigger": {
+    "x": 4.4,
+    "z": 0,
+    "width": 2.2,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_house_b"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    5.5,
+    3
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    5.5,
+    2.2
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "house_b",
+ "name": "Wohnhaus",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  11,
+  9
+ ],
+ "seed": 1105,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "home",
+ "interiorStyle": {
+  "wallColor": "#dcd0e0",
+  "floorColor": "#9b7346",
+  "accentColor": "#6b4f8f",
+  "wallHeight": 2.9,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 5.5,
+    "z": 0,
+    "width": 2.2,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "sofa",
+    "pos": [
+     8.4,
+     5.6
+    ],
+    "rotation": -1.5707963267948966,
+    "color": "#6b4f8f"
+   },
+   {
+    "kind": "tv",
+    "pos": [
+     2.2,
+     5.6
+    ],
+    "rotation": 1.5707963267948966
+   },
+   {
+    "kind": "rug",
+    "pos": [
+     5.4,
+     5.6
+    ],
+    "color": "#8f7a4f"
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     9.4,
+     7.6
+    ]
+   }
+  ]
+ }
+}

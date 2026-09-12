@@ -1,0 +1,112 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "quellheim_forscher",
+   "pos": [
+    6.6,
+    5.4
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Naturkundler",
+   "dialogue": "quellheim_forscher",
+   "appearance": {
+    "skin": "#c99a6b",
+    "hair": "#cfcfcf",
+    "shirt": "#5f8f7a",
+    "pants": "#4a4a52",
+    "accent": "#e0d8c4",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "quellheim",
+   "trigger": {
+    "x": 4.4,
+    "z": 0,
+    "width": 2.2,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_haus1"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    5.5,
+    3
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    5.5,
+    2.2
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "haus_quellheim_1",
+ "name": "Wohnhaus",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  11,
+  9
+ ],
+ "seed": 1304,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "home",
+ "interiorStyle": {
+  "wallColor": "#e6dcc8",
+  "floorColor": "#a8763f",
+  "accentColor": "#7a5f3f",
+  "wallHeight": 2.9,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 5.5,
+    "z": 0,
+    "width": 2.2,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "table",
+    "pos": [
+     3.6,
+     5.4
+    ]
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     3.6,
+     6.8
+    ],
+    "rotation": 3.141592653589793
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     9.0,
+     6.6
+    ],
+    "rotation": -1.5707963267948966
+   }
+  ]
+ }
+}

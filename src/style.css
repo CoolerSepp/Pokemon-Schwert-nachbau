@@ -1,0 +1,127 @@
+/* Globales Layout und UI-Design.
+   Bewusst ohne CSS-Framework: die Oberflaeche besteht aus wenigen, klar
+   definierten Bausteinen, die direkt zum Spielstil passen. */
+
+:root {
+  --ui-bg: rgba(16, 20, 28, 0.92);
+  --ui-bg-soft: rgba(26, 32, 44, 0.88);
+  --ui-border: rgba(255, 255, 255, 0.16);
+  --ui-text: #f2f5f8;
+  --ui-text-dim: #b6c0cc;
+  --ui-accent: #7fc44b;
+  --ui-accent-2: #4fa8e0;
+  --ui-danger: #e05a5a;
+  --ui-warn: #e0b24f;
+  --ui-radius: 14px;
+  --ui-shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
+  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #0b0e14;
+  color: var(--ui-text);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  touch-action: none;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+#ui-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#ui-root > * { pointer-events: auto; }
+
+/* ------------------------------------------------------------ Ladebildschirm */
+#boot-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 38%, #1d2a3a 0%, #0b0e14 72%);
+  transition: opacity 0.6s ease;
+}
+
+#boot-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.boot-inner { text-align: center; width: min(460px, 82vw); }
+
+.boot-title {
+  margin: 0;
+  font-size: clamp(38px, 9vw, 74px);
+  letter-spacing: 0.22em;
+  font-weight: 800;
+  background: linear-gradient(180deg, #eaf7ff 0%, #7fc44b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.boot-subtitle {
+  margin: 4px 0 28px;
+  color: var(--ui-text-dim);
+  letter-spacing: 0.34em;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.boot-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.boot-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--ui-accent-2), var(--ui-accent));
+  transition: width 0.25s ease;
+}
+
+.boot-status {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--ui-text-dim);
+  min-height: 18px;
+}
+
+.boot-error {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--ui-danger);
+  border-radius: 10px;
+  background: rgba(224, 90, 90, 0.12);
+  color: #ffd7d7;
+  font-size: 13px;
+  text-align: left;
+  white-space: pre-wrap;
+  max-height: 40vh;
+  overflow: auto;
+}

@@ -1,0 +1,197 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "mutter",
+   "pos": [
+    6.6,
+    6.8
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Mutter",
+   "dialogue": "mutter",
+   "role": "guide",
+   "appearance": {
+    "skin": "#e8c19b",
+    "hair": "#8a5a2b",
+    "shirt": "#c4738f",
+    "pants": "#5f4a6b",
+    "accent": "#f0e6d2",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "startdorf",
+   "trigger": {
+    "x": 6.6,
+    "z": 0,
+    "width": 2.8,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_home"
+  },
+  {
+   "to": "home_bedroom",
+   "trigger": {
+    "x": 12.2,
+    "z": 11.0,
+    "width": 2.4,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_ground",
+   "label": "Treppe"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    8,
+    3
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    8,
+    2.2
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_bedroom",
+   "pos": [
+    13.4,
+    9.6
+   ],
+   "facing": 3.141592653589793
+  }
+ ],
+ "id": "home_ground",
+ "name": "Zuhause",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  16,
+  13
+ ],
+ "seed": 1101,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "home",
+ "mapPos": [
+  50,
+  88
+ ],
+ "interiorStyle": {
+  "wallColor": "#e8dcc4",
+  "floorColor": "#a8763f",
+  "accentColor": "#6b4f33",
+  "wallHeight": 3.2,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 8,
+    "z": 0,
+    "width": 2.4,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "table",
+    "pos": [
+     5,
+     7
+    ],
+    "rotation": 0
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     5,
+     8.6
+    ],
+    "rotation": 3.141592653589793
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     5,
+     5.4
+    ],
+    "rotation": 0
+   },
+   {
+    "kind": "sofa",
+    "pos": [
+     12.4,
+     8.5
+    ],
+    "rotation": -1.5707963267948966,
+    "color": "#4b6b8f"
+   },
+   {
+    "kind": "tv",
+    "pos": [
+     12.6,
+     4.5
+    ],
+    "rotation": -1.5707963267948966
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     2.2,
+     10.5
+    ],
+    "rotation": 1.5707963267948966
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     14,
+     11.4
+    ]
+   },
+   {
+    "kind": "rug",
+    "pos": [
+     8,
+     4
+    ],
+    "color": "#b5533f"
+   },
+   {
+    "kind": "stairs",
+    "pos": [
+     13.4,
+     11.2
+    ],
+    "rotation": 3.141592653589793
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     1.8,
+     2.2
+    ]
+   }
+  ]
+ },
+ "ambience": {
+  "fogNear": 24,
+  "fogFar": 60,
+  "lightIntensity": 1.0
+ }
+}
