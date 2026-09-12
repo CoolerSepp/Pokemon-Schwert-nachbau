@@ -1,0 +1,105 @@
+{
+ "id": "champion_aurel",
+ "name": "Champion Aurel",
+ "trainerClass": "Champion",
+ "ai": "boss",
+ "team": [
+  {
+   "species": "sturmaar",
+   "level": 60
+  },
+  {
+   "species": "mondpanther",
+   "level": 61
+  },
+  {
+   "species": "magmaherr",
+   "level": 61
+  },
+  {
+   "species": "gletscherfang",
+   "level": 62
+  },
+  {
+   "species": "zephyros",
+   "level": 63
+  },
+  {
+   "species": "titanklaue",
+   "level": 65,
+   "moves": [
+    "drachenklaue",
+    "erdbeben",
+    "drachentanz",
+    "gebirgsschlag"
+   ],
+   "item": "drachenzahn",
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 600,
+ "dialogue": {
+  "intro": [
+   "Da bist du also.",
+   "Ich habe deinen Weg verfolgt, {spieler}. Acht Orden, vier Spitzentrainer.",
+   "Weisst du, was mich interessiert? Nicht ob du gewinnst.",
+   "Sondern ob du weisst, warum du hier stehst.",
+   "Zeig es mir."
+  ],
+  "defeat": [
+   "...",
+   "Du weisst es. Man sieht es an jedem Zug.",
+   "Aetheria hat eine neue Champion. Und ich - endlich eine Pause."
+  ],
+  "victory": [
+   "Noch nicht. Aber du warst naeher dran als jeder vor dir.",
+   "Heil dein Team. Ich bin hier."
+  ],
+  "postBattle": [
+   "Die Liga steht dir jederzeit offen. Komm wieder, wenn du staerker bist."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#f0e0b0",
+  "shirt": "#ffd76b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "crown",
+  "height": 1.1
+ },
+ "items": [
+  "top_trank",
+  "top_trank",
+  "top_beleber",
+  "top_beleber"
+ ],
+ "canGigantic": true,
+ "rematchTeam": [
+  {
+   "species": "sturmaar",
+   "level": 72
+  },
+  {
+   "species": "mondpanther",
+   "level": 73
+  },
+  {
+   "species": "magmaherr",
+   "level": 73
+  },
+  {
+   "species": "gletscherfang",
+   "level": 74
+  },
+  {
+   "species": "zephyros",
+   "level": 75
+  },
+  {
+   "species": "aetherion",
+   "level": 78,
+   "gigantic": true
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "id": "nebelmoor_hueterin",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Der Nebel liegt hier seit jeher. Er kommt nicht vom Wetter.",
+    "Halt dich an den Weg. Wer abkommt, findet oft nicht zurueck."
+   ],
+   "speaker": "Moorhueterin"
+  }
+ ]
+}

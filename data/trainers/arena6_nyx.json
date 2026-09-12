@@ -1,0 +1,43 @@
+{
+ "id": "arena6_nyx",
+ "name": "Arena-Trainerin Nyx",
+ "trainerClass": "Arena-Trainer",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "nachtschleier",
+   "level": 40
+  },
+  {
+   "species": "moorlicht",
+   "level": 40
+  }
+ ],
+ "rewardBase": 160,
+ "dialogue": {
+  "intro": [
+   "Die Leitung dieser Arena empfaengt nicht jeden.",
+   "Zeig erst mir, was du kannst!"
+  ],
+  "defeat": [
+   "Du kommst weiter. Aber die Leitung ist eine andere Klasse."
+  ],
+  "victory": [
+   "Noch nicht so weit. Trainiere und komm wieder."
+  ],
+  "postBattle": [
+   "Heil dein Team, bevor du weitergehst. Ernsthaft."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#9b7fc4",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "cap"
+ },
+ "items": [
+  "trank"
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "id": "hauptquest_liga",
+ "name": "Das Ligaturnier",
+ "kind": "main",
+ "description": "Acht Orden. Jetzt zaehlt nur noch das Turnier.",
+ "autoStartStage": 12,
+ "area": "ligastadion",
+ "steps": [
+  {
+   "id": "weg",
+   "description": "Folge dem Ligaweg nach Sueden.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "route_9"
+   }
+  },
+  {
+   "id": "stadion",
+   "description": "Erreiche das Ligastadion.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "ligastadion"
+   }
+  },
+  {
+   "id": "aldo",
+   "description": "Besiege Spitzentrainer Aldo.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "liga_aldo"
+   }
+  },
+  {
+   "id": "yuki",
+   "description": "Besiege Spitzentrainerin Yuki.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "liga_yuki"
+   }
+  },
+  {
+   "id": "dorn",
+   "description": "Besiege Spitzentrainer Dorn.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "liga_dorn"
+   }
+  },
+  {
+   "id": "sela",
+   "description": "Besiege Spitzentrainerin Sela.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "liga_sela"
+   }
+  },
+  {
+   "id": "champion",
+   "description": "Besiege Champion Aurel.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "champion_aurel"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 20000,
+  "items": [
+   {
+    "item": "meisterkugel",
+    "quantity": 1
+   }
+  ]
+ }
+}

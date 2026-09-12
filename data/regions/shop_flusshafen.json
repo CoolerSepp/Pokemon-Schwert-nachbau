@@ -1,0 +1,130 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "haendler_flusshafen",
+   "pos": [
+    8.5,
+    8.0
+   ],
+   "facing": 3.141592653589793,
+   "name": "Haendler",
+   "dialogue": "shop_haendler",
+   "role": "shop",
+   "shop": "shop_standard",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#4a3524",
+    "shirt": "#3f7fbf",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "flusshafen",
+   "trigger": {
+    "x": 7.1,
+    "z": 0,
+    "width": 2.8,
+    "depth": 1.8
+   },
+   "spawnPoint": "from_shop"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    8.5,
+    3
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    8.5,
+    2.4
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "shop_flusshafen",
+ "name": "Warenlager",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  17,
+  13
+ ],
+ "seed": 1503,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "shop",
+ "interiorStyle": {
+  "wallColor": "#f0e8d8",
+  "floorColor": "#c9b08a",
+  "accentColor": "#3f7fbf",
+  "wallHeight": 3.4,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 8.5,
+    "z": 0,
+    "width": 2.8,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "counter",
+    "pos": [
+     8.5,
+     9.8
+    ],
+    "rotation": 0,
+    "color": "#3f7fbf"
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     1.8,
+     6.5
+    ],
+    "rotation": 1.5707963267948966
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     15.2,
+     6.5
+    ],
+    "rotation": -1.5707963267948966
+   },
+   {
+    "kind": "crateStack",
+    "pos": [
+     3.0,
+     11.4
+    ]
+   },
+   {
+    "kind": "crateStack",
+    "pos": [
+     14.0,
+     11.4
+    ]
+   }
+  ]
+ }
+}

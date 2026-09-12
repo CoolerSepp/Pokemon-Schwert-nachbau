@@ -1,0 +1,416 @@
+{
+ "props": [
+  {
+   "kind": "lamp",
+   "pos": [
+    50.400000000000006,
+    32.4
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    75.6,
+    32.4
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    50.400000000000006,
+    69.12
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    75.6,
+    69.12
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    55.44,
+    56.160000000000004
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    70.56,
+    56.160000000000004
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "sign",
+   "pos": [
+    57.96,
+    12.959999999999999
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "well",
+   "pos": [
+    63.0,
+    49.68
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 0
+  },
+  {
+   "kind": "pipe",
+   "pos": [
+    30,
+    30
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 1
+  },
+  {
+   "kind": "pipe",
+   "pos": [
+    96,
+    34
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 2
+  },
+  {
+   "kind": "container",
+   "pos": [
+    34,
+    74
+   ],
+   "rotation": 0.3,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "container",
+   "pos": [
+    92,
+    78
+   ],
+   "rotation": 1.2,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "barrel",
+   "pos": [
+    44,
+    88
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "crate",
+   "pos": [
+    82,
+    90
+   ],
+   "rotation": 0.5,
+   "scale": 1.0,
+   "variant": 6
+  }
+ ],
+ "buildings": [
+  {
+   "kind": "center",
+   "pos": [
+    32.76,
+    54.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "center_hammerstadt",
+   "spawnPoint": "entrance",
+   "label": "Heilstation",
+   "doorOffset": [
+    0,
+    4.6
+   ]
+  },
+  {
+   "kind": "shop",
+   "pos": [
+    93.24,
+    54.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "shop_hammerstadt",
+   "spawnPoint": "entrance",
+   "label": "Warenlager",
+   "doorOffset": [
+    0,
+    3.8
+   ]
+  },
+  {
+   "kind": "gym",
+   "pos": [
+    63.0,
+    82.08
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "gym_hammerstadt",
+   "spawnPoint": "entrance",
+   "label": "Arena von Hammerstadt",
+   "doorOffset": [
+    0,
+    6.4
+   ]
+  },
+  {
+   "kind": "warehouse",
+   "pos": [
+    24,
+    86
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1,
+   "label": "Werkhalle"
+  },
+  {
+   "kind": "warehouse",
+   "pos": [
+    104,
+    86
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 0.95,
+   "variant": 4,
+   "label": "Werkhalle"
+  },
+  {
+   "kind": "tower",
+   "pos": [
+    104,
+    24
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 0.9,
+   "variant": 2,
+   "label": "Schornstein"
+  }
+ ],
+ "npcs": [
+  {
+   "id": "hs_guide",
+   "pos": [
+    63,
+    24
+   ],
+   "facing": 3.141592653589793,
+   "name": "Werkmeister",
+   "dialogue": "hammerstadt_guide"
+  },
+  {
+   "id": "hs_t1",
+   "pos": [
+    96,
+    60
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Mechaniker Ruben",
+   "trainer": "mechaniker_ruben",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#8f8f8a",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "hs_disk",
+   "item": "td07",
+   "pos": [
+    28,
+    26
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "hs_muskel",
+   "item": "muskelband",
+   "pos": [
+    100,
+    96
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "route_4",
+   "trigger": {
+    "x": 55,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_hammerstadt"
+  },
+  {
+   "to": "route_5",
+   "trigger": {
+    "x": 55,
+    "z": 105,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_hammerstadt"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    63,
+    10
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route4",
+   "pos": [
+    63,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route5",
+   "pos": [
+    63,
+    102
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_center",
+   "pos": [
+    32.76,
+    46.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_shop",
+   "pos": [
+    93.24,
+    46.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_gym",
+   "pos": [
+    63.0,
+    72.08
+   ],
+   "facing": 3.141592653589793
+  }
+ ],
+ "id": "hammerstadt",
+ "name": "Hammerstadt",
+ "kind": "city",
+ "biome": "industrial",
+ "size": [
+  126,
+  108
+ ],
+ "seed": 2001,
+ "mapPos": [
+  56,
+  42
+ ],
+ "description": "Eine Stadt aus Stahl und Dampf - hier wird die halbe Region beliefert.",
+ "music": "industrial",
+ "weather": [
+  "clear",
+  "cloudy",
+  "rain",
+  "fog"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 1.8,
+  "frequency": 0.04,
+  "octaves": 3,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      63.0,
+      2
+     ],
+     [
+      63.0,
+      104
+     ]
+    ],
+    "width": 9
+   },
+   {
+    "points": [
+     [
+      8,
+      54.0
+     ],
+     [
+      118,
+      54.0
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "triggers": [],
+ "ambience": {
+  "fogNear": 65,
+  "fogFar": 340
+ }
+}

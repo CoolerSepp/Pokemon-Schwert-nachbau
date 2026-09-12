@@ -1,0 +1,77 @@
+{
+ "id": "finale_aetherion",
+ "lockPlayer": true,
+ "music": "finalBattle",
+ "steps": [
+  {
+   "kind": "fade",
+   "to": "black",
+   "seconds": 0.6
+  },
+  {
+   "kind": "wait",
+   "seconds": 0.4
+  },
+  {
+   "kind": "fade",
+   "to": "clear",
+   "seconds": 0.8
+  },
+  {
+   "kind": "cameraShake",
+   "intensity": 0.8,
+   "seconds": 1.2
+  },
+  {
+   "kind": "message",
+   "lines": [
+    "Der Boden der Kammer beginnt zu leuchten.",
+    "Etwas bewegt sich in der Tiefe - etwas, das lange geschlafen hat."
+   ]
+  },
+  {
+   "kind": "effect",
+   "effect": "gigantic",
+   "seconds": 1.2
+  },
+  {
+   "kind": "cameraShake",
+   "intensity": 1.4,
+   "seconds": 1.6
+  },
+  {
+   "kind": "message",
+   "speaker": "???",
+   "lines": [
+    "Wer weckt mich.",
+    "Aetheria ... du traegst acht Orden. Dann bist du wuerdig, es zu versuchen."
+   ]
+  },
+  {
+   "kind": "wildBattle",
+   "species": "aetherion",
+   "level": 70,
+   "legendary": true
+  },
+  {
+   "kind": "action",
+   "actions": [
+    {
+     "kind": "setFlag",
+     "flag": "aetherionBesiegt"
+    },
+    {
+     "kind": "storyStage",
+     "stage": 14
+    }
+   ]
+  },
+  {
+   "kind": "message",
+   "lines": [
+    "Die Kammer wird still.",
+    "Was auch immer hier begonnen hat - es ist noch nicht zu Ende."
+   ]
+  }
+ ]
+}

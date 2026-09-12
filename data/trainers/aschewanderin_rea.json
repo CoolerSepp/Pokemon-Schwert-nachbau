@@ -1,0 +1,40 @@
+{
+ "id": "aschewanderin_rea",
+ "name": "Aschewanderin Rea",
+ "trainerClass": "Aschewanderin",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "glutfalter",
+   "level": 33
+  },
+  {
+   "species": "magmaherr",
+   "level": 35
+  }
+ ],
+ "rewardBase": 125,
+ "dialogue": {
+  "intro": [
+   "Ein Kampf unterwegs haelt wach!"
+  ],
+  "defeat": [
+   "Gut gemacht. Weiter so."
+  ],
+  "victory": [
+   "Noch nicht genug Uebung."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#c24b4b",
+  "shirt": "#8f5f3f",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 0.97
+ }
+}

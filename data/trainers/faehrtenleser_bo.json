@@ -1,0 +1,40 @@
+{
+ "id": "faehrtenleser_bo",
+ "name": "Faehrtenleser Bo",
+ "trainerClass": "Faehrtenleser",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "windfuchs",
+   "level": 28
+  },
+  {
+   "species": "nachtwolf",
+   "level": 30
+  }
+ ],
+ "rewardBase": 110,
+ "dialogue": {
+  "intro": [
+   "Ein Kampf unterwegs haelt wach!"
+  ],
+  "defeat": [
+   "Gut gemacht. Weiter so."
+  ],
+  "victory": [
+   "Noch nicht genug Uebung."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#6b8f4b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "cap",
+  "height": 1.0
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "id": "arenaleiterin_ember",
+ "name": "Arenaleiterin Ember",
+ "trainerClass": "Arenaleiterin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "lavagnom",
+   "level": 37
+  },
+  {
+   "species": "glutfalter",
+   "level": 38
+  },
+  {
+   "species": "magmaherr",
+   "level": 40,
+   "moves": [
+    "infernosalve",
+    "gesteinslawine",
+    "hitzeschild",
+    "feuerklaue"
+   ],
+   "item": "holzkohle",
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 200,
+ "dialogue": {
+  "intro": [
+   "Der Krater raucht seit dreihundert Jahren. Ich huete ihn seit zwanzig.",
+   "Der Glutorden verlangt Ausdauer - meine Kreaturen geben nicht auf.",
+   "Du hoffentlich auch nicht."
+  ],
+  "defeat": [
+   "Ausdauernd. Wirklich.",
+   "Der Glutorden gehoert dir."
+  ],
+  "victory": [
+   "Ausgebrannt. Heil dein Team und komm wieder."
+  ],
+  "postBattle": [
+   "Mit dem Glutorden gehorchen dir Kreaturen bis Level 52."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#c24b4b",
+  "shirt": "#c95b2f",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "band",
+  "height": 1.04
+ },
+ "items": [
+  "hypertrank",
+  "top_trank"
+ ],
+ "canGigantic": true,
+ "rematchTeam": [
+  {
+   "species": "aschewolf",
+   "level": 52
+  },
+  {
+   "species": "vulkanschlange",
+   "level": 53
+  },
+  {
+   "species": "glutfalter",
+   "level": 53
+  },
+  {
+   "species": "infernohorn",
+   "level": 55,
+   "gigantic": true
+  }
+ ]
+}

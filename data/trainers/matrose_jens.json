@@ -1,0 +1,40 @@
+{
+ "id": "matrose_jens",
+ "name": "Matrose Jens",
+ "trainerClass": "Matrose",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "schlammlurch",
+   "level": 15
+  },
+  {
+   "species": "wellenotter",
+   "level": 16
+  }
+ ],
+ "rewardBase": 70,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#3f7fbf",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "beanie",
+  "height": 1.0
+ }
+}

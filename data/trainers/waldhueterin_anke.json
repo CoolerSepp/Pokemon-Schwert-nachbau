@@ -1,0 +1,40 @@
+{
+ "id": "waldhueterin_anke",
+ "name": "Waldhueterin Anke",
+ "trainerClass": "Waldhueterin",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "dornenranke",
+   "level": 20
+  },
+  {
+   "species": "waldschrat",
+   "level": 21
+  }
+ ],
+ "rewardBase": 85,
+ "dialogue": {
+  "intro": [
+   "Hier kommt niemand einfach so durch!"
+  ],
+  "defeat": [
+   "Du darfst passieren."
+  ],
+  "victory": [
+   "Kehr um und trainiere."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#2b2b2b",
+  "shirt": "#4f8a42",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "band",
+  "height": 0.98
+ }
+}

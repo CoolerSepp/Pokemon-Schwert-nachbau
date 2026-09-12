@@ -1,0 +1,43 @@
+{
+ "id": "hauptquest_flutorden",
+ "name": "Der Flutorden",
+ "kind": "main",
+ "description": "Reise nach Flusshafen und gewinne den Flutorden.",
+ "autoStartStage": 5,
+ "area": "flusshafen",
+ "steps": [
+  {
+   "id": "route2",
+   "description": "Folge Route 2 nach Norden.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "route_2"
+   }
+  },
+  {
+   "id": "stadt",
+   "description": "Erreiche Flusshafen.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "flusshafen"
+   }
+  },
+  {
+   "id": "arena",
+   "description": "Besiege die Arenaleitung in Flusshafen.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "arenaleiter_marek"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 2700,
+  "items": [
+   {
+    "item": "hyperkugel",
+    "quantity": 5
+   }
+  ]
+ }
+}

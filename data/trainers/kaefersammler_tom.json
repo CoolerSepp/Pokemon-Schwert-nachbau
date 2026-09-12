@@ -1,0 +1,40 @@
+{
+ "id": "kaefersammler_tom",
+ "name": "Kaefersammler Tom",
+ "trainerClass": "Kaefersammler",
+ "ai": "basic",
+ "team": [
+  {
+   "species": "kribbelkaefer",
+   "level": 12
+  },
+  {
+   "species": "flatterling",
+   "level": 13
+  }
+ ],
+ "rewardBase": 55,
+ "dialogue": {
+  "intro": [
+   "Meine Kaefer sind zaeher, als du denkst!"
+  ],
+  "defeat": [
+   "Beeindruckend. Ich trainiere weiter."
+  ],
+  "victory": [
+   "Kaefer gewinnen!"
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#9bc44b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "cap",
+  "height": 1.0
+ }
+}

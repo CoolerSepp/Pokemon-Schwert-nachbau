@@ -1,0 +1,31 @@
+{
+ "id": "gym_flusshafen",
+ "name": "Arena von Flusshafen",
+ "city": "flusshafen",
+ "type": "water",
+ "badgeIndex": 1,
+ "badgeName": "Flutorden",
+ "leader": "arenaleiter_marek",
+ "minions": [
+  "arena2_tim",
+  "arena2_saskia"
+ ],
+ "puzzle": "platforms",
+ "introText": [
+  "Arena von Flusshafen - hier wird es ernst."
+ ],
+ "victoryText": [
+  "Der Weg nach draussen ist frei."
+ ],
+ "rewardItems": [
+  "td03",
+  "hypertrank"
+ ],
+ "obedienceLevel": 28,
+ "area": "gym_flusshafen",
+ "colors": {
+  "primary": "#3f7fbf",
+  "secondary": "#5fb0e0",
+  "accent": "#cfe4f2"
+ }
+}

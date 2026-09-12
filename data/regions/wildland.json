@@ -1,0 +1,967 @@
+{
+ "props": [
+  {
+   "kind": "tree",
+   "pos": [
+    60,
+    30
+   ],
+   "rotation": 0.4,
+   "scale": 1.4,
+   "variant": 1
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    214,
+    40
+   ],
+   "rotation": 1.2,
+   "scale": 1.3,
+   "variant": 2
+  },
+  {
+   "kind": "pine",
+   "pos": [
+    40,
+    160
+   ],
+   "rotation": 2.0,
+   "scale": 1.4,
+   "variant": 3
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    220,
+    170
+   ],
+   "rotation": 0.6,
+   "scale": 1.35,
+   "variant": 4
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    64
+   ],
+   "rotation": 0.8,
+   "scale": 1.5,
+   "variant": 5
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    160,
+    176
+   ],
+   "rotation": 1.5,
+   "scale": 1.4,
+   "variant": 6
+  },
+  {
+   "kind": "well",
+   "pos": [
+    130,
+    118
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 7
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    122,
+    112
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    138,
+    112
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 9
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    130,
+    126
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 10
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    190,
+    74
+   ],
+   "rotation": 0.3,
+   "scale": 1.3,
+   "variant": 11
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    66,
+    190
+   ],
+   "rotation": 1.1,
+   "scale": 1.2,
+   "variant": 12
+  },
+  {
+   "kind": "reed",
+   "pos": [
+    78,
+    96
+   ],
+   "rotation": 0,
+   "scale": 1.3,
+   "variant": 13
+  },
+  {
+   "kind": "reed",
+   "pos": [
+    184,
+    108
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 14
+  },
+  {
+   "kind": "lilypad",
+   "pos": [
+    82,
+    100
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 15
+  },
+  {
+   "kind": "lilypad",
+   "pos": [
+    188,
+    112
+   ],
+   "rotation": 0,
+   "scale": 1.3,
+   "variant": 16
+  },
+  {
+   "kind": "statue",
+   "pos": [
+    130,
+    212
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.2,
+   "variant": 17
+  },
+  {
+   "kind": "sign",
+   "pos": [
+    126,
+    14
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 18
+  }
+ ],
+ "buildings": [
+  {
+   "kind": "hut",
+   "pos": [
+    146,
+    118
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 3,
+   "label": "Wildlandlager"
+  }
+ ],
+ "npcs": [
+  {
+   "id": "wl_lager",
+   "pos": [
+    136,
+    122
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Lagerwart",
+   "dialogue": "wildland_lager",
+   "role": "heal"
+  },
+  {
+   "id": "wl_forscher",
+   "pos": [
+    126,
+    130
+   ],
+   "facing": 0,
+   "name": "Feldforscher",
+   "dialogue": "wildland_forscher"
+  },
+  {
+   "id": "wl_t1",
+   "pos": [
+    70,
+    66
+   ],
+   "facing": 3.141592653589793,
+   "name": "Faehrtenleser Bo",
+   "trainer": "faehrtenleser_bo",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#6b8f4b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "wl_t2",
+   "pos": [
+    200,
+    86
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Jaegerin Pax",
+   "trainer": "jaegerin_pax",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#8f6b4b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "wl_t3",
+   "pos": [
+    88,
+    180
+   ],
+   "facing": 0,
+   "name": "Wildhueter Sten",
+   "trainer": "wildhueter_sten",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#4b8f6b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "rivale_wl",
+   "pos": [
+    130,
+    138
+   ],
+   "facing": 3.141592653589793,
+   "name": "Rivale Jorin",
+   "trainer": "rivale_4",
+   "minStoryStage": 10,
+   "maxStoryStage": 11,
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#c24b4b",
+    "shirt": "#4b8f7a",
+    "pants": "#3f3f4a",
+    "accent": "#f0e0c4",
+    "hat": "cap",
+    "height": 1.01
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "wl_hyper",
+   "item": "hyperkugel",
+   "pos": [
+    56,
+    52
+   ],
+   "quantity": 3,
+   "hidden": false
+  },
+  {
+   "id": "wl_nugget",
+   "item": "nugget",
+   "pos": [
+    212,
+    62
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "wl_top",
+   "item": "top_trank",
+   "pos": [
+    48,
+    164
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "wl_stein",
+   "item": "mondstein",
+   "pos": [
+    216,
+    182
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "wl_gross",
+   "item": "grossperle",
+   "pos": [
+    132,
+    200
+   ],
+   "quantity": 1,
+   "hidden": true
+  },
+  {
+   "id": "wl_ticket",
+   "item": "flugticket",
+   "pos": [
+    130,
+    124
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "wl_detektor",
+   "item": "energiedetektor",
+   "pos": [
+    140,
+    124
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "funkenau",
+   "trigger": {
+    "x": 122,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_wildland"
+  },
+  {
+   "to": "route_5",
+   "trigger": {
+    "x": 257,
+    "z": 112,
+    "width": 3,
+    "depth": 16
+   },
+   "spawnPoint": "from_wildland"
+  },
+  {
+   "to": "route_7",
+   "trigger": {
+    "x": 0,
+    "z": 112,
+    "width": 3,
+    "depth": 16
+   },
+   "spawnPoint": "from_wildland"
+  },
+  {
+   "to": "tiefenkammer",
+   "trigger": {
+    "x": 122,
+    "z": 236,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_wildland",
+   "requires": {
+    "badge": 8
+   },
+   "blockedText": "Ein uraltes Siegel versperrt den Abstieg. Acht Orden - nicht weniger."
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_funkenau",
+   "pos": [
+    130,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route5",
+   "pos": [
+    254,
+    120
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_route7",
+   "pos": [
+    6,
+    120
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_lager",
+   "pos": [
+    130,
+    118
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_tiefenkammer",
+   "pos": [
+    130,
+    232
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "default",
+   "pos": [
+    130,
+    8
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "wildland",
+ "name": "Das Wildland",
+ "kind": "wildarea",
+ "biome": "grassland",
+ "size": [
+  260,
+  240
+ ],
+ "seed": 2201,
+ "mapPos": [
+  50,
+  32
+ ],
+ "description": "Ein riesiges, ungezaehmtes Gebiet mit eigenen Regeln - hier lebt alles.",
+ "music": "wildarea",
+ "weather": [
+  "clear",
+  "cloudy",
+  "rain",
+  "heavyRain",
+  "thunderstorm",
+  "fog",
+  "harshSun",
+  "snow",
+  "sandstorm"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 16,
+  "frequency": 0.014,
+  "octaves": 5,
+  "waterLevel": -3.2,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      130,
+      4
+     ],
+     [
+      110,
+      60
+     ],
+     [
+      150,
+      130
+     ],
+     [
+      120,
+      236
+     ]
+    ],
+    "width": 8
+   },
+   {
+    "points": [
+     [
+      20,
+      120
+     ],
+     [
+      240,
+      120
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "grassZones": [
+  {
+   "x": 44,
+   "z": 44,
+   "width": 36,
+   "depth": 34,
+   "density": 2.0
+  },
+  {
+   "x": 200,
+   "z": 52,
+   "width": 34,
+   "depth": 32,
+   "density": 2.0
+  },
+  {
+   "x": 38,
+   "z": 140,
+   "width": 34,
+   "depth": 34,
+   "density": 2.1
+  },
+  {
+   "x": 206,
+   "z": 150,
+   "width": 34,
+   "depth": 32,
+   "density": 2.0
+  },
+  {
+   "x": 120,
+   "z": 90,
+   "width": 30,
+   "depth": 28,
+   "density": 1.9
+  },
+  {
+   "x": 140,
+   "z": 196,
+   "width": 32,
+   "depth": 30,
+   "density": 2.0
+  },
+  {
+   "x": 70,
+   "z": 208,
+   "width": 30,
+   "depth": 28,
+   "density": 1.9
+  },
+  {
+   "x": 196,
+   "z": 210,
+   "width": 28,
+   "depth": 26,
+   "density": 1.8
+  }
+ ],
+ "waterZones": [
+  {
+   "x": 78,
+   "z": 96,
+   "width": 44,
+   "depth": 38
+  },
+  {
+   "x": 184,
+   "z": 108,
+   "width": 40,
+   "depth": 34
+  }
+ ],
+ "spawnTable": [
+  {
+   "species": "nagezahn",
+   "minLevel": 20,
+   "maxLevel": 28,
+   "weight": 12,
+   "behaviour": "skittish"
+  },
+  {
+   "species": "federflaum",
+   "minLevel": 20,
+   "maxLevel": 28,
+   "weight": 12,
+   "behaviour": "wander"
+  },
+  {
+   "species": "windfuchs",
+   "minLevel": 22,
+   "maxLevel": 30,
+   "weight": 10,
+   "behaviour": "skittish"
+  },
+  {
+   "species": "kribbelkaefer",
+   "minLevel": 20,
+   "maxLevel": 26,
+   "weight": 8,
+   "behaviour": "wander"
+  },
+  {
+   "species": "knollknospe",
+   "minLevel": 22,
+   "maxLevel": 28,
+   "weight": 8,
+   "behaviour": "static"
+  },
+  {
+   "species": "flatterling",
+   "minLevel": 22,
+   "maxLevel": 30,
+   "weight": 8,
+   "behaviour": "wander"
+  },
+  {
+   "species": "kieselkopf",
+   "minLevel": 22,
+   "maxLevel": 30,
+   "weight": 8,
+   "behaviour": "static"
+  },
+  {
+   "species": "sandwuehler",
+   "minLevel": 22,
+   "maxLevel": 30,
+   "weight": 8,
+   "behaviour": "wander"
+  },
+  {
+   "species": "schlammlurch",
+   "minLevel": 24,
+   "maxLevel": 30,
+   "weight": 8,
+   "behaviour": "shy"
+  },
+  {
+   "species": "wellenotter",
+   "minLevel": 26,
+   "maxLevel": 34,
+   "weight": 14,
+   "behaviour": "shy",
+   "weather": [
+    "rain",
+    "heavyRain",
+    "thunderstorm"
+   ]
+  },
+  {
+   "species": "blitzotter",
+   "minLevel": 28,
+   "maxLevel": 36,
+   "weight": 10,
+   "behaviour": "aggressive",
+   "rare": true,
+   "weather": [
+    "thunderstorm"
+   ]
+  },
+  {
+   "species": "quallenlicht",
+   "minLevel": 28,
+   "maxLevel": 36,
+   "weight": 9,
+   "behaviour": "wander",
+   "rare": true,
+   "weather": [
+    "rain",
+    "heavyRain"
+   ]
+  },
+  {
+   "species": "frostwelpe",
+   "minLevel": 26,
+   "maxLevel": 34,
+   "weight": 12,
+   "behaviour": "shy",
+   "weather": [
+    "snow"
+   ]
+  },
+  {
+   "species": "eiswolf",
+   "minLevel": 30,
+   "maxLevel": 38,
+   "weight": 8,
+   "behaviour": "aggressive",
+   "rare": true,
+   "weather": [
+    "snow"
+   ]
+  },
+  {
+   "species": "kristallmotte",
+   "minLevel": 30,
+   "maxLevel": 38,
+   "weight": 7,
+   "behaviour": "wander",
+   "rare": true,
+   "weather": [
+    "snow"
+   ]
+  },
+  {
+   "species": "wuestenskorpion",
+   "minLevel": 28,
+   "maxLevel": 36,
+   "weight": 10,
+   "behaviour": "aggressive",
+   "weather": [
+    "sandstorm"
+   ]
+  },
+  {
+   "species": "sandnatter",
+   "minLevel": 28,
+   "maxLevel": 36,
+   "weight": 9,
+   "behaviour": "aggressive",
+   "rare": true,
+   "weather": [
+    "sandstorm"
+   ]
+  },
+  {
+   "species": "aschebrand",
+   "minLevel": 28,
+   "maxLevel": 36,
+   "weight": 9,
+   "behaviour": "aggressive",
+   "rare": true,
+   "weather": [
+    "harshSun"
+   ]
+  },
+  {
+   "species": "glutfalter",
+   "minLevel": 28,
+   "maxLevel": 36,
+   "weight": 8,
+   "behaviour": "wander",
+   "rare": true,
+   "weather": [
+    "harshSun"
+   ]
+  },
+  {
+   "species": "moorlicht",
+   "minLevel": 26,
+   "maxLevel": 34,
+   "weight": 9,
+   "behaviour": "shy",
+   "rare": true,
+   "weather": [
+    "fog"
+   ]
+  },
+  {
+   "species": "nebelkraehe",
+   "minLevel": 26,
+   "maxLevel": 34,
+   "weight": 10,
+   "behaviour": "wander",
+   "weather": [
+    "fog"
+   ]
+  },
+  {
+   "species": "mondpanther",
+   "minLevel": 30,
+   "maxLevel": 38,
+   "weight": 7,
+   "behaviour": "skittish",
+   "rare": true,
+   "timeOfDay": [
+    "night"
+   ]
+  },
+  {
+   "species": "geisterfuerst",
+   "minLevel": 32,
+   "maxLevel": 40,
+   "weight": 5,
+   "behaviour": "aggressive",
+   "rare": true,
+   "timeOfDay": [
+    "night"
+   ]
+  },
+  {
+   "species": "schattenwolf",
+   "minLevel": 26,
+   "maxLevel": 34,
+   "weight": 10,
+   "behaviour": "aggressive",
+   "timeOfDay": [
+    "dusk",
+    "night"
+   ]
+  },
+  {
+   "species": "traumkatze",
+   "minLevel": 26,
+   "maxLevel": 34,
+   "weight": 10,
+   "behaviour": "shy",
+   "timeOfDay": [
+    "dawn",
+    "day"
+   ]
+  },
+  {
+   "species": "lichtfee",
+   "minLevel": 30,
+   "maxLevel": 38,
+   "weight": 5,
+   "behaviour": "shy",
+   "rare": true,
+   "timeOfDay": [
+    "dawn"
+   ]
+  },
+  {
+   "species": "bergkoloss",
+   "minLevel": 34,
+   "maxLevel": 42,
+   "weight": 4,
+   "behaviour": "static",
+   "rare": true,
+   "sizeVariant": "large"
+  },
+  {
+   "species": "sturmaar",
+   "minLevel": 34,
+   "maxLevel": 42,
+   "weight": 4,
+   "behaviour": "aggressive",
+   "rare": true
+  },
+  {
+   "species": "frostkoloss",
+   "minLevel": 36,
+   "maxLevel": 44,
+   "weight": 3,
+   "behaviour": "aggressive",
+   "rare": true,
+   "sizeVariant": "large"
+  },
+  {
+   "species": "klauenwelpe",
+   "minLevel": 28,
+   "maxLevel": 34,
+   "weight": 5,
+   "behaviour": "shy",
+   "rare": true
+  },
+  {
+   "species": "sichelklaue",
+   "minLevel": 34,
+   "maxLevel": 42,
+   "weight": 3,
+   "behaviour": "aggressive",
+   "rare": true
+  },
+  {
+   "species": "titanklaue",
+   "minLevel": 48,
+   "maxLevel": 56,
+   "weight": 1,
+   "behaviour": "aggressive",
+   "rare": true,
+   "minStoryStage": 8,
+   "sizeVariant": "large"
+  },
+  {
+   "species": "abgrundschrecken",
+   "minLevel": 46,
+   "maxLevel": 54,
+   "weight": 1,
+   "behaviour": "aggressive",
+   "rare": true,
+   "minStoryStage": 8
+  }
+ ],
+ "maxWild": 34,
+ "raidDens": [
+  {
+   "id": "den_west",
+   "pos": [
+    58,
+    70
+   ],
+   "tier": 1
+  },
+  {
+   "id": "den_ost",
+   "pos": [
+    206,
+    92
+   ],
+   "tier": 2
+  },
+  {
+   "id": "den_sued",
+   "pos": [
+    96,
+    196
+   ],
+   "tier": 3
+  },
+  {
+   "id": "den_nord",
+   "pos": [
+    176,
+    40
+   ],
+   "tier": 4
+  },
+  {
+   "id": "den_mitte",
+   "pos": [
+    130,
+    150
+   ],
+   "tier": 5
+  }
+ ],
+ "ambience": {
+  "fogNear": 80,
+  "fogFar": 420
+ }
+}

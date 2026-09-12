@@ -1,0 +1,350 @@
+{
+ "props": [
+  {
+   "kind": "boulder",
+   "pos": [
+    14,
+    34
+   ],
+   "rotation": 0.4,
+   "scale": 1.3,
+   "variant": 1
+  },
+  {
+   "kind": "rock",
+   "pos": [
+    58,
+    30
+   ],
+   "rotation": 1.2,
+   "scale": 1.1,
+   "variant": 2
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    16,
+    70
+   ],
+   "rotation": 2.0,
+   "scale": 1.4,
+   "variant": 3
+  },
+  {
+   "kind": "rock",
+   "pos": [
+    60,
+    88
+   ],
+   "rotation": 0.6,
+   "scale": 1.2,
+   "variant": 4
+  },
+  {
+   "kind": "deadTree",
+   "pos": [
+    24,
+    108
+   ],
+   "rotation": 1.5,
+   "scale": 1.1,
+   "variant": 5
+  },
+  {
+   "kind": "sign",
+   "pos": [
+    40,
+    10
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    10,
+    60
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 7
+  }
+ ],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "r4_t1",
+   "pos": [
+    38,
+    50
+   ],
+   "facing": 3.141592653589793,
+   "name": "Bergsteiger Falk",
+   "trainer": "bergsteiger_falk",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#9b7346",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "r4_t2",
+   "pos": [
+    34,
+    96
+   ],
+   "facing": 0,
+   "name": "Faustkaempfer Ove",
+   "trainer": "faustkaempfer_ove",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#c96b4b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "r4_hyper",
+   "item": "hyperkugel",
+   "pos": [
+    20,
+    58
+   ],
+   "quantity": 2,
+   "hidden": false
+  },
+  {
+   "id": "r4_nugget",
+   "item": "nugget",
+   "pos": [
+    62,
+    110
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "dornwald",
+   "trigger": {
+    "x": 28,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_route4"
+  },
+  {
+   "to": "hammerstadt",
+   "trigger": {
+    "x": 28,
+    "z": 123,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_route4"
+  },
+  {
+   "to": "schimmerhoehle",
+   "trigger": {
+    "x": 0,
+    "z": 56,
+    "width": 3,
+    "depth": 14
+   },
+   "spawnPoint": "from_route4",
+   "requires": {
+    "badge": 2
+   },
+   "blockedText": "Der Hoehleneingang ist verschuettet - vielleicht spaeter."
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_dornwald",
+   "pos": [
+    36,
+    6
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_hammerstadt",
+   "pos": [
+    36,
+    120
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_hoehle",
+   "pos": [
+    8,
+    63
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "default",
+   "pos": [
+    36,
+    6
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "route_4",
+ "name": "Route 4",
+ "kind": "route",
+ "biome": "rocky",
+ "size": [
+  72,
+  126
+ ],
+ "seed": 1801,
+ "mapPos": [
+  60,
+  50
+ ],
+ "description": "Ein steiniger Anstieg zur Industriestadt Hammerstadt.",
+ "music": "route",
+ "weather": [
+  "clear",
+  "cloudy",
+  "rain",
+  "sandstorm"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 9.5,
+  "frequency": 0.028,
+  "octaves": 4,
+  "cliffBorder": true,
+  "ridged": true,
+  "paths": [
+   {
+    "points": [
+     [
+      36.0,
+      2
+     ],
+     [
+      36.0,
+      124
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "grassZones": [
+  {
+   "x": 16,
+   "z": 26,
+   "width": 18,
+   "depth": 20,
+   "density": 1.8
+  },
+  {
+   "x": 56,
+   "z": 44,
+   "width": 16,
+   "depth": 20,
+   "density": 1.7
+  },
+  {
+   "x": 18,
+   "z": 80,
+   "width": 18,
+   "depth": 22,
+   "density": 1.9
+  },
+  {
+   "x": 56,
+   "z": 102,
+   "width": 16,
+   "depth": 18,
+   "density": 1.7
+  }
+ ],
+ "spawnTable": [
+  {
+   "species": "kieselkopf",
+   "minLevel": 19,
+   "maxLevel": 23,
+   "weight": 18,
+   "behaviour": "static"
+  },
+  {
+   "species": "sandwuehler",
+   "minLevel": 19,
+   "maxLevel": 23,
+   "weight": 16,
+   "behaviour": "wander"
+  },
+  {
+   "species": "felsbrocken",
+   "minLevel": 22,
+   "maxLevel": 26,
+   "weight": 10,
+   "behaviour": "static"
+  },
+  {
+   "species": "kampffaust",
+   "minLevel": 21,
+   "maxLevel": 25,
+   "weight": 12,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "bergziege",
+   "minLevel": 22,
+   "maxLevel": 26,
+   "weight": 10,
+   "behaviour": "wander"
+  },
+  {
+   "species": "donnerhorn",
+   "minLevel": 24,
+   "maxLevel": 28,
+   "weight": 6,
+   "behaviour": "aggressive",
+   "rare": true
+  },
+  {
+   "species": "ruestungsigel",
+   "minLevel": 21,
+   "maxLevel": 25,
+   "weight": 10,
+   "behaviour": "shy"
+  },
+  {
+   "species": "nebelkraehe",
+   "minLevel": 22,
+   "maxLevel": 26,
+   "weight": 8,
+   "behaviour": "wander",
+   "timeOfDay": [
+    "dusk",
+    "night"
+   ]
+  }
+ ],
+ "maxWild": 14,
+ "triggers": [],
+ "ambience": {
+  "fogNear": 55,
+  "fogFar": 300
+ }
+}

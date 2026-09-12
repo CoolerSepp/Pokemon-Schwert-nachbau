@@ -1,0 +1,47 @@
+{
+ "id": "ligaanwaerter_ken",
+ "name": "Ligaanwaerter Ken",
+ "trainerClass": "Ligaanwaerter",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "panzerwacht",
+   "level": 48
+  },
+  {
+   "species": "nachtwolf",
+   "level": 48
+  },
+  {
+   "species": "sturmaar",
+   "level": 49
+  }
+ ],
+ "rewardBase": 180,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#c9a04b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "cap",
+  "height": 1.0
+ },
+ "items": [
+  "top_trank"
+ ]
+}

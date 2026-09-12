@@ -1,0 +1,279 @@
+{
+ "props": [
+  {
+   "kind": "statue",
+   "pos": [
+    34,
+    60
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 1
+  },
+  {
+   "kind": "statue",
+   "pos": [
+    86,
+    60
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 2
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    44,
+    24
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 3
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    76,
+    24
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 4
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    48,
+    44
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    72,
+    44
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    40,
+    40
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 7
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    80,
+    40
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 8
+  }
+ ],
+ "buildings": [
+  {
+   "kind": "stadium",
+   "pos": [
+    60,
+    74
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "liga_arena",
+   "spawnPoint": "entrance",
+   "label": "Ligastadion",
+   "doorOffset": [
+    0,
+    17.5
+   ]
+  },
+  {
+   "kind": "center",
+   "pos": [
+    22,
+    34
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "center_ligastadion",
+   "spawnPoint": "entrance",
+   "label": "Heilstation",
+   "doorOffset": [
+    0,
+    4.6
+   ]
+  },
+  {
+   "kind": "shop",
+   "pos": [
+    98,
+    34
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "shop_ligastadion",
+   "spawnPoint": "entrance",
+   "label": "Warenlager",
+   "doorOffset": [
+    0,
+    3.8
+   ]
+  }
+ ],
+ "npcs": [
+  {
+   "id": "liga_ansager",
+   "pos": [
+    60,
+    26
+   ],
+   "facing": 3.141592653589793,
+   "name": "Ansager",
+   "dialogue": "liga_ansager"
+  },
+  {
+   "id": "liga_wache",
+   "pos": [
+    60,
+    56
+   ],
+   "facing": 3.141592653589793,
+   "name": "Ligawache",
+   "dialogue": "liga_wache"
+  },
+  {
+   "id": "rivale_liga",
+   "pos": [
+    40,
+    26
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Rivale Jorin",
+   "trainer": "rivale_6",
+   "minStoryStage": 13,
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#c24b4b",
+    "shirt": "#4b8f7a",
+    "pants": "#3f3f4a",
+    "accent": "#f0e0c4",
+    "hat": "cap",
+    "height": 1.01
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "route_9",
+   "trigger": {
+    "x": 52,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_liga"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_route9",
+   "pos": [
+    60,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "default",
+   "pos": [
+    60,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_arena",
+   "pos": [
+    60,
+    54
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_center",
+   "pos": [
+    22,
+    26
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_shop",
+   "pos": [
+    98,
+    26
+   ],
+   "facing": 3.141592653589793
+  }
+ ],
+ "id": "ligastadion",
+ "name": "Ligastadion",
+ "kind": "league",
+ "biome": "urban",
+ "size": [
+  120,
+  110
+ ],
+ "seed": 3301,
+ "mapPos": [
+  50,
+  3
+ ],
+ "description": "Das groesste Stadion Aetherias - hier endet jede Reise oder beginnt neu.",
+ "music": "league",
+ "weather": [
+  "clear",
+  "cloudy"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 1.2,
+  "frequency": 0.04,
+  "octaves": 2,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      60,
+      2
+     ],
+     [
+      60,
+      106
+     ]
+    ],
+    "width": 12
+   }
+  ]
+ },
+ "ambience": {
+  "fogNear": 70,
+  "fogFar": 360
+ }
+}

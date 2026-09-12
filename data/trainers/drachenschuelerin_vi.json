@@ -1,0 +1,40 @@
+{
+ "id": "drachenschuelerin_vi",
+ "name": "Drachenschuelerin Vi",
+ "trainerClass": "Drachenschuelerin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "klauenwelpe",
+   "level": 44
+  },
+  {
+   "species": "sichelklaue",
+   "level": 45
+  }
+ ],
+ "rewardBase": 160,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#2b3f6b",
+  "shirt": "#5b6bc9",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 0.98
+ }
+}

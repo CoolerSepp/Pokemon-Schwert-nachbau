@@ -1,0 +1,43 @@
+{
+ "id": "hauptquest_faustorden",
+ "name": "Der Faustorden",
+ "kind": "main",
+ "description": "Durchquere Dornwald und gewinne den Faustorden in Hammerstadt.",
+ "autoStartStage": 6,
+ "area": "hammerstadt",
+ "steps": [
+  {
+   "id": "wald",
+   "description": "Durchquere den Dornwald.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "dornwald"
+   }
+  },
+  {
+   "id": "stadt",
+   "description": "Erreiche Hammerstadt.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "hammerstadt"
+   }
+  },
+  {
+   "id": "arena",
+   "description": "Besiege die Arenaleitung in Hammerstadt.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "arenaleiterin_bora"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 3000,
+  "items": [
+   {
+    "item": "hyperkugel",
+    "quantity": 5
+   }
+  ]
+ }
+}

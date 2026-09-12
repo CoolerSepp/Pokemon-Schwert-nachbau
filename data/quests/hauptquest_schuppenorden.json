@@ -1,0 +1,35 @@
+{
+ "id": "hauptquest_schuppenorden",
+ "name": "Der Schuppenorden",
+ "kind": "main",
+ "description": "Erreiche den Drachenhorst und gewinne den achten Orden.",
+ "autoStartStage": 11,
+ "area": "drachenhorst",
+ "steps": [
+  {
+   "id": "stadt",
+   "description": "Erreiche den Drachenhorst.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "drachenhorst"
+   }
+  },
+  {
+   "id": "arena",
+   "description": "Besiege die Arenaleitung in Drachenhorst.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "arenaleiterin_saphira"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 4500,
+  "items": [
+   {
+    "item": "hyperkugel",
+    "quantity": 5
+   }
+  ]
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "id": "hauptquest_glutorden",
+ "name": "Der Glutorden",
+ "kind": "main",
+ "description": "Steig zum Aschenberg auf und gewinne den Glutorden.",
+ "autoStartStage": 8,
+ "area": "aschenberg",
+ "steps": [
+  {
+   "id": "stadt",
+   "description": "Erreiche Aschenberg.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "aschenberg"
+   }
+  },
+  {
+   "id": "arena",
+   "description": "Besiege die Arenaleitung in Aschenberg.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "arenaleiterin_ember"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 3600,
+  "items": [
+   {
+    "item": "hyperkugel",
+    "quantity": 5
+   }
+  ]
+ }
+}

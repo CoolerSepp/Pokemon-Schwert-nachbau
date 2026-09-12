@@ -1,0 +1,40 @@
+{
+ "id": "wildhueter_sten",
+ "name": "Wildhueter Sten",
+ "trainerClass": "Wildhueter",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "bergkoloss",
+   "level": 32
+  },
+  {
+   "species": "donnerhorn",
+   "level": 32
+  }
+ ],
+ "rewardBase": 120,
+ "dialogue": {
+  "intro": [
+   "Hier kommt niemand einfach so durch!"
+  ],
+  "defeat": [
+   "Du darfst passieren."
+  ],
+  "victory": [
+   "Kehr um und trainiere."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#4b8f6b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "beanie",
+  "height": 1.0
+ }
+}

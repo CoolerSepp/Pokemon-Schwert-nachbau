@@ -1,0 +1,326 @@
+{
+ "props": [
+  {
+   "kind": "pillar",
+   "pos": [
+    22,
+    26
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 1
+  },
+  {
+   "kind": "pillar",
+   "pos": [
+    48,
+    26
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 2
+  },
+  {
+   "kind": "statue",
+   "pos": [
+    35,
+    56
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.2,
+   "variant": 3
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    26,
+    74
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 4
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    44,
+    74
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 5
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    58,
+    100
+   ],
+   "rotation": 0.8,
+   "scale": 1.4,
+   "variant": 6
+  }
+ ],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "r9_t1",
+   "pos": [
+    38,
+    46
+   ],
+   "facing": 3.141592653589793,
+   "name": "Ligaanwaerter Ken",
+   "trainer": "ligaanwaerter_ken",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#c9a04b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "r9_t2",
+   "pos": [
+    32,
+    94
+   ],
+   "facing": 0,
+   "name": "Ligaanwaerterin Thea",
+   "trainer": "ligaanwaerterin_thea",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#c9a04b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "rivale_r9",
+   "pos": [
+    35,
+    110
+   ],
+   "facing": 3.141592653589793,
+   "name": "Rivale Jorin",
+   "trainer": "rivale_5",
+   "minStoryStage": 12,
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#c24b4b",
+    "shirt": "#4b8f7a",
+    "pants": "#3f3f4a",
+    "accent": "#f0e0c4",
+    "hat": "cap",
+    "height": 1.01
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "r9_top",
+   "item": "top_trank",
+   "pos": [
+    20,
+    62
+   ],
+   "quantity": 2,
+   "hidden": false
+  },
+  {
+   "id": "r9_glueck",
+   "item": "gluecksei",
+   "pos": [
+    56,
+    108
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "drachenhorst",
+   "trigger": {
+    "x": 27,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_route9"
+  },
+  {
+   "to": "ligastadion",
+   "trigger": {
+    "x": 27,
+    "z": 117,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_route9"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_drachenhorst",
+   "pos": [
+    35,
+    6
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_liga",
+   "pos": [
+    35,
+    114
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "default",
+   "pos": [
+    35,
+    6
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "route_9",
+ "name": "Der Ligaweg",
+ "kind": "route",
+ "biome": "mountain",
+ "size": [
+  70,
+  120
+ ],
+ "seed": 3201,
+ "mapPos": [
+  56,
+  6
+ ],
+ "description": "Der letzte Weg vor dem Ligastadion. Nur wer acht Orden traegt, darf ihn gehen.",
+ "music": "league",
+ "weather": [
+  "clear",
+  "cloudy",
+  "thunderstorm"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 13,
+  "frequency": 0.028,
+  "octaves": 4,
+  "cliffBorder": true,
+  "ridged": true,
+  "paths": [
+   {
+    "points": [
+     [
+      35.0,
+      2
+     ],
+     [
+      35.0,
+      118
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "grassZones": [
+  {
+   "x": 16,
+   "z": 34,
+   "width": 16,
+   "depth": 20,
+   "density": 1.5
+  },
+  {
+   "x": 54,
+   "z": 60,
+   "width": 16,
+   "depth": 20,
+   "density": 1.5
+  },
+  {
+   "x": 18,
+   "z": 90,
+   "width": 16,
+   "depth": 20,
+   "density": 1.6
+  }
+ ],
+ "spawnTable": [
+  {
+   "species": "sturmaar",
+   "minLevel": 46,
+   "maxLevel": 52,
+   "weight": 10,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "himmelsritter",
+   "minLevel": 46,
+   "maxLevel": 52,
+   "weight": 8,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "sichelklaue",
+   "minLevel": 46,
+   "maxLevel": 52,
+   "weight": 8,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "gletscherfang",
+   "minLevel": 47,
+   "maxLevel": 53,
+   "weight": 6,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "panzerwacht",
+   "minLevel": 46,
+   "maxLevel": 52,
+   "weight": 8,
+   "behaviour": "static"
+  },
+  {
+   "species": "steinwaechter",
+   "minLevel": 46,
+   "maxLevel": 52,
+   "weight": 8,
+   "behaviour": "static"
+  },
+  {
+   "species": "rostritter",
+   "minLevel": 46,
+   "maxLevel": 52,
+   "weight": 7,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "abgrundschrecken",
+   "minLevel": 50,
+   "maxLevel": 56,
+   "weight": 3,
+   "behaviour": "aggressive",
+   "rare": true
+  }
+ ],
+ "maxWild": 14,
+ "triggers": [],
+ "ambience": {
+  "fogNear": 55,
+  "fogFar": 300
+ }
+}

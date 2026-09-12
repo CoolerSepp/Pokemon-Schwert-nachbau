@@ -1,0 +1,40 @@
+{
+ "id": "gratlaeufer_ilan",
+ "name": "Gratlaeufer Ilan",
+ "trainerClass": "Gratlaeufer",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "himmelsritter",
+   "level": 44
+  },
+  {
+   "species": "sturmaar",
+   "level": 44
+  }
+ ],
+ "rewardBase": 155,
+ "dialogue": {
+  "intro": [
+   "Ein Kampf unterwegs haelt wach!"
+  ],
+  "defeat": [
+   "Gut gemacht. Weiter so."
+  ],
+  "victory": [
+   "Noch nicht genug Uebung."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#8f9bb0",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "cap",
+  "height": 1.0
+ }
+}

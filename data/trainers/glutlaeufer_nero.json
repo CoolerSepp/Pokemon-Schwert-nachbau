@@ -1,0 +1,40 @@
+{
+ "id": "glutlaeufer_nero",
+ "name": "Glutlaeufer Nero",
+ "trainerClass": "Glutlaeufer",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "aschebrand",
+   "level": 32
+  },
+  {
+   "species": "lavagnom",
+   "level": 33
+  }
+ ],
+ "rewardBase": 120,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#c95b2f",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "cap",
+  "height": 1.0
+ }
+}

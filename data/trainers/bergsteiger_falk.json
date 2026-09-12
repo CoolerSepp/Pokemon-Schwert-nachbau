@@ -1,0 +1,40 @@
+{
+ "id": "bergsteiger_falk",
+ "name": "Bergsteiger Falk",
+ "trainerClass": "Bergsteiger",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "kieselkopf",
+   "level": 22
+  },
+  {
+   "species": "bergziege",
+   "level": 23
+  }
+ ],
+ "rewardBase": 90,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#9b7346",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "helmet",
+  "height": 1.0
+ }
+}

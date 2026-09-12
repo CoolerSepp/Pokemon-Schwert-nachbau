@@ -1,0 +1,27 @@
+{
+ "id": "liga_wache",
+ "entry": [
+  "blocked",
+  "open"
+ ],
+ "nodes": [
+  {
+   "id": "blocked",
+   "lines": [
+    "Halt. Ohne acht Orden kommt hier niemand durch."
+   ],
+   "speaker": "Ligawache",
+   "requires": {
+    "maxStoryStage": 11
+   }
+  },
+  {
+   "id": "open",
+   "lines": [
+    "Acht Orden. Du hast es tatsaechlich geschafft.",
+    "Dahinter warten vier Spitzentrainer und der Champion. Viel Glueck."
+   ],
+   "speaker": "Ligawache"
+  }
+ ]
+}

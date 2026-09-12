@@ -1,0 +1,154 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "nurse_ligastadion",
+   "pos": [
+    10,
+    9.8
+   ],
+   "facing": 3.141592653589793,
+   "name": "Pflegerin",
+   "dialogue": "heilstation",
+   "role": "heal",
+   "appearance": {
+    "skin": "#e8c19b",
+    "hair": "#d8455f",
+    "shirt": "#ffffff",
+    "pants": "#f0e6d2",
+    "accent": "#d8455f",
+    "hat": "band"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "ligastadion",
+   "trigger": {
+    "x": 8.5,
+    "z": 0,
+    "width": 3.0,
+    "depth": 1.8
+   },
+   "spawnPoint": "from_center"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    10,
+    3
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    10,
+    2.4
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "center_ligastadion",
+ "name": "Heilstation",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  20,
+  15
+ ],
+ "seed": 3302,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "center",
+ "interiorStyle": {
+  "wallColor": "#f5efe4",
+  "floorColor": "#e0d4c0",
+  "accentColor": "#d8455f",
+  "wallHeight": 3.6,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 10,
+    "z": 0,
+    "width": 3.0,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "counter",
+    "pos": [
+     10,
+     11.6
+    ],
+    "rotation": 0,
+    "color": "#d8455f"
+   },
+   {
+    "kind": "machine",
+    "pos": [
+     15.6,
+     11.8
+    ],
+    "rotation": 0
+   },
+   {
+    "kind": "computer",
+    "pos": [
+     3.4,
+     11.8
+    ],
+    "rotation": 0
+   },
+   {
+    "kind": "sofa",
+    "pos": [
+     3.2,
+     5.0
+    ],
+    "rotation": 1.5707963267948966,
+    "color": "#4b7a9b"
+   },
+   {
+    "kind": "sofa",
+    "pos": [
+     16.8,
+     5.0
+    ],
+    "rotation": -1.5707963267948966,
+    "color": "#4b7a9b"
+   },
+   {
+    "kind": "table",
+    "pos": [
+     10,
+     5.0
+    ]
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     1.6,
+     13.2
+    ]
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     18.4,
+     13.2
+    ]
+   }
+  ]
+ }
+}

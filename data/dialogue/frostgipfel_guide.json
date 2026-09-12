@@ -1,0 +1,17 @@
+{
+ "id": "frostgipfel_guide",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Setz dich erst mal, du bist ja halb erfroren.",
+    "Hela ist oben in der Arena. Eis - klar bei dem Wetter.",
+    "Feuer, Stahl, Kampf und Gestein helfen dagegen."
+   ],
+   "speaker": "Bergwirtin"
+  }
+ ]
+}

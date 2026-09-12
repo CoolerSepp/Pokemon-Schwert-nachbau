@@ -1,0 +1,58 @@
+{
+ "id": "rivale_5",
+ "name": "Rivale Jorin",
+ "trainerClass": "Rivale",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "sturmaar",
+   "level": 48
+  },
+  {
+   "species": "nachtwolf",
+   "level": 49
+  },
+  {
+   "species": "frostkoloss",
+   "level": 49
+  },
+  {
+   "species": "magmaherr",
+   "level": 50
+  },
+  {
+   "species": "sichelklaue",
+   "level": 51
+  }
+ ],
+ "rewardBase": 200,
+ "dialogue": {
+  "intro": [
+   "Letzte Chance vor der Liga.",
+   "Wenn ich dich hier nicht schlage, schaffe ich es nie."
+  ],
+  "defeat": [
+   "...dann schaffe ich es wohl nie.",
+   "Geh zur Liga, {spieler}. Und gewinn. Fuer uns beide."
+  ],
+  "victory": [
+   "Doch noch. Trainier weiter - ich warte hier."
+  ],
+  "postBattle": [
+   "Wir sehen uns. Frueher als dir lieb ist."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#c24b4b",
+  "shirt": "#4b8f7a",
+  "pants": "#3f3f4a",
+  "accent": "#f0e0c4",
+  "hat": "cap",
+  "height": 1.01
+ },
+ "items": [
+  "supertrank"
+ ],
+ "canGigantic": true
+}

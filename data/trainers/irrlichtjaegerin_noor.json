@@ -1,0 +1,40 @@
+{
+ "id": "irrlichtjaegerin_noor",
+ "name": "Irrlichtjaegerin Noor",
+ "trainerClass": "Irrlichtjaegerin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "moorlicht",
+   "level": 38
+  },
+  {
+   "species": "geisterfuerst",
+   "level": 39
+  }
+ ],
+ "rewardBase": 140,
+ "dialogue": {
+  "intro": [
+   "Ich sammle Siege. Deiner waere der naechste!"
+  ],
+  "defeat": [
+   "Der geht an dich."
+  ],
+  "victory": [
+   "Wieder einer fuer meine Sammlung."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#cfcfcf",
+  "shirt": "#5f7a6b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 0.98
+ }
+}

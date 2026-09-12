@@ -1,0 +1,31 @@
+{
+ "id": "gym_frostgipfel",
+ "name": "Arena von Frostgipfel",
+ "city": "frostgipfel",
+ "type": "ice",
+ "badgeIndex": 6,
+ "badgeName": "Frostorden",
+ "leader": "arenaleiterin_hela",
+ "minions": [
+  "arena7_bjorn",
+  "arena7_maja"
+ ],
+ "puzzle": "platforms",
+ "introText": [
+  "Arena von Frostgipfel - hier wird es ernst."
+ ],
+ "victoryText": [
+  "Der Weg nach draussen ist frei."
+ ],
+ "rewardItems": [
+  "td06",
+  "top_trank"
+ ],
+ "obedienceLevel": 72,
+ "area": "gym_frostgipfel",
+ "colors": {
+  "primary": "#7fc4e0",
+  "secondary": "#a8e0f0",
+  "accent": "#e8f7ff"
+ }
+}

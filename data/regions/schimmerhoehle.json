@@ -1,0 +1,334 @@
+{
+ "props": [
+  {
+   "kind": "crystal",
+   "pos": [
+    26,
+    30
+   ],
+   "rotation": 0.3,
+   "scale": 1.4,
+   "variant": 1
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    80,
+    34
+   ],
+   "rotation": 1.1,
+   "scale": 1.3,
+   "variant": 2
+  },
+  {
+   "kind": "stalagmite",
+   "pos": [
+    40,
+    62
+   ],
+   "rotation": 0,
+   "scale": 1.5,
+   "variant": 3
+  },
+  {
+   "kind": "stalagmite",
+   "pos": [
+    70,
+    70
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 4
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    34,
+    78
+   ],
+   "rotation": 2.0,
+   "scale": 1.5,
+   "variant": 5
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    58,
+    24
+   ],
+   "rotation": 0.8,
+   "scale": 1.2,
+   "variant": 6
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    20,
+    46
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    90,
+    50
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "mushroom",
+   "pos": [
+    48,
+    84
+   ],
+   "rotation": 0,
+   "scale": 1.6,
+   "variant": 9
+  }
+ ],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "sh_t1",
+   "pos": [
+    44,
+    44
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Hoehlenforscher Bela",
+   "trainer": "hoehlenforscher_bela",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#6b5f4b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "sh_t2",
+   "pos": [
+    76,
+    58
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Schatzsucherin Yara",
+   "trainer": "schatzsucherin_yara",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#c2a04b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "sh_stern",
+   "item": "sternenstaub",
+   "pos": [
+    30,
+    66
+   ],
+   "quantity": 2,
+   "hidden": false
+  },
+  {
+   "id": "sh_stein",
+   "item": "donnerstein",
+   "pos": [
+    88,
+    76
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "sh_gross",
+   "item": "grossperle",
+   "pos": [
+    64,
+    88
+   ],
+   "quantity": 1,
+   "hidden": true
+  }
+ ],
+ "connections": [
+  {
+   "to": "route_4",
+   "trigger": {
+    "x": 0,
+    "z": 45,
+    "width": 3,
+    "depth": 14
+   },
+   "spawnPoint": "from_hoehle"
+  },
+  {
+   "to": "funkenau",
+   "trigger": {
+    "x": 107,
+    "z": 45,
+    "width": 3,
+    "depth": 14
+   },
+   "spawnPoint": "from_hoehle"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_route4",
+   "pos": [
+    8,
+    52
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_funkenau",
+   "pos": [
+    102,
+    52
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "default",
+   "pos": [
+    8,
+    52
+   ],
+   "facing": 1.5707963267948966
+  }
+ ],
+ "id": "schimmerhoehle",
+ "name": "Schimmerhoehle",
+ "kind": "cave",
+ "biome": "cave",
+ "size": [
+  110,
+  96
+ ],
+ "seed": 1901,
+ "mapPos": [
+  70,
+  46
+ ],
+ "indoor": true,
+ "description": "Eine Hoehle voller Kristalle, die von selbst zu leuchten scheinen.",
+ "music": "cave",
+ "weather": [],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 4.5,
+  "frequency": 0.05,
+  "octaves": 3,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      8,
+      48
+     ],
+     [
+      50,
+      40
+     ],
+     [
+      100,
+      52
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "grassZones": [],
+ "spawnTable": [
+  {
+   "species": "kieselkopf",
+   "minLevel": 22,
+   "maxLevel": 26,
+   "weight": 16,
+   "behaviour": "static"
+  },
+  {
+   "species": "felsbrocken",
+   "minLevel": 24,
+   "maxLevel": 28,
+   "weight": 12,
+   "behaviour": "static"
+  },
+  {
+   "species": "nachtschleier",
+   "minLevel": 23,
+   "maxLevel": 27,
+   "weight": 14,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "ruestungsigel",
+   "minLevel": 23,
+   "maxLevel": 27,
+   "weight": 12,
+   "behaviour": "shy"
+  },
+  {
+   "species": "glutkohle",
+   "minLevel": 23,
+   "maxLevel": 27,
+   "weight": 10,
+   "behaviour": "static"
+  },
+  {
+   "species": "goldpanzer",
+   "minLevel": 26,
+   "maxLevel": 30,
+   "weight": 6,
+   "behaviour": "static",
+   "rare": true
+  },
+  {
+   "species": "klauenwelpe",
+   "minLevel": 24,
+   "maxLevel": 28,
+   "weight": 5,
+   "behaviour": "shy",
+   "rare": true
+  },
+  {
+   "species": "kristallgeist",
+   "minLevel": 26,
+   "maxLevel": 30,
+   "weight": 5,
+   "behaviour": "shy",
+   "rare": true
+  },
+  {
+   "species": "tiefseelicht",
+   "minLevel": 26,
+   "maxLevel": 30,
+   "weight": 4,
+   "behaviour": "aggressive",
+   "rare": true
+  }
+ ],
+ "maxWild": 18,
+ "ambience": {
+  "fogNear": 16,
+  "fogFar": 72,
+  "lightIntensity": 0.55
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "id": "kraeuterkundige_rina",
+ "name": "Kraeuterkundige Rina",
+ "trainerClass": "Kraeuterkundige",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "knollknospe",
+   "level": 17
+  },
+  {
+   "species": "giftkappe",
+   "level": 18
+  }
+ ],
+ "rewardBase": 75,
+ "dialogue": {
+  "intro": [
+   "Ein Kampf ist die beste Messung!"
+  ],
+  "defeat": [
+   "Faszinierende Daten. Danke dir."
+  ],
+  "victory": [
+   "Meine Hypothese war richtig."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#4f8a42",
+  "shirt": "#5f8f4b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 0.96
+ }
+}

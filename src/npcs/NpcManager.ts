@@ -228,11 +228,15 @@ export class NpcManager {
     if (npc.placement.trainer && !npc.defeated) {
       return { kind: 'trainer', npc, trainerId: npc.placement.trainer };
     }
-    if (npc.placement.role === 'shop' && npc.placement.shop) {
-      return { kind: 'shop', npc, shopId: npc.placement.shop };
-    }
-    if (npc.placement.role === 'heal') {
-      return { kind: 'heal', npc };
+    // Ein hinterlegter Dialogbaum hat Vorrang: er kann Heilung und Laden als
+    // Aktion ausloesen und bietet zusaetzlich eine Auswahl.
+    if (!npc.placement.dialogue) {
+      if (npc.placement.role === 'shop' && npc.placement.shop) {
+        return { kind: 'shop', npc, shopId: npc.placement.shop };
+      }
+      if (npc.placement.role === 'heal') {
+        return { kind: 'heal', npc };
+      }
     }
     const dialogueId = npc.placement.dialogue
       ?? (npc.placement.trainer

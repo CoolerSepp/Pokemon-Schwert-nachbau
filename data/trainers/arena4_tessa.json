@@ -1,0 +1,43 @@
+{
+ "id": "arena4_tessa",
+ "name": "Arena-Trainerin Tessa",
+ "trainerClass": "Arena-Trainer",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "blitzotter",
+   "level": 31
+  },
+  {
+   "species": "quallenlicht",
+   "level": 31
+  }
+ ],
+ "rewardBase": 124,
+ "dialogue": {
+  "intro": [
+   "Die Leitung dieser Arena empfaengt nicht jeden.",
+   "Zeig erst mir, was du kannst!"
+  ],
+  "defeat": [
+   "Du kommst weiter. Aber die Leitung ist eine andere Klasse."
+  ],
+  "victory": [
+   "Noch nicht so weit. Trainiere und komm wieder."
+  ],
+  "postBattle": [
+   "Heil dein Team, bevor du weitergehst. Ernsthaft."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#f0e07f",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "cap"
+ },
+ "items": [
+  "trank"
+ ]
+}

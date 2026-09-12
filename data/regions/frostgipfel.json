@@ -1,0 +1,396 @@
+{
+ "props": [
+  {
+   "kind": "lamp",
+   "pos": [
+    44.0,
+    29.4
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    66.0,
+    29.4
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    44.0,
+    62.72
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    66.0,
+    62.72
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    48.4,
+    50.96
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    61.60000000000001,
+    50.96
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "sign",
+   "pos": [
+    50.6,
+    11.76
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "well",
+   "pos": [
+    55.0,
+    45.080000000000005
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 0
+  },
+  {
+   "kind": "snowman",
+   "pos": [
+    42,
+    34
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 1
+  },
+  {
+   "kind": "snowman",
+   "pos": [
+    68,
+    34
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "pine",
+   "pos": [
+    22,
+    62
+   ],
+   "rotation": 0.4,
+   "scale": 1.2,
+   "variant": 3
+  },
+  {
+   "kind": "pine",
+   "pos": [
+    88,
+    62
+   ],
+   "rotation": 1.2,
+   "scale": 1.15,
+   "variant": 4
+  }
+ ],
+ "buildings": [
+  {
+   "kind": "center",
+   "pos": [
+    28.6,
+    49.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "center_frostgipfel",
+   "spawnPoint": "entrance",
+   "label": "Heilstation",
+   "doorOffset": [
+    0,
+    4.6
+   ]
+  },
+  {
+   "kind": "shop",
+   "pos": [
+    81.4,
+    49.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "shop_frostgipfel",
+   "spawnPoint": "entrance",
+   "label": "Warenlager",
+   "doorOffset": [
+    0,
+    3.8
+   ]
+  },
+  {
+   "kind": "gym",
+   "pos": [
+    55.0,
+    74.48
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "gym_frostgipfel",
+   "spawnPoint": "entrance",
+   "label": "Arena von Frostgipfel",
+   "doorOffset": [
+    0,
+    6.4
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    20,
+    24
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 4,
+   "label": "Berghuette"
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    90,
+    24
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 8,
+   "label": "Berghuette"
+  },
+  {
+   "kind": "station",
+   "pos": [
+    90,
+    80
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 0.9,
+   "variant": 1,
+   "label": "Seilbahn"
+  }
+ ],
+ "npcs": [
+  {
+   "id": "fg_guide",
+   "pos": [
+    55,
+    24
+   ],
+   "facing": 3.141592653589793,
+   "name": "Bergwirtin",
+   "dialogue": "frostgipfel_guide"
+  },
+  {
+   "id": "fg_t1",
+   "pos": [
+    82,
+    58
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Schneelaeufer Nils",
+   "trainer": "schneelaeufer_nils",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#a0d8ef",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "fg_frost",
+   "item": "frostkristall",
+   "pos": [
+    24,
+    86
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "fg_disk",
+   "item": "td06",
+   "pos": [
+    94,
+    44
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "route_7",
+   "trigger": {
+    "x": 47,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_frostgipfel"
+  },
+  {
+   "to": "route_8",
+   "trigger": {
+    "x": 47,
+    "z": 95,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_frostgipfel"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    55,
+    10
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route7",
+   "pos": [
+    55,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route8",
+   "pos": [
+    55,
+    92
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_center",
+   "pos": [
+    28.6,
+    41.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_shop",
+   "pos": [
+    81.4,
+    41.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_gym",
+   "pos": [
+    55.0,
+    64.48
+   ],
+   "facing": 3.141592653589793
+  }
+ ],
+ "id": "frostgipfel",
+ "name": "Frostgipfel",
+ "kind": "city",
+ "biome": "snow",
+ "size": [
+  110,
+  98
+ ],
+ "seed": 2901,
+ "mapPos": [
+  38,
+  10
+ ],
+ "description": "Die hoechstgelegene Stadt der Region - hier faellt nie der Schnee aus.",
+ "music": "snow",
+ "weather": [
+  "snow",
+  "blizzard",
+  "cloudy",
+  "clear"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 1.8,
+  "frequency": 0.04,
+  "octaves": 3,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      55.0,
+      2
+     ],
+     [
+      55.0,
+      94
+     ]
+    ],
+    "width": 9
+   },
+   {
+    "points": [
+     [
+      8,
+      49.0
+     ],
+     [
+      102,
+      49.0
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "triggers": [],
+ "ambience": {
+  "fogNear": 65,
+  "fogFar": 340
+ }
+}

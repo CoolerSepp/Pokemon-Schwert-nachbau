@@ -1,0 +1,40 @@
+{
+ "id": "moorgaengerin_inka",
+ "name": "Moorgaengerin Inka",
+ "trainerClass": "Moorgaengerin",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "sumpfhueter",
+   "level": 36
+  },
+  {
+   "species": "glockenblume",
+   "level": 36
+  }
+ ],
+ "rewardBase": 130,
+ "dialogue": {
+  "intro": [
+   "Ein Kampf unterwegs haelt wach!"
+  ],
+  "defeat": [
+   "Gut gemacht. Weiter so."
+  ],
+  "victory": [
+   "Noch nicht genug Uebung."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#5f3a2b",
+  "shirt": "#5f8f6b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "beanie",
+  "height": 0.96
+ }
+}

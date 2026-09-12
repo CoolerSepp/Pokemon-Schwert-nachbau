@@ -1,0 +1,43 @@
+{
+ "id": "arena7_bjorn",
+ "name": "Arena-Trainer Bjorn",
+ "trainerClass": "Arena-Trainer",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "eisbaerchen",
+   "level": 44
+  },
+  {
+   "species": "eiswolf",
+   "level": 44
+  }
+ ],
+ "rewardBase": 176,
+ "dialogue": {
+  "intro": [
+   "Die Leitung dieser Arena empfaengt nicht jeden.",
+   "Zeig erst mir, was du kannst!"
+  ],
+  "defeat": [
+   "Du kommst weiter. Aber die Leitung ist eine andere Klasse."
+  ],
+  "victory": [
+   "Noch nicht so weit. Trainiere und komm wieder."
+  ],
+  "postBattle": [
+   "Heil dein Team, bevor du weitergehst. Ernsthaft."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#a8e0f0",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "cap"
+ },
+ "items": [
+  "trank"
+ ]
+}

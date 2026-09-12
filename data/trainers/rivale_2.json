@@ -1,0 +1,44 @@
+{
+ "id": "rivale_2",
+ "name": "Rivale Jorin",
+ "trainerClass": "Rivale",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "nagezahn",
+   "level": 14
+  },
+  {
+   "species": "federflaum",
+   "level": 15
+  }
+ ],
+ "rewardBase": 80,
+ "dialogue": {
+  "intro": [
+   "Schon in Flusshafen? Du bist schneller geworden.",
+   "Aber nicht schnell genug."
+  ],
+  "defeat": [
+   "Verdammt. Du wirst wirklich besser."
+  ],
+  "victory": [
+   "Immer noch vorn. Trainier mehr."
+  ],
+  "postBattle": [
+   "Wir sehen uns. Frueher als dir lieb ist."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#c24b4b",
+  "shirt": "#4b8f7a",
+  "pants": "#3f3f4a",
+  "accent": "#f0e0c4",
+  "hat": "cap",
+  "height": 1.01
+ },
+ "items": [
+  "supertrank"
+ ]
+}

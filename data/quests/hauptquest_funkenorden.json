@@ -1,0 +1,43 @@
+{
+ "id": "hauptquest_funkenorden",
+ "name": "Der Funkenorden",
+ "kind": "main",
+ "description": "Finde den Weg durch die Schimmerhoehle nach Funkenau.",
+ "autoStartStage": 7,
+ "area": "funkenau",
+ "steps": [
+  {
+   "id": "hoehle",
+   "description": "Durchquere die Schimmerhoehle.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "schimmerhoehle"
+   }
+  },
+  {
+   "id": "stadt",
+   "description": "Erreiche Funkenau.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "funkenau"
+   }
+  },
+  {
+   "id": "arena",
+   "description": "Besiege die Arenaleitung in Funkenau.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "arenaleiter_volt"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 3300,
+  "items": [
+   {
+    "item": "hyperkugel",
+    "quantity": 5
+   }
+  ]
+ }
+}

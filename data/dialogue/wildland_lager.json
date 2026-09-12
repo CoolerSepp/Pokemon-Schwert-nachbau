@@ -1,0 +1,44 @@
+{
+ "id": "wildland_lager",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Willkommen im Wildlandlager. Soll ich dein Team versorgen?"
+   ],
+   "speaker": "Lagerwart",
+   "choices": [
+    {
+     "text": "Ja, bitte.",
+     "next": "heilen"
+    },
+    {
+     "text": "Nein, danke.",
+     "next": "nein"
+    }
+   ]
+  },
+  {
+   "id": "heilen",
+   "lines": [
+    "Fertig. Und pass da draussen auf dich auf."
+   ],
+   "speaker": "Lagerwart",
+   "actions": [
+    {
+     "kind": "healParty"
+    }
+   ]
+  },
+  {
+   "id": "nein",
+   "lines": [
+    "Wie du meinst. Das Lager steht immer offen."
+   ],
+   "speaker": "Lagerwart"
+  }
+ ]
+}

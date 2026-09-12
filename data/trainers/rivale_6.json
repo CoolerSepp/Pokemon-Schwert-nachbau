@@ -1,0 +1,63 @@
+{
+ "id": "rivale_6",
+ "name": "Rivale Jorin",
+ "trainerClass": "Rivale",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "sturmaar",
+   "level": 66
+  },
+  {
+   "species": "nachtwolf",
+   "level": 67
+  },
+  {
+   "species": "frostkoloss",
+   "level": 67
+  },
+  {
+   "species": "magmaherr",
+   "level": 68
+  },
+  {
+   "species": "titanklaue",
+   "level": 69
+  },
+  {
+   "species": "sichelklaue",
+   "level": 70,
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 320,
+ "dialogue": {
+  "intro": [
+   "Champion also. Herzlichen Glueckwunsch - ehrlich.",
+   "Und jetzt: noch einmal. Ohne Ausreden."
+  ],
+  "defeat": [
+   "Gut. Sehr gut.",
+   "Bis zum naechsten Mal, Champion."
+  ],
+  "victory": [
+   "Endlich! Einmal wenigstens."
+  ],
+  "postBattle": [
+   "Wir sehen uns. Frueher als dir lieb ist."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#c24b4b",
+  "shirt": "#4b8f7a",
+  "pants": "#3f3f4a",
+  "accent": "#f0e0c4",
+  "hat": "cap",
+  "height": 1.01
+ },
+ "items": [
+  "supertrank"
+ ],
+ "canGigantic": true
+}

@@ -1,0 +1,40 @@
+{
+ "id": "hoehlenforscher_bela",
+ "name": "Hoehlenforscher Bela",
+ "trainerClass": "Hoehlenforscher",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "felsbrocken",
+   "level": 25
+  },
+  {
+   "species": "nachtschleier",
+   "level": 26
+  }
+ ],
+ "rewardBase": 100,
+ "dialogue": {
+  "intro": [
+   "Ein Kampf ist die beste Messung!"
+  ],
+  "defeat": [
+   "Faszinierende Daten. Danke dir."
+  ],
+  "victory": [
+   "Meine Hypothese war richtig."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#6b5f4b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "helmet",
+  "height": 1.0
+ }
+}

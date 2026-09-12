@@ -1,0 +1,61 @@
+{
+ "id": "liga_aldo",
+ "name": "Spitzentrainer Aldo",
+ "trainerClass": "Spitzentrainer",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "bergkoloss",
+   "level": 54
+  },
+  {
+   "species": "panzerwacht",
+   "level": 55
+  },
+  {
+   "species": "goldpanzer",
+   "level": 55
+  },
+  {
+   "species": "steinwaechter",
+   "level": 56
+  },
+  {
+   "species": "rostritter",
+   "level": 57,
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 320,
+ "dialogue": {
+  "intro": [
+   "Fels bricht nicht. Fels wird gebrochen - von wem?",
+   "Zeig es mir."
+  ],
+  "defeat": [
+   "Gebrochen. Von dir.",
+   "Geh weiter. Der Naechste wartet."
+  ],
+  "victory": [
+   "Noch nicht. Die Liga ist kein Spaziergang."
+  ],
+  "postBattle": [
+   "Der Naechste wartet. Heilen kannst du hier drin nicht."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#2b2b2b",
+  "shirt": "#8f4b4b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 1.02
+ },
+ "items": [
+  "top_trank",
+  "top_trank",
+  "top_beleber"
+ ],
+ "canGigantic": true
+}

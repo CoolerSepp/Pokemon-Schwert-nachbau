@@ -1,0 +1,40 @@
+{
+ "id": "bergfuehrer_kell",
+ "name": "Bergfuehrer Kell",
+ "trainerClass": "Bergfuehrer",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "bergziege",
+   "level": 39
+  },
+  {
+   "species": "frostwelpe",
+   "level": 40
+  }
+ ],
+ "rewardBase": 140,
+ "dialogue": {
+  "intro": [
+   "Ein Kampf unterwegs haelt wach!"
+  ],
+  "defeat": [
+   "Gut gemacht. Weiter so."
+  ],
+  "victory": [
+   "Noch nicht genug Uebung."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#7a8f9b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "beanie",
+  "height": 1.0
+ }
+}

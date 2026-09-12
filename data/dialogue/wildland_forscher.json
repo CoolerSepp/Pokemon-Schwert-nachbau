@@ -1,0 +1,17 @@
+{
+ "id": "wildland_forscher",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Das Wildland folgt eigenen Regeln. Wetter, Tageszeit, Jahreszeit - alles wirkt.",
+    "Bei Gewitter tauchen Kreaturen auf, die man sonst nie sieht.",
+    "Und die Energiepunkte ... halt dich fern, wenn du nicht vorbereitet bist."
+   ],
+   "speaker": "Feldforscher"
+  }
+ ]
+}

@@ -1,0 +1,415 @@
+{
+ "props": [
+  {
+   "kind": "lamp",
+   "pos": [
+    46.400000000000006,
+    31.2
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    69.6,
+    31.2
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    46.400000000000006,
+    66.56
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    69.6,
+    66.56
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    51.04,
+    54.08
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    64.96000000000001,
+    54.08
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "sign",
+   "pos": [
+    53.36,
+    12.48
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "well",
+   "pos": [
+    58.0,
+    47.84
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 0
+  },
+  {
+   "kind": "pillar",
+   "pos": [
+    34,
+    60
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 1
+  },
+  {
+   "kind": "pillar",
+   "pos": [
+    82,
+    60
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 2
+  },
+  {
+   "kind": "statue",
+   "pos": [
+    58,
+    88
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    46,
+    40
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    70,
+    40
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "rock",
+   "pos": [
+    26,
+    76
+   ],
+   "rotation": 0.5,
+   "scale": 1.2,
+   "variant": 6
+  }
+ ],
+ "buildings": [
+  {
+   "kind": "center",
+   "pos": [
+    30.16,
+    52.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "center_geisterruine",
+   "spawnPoint": "entrance",
+   "label": "Heilstation",
+   "doorOffset": [
+    0,
+    4.6
+   ]
+  },
+  {
+   "kind": "shop",
+   "pos": [
+    85.84,
+    52.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "shop_geisterruine",
+   "spawnPoint": "entrance",
+   "label": "Warenlager",
+   "doorOffset": [
+    0,
+    3.8
+   ]
+  },
+  {
+   "kind": "gym",
+   "pos": [
+    58.0,
+    79.04
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "gym_geisterruine",
+   "spawnPoint": "entrance",
+   "label": "Arena der Ruine",
+   "doorOffset": [
+    0,
+    6.4
+   ]
+  },
+  {
+   "kind": "ruin",
+   "pos": [
+    22,
+    26
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1,
+   "label": "Ruine"
+  },
+  {
+   "kind": "ruin",
+   "pos": [
+    94,
+    26
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 0.9,
+   "variant": 3,
+   "label": "Ruine"
+  },
+  {
+   "kind": "tower",
+   "pos": [
+    94,
+    84
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 0.85,
+   "variant": 2,
+   "label": "Glockenturm"
+  }
+ ],
+ "npcs": [
+  {
+   "id": "gr_guide",
+   "pos": [
+    58,
+    24
+   ],
+   "facing": 3.141592653589793,
+   "name": "Chronistin",
+   "dialogue": "geisterruine_guide"
+  },
+  {
+   "id": "gr_t1",
+   "pos": [
+    88,
+    62
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Grabwaechter Idris",
+   "trainer": "grabwaechter_idris",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#6b4f8f",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "gr_nebel",
+   "item": "nebelkerze",
+   "pos": [
+    26,
+    90
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "gr_disk",
+   "item": "td14",
+   "pos": [
+    98,
+    44
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "nebelmoor",
+   "trigger": {
+    "x": 50,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_geisterruine"
+  },
+  {
+   "to": "route_7",
+   "trigger": {
+    "x": 50,
+    "z": 101,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_geisterruine"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    58,
+    10
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_nebelmoor",
+   "pos": [
+    58,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route7",
+   "pos": [
+    58,
+    98
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_center",
+   "pos": [
+    30.16,
+    44.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_shop",
+   "pos": [
+    85.84,
+    44.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_gym",
+   "pos": [
+    58.0,
+    69.04
+   ],
+   "facing": 3.141592653589793
+  }
+ ],
+ "id": "geisterruine",
+ "name": "Geisterruine",
+ "kind": "city",
+ "biome": "ruins",
+ "size": [
+  116,
+  104
+ ],
+ "seed": 2701,
+ "mapPos": [
+  32,
+  18
+ ],
+ "description": "Eine halb versunkene Stadt, die nie ganz aufgegeben wurde.",
+ "music": "ruins",
+ "weather": [
+  "fog",
+  "cloudy",
+  "rain"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 1.8,
+  "frequency": 0.04,
+  "octaves": 3,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      58.0,
+      2
+     ],
+     [
+      58.0,
+      100
+     ]
+    ],
+    "width": 9
+   },
+   {
+    "points": [
+     [
+      8,
+      52.0
+     ],
+     [
+      108,
+      52.0
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "triggers": [],
+ "ambience": {
+  "fogNear": 65,
+  "fogFar": 340
+ }
+}

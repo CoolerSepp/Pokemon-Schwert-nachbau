@@ -1,0 +1,35 @@
+{
+ "id": "hauptquest_frostorden",
+ "name": "Der Frostorden",
+ "kind": "main",
+ "description": "Steig zum Frostgipfel auf und gewinne den Frostorden.",
+ "autoStartStage": 10,
+ "area": "frostgipfel",
+ "steps": [
+  {
+   "id": "stadt",
+   "description": "Erreiche Frostgipfel.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "frostgipfel"
+   }
+  },
+  {
+   "id": "arena",
+   "description": "Besiege die Arenaleitung in Frostgipfel.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "arenaleiterin_hela"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 4200,
+  "items": [
+   {
+    "item": "hyperkugel",
+    "quantity": 5
+   }
+  ]
+ }
+}

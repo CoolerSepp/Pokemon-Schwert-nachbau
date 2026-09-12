@@ -1,0 +1,17 @@
+{
+ "id": "liga_ansager",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Meine Damen und Herren, das Ligastadion ist eroeffnet!",
+    "Vier Spitzentrainer und der Champion - in dieser Reihenfolge. Ohne Pause.",
+    "Heil dein Team, bevor du hineingehst. Ein zweiter Versuch kostet Zeit."
+   ],
+   "speaker": "Ansager"
+  }
+ ]
+}

@@ -1,0 +1,429 @@
+{
+ "props": [
+  {
+   "kind": "lamp",
+   "pos": [
+    48.0,
+    31.2
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    72.0,
+    31.2
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    48.0,
+    66.56
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    72.0,
+    66.56
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    52.8,
+    54.08
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    67.2,
+    54.08
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "sign",
+   "pos": [
+    55.2,
+    12.48
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "well",
+   "pos": [
+    60.0,
+    47.84
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 0
+  },
+  {
+   "kind": "palm",
+   "pos": [
+    16,
+    34
+   ],
+   "rotation": 0.3,
+   "scale": 1.2,
+   "variant": 1
+  },
+  {
+   "kind": "palm",
+   "pos": [
+    104,
+    40
+   ],
+   "rotation": 1.1,
+   "scale": 1.15,
+   "variant": 2
+  },
+  {
+   "kind": "barrel",
+   "pos": [
+    30,
+    78
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "crate",
+   "pos": [
+    34,
+    82
+   ],
+   "rotation": 0.4,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "lilypad",
+   "pos": [
+    92,
+    64
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 5
+  }
+ ],
+ "buildings": [
+  {
+   "kind": "center",
+   "pos": [
+    31.200000000000003,
+    52.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "center_flusshafen",
+   "spawnPoint": "entrance",
+   "label": "Heilstation",
+   "doorOffset": [
+    0,
+    4.6
+   ]
+  },
+  {
+   "kind": "shop",
+   "pos": [
+    88.8,
+    52.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "shop_flusshafen",
+   "spawnPoint": "entrance",
+   "label": "Warenlager",
+   "doorOffset": [
+    0,
+    3.8
+   ]
+  },
+  {
+   "kind": "gym",
+   "pos": [
+    60.0,
+    79.04
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "gym_flusshafen",
+   "spawnPoint": "entrance",
+   "label": "Arena von Flusshafen",
+   "doorOffset": [
+    0,
+    6.4
+   ]
+  },
+  {
+   "kind": "warehouse",
+   "pos": [
+    22,
+    84
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 0.9,
+   "variant": 3,
+   "label": "Lagerhalle"
+  },
+  {
+   "kind": "house",
+   "pos": [
+    100,
+    22
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 5,
+   "label": "Wohnhaus"
+  },
+  {
+   "kind": "station",
+   "pos": [
+    100,
+    84
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 2,
+   "label": "Bahnhof"
+  }
+ ],
+ "npcs": [
+  {
+   "id": "fh_guide",
+   "pos": [
+    60,
+    24
+   ],
+   "facing": 3.141592653589793,
+   "name": "Hafenmeister",
+   "dialogue": "flusshafen_guide"
+  },
+  {
+   "id": "fh_kind",
+   "pos": [
+    70,
+    58
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Kind",
+   "dialogue": "generic_npc",
+   "wander": 5
+  },
+  {
+   "id": "fh_t1",
+   "pos": [
+    92,
+    66
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Matrose Jens",
+   "trainer": "matrose_jens",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#3f7fbf",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "rivale_fh",
+   "pos": [
+    60,
+    32
+   ],
+   "facing": 3.141592653589793,
+   "name": "Rivale Jorin",
+   "trainer": "rivale_2",
+   "minStoryStage": 5,
+   "maxStoryStage": 6,
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#c24b4b",
+    "shirt": "#4b8f7a",
+    "pants": "#3f3f4a",
+    "accent": "#f0e0c4",
+    "hat": "cap",
+    "height": 1.01
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "fh_disk",
+   "item": "td03",
+   "pos": [
+    24,
+    26
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "route_2",
+   "trigger": {
+    "x": 52,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_flusshafen"
+  },
+  {
+   "to": "route_3",
+   "trigger": {
+    "x": 52,
+    "z": 101,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_flusshafen"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    60,
+    10
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route2",
+   "pos": [
+    60,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route3",
+   "pos": [
+    60,
+    98
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_center",
+   "pos": [
+    31.200000000000003,
+    44.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_shop",
+   "pos": [
+    88.8,
+    44.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_gym",
+   "pos": [
+    60.0,
+    69.04
+   ],
+   "facing": 3.141592653589793
+  }
+ ],
+ "id": "flusshafen",
+ "name": "Flusshafen",
+ "kind": "city",
+ "biome": "coastal",
+ "size": [
+  120,
+  104
+ ],
+ "seed": 1501,
+ "mapPos": [
+  26,
+  58
+ ],
+ "description": "Eine Hafenstadt, in der Fluss und Meer aufeinandertreffen.",
+ "music": "town",
+ "weather": [
+  "clear",
+  "cloudy",
+  "rain",
+  "heavyRain",
+  "fog"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 1.8,
+  "frequency": 0.04,
+  "octaves": 3,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      60.0,
+      2
+     ],
+     [
+      60.0,
+      100
+     ]
+    ],
+    "width": 9
+   },
+   {
+    "points": [
+     [
+      8,
+      52.0
+     ],
+     [
+      112,
+      52.0
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "triggers": [],
+ "ambience": {
+  "fogNear": 65,
+  "fogFar": 340
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "id": "hauptquest_schleierorden",
+ "name": "Der Schleierorden",
+ "kind": "main",
+ "description": "Durchquere das Nebelmoor und erreiche die Geisterruine.",
+ "autoStartStage": 9,
+ "area": "geisterruine",
+ "steps": [
+  {
+   "id": "moor",
+   "description": "Durchquere das Nebelmoor.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "nebelmoor"
+   }
+  },
+  {
+   "id": "stadt",
+   "description": "Erreiche die Geisterruine.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "geisterruine"
+   }
+  },
+  {
+   "id": "arena",
+   "description": "Besiege die Arenaleitung in Geisterruine.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "arenaleiter_morven"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 3900,
+  "items": [
+   {
+    "item": "hyperkugel",
+    "quantity": 5
+   }
+  ]
+ }
+}

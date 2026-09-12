@@ -1,0 +1,40 @@
+{
+ "id": "schatzsucherin_yara",
+ "name": "Schatzsucherin Yara",
+ "trainerClass": "Schatzsucherin",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "goldpanzer",
+   "level": 26
+  },
+  {
+   "species": "ruestungsigel",
+   "level": 26
+  }
+ ],
+ "rewardBase": 100,
+ "dialogue": {
+  "intro": [
+   "Ich sammle Siege. Deiner waere der naechste!"
+  ],
+  "defeat": [
+   "Der geht an dich."
+  ],
+  "victory": [
+   "Wieder einer fuer meine Sammlung."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#c24b4b",
+  "shirt": "#c2a04b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 0.97
+ }
+}

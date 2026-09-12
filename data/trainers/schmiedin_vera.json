@@ -1,0 +1,43 @@
+{
+ "id": "schmiedin_vera",
+ "name": "Schmiedin Vera",
+ "trainerClass": "Schmiedin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "magmaherr",
+   "level": 34
+  },
+  {
+   "species": "panzerwacht",
+   "level": 35
+  }
+ ],
+ "rewardBase": 130,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#2b2b2b",
+  "shirt": "#c95b2f",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "helmet",
+  "height": 1.0
+ },
+ "items": [
+  "hypertrank"
+ ]
+}

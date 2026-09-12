@@ -1,0 +1,79 @@
+{
+ "id": "arenaleiterin_bora",
+ "name": "Arenaleiterin Bora",
+ "trainerClass": "Arenaleiterin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "kampffaust",
+   "level": 26
+  },
+  {
+   "species": "bergziege",
+   "level": 27
+  },
+  {
+   "species": "ringmeister",
+   "level": 29,
+   "moves": [
+    "kraftstoss",
+    "konterhieb",
+    "kampfschrei",
+    "durchbruch"
+   ],
+   "item": "kampfguertel",
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 160,
+ "dialogue": {
+  "intro": [
+   "In Hammerstadt zaehlt, was haelt. Stahl, Maschinen, Menschen.",
+   "Der Faustorden ist kein Geschenk. Er wird erarbeitet.",
+   "Also arbeite."
+  ],
+  "defeat": [
+   "Du haeltst. Gut.",
+   "Der Faustorden ist deiner."
+  ],
+  "victory": [
+   "Noch nicht hart genug. Komm wieder."
+  ],
+  "postBattle": [
+   "Mit dem Faustorden gehorchen dir Kreaturen bis Level 36."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#2b2b2b",
+  "shirt": "#c96b4b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "band",
+  "height": 1.08
+ },
+ "items": [
+  "hypertrank",
+  "hypertrank"
+ ],
+ "canGigantic": true,
+ "rematchTeam": [
+  {
+   "species": "frostkoloss",
+   "level": 44
+  },
+  {
+   "species": "forstwaechter",
+   "level": 45
+  },
+  {
+   "species": "bergkoloss",
+   "level": 46
+  },
+  {
+   "species": "ringmeister",
+   "level": 48,
+   "gigantic": true
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "id": "flusshafen_guide",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Willkommen in Flusshafen! Hier treffen Fluss und Meer aufeinander.",
+    "Arenaleiter Marek kaempft mit Wasser - nimm Pflanzen oder Elektro mit.",
+    "Und pass auf: Bei Regen werden die wilden Wasser-Kreaturen deutlich zahlreicher."
+   ],
+   "speaker": "Hafenmeister"
+  }
+ ]
+}

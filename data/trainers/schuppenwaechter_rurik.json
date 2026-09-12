@@ -1,0 +1,44 @@
+{
+ "id": "schuppenwaechter_rurik",
+ "name": "Schuppenwaechter Rurik",
+ "trainerClass": "Schuppenwaechter",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "sichelklaue",
+   "level": 46
+  },
+  {
+   "species": "vulkanschlange",
+   "level": 46
+  }
+ ],
+ "rewardBase": 165,
+ "dialogue": {
+  "intro": [
+   "Hier kommt niemand einfach so durch!"
+  ],
+  "defeat": [
+   "Du darfst passieren."
+  ],
+  "victory": [
+   "Kehr um und trainiere."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#4b5fa8",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "helmet",
+  "height": 1.0
+ },
+ "items": [
+  "hypertrank",
+  "top_trank"
+ ]
+}

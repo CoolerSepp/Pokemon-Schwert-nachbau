@@ -1,0 +1,32 @@
+{
+ "id": "gym_drachenhorst",
+ "name": "Arena des Horsts",
+ "city": "drachenhorst",
+ "type": "dragon",
+ "badgeIndex": 7,
+ "badgeName": "Schuppenorden",
+ "leader": "arenaleiterin_saphira",
+ "minions": [
+  "arena8_torin",
+  "arena8_elke"
+ ],
+ "puzzle": "quiz",
+ "introText": [
+  "Arena des Horsts - hier wird es ernst."
+ ],
+ "victoryText": [
+  "Der Weg nach draussen ist frei."
+ ],
+ "rewardItems": [
+  "td15",
+  "top_beleber",
+  "meisterkugel"
+ ],
+ "obedienceLevel": 85,
+ "area": "gym_drachenhorst",
+ "colors": {
+  "primary": "#4b5fa8",
+  "secondary": "#7f8fd8",
+  "accent": "#d8dcf0"
+ }
+}

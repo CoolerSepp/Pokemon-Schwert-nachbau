@@ -1,0 +1,17 @@
+{
+ "id": "hammerstadt_guide",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Hammerstadt liefert Stahl in die halbe Region.",
+    "Bora leitet die Arena. Sie kaempft mit Kampf-Kreaturen - und sie kaempft hart.",
+    "Flug, Psycho oder Feen wirken gut dagegen."
+   ],
+   "speaker": "Werkmeister"
+  }
+ ]
+}

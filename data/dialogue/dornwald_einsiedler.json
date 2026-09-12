@@ -1,0 +1,17 @@
+{
+ "id": "dornwald_einsiedler",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Leise. Der Wald hoert mit.",
+    "Nachts kommen die Schatten heraus. Tagsueber schlafen sie.",
+    "Wer hier etwas sucht, findet meist etwas anderes."
+   ],
+   "speaker": "Einsiedler"
+  }
+ ]
+}

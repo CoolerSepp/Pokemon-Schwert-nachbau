@@ -1,0 +1,31 @@
+{
+ "id": "gym_aschenberg",
+ "name": "Arena von Aschenberg",
+ "city": "aschenberg",
+ "type": "fire",
+ "badgeIndex": 4,
+ "badgeName": "Glutorden",
+ "leader": "arenaleiterin_ember",
+ "minions": [
+  "arena5_kilian",
+  "arena5_juna"
+ ],
+ "puzzle": "platforms",
+ "introText": [
+  "Arena von Aschenberg - hier wird es ernst."
+ ],
+ "victoryText": [
+  "Der Weg nach draussen ist frei."
+ ],
+ "rewardItems": [
+  "td02",
+  "top_trank"
+ ],
+ "obedienceLevel": 52,
+ "area": "gym_aschenberg",
+ "colors": {
+  "primary": "#c95b2f",
+  "secondary": "#f08a4b",
+  "accent": "#f7d8c4"
+ }
+}

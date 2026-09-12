@@ -1,0 +1,79 @@
+{
+ "id": "arenaleiter_marek",
+ "name": "Arenaleiter Marek",
+ "trainerClass": "Arenaleiter",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "perlenmuschel",
+   "level": 19
+  },
+  {
+   "species": "schlammlurch",
+   "level": 20
+  },
+  {
+   "species": "wellenotter",
+   "level": 22,
+   "moves": [
+    "druckwelle",
+    "aquaklinge",
+    "nebelsog",
+    "sturzbach"
+   ],
+   "item": "meerwassertropfen",
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 140,
+ "dialogue": {
+  "intro": [
+   "Flusshafen lebt vom Wasser. Ich auch.",
+   "Der Flutorden geht nur an jemanden, der eine Stroemung lesen kann.",
+   "Zeig mir, dass du das kannst."
+  ],
+  "defeat": [
+   "Du hast die Stroemung gelesen. Sauber gemacht.",
+   "Der Flutorden gehoert dir."
+  ],
+  "victory": [
+   "Gegen die Stroemung gewinnt man nicht. Versuch es noch einmal."
+  ],
+  "postBattle": [
+   "Mit dem Flutorden gehorchen dir Kreaturen bis Level 28."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#1f3f5f",
+  "shirt": "#3f7fbf",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "beanie",
+  "height": 1.04
+ },
+ "items": [
+  "supertrank",
+  "supertrank"
+ ],
+ "canGigantic": true,
+ "rematchTeam": [
+  {
+   "species": "quallenlicht",
+   "level": 40
+  },
+  {
+   "species": "himmelsrochen",
+   "level": 41
+  },
+  {
+   "species": "blitzotter",
+   "level": 42
+  },
+  {
+   "species": "fluthueter",
+   "level": 44,
+   "gigantic": true
+  }
+ ]
+}

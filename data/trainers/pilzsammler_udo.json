@@ -1,0 +1,40 @@
+{
+ "id": "pilzsammler_udo",
+ "name": "Pilzsammler Udo",
+ "trainerClass": "Pilzsammler",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "giftkappe",
+   "level": 20
+  },
+  {
+   "species": "sporenherr",
+   "level": 22
+  }
+ ],
+ "rewardBase": 85,
+ "dialogue": {
+  "intro": [
+   "Ich sammle Siege. Deiner waere der naechste!"
+  ],
+  "defeat": [
+   "Der geht an dich."
+  ],
+  "victory": [
+   "Wieder einer fuer meine Sammlung."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#8f6bbf",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "beanie",
+  "height": 1.0
+ }
+}

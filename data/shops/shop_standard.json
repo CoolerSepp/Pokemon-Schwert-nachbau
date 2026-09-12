@@ -1,0 +1,89 @@
+{
+ "id": "shop_standard",
+ "name": "Warenlager",
+ "greeting": "Willkommen! Was brauchst du?",
+ "buysItems": true,
+ "stock": [
+  {
+   "item": "fangkugel"
+  },
+  {
+   "item": "superkugel"
+  },
+  {
+   "item": "trank"
+  },
+  {
+   "item": "supertrank"
+  },
+  {
+   "item": "gegengift"
+  },
+  {
+   "item": "brandsalbe"
+  },
+  {
+   "item": "nervenstaerker"
+  },
+  {
+   "item": "wachmacher"
+  },
+  {
+   "item": "auftaumittel"
+  },
+  {
+   "item": "fluchtseil"
+  },
+  {
+   "item": "schutzspray"
+  },
+  {
+   "item": "hyperkugel",
+   "minBadges": 2
+  },
+  {
+   "item": "hypertrank",
+   "minBadges": 2
+  },
+  {
+   "item": "beleber",
+   "minBadges": 2
+  },
+  {
+   "item": "allheilmittel",
+   "minBadges": 3
+  },
+  {
+   "item": "nachtkugel",
+   "minBadges": 3
+  },
+  {
+   "item": "netzkugel",
+   "minBadges": 3
+  },
+  {
+   "item": "flinkkugel",
+   "minBadges": 4
+  },
+  {
+   "item": "zeitkugel",
+   "minBadges": 4
+  },
+  {
+   "item": "top_trank",
+   "minBadges": 5
+  },
+  {
+   "item": "aether",
+   "minBadges": 5
+  },
+  {
+   "item": "top_beleber",
+   "minBadges": 6
+  },
+  {
+   "item": "top_aether",
+   "minBadges": 7
+  }
+ ]
+}

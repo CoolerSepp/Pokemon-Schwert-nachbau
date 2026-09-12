@@ -182,6 +182,27 @@
    }
   },
   {
+   "id": "rivale_r1",
+   "pos": [
+    32,
+    138
+   ],
+   "facing": 3.141592653589793,
+   "name": "Rivale Jorin",
+   "trainer": "rivale_1",
+   "minStoryStage": 3,
+   "maxStoryStage": 4,
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#c24b4b",
+    "shirt": "#4b8f7a",
+    "pants": "#3f3f4a",
+    "accent": "#f0e0c4",
+    "hat": "cap",
+    "height": 1.01
+   }
+  },
+  {
    "id": "route1_wanderer",
    "pos": [
     38,

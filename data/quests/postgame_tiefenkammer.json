@@ -1,0 +1,35 @@
+{
+ "id": "postgame_tiefenkammer",
+ "name": "Der Ursprung",
+ "kind": "main",
+ "description": "Unter dem Wildland liegt etwas, das aelter ist als die Region.",
+ "autoStartStage": 13,
+ "area": "tiefenkammer",
+ "steps": [
+  {
+   "id": "abstieg",
+   "description": "Finde den Abstieg im Sueden des Wildlands.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "tiefenkammer"
+   }
+  },
+  {
+   "id": "aetherion",
+   "description": "Stelle dich Aetherion.",
+   "completion": {
+    "kind": "flag",
+    "flag": "aetherionBesiegt"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 30000,
+  "items": [
+   {
+    "item": "meisterkugel",
+    "quantity": 2
+   }
+  ]
+ }
+}

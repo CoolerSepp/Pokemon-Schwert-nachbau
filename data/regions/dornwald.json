@@ -1,0 +1,399 @@
+{
+ "props": [
+  {
+   "kind": "pine",
+   "pos": [
+    20,
+    18
+   ],
+   "rotation": 0.4,
+   "scale": 1.5,
+   "variant": 1
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    110,
+    24
+   ],
+   "rotation": 1.2,
+   "scale": 1.5,
+   "variant": 2
+  },
+  {
+   "kind": "stump",
+   "pos": [
+    56,
+    48
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 3
+  },
+  {
+   "kind": "mushroom",
+   "pos": [
+    74,
+    58
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 4
+  },
+  {
+   "kind": "deadTree",
+   "pos": [
+    24,
+    70
+   ],
+   "rotation": 2.0,
+   "scale": 1.2,
+   "variant": 5
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    108,
+    96
+   ],
+   "rotation": 0.7,
+   "scale": 1.45,
+   "variant": 6
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    62,
+    30
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    68,
+    92
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 8
+  }
+ ],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "dw_t1",
+   "pos": [
+    56,
+    44
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Waldhueterin Anke",
+   "trainer": "waldhueterin_anke",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#4f8a42",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "dw_t2",
+   "pos": [
+    76,
+    80
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Pilzsammler Udo",
+   "trainer": "pilzsammler_udo",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#8f6bbf",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "dw_einsiedler",
+   "pos": [
+    100,
+    60
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Einsiedler",
+   "dialogue": "dornwald_einsiedler"
+  }
+ ],
+ "items": [
+  {
+   "id": "dw_aether",
+   "item": "aether",
+   "pos": [
+    34,
+    52
+   ],
+   "quantity": 2,
+   "hidden": false
+  },
+  {
+   "id": "dw_perle",
+   "item": "perle",
+   "pos": [
+    106,
+    74
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "dw_disk",
+   "item": "td05",
+   "pos": [
+    40,
+    100
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "route_3",
+   "trigger": {
+    "x": 57,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_dornwald"
+  },
+  {
+   "to": "route_4",
+   "trigger": {
+    "x": 57,
+    "z": 117,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_dornwald"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_route3",
+   "pos": [
+    65,
+    6
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route4",
+   "pos": [
+    65,
+    114
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "default",
+   "pos": [
+    65,
+    6
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "dornwald",
+ "name": "Dornwald",
+ "kind": "forest",
+ "biome": "forest",
+ "size": [
+  130,
+  120
+ ],
+ "seed": 1701,
+ "mapPos": [
+  44,
+  46
+ ],
+ "description": "Ein dichter Urwald, in dem selbst mittags Daemmerung herrscht.",
+ "music": "forest",
+ "weather": [
+  "clear",
+  "cloudy",
+  "rain",
+  "fog"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 7.5,
+  "frequency": 0.03,
+  "octaves": 4,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      65,
+      2
+     ],
+     [
+      50,
+      40
+     ],
+     [
+      78,
+      76
+     ],
+     [
+      65,
+      118
+     ]
+    ],
+    "width": 6
+   }
+  ]
+ },
+ "grassZones": [
+  {
+   "x": 26,
+   "z": 30,
+   "width": 26,
+   "depth": 26,
+   "density": 2.4
+  },
+  {
+   "x": 100,
+   "z": 36,
+   "width": 24,
+   "depth": 24,
+   "density": 2.3
+  },
+  {
+   "x": 30,
+   "z": 84,
+   "width": 26,
+   "depth": 26,
+   "density": 2.4
+  },
+  {
+   "x": 98,
+   "z": 90,
+   "width": 24,
+   "depth": 24,
+   "density": 2.2
+  },
+  {
+   "x": 64,
+   "z": 60,
+   "width": 22,
+   "depth": 22,
+   "density": 2.1
+  }
+ ],
+ "spawnTable": [
+  {
+   "species": "kribbelkaefer",
+   "minLevel": 17,
+   "maxLevel": 21,
+   "weight": 14,
+   "behaviour": "wander"
+  },
+  {
+   "species": "puppenpanzer",
+   "minLevel": 18,
+   "maxLevel": 22,
+   "weight": 10,
+   "behaviour": "static"
+  },
+  {
+   "species": "giftkappe",
+   "minLevel": 18,
+   "maxLevel": 22,
+   "weight": 14,
+   "behaviour": "static"
+  },
+  {
+   "species": "sporenherr",
+   "minLevel": 22,
+   "maxLevel": 26,
+   "weight": 8,
+   "behaviour": "static",
+   "rare": true
+  },
+  {
+   "species": "flatterling",
+   "minLevel": 18,
+   "maxLevel": 22,
+   "weight": 12,
+   "behaviour": "wander"
+  },
+  {
+   "species": "falterglanz",
+   "minLevel": 22,
+   "maxLevel": 26,
+   "weight": 7,
+   "behaviour": "wander",
+   "rare": true
+  },
+  {
+   "species": "waldschrat",
+   "minLevel": 20,
+   "maxLevel": 25,
+   "weight": 10,
+   "behaviour": "static"
+  },
+  {
+   "species": "dornenranke",
+   "minLevel": 20,
+   "maxLevel": 24,
+   "weight": 10,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "schattenwolf",
+   "minLevel": 19,
+   "maxLevel": 23,
+   "weight": 10,
+   "behaviour": "aggressive",
+   "timeOfDay": [
+    "dusk",
+    "night"
+   ]
+  },
+  {
+   "species": "nachtschleier",
+   "minLevel": 19,
+   "maxLevel": 23,
+   "weight": 8,
+   "behaviour": "shy",
+   "rare": true,
+   "timeOfDay": [
+    "night"
+   ]
+  },
+  {
+   "species": "klingenkaefer",
+   "minLevel": 23,
+   "maxLevel": 27,
+   "weight": 6,
+   "behaviour": "aggressive",
+   "rare": true
+  }
+ ],
+ "maxWild": 22,
+ "ambience": {
+  "fogNear": 30,
+  "fogFar": 150,
+  "lightIntensity": 0.75
+ }
+}

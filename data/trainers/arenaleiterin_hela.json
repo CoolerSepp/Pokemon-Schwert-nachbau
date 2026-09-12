@@ -1,0 +1,79 @@
+{
+ "id": "arenaleiterin_hela",
+ "name": "Arenaleiterin Hela",
+ "trainerClass": "Arenaleiterin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "eisbaerchen",
+   "level": 46
+  },
+  {
+   "species": "kristallmotte",
+   "level": 47
+  },
+  {
+   "species": "gletscherfang",
+   "level": 49,
+   "moves": [
+    "blizzardbrise",
+    "frostbiss",
+    "frostpanzer",
+    "eislanze"
+   ],
+   "item": "frostkristall",
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 240,
+ "dialogue": {
+  "intro": [
+   "Hier oben zaehlt nur, wer Geduld hat.",
+   "Der Frostorden geht an jemanden, der nicht hastig wird.",
+   "Nimm dir Zeit. Aber nicht zu viel."
+  ],
+  "defeat": [
+   "Geduldig und genau. Selten in deinem Alter.",
+   "Der Frostorden gehoert dir."
+  ],
+  "victory": [
+   "Zu hastig. Der Berg verzeiht das nicht."
+  ],
+  "postBattle": [
+   "Mit dem Frostorden gehorchen dir Kreaturen bis Level 72."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#e8e8f0",
+  "shirt": "#7fc4e0",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "beanie",
+  "height": 1.04
+ },
+ "items": [
+  "top_trank",
+  "top_trank"
+ ],
+ "canGigantic": true,
+ "rematchTeam": [
+  {
+   "species": "frostkoloss",
+   "level": 60
+  },
+  {
+   "species": "kristallgeist",
+   "level": 61
+  },
+  {
+   "species": "pelagos",
+   "level": 62
+  },
+  {
+   "species": "gletscherfang",
+   "level": 64,
+   "gigantic": true
+  }
+ ]
+}

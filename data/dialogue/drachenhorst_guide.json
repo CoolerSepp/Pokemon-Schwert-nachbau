@@ -1,0 +1,17 @@
+{
+ "id": "drachenhorst_guide",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Der Horst steht seit sieben Generationen. Wir huetten die Drachen, nicht umgekehrt.",
+    "Saphira ist die achte Hueterin. Wer sie schlaegt, darf zur Liga.",
+    "Eis, Feen und Drachen selbst sind ihre Schwaechen."
+   ],
+   "speaker": "Hueter"
+  }
+ ]
+}

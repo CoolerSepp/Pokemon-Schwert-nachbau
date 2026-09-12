@@ -562,6 +562,16 @@
     "depth": 3
    },
    "spawnPoint": "from_quellheim"
+  },
+  {
+   "to": "route_2",
+   "trigger": {
+    "x": 48,
+    "z": 95,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_quellheim"
   }
  ],
  "spawnPoints": [

@@ -1,0 +1,193 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "gym_aschenberg_m1",
+   "pos": [
+    9.6,
+    14.72
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Arena-Trainer",
+   "trainer": "arena5_kilian",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#f08a4b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "beanie",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "gym_aschenberg_m2",
+   "pos": [
+    22.4,
+    23.0
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Arena-Trainerin",
+   "trainer": "arena5_juna",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#f08a4b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "none",
+    "height": 0.95
+   }
+  },
+  {
+   "id": "gym_aschenberg_leader",
+   "pos": [
+    16.0,
+    36
+   ],
+   "facing": 3.141592653589793,
+   "name": "Arenaleitung",
+   "trainer": "arenaleiterin_ember",
+   "role": "gymLeader",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#c24b4b",
+    "shirt": "#c95b2f",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "band",
+    "height": 1.03
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "aschenberg",
+   "trigger": {
+    "x": 14.0,
+    "z": 0,
+    "width": 4.0,
+    "depth": 2.0
+   },
+   "spawnPoint": "from_gym"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    16.0,
+    4
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    16.0,
+    3.2
+   ],
+   "facing": 0
+  },
+  {
+   "id": "leader",
+   "pos": [
+    16.0,
+    32
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "gym_aschenberg",
+ "name": "Arena von Aschenberg",
+ "kind": "stadium",
+ "biome": "urban",
+ "size": [
+  32,
+  46
+ ],
+ "seed": 2420,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "gym",
+ "interiorStyle": {
+  "wallColor": "#f7d8c4",
+  "floorColor": "#8f3f24",
+  "accentColor": "#f08a4b",
+  "wallHeight": 7.0,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 16.0,
+    "z": 0,
+    "width": 4.0,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "podium",
+    "pos": [
+     16.0,
+     38
+    ],
+    "color": "#f08a4b"
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     3.0,
+     8.0
+    ],
+    "scale": 1.4
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     29.0,
+     8.0
+    ],
+    "scale": 1.4
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     6.0,
+     23.0
+    ]
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     26.0,
+     23.0
+    ]
+   },
+   {
+    "kind": "crateStack",
+    "pos": [
+     4.0,
+     40
+    ]
+   },
+   {
+    "kind": "crateStack",
+    "pos": [
+     28.0,
+     40
+    ]
+   }
+  ]
+ },
+ "ambience": {
+  "fogNear": 40,
+  "fogFar": 130
+ }
+}

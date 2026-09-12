@@ -1,0 +1,31 @@
+{
+ "id": "gym_hammerstadt",
+ "name": "Arena von Hammerstadt",
+ "city": "hammerstadt",
+ "type": "fighting",
+ "badgeIndex": 2,
+ "badgeName": "Faustorden",
+ "leader": "arenaleiterin_bora",
+ "minions": [
+  "arena3_ravi",
+  "arena3_mila"
+ ],
+ "puzzle": "switches",
+ "introText": [
+  "Arena von Hammerstadt - hier wird es ernst."
+ ],
+ "victoryText": [
+  "Der Weg nach draussen ist frei."
+ ],
+ "rewardItems": [
+  "td07",
+  "hypertrank"
+ ],
+ "obedienceLevel": 36,
+ "area": "gym_hammerstadt",
+ "colors": {
+  "primary": "#c96b4b",
+  "secondary": "#e08f5f",
+  "accent": "#f0dcc9"
+ }
+}

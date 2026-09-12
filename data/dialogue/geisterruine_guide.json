@@ -1,0 +1,17 @@
+{
+ "id": "geisterruine_guide",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Diese Stadt wurde nie ganz verlassen. Nur ... anders bewohnt.",
+    "Morven fuehrt die Arena. Geist-Kreaturen sind gegen Normal immun - denk daran.",
+    "Unlicht und Geist wirken zurueck."
+   ],
+   "speaker": "Chronistin"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "id": "faustkaempfer_ove",
+ "name": "Faustkaempfer Ove",
+ "trainerClass": "Faustkaempfer",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "kampffaust",
+   "level": 23
+  },
+  {
+   "species": "ringmeister",
+   "level": 24
+  }
+ ],
+ "rewardBase": 95,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#c96b4b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "band",
+  "height": 1.0
+ },
+ "items": [
+  "trank"
+ ]
+}

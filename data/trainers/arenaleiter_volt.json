@@ -1,0 +1,79 @@
+{
+ "id": "arenaleiter_volt",
+ "name": "Arenaleiter Volt",
+ "trainerClass": "Arenaleiter",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "funkenfell",
+   "level": 32
+  },
+  {
+   "species": "quallenlicht",
+   "level": 33
+  },
+  {
+   "species": "voltnager",
+   "level": 35,
+   "moves": [
+    "blitzschlag",
+    "volttempo",
+    "entladung",
+    "funkenkralle"
+   ],
+   "item": "magnetkern",
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 180,
+ "dialogue": {
+  "intro": [
+   "Funkenau laeuft rund um die Uhr. Ich auch.",
+   "Der Funkenorden geht an jemanden mit schnellen Entscheidungen.",
+   "Also entscheide dich - jetzt."
+  ],
+  "defeat": [
+   "Schnell und richtig. Selten.",
+   "Der Funkenorden gehoert dir."
+  ],
+  "victory": [
+   "Zu langsam. Ueberleg dir was."
+  ],
+  "postBattle": [
+   "Mit dem Funkenorden gehorchen dir Kreaturen bis Level 44."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#f0f0f0",
+  "shirt": "#e0cf4b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 1.04
+ },
+ "items": [
+  "hypertrank",
+  "hypertrank"
+ ],
+ "canGigantic": true,
+ "rematchTeam": [
+  {
+   "species": "blitzotter",
+   "level": 48
+  },
+  {
+   "species": "donnerhorn",
+   "level": 49
+  },
+  {
+   "species": "himmelsritter",
+   "level": 50
+  },
+  {
+   "species": "voltnager",
+   "level": 52,
+   "gigantic": true
+  }
+ ]
+}

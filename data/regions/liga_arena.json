@@ -1,0 +1,232 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "liga_1",
+   "pos": [
+    11,
+    16
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Spitzentrainer Aldo",
+   "trainer": "liga_aldo",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#8f4b4b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "none",
+    "height": 1.02
+   }
+  },
+  {
+   "id": "liga_2",
+   "pos": [
+    27,
+    24
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Spitzentrainerin Yuki",
+   "trainer": "liga_yuki",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#2b2b2b",
+    "shirt": "#4b8f8f",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "none",
+    "height": 0.98
+   }
+  },
+  {
+   "id": "liga_3",
+   "pos": [
+    11,
+    32
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Spitzentrainer Dorn",
+   "trainer": "liga_dorn",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#6b4b8f",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "beanie",
+    "height": 1.05
+   }
+  },
+  {
+   "id": "liga_4",
+   "pos": [
+    27,
+    40
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Spitzentrainerin Sela",
+   "trainer": "liga_sela",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#c24b4b",
+    "shirt": "#8f8f4b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "none",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "liga_champion",
+   "pos": [
+    19,
+    50
+   ],
+   "facing": 3.141592653589793,
+   "name": "Champion Aurel",
+   "trainer": "champion_aurel",
+   "role": "gymLeader",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#f0e0b0",
+    "shirt": "#ffd76b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "crown",
+    "height": 1.1
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "ligastadion",
+   "trigger": {
+    "x": 16.5,
+    "z": 0,
+    "width": 5.0,
+    "depth": 2.0
+   },
+   "spawnPoint": "from_arena"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    19,
+    5
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    19,
+    4
+   ],
+   "facing": 0
+  },
+  {
+   "id": "finale",
+   "pos": [
+    19,
+    40
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "liga_arena",
+ "name": "Ligaarena",
+ "kind": "stadium",
+ "biome": "urban",
+ "size": [
+  38,
+  60
+ ],
+ "seed": 3310,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "league",
+ "interiorStyle": {
+  "wallColor": "#e8e0cf",
+  "floorColor": "#c9a84b",
+  "accentColor": "#ffd76b",
+  "wallHeight": 9.0,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 19,
+    "z": 0,
+    "width": 5.0,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "podium",
+    "pos": [
+     19,
+     50
+    ],
+    "color": "#ffd76b",
+    "scale": 1.4
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     6,
+     16
+    ]
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     32,
+     16
+    ]
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     6,
+     40
+    ]
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     32,
+     40
+    ]
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     4,
+     8
+    ],
+    "scale": 1.6
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     34,
+     8
+    ],
+    "scale": 1.6
+   }
+  ]
+ },
+ "ambience": {
+  "fogNear": 50,
+  "fogFar": 160
+ }
+}

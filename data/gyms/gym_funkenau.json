@@ -1,0 +1,31 @@
+{
+ "id": "gym_funkenau",
+ "name": "Arena von Funkenau",
+ "city": "funkenau",
+ "type": "electric",
+ "badgeIndex": 3,
+ "badgeName": "Funkenorden",
+ "leader": "arenaleiter_volt",
+ "minions": [
+  "arena4_nino",
+  "arena4_tessa"
+ ],
+ "puzzle": "lights",
+ "introText": [
+  "Arena von Funkenau - hier wird es ernst."
+ ],
+ "victoryText": [
+  "Der Weg nach draussen ist frei."
+ ],
+ "rewardItems": [
+  "td04",
+  "hypertrank"
+ ],
+ "obedienceLevel": 44,
+ "area": "gym_funkenau",
+ "colors": {
+  "primary": "#e0cf4b",
+  "secondary": "#f0e07f",
+  "accent": "#f7f0cf"
+ }
+}

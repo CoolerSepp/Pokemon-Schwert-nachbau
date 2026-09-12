@@ -1,0 +1,50 @@
+{
+ "id": "shop_liga",
+ "name": "Ligaversorgung",
+ "greeting": "Letzte Gelegenheit vor dem Turnier. Nimm genug mit.",
+ "buysItems": true,
+ "stock": [
+  {
+   "item": "top_trank"
+  },
+  {
+   "item": "hypertrank"
+  },
+  {
+   "item": "top_beleber"
+  },
+  {
+   "item": "beleber"
+  },
+  {
+   "item": "allheilmittel"
+  },
+  {
+   "item": "top_aether"
+  },
+  {
+   "item": "hyperkugel"
+  },
+  {
+   "item": "angriffsplus"
+  },
+  {
+   "item": "abwehrplus"
+  },
+  {
+   "item": "spezialplus"
+  },
+  {
+   "item": "tempoplus"
+  },
+  {
+   "item": "ueberreste"
+  },
+  {
+   "item": "schutzamulett"
+  },
+  {
+   "item": "schaerfling"
+  }
+ ]
+}

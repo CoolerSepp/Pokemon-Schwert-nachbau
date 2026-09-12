@@ -1,0 +1,61 @@
+{
+ "id": "liga_yuki",
+ "name": "Spitzentrainerin Yuki",
+ "trainerClass": "Spitzentrainer",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "himmelsrochen",
+   "level": 55
+  },
+  {
+   "species": "quallenlicht",
+   "level": 56
+  },
+  {
+   "species": "blitzotter",
+   "level": 56
+  },
+  {
+   "species": "pelagos",
+   "level": 57
+  },
+  {
+   "species": "fluthueter",
+   "level": 58,
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 320,
+ "dialogue": {
+  "intro": [
+   "Wasser findet immer einen Weg.",
+   "Mal sehen, ob du einen findest."
+  ],
+  "defeat": [
+   "Du hast einen Weg gefunden. Respekt.",
+   "Geh weiter. Der Naechste wartet."
+  ],
+  "victory": [
+   "Noch nicht. Die Liga ist kein Spaziergang."
+  ],
+  "postBattle": [
+   "Der Naechste wartet. Heilen kannst du hier drin nicht."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#2b2b2b",
+  "shirt": "#4b8f8f",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 1.02
+ },
+ "items": [
+  "top_trank",
+  "top_trank",
+  "top_beleber"
+ ],
+ "canGigantic": true
+}

@@ -1,0 +1,343 @@
+{
+ "props": [
+  {
+   "kind": "tree",
+   "pos": [
+    10,
+    20
+   ],
+   "rotation": 0.4,
+   "scale": 1.4,
+   "variant": 1
+  },
+  {
+   "kind": "pine",
+   "pos": [
+    56,
+    28
+   ],
+   "rotation": 1.2,
+   "scale": 1.3,
+   "variant": 2
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    12,
+    60
+   ],
+   "rotation": 2.0,
+   "scale": 1.45,
+   "variant": 3
+  },
+  {
+   "kind": "pine",
+   "pos": [
+    54,
+    72
+   ],
+   "rotation": 0.6,
+   "scale": 1.35,
+   "variant": 4
+  },
+  {
+   "kind": "mushroom",
+   "pos": [
+    30,
+    56
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 5
+  },
+  {
+   "kind": "stump",
+   "pos": [
+    40,
+    96
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    10,
+    116
+   ],
+   "rotation": 1.5,
+   "scale": 1.4,
+   "variant": 7
+  },
+  {
+   "kind": "deadTree",
+   "pos": [
+    56,
+    124
+   ],
+   "rotation": 0.8,
+   "scale": 1.1,
+   "variant": 8
+  }
+ ],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "r3_t1",
+   "pos": [
+    34,
+    52
+   ],
+   "facing": 3.141592653589793,
+   "name": "Kraeuterkundige Rina",
+   "trainer": "kraeuterkundige_rina",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#5f8f4b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "r3_t2",
+   "pos": [
+    30,
+    100
+   ],
+   "facing": 0,
+   "name": "Waldlaeufer Ove",
+   "trainer": "waldlaeufer_ove",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#6b5f3f",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "r3_stein",
+   "item": "blattstein",
+   "pos": [
+    18,
+    88
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "r3_beere",
+   "item": "beere_gruen",
+   "pos": [
+    52,
+    60
+   ],
+   "quantity": 2,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "flusshafen",
+   "trigger": {
+    "x": 25,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_route3"
+  },
+  {
+   "to": "dornwald",
+   "trigger": {
+    "x": 25,
+    "z": 137,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_route3"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_flusshafen",
+   "pos": [
+    33,
+    6
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_dornwald",
+   "pos": [
+    33,
+    134
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "default",
+   "pos": [
+    33,
+    6
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "route_3",
+ "name": "Route 3",
+ "kind": "route",
+ "biome": "forest",
+ "size": [
+  66,
+  140
+ ],
+ "seed": 1601,
+ "mapPos": [
+  34,
+  50
+ ],
+ "description": "Ein schattiger Pfad am Rand des Dornwalds.",
+ "music": "forest",
+ "weather": [
+  "clear",
+  "cloudy",
+  "rain",
+  "fog"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 6.5,
+  "frequency": 0.028,
+  "octaves": 4,
+  "cliffBorder": true,
+  "ridged": false,
+  "paths": [
+   {
+    "points": [
+     [
+      33.0,
+      2
+     ],
+     [
+      33.0,
+      138
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "grassZones": [
+  {
+   "x": 14,
+   "z": 30,
+   "width": 18,
+   "depth": 22,
+   "density": 2.2
+  },
+  {
+   "x": 50,
+   "z": 48,
+   "width": 18,
+   "depth": 22,
+   "density": 2.1
+  },
+  {
+   "x": 16,
+   "z": 82,
+   "width": 20,
+   "depth": 24,
+   "density": 2.2
+  },
+  {
+   "x": 50,
+   "z": 108,
+   "width": 18,
+   "depth": 22,
+   "density": 2.0
+  }
+ ],
+ "spawnTable": [
+  {
+   "species": "kribbelkaefer",
+   "minLevel": 14,
+   "maxLevel": 18,
+   "weight": 18,
+   "behaviour": "wander"
+  },
+  {
+   "species": "flatterling",
+   "minLevel": 15,
+   "maxLevel": 19,
+   "weight": 16,
+   "behaviour": "wander"
+  },
+  {
+   "species": "giftkappe",
+   "minLevel": 15,
+   "maxLevel": 19,
+   "weight": 16,
+   "behaviour": "static"
+  },
+  {
+   "species": "sprossling",
+   "minLevel": 15,
+   "maxLevel": 18,
+   "weight": 12,
+   "behaviour": "shy"
+  },
+  {
+   "species": "schattenwolf",
+   "minLevel": 16,
+   "maxLevel": 20,
+   "weight": 12,
+   "behaviour": "aggressive",
+   "timeOfDay": [
+    "dusk",
+    "night"
+   ]
+  },
+  {
+   "species": "waldschrat",
+   "minLevel": 17,
+   "maxLevel": 21,
+   "weight": 8,
+   "behaviour": "static",
+   "rare": true
+  },
+  {
+   "species": "mondpanther",
+   "minLevel": 18,
+   "maxLevel": 21,
+   "weight": 5,
+   "behaviour": "skittish",
+   "rare": true,
+   "timeOfDay": [
+    "night"
+   ]
+  },
+  {
+   "species": "klingenkaefer",
+   "minLevel": 18,
+   "maxLevel": 21,
+   "weight": 6,
+   "behaviour": "aggressive",
+   "rare": true
+  }
+ ],
+ "maxWild": 14,
+ "triggers": [],
+ "ambience": {
+  "fogNear": 55,
+  "fogFar": 300
+ }
+}

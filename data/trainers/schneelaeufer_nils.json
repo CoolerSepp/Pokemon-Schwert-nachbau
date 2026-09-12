@@ -1,0 +1,47 @@
+{
+ "id": "schneelaeufer_nils",
+ "name": "Schneelaeufer Nils",
+ "trainerClass": "Schneelaeufer",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "eiswolf",
+   "level": 42
+  },
+  {
+   "species": "kristallmotte",
+   "level": 42
+  },
+  {
+   "species": "eisbaerchen",
+   "level": 42
+  }
+ ],
+ "rewardBase": 150,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#a0d8ef",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "beanie",
+  "height": 1.0
+ },
+ "items": [
+  "hypertrank"
+ ]
+}

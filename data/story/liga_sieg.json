@@ -1,0 +1,61 @@
+{
+ "id": "liga_sieg",
+ "lockPlayer": true,
+ "music": "victory",
+ "steps": [
+  {
+   "kind": "fade",
+   "to": "white",
+   "seconds": 0.8
+  },
+  {
+   "kind": "wait",
+   "seconds": 0.5
+  },
+  {
+   "kind": "fade",
+   "to": "clear",
+   "seconds": 1.0
+  },
+  {
+   "kind": "effect",
+   "effect": "flash",
+   "seconds": 0.6
+  },
+  {
+   "kind": "message",
+   "lines": [
+    "Das Stadion tobt.",
+    "Acht Orden, fuenf Kaempfe, ein Titel.",
+    "Aetheria hat eine neue Champion."
+   ]
+  },
+  {
+   "kind": "action",
+   "actions": [
+    {
+     "kind": "setFlag",
+     "flag": "ligaGewonnen"
+    },
+    {
+     "kind": "storyStage",
+     "stage": 13
+    },
+    {
+     "kind": "giveItem",
+     "item": "meisterkugel",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "kind": "message",
+   "speaker": "Prof. Farnholz",
+   "lines": [
+    "Ich habe jeden deiner Schritte verfolgt, {spieler}.",
+    "Und jetzt kommt der interessante Teil: Die Region ist immer noch nicht vollstaendig erfasst.",
+    "Im Wildland soll es einen Abstieg geben. Sieh nach."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "id": "nebenquest_rivale",
+ "name": "Jorin",
+ "kind": "side",
+ "description": "Dein Rivale laesst nicht locker.",
+ "autoStartStage": 3,
+ "steps": [
+  {
+   "id": "r1",
+   "description": "Besiege Jorin auf Route 1.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "rivale_1"
+   }
+  },
+  {
+   "id": "r2",
+   "description": "Besiege Jorin in Flusshafen.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "rivale_2"
+   }
+  },
+  {
+   "id": "r3",
+   "description": "Besiege Jorin in Funkenau.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "rivale_3"
+   }
+  },
+  {
+   "id": "r4",
+   "description": "Besiege Jorin im Wildland.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "rivale_4"
+   }
+  },
+  {
+   "id": "r5",
+   "description": "Besiege Jorin auf dem Ligaweg.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "rivale_5"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 8000,
+  "items": [
+   {
+    "item": "top_trank",
+    "quantity": 5
+   }
+  ]
+ }
+}

@@ -101,7 +101,7 @@ test.describe('Vertical Slice', () => {
 
     // Kampf zu Ende spielen: immer die erste Attacke.
     await page.waitForTimeout(1200);
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 150; i++) {
       const done = await run(page, (c) => {
         const screen = c.ui.get('battle');
         if (!screen) return true;

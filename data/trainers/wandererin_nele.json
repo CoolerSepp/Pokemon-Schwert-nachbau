@@ -1,0 +1,40 @@
+{
+ "id": "wandererin_nele",
+ "name": "Wandererin Nele",
+ "trainerClass": "Wanderin",
+ "ai": "basic",
+ "team": [
+  {
+   "species": "nagezahn",
+   "level": 13
+  },
+  {
+   "species": "federflaum",
+   "level": 14
+  }
+ ],
+ "rewardBase": 55,
+ "dialogue": {
+  "intro": [
+   "Ein Kampf unterwegs haelt wach!"
+  ],
+  "defeat": [
+   "Gut gemacht. Weiter so."
+  ],
+  "victory": [
+   "Noch nicht genug Uebung."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#8f5a2b",
+  "shirt": "#4b8f9b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "beanie",
+  "height": 0.95
+ }
+}

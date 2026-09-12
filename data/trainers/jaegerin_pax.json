@@ -1,0 +1,43 @@
+{
+ "id": "jaegerin_pax",
+ "name": "Jaegerin Pax",
+ "trainerClass": "Jaegerin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "sturmfuchs",
+   "level": 31
+  },
+  {
+   "species": "mondpanther",
+   "level": 32
+  }
+ ],
+ "rewardBase": 120,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#4a3524",
+  "shirt": "#8f6b4b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "band",
+  "height": 0.99
+ },
+ "items": [
+  "supertrank"
+ ]
+}

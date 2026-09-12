@@ -1,0 +1,356 @@
+{
+ "props": [
+  {
+   "kind": "deadTree",
+   "pos": [
+    22,
+    24
+   ],
+   "rotation": 0.4,
+   "scale": 1.3,
+   "variant": 1
+  },
+  {
+   "kind": "reed",
+   "pos": [
+    96,
+    30
+   ],
+   "rotation": 0,
+   "scale": 1.3,
+   "variant": 2
+  },
+  {
+   "kind": "lilypad",
+   "pos": [
+    58,
+    60
+   ],
+   "rotation": 0,
+   "scale": 1.5,
+   "variant": 3
+  },
+  {
+   "kind": "lilypad",
+   "pos": [
+    66,
+    68
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 4
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    50,
+    46
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "mushroom",
+   "pos": [
+    30,
+    92
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 6
+  },
+  {
+   "kind": "deadTree",
+   "pos": [
+    100,
+    94
+   ],
+   "rotation": 1.8,
+   "scale": 1.25,
+   "variant": 7
+  },
+  {
+   "kind": "pillar",
+   "pos": [
+    40,
+    76
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 8
+  }
+ ],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "nm_t1",
+   "pos": [
+    52,
+    44
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Irrlichtjaegerin Noor",
+   "trainer": "irrlichtjaegerin_noor",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#5f7a6b",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "nm_alt",
+   "pos": [
+    92,
+    66
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Moorhueterin",
+   "dialogue": "nebelmoor_hueterin"
+  }
+ ],
+ "items": [
+  {
+   "id": "nm_stein",
+   "item": "finsterstein",
+   "pos": [
+    28,
+    66
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "nm_top",
+   "item": "top_beleber",
+   "pos": [
+    100,
+    76
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "route_6",
+   "trigger": {
+    "x": 52,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_nebelmoor"
+  },
+  {
+   "to": "geisterruine",
+   "trigger": {
+    "x": 60,
+    "z": 107,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_nebelmoor"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_route6",
+   "pos": [
+    60,
+    6
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_geisterruine",
+   "pos": [
+    68,
+    104
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "default",
+   "pos": [
+    60,
+    6
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "nebelmoor",
+ "name": "Nebelmoor",
+ "kind": "lake",
+ "biome": "wetland",
+ "size": [
+  120,
+  110
+ ],
+ "seed": 2601,
+ "mapPos": [
+  44,
+  22
+ ],
+ "description": "Ein Moor, in dem der Nebel selbst bei Sonne nicht weicht.",
+ "music": "forest",
+ "weather": [
+  "fog",
+  "rain",
+  "heavyRain",
+  "cloudy"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 3.5,
+  "frequency": 0.04,
+  "octaves": 3,
+  "waterLevel": -0.8,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      60,
+      2
+     ],
+     [
+      48,
+      50
+     ],
+     [
+      70,
+      106
+     ]
+    ],
+    "width": 6
+   }
+  ]
+ },
+ "grassZones": [
+  {
+   "x": 24,
+   "z": 32,
+   "width": 24,
+   "depth": 24,
+   "density": 2.2
+  },
+  {
+   "x": 94,
+   "z": 40,
+   "width": 22,
+   "depth": 22,
+   "density": 2.1
+  },
+  {
+   "x": 26,
+   "z": 84,
+   "width": 24,
+   "depth": 24,
+   "density": 2.2
+  },
+  {
+   "x": 94,
+   "z": 88,
+   "width": 22,
+   "depth": 22,
+   "density": 2.0
+  }
+ ],
+ "waterZones": [
+  {
+   "x": 60,
+   "z": 62,
+   "width": 34,
+   "depth": 30
+  }
+ ],
+ "spawnTable": [
+  {
+   "species": "schlammlurch",
+   "minLevel": 32,
+   "maxLevel": 38,
+   "weight": 14,
+   "behaviour": "shy"
+  },
+  {
+   "species": "sumpfhueter",
+   "minLevel": 36,
+   "maxLevel": 42,
+   "weight": 10,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "moorlicht",
+   "minLevel": 34,
+   "maxLevel": 40,
+   "weight": 12,
+   "behaviour": "shy"
+  },
+  {
+   "species": "tintenschleim",
+   "minLevel": 34,
+   "maxLevel": 40,
+   "weight": 12,
+   "behaviour": "static"
+  },
+  {
+   "species": "schlickmonarch",
+   "minLevel": 38,
+   "maxLevel": 44,
+   "weight": 6,
+   "behaviour": "aggressive",
+   "rare": true
+  },
+  {
+   "species": "nachtschleier",
+   "minLevel": 34,
+   "maxLevel": 40,
+   "weight": 10,
+   "behaviour": "aggressive",
+   "timeOfDay": [
+    "dusk",
+    "night"
+   ]
+  },
+  {
+   "species": "geisterfuerst",
+   "minLevel": 38,
+   "maxLevel": 44,
+   "weight": 5,
+   "behaviour": "aggressive",
+   "rare": true,
+   "timeOfDay": [
+    "night"
+   ]
+  },
+  {
+   "species": "glockenblume",
+   "minLevel": 34,
+   "maxLevel": 40,
+   "weight": 10,
+   "behaviour": "static"
+  },
+  {
+   "species": "kristallgeist",
+   "minLevel": 36,
+   "maxLevel": 42,
+   "weight": 5,
+   "behaviour": "shy",
+   "rare": true,
+   "weather": [
+    "fog"
+   ]
+  }
+ ],
+ "maxWild": 20,
+ "ambience": {
+  "fogNear": 18,
+  "fogFar": 90,
+  "lightIntensity": 0.7
+ }
+}

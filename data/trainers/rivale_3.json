@@ -1,0 +1,48 @@
+{
+ "id": "rivale_3",
+ "name": "Rivale Jorin",
+ "trainerClass": "Rivale",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "bissnager",
+   "level": 24
+  },
+  {
+   "species": "windschwinge",
+   "level": 25
+  },
+  {
+   "species": "kampffaust",
+   "level": 26
+  }
+ ],
+ "rewardBase": 110,
+ "dialogue": {
+  "intro": [
+   "Drei Orden? Ich habe vier.",
+   "Naja - beweisen wir es lieber."
+  ],
+  "defeat": [
+   "Vier zu drei. Aber das fuehlt sich nicht mehr nach Vorsprung an."
+  ],
+  "victory": [
+   "Noch vier zu drei. Hol auf."
+  ],
+  "postBattle": [
+   "Wir sehen uns. Frueher als dir lieb ist."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#c24b4b",
+  "shirt": "#4b8f7a",
+  "pants": "#3f3f4a",
+  "accent": "#f0e0c4",
+  "hat": "cap",
+  "height": 1.01
+ },
+ "items": [
+  "supertrank"
+ ]
+}

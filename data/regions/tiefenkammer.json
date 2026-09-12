@@ -1,0 +1,299 @@
+{
+ "props": [
+  {
+   "kind": "crystal",
+   "pos": [
+    30,
+    30
+   ],
+   "rotation": 0.3,
+   "scale": 1.6,
+   "variant": 1
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    100,
+    36
+   ],
+   "rotation": 1.1,
+   "scale": 1.5,
+   "variant": 2
+  },
+  {
+   "kind": "pillar",
+   "pos": [
+    44,
+    60
+   ],
+   "rotation": 0,
+   "scale": 1.5,
+   "variant": 3
+  },
+  {
+   "kind": "pillar",
+   "pos": [
+    86,
+    60
+   ],
+   "rotation": 0,
+   "scale": 1.5,
+   "variant": 4
+  },
+  {
+   "kind": "statue",
+   "pos": [
+    65,
+    92
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.6,
+   "variant": 5
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    56,
+    84
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 6
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    74,
+    84
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 7
+  },
+  {
+   "kind": "stalagmite",
+   "pos": [
+    36,
+    96
+   ],
+   "rotation": 0,
+   "scale": 1.6,
+   "variant": 8
+  },
+  {
+   "kind": "stalagmite",
+   "pos": [
+    94,
+    100
+   ],
+   "rotation": 0,
+   "scale": 1.5,
+   "variant": 9
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    65,
+    48
+   ],
+   "rotation": 0.8,
+   "scale": 1.8,
+   "variant": 10
+  }
+ ],
+ "buildings": [],
+ "npcs": [],
+ "items": [
+  {
+   "id": "tk_meister",
+   "item": "meisterkugel",
+   "pos": [
+    65,
+    104
+   ],
+   "quantity": 1,
+   "hidden": false,
+   "minStoryStage": 9
+  },
+  {
+   "id": "tk_stein",
+   "item": "feenstein",
+   "pos": [
+    38,
+    74
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "wildland",
+   "trigger": {
+    "x": 57,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_tiefenkammer"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_wildland",
+   "pos": [
+    65,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "default",
+   "pos": [
+    65,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "altar",
+   "pos": [
+    65,
+    100
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "tiefenkammer",
+ "name": "Tiefenkammer",
+ "kind": "endgame",
+ "biome": "cave",
+ "size": [
+  130,
+  120
+ ],
+ "seed": 3401,
+ "mapPos": [
+  50,
+  40
+ ],
+ "indoor": true,
+ "description": "Weit unter dem Wildland - der Ort, an dem Aetheria begonnen haben soll.",
+ "music": "finalBattle",
+ "weather": [],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 6,
+  "frequency": 0.04,
+  "octaves": 4,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      65,
+      4
+     ],
+     [
+      65,
+      116
+     ]
+    ],
+    "width": 9
+   }
+  ]
+ },
+ "spawnTable": [
+  {
+   "species": "abgrundschrecken",
+   "minLevel": 52,
+   "maxLevel": 60,
+   "weight": 10,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "geisterfuerst",
+   "minLevel": 50,
+   "maxLevel": 58,
+   "weight": 12,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "titanklaue",
+   "minLevel": 54,
+   "maxLevel": 62,
+   "weight": 6,
+   "behaviour": "aggressive",
+   "sizeVariant": "large"
+  },
+  {
+   "species": "rostritter",
+   "minLevel": 50,
+   "maxLevel": 58,
+   "weight": 12,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "steinwaechter",
+   "minLevel": 50,
+   "maxLevel": 58,
+   "weight": 10,
+   "behaviour": "static"
+  },
+  {
+   "species": "kristallgeist",
+   "minLevel": 50,
+   "maxLevel": 58,
+   "weight": 10,
+   "behaviour": "shy"
+  },
+  {
+   "species": "tiefseelicht",
+   "minLevel": 50,
+   "maxLevel": 58,
+   "weight": 10,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "moorlicht",
+   "minLevel": 50,
+   "maxLevel": 58,
+   "weight": 8,
+   "behaviour": "shy"
+  },
+  {
+   "species": "noctaris",
+   "minLevel": 62,
+   "maxLevel": 66,
+   "weight": 1,
+   "behaviour": "static",
+   "rare": true,
+   "minStoryStage": 9
+  }
+ ],
+ "maxWild": 16,
+ "triggers": [
+  {
+   "id": "tiefenkammer_boss",
+   "pos": [
+    65,
+    98
+   ],
+   "radius": 5,
+   "once": true,
+   "requires": {
+    "badge": 8,
+    "notFlag": "aetherionBesiegt"
+   },
+   "action": {
+    "kind": "cutscene",
+    "cutscene": "finale_aetherion"
+   }
+  }
+ ],
+ "ambience": {
+  "fogNear": 20,
+  "fogFar": 100,
+  "lightIntensity": 0.5
+ }
+}

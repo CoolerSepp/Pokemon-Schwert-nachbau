@@ -1,0 +1,395 @@
+{
+ "props": [
+  {
+   "kind": "lamp",
+   "pos": [
+    44.800000000000004,
+    30.0
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    67.2,
+    30.0
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    44.800000000000004,
+    64.0
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    67.2,
+    64.0
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    49.28,
+    52.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    62.720000000000006,
+    52.0
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "sign",
+   "pos": [
+    51.52,
+    12.0
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "well",
+   "pos": [
+    56.0,
+    46.0
+   ],
+   "rotation": 0,
+   "scale": 1.1,
+   "variant": 0
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    40,
+    30
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 1
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    72,
+    30
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 2
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    22,
+    66
+   ],
+   "rotation": 0.4,
+   "scale": 1.3,
+   "variant": 3
+  },
+  {
+   "kind": "rock",
+   "pos": [
+    90,
+    62
+   ],
+   "rotation": 1.2,
+   "scale": 1.2,
+   "variant": 4
+  }
+ ],
+ "buildings": [
+  {
+   "kind": "center",
+   "pos": [
+    29.12,
+    50.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "center_aschenberg",
+   "spawnPoint": "entrance",
+   "label": "Heilstation",
+   "doorOffset": [
+    0,
+    4.6
+   ]
+  },
+  {
+   "kind": "shop",
+   "pos": [
+    82.88,
+    50.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "shop_aschenberg",
+   "spawnPoint": "entrance",
+   "label": "Warenlager",
+   "doorOffset": [
+    0,
+    3.8
+   ]
+  },
+  {
+   "kind": "gym",
+   "pos": [
+    56.0,
+    76.0
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0,
+   "interior": "gym_aschenberg",
+   "spawnPoint": "entrance",
+   "label": "Arena von Aschenberg",
+   "doorOffset": [
+    0,
+    6.4
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    20,
+    24
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 2,
+   "label": "Steinhaus"
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    92,
+    24
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 6,
+   "label": "Steinhaus"
+  },
+  {
+   "kind": "tower",
+   "pos": [
+    92,
+    82
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 0.8,
+   "variant": 4,
+   "label": "Aussichtsturm"
+  }
+ ],
+ "npcs": [
+  {
+   "id": "ab_guide",
+   "pos": [
+    56,
+    24
+   ],
+   "facing": 3.141592653589793,
+   "name": "Kraterwaechter",
+   "dialogue": "aschenberg_guide"
+  },
+  {
+   "id": "ab_t1",
+   "pos": [
+    84,
+    56
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Schmiedin Vera",
+   "trainer": "schmiedin_vera",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#c95b2f",
+    "pants": "#3a3a42",
+    "accent": "#ffffff",
+    "hat": "cap",
+    "height": 1.0
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "ab_holz",
+   "item": "holzkohle",
+   "pos": [
+    24,
+    88
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "ab_disk",
+   "item": "td02",
+   "pos": [
+    96,
+    40
+   ],
+   "quantity": 1,
+   "hidden": false
+  }
+ ],
+ "connections": [
+  {
+   "to": "route_5",
+   "trigger": {
+    "x": 48,
+    "z": 0,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_aschenberg"
+  },
+  {
+   "to": "route_6",
+   "trigger": {
+    "x": 48,
+    "z": 97,
+    "width": 16,
+    "depth": 3
+   },
+   "spawnPoint": "from_aschenberg"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    56,
+    10
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route5",
+   "pos": [
+    56,
+    8
+   ],
+   "facing": 0
+  },
+  {
+   "id": "from_route6",
+   "pos": [
+    56,
+    94
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_center",
+   "pos": [
+    29.12,
+    42.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_shop",
+   "pos": [
+    82.88,
+    42.0
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_gym",
+   "pos": [
+    56.0,
+    66.0
+   ],
+   "facing": 3.141592653589793
+  }
+ ],
+ "id": "aschenberg",
+ "name": "Aschenberg",
+ "kind": "city",
+ "biome": "volcanic",
+ "size": [
+  112,
+  100
+ ],
+ "seed": 2401,
+ "mapPos": [
+  74,
+  20
+ ],
+ "description": "Eine Siedlung am Kraterrand, gebaut aus schwarzem Stein.",
+ "music": "volcanic",
+ "weather": [
+  "clear",
+  "harshSun",
+  "cloudy"
+ ],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 1.8,
+  "frequency": 0.04,
+  "octaves": 3,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      56.0,
+      2
+     ],
+     [
+      56.0,
+      96
+     ]
+    ],
+    "width": 9
+   },
+   {
+    "points": [
+     [
+      8,
+      50.0
+     ],
+     [
+      104,
+      50.0
+     ]
+    ],
+    "width": 7
+   }
+  ]
+ },
+ "triggers": [],
+ "ambience": {
+  "fogNear": 65,
+  "fogFar": 340
+ }
+}

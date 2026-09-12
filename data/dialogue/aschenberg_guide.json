@@ -1,0 +1,17 @@
+{
+ "id": "aschenberg_guide",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Der Krater raucht seit dreihundert Jahren. Gewoehnungssache.",
+    "Ember hat die Arena von ihrer Mutter uebernommen. Feuer, was sonst.",
+    "Wasser, Gestein oder Boden - such dir was aus."
+   ],
+   "speaker": "Kraterwaechter"
+  }
+ ]
+}

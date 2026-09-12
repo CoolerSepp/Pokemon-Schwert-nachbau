@@ -1,0 +1,47 @@
+{
+ "id": "ligaanwaerterin_thea",
+ "name": "Ligaanwaerterin Thea",
+ "trainerClass": "Ligaanwaerterin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "fluthueter",
+   "level": 48
+  },
+  {
+   "species": "lichtfee",
+   "level": 48
+  },
+  {
+   "species": "mondpanther",
+   "level": 49
+  }
+ ],
+ "rewardBase": 180,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#c24b4b",
+  "shirt": "#c9a04b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 0.98
+ },
+ "items": [
+  "top_trank"
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "id": "gym_geisterruine",
+ "name": "Arena der Ruine",
+ "city": "geisterruine",
+ "type": "ghost",
+ "badgeIndex": 5,
+ "badgeName": "Schleierorden",
+ "leader": "arenaleiter_morven",
+ "minions": [
+  "arena6_nyx",
+  "arena6_calla"
+ ],
+ "puzzle": "maze",
+ "introText": [
+  "Arena der Ruine - hier wird es ernst."
+ ],
+ "victoryText": [
+  "Der Weg nach draussen ist frei."
+ ],
+ "rewardItems": [
+  "td14",
+  "top_trank"
+ ],
+ "obedienceLevel": 62,
+ "area": "gym_geisterruine",
+ "colors": {
+  "primary": "#6b4f8f",
+  "secondary": "#9b7fc4",
+  "accent": "#d8cfe8"
+ }
+}

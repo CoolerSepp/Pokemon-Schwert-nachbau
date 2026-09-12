@@ -1,0 +1,46 @@
+{
+ "id": "nebenquest_index",
+ "name": "Vollstaendige Erfassung",
+ "kind": "side",
+ "description": "Prof. Farnholz moechte moeglichst viele Arten erfasst wissen.",
+ "autoStartStage": 5,
+ "steps": [
+  {
+   "id": "zehn",
+   "description": "Fange zehn verschiedene Arten.",
+   "completion": {
+    "kind": "catchCount",
+    "count": 10
+   }
+  },
+  {
+   "id": "zwanzig",
+   "description": "Fange zwanzig verschiedene Arten.",
+   "completion": {
+    "kind": "catchCount",
+    "count": 20
+   }
+  },
+  {
+   "id": "vierzig",
+   "description": "Fange vierzig verschiedene Arten.",
+   "completion": {
+    "kind": "catchCount",
+    "count": 40
+   }
+  }
+ ],
+ "rewards": {
+  "money": 12000,
+  "items": [
+   {
+    "item": "meisterkugel",
+    "quantity": 1
+   },
+   {
+    "item": "gluecksei",
+    "quantity": 1
+   }
+  ]
+ }
+}

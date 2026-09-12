@@ -1,0 +1,40 @@
+{
+ "id": "sumpfkundler_jan",
+ "name": "Sumpfkundler Jan",
+ "trainerClass": "Sumpfkundler",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "tintenschleim",
+   "level": 36
+  },
+  {
+   "species": "schlickmonarch",
+   "level": 38
+  }
+ ],
+ "rewardBase": 135,
+ "dialogue": {
+  "intro": [
+   "Ein Kampf ist die beste Messung!"
+  ],
+  "defeat": [
+   "Faszinierende Daten. Danke dir."
+  ],
+  "victory": [
+   "Meine Hypothese war richtig."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#6b7a4b",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "cap",
+  "height": 1.0
+ }
+}

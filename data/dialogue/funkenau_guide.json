@@ -1,0 +1,17 @@
+{
+ "id": "funkenau_guide",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "In Funkenau gehen die Lichter nie aus.",
+    "Volt fuehrt die Arena. Elektro - also lass Boden-Kreaturen antreten.",
+    "Suedlich liegt das Wildland. Dort gilt: Wetter aendert alles."
+   ],
+   "speaker": "Stadtfuehrerin"
+  }
+ ]
+}

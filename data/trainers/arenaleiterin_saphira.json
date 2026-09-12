@@ -1,0 +1,85 @@
+{
+ "id": "arenaleiterin_saphira",
+ "name": "Arenaleiterin Saphira",
+ "trainerClass": "Arenaleiterin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "klauenwelpe",
+   "level": 50
+  },
+  {
+   "species": "vulkanschlange",
+   "level": 51
+  },
+  {
+   "species": "sichelklaue",
+   "level": 52
+  },
+  {
+   "species": "titanklaue",
+   "level": 54,
+   "moves": [
+    "drachenklaue",
+    "erdbeben",
+    "drachentanz",
+    "gebirgsschlag"
+   ],
+   "item": "drachenzahn",
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 280,
+ "dialogue": {
+  "intro": [
+   "Der Horst steht seit sieben Generationen. Ich bin die achte Hueterin.",
+   "Wer den Schuppenorden traegt, darf zur Liga.",
+   "Bisher haben es drei geschafft. Zeig mir, ob du die vierte wirst."
+  ],
+  "defeat": [
+   "Die vierte also.",
+   "Der Schuppenorden gehoert dir. Der Ligaweg steht dir offen.",
+   "Geh ihn. Und komm als Champion zurueck."
+  ],
+  "victory": [
+   "Noch nicht. Aber du warst naeher dran als die meisten."
+  ],
+  "postBattle": [
+   "Acht Orden. Der Ligaweg im Sueden ist jetzt offen."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#2b3f6b",
+  "shirt": "#4b5fa8",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "crown",
+  "height": 1.08
+ },
+ "items": [
+  "top_trank",
+  "top_trank",
+  "top_beleber"
+ ],
+ "canGigantic": true,
+ "rematchTeam": [
+  {
+   "species": "abgrundschrecken",
+   "level": 66
+  },
+  {
+   "species": "aetherion",
+   "level": 68
+  },
+  {
+   "species": "vulkanschlange",
+   "level": 67
+  },
+  {
+   "species": "titanklaue",
+   "level": 70,
+   "gigantic": true
+  }
+ ]
+}

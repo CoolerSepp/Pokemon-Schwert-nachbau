@@ -1,0 +1,40 @@
+{
+ "id": "kletterin_sona",
+ "name": "Kletterin Sona",
+ "trainerClass": "Kletterin",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "schneehase",
+   "level": 40
+  },
+  {
+   "species": "eiswolf",
+   "level": 41
+  }
+ ],
+ "rewardBase": 145,
+ "dialogue": {
+  "intro": [
+   "Zeig, was in dir steckt!"
+  ],
+  "defeat": [
+   "Starker Kampf. Respekt."
+  ],
+  "victory": [
+   "Zu wenig Kraft."
+  ],
+  "postBattle": [
+   "Trainiere weiter - der Weg wird nicht leichter."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#8f5a2b",
+  "shirt": "#9bb0c4",
+  "pants": "#3a3a42",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 0.97
+ }
+}
