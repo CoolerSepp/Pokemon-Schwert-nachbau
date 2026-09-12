@@ -1,4 +1,5 @@
 import './style.css';
+import './ui/ui.css';
 import { GameData } from '@/data/GameData';
 import { Logger } from '@/core/Logger';
 import { Game } from '@/core/Game';
