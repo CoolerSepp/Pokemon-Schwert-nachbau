@@ -1,0 +1,17 @@
+{
+ "id": "quellheim_fuehrer",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Willkommen in Quellheim! Die Quelle im Zentrum ist aelter als die Stadt selbst.",
+    "Die Arena liegt im Sueden - Arenaleiterin Thalia setzt auf Pflanzen-Kreaturen.",
+    "Die Heilstation im Westen versorgt dein Team kostenlos. Der Laden im Osten hat alles Noetige."
+   ],
+   "speaker": "Stadtfuehrer"
+  }
+ ]
+}

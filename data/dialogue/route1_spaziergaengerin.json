@@ -1,0 +1,16 @@
+{
+ "id": "route1_spaziergaengerin",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Im hohen Gras rascheln staendig Kreaturen.",
+    "Wenn du eine fangen willst: Schwaech sie erst im Kampf. Ein Ball allein reicht selten."
+   ],
+   "speaker": "Spaziergaengerin"
+  }
+ ]
+}

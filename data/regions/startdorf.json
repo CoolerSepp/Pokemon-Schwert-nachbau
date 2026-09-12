@@ -938,7 +938,11 @@
     "width": 16,
     "depth": 3
    },
-   "spawnPoint": "from_startdorf"
+   "spawnPoint": "from_startdorf",
+   "requires": {
+    "flag": "starterChosen"
+   },
+   "blockedText": "Ohne eigene Kreatur solltest du Route 1 nicht betreten."
   }
  ],
  "spawnPoints": [

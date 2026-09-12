@@ -1,0 +1,52 @@
+{
+ "id": "hauptquest_erster_orden",
+ "name": "Der erste Orden",
+ "kind": "main",
+ "description": "Reise nach Quellheim und gewinne den Wurzelorden.",
+ "autoStartStage": 3,
+ "giver": "Prof. Farnholz",
+ "area": "quellheim",
+ "steps": [
+  {
+   "id": "route1",
+   "description": "Folge Route 1 nach Norden.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "route_1"
+   }
+  },
+  {
+   "id": "quellheim",
+   "description": "Erreiche Quellheim.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "quellheim"
+   }
+  },
+  {
+   "id": "arena",
+   "description": "Betritt die Arena von Quellheim.",
+   "completion": {
+    "kind": "visitArea",
+    "area": "gym_quellheim"
+   }
+  },
+  {
+   "id": "leiterin",
+   "description": "Besiege Arenaleiterin Thalia.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "arenaleiterin_thalia"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 1500,
+  "items": [
+   {
+    "item": "superkugel",
+    "quantity": 5
+   }
+  ]
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "id": "arenaleiterin_thalia",
+ "name": "Arenaleiterin Thalia",
+ "trainerClass": "Arenaleiterin",
+ "ai": "expert",
+ "team": [
+  {
+   "species": "bluetenherz",
+   "level": 14,
+   "moves": [
+    "rankenhieb",
+    "feenstaub",
+    "wachstum",
+    "schutzschirm"
+   ]
+  },
+  {
+   "species": "dornenranke",
+   "level": 15,
+   "moves": [
+    "rankenhieb",
+    "dornenwall",
+    "energieentzug",
+    "blattschnitt"
+   ]
+  },
+  {
+   "species": "blattbock",
+   "level": 17,
+   "moves": [
+    "blattschnitt",
+    "wuchtschlag",
+    "wachstum",
+    "energieentzug"
+   ],
+   "item": "ueberreste",
+   "gigantic": true
+  }
+ ],
+ "rewardBase": 110,
+ "dialogue": {
+  "intro": [
+   "Willkommen in meiner Arena, {spieler}.",
+   "Ich bin Thalia. Ich huete die Quelle und alles, was aus ihr waechst.",
+   "Wer den Wurzelorden will, muss zeigen, dass er mehr kann als zuschlagen.",
+   "Zeig mir dein Koennen!"
+  ],
+  "defeat": [
+   "Wunderbar. Wirklich wunderbar.",
+   "Du kaempfst nicht nur mit Kraft, sondern mit Verstand. Das sieht man selten.",
+   "Der Wurzelorden gehoert dir - du hast ihn dir verdient."
+  ],
+  "victory": [
+   "Noch nicht. Aber du warst nahe dran.",
+   "Heile dein Team und komm wieder. Ich warte hier."
+  ],
+  "postBattle": [
+   "Mit dem Wurzelorden gehorchen dir Kreaturen bis Level 20.",
+   "Der Weg nach Norden steht dir offen. Viel Glueck, {spieler}."
+  ]
+ },
+ "appearance": {
+  "skin": "#e0b894",
+  "hair": "#4f8a42",
+  "shirt": "#d8e8cf",
+  "pants": "#5f7a4f",
+  "accent": "#7fc44b",
+  "hat": "band",
+  "height": 1.02
+ },
+ "items": [
+  "supertrank",
+  "supertrank"
+ ],
+ "canGigantic": true,
+ "rematchTeam": [
+  {
+   "species": "bluetenherz",
+   "level": 34
+  },
+  {
+   "species": "dornenranke",
+   "level": 35
+  },
+  {
+   "species": "waldschrat",
+   "level": 36
+  },
+  {
+   "species": "forstwaechter",
+   "level": 38,
+   "gigantic": true
+  }
+ ]
+}

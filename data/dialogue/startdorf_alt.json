@@ -1,0 +1,31 @@
+{
+ "id": "startdorf_alt",
+ "entry": [
+  "start_late",
+  "start_early"
+ ],
+ "nodes": [
+  {
+   "id": "start_early",
+   "lines": [
+    "Frueher bin ich selbst durch ganz Aetheria gereist.",
+    "Heute reicht mir die Bank hier vor dem Haus."
+   ],
+   "speaker": "Alter Nachbar",
+   "requires": {
+    "maxStoryStage": 2
+   }
+  },
+  {
+   "id": "start_late",
+   "lines": [
+    "Du hast also schon {orden} Orden. In deinem Alter hatte ich noch keinen einzigen!",
+    "Ein Rat: Ein ausgewogenes Team schlaegt ein starkes."
+   ],
+   "speaker": "Alter Nachbar",
+   "requires": {
+    "storyStage": 3
+   }
+  }
+ ]
+}

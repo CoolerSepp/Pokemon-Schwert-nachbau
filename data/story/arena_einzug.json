@@ -1,0 +1,28 @@
+{
+ "id": "arena_einzug",
+ "lockPlayer": true,
+ "music": "gym",
+ "steps": [
+  {
+   "kind": "fade",
+   "to": "black",
+   "seconds": 0.4
+  },
+  {
+   "kind": "wait",
+   "seconds": 0.3
+  },
+  {
+   "kind": "fade",
+   "to": "clear",
+   "seconds": 0.5
+  },
+  {
+   "kind": "message",
+   "lines": [
+    "Das Innere der Arena ist von echtem Gruen ueberwuchert.",
+    "Ranken bilden Wege, Blaetter filtern das Licht."
+   ]
+  }
+ ]
+}

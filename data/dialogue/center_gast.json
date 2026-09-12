@@ -1,0 +1,16 @@
+{
+ "id": "center_gast",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Ich reise seit Monaten durch Aetheria.",
+    "Die Heilstationen retten einem wirklich den Tag."
+   ],
+   "speaker": "Reisender"
+  }
+ ]
+}

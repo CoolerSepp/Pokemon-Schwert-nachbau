@@ -1,0 +1,45 @@
+{
+ "id": "heilstation",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Willkommen in der Heilstation. Soll ich dein Team versorgen?"
+   ],
+   "speaker": "Pflegerin",
+   "choices": [
+    {
+     "text": "Ja, bitte.",
+     "next": "heilen"
+    },
+    {
+     "text": "Spaeter.",
+     "next": "abgelehnt"
+    }
+   ]
+  },
+  {
+   "id": "heilen",
+   "lines": [
+    "Einen Moment ... so! Deine Kreaturen sind wieder vollstaendig erholt.",
+    "Wir freuen uns auf deinen naechsten Besuch."
+   ],
+   "speaker": "Pflegerin",
+   "actions": [
+    {
+     "kind": "healParty"
+    }
+   ]
+  },
+  {
+   "id": "abgelehnt",
+   "lines": [
+    "Kein Problem. Wir haben rund um die Uhr geoeffnet."
+   ],
+   "speaker": "Pflegerin"
+  }
+ ]
+}

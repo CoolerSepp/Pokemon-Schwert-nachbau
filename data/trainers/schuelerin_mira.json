@@ -1,0 +1,44 @@
+{
+ "id": "schuelerin_mira",
+ "name": "Schuelerin Mira",
+ "trainerClass": "Schuelerin",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "knollknospe",
+   "level": 11
+  },
+  {
+   "species": "funkenfell",
+   "level": 12
+  }
+ ],
+ "rewardBase": 60,
+ "dialogue": {
+  "intro": [
+   "Ich trainiere fuer die Arena. Du auch?",
+   "Dann lass uns vorher gegeneinander antreten!"
+  ],
+  "defeat": [
+   "Du bist wirklich gut. Thalia wird dich ernst nehmen muessen."
+  ],
+  "victory": [
+   "Noch nicht bereit fuer die Arena, wuerde ich sagen."
+  ],
+  "postBattle": [
+   "Thalia setzt auf Pflanzen. Feuer, Flug und Eis wirken gut dagegen."
+  ]
+ },
+ "appearance": {
+  "skin": "#e8c19b",
+  "hair": "#2b2b2b",
+  "shirt": "#8f4bbf",
+  "pants": "#3f3f4a",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 0.94
+ },
+ "items": [
+  "trank"
+ ]
+}

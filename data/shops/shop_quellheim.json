@@ -1,0 +1,59 @@
+{
+ "id": "shop_quellheim",
+ "name": "Warenlager Quellheim",
+ "greeting": "Willkommen! Frisch eingetroffen, alles auf Lager.",
+ "buysItems": true,
+ "stock": [
+  {
+   "item": "fangkugel"
+  },
+  {
+   "item": "trank"
+  },
+  {
+   "item": "gegengift"
+  },
+  {
+   "item": "brandsalbe"
+  },
+  {
+   "item": "nervenstaerker"
+  },
+  {
+   "item": "wachmacher"
+  },
+  {
+   "item": "auftaumittel"
+  },
+  {
+   "item": "fluchtseil"
+  },
+  {
+   "item": "schutzspray"
+  },
+  {
+   "item": "superkugel",
+   "minBadges": 1
+  },
+  {
+   "item": "supertrank",
+   "minBadges": 1
+  },
+  {
+   "item": "beleber",
+   "minBadges": 2
+  },
+  {
+   "item": "hyperkugel",
+   "minBadges": 3
+  },
+  {
+   "item": "hypertrank",
+   "minBadges": 3
+  },
+  {
+   "item": "allheilmittel",
+   "minBadges": 4
+  }
+ ]
+}

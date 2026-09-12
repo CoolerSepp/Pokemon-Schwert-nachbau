@@ -255,7 +255,7 @@ export class PlayerController {
   }
 
   /** Punkt vor dem Spieler - fuer Interaktionsabfragen. */
-  getInteractPoint(distance = GameConfig.player.interactRange * 0.6): THREE.Vector3 {
+  getInteractPoint(distance: number = GameConfig.player.interactRange * 0.6): THREE.Vector3 {
     return this.tmpVec.set(
       this.position.x + Math.sin(this.facing) * distance,
       this.position.y + 1,
@@ -264,7 +264,7 @@ export class PlayerController {
   }
 
   /** Prueft, ob ein Weltpunkt im Interaktionskegel liegt. */
-  canInteractWith(x: number, z: number, range = GameConfig.player.interactRange): boolean {
+  canInteractWith(x: number, z: number, range: number = GameConfig.player.interactRange): boolean {
     const dx = x - this.position.x;
     const dz = z - this.position.z;
     const dist = Math.hypot(dx, dz);

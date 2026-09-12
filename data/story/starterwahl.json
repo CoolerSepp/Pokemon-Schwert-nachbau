@@ -1,0 +1,28 @@
+{
+ "id": "starterwahl",
+ "lockPlayer": true,
+ "music": "lab",
+ "steps": [
+  {
+   "kind": "cameraShake",
+   "intensity": 0.2,
+   "seconds": 0.3
+  },
+  {
+   "kind": "message",
+   "speaker": "Prof. Farnholz",
+   "lines": [
+    "Hier sind sie - drei junge Kreaturen, die auf einen Trainer warten.",
+    "Sieh sie dir in Ruhe an. Die Entscheidung ist endgueltig."
+   ]
+  },
+  {
+   "kind": "action",
+   "actions": [
+    {
+     "kind": "chooseStarter"
+    }
+   ]
+  }
+ ]
+}

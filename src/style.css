@@ -19,6 +19,10 @@
 
 * { box-sizing: border-box; }
 
+/* Eigene display-Regeln (grid, flex) haben Vorrang vor der Browser-Vorgabe
+   fuer [hidden]. Ohne dieses !important bleiben ausgeblendete Panels sichtbar. */
+[hidden] { display: none !important; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -52,7 +56,10 @@ html, body {
   z-index: 10;
 }
 
-#ui-root > * { pointer-events: auto; }
+/* Bewusst KEINE pauschale Regel "#ui-root > * { pointer-events: auto }":
+   die Container-Ebenen (Bildschirme, Einblendungen, Ueberblendung) muessen
+   Klicks durchlassen. Nur die konkreten Bedienelemente nehmen Eingaben an
+   (siehe .ui-screen > * in ui.css). */
 
 /* ------------------------------------------------------------ Ladebildschirm */
 #boot-screen {

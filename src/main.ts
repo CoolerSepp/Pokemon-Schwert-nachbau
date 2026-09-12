@@ -2,7 +2,7 @@ import './style.css';
 import './ui/ui.css';
 import { GameData } from '@/data/GameData';
 import { Logger } from '@/core/Logger';
-import { Game } from '@/core/Game';
+import { GameController } from '@/core/GameController';
 
 const log = Logger.scope('Boot');
 
@@ -16,7 +16,9 @@ function setProgress(percent: number, text: string): void {
 }
 
 function showError(error: unknown): void {
-  const message = error instanceof Error ? `${error.message}\n\n${error.stack ?? ''}` : String(error);
+  const message = error instanceof Error
+    ? `${error.message}\n\n${error.stack ?? ''}`
+    : String(error);
   log.error('Start fehlgeschlagen', error);
   setProgress(100, 'Start fehlgeschlagen');
   const box = document.createElement('div');
@@ -28,26 +30,27 @@ function showError(error: unknown): void {
 async function boot(): Promise<void> {
   setProgress(8, 'Inhalte werden geladen ...');
   GameData.load();
-  setProgress(38, `${GameData.species.size} Kreaturen, ${GameData.moves.size} Attacken geladen`);
+  setProgress(34, `${GameData.species.size} Kreaturen, ${GameData.moves.size} Attacken`);
 
   const canvas = document.getElementById('game-canvas') as HTMLCanvasElement | null;
   const uiRoot = document.getElementById('ui-root');
   if (!canvas || !uiRoot) throw new Error('Canvas oder UI-Wurzel nicht gefunden');
 
-  setProgress(56, 'Grafik wird vorbereitet ...');
-  const game = new Game({ canvas, uiRoot });
+  setProgress(52, 'Grafik wird vorbereitet ...');
+  const controller = new GameController(canvas, uiRoot);
 
-  // Debug-Handle: wird vom End-zu-End-Test und vom Entwickler-Overlay benutzt.
-  (window as unknown as { __GAME__: Game }).__GAME__ = game;
+  // Debug-Zugriff fuer das Entwickler-Overlay und die End-zu-End-Tests.
+  (window as unknown as { __GAME__: unknown }).__GAME__ = controller.game;
+  (window as unknown as { __CONTROLLER__: unknown }).__CONTROLLER__ = controller;
 
-  setProgress(78, 'Welt wird aufgebaut ...');
-  game.start('home_bedroom', 'default');
+  setProgress(76, 'Welt wird aufgebaut ...');
+  await controller.start();
 
   setProgress(100, 'Bereit');
   window.setTimeout(() => {
     bootScreen?.classList.add('hidden');
     canvas.focus();
-  }, 320);
+  }, 300);
 }
 
 boot().catch(showError);

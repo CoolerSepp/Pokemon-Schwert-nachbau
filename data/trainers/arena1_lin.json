@@ -1,0 +1,50 @@
+{
+ "id": "arena1_lin",
+ "name": "Arena-Trainerin Lin",
+ "trainerClass": "Arena-Trainerin",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "knollknospe",
+   "level": 13
+  },
+  {
+   "species": "dornenranke",
+   "level": 14,
+   "moves": [
+    "rankenhieb",
+    "dornenwall",
+    "blattschnitt",
+    "knurren"
+   ]
+  }
+ ],
+ "rewardBase": 75,
+ "dialogue": {
+  "intro": [
+   "Pflanzen wirken sanft. Das ist ein Irrtum.",
+   "Meine Ranken halten dich fest, bis du aufgibst!"
+  ],
+  "defeat": [
+   "Beeindruckend. Geh weiter - Thalia erwartet dich."
+  ],
+  "victory": [
+   "Die Wurzeln waren staerker."
+  ],
+  "postBattle": [
+   "Thalia hat noch nie leichtfertig einen Orden vergeben."
+  ]
+ },
+ "appearance": {
+  "skin": "#f0cfa8",
+  "hair": "#2b2b2b",
+  "shirt": "#7fc44b",
+  "pants": "#3f5f33",
+  "accent": "#ffffff",
+  "hat": "none",
+  "height": 0.93
+ },
+ "items": [
+  "supertrank"
+ ]
+}

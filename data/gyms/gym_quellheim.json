@@ -1,0 +1,32 @@
+{
+ "id": "gym_quellheim",
+ "name": "Arena von Quellheim",
+ "city": "quellheim",
+ "type": "grass",
+ "badgeIndex": 0,
+ "badgeName": "Wurzelorden",
+ "leader": "arenaleiterin_thalia",
+ "minions": [
+  "arena1_ben",
+  "arena1_lin"
+ ],
+ "puzzle": "none",
+ "introText": [
+  "Das Innere der Arena ist von echtem Gruen ueberwuchert.",
+  "Ranken bilden Wege, Blaetter filtern das Licht."
+ ],
+ "victoryText": [
+  "Die Ranken oeffnen sich und geben den Weg nach draussen frei."
+ ],
+ "rewardItems": [
+  "td19",
+  "hypertrank"
+ ],
+ "obedienceLevel": 20,
+ "area": "gym_quellheim",
+ "colors": {
+  "primary": "#6b9b4f",
+  "secondary": "#7fc44b",
+  "accent": "#d8e8cf"
+ }
+}

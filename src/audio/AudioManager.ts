@@ -125,7 +125,7 @@ export class AudioManager {
 
   // ---------------------------------------------------------------- Musik
 
-  playMusic(trackId: string, fadeSeconds = GameConfig.audio.musicFadeSeconds): void {
+  playMusic(trackId: string, fadeSeconds: number = GameConfig.audio.musicFadeSeconds): void {
     const track = MUSIC_TRACKS[trackId];
     if (!track) {
       log.warn(`Unbekanntes Musikstueck "${trackId}"`);
@@ -139,7 +139,7 @@ export class AudioManager {
     this.crossfadeTo(track, fadeSeconds);
   }
 
-  stopMusic(fadeSeconds = GameConfig.audio.musicFadeSeconds): void {
+  stopMusic(fadeSeconds: number = GameConfig.audio.musicFadeSeconds): void {
     if (!this.ctx || !this.musicBus) {
       this.pendingTrack = null;
       return;

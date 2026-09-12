@@ -8,6 +8,8 @@
   pointer-events: none;
 }
 
+.ui-toasts * { pointer-events: none; }
+
 .ui-screen {
   position: absolute;
   inset: 0;
@@ -470,6 +472,15 @@
   align-items: center;
   gap: 8px;
   padding-top: 74px;
+  transition: padding 0.2s ease;
+}
+
+/* Bei geoeffnetem Menue sitzen die Einblendungen unten, damit sie den
+   Panelinhalt nicht verdecken. */
+.ui-toasts.modal-open {
+  justify-content: flex-end;
+  padding-top: 0;
+  padding-bottom: 12px;
 }
 
 .ui-toast {
@@ -496,12 +507,17 @@
   inset: 0;
   background: #000;
   opacity: 0;
-  pointer-events: none;
+  /* Hoehere Spezifitaet als "#ui-root > *": ohne das faengt die inaktive
+     Ebene saemtliche Mausklicks ab und die Welt ist nicht mehr bedienbar. */
+  pointer-events: none !important;
   transition: opacity 0.42s ease;
   z-index: 60;
 }
 
-.fade-layer.active { opacity: 1; pointer-events: auto; }
+.fade-layer.active {
+  opacity: 1;
+  pointer-events: auto !important;
+}
 .fade-layer.white { background: #fff; }
 
 /* ------------------------------------------------------------- Kampf-UI */
@@ -524,7 +540,7 @@
 }
 
 .battle-info.enemy { top: 26px; left: 28px; }
-.battle-info.player { bottom: 190px; right: 28px; }
+.battle-info.player { bottom: 252px; right: 28px; }
 
 .battle-info-head {
   display: flex;
@@ -572,7 +588,7 @@
   position: absolute;
   left: 28px;
   bottom: 28px;
-  width: min(560px, calc(100vw - 420px));
+  width: min(520px, calc(100vw - 660px));
   min-height: 108px;
   padding: 17px 20px;
   border-radius: 13px;
@@ -620,7 +636,7 @@
   position: absolute;
   right: 28px;
   bottom: 28px;
-  width: min(640px, calc(100vw - 60px));
+  width: min(600px, calc(100vw - 60px));
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 9px;
@@ -676,7 +692,7 @@
 .battle-gigantic {
   position: absolute;
   right: 28px;
-  bottom: 210px;
+  bottom: 370px;
   padding: 12px 20px;
   border-radius: 26px;
   background: linear-gradient(135deg, #ff5b9b, #c48fff);

@@ -188,9 +188,20 @@ export class Game {
     if (transition) {
       if (!GameData.areas.has(transition.to)) {
         this.events.emit('notice', {
-          text: `Dieser Weg ist noch nicht begehbar.`, kind: 'warn',
+          text: 'Dieser Weg ist noch nicht begehbar.', kind: 'warn',
         });
         this.transitionCooldown = 1.5;
+        return;
+      }
+      if (!this.transitionAllowed(transition.requires)) {
+        this.events.emit('notice', {
+          text: transition.blockedText ?? 'Hier kommst du noch nicht weiter.',
+          kind: 'warn',
+        });
+        // Den Spieler ein Stueck zurueckschieben, damit der Hinweis nicht
+        // sofort erneut ausloest.
+        this.pushBackFromTransition();
+        this.transitionCooldown = 2.4;
         return;
       }
       this.pendingAreaChange = { to: transition.to, spawnPoint: transition.spawnPoint };
@@ -201,6 +212,37 @@ export class Game {
     if (door && this.input.wasPressed('interact') && GameData.areas.has(door.area)) {
       this.pendingAreaChange = { to: door.area, spawnPoint: door.spawnPoint };
     }
+  }
+
+  /** Prueft die Voraussetzungen eines Gebietsuebergangs. */
+  private transitionAllowed(
+    requires: { storyStage?: number; badge?: number; flag?: string } | undefined,
+  ): boolean {
+    if (!requires) return true;
+    const check = this.transitionGate;
+    if (!check) return true;
+    return check(requires);
+  }
+
+  /** Wird vom Controller gesetzt; ohne Pruefer sind alle Uebergaenge offen. */
+  transitionGate: ((requires: {
+    storyStage?: number; badge?: number; flag?: string;
+  }) => boolean) | null = null;
+
+  /** Schiebt den Spieler aus dem Uebergangsbereich heraus. */
+  private pushBackFromTransition(): void {
+    const area = this.world.area;
+    if (!area) return;
+    const centerX = area.data.size[0] / 2;
+    const centerZ = area.data.size[1] / 2;
+    const dx = centerX - this.player.x;
+    const dz = centerZ - this.player.z;
+    const length = Math.hypot(dx, dz) || 1;
+    this.player.teleport(
+      this.player.x + (dx / length) * 3,
+      this.player.z + (dz / length) * 3,
+      this.player.yaw,
+    );
   }
 
   private registerResize(): void {

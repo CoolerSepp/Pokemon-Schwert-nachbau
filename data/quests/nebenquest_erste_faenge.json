@@ -1,0 +1,35 @@
+{
+ "id": "nebenquest_erste_faenge",
+ "name": "Feldforschung",
+ "kind": "side",
+ "description": "Prof. Farnholz bittet dich, erste Arten zu erfassen.",
+ "autoStartStage": 3,
+ "giver": "Prof. Farnholz",
+ "steps": [
+  {
+   "id": "fang3",
+   "description": "Fange drei verschiedene Arten.",
+   "completion": {
+    "kind": "catchCount",
+    "count": 3
+   }
+  },
+  {
+   "id": "fang6",
+   "description": "Fange sechs verschiedene Arten.",
+   "completion": {
+    "kind": "catchCount",
+    "count": 6
+   }
+  }
+ ],
+ "rewards": {
+  "money": 800,
+  "items": [
+   {
+    "item": "hyperkugel",
+    "quantity": 3
+   }
+  ]
+ }
+}

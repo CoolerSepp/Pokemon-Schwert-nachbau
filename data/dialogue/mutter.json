@@ -1,0 +1,66 @@
+{
+ "id": "mutter",
+ "entry": [
+  "start_stage1",
+  "start_after",
+  "idle"
+ ],
+ "nodes": [
+  {
+   "id": "start_stage1",
+   "lines": [
+    "Guten Morgen! Du hast ja lange geschlafen.",
+    "Professorin Farnholz war schon zweimal hier - sie wartet in der Forschungsstation auf dich.",
+    "Heute ist es also so weit. Deine Reise beginnt!"
+   ],
+   "speaker": "Mutter",
+   "next": "start_stage1_b",
+   "requires": {
+    "maxStoryStage": 1
+   }
+  },
+  {
+   "id": "start_stage1_b",
+   "lines": [
+    "Pass auf dich auf. Und vergiss nicht: Wenn dein Team erschoepft ist, hilft dir jede Heilstation weiter."
+   ],
+   "speaker": "Mutter",
+   "actions": [
+    {
+     "kind": "setFlag",
+     "flag": "mutterGesprochen"
+    }
+   ]
+  },
+  {
+   "id": "start_after",
+   "lines": [
+    "Wie laeuft deine Reise, {spieler}?",
+    "Ich habe dir etwas eingepackt - nimm es mit."
+   ],
+   "speaker": "Mutter",
+   "actions": [
+    {
+     "kind": "giveItem",
+     "item": "trank",
+     "quantity": 3
+    },
+    {
+     "kind": "setFlag",
+     "flag": "mutterGeschenk"
+    }
+   ],
+   "requires": {
+    "storyStage": 2,
+    "notFlag": "mutterGeschenk"
+   }
+  },
+  {
+   "id": "idle",
+   "lines": [
+    "Melde dich ruhig oefter. Und iss genug!"
+   ],
+   "speaker": "Mutter"
+  }
+ ]
+}

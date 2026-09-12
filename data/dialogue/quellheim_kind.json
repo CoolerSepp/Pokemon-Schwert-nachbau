@@ -1,0 +1,16 @@
+{
+ "id": "quellheim_kind",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Thalia hat noch nie verloren! Naja... fast nie.",
+    "Feuer soll gut gegen Pflanzen sein, sagt mein Vater."
+   ],
+   "speaker": "Kind"
+  }
+ ]
+}

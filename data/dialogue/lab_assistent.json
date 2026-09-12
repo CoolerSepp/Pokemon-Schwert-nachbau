@@ -1,0 +1,16 @@
+{
+ "id": "lab_assistent",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Die Professorin ist manchmal etwas zerstreut, aber sie ist die beste Forscherin der Region.",
+    "Achte im Kampf auf die Typen! Feuer schmilzt Eis, Wasser loescht Feuer - das ist der halbe Sieg."
+   ],
+   "speaker": "Assistent"
+  }
+ ]
+}

@@ -95,7 +95,7 @@ export class BattleScene {
     this.rim.position.set(-8, 5, -9);
     this.scene.add(this.rim);
 
-    const groundGeo = new THREE.CircleGeometry(26, 42);
+    const groundGeo = new THREE.CircleGeometry(34, 48);
     groundGeo.rotateX(-Math.PI / 2);
     this.ground = new THREE.Mesh(
       groundGeo,
@@ -221,6 +221,25 @@ export class BattleScene {
   /** Fuegt Publikumsraenge hinzu (Arena- und Ligakaempfe). */
   addCrowd(color: string): void {
     if (this.crowd) return;
+
+    // Tribuenenringe, damit die Zuschauer nicht in der Luft stehen.
+    for (let ring = 0; ring < 4; ring++) {
+      const radius = 19 + ring * 2.1;
+      const height = 0.9 + ring * 1.25;
+      const geometry = new THREE.CylinderGeometry(radius + 1.05, radius + 1.05, height, 40, 1, true);
+      const stand = new THREE.Mesh(
+        geometry,
+        this.assets.getMaterial({
+          color: ring % 2 === 0 ? '#6b7280' : '#5b626d',
+          flatShading: true, doubleSided: true,
+        }),
+      );
+      stand.position.y = height / 2;
+      stand.receiveShadow = true;
+      stand.name = 'stand';
+      this.scene.add(stand);
+    }
+
     const count = 220;
     const geometry = this.assets.getShape('capsule', 1);
     const material = this.assets.getMaterial({ color, flatShading: true });
@@ -233,16 +252,23 @@ export class BattleScene {
       const ring = Math.floor(i / 55);
       const angle = ((i % 55) / 55) * Math.PI * 2;
       const radius = 19 + ring * 2.1;
+      // Auf der Oberkante des jeweiligen Rangs sitzen.
       dummy.position.set(
         Math.cos(angle) * radius,
-        1.4 + ring * 1.25,
+        0.9 + ring * 1.25 + 0.42,
         Math.sin(angle) * radius,
       );
-      dummy.scale.set(0.3, 0.42, 0.3);
+      dummy.scale.set(0.26, 0.36, 0.26);
       dummy.rotation.y = -angle;
       dummy.updateMatrix();
       mesh.setMatrixAt(i, dummy.matrix);
-      tint.copy(base).offsetHSL(this.rng.float(-0.25, 0.25), 0, this.rng.float(-0.2, 0.2));
+      // Zuschauer sind bunt gemischt, nicht einfarbig wie Buesche.
+      tint.setHSL(
+        this.rng.next(),
+        this.rng.float(0.35, 0.75),
+        this.rng.float(0.42, 0.68),
+      );
+      if (this.rng.chance(0.22)) tint.set(base);
       mesh.setColorAt(i, tint);
     }
     mesh.instanceMatrix.needsUpdate = true;
@@ -370,10 +396,10 @@ export class BattleScene {
       this.crowd.getMatrixAt(i, matrix);
       dummy.position.setFromMatrixPosition(matrix);
       const ring = Math.floor(i / 55);
-      const baseY = 1.4 + ring * 1.25;
+      const baseY = 0.9 + ring * 1.25 + 0.42;
       const hop = Math.abs(Math.sin(this.time * 7 + i * 0.7)) * this.crowdExcitement * 0.4;
       dummy.position.y = baseY + hop;
-      dummy.scale.set(0.3, 0.42, 0.3);
+      dummy.scale.set(0.26, 0.36, 0.26);
       dummy.rotation.y = -((i % 55) / 55) * Math.PI * 2;
       dummy.updateMatrix();
       this.crowd.setMatrixAt(i, dummy.matrix);

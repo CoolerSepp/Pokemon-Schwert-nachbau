@@ -88,7 +88,9 @@ area(
     description="Ein ruhiges Dorf am suedlichen Rand der Region Aetheria.",
     weather=["clear", "cloudy", "rain"],
     connections=[
-        conn("route_1", 38, 81, 16, 3, "from_startdorf"),
+        conn("route_1", 38, 81, 16, 3, "from_startdorf",
+             requires={"flag": "starterChosen"},
+             blocked="Ohne eigene Kreatur solltest du Route 1 nicht betreten."),
     ],
     spawnPoints=[
         sp("default", 46, 20, 0),

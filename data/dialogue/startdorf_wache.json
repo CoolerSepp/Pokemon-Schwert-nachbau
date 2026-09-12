@@ -1,0 +1,28 @@
+{
+ "id": "startdorf_wache",
+ "entry": [
+  "blocked",
+  "open"
+ ],
+ "nodes": [
+  {
+   "id": "blocked",
+   "lines": [
+    "Halt! Route 1 ist kein Spielplatz.",
+    "Ohne eigene Kreatur laesse ich dich da nicht durch. Geh erst zur Professorin."
+   ],
+   "speaker": "Wegweiser",
+   "requires": {
+    "notFlag": "starterChosen"
+   }
+  },
+  {
+   "id": "open",
+   "lines": [
+    "Du hast eine Kreatur dabei? Dann viel Glueck auf Route 1!",
+    "Im hohen Gras lauern wilde Kreaturen. Halt die Augen offen."
+   ],
+   "speaker": "Wegweiser"
+  }
+ ]
+}

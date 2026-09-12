@@ -1,0 +1,22 @@
+{
+ "id": "prolog_labor",
+ "lockPlayer": true,
+ "steps": [
+  {
+   "kind": "message",
+   "speaker": "Prof. Farnholz",
+   "lines": [
+    "{spieler}! Da bist du ja endlich. Komm herein!"
+   ]
+  },
+  {
+   "kind": "action",
+   "actions": [
+    {
+     "kind": "storyStage",
+     "stage": 1
+    }
+   ]
+  }
+ ]
+}

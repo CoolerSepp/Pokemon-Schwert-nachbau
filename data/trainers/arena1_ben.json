@@ -1,0 +1,40 @@
+{
+ "id": "arena1_ben",
+ "name": "Arena-Trainer Ben",
+ "trainerClass": "Arena-Trainer",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "sprossling",
+   "level": 12
+  },
+  {
+   "species": "knollknospe",
+   "level": 13
+  }
+ ],
+ "rewardBase": 70,
+ "dialogue": {
+  "intro": [
+   "Die Arena von Quellheim laesst nicht jeden zur Leiterin durch.",
+   "Erst musst du an mir vorbei!"
+  ],
+  "defeat": [
+   "Du kommst weiter. Aber Thalia ist eine andere Klasse."
+  ],
+  "victory": [
+   "Trainiere noch etwas und komm wieder."
+  ],
+  "postBattle": [
+   "Lin wartet weiter hinten. Danach erst Thalia."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#4a3524",
+  "shirt": "#7fc44b",
+  "pants": "#3f5f33",
+  "accent": "#ffffff",
+  "hat": "cap"
+ }
+}

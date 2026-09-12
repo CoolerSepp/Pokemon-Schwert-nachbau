@@ -1,0 +1,44 @@
+{
+ "id": "dorf_heilerin",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Soll ich dein Team versorgen? Das kostet dich nichts."
+   ],
+   "speaker": "Heilkundige",
+   "choices": [
+    {
+     "text": "Ja, bitte.",
+     "next": "heilen"
+    },
+    {
+     "text": "Nein, danke.",
+     "next": "abgelehnt"
+    }
+   ]
+  },
+  {
+   "id": "heilen",
+   "lines": [
+    "So. Alle wieder wohlauf."
+   ],
+   "speaker": "Heilkundige",
+   "actions": [
+    {
+     "kind": "healParty"
+    }
+   ]
+  },
+  {
+   "id": "abgelehnt",
+   "lines": [
+    "Wie du meinst. Ich bin da, wenn du mich brauchst."
+   ],
+   "speaker": "Heilkundige"
+  }
+ ]
+}

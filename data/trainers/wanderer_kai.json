@@ -1,0 +1,41 @@
+{
+ "id": "wanderer_kai",
+ "name": "Wanderer Kai",
+ "trainerClass": "Wanderer",
+ "ai": "basic",
+ "team": [
+  {
+   "species": "nagezahn",
+   "level": 6
+  },
+  {
+   "species": "federflaum",
+   "level": 7
+  }
+ ],
+ "rewardBase": 45,
+ "dialogue": {
+  "intro": [
+   "He, du da! Du siehst aus, als haettest du gerade erst angefangen.",
+   "Zeig mir, was du kannst!"
+  ],
+  "defeat": [
+   "Nicht schlecht! Du lernst schnell.",
+   "Nimm das hier - auf Route 1 wirst du es brauchen."
+  ],
+  "victory": [
+   "Uebung macht den Meister. Versuch es noch einmal!"
+  ],
+  "postBattle": [
+   "Nach Norden geht es weiter nach Quellheim. Dort steht die erste Arena."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#3a2a1c",
+  "shirt": "#4b8f5f",
+  "pants": "#5f4a33",
+  "accent": "#c4b08a",
+  "hat": "cap"
+ }
+}

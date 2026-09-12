@@ -1,0 +1,21 @@
+{
+ "id": "shop_haendler",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Willkommen! Was darf es sein?"
+   ],
+   "speaker": "Haendler",
+   "actions": [
+    {
+     "kind": "openShop",
+     "shop": "shop_quellheim"
+    }
+   ]
+  }
+ ]
+}

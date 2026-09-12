@@ -1,0 +1,121 @@
+{
+ "id": "professorin",
+ "entry": [
+  "prolog",
+  "nach_wahl",
+  "index_info",
+  "idle"
+ ],
+ "nodes": [
+  {
+   "id": "prolog",
+   "lines": [
+    "Ah, {spieler}! Endlich.",
+    "Ich forsche seit Jahren an den Kreaturen von Aetheria. Und heute brauche ich deine Hilfe.",
+    "Die Region ist riesig - allein schaffe ich es nicht, sie zu erfassen.",
+    "Was ich sagen will: Nimm einen Begleiter und einen Kreaturenindex mit."
+   ],
+   "speaker": "Prof. Farnholz",
+   "next": "prolog_frage",
+   "requires": {
+    "maxStoryStage": 1
+   }
+  },
+  {
+   "id": "prolog_frage",
+   "lines": [
+    "Moechtest du eine der drei Kreaturen hier waehlen?"
+   ],
+   "speaker": "Prof. Farnholz",
+   "choices": [
+    {
+     "text": "Ja, sehr gern!",
+     "actions": [
+      {
+       "kind": "chooseStarter"
+      }
+     ]
+    },
+    {
+     "text": "Ich ueberlege noch.",
+     "next": "prolog_warten"
+    }
+   ]
+  },
+  {
+   "id": "prolog_warten",
+   "lines": [
+    "Kein Problem. Ich bin hier, wenn du so weit bist."
+   ],
+   "speaker": "Prof. Farnholz"
+  },
+  {
+   "id": "nach_wahl",
+   "lines": [
+    "Eine ausgezeichnete Wahl! Passt zu dir.",
+    "Hier - der Kreaturenindex. Er zeichnet jede Art auf, die du siehst oder faengst.",
+    "Und nimm ein paar Fangkugeln mit. Ohne die kommst du nicht weit."
+   ],
+   "speaker": "Prof. Farnholz",
+   "next": "nach_wahl_b",
+   "actions": [
+    {
+     "kind": "giveItem",
+     "item": "kreaturenindex"
+    },
+    {
+     "kind": "giveItem",
+     "item": "fangkugel",
+     "quantity": 10
+    },
+    {
+     "kind": "giveItem",
+     "item": "laufschuhe"
+    },
+    {
+     "kind": "setFlag",
+     "flag": "indexErhalten"
+    },
+    {
+     "kind": "storyStage",
+     "stage": 3
+    },
+    {
+     "kind": "startQuest",
+     "quest": "hauptquest_erster_orden"
+    }
+   ],
+   "requires": {
+    "flag": "starterChosen",
+    "notFlag": "indexErhalten"
+   }
+  },
+  {
+   "id": "nach_wahl_b",
+   "lines": [
+    "Geh nach Norden ueber Route 1 bis nach Quellheim. Dort gibt es die erste Arena der Region.",
+    "Acht Orden brauchst du, um zur Liga zugelassen zu werden. Acht!",
+    "Aber eins nach dem anderen. Viel Erfolg, {spieler}."
+   ],
+   "speaker": "Prof. Farnholz"
+  },
+  {
+   "id": "index_info",
+   "lines": [
+    "Dein Index zeigt bereits {orden} Orden an. Beeindruckend.",
+    "Fang weiter alles, was dir begegnet - jede Art hilft meiner Forschung."
+   ],
+   "speaker": "Prof. Farnholz",
+   "requires": {
+    "storyStage": 3
+   }
+  },
+  {
+   "id": "idle",
+   "lines": [
+    "Die Kreaturen dieser Region haben mich mein Leben lang beschaeftigt. Und ich lerne noch immer dazu."
+   ],
+   "speaker": "Prof. Farnholz"
+  }
+ ]
+}

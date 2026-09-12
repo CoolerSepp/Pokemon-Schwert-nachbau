@@ -1,0 +1,45 @@
+{
+ "id": "kaeferfreundin_ida",
+ "name": "Kaeferfreundin Ida",
+ "trainerClass": "Kaeferfreundin",
+ "ai": "basic",
+ "team": [
+  {
+   "species": "kribbelkaefer",
+   "level": 8
+  },
+  {
+   "species": "kribbelkaefer",
+   "level": 8
+  },
+  {
+   "species": "puppenpanzer",
+   "level": 9
+  }
+ ],
+ "rewardBase": 50,
+ "dialogue": {
+  "intro": [
+   "Kaefer sind die unterschaetztesten Kreaturen ueberhaupt!",
+   "Ich beweise es dir."
+  ],
+  "defeat": [
+   "Gut gekaempft. Meine Kaefer und ich trainieren weiter!"
+  ],
+  "victory": [
+   "Siehst du? Kaefer sind stark!"
+  ],
+  "postBattle": [
+   "Im hohen Gras findest du auch seltene Kaefer. Guck genau hin."
+  ]
+ },
+ "appearance": {
+  "skin": "#f0cfa8",
+  "hair": "#8f5f2b",
+  "shirt": "#9bc44b",
+  "pants": "#4a5f33",
+  "accent": "#e0e8a0",
+  "hat": "beanie",
+  "height": 0.9
+ }
+}

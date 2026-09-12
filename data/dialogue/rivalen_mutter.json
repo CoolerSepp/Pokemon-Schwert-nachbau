@@ -1,0 +1,16 @@
+{
+ "id": "rivalen_mutter",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Oh, {spieler}! Mein Kind ist schon vor einer Stunde losgezogen.",
+    "Immer diese Eile. Aber so ist es nun mal."
+   ],
+   "speaker": "Nachbarin"
+  }
+ ]
+}

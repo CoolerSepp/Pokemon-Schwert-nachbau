@@ -1,0 +1,38 @@
+{
+ "id": "dorf_sammler",
+ "entry": [
+  "start",
+  "idle"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Ich sammle alles, was glaenzt. Perlen, Nuggets, Sternenstaub.",
+    "Hier, nimm das - ich habe reichlich davon."
+   ],
+   "speaker": "Sammler",
+   "actions": [
+    {
+     "kind": "giveItem",
+     "item": "beere_rot",
+     "quantity": 3
+    },
+    {
+     "kind": "setFlag",
+     "flag": "sammlerGeschenk"
+    }
+   ],
+   "requires": {
+    "notFlag": "sammlerGeschenk"
+   }
+  },
+  {
+   "id": "idle",
+   "lines": [
+    "Beeren kann man im Lager verfuettern. Deine Kreaturen moegen das."
+   ],
+   "speaker": "Sammler"
+  }
+ ]
+}

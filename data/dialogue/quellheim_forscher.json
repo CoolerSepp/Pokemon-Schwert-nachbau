@@ -1,0 +1,16 @@
+{
+ "id": "quellheim_forscher",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Kreaturen entwickeln sich, wenn sie stark genug werden.",
+    "Manche brauchen aber auch besondere Steine - oder die richtige Tageszeit."
+   ],
+   "speaker": "Naturkundler"
+  }
+ ]
+}

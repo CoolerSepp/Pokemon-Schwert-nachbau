@@ -1,0 +1,38 @@
+{
+ "id": "quellheim_tipp",
+ "entry": [
+  "start",
+  "idle"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Ein Tipp von einer alten Trainerin: Wertveraenderungen im Kampf sind maechtiger, als die meisten denken.",
+    "Zwei Runden Aufbau, und der Rest geht von allein."
+   ],
+   "speaker": "Alte Trainerin",
+   "actions": [
+    {
+     "kind": "giveItem",
+     "item": "supertrank",
+     "quantity": 2
+    },
+    {
+     "kind": "setFlag",
+     "flag": "tippGeschenk"
+    }
+   ],
+   "requires": {
+    "notFlag": "tippGeschenk"
+   }
+  },
+  {
+   "id": "idle",
+   "lines": [
+    "Setz die Supertraenke klug ein. Im richtigen Moment entscheiden sie den Kampf."
+   ],
+   "speaker": "Alte Trainerin"
+  }
+ ]
+}

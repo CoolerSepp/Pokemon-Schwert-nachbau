@@ -1,0 +1,14 @@
+{
+ "id": "generic_npc",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Schoenes Wetter heute, nicht wahr?"
+   ]
+  }
+ ]
+}

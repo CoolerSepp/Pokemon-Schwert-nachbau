@@ -1,0 +1,34 @@
+{
+ "id": "nebenquest_wanderer",
+ "name": "Kais Herausforderung",
+ "kind": "side",
+ "description": "Besiege die Trainer auf Route 1.",
+ "autoStartStage": 3,
+ "steps": [
+  {
+   "id": "kai",
+   "description": "Besiege Wanderer Kai.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "wanderer_kai"
+   }
+  },
+  {
+   "id": "ida",
+   "description": "Besiege Kaeferfreundin Ida.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "kaeferfreundin_ida"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 600,
+  "items": [
+   {
+    "item": "aether",
+    "quantity": 2
+   }
+  ]
+ }
+}

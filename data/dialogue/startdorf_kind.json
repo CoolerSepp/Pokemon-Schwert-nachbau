@@ -1,0 +1,16 @@
+{
+ "id": "startdorf_kind",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Ich will auch mal auf Reisen gehen!",
+    "Aber erst muss ich noch gross werden. Und Hausaufgaben machen."
+   ],
+   "speaker": "Kind"
+  }
+ ]
+}

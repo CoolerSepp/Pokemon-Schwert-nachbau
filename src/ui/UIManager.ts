@@ -136,6 +136,9 @@ export class UIManager {
   }
 
   private refreshVisibility(): void {
+    // Einblendungen ausweichen lassen, solange ein Menue offen ist.
+    this.toastLayer.classList.toggle('modal-open', this.blocksGameplay);
+
     // Alles unterhalb der obersten undurchsichtigen Ebene ausblenden.
     let visibleFrom = 0;
     for (let i = this.stack.length - 1; i >= 0; i--) {
