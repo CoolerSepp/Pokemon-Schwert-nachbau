@@ -46,6 +46,10 @@ export interface SerializedPlayerState {
   spawnPoint: string;
   position: { x: number; z: number; facing: number; distance: number };
   hour: number;
+  /** Fortlaufender Spieltag. */
+  day?: number;
+  /** Zustand der Energiepunkte (Raid-Nester). */
+  raids?: { day: number; cleared: string[] };
   settings: Record<string, unknown>;
 }
 
@@ -288,6 +292,8 @@ export class PlayerState {
   serialize(extra: {
     position: SerializedPlayerState['position'];
     hour: number;
+    day?: number;
+    raids?: { day: number; cleared: string[] };
     settings: Record<string, unknown>;
   }): SerializedPlayerState {
     return {

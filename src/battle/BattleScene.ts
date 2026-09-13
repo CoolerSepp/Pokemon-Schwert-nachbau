@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import type { Biome, ElementType, WeatherKind } from '@/data/schema';
 import type { AssetManager } from '@/engine/AssetManager';
 import type { Creature } from '@/creatures/Creature';
-import { buildCreatureModel, type CreatureModel } from '@/creatures/CreatureModel';
+import { buildCreatureModel, disposeCreatureModel, type CreatureModel } from '@/creatures/CreatureModel';
 import { CreatureAnimator, type AnimationState } from '@/animation/CreatureAnimator';
 import { buildHumanoid, type HumanoidModel } from '@/player/PlayerModel';
 import { HumanoidAnimator } from '@/player/HumanoidAnimator';
@@ -58,6 +58,12 @@ export class BattleScene {
   private playerAnimator: HumanoidAnimator | null = null;
   private crowd: THREE.InstancedMesh | null = null;
   private crowdExcitement = 0;
+  /** Raid-Verbuendete neben dem Spielerplatz. */
+  private readonly allies: {
+    creature: Creature;
+    model: CreatureModel;
+    animator: CreatureAnimator;
+  }[] = [];
 
   private cameraAngle = 0;
   private cameraTargetAngle = 0;
@@ -163,8 +169,8 @@ export class BattleScene {
     }
   }
 
-  /** Setzt eine Kreatur auf einen Platz. */
-  setCreature(slot: BattleSlot, creature: Creature | null): void {
+  /** Setzt eine Kreatur auf einen Platz. `sizeFactor` vergroessert Raid-Bosse. */
+  setCreature(slot: BattleSlot, creature: Creature | null, sizeFactor = 1): void {
     const state = this.slots[slot];
     if (state.model) {
       this.scene.remove(state.model.root);
@@ -178,7 +184,7 @@ export class BattleScene {
     }
 
     const model = buildCreatureModel(creature.species.model, this.assets, {
-      scale: creature.modelScale,
+      scale: creature.modelScale * sizeFactor,
       variantTint: creature.isVariant ? 0.42 : undefined,
       castShadow: true,
     });
@@ -216,6 +222,48 @@ export class BattleScene {
       this.playerAnimator = new HumanoidAnimator(this.playerModel);
       this.playerAnimator.play('idle');
     }
+  }
+
+  /**
+   * Stellt die Raid-Verbuendeten neben dem Spielerplatz auf.
+   *
+   * Sie kaempfen in der Engine tatsaechlich mit; hier bekommen sie ein
+   * sichtbares Modell, das bei einem K.o. verschwindet.
+   */
+  setAllies(allies: readonly { creature: Creature }[]): void {
+    this.clearAllies();
+    // Links neben der Kreatur des Spielers, damit die Kamera sie zeigt,
+    // ohne dass sie die Textbox verdecken.
+    const spots: [number, number][] = [[-7.6, -0.8], [-9.0, 2.2], [-6.2, -3.6]];
+    allies.slice(0, spots.length).forEach((ally, index) => {
+      const [x, z] = spots[index]!;
+      const model = buildCreatureModel(ally.creature.species.model, this.assets, {
+        scale: ally.creature.modelScale * 0.7,
+        castShadow: true,
+      });
+      model.root.position.set(x, 0, z);
+      model.root.rotation.y = Math.PI * 0.78;
+      this.scene.add(model.root);
+      const animator = new CreatureAnimator(model);
+      animator.snapToRest();
+      animator.play('idle');
+      this.allies.push({ creature: ally.creature, model, animator });
+    });
+  }
+
+  /** Blendet besiegte Verbuendete aus. */
+  refreshAllies(): void {
+    for (const ally of this.allies) {
+      ally.model.root.visible = !ally.creature.isFainted;
+    }
+  }
+
+  private clearAllies(): void {
+    for (const ally of this.allies) {
+      this.scene.remove(ally.model.root);
+      disposeCreatureModel(ally.model);
+    }
+    this.allies.length = 0;
   }
 
   /** Fuegt Publikumsraenge hinzu (Arena- und Ligakaempfe). */
@@ -349,6 +397,7 @@ export class BattleScene {
     for (const slot of ['player', 'enemy'] as BattleSlot[]) {
       this.slots[slot].animator?.update(dt);
     }
+    for (const ally of this.allies) ally.animator.update(dt);
     this.trainerAnimator?.update(dt);
     this.playerAnimator?.update(dt);
     this.effects.update(dt);
@@ -415,6 +464,7 @@ export class BattleScene {
   reset(): void {
     this.setCreature('player', null);
     this.setCreature('enemy', null);
+    this.clearAllies();
     this.effects.clear();
     this.crowdExcitement = 0;
     this.setCameraFocus('wide');

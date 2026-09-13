@@ -37,16 +37,16 @@ function profile(
 
 /** Stuetzstellen des Tagesverlaufs; dazwischen wird interpoliert. */
 const KEYFRAMES: { hour: number; profile: LightingProfile }[] = [
-  { hour: 0, profile: profile('#5b6fa8', 0.22, '#26304f', 0.42, '#1d2438', '#1b2236', 0.15) },
-  { hour: 5, profile: profile('#7f7fa8', 0.3, '#3a4260', 0.5, '#3a4055', '#39415c', 0.06) },
+  { hour: 0, profile: profile('#7a8cc4', 0.38, '#41527d', 0.72, '#232b42', '#202844', 0.15) },
+  { hour: 5, profile: profile('#9494bd', 0.46, '#4d5678', 0.78, '#434a63', '#414a6a', 0.06) },
   { hour: 6.5, profile: profile('#ffb07a', 0.85, '#8a7f8f', 0.62, '#e0b096', '#d99b7f', 0.18) },
   { hour: 9, profile: profile('#fff2d8', 1.35, '#b8c9dd', 0.72, '#cfe4f2', '#7fc0ef', 0.62) },
   { hour: 13, profile: profile('#ffffff', 1.55, '#cfe0ef', 0.8, '#dcecf7', '#5fb0ef', 1.15) },
   { hour: 17, profile: profile('#ffe8c0', 1.25, '#c2c9d8', 0.72, '#e4e0ea', '#7fb8e8', 0.55) },
   { hour: 19, profile: profile('#ff9b5f', 0.85, '#8f7f8f', 0.6, '#e8a87f', '#e08f6b', 0.16) },
-  { hour: 20.5, profile: profile('#8a6f9b', 0.42, '#4f4a6b', 0.5, '#6b5f7a', '#4f4566', 0.06) },
-  { hour: 22, profile: profile('#5b6fa8', 0.24, '#2b3452', 0.44, '#252c44', '#212840', 0.13) },
-  { hour: 24, profile: profile('#5b6fa8', 0.22, '#26304f', 0.42, '#1d2438', '#1b2236', 0.15) },
+  { hour: 20.5, profile: profile('#9c82ad', 0.55, '#5e5880', 0.76, '#6b5f7a', '#514868', 0.06) },
+  { hour: 22, profile: profile('#7a8cc4', 0.4, '#46557f', 0.74, '#2b3350', '#262e4a', 0.13) },
+  { hour: 24, profile: profile('#7a8cc4', 0.38, '#41527d', 0.72, '#232b42', '#202844', 0.15) },
 ];
 
 /**
@@ -58,6 +58,7 @@ const KEYFRAMES: { hour: number; profile: LightingProfile }[] = [
 export class TimeManager {
   readonly events = new EventBus<TimeEvents>();
   private hourValue: number;
+  private dayValue = 1;
   private lastTimeOfDay: TimeOfDay;
   private lastWholeHour: number;
   private paused = false;
@@ -72,6 +73,8 @@ export class TimeManager {
   }
 
   get hour(): number { return this.hourValue; }
+  /** Fortlaufender Spieltag, beginnend bei 1. */
+  get day(): number { return this.dayValue; }
   get timeOfDay(): TimeOfDay { return this.lastTimeOfDay; }
   get isNight(): boolean { return this.lastTimeOfDay === 'night'; }
   get lighting(): Readonly<LightingProfile> { return this.current; }
@@ -87,7 +90,9 @@ export class TimeManager {
   update(deltaSeconds: number): void {
     if (this.paused) return;
     const minutes = deltaSeconds * GameConfig.time.minutesPerRealSecond * this.speedMultiplier;
-    this.hourValue = (this.hourValue + minutes / 60) % 24;
+    const next = this.hourValue + minutes / 60;
+    if (next >= 24) this.dayValue++;
+    this.hourValue = next % 24;
     this.refresh();
   }
 
@@ -164,11 +169,12 @@ export class TimeManager {
     ).normalize();
   }
 
-  serialize(): { hour: number } {
-    return { hour: this.hourValue };
+  serialize(): { hour: number; day: number } {
+    return { hour: this.hourValue, day: this.dayValue };
   }
 
-  deserialize(state: { hour: number }): void {
+  deserialize(state: { hour: number; day?: number }): void {
+    this.dayValue = Math.max(1, Math.floor(state.day ?? 1));
     this.setHour(state.hour);
   }
 }

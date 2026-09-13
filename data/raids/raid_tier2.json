@@ -1,0 +1,81 @@
+{
+  "id": "raid_tier2",
+  "tier": 2,
+  "bosses": [
+    {
+      "species": "wuestenskorpion",
+      "level": 27,
+      "weight": 3,
+      "gigantic": false
+    },
+    {
+      "species": "kristallgeist",
+      "level": 27,
+      "weight": 3,
+      "gigantic": false
+    },
+    {
+      "species": "duenenklaue",
+      "level": 25,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "waldschrat",
+      "level": 25,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "aschebrand",
+      "level": 25,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "bergziege",
+      "level": 25,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "himmelsrochen",
+      "level": 25,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "blitzotter",
+      "level": 25,
+      "weight": 6,
+      "gigantic": false
+    }
+  ],
+  "allies": [
+    "bergsteiger_falk",
+    "kletterin_sona",
+    "hoehlenforscher_bela"
+  ],
+  "shieldThresholds": [
+    0.62,
+    0.36
+  ],
+  "rewardItems": [
+    {
+      "item": "supertrank",
+      "quantity": 2,
+      "weight": 5
+    },
+    {
+      "item": "superkugel",
+      "quantity": 3,
+      "weight": 4
+    },
+    {
+      "item": "perle",
+      "quantity": 1,
+      "weight": 3
+    }
+  ],
+  "turnLimit": 12
+}

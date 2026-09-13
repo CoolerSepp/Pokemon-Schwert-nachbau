@@ -10,10 +10,10 @@ import { InputManager } from '@/engine/InputManager';
 import { AssetManager } from '@/engine/AssetManager';
 import { TimeManager } from '@/world/TimeManager';
 import { WorldManager } from '@/world/WorldManager';
+import { WeatherDirector } from '@/world/WeatherDirector';
 import { PlayerController } from '@/player/PlayerController';
 import { CameraManager } from '@/camera/CameraManager';
 import { CreatureFactory } from '@/creatures/CreatureFactory';
-import type { WeatherKind } from '@/data/schema';
 
 const log = Logger.scope('Game');
 
@@ -53,6 +53,7 @@ export class Game {
   readonly assets = new AssetManager();
   readonly time: TimeManager;
   readonly world: WorldManager;
+  readonly weather: WeatherDirector;
   readonly camera: CameraManager;
   readonly player: PlayerController;
   readonly creatures: CreatureFactory;
@@ -73,6 +74,7 @@ export class Game {
     this.input = new InputManager(options.canvas);
     this.time = new TimeManager();
     this.world = new WorldManager(this.assets, this.time, this.renderer);
+    this.weather = new WeatherDirector(this.rng.fork('weather'));
     this.camera = new CameraManager(this.renderer.aspect, this.input);
     this.player = new PlayerController(this.assets, this.input);
     this.creatures = new CreatureFactory(this.rng.fork('creatures'));
@@ -131,15 +133,9 @@ export class Game {
         : null,
     );
 
-    const weather = this.pickWeather(area.data.weather, area.data.indoor === true);
-    this.world.setWeather(weather);
+    this.world.setWeather(this.weather.enterArea(area.data));
     this.transitionCooldown = 0.6;
     this.events.emit('areaEntered', { areaId: area.data.id, areaName: area.data.name });
-  }
-
-  private pickWeather(allowed: WeatherKind[] | undefined, indoor: boolean): WeatherKind {
-    if (indoor || !allowed || allowed.length === 0) return 'clear';
-    return this.rng.pick(allowed);
   }
 
   // -------------------------------------------------------------- Spielschleife
@@ -156,6 +152,7 @@ export class Game {
       }),
       this.loop.on('simulation', (dt) => {
         this.time.update(dt);
+        if (this.modeValue === 'world') this.updateWeather(dt);
         if (this.transitionCooldown > 0) this.transitionCooldown -= dt;
         if (this.modeValue === 'world') this.checkAreaTransition();
       }),
@@ -167,7 +164,7 @@ export class Game {
         );
       }),
       this.loop.on('render', (dt) => {
-        this.world.update(this.player.x, this.player.z, this.player.y);
+        this.world.update(dt, this.player.x, this.player.z, this.player.y);
         this.renderer.render(this.world.scene, this.camera.camera, dt * 1000);
       }),
       this.loop.on('ui', () => {
@@ -179,6 +176,14 @@ export class Game {
         }
       }),
     );
+  }
+
+  /** Laesst das Wetter im Freien ueber die Zeit wechseln. */
+  private updateWeather(dt: number): void {
+    const change = this.weather.update(dt);
+    if (!change) return;
+    this.world.setWeather(change.weather);
+    this.events.emit('notice', { text: change.text, kind: 'info' });
   }
 
   /** Prueft Gebietsuebergaenge und Tueren an der Spielerposition. */

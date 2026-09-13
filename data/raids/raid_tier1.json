@@ -1,0 +1,80 @@
+{
+  "id": "raid_tier1",
+  "tier": 1,
+  "bosses": [
+    {
+      "species": "windschwinge",
+      "level": 18,
+      "weight": 3,
+      "gigantic": false
+    },
+    {
+      "species": "glockenblume",
+      "level": 18,
+      "weight": 3,
+      "gigantic": false
+    },
+    {
+      "species": "glutkitz",
+      "level": 16,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "sprossling",
+      "level": 16,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "tropfling",
+      "level": 16,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "ruestungsigel",
+      "level": 16,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "schneehase",
+      "level": 16,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "kampffaust",
+      "level": 16,
+      "weight": 6,
+      "gigantic": false
+    }
+  ],
+  "allies": [
+    "faehrtenleser_bo",
+    "kaefersammler_tom",
+    "jaegerin_pax"
+  ],
+  "shieldThresholds": [
+    0.5
+  ],
+  "rewardItems": [
+    {
+      "item": "trank",
+      "quantity": 2,
+      "weight": 5
+    },
+    {
+      "item": "fangkugel",
+      "quantity": 3,
+      "weight": 4
+    },
+    {
+      "item": "sternenstaub",
+      "quantity": 1,
+      "weight": 2
+    }
+  ],
+  "turnLimit": 12
+}

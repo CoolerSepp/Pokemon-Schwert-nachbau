@@ -66,6 +66,8 @@ export const GameConfig = {
     tallGrassRustleRange: 1.1,
     maxActiveWildCreatures: 34,
     respawnDelaySeconds: 26,
+    /** Reichweite, in der ein Energiepunkt betreten werden kann. */
+    raidDenRange: 3.4,
   },
 
   time: {
@@ -97,6 +99,8 @@ export const GameConfig = {
     /** Gigantifizierung: HP-Multiplikator und Dauer in Runden. */
     giganticHpMultiplier: 1.8,
     giganticTurns: 3,
+    /** Ab wie vielen Orden der Spieler gigantifizieren darf. */
+    giganticBadgeRequirement: 3,
   },
 
   creature: {

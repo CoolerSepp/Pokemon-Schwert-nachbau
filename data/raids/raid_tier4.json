@@ -1,0 +1,88 @@
+{
+  "id": "raid_tier4",
+  "tier": 4,
+  "bosses": [
+    {
+      "species": "luminis",
+      "level": 47,
+      "weight": 3,
+      "gigantic": false
+    },
+    {
+      "species": "titanklaue",
+      "level": 47,
+      "weight": 3,
+      "gigantic": true
+    },
+    {
+      "species": "abgrundschrecken",
+      "level": 45,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "gletscherfang",
+      "level": 45,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "fluthueter",
+      "level": 45,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "forstwaechter",
+      "level": 45,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "infernohorn",
+      "level": 45,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "bergkoloss",
+      "level": 45,
+      "weight": 6,
+      "gigantic": true
+    }
+  ],
+  "allies": [
+    "irrlichtjaegerin_noor",
+    "grabwaechter_idris",
+    "gratlaeufer_ilan"
+  ],
+  "shieldThresholds": [
+    0.75,
+    0.55,
+    0.36,
+    0.18
+  ],
+  "rewardItems": [
+    {
+      "item": "top_trank",
+      "quantity": 2,
+      "weight": 5
+    },
+    {
+      "item": "beleber",
+      "quantity": 2,
+      "weight": 4
+    },
+    {
+      "item": "nugget",
+      "quantity": 1,
+      "weight": 3
+    },
+    {
+      "item": "angriffsplus",
+      "quantity": 1,
+      "weight": 2
+    }
+  ],
+  "turnLimit": 10
+}

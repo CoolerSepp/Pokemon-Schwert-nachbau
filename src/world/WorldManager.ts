@@ -10,6 +10,7 @@ import { PropFactory } from './PropFactory';
 import { BuildingFactory } from './BuildingFactory';
 import { InteriorFactory } from './InteriorFactory';
 import type { TimeManager } from './TimeManager';
+import { WeatherSystem } from '@/particles/WeatherSystem';
 
 const log = Logger.scope('World');
 
@@ -17,6 +18,7 @@ export interface WorldEvents extends Record<string, unknown> {
   areaLoaded: { area: AreaRuntime; spawnPoint: string };
   areaUnloaded: { areaId: string };
   areaChangeRequested: { to: string; spawnPoint: string };
+  weatherChanged: { weather: WeatherKind; indoor: boolean };
 }
 
 /**
@@ -44,6 +46,7 @@ export class WorldManager {
   private readonly tmpVec = new THREE.Vector3();
   private weather: WeatherKind = 'clear';
   private lightDirty = true;
+  readonly weatherSystem: WeatherSystem;
 
   constructor(
     assets: AssetManager,
@@ -71,6 +74,9 @@ export class WorldManager {
     this.scene.add(this.fill);
 
     this.scene.fog = new THREE.Fog(0xcfe4f2, 40, 260);
+
+    this.weatherSystem = new WeatherSystem(renderer.profile.particleBudget);
+    this.scene.add(this.weatherSystem.object);
 
     this.time.events.on('timeOfDayChanged', () => { this.lightDirty = true; });
   }
@@ -164,12 +170,17 @@ export class WorldManager {
   setWeather(weather: WeatherKind): void {
     this.weather = weather;
     this.lightDirty = true;
+    const indoor = this.activeArea?.data.indoor === true;
+    this.weatherSystem.setWeather(weather, indoor);
+    this.events.emit('weatherChanged', { weather, indoor });
   }
 
   /** Aktualisiert Licht, Nebel und Himmel nach Uhrzeit und Wetter. */
-  update(playerX: number, playerZ: number, playerY: number): void {
+  update(deltaSeconds: number, playerX: number, playerZ: number, playerY: number): void {
     const area = this.activeArea;
     if (!area) return;
+
+    this.weatherSystem.update(deltaSeconds, playerX, playerY, playerZ);
 
     // Schattenkamera dem Spieler nachfuehren, damit die Aufloesung reicht.
     this.time.sunDirection(this.tmpVec);
@@ -198,12 +209,15 @@ export class WorldManager {
     const lighting = this.time.lighting;
     const weatherFactor = this.weatherLightFactor();
 
+    const flash = this.weatherSystem.flash;
+
     this.sun.color.copy(lighting.sunColor);
     this.sun.intensity = lighting.sunIntensity * weatherFactor.sun
-      * (area.data.ambience?.lightIntensity ?? 1);
+      * (area.data.ambience?.lightIntensity ?? 1) + flash * 0.9;
     this.ambient.color.copy(lighting.skyTint);
     this.ambient.groundColor.set(area.palette.ground);
-    this.ambient.intensity = lighting.ambientIntensity * weatherFactor.ambient;
+    this.ambient.intensity = lighting.ambientIntensity * weatherFactor.ambient
+      + flash * 1.6;
 
     const fog = this.scene.fog as THREE.Fog;
     fog.color.copy(lighting.fogColor).lerp(
@@ -274,6 +288,7 @@ export class WorldManager {
   }
 
   dispose(): void {
+    this.weatherSystem.dispose();
     for (const area of this.cache.values()) area.dispose();
     this.cache.clear();
     this.cacheOrder.length = 0;

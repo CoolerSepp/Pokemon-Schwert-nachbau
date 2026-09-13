@@ -1,0 +1,87 @@
+{
+  "id": "raid_tier3",
+  "tier": 3,
+  "bosses": [
+    {
+      "species": "frostkoloss",
+      "level": 37,
+      "weight": 3,
+      "gigantic": true
+    },
+    {
+      "species": "sturmaar",
+      "level": 37,
+      "weight": 3,
+      "gigantic": true
+    },
+    {
+      "species": "himmelsritter",
+      "level": 35,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "magmaherr",
+      "level": 35,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "vulkanschlange",
+      "level": 35,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "aschewolf",
+      "level": 35,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "mondpanther",
+      "level": 35,
+      "weight": 6,
+      "gigantic": false
+    },
+    {
+      "species": "geisterfuerst",
+      "level": 35,
+      "weight": 6,
+      "gigantic": true
+    }
+  ],
+  "allies": [
+    "glutlaeufer_nero",
+    "aschewanderin_rea",
+    "bergfuehrer_kell"
+  ],
+  "shieldThresholds": [
+    0.7,
+    0.48,
+    0.26
+  ],
+  "rewardItems": [
+    {
+      "item": "hypertrank",
+      "quantity": 2,
+      "weight": 5
+    },
+    {
+      "item": "hyperkugel",
+      "quantity": 3,
+      "weight": 4
+    },
+    {
+      "item": "grossperle",
+      "quantity": 1,
+      "weight": 3
+    },
+    {
+      "item": "sonnenstein",
+      "quantity": 1,
+      "weight": 1
+    }
+  ],
+  "turnLimit": 11
+}

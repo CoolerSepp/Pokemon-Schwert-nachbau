@@ -18,6 +18,7 @@ import { QuestScreen } from '@/ui/screens/QuestScreen';
 import { SaveScreen } from '@/ui/screens/SaveScreen';
 import { OptionsScreen } from '@/ui/screens/OptionsScreen';
 import { BattleScreen } from '@/ui/screens/BattleScreen';
+import { RaidScreen, type RaidBriefing } from '@/ui/screens/RaidScreen';
 import type { MenuContext } from '@/ui/screens/MenuContext';
 import { PlayerState } from '@/player/PlayerState';
 import { NpcManager, type NpcInstance } from '@/npcs/NpcManager';
@@ -25,6 +26,7 @@ import { WildCreatureManager, type WildInstance } from '@/wildarea/WildCreatureM
 import { DialogueManager } from '@/story/DialogueManager';
 import { CutsceneManager, type CutsceneHost } from '@/story/CutsceneManager';
 import { QuestManager } from '@/quests/QuestManager';
+import { RaidManager, type DenState } from '@/raids/RaidManager';
 import { AudioManager } from '@/audio/AudioManager';
 import { BattleScene } from '@/battle/BattleScene';
 import { BattleEngine, type BattleSetup } from '@/battle/BattleEngine';
@@ -35,6 +37,7 @@ import type { Creature } from '@/creatures/Creature';
 import { el } from '@/ui/UIManager';
 import { buildCreatureModel } from '@/creatures/CreatureModel';
 import { CreatureAnimator } from '@/animation/CreatureAnimator';
+import { DebugOverlay } from '@/debug/DebugOverlay';
 
 const log = Logger.scope('Controller');
 
@@ -72,6 +75,7 @@ export class GameController {
   readonly dialogue: DialogueManager;
   readonly cutscenes: CutsceneManager;
   readonly quests: QuestManager;
+  readonly raids: RaidManager;
   readonly battleScene: BattleScene;
 
   private hud!: HudScreen;
@@ -82,6 +86,9 @@ export class GameController {
   private battleOnDone: (() => void) | null = null;
   private battleWildInstance: WildInstance | null = null;
   private battleTrainerNpc: NpcInstance | null = null;
+  private raidScreen!: RaidScreen;
+  /** Nest des laufenden Raid-Kampfes. */
+  private activeRaidDen: DenState | null = null;
 
   private readonly groundItems: GroundItem[] = [];
   private readonly itemGroup = new THREE.Group();
@@ -89,6 +96,7 @@ export class GameController {
   private pendingEvolutions: PendingEvolution[] = [];
   private interactHint: string | null = null;
   private fadeLayer!: HTMLElement;
+  private debugOverlay!: DebugOverlay;
   private autosaveTimer = 0;
   private approachingTrainer: NpcInstance | null = null;
   private readonly tmpVec = new THREE.Vector3();
@@ -109,6 +117,7 @@ export class GameController {
     this.wild = new WildCreatureManager(this.game.assets, this.game.creatures, this.player);
     this.dialogue = new DialogueManager(this.player, (action) => this.runAction(action));
     this.quests = new QuestManager(this.player);
+    this.raids = new RaidManager();
     this.battleScene = new BattleScene(
       this.game.assets, this.game.renderer.profile.particleBudget,
     );
@@ -116,6 +125,7 @@ export class GameController {
 
     this.game.world.scene.add(this.npcs.object);
     this.game.world.scene.add(this.wild.object);
+    this.game.world.scene.add(this.raids.object);
     this.game.world.scene.add(this.itemGroup);
     this.itemGroup.name = 'groundItems';
 
@@ -128,6 +138,11 @@ export class GameController {
     };
 
     this.buildFadeLayer();
+    this.debugOverlay = new DebugOverlay(uiRoot, {
+      stats: () => this.game.renderer.stats,
+      info: () => this.debugInfo,
+      quality: () => this.game.renderer.quality,
+    });
     this.registerScreens();
     this.registerEvents();
     this.registerLoop();
@@ -198,6 +213,8 @@ export class GameController {
     this.ui.register(new QuestScreen(ctx));
     this.ui.register(new SaveScreen(ctx));
     this.ui.register(new OptionsScreen(ctx));
+    this.raidScreen = new RaidScreen(ctx, this.audio, (den) => this.startRaidBattle(den));
+    this.ui.register(this.raidScreen);
   }
 
   private registerEvents(): void {
@@ -211,6 +228,12 @@ export class GameController {
     window.addEventListener('pointerdown', unlock, { once: true });
 
     this.game.input.events.on('actionPressed', ({ action }) => {
+      // Die Debug-Anzeige laesst sich immer umschalten, auch in Menues.
+      if (action === 'debug') {
+        const shown = this.debugOverlay.toggle();
+        this.ui.toast(shown ? 'Debug-Anzeige an' : 'Debug-Anzeige aus', 'info', 1.6);
+        return;
+      }
       if (this.ui.blocksGameplay) return;
       if (action === 'menu') {
         this.audio.playSfx('open');
@@ -245,16 +268,26 @@ export class GameController {
     this.player.events.on('badgeEarned', ({ name }) => {
       this.audio.playSfx('badge');
       this.ui.toast(`Orden erhalten: ${name}!`, 'success', 5);
+      this.checkGiganticUnlock();
     });
     this.player.events.on('partyChanged', () => this.hud.forceRefresh());
 
     this.game.time.events.on('timeOfDayChanged', () => this.updateMusic());
+
+    // Wetterwechsel: Anzeige auffrischen, Blitze donnern lassen.
+    this.game.world.events.on('weatherChanged', () => this.hud.forceRefresh());
+    this.game.world.weatherSystem.onLightning = () => {
+      if (this.game.mode !== 'world' && this.game.mode !== 'cutscene') return;
+      this.audio.playSfx('thunder');
+      this.battleScene.effects.flash('#dfe9ff', 0.18);
+    };
   }
 
   private registerLoop(): void {
     this.game.loop.on('simulation', (dt) => this.updateGameplay(dt));
     this.game.loop.on('ai', (dt) => this.updateActors(dt));
     this.game.loop.on('effects', (dt) => {
+      this.raids.update(dt);
       this.battleScene.effects.update(dt);
       this.updateEvolution(dt);
     });
@@ -267,6 +300,7 @@ export class GameController {
     });
     this.game.loop.on('ui', (dt) => {
       this.ui.update(dt);
+      this.debugOverlay.update(dt);
       this.player.playtimeSeconds += dt;
       this.cutscenes.update(dt);
     });
@@ -296,6 +330,7 @@ export class GameController {
     this.player.visitArea(areaId);
     this.npcs.load(area);
     this.wild.load(area, this.spawnContext());
+    this.raids.load(area, this.game.time.day);
     this.loadGroundItems();
     this.updateMusic();
     this.hud.forceRefresh();
@@ -415,6 +450,13 @@ export class GameController {
         : `${GameData.items.tryGet(item.itemId)?.name ?? 'Gegenstand'} aufheben`;
       return;
     }
+    const den = this.raids.denNear(player.x, player.z, GameConfig.world.raidDenRange);
+    if (den) {
+      this.interactHint = den.cleared ? 'Erloschener Energiepunkt'
+        : den.active ? `Energiepunkt (Stufe ${den.tier}) betreten`
+        : 'Ruhender Energiepunkt';
+      return;
+    }
     const door = this.game.world.checkDoor(player.x, player.z);
     this.interactHint = door ? `${door.label} betreten` : null;
   }
@@ -437,6 +479,12 @@ export class GameController {
     const item = this.findNearbyItem();
     if (item) {
       this.pickUpItem(item);
+      return;
+    }
+
+    const den = this.raids.denNear(player.x, player.z, GameConfig.world.raidDenRange);
+    if (den) {
+      this.openRaidBriefing(den);
       return;
     }
     // Tueren werden in Game.checkAreaTransition ausgewertet.
@@ -856,6 +904,12 @@ export class GameController {
     if (result.outcome === 'win' && result.defeatedTrainerId) {
       this.onTrainerDefeated(result.defeatedTrainerId);
     }
+
+    const raidDen = this.activeRaidDen;
+    this.activeRaidDen = null;
+    if (raidDen && (result.outcome === 'win' || result.outcome === 'caught')) {
+      this.grantRaidRewards(raidDen);
+    }
     if (result.outcome === 'loss') {
       this.handleBlackout();
       return;
@@ -1002,10 +1056,143 @@ export class GameController {
       case 'teleport':
         this.game.enterArea(action.area, action.spawnPoint);
         break;
-      case 'startRaid':
-        this.ui.toast('Der Energiepunkt ist noch nicht aktiv.', 'info');
+      case 'startRaid': {
+        const den = this.raids.denById(action.den);
+        if (den) this.openRaidBriefing(den);
+        else this.ui.toast('Hier gibt es keinen Energiepunkt.', 'warn');
         break;
+      }
     }
+  }
+
+  // -------------------------------------------------------------- Raid-Kaempfe
+
+  /** Zeigt die Vorschau eines Energiepunktes. */
+  private openRaidBriefing(den: DenState): void {
+    if (den.cleared) {
+      this.ui.toast('Dieser Energiepunkt ist bereits geleert.', 'info');
+      return;
+    }
+    if (!den.active) {
+      this.ui.toast('Dieser Energiepunkt ruht gerade.', 'info');
+      return;
+    }
+    const raid = this.raids.raidFor(den);
+    const boss = this.raids.bossFor(den);
+    if (!raid || !boss) {
+      this.ui.toast('Der Energiepunkt ist erloschen.', 'warn');
+      return;
+    }
+
+    const briefing: RaidBriefing = {
+      den,
+      bossSpecies: boss.species,
+      bossLevel: boss.level,
+      gigantic: boss.gigantic === true,
+      allyNames: raid.allies.map((id) => GameData.trainers.tryGet(id)?.name ?? id),
+      shields: raid.shieldThresholds.length,
+      turnLimit: raid.turnLimit,
+      rewards: raid.rewardItems.map((r) => GameData.items.tryGet(r.item)?.name ?? r.item),
+      warning: boss.level > this.player.obedienceLevel + 8
+        ? 'Warnung: Dieser Gegner ist deutlich staerker als dein Team.'
+        : null,
+    };
+    this.audio.playSfx('raidOpen');
+    this.raidScreen.setBriefing(briefing);
+    this.ui.push('raid');
+  }
+
+  /** Startet den Raid-Kampf gegen den Boss eines Nestes. */
+  private startRaidBattle(den: DenState): void {
+    const raid = this.raids.raidFor(den);
+    const boss = this.raids.bossFor(den);
+    if (!raid || !boss) return;
+
+    const bossCreature = this.game.creatures.create(boss.species, {
+      level: boss.level,
+      perfectIvs: 3 + den.tier,
+      giganticFactor: boss.gigantic === true,
+      originalTrainer: 'Energiepunkt',
+    });
+    this.player.registerSeen(boss.species);
+
+    // Verbuendete: jeweils die staerkste Kreatur des Trainers.
+    const allies = raid.allies.slice(0, 3).map((trainerId) => {
+      const trainer = GameData.trainers.tryGet(trainerId);
+      const entry = trainer?.team.reduce(
+        (best, cur) => (cur.level > best.level ? cur : best), trainer.team[0]!,
+      );
+      const level = Math.max(5, Math.min(boss.level - 2, entry?.level ?? boss.level - 5));
+      const creature = this.game.creatures.create(entry?.species ?? boss.species, {
+        level,
+        moves: entry?.moves,
+        originalTrainer: trainer?.name ?? 'Verbuendeter',
+        perfectIvs: 2,
+      });
+      return {
+        creature,
+        ai: (den.tier >= 4 ? 'smart' : 'basic') as 'smart' | 'basic',
+        trainerName: trainer?.name ?? 'Verbuendeter',
+        downTurns: 0,
+      };
+    });
+
+    this.activeRaidDen = den;
+    this.audio.playSfx('raidPulse');
+    this.startBattle({
+      kind: 'raid',
+      playerParty: this.player.party,
+      enemyParty: [bossCreature],
+      playerName: this.player.name,
+      enemyName: bossCreature.name,
+      aiProfile: den.tier >= 4 ? 'boss' : 'expert',
+      ambientWeather: this.game.world.currentWeather,
+      timeOfDay: this.game.time.timeOfDay,
+      playerCanGigantic: this.player.hasFlag('giganticUnlocked'),
+      allowCapture: true,
+      allowFlee: false,
+      rewardBase: 90 + den.tier * 40,
+      raid: {
+        shieldThresholds: raid.shieldThresholds,
+        turnLimit: raid.turnLimit,
+        allies,
+      },
+    });
+  }
+
+  /** Beute nach einem gewonnenen Raid. */
+  private grantRaidRewards(den: DenState): void {
+    const raid = this.raids.raidFor(den);
+    if (!raid) return;
+    this.raids.markCleared(den.id);
+
+    const rng = this.game.rng.fork(`raid-reward-${den.id}-${this.game.time.day}`);
+    const drops = 2 + Math.floor(den.tier / 2);
+    const names: string[] = [];
+    for (let i = 0; i < drops; i++) {
+      const entry = rng.weighted(
+        raid.rewardItems.map((r) => ({ value: r, weight: r.weight })),
+      );
+      if (!entry) continue;
+      this.player.addItem(entry.item, entry.quantity);
+      names.push(`${GameData.items.tryGet(entry.item)?.name ?? entry.item} x${entry.quantity}`);
+    }
+    if (names.length > 0) {
+      this.audio.playSfx('itemGet');
+      this.ui.toast(`Raid-Beute: ${names.join(', ')}`, 'success', 5);
+    }
+  }
+
+  /** Ab dem dritten Orden darf der Spieler gigantifizieren. */
+  private checkGiganticUnlock(): void {
+    if (this.player.hasFlag('giganticUnlocked')) return;
+    if (this.player.badgeCount < GameConfig.battle.giganticBadgeRequirement) return;
+    this.player.setFlag('giganticUnlocked', true);
+    this.audio.playSfx('gigantic');
+    this.ui.toast(
+      'Dein Band reagiert! Ab jetzt kannst du im Kampf gigantifizieren.',
+      'success', 6,
+    );
   }
 
   private healParty(): void {
@@ -1246,6 +1433,8 @@ export class GameController {
       state: this.player.serialize({
         position: this.game.player.serialize(),
         hour: this.game.time.hour,
+        day: this.game.time.day,
+        raids: this.raids.serialize(),
         settings: {},
       }),
     };
@@ -1266,8 +1455,10 @@ export class GameController {
     this.pendingEvolutions.length = 0;
 
     this.player.deserialize(data.state);
-    this.game.time.setHour(data.state.hour);
+    this.game.time.deserialize({ hour: data.state.hour, day: data.state.day });
     this.game.enterArea(this.player.areaId, this.player.spawnPoint);
+    this.raids.deserialize(data.state.raids);
+    this.checkGiganticUnlock();
     this.game.player.deserialize(data.state.position);
     this.game.setMode('world');
     this.game.player.setControlEnabled(true);
@@ -1407,6 +1598,7 @@ export class GameController {
         controller.fadeLayer.classList.toggle('active', to !== 'clear');
       },
       setWeather(weather: WeatherKind) {
+        controller.game.weather.force(weather);
         controller.game.world.setWeather(weather);
       },
       setHour(hour) {
@@ -1440,7 +1632,10 @@ export class GameController {
       npcs: this.npcs.all.length,
       partikel: this.battleScene.effects.particles.activeCount,
       uhrzeit: this.game.time.format(),
+      tag: this.game.time.day,
       wetter: this.game.world.currentWeather,
+      wetterPartikel: this.game.world.weatherSystem.activeParticles,
+      nester: `${this.raids.activeCount}/${this.raids.dens.length}`,
       gefangen: this.player.caughtSpecies.size,
     };
   }
@@ -1448,6 +1643,7 @@ export class GameController {
   dispose(): void {
     this.ui.dispose();
     this.npcs.dispose();
+    this.debugOverlay.dispose();
     this.wild.dispose();
     this.battleScene.dispose();
     this.audio.dispose();

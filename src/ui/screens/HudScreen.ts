@@ -8,7 +8,7 @@ import type { WeatherKind } from '@/data/schema';
 
 const WEATHER_LABELS: Record<WeatherKind, string> = {
   clear: 'Klar', cloudy: 'Bewoelkt', rain: 'Regen', heavyRain: 'Starkregen',
-  thunderstorm: 'Gewitter', snow: 'Schnee', blizzard: 'Blizzard',
+  thunderstorm: 'Gewitter', snow: 'Schnee', blizzard: 'Schneesturm',
   fog: 'Nebel', sandstorm: 'Sandsturm', harshSun: 'Gleissende Sonne',
 };
 

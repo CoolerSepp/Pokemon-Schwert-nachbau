@@ -138,6 +138,8 @@ export class BattleEngine {
   get raidAllies(): readonly RaidAlly[] { return this.allies; }
   get isRaid(): boolean { return this.setup.raid !== undefined; }
   get raidShieldRemaining(): number { return this.raidShields.length; }
+  /** Gesamtzahl der Schilde zu Kampfbeginn. */
+  get raidShieldTotal(): number { return this.setup.raid?.shieldThresholds.length ?? 0; }
 
   get playerActive(): Creature { return this.player.party[this.player.activeIndex]!; }
   get enemyActive(): Creature { return this.enemy.party[this.enemy.activeIndex]!; }
@@ -1512,38 +1514,47 @@ export class BattleEngine {
     return events;
   }
 
-  /** Raid-Schild absorbiert einen Teil des Schadens und bricht bei Erreichen der Schwelle. */
+  /**
+   * Raid-Schild: absorbiert Schaden, bricht bei erschoepfter Schildhuelle und
+   * kappt den Treffer, der die naechste Schwelle unterschreitet.
+   *
+   * Ohne die Kappung koennte ein einziger starker Treffer saemtliche Schilde
+   * ueberspringen und den Boss sofort besiegen.
+   */
   private applyRaidShield(defenderSide: SideId, damage: number, events: BattleEvent[]): number {
     if (!this.isRaid || defenderSide !== 'enemy') return damage;
     const boss = this.enemyActive;
+    let incoming = damage;
 
     if (this.raidShieldHp > 0) {
-      const absorbed = Math.min(this.raidShieldHp, damage);
+      const absorbed = Math.min(this.raidShieldHp, incoming);
       this.raidShieldHp -= absorbed;
-      const through = Math.floor((damage - absorbed) + absorbed * 0.25);
+      incoming = Math.floor((incoming - absorbed) + absorbed * 0.25);
       if (this.raidShieldHp <= 0) {
         this.raidShields.shift();
         events.push({ t: 'raidShieldBreak', remaining: this.raidShields.length });
         events.push({ t: 'message', text: `Der Schild von ${boss.name} zerbricht!` });
         this.enemy.volatile.mustRecharge = true;
       }
-      return Math.max(1, through);
+      incoming = Math.max(1, incoming);
     }
 
-    // Naechste Schildschwelle pruefen.
+    // Naechste Schwelle: der Boss bleibt darauf stehen und errichtet dort
+    // seinen Schild.
     const nextThreshold = this.raidShields[0];
     if (nextThreshold !== undefined) {
-      const hpAfter = (boss.currentHp - damage) / boss.maxHp;
-      if (hpAfter <= nextThreshold) {
+      const thresholdHp = Math.max(1, Math.ceil(boss.maxHp * nextThreshold));
+      if (boss.currentHp - incoming < thresholdHp) {
         this.raidShieldHp = Math.floor(boss.maxHp * 0.22);
         this.raidPhase++;
         events.push({
           t: 'raidPhase', phase: this.raidPhase,
           text: `${boss.name} errichtet einen Schild!`,
         });
+        return Math.max(0, boss.currentHp - thresholdHp);
       }
     }
-    return damage;
+    return incoming;
   }
 
   // ------------------------------------------------------- K.O. und Erfahrung

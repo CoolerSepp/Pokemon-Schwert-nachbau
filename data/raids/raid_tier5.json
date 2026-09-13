@@ -1,0 +1,89 @@
+{
+  "id": "raid_tier5",
+  "tier": 5,
+  "bosses": [
+    {
+      "species": "aetherion",
+      "level": 60,
+      "weight": 3,
+      "gigantic": true
+    },
+    {
+      "species": "titanklaue",
+      "level": 60,
+      "weight": 3,
+      "gigantic": true
+    },
+    {
+      "species": "abgrundschrecken",
+      "level": 58,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "gletscherfang",
+      "level": 58,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "fluthueter",
+      "level": 58,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "forstwaechter",
+      "level": 58,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "infernohorn",
+      "level": 58,
+      "weight": 6,
+      "gigantic": true
+    },
+    {
+      "species": "bergkoloss",
+      "level": 58,
+      "weight": 6,
+      "gigantic": true
+    }
+  ],
+  "allies": [
+    "drachenschuelerin_vi",
+    "faustkaempfer_ove",
+    "champion_aurel"
+  ],
+  "shieldThresholds": [
+    0.8,
+    0.62,
+    0.45,
+    0.3,
+    0.15
+  ],
+  "rewardItems": [
+    {
+      "item": "top_trank",
+      "quantity": 3,
+      "weight": 5
+    },
+    {
+      "item": "top_beleber",
+      "quantity": 2,
+      "weight": 4
+    },
+    {
+      "item": "nugget",
+      "quantity": 3,
+      "weight": 3
+    },
+    {
+      "item": "meisterkugel",
+      "quantity": 1,
+      "weight": 1
+    }
+  ],
+  "turnLimit": 10
+}

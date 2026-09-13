@@ -16,7 +16,8 @@ export type SfxKind =
   | 'buff' | 'debuff' | 'heal' | 'statusApply' | 'explosion'
   | 'ballThrow' | 'ballShake' | 'ballCatch' | 'ballBreak'
   | 'levelUp' | 'evolution' | 'gigantic' | 'badge' | 'save'
-  | 'encounter' | 'rustle' | 'door' | 'crowdCheer' | 'crowdGasp' | 'whoosh' | 'slash' | 'impact';
+  | 'encounter' | 'rustle' | 'door' | 'crowdCheer' | 'crowdGasp' | 'whoosh' | 'slash' | 'impact'
+  | 'thunder' | 'raidPulse' | 'raidOpen';
 
 interface CryOptions {
   baseHz: number;
@@ -386,6 +387,27 @@ export class AudioManager {
       case 'explosion':
         noise(0.55, 0.26, 2400, 90);
         tone(130, 0.36, 0.16, 'sawtooth', 40);
+        break;
+      case 'thunder':
+        // Kurzer Knall, dann langes Grollen.
+        noise(0.12, 0.2, 5200, 1800, 'bandpass');
+        playNoise(ctx, bus, {
+          startTime: t + 0.1, duration: 1.6, gain: 0.2,
+          filterStart: 420, filterEnd: 70, type: 'lowpass',
+        });
+        break;
+      case 'raidPulse':
+        tone(90, 0.5, 0.12, 'sine', 150);
+        noise(0.5, 0.06, 300, 900, 'bandpass');
+        break;
+      case 'raidOpen':
+        for (let i = 0; i < 4; i++) {
+          playVoice(ctx, bus, {
+            type: 'sawtooth', frequency: midiToFreq(40 + i * 7) * p,
+            startTime: t + i * 0.12, duration: 0.3, gain: 0.11, filter: 900,
+          });
+        }
+        noise(0.9, 0.12, 1800, 200);
         break;
       case 'ballThrow': noise(0.16, 0.07, 2200, 800, 'bandpass'); break;
       case 'ballShake': tone(560, 0.09, 0.1, 'square', 430); break;

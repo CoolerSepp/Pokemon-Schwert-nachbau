@@ -158,7 +158,8 @@ export class BattleScreen implements Screen {
   private startBattle(): void {
     const engine = this.ctx.engine;
     this.ctx.scene.setCreature('player', engine.playerActive);
-    this.ctx.scene.setCreature('enemy', engine.enemyActive);
+    this.ctx.scene.setCreature('enemy', engine.enemyActive, engine.isRaid ? 1.8 : 1);
+    if (engine.isRaid) this.ctx.scene.setAllies(engine.raidAllies);
     this.displayHp.player = engine.playerActive.hpFraction;
     this.displayHp.enemy = engine.enemyActive.hpFraction;
     this.targetHp.player = this.displayHp.player;
@@ -266,13 +267,18 @@ export class BattleScreen implements Screen {
         scene.setCameraFocus('wide');
         this.setMessage(event.isTrainer
           ? `${event.enemyName} fordert dich heraus!`
-          : `Ein wildes Wesen erscheint!`);
+          : event.kind === 'raid'
+            ? `${event.enemyName} bricht aus dem Energiepunkt hervor!`
+            : `Ein wildes Wesen erscheint!`);
         return base * 1.2;
 
       case 'sendOut': {
         const creature = this.creatureByUid(event.uid);
         if (creature) {
-          scene.setCreature(event.side as BattleSlot, creature);
+          scene.setCreature(
+            event.side as BattleSlot, creature,
+            this.ctx.engine.isRaid && event.side === 'enemy' ? 1.8 : 1,
+          );
           this.targetHp[event.side] = creature.hpFraction;
           this.displayHp[event.side] = creature.hpFraction;
           if (event.side === 'player') {
@@ -580,6 +586,7 @@ export class BattleScreen implements Screen {
     this.renderInfoPanel('enemy', engine.enemyActive);
     this.renderInfoPanel('player', engine.playerActive);
     this.renderRaidShields();
+    if (this.ctx.engine.isRaid) this.ctx.scene.refreshAllies();
     this.updateGiganticButton();
   }
 
@@ -622,7 +629,7 @@ export class BattleScreen implements Screen {
     const engine = this.ctx.engine;
     clearChildren(this.raidShields);
     if (!engine.isRaid) return;
-    const total = 3;
+    const total = engine.raidShieldTotal;
     for (let i = 0; i < total; i++) {
       this.raidShields.appendChild(el('div', {
         className: `raid-shield${i >= engine.raidShieldRemaining ? ' broken' : ''}`,
