@@ -5,7 +5,10 @@ import { RNG } from '@/core/RNG';
 import { Logger } from '@/core/Logger';
 import { TerrainField, type FlattenZone } from './TerrainField';
 import { CollisionGrid } from './CollisionGrid';
-import { buildTerrainMesh, buildSky, BIOME_PALETTES, type BiomePalette } from './TerrainMesh';
+import {
+  buildTerrainMesh, buildSky, BIOME_PALETTES,
+  type BiomePalette, type PathSegment,
+} from './TerrainMesh';
 import { PropFactory, type PropKind } from './PropFactory';
 import { StaticBatcher } from './StaticBatcher';
 import { BuildingFactory } from './BuildingFactory';
@@ -139,6 +142,8 @@ export class AreaRuntime {
   readonly water: THREE.Mesh | null = null;
   /** Objekte, die abhaengig von der Entfernung ein-/ausgeblendet werden. */
   private readonly cullables: { object: THREE.Object3D; x: number; z: number; distSq: number }[] = [];
+  /** Wege des Gebietes - beeinflussen Bodenfarbe und Streudetails. */
+  private pathSegments: PathSegment[] = [];
   /** Requisiten vor dem Zusammenfassen. */
   private readonly propObjects: { object: THREE.Object3D; x: number; z: number }[] = [];
   private disposed = false;
@@ -160,7 +165,10 @@ export class AreaRuntime {
     );
 
     const started = performance.now();
-    const terrain = buildTerrainMesh(this.field, data.biome, { seed: data.seed });
+    this.pathSegments = AreaRuntime.pathsFor(data);
+    const terrain = buildTerrainMesh(this.field, data.biome, {
+      seed: data.seed, paths: data.indoor ? [] : this.pathSegments,
+    });
     this.root.add(terrain.mesh);
     if (terrain.water) {
       this.root.add(terrain.water);
@@ -183,12 +191,140 @@ export class AreaRuntime {
     this.buildProps();
     this.batchProps();
     this.buildGrass();
+    this.buildGroundDetail();
     this.blockWater();
 
     log.info(
       `Gebiet "${data.id}" aufgebaut in ${Math.round(performance.now() - started)} ms ` +
       `(${this.cullables.length} Objekte, Belegung ${(this.collision.blockedRatio * 100).toFixed(1)} %)`,
     );
+  }
+
+  /**
+   * Wegenetz eines Gebietes: von jeder Haustuer zur Ortsmitte und von dort
+   * zu den Ausgaengen. Das ergibt begehbar wirkende Plaetze statt einer
+   * gleichfoermigen Wiese.
+   */
+  private static pathsFor(data: AreaData): PathSegment[] {
+    if (data.indoor) return [];
+    const segments: PathSegment[] = [];
+    const centerX = data.size[0] / 2;
+    const centerZ = data.size[1] / 2;
+
+    for (const b of data.buildings ?? []) {
+      const rotation = b.rotation ?? 0;
+      const offset = b.doorOffset ?? [0, 3];
+      const cos = Math.cos(rotation);
+      const sin = Math.sin(rotation);
+      const dx = b.pos[0] + offset[0] * cos - offset[1] * sin;
+      const dz = b.pos[1] + offset[0] * sin + offset[1] * cos;
+      segments.push({ ax: dx, az: dz, bx: centerX, bz: centerZ, width: 2.2 });
+    }
+
+    for (const conn of data.connections) {
+      const t = conn.trigger;
+      segments.push({
+        ax: t.x + t.width / 2, az: t.z + t.depth / 2,
+        bx: centerX, bz: centerZ, width: 2.6,
+      });
+    }
+    // Ohne Gebaeude und mit nur zwei Ausgaengen (Routen): direkter Weg von
+    // Ausgang zu Ausgang statt eines Sterns ueber die Mitte.
+    if ((data.buildings ?? []).length === 0 && data.connections.length === 2) {
+      const [a, b] = data.connections;
+      segments.length = 0;
+      segments.push({
+        ax: a!.trigger.x + a!.trigger.width / 2, az: a!.trigger.z + a!.trigger.depth / 2,
+        bx: centerX, bz: centerZ, width: 2.8,
+      });
+      segments.push({
+        ax: centerX, az: centerZ,
+        bx: b!.trigger.x + b!.trigger.width / 2, bz: b!.trigger.z + b!.trigger.depth / 2,
+        width: 2.8,
+      });
+    }
+    return segments;
+  }
+
+  /** Abstand zum naechsten Weg. */
+  private distanceToPath(x: number, z: number): number {
+    let best = Number.POSITIVE_INFINITY;
+    for (const s of this.pathSegments) {
+      const dx = s.bx - s.ax;
+      const dz = s.bz - s.az;
+      const lenSq = dx * dx + dz * dz;
+      const t = lenSq === 0 ? 0
+        : Math.max(0, Math.min(1, ((x - s.ax) * dx + (z - s.az) * dz) / lenSq));
+      const dist = Math.hypot(x - (s.ax + dx * t), z - (s.az + dz * t)) - s.width / 2;
+      if (dist < best) best = dist;
+    }
+    return best;
+  }
+
+  /**
+   * Streudetails auf dem Boden: kurze Halme, Blumen und Kiesel.
+   *
+   * Drei Instanz-Zeichnungen fuer das ganze Gebiet. Wege und Gebaeude bleiben
+   * frei, damit die Details nicht durch Waende wachsen.
+   */
+  private buildGroundDetail(): void {
+    if (this.data.indoor) return;
+    const rng = new RNG(`detail-${this.data.id}`);
+    const area = this.data.size[0] * this.data.size[1];
+    const palette = this.palette;
+
+    const blades: { x: number; y: number; z: number; scale: number; tint: number }[] = [];
+    const flowers: typeof blades = [];
+    const pebbles: typeof blades = [];
+
+    // Halme muessen dicht stehen, damit sie als Bewuchs und nicht als
+    // einzelne Objekte gelesen werden.
+    const bladeTarget = Math.min(9000, Math.round(area * 0.55));
+    const flowerTarget = Math.min(1100, Math.round(area * 0.016));
+    const pebbleTarget = Math.min(900, Math.round(area * 0.012));
+    const attempts = (bladeTarget + flowerTarget + pebbleTarget) * 2;
+
+    let placedBlades = 0;
+    let placedFlowers = 0;
+    let placedPebbles = 0;
+
+    for (let i = 0; i < attempts; i++) {
+      if (placedBlades >= bladeTarget && placedFlowers >= flowerTarget
+        && placedPebbles >= pebbleTarget) break;
+      const x = rng.float(0.5, this.data.size[0] - 0.5);
+      const z = rng.float(0.5, this.data.size[1] - 0.5);
+      if (this.collision.isBlocked(x, z)) continue;
+      if (this.field.isUnderWater(x, z)) continue;
+      if (this.field.slopeAt(x, z) > 0.5) continue;
+
+      const onPath = this.distanceToPath(x, z) < 0.3;
+      const y = this.field.heightAt(x, z) - 0.02;
+      const tint = rng.float(0, 1);
+
+      if (onPath) {
+        // Auf Wegen liegen Kiesel statt Gras.
+        if (placedPebbles < pebbleTarget) {
+          pebbles.push({ x, y, z, scale: rng.float(0.35, 0.8), tint });
+          placedPebbles++;
+        }
+        continue;
+      }
+      if (placedBlades < bladeTarget && rng.chance(0.93)) {
+        blades.push({ x, y, z, scale: rng.float(0.55, 1.25), tint });
+        placedBlades++;
+      } else if (placedFlowers < flowerTarget) {
+        flowers.push({ x, y, z, scale: rng.float(0.75, 1.3), tint });
+        placedFlowers++;
+      }
+    }
+
+    for (const [kind, list] of [
+      ['blade', blades], ['flower', flowers], ['pebble', pebbles],
+    ] as const) {
+      if (list.length === 0) continue;
+      const mesh = this.props.createDetailInstances(kind, list, palette);
+      this.root.add(mesh);
+    }
   }
 
   /**
@@ -231,8 +367,17 @@ export class AreaRuntime {
       const y = this.field.heightAt(x, z);
       result.object.position.set(x, y, z);
       result.object.rotation.y = rotation;
-      this.root.add(result.object);
-      this.addCullable(result.object, x, z, GameConfig.world.propCullDistance * 2.2);
+
+      // Ein Gebaeude besteht aus vielen kleinen Teilen (Fenster, Rahmen,
+      // Sims, Balken). Einzeln gezeichnet ergeben schon wenige Haeuser
+      // mehrere hundert Zeichenaufrufe, deshalb wird jedes Gebaeude zu
+      // wenigen Meshes zusammengefasst.
+      const batcher = new StaticBatcher();
+      batcher.add(result.object);
+      const merged = batcher.build('building');
+      const object = merged ?? result.object;
+      this.root.add(object);
+      this.addCullable(object, x, z, GameConfig.world.propCullDistance * 2.2);
 
       this.collision.addBox({
         x, z,
@@ -297,8 +442,11 @@ export class AreaRuntime {
       // Spawnpunkte und Gebietsuebergaenge freihalten: sonst steht die Kamera
       // beim Betreten in einer Baumkrone.
       if (this.isNearEntry(x, z, 7)) continue;
-      // Steile Haenge bleiben frei, sonst schweben Objekte.
-      if (this.field.slopeAt(x, z) > 0.42) continue;
+      // Wege bleiben frei begehbar und sichtbar.
+      if (this.distanceToPath(x, z) < 1.6) continue;
+      // Sehr steile Haenge bleiben frei, sonst schweben Objekte. Maessige
+      // Haenge duerfen bewachsen sein - kahle Boeschungen wirken kuenstlich.
+      if (this.field.slopeAt(x, z) > 0.62) continue;
       const entry = rng.weighted(weighted);
       if (!entry) break;
       this.placeProp({
@@ -505,7 +653,8 @@ export class AreaRuntime {
       const mesh = obj as THREE.Mesh;
       // Nur gebietsspezifische Geometrien freigeben; geteilte bleiben im Cache.
       const ownGeometry = mesh.name === 'terrain' || mesh.name === 'water'
-        || mesh.name === 'sky' || mesh.parent?.name === 'props';
+        || mesh.name === 'sky' || mesh.parent?.name === 'props'
+        || mesh.parent?.name === 'building';
       if (mesh.geometry && ownGeometry) mesh.geometry.dispose();
       if (mesh.name === 'sky') {
         const mat = mesh.material as THREE.Material | THREE.Material[];

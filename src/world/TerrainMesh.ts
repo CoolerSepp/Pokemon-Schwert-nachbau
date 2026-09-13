@@ -105,10 +105,27 @@ export interface TerrainMeshResult {
  * sehr guenstig im Speicher, und der Farbverlauf ergibt sich aus Hoehe und
  * Steigung - das liefert automatisch Fels an Haengen und Gras in der Ebene.
  */
+/** Ein Wegstueck, das in die Bodenfarbe eingezeichnet wird. */
+export interface PathSegment {
+  ax: number; az: number;
+  bx: number; bz: number;
+  width: number;
+}
+
+/** Abstand eines Punktes zu einer Strecke. */
+function distanceToSegment(x: number, z: number, s: PathSegment): number {
+  const dx = s.bx - s.ax;
+  const dz = s.bz - s.az;
+  const lenSq = dx * dx + dz * dz;
+  const t = lenSq === 0 ? 0
+    : Math.max(0, Math.min(1, ((x - s.ax) * dx + (z - s.az) * dz) / lenSq));
+  return Math.hypot(x - (s.ax + dx * t), z - (s.az + dz * t));
+}
+
 export function buildTerrainMesh(
   field: TerrainField,
   biome: Biome,
-  options: { segments?: number; seed?: number } = {},
+  options: { segments?: number; seed?: number; paths?: PathSegment[] } = {},
 ): TerrainMeshResult {
   const palette = BIOME_PALETTES[biome];
   // Aufloesung an die Gebietsgroesse koppeln, aber deckeln.
@@ -132,6 +149,9 @@ export function buildTerrainMesh(
   const peakC = new THREE.Color(palette.peak);
   const tmp = new THREE.Color();
   const tint = new ValueNoise2D(options.seed ?? 1234);
+  const paths = options.paths ?? [];
+  // Wege sind eine abgetretene, hellere Variante des Hangmaterials.
+  const pathColor = new THREE.Color(palette.slope).lerp(new THREE.Color('#c9b48d'), 0.3);
 
   const range = Math.max(0.001, field.maxHeight - field.minHeight);
 
@@ -150,10 +170,29 @@ export function buildTerrainMesh(
     const variation = clamp01(broad * 0.72 + fine * 0.28);
 
     tmp.copy(groundA).lerp(groundB, variation);
-    // Leichte Helligkeitsstreuung bricht die Einfarbigkeit zusaetzlich auf.
-    tmp.offsetHSL(0, 0, (fine - 0.5) * 0.07);
-    if (slope > 0.1) tmp.lerp(slopeC, clamp01((slope - 0.1) / 0.45));
+    // Helligkeit und Farbton streuen, sonst bleibt der Boden eine Flaeche.
+    // Grosse Flecken (broad) geben Wiesen Struktur, die feine Sprenkelung
+    // bricht die Dreiecksraster auf.
+    tmp.offsetHSL((fine - 0.5) * 0.02, (broad - 0.5) * 0.06, (fine - 0.5) * 0.13
+      + (broad - 0.5) * 0.08);
+    // Fels/Erde erst an wirklich steilen Haengen: sonst faerben sich flache
+    // Huegel sandfarben und rahmen jedes Gebiet wie einen Sandkasten ein.
+    if (slope > 0.26) tmp.lerp(slopeC, clamp01((slope - 0.26) / 0.5) * 0.92);
     if (normalizedHeight > 0.68) tmp.lerp(peakC, clamp01((normalizedHeight - 0.68) / 0.32) * 0.85);
+
+    // Trampelpfade zwischen Haeusern und Ortsausgaengen.
+    if (paths.length > 0) {
+      let strength = 0;
+      for (const segment of paths) {
+        const dist = distanceToSegment(x, z, segment);
+        const half = segment.width / 2;
+        if (dist > half + 1.4) continue;
+        // Weicher Rand, zusaetzlich vom Rauschen ausgefranst.
+        const edge = 1 - clamp01((dist - half * 0.5) / (half * 0.5 + 0.9));
+        strength = Math.max(strength, edge * (0.72 + fine * 0.5));
+      }
+      if (strength > 0) tmp.lerp(pathColor, clamp01(strength) * 0.92);
+    }
 
     colors[i * 3] = tmp.r;
     colors[i * 3 + 1] = tmp.g;
@@ -196,15 +235,27 @@ export function buildTerrainMesh(
   return { mesh, water, geometry };
 }
 
-/** Erzeugt einen einfachen, GPU-guenstigen Himmelsgradienten. */
+/**
+ * Himmelskuppel mit Verlauf, Wolkenband, Sonne und Sternen.
+ *
+ * Alles im Shader berechnet: keine Texturen, ein einziger Zeichenaufruf.
+ * `sunDirection`, `cloudAmount` und `nightAmount` werden vom WorldManager
+ * jede Bildwiederholung nachgefuehrt, damit der Himmel dem Tagesverlauf und
+ * dem Wetter folgt.
+ */
 export function buildSky(top: string, bottom: string, radius: number): THREE.Mesh {
-  const geometry = new THREE.SphereGeometry(radius, 22, 14);
+  const geometry = new THREE.SphereGeometry(radius, 32, 20);
   const material = new THREE.ShaderMaterial({
     side: THREE.BackSide,
     depthWrite: false,
     uniforms: {
       topColor: { value: new THREE.Color(top) },
       bottomColor: { value: new THREE.Color(bottom) },
+      sunDirection: { value: new THREE.Vector3(0.4, 0.6, 0.3).normalize() },
+      sunColor: { value: new THREE.Color('#fff4d0') },
+      cloudAmount: { value: 0.45 },
+      nightAmount: { value: 0 },
+      time: { value: 0 },
       offset: { value: radius * 0.08 },
       exponent: { value: 0.72 },
     },
@@ -219,12 +270,88 @@ export function buildSky(top: string, bottom: string, radius: number): THREE.Mes
     fragmentShader: `
       uniform vec3 topColor;
       uniform vec3 bottomColor;
+      uniform vec3 sunDirection;
+      uniform vec3 sunColor;
+      uniform float cloudAmount;
+      uniform float nightAmount;
+      uniform float time;
       uniform float offset;
       uniform float exponent;
       varying vec3 vWorldPosition;
+
+      // Wertrauschen mit weicher Interpolation - Grundlage der Wolken.
+      float hash(vec2 p) {
+        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+      }
+
+      float noise(vec2 p) {
+        vec2 i = floor(p);
+        vec2 f = fract(p);
+        vec2 u = f * f * (3.0 - 2.0 * f);
+        return mix(
+          mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),
+          mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x), u.y);
+      }
+
+      float fbm(vec2 p) {
+        float v = 0.0;
+        float a = 0.5;
+        for (int i = 0; i < 5; i++) {
+          v += a * noise(p);
+          p *= 2.02;
+          a *= 0.5;
+        }
+        return v;
+      }
+
       void main() {
-        float h = normalize(vWorldPosition + vec3(0.0, offset, 0.0)).y;
-        gl_FragColor = vec4(mix(bottomColor, topColor, max(pow(max(h, 0.0), exponent), 0.0)), 1.0);
+        vec3 dir = normalize(vWorldPosition + vec3(0.0, offset, 0.0));
+        float h = dir.y;
+        vec3 sky = mix(bottomColor, topColor, max(pow(max(h, 0.0), exponent), 0.0));
+
+        // Sonne (oder Mond): weicher Kern mit Hof.
+        float sunDot = max(dot(dir, normalize(sunDirection)), 0.0);
+        float disc = smoothstep(0.9975, 0.9995, sunDot);
+        float halo = pow(sunDot, 90.0) * 0.5 + pow(sunDot, 8.0) * 0.16;
+        sky += sunColor * (disc * 1.4 + halo);
+
+        // Sterne: nur nachts und nur oberhalb des Horizonts.
+        if (nightAmount > 0.01 && h > 0.02) {
+          // Ein Stern je Rasterzelle, als runder Punkt um einen zufaelligen
+          // Mittelpunkt. Ohne den Abstandsabfall leuchtet die ganze Zelle und
+          // die Sterne wirken wie kurze Striche.
+          vec2 starCoord = dir.xz / max(h, 0.08) * 38.0;
+          vec2 cell = floor(starCoord);
+          vec2 local = fract(starCoord);
+          float pick = hash(cell);
+          vec2 center = vec2(hash(cell + 3.7), hash(cell + 8.3));
+          float dist = length(local - center);
+          float dot1 = 1.0 - smoothstep(0.0, 0.09, dist);
+          float twinkle = 0.65 + 0.35 * sin(time * 2.2 + pick * 60.0);
+          float bright = step(0.86, pick) * dot1 * twinkle;
+          sky += vec3(0.88, 0.92, 1.0) * bright * nightAmount * smoothstep(0.02, 0.3, h);
+        }
+
+        // Wolkenband: zwei versetzte Rauschebenen, mit der Hoehe ausgeblendet.
+        if (cloudAmount > 0.01 && h > 0.0) {
+          vec2 uv = dir.xz / max(h + 0.12, 0.12);
+          float drift = time * 0.004;
+          float base = fbm(uv * 0.55 + vec2(drift, drift * 0.6));
+          float detail = fbm(uv * 1.6 - vec2(drift * 1.7, drift));
+          float density = base * 0.72 + detail * 0.28;
+          float coverage = mix(0.74, 0.34, clamp(cloudAmount, 0.0, 1.0));
+          float cloud = smoothstep(coverage, coverage + 0.22, density);
+          cloud *= smoothstep(0.02, 0.22, h) * (1.0 - smoothstep(0.75, 1.0, h) * 0.45);
+
+          // Von der Sonne angestrahlte Kante hellt auf, der Kern bleibt grau.
+          float lit = clamp(dot(normalize(sunDirection), vec3(0.0, 1.0, 0.0)) * 0.5 + 0.5, 0.0, 1.0);
+          vec3 cloudColor = mix(vec3(0.42, 0.46, 0.55), vec3(1.0, 0.99, 0.96), lit);
+          cloudColor = mix(cloudColor * 0.55, cloudColor, 1.0 - nightAmount * 0.7);
+          cloudColor += sunColor * halo * 0.6;
+          sky = mix(sky, cloudColor, cloud * 0.92);
+        }
+
+        gl_FragColor = vec4(sky, 1.0);
       }
     `,
   });

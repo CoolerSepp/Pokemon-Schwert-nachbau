@@ -24,6 +24,9 @@ const TRIM_COLORS = ['#6b4f33', '#4a4a52', '#7a5f3f', '#3f5f6b'];
  * schlicht. Varianten steuern Farbe und Proportionen.
  */
 export class BuildingFactory {
+  /** Fenstermaterialien nach Farbe - gemeinsam, damit das Nachtlicht wirkt. */
+  private readonly windowMaterials = new Map<string, THREE.MeshLambertMaterial>();
+
   constructor(private readonly assets: AssetManager) {}
 
   create(placement: BuildingPlacement, accent?: string): BuildingResult {
@@ -88,15 +91,123 @@ export class BuildingFactory {
     g.add(this.box([width, height, 0.1], '#3a2a1c', [0, height / 2, depth / 2 + 0.1]));
   }
 
+  /**
+   * Fenster mit Rahmen, Scheibe, Sprossen und Sims - auf Vorder- und
+   * Rueckseite. Eine nackte farbige Flaeche wirkt aus der Naehe wie ein
+   * aufgemalter Fleck.
+   */
   private addWindows(
     g: THREE.Group, wallWidth: number, wallDepth: number, y: number,
-    count: number, color = '#9fd8f2',
+    count: number, color = '#9fd8f2', frame = '#f5efe2', size = 0.78,
   ): void {
     const step = wallWidth / (count + 1);
+    const halfDepth = wallDepth / 2;
     for (let i = 1; i <= count; i++) {
       const x = -wallWidth / 2 + step * i;
-      g.add(this.box([0.72, 0.72, 0.08], color, [x, y, wallDepth / 2 + 0.06], { emissive: 0.12 }));
-      g.add(this.box([0.72, 0.72, 0.08], color, [x, y, -wallDepth / 2 - 0.06], { emissive: 0.12 }));
+      for (const side of [1, -1]) {
+        const z = side * (halfDepth + 0.04);
+        // Rahmen
+        g.add(this.box([size + 0.2, size + 0.2, 0.1], frame, [x, y, z]));
+        // Scheibe
+        const pane = this.box([size, size, 0.06], color, [x, y, z + side * 0.05]);
+        pane.material = this.windowMaterial(color);
+        g.add(pane);
+        // Sprossenkreuz
+        g.add(this.box([size + 0.02, 0.07, 0.09], frame, [x, y, z + side * 0.06]));
+        g.add(this.box([0.07, size + 0.02, 0.09], frame, [x, y, z + side * 0.06]));
+        // Sims
+        g.add(this.box([size + 0.34, 0.1, 0.28], frame, [x, y - size / 2 - 0.14, z + side * 0.1]));
+      }
+    }
+  }
+
+  /**
+   * Gemeinsames Fenstermaterial.
+   *
+   * Wird nachts vom WorldManager zum Leuchten gebracht - ein bewohnter Ort
+   * ohne Licht in den Fenstern wirkt tot.
+   */
+  private windowMaterial(color: string): THREE.MeshLambertMaterial {
+    const existing = this.windowMaterials.get(color);
+    if (existing) return existing;
+    const material = new THREE.MeshLambertMaterial({
+      color: new THREE.Color(color),
+      // Warmes Licht von innen: tagsueber kaum sichtbar, nachts deutlich.
+      emissive: new THREE.Color('#ffcf8a'),
+      emissiveIntensity: 0.1,
+      flatShading: true,
+    });
+    this.windowMaterials.set(color, material);
+    return material;
+  }
+
+  /** Setzt das Fensterleuchten (0 = Tag, 1 = Nacht). */
+  setNightGlow(amount: number): void {
+    const value = 0.1 + Math.max(0, Math.min(1, amount)) * 0.95;
+    for (const material of this.windowMaterials.values()) {
+      material.emissiveIntensity = value;
+    }
+  }
+
+  /** Sockel: dunkles Band am Fuss der Wand. */
+  private addPlinth(g: THREE.Group, w: number, d: number, color: string, height = 0.34): void {
+    g.add(this.box([w + 0.22, height, d + 0.22], color, [0, height / 2, 0]));
+  }
+
+  /** Eckbalken an den vier Hausecken. */
+  private addCorners(g: THREE.Group, w: number, h: number, d: number, color: string): void {
+    const t = 0.22;
+    for (const sx of [-1, 1]) {
+      for (const sz of [-1, 1]) {
+        g.add(this.box([t, h, t], color, [sx * (w / 2 - t * 0.3), h / 2, sz * (d / 2 - t * 0.3)]));
+      }
+    }
+  }
+
+  /**
+   * Giebeldreieck aus gestapelten Platten.
+   *
+   * Ohne Giebel steht das Satteldach wie ein Deckel auf offenen Waenden.
+   */
+  private addGable(
+    g: THREE.Group, w: number, h: number, z: number, roofH: number, color: string,
+  ): void {
+    // Echtes Dreieck statt einer Treppe aus Quadern: nur so schliesst der
+    // Giebel buendig mit den Dachflaechen ab.
+    const shape = new THREE.Shape();
+    shape.moveTo(-w / 2, 0);
+    shape.lineTo(w / 2, 0);
+    shape.lineTo(0, roofH);
+    shape.closePath();
+    const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.18, bevelEnabled: false });
+    geometry.translate(0, 0, -0.09);
+    const material = this.assets.getMaterial({ color, flatShading: true });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(0, h, z);
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+    g.add(mesh);
+  }
+
+  /** Fenster an den beiden Laengsseiten (+X und -X). */
+  private addSideWindows(
+    g: THREE.Group, wallDepth: number, wallWidth: number, y: number,
+    count: number, color: string, frame: string, size: number,
+  ): void {
+    const step = wallDepth / (count + 1);
+    const halfWidth = wallWidth / 2;
+    for (let i = 1; i <= count; i++) {
+      const z = -wallDepth / 2 + step * i;
+      for (const side of [1, -1]) {
+        const x = side * (halfWidth + 0.04);
+        g.add(this.box([0.1, size + 0.2, size + 0.2], frame, [x, y, z]));
+        const pane = this.box([0.06, size, size], color, [x + side * 0.05, y, z]);
+        pane.material = this.windowMaterial(color);
+        g.add(pane);
+        g.add(this.box([0.09, 0.07, size + 0.02], frame, [x + side * 0.06, y, z]));
+        g.add(this.box([0.09, size + 0.02, 0.07], frame, [x + side * 0.06, y, z]));
+        g.add(this.box([0.28, 0.1, size + 0.34], frame, [x + side * 0.1, y - size / 2 - 0.14, z]));
+      }
     }
   }
 
@@ -110,18 +221,44 @@ export class BuildingFactory {
     const trim = rng.pick(TRIM_COLORS);
 
     g.add(this.box([w, h, d], wall, [0, h / 2, 0]));
-    // Satteldach aus zwei geneigten Platten.
+    this.addPlinth(g, w, d, trim, 0.38 * scale);
+    this.addCorners(g, w, h, d, trim);
+
+    // Satteldach aus zwei geneigten Platten, mit Ueberstand und Randbrett.
     const roofH = h * 0.55;
     const slope = Math.atan2(roofH, w / 2);
-    const panelLen = Math.hypot(w / 2, roofH) * 1.05;
+    const panelLen = Math.hypot(w / 2, roofH) * 1.12;
+    const roofDepth = d * 1.18;
     for (const dir of [-1, 1]) {
-      g.add(this.box([panelLen, 0.16 * scale, d * 1.12], roof,
+      g.add(this.box([panelLen, 0.18 * scale, roofDepth], roof,
         [(dir * w) / 4, h + roofH / 2, 0], { rot: [0, 0, -dir * slope] }));
+      // Dunkles Randbrett an der Traufe.
+      g.add(this.box([panelLen, 0.1 * scale, 0.2], trim,
+        [(dir * w) / 4, h + roofH / 2 - 0.06, roofDepth / 2], { rot: [0, 0, -dir * slope] }));
+      g.add(this.box([panelLen, 0.1 * scale, 0.2], trim,
+        [(dir * w) / 4, h + roofH / 2 - 0.06, -roofDepth / 2], { rot: [0, 0, -dir * slope] }));
     }
-    g.add(this.box([0.5 * scale, 1.1 * scale, 0.5 * scale], trim,
-      [w * 0.28, h + roofH * 0.9, d * 0.2]));
-    this.addWindows(g, w * 0.8, d, h * 0.6, small ? 1 : 2);
+    // Firstbalken
+    g.add(this.box([0.26, 0.26, roofDepth * 1.01], trim, [0, h + roofH + 0.06, 0]));
+    // Giebel schliessen die Stirnseiten.
+    for (const side of [1, -1]) {
+      this.addGable(g, w * 0.985, h, side * (d / 2 - 0.06), roofH, wall);
+    }
+    // Schornstein mit Krone.
+    const chimX = w * 0.28;
+    g.add(this.box([0.52 * scale, 1.3 * scale, 0.52 * scale], trim,
+      [chimX, h + roofH * 0.85, d * 0.2]));
+    g.add(this.box([0.68 * scale, 0.16 * scale, 0.68 * scale], '#4a4038',
+      [chimX, h + roofH * 0.85 + 0.68 * scale, d * 0.2]));
+
+    this.addWindows(g, w * 0.78, d, h * 0.62, small ? 1 : 2, '#bfe4f7', wall, 0.8 * scale);
+    this.addSideWindows(g, d * 0.72, w, h * 0.62, small ? 1 : 2, '#bfe4f7', wall, 0.8 * scale);
     this.addDoor(g, 1.1 * scale, 2.0 * scale, d, trim);
+    // Eingangsstufe und kleines Vordach.
+    g.add(this.box([1.8 * scale, 0.16 * scale, 0.9 * scale], '#b8ae9b',
+      [0, 0.08 * scale, d / 2 + 0.45 * scale]));
+    g.add(this.box([1.9 * scale, 0.12 * scale, 1.0 * scale], roof,
+      [0, 2.35 * scale, d / 2 + 0.35 * scale], { rot: [0.22, 0, 0] }));
 
     return {
       object: g, footprint: { width: w, depth: d },

@@ -164,7 +164,10 @@ export class Game {
         );
       }),
       this.loop.on('render', (dt) => {
-        this.world.update(dt, this.player.x, this.player.z, this.player.y);
+        this.world.update(
+          dt, this.player.x, this.player.z, this.player.y,
+          this.camera.camera.position,
+        );
         this.renderer.render(this.world.scene, this.camera.camera, dt * 1000);
       }),
       this.loop.on('ui', () => {

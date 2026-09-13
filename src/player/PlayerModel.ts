@@ -72,60 +72,109 @@ export function buildHumanoid(
   hips.position.y = 0.88 * scale;
   root.add(hips);
 
+  // --- Rumpf: Brust breiter als Taille, dazu Kragen und Schultern ---------
   const torso = new THREE.Group();
   hips.add(torso);
-  torso.add(box(0.42 * widthFactor * scale, 0.56 * scale, 0.26 * scale, look.shirt, [0, 0.28 * scale, 0]));
-  torso.add(box(0.44 * widthFactor * scale, 0.1 * scale, 0.28 * scale, look.accent, [0, 0.06 * scale, 0]));
-
-  const head = new THREE.Group();
-  head.position.y = 0.62 * scale;
-  torso.add(head);
-  head.add(sphere(0.16 * scale, look.skin, [0, 0.16 * scale, 0], [1, 1.12, 1]));
-  // Haare als Kappe ueber dem Schaedel.
-  head.add(sphere(0.165 * scale, look.hair, [0, 0.2 * scale, -0.01 * scale], [1, 0.72, 1.02]));
+  const chestW = 0.44 * widthFactor * scale;
+  const waistW = 0.34 * widthFactor * scale;
+  torso.add(box(waistW, 0.2 * scale, 0.22 * scale, look.pants, [0, 0.1 * scale, 0]));
+  torso.add(box(chestW, 0.38 * scale, 0.25 * scale, look.shirt, [0, 0.38 * scale, 0]));
+  // Guertel
+  torso.add(box(waistW * 1.06, 0.07 * scale, 0.24 * scale, '#3a2f28', [0, 0.2 * scale, 0]));
+  // Kragen und Halsansatz
+  torso.add(box(0.2 * scale, 0.08 * scale, 0.19 * scale, look.accent, [0, 0.58 * scale, 0]));
+  torso.add(box(0.13 * scale, 0.09 * scale, 0.13 * scale, look.skin, [0, 0.6 * scale, 0]));
+  // Weiche Schultern
   for (const sx of [-1, 1]) {
-    head.add(sphere(0.026 * scale, '#1c1c22', [sx * 0.06 * scale, 0.17 * scale, 0.135 * scale]));
+    torso.add(sphere(0.1 * widthFactor * scale, look.shirt,
+      [sx * chestW * 0.5, 0.53 * scale, 0], [1, 0.85, 1]));
   }
+  // Brusttasche als kleines Detail
+  torso.add(box(0.08 * scale, 0.08 * scale, 0.02 * scale, look.pants,
+    [chestW * 0.26, 0.38 * scale, 0.13 * scale]));
+
+  // --- Kopf ---------------------------------------------------------------
+  const head = new THREE.Group();
+  head.position.y = 0.66 * scale;
+  torso.add(head);
+  head.add(sphere(0.155 * scale, look.skin, [0, 0.15 * scale, 0], [1, 1.14, 0.98]));
+  // Haare: Kappe plus Pony ueber der Stirn.
+  head.add(sphere(0.163 * scale, look.hair, [0, 0.19 * scale, -0.012 * scale], [1, 0.74, 1.03]));
+  head.add(box(0.26 * scale, 0.06 * scale, 0.08 * scale, look.hair,
+    [0, 0.23 * scale, 0.125 * scale]));
+  // Ohren
+  for (const sx of [-1, 1]) {
+    head.add(sphere(0.035 * scale, look.skin, [sx * 0.15 * scale, 0.15 * scale, 0], [0.6, 1, 1]));
+  }
+  // Augen mit hellem Glanzpunkt, damit das Gesicht nicht leer wirkt.
+  for (const sx of [-1, 1]) {
+    head.add(sphere(0.028 * scale, '#1c1c22', [sx * 0.062 * scale, 0.16 * scale, 0.132 * scale]));
+    head.add(sphere(0.009 * scale, '#ffffff',
+      [sx * 0.07 * scale, 0.178 * scale, 0.146 * scale]));
+  }
+  // Nase und angedeuteter Mund
+  head.add(box(0.03 * scale, 0.04 * scale, 0.035 * scale, look.skin,
+    [0, 0.125 * scale, 0.15 * scale]));
+  head.add(box(0.05 * scale, 0.012 * scale, 0.02 * scale, '#9b5f4f',
+    [0, 0.088 * scale, 0.148 * scale]));
+
   if (look.hat && look.hat !== 'none') {
     switch (look.hat) {
       case 'cap':
-        head.add(sphere(0.175 * scale, look.accent, [0, 0.24 * scale, 0], [1, 0.6, 1]));
-        head.add(box(0.26 * scale, 0.03 * scale, 0.18 * scale, look.accent, [0, 0.24 * scale, 0.17 * scale]));
+        head.add(sphere(0.178 * scale, look.accent, [0, 0.235 * scale, 0], [1, 0.68, 1]));
+        // Schirm in der Hemdfarbe - das gibt der Figur Wiedererkennung.
+        head.add(box(0.29 * scale, 0.035 * scale, 0.22 * scale, look.shirt,
+          [0, 0.215 * scale, 0.18 * scale]));
+        head.add(box(0.2 * scale, 0.04 * scale, 0.02 * scale, look.shirt,
+          [0, 0.265 * scale, 0.15 * scale]));
         break;
       case 'beanie':
-        head.add(sphere(0.18 * scale, look.accent, [0, 0.24 * scale, 0], [1, 0.75, 1]));
+        head.add(sphere(0.178 * scale, look.accent, [0, 0.235 * scale, 0], [1, 0.78, 1]));
+        head.add(sphere(0.04 * scale, look.accent, [0, 0.37 * scale, 0]));
         break;
       case 'helmet':
-        head.add(sphere(0.19 * scale, '#9aa4b0', [0, 0.22 * scale, 0], [1, 0.9, 1]));
+        head.add(sphere(0.188 * scale, '#9aa4b0', [0, 0.215 * scale, 0], [1, 0.92, 1]));
+        head.add(box(0.36 * scale, 0.03 * scale, 0.1 * scale, '#78828e',
+          [0, 0.2 * scale, 0.14 * scale]));
         break;
       case 'crown':
-        head.add(box(0.3 * scale, 0.1 * scale, 0.3 * scale, '#f0c84b', [0, 0.34 * scale, 0]));
+        head.add(box(0.3 * scale, 0.07 * scale, 0.3 * scale, '#f0c84b', [0, 0.31 * scale, 0]));
+        for (let i = 0; i < 4; i++) {
+          const a = (i / 4) * Math.PI * 2;
+          head.add(box(0.05 * scale, 0.09 * scale, 0.05 * scale, '#f0c84b',
+            [Math.cos(a) * 0.12 * scale, 0.38 * scale, Math.sin(a) * 0.12 * scale]));
+        }
         break;
       case 'band':
-        head.add(box(0.34 * scale, 0.06 * scale, 0.34 * scale, look.accent, [0, 0.26 * scale, 0]));
+        head.add(box(0.33 * scale, 0.055 * scale, 0.33 * scale, look.accent,
+          [0, 0.25 * scale, 0]));
         break;
     }
   }
 
-  const makeLimb = (
-    isArm: boolean, side: -1 | 1,
-  ): THREE.Group => {
+  // --- Gliedmassen --------------------------------------------------------
+  const makeLimb = (isArm: boolean, side: -1 | 1): THREE.Group => {
     const g = new THREE.Group();
     const len = isArm ? 0.5 * scale : 0.56 * scale;
-    const thickness = (isArm ? 0.12 : 0.15) * widthFactor * scale;
+    const thick = (isArm ? 0.115 : 0.15) * widthFactor * scale;
     g.position.set(
-      side * (isArm ? 0.26 * widthFactor : 0.12 * widthFactor) * scale,
-      isArm ? 0.5 * scale : 0,
+      side * (isArm ? 0.25 * widthFactor : 0.11 * widthFactor) * scale,
+      isArm ? 0.5 * scale : 0.04 * scale,
       0,
     );
-    const limb = box(thickness, len, thickness, isArm ? look.shirt : look.pants,
-      [0, -len / 2, 0]);
-    g.add(limb);
     if (isArm) {
-      g.add(sphere(thickness * 0.62, look.skin, [0, -len - thickness * 0.2, 0]));
+      // Oberarm im Hemdstoff, Unterarm als Haut, dazu eine Hand.
+      g.add(box(thick, len * 0.55, thick, look.shirt, [0, -len * 0.27, 0]));
+      g.add(box(thick * 0.88, len * 0.5, thick * 0.88, look.skin, [0, -len * 0.76, 0]));
+      g.add(sphere(thick * 0.62, look.skin, [0, -len - thick * 0.12, 0], [1, 0.9, 1.1]));
     } else {
-      g.add(box(thickness * 1.1, 0.09 * scale, thickness * 1.8, '#3a2f28',
-        [0, -len - 0.04 * scale, 0.03 * scale]));
+      // Oberschenkel etwas kraeftiger als Wade, dazu ein richtiger Schuh.
+      g.add(box(thick, len * 0.55, thick, look.pants, [0, -len * 0.27, 0]));
+      g.add(box(thick * 0.86, len * 0.5, thick * 0.86, look.pants, [0, -len * 0.76, 0]));
+      g.add(box(thick * 1.15, 0.1 * scale, thick * 2.0, '#3a2f28',
+        [0, -len - 0.05 * scale, 0.05 * scale]));
+      g.add(box(thick * 1.18, 0.05 * scale, thick * 1.2, '#f0ece2',
+        [0, -len - 0.1 * scale, 0.02 * scale]));
     }
     return g;
   };
@@ -137,9 +186,21 @@ export function buildHumanoid(
   const legRight = makeLimb(false, 1);
   hips.add(legLeft, legRight);
 
-  // Rucksack als Erkennungsmerkmal des Spielers.
-  const backpack = box(0.3 * widthFactor * scale, 0.36 * scale, 0.16 * scale,
-    look.accent, [0, 0.3 * scale, -0.2 * scale]);
+  // --- Rucksack mit Traegern ---------------------------------------------
+  // Der Ruecken ist die Ansicht, die im Spiel dauernd zu sehen ist - der
+  // Rucksack bleibt deshalb kompakt und farblich ruhig.
+  const backpack = new THREE.Group();
+  backpack.add(box(0.26 * widthFactor * scale, 0.28 * scale, 0.14 * scale, look.pants,
+    [0, 0.38 * scale, -0.19 * scale]));
+  backpack.add(box(0.27 * widthFactor * scale, 0.09 * scale, 0.15 * scale, look.accent,
+    [0, 0.49 * scale, -0.19 * scale]));
+  backpack.add(box(0.06 * scale, 0.06 * scale, 0.04 * scale, '#3a2f28',
+    [0, 0.38 * scale, -0.26 * scale]));
+  // Traeger ueber den Schultern - schmal, sonst wirken sie wie Hosentraeger.
+  for (const sx of [-1, 1]) {
+    backpack.add(box(0.04 * scale, 0.3 * scale, 0.04 * scale, look.pants,
+      [sx * 0.14 * widthFactor * scale, 0.44 * scale, 0.12 * scale]));
+  }
   torso.add(backpack);
 
   root.traverse((o) => { o.castShadow = true; });

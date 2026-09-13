@@ -19,6 +19,9 @@ export const PROP_KINDS = [
 ] as const;
 export type PropKind = (typeof PROP_KINDS)[number];
 
+/** Anzahl fester Blattfarbtoene je Biom. */
+const LEAF_VARIANTS = 4;
+
 const TRUNK_BROWN = '#6b4f33';
 const DARK_WOOD = '#4a3524';
 
@@ -29,6 +32,9 @@ const DARK_WOOD = '#4a3524';
  * ein Wald aus 400 Baeumen erzeugt daher nur eine Handvoll GPU-Ressourcen.
  */
 export class PropFactory {
+  /** Leuchtmaterialien nach Farbe - gemeinsam fuer das Nachtlicht. */
+  private readonly glowMaterials = new Map<string, THREE.MeshLambertMaterial>();
+
   constructor(private readonly assets: AssetManager) {}
 
   create(
@@ -102,8 +108,14 @@ export class PropFactory {
     const trunkR = h * 0.055;
     g.add(this.mesh('cylinder', [trunkR, h * 0.62, trunkR], TRUNK_BROWN, [0, h * 0.31, 0]));
 
+    // Blattfarben aus einer festen kleinen Auswahl statt frei gewuerfelt:
+    // gleiche Farbe heisst gleiches Material, und nur dann lassen sich die
+    // Baeume zu wenigen Zeichenaufrufen zusammenfassen.
     const leafBase = new THREE.Color(palette.grass);
-    const leaf = `#${leafBase.clone().offsetHSL(rng.float(-0.03, 0.03), 0.05, rng.float(-0.06, 0.04)).getHexString()}`;
+    const variant = rng.int(0, LEAF_VARIANTS - 1);
+    const step = variant - (LEAF_VARIANTS - 1) / 2;
+    const leaf = `#${leafBase.clone()
+      .offsetHSL(step * 0.012, 0.05, step * 0.028).getHexString()}`;
 
     if (style === 'pine') {
       for (let i = 0; i < 3; i++) {
@@ -121,12 +133,34 @@ export class PropFactory {
       }
       g.add(this.mesh('sphere', [h * 0.09, h * 0.09, h * 0.09], leaf, [0, h * 0.64, 0]));
     } else {
+      // Krone aus mehreren, unterschiedlich hellen Ballen: eine einzelne
+      // Kugel wirkt aus jeder Entfernung wie ein gruener Klecks.
       const crownR = h * rng.float(0.33, 0.44);
-      g.add(this.mesh('sphere', [crownR, crownR * 0.9, crownR], leaf, [0, h * 0.76, 0], { detail: 2 }));
-      g.add(this.mesh('sphere', [crownR * 0.7, crownR * 0.62, crownR * 0.7], leaf,
-        [crownR * 0.5, h * 0.62, crownR * 0.2], { detail: 1 }));
-      g.add(this.mesh('sphere', [crownR * 0.62, crownR * 0.55, crownR * 0.62], leaf,
-        [-crownR * 0.45, h * 0.66, -crownR * 0.3], { detail: 1 }));
+      const shade = (amount: number) =>
+        `#${new THREE.Color(leaf).offsetHSL(0, 0.02, amount).getHexString()}`;
+      const light = shade(0.06);
+      const dark = shade(-0.07);
+
+      g.add(this.mesh('sphere', [crownR, crownR * 0.88, crownR], leaf,
+        [0, h * 0.74, 0], { detail: 2 }));
+      g.add(this.mesh('sphere', [crownR * 0.74, crownR * 0.66, crownR * 0.74], light,
+        [crownR * 0.42, h * 0.88, crownR * 0.18], { detail: 1 }));
+      g.add(this.mesh('sphere', [crownR * 0.66, crownR * 0.58, crownR * 0.66], dark,
+        [-crownR * 0.5, h * 0.64, -crownR * 0.32], { detail: 1 }));
+      g.add(this.mesh('sphere', [crownR * 0.58, crownR * 0.52, crownR * 0.58], dark,
+        [crownR * 0.36, h * 0.6, -crownR * 0.42], { detail: 1 }));
+      g.add(this.mesh('sphere', [crownR * 0.5, crownR * 0.46, crownR * 0.5], light,
+        [-crownR * 0.3, h * 0.9, crownR * 0.3], { detail: 1 }));
+
+      // Zwei Aeste vom Stamm in die Krone.
+      for (const side of [-1, 1]) {
+        g.add(this.mesh('cylinder',
+          [trunkR * 0.45, h * 0.26, trunkR * 0.45], TRUNK_BROWN,
+          [side * crownR * 0.26, h * 0.56, 0], { rot: [0, 0, side * 0.55] }));
+      }
+      // Wurzelanlauf verbreitert den Stammfuss.
+      g.add(this.mesh('cylinder', [trunkR * 1.5, h * 0.07, trunkR * 1.5], TRUNK_BROWN,
+        [0, h * 0.035, 0]));
     }
     return { object: g, collisionRadius: trunkR * 3.4, height: h };
   }
@@ -233,8 +267,35 @@ export class PropFactory {
     const h = 3.1 * scale;
     g.add(this.mesh('cylinder', [0.09, h, 0.09], '#3a3f47', [0, h * 0.5, 0]));
     g.add(this.mesh('cylinder', [0.26, 0.1, 0.26], '#2b3036', [0, h, 0]));
-    g.add(this.mesh('sphere', [0.22, 0.26, 0.22], '#ffeab0', [0, h - 0.16, 0], { emissive: 0.9 }));
+    // Ausleger und Laterne mit gemeinsamem Leuchtmaterial: tagsueber matt,
+    // nachts hell - Strassenlaternen, die immer gleich aussehen, wirken tot.
+    const head = this.mesh('sphere', [0.22, 0.26, 0.22], '#ffeab0', [0, h - 0.16, 0]);
+    head.material = this.glowMaterial('#ffeab0');
+    g.add(head);
+    g.add(this.mesh('box', [0.5, 0.06, 0.06], '#2b3036', [0, h + 0.05, 0]));
     return { object: g, collisionRadius: 0.22, height: h };
+  }
+
+  /** Gemeinsames Leuchtmaterial fuer Laternen und Fackeln. */
+  private glowMaterial(color: string): THREE.MeshLambertMaterial {
+    const existing = this.glowMaterials.get(color);
+    if (existing) return existing;
+    const material = new THREE.MeshLambertMaterial({
+      color: new THREE.Color(color),
+      emissive: new THREE.Color(color),
+      emissiveIntensity: 0.25,
+      flatShading: true,
+    });
+    this.glowMaterials.set(color, material);
+    return material;
+  }
+
+  /** Setzt die Leuchtstaerke der Lampen (0 = Tag, 1 = Nacht). */
+  setNightGlow(amount: number): void {
+    const value = 0.2 + Math.max(0, Math.min(1, amount)) * 1.5;
+    for (const material of this.glowMaterials.values()) {
+      material.emissiveIntensity = value;
+    }
   }
 
   private barrel(scale: number): PropResult {
@@ -438,6 +499,133 @@ export class PropFactory {
     mesh.name = 'tallGrass';
     mesh.count = positions.length;
     return mesh;
+  }
+
+  /**
+   * Streudetails fuer den Boden: kurze Halme, Blumen und Kiesel.
+   *
+   * Alles in je einer Instanz-Zeichnung, damit auch mehrere tausend Objekte
+   * praktisch nichts kosten. Ohne diese Schicht wirken Wiesen und Ortsplaetze
+   * wie einfarbige Flaechen.
+   */
+  createDetailInstances(
+    kind: 'blade' | 'flower' | 'pebble',
+    positions: { x: number; y: number; z: number; scale: number; tint: number }[],
+    palette: BiomePalette,
+  ): THREE.InstancedMesh {
+    const geometry = this.detailGeometry(kind);
+    const material = this.assets.getMaterial({
+      color: '#ffffff', flatShading: true,
+      doubleSided: kind !== 'pebble',
+    });
+    const mesh = new THREE.InstancedMesh(geometry, material, Math.max(1, positions.length));
+    const dummy = new THREE.Object3D();
+    const color = new THREE.Color();
+
+    const palettes: Record<typeof kind, [string, string]> = {
+      blade: [palette.grass, palette.grassAlt],
+      flower: ['#ffffff', '#ffffff'],
+      pebble: [palette.slope, palette.peak],
+    };
+    const flowerColors = ['#f2d24b', '#e8737f', '#d8a8f0', '#f5f0e0', '#8fd8f2'];
+    const [a, b] = palettes[kind];
+    const baseA = new THREE.Color(a);
+    const baseB = new THREE.Color(b);
+
+    for (let i = 0; i < positions.length; i++) {
+      const p = positions[i]!;
+      dummy.position.set(p.x, p.y, p.z);
+      dummy.rotation.set(0, p.tint * Math.PI * 2, 0);
+      dummy.scale.set(p.scale, p.scale * (kind === 'blade' ? 1.15 : 1), p.scale);
+      dummy.updateMatrix();
+      mesh.setMatrixAt(i, dummy.matrix);
+
+      if (kind === 'flower') {
+        color.set(flowerColors[Math.floor(p.tint * flowerColors.length) % flowerColors.length]!);
+      } else {
+        color.copy(baseA).lerp(baseB, p.tint);
+        color.offsetHSL(0, 0, (p.tint - 0.5) * 0.08);
+      }
+      mesh.setColorAt(i, color);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+    mesh.castShadow = false;
+    mesh.receiveShadow = kind === 'pebble';
+    mesh.name = `detail-${kind}`;
+    mesh.count = positions.length;
+    return mesh;
+  }
+
+  private detailGeometry(kind: 'blade' | 'flower' | 'pebble'): THREE.BufferGeometry {
+    const key = `detail-${kind}`;
+    const cached = this.assets.getGeometry(key);
+    if (cached) return cached;
+
+    let geometry: THREE.BufferGeometry;
+    if (kind === 'blade') {
+      // Drei schmale, nach oben spitz zulaufende Halme in Sternform. Ein
+      // Rechteck wuerde aus der Naehe wie ein Pappschild aussehen.
+      const positions: number[] = [];
+      const normals: number[] = [];
+      const uvs: number[] = [];
+      const blades = 3;
+      for (let i = 0; i < blades; i++) {
+        const angle = (i / blades) * Math.PI * 2 + 0.4;
+        const dx = Math.cos(angle);
+        const dz = Math.sin(angle);
+        // Leichte Neigung, damit der Halm nicht kerzengerade steht.
+        const tipX = dx * 0.09;
+        const tipZ = dz * 0.09;
+        const halfX = -dz * 0.045;
+        const halfZ = dx * 0.045;
+        positions.push(
+          -halfX, 0, -halfZ,
+          halfX, 0, halfZ,
+          tipX, 0.34, tipZ,
+        );
+        for (let n = 0; n < 3; n++) {
+          normals.push(-dz, 0.35, dx);
+        }
+        uvs.push(0, 0, 1, 0, 0.5, 1);
+      }
+      geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+      geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+      geometry.computeBoundingSphere();
+    } else if (kind === 'flower') {
+      // Stiel, Bluetenmitte und fuenf Blaetter - eine flache Scheibe auf
+      // einem Stiel sieht aus der Naehe wie ein Nagel aus.
+      const parts: THREE.BufferGeometry[] = [];
+      const stem = new THREE.CylinderGeometry(0.012, 0.016, 0.22, 3);
+      stem.translate(0, 0.11, 0);
+      parts.push(stem);
+      const leaf = new THREE.PlaneGeometry(0.05, 0.07);
+      leaf.rotateX(-Math.PI / 2.6);
+      leaf.translate(0.03, 0.1, 0);
+      parts.push(leaf);
+      const petals = 5;
+      for (let i = 0; i < petals; i++) {
+        const angle = (i / petals) * Math.PI * 2;
+        const petal = new THREE.PlaneGeometry(0.075, 0.05);
+        petal.rotateX(-Math.PI / 2);
+        petal.rotateZ(0.35);
+        petal.translate(Math.cos(angle) * 0.05, 0.225, Math.sin(angle) * 0.05);
+        petal.rotateY(angle);
+        parts.push(petal);
+      }
+      const core = new THREE.IcosahedronGeometry(0.032, 0);
+      core.scale(1, 0.7, 1);
+      core.translate(0, 0.235, 0);
+      parts.push(core);
+      geometry = mergeGeometries(parts);
+    } else {
+      geometry = new THREE.DodecahedronGeometry(0.16, 0);
+      geometry.scale(1, 0.5, 1.2);
+      geometry.translate(0, 0.04, 0);
+    }
+    return this.assets.registerGeometry(key, geometry);
   }
 
   private buildGrassTuftGeometry(): THREE.BufferGeometry {

@@ -10,21 +10,16 @@ interface Bucket {
   receiveShadow: boolean;
 }
 
-/** Schluessel, unter dem zwei Meshes dieselbe Zeichnung teilen koennen. */
+/**
+ * Schluessel, unter dem zwei Meshes dieselbe Zeichnung teilen koennen.
+ *
+ * Ausschlaggebend ist die Materialinstanz, nicht nur die Farbe: Der
+ * AssetManager teilt Materialien ohnehin nach Beschreibung, waehrend eigene
+ * Instanzen (etwa die nachts leuchtenden Fenster) getrennt bleiben muessen -
+ * sonst wuerden sie beim Zusammenfassen ihr Verhalten verlieren.
+ */
 function materialKey(material: THREE.Material, castShadow: boolean, receiveShadow: boolean): string {
-  const m = material as THREE.MeshLambertMaterial & {
-    flatShading?: boolean; emissive?: THREE.Color;
-  };
-  return [
-    material.type,
-    m.color?.getHexString() ?? '-',
-    m.emissive?.getHexString() ?? '-',
-    m.flatShading ? 'f' : 's',
-    material.transparent ? `t${material.opacity.toFixed(2)}` : 'o',
-    material.side,
-    castShadow ? 'C' : '-',
-    receiveShadow ? 'R' : '-',
-  ].join('|');
+  return `${material.uuid}|${castShadow ? 'C' : '-'}|${receiveShadow ? 'R' : '-'}`;
 }
 
 /**

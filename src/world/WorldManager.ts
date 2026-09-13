@@ -14,6 +14,10 @@ import { WeatherSystem } from '@/particles/WeatherSystem';
 
 const log = Logger.scope('World');
 
+/** Himmelsfarben bei tiefer Nacht. */
+const NIGHT_ZENITH = new THREE.Color('#0d1430');
+const NIGHT_HORIZON = new THREE.Color('#243352');
+
 export interface WorldEvents extends Record<string, unknown> {
   areaLoaded: { area: AreaRuntime; spawnPoint: string };
   areaUnloaded: { areaId: string };
@@ -42,10 +46,17 @@ export class WorldManager {
   private readonly sun: THREE.DirectionalLight;
   private readonly ambient: THREE.HemisphereLight;
   private readonly fill: THREE.DirectionalLight;
+  /** Grundhelligkeit fuer senkrechte Flaechen (Hauswaende). */
+  private readonly base: THREE.AmbientLight;
+  /** Licht aus Blickrichtung - haelt zugewandte Flaechen lesbar. */
+  private readonly viewFill: THREE.DirectionalLight;
   private readonly sunTarget = new THREE.Object3D();
   private readonly tmpVec = new THREE.Vector3();
+  private readonly tmpColor = new THREE.Color();
   private weather: WeatherKind = 'clear';
   private lightDirty = true;
+  /** Laufzeit fuer Wolkenbewegung und Sternenflimmern. */
+  private skyTime = 0;
   readonly weatherSystem: WeatherSystem;
 
   constructor(
@@ -72,6 +83,19 @@ export class WorldManager {
     this.fill = new THREE.DirectionalLight(0x9fb4cc, 0.28);
     this.fill.position.set(-0.6, 0.5, -0.8);
     this.scene.add(this.fill);
+
+    // Das Halbkugellicht beleuchtet vor allem waagerechte Flaechen; senkrechte
+    // Hauswaende bekommen davon nur die Haelfte und wirken dadurch stumpf.
+    // Ein kleiner gleichmaessiger Anteil hebt sie an.
+    this.base = new THREE.AmbientLight(0xffffff, 0.22);
+    this.scene.add(this.base);
+
+    // Ein schwaches Licht aus Blickrichtung: sonnenabgewandte Hauswaende
+    // bleiben sonst eine dunkle, detaillose Flaeche. Bewusst schwach, damit
+    // die Sonne die Hauptrichtung bleibt.
+    this.viewFill = new THREE.DirectionalLight(0xffffff, 0.26);
+    this.scene.add(this.viewFill);
+    this.scene.add(this.viewFill.target);
 
     this.scene.fog = new THREE.Fog(0xcfe4f2, 40, 260);
 
@@ -162,6 +186,9 @@ export class WorldManager {
       this.ambient.intensity = 1.05;
       this.ambient.color.set(0xffeedd);
       this.ambient.groundColor.set(0x50463c);
+      this.base.intensity = 0.3;
+      this.base.color.set(0xfff0e0);
+      this.viewFill.intensity = 0.18;
     } else {
       this.sun.castShadow = this.renderer.profile.shadows;
     }
@@ -176,14 +203,28 @@ export class WorldManager {
   }
 
   /** Aktualisiert Licht, Nebel und Himmel nach Uhrzeit und Wetter. */
-  update(deltaSeconds: number, playerX: number, playerZ: number, playerY: number): void {
+  update(
+    deltaSeconds: number, playerX: number, playerZ: number, playerY: number,
+    cameraPosition?: THREE.Vector3,
+  ): void {
     const area = this.activeArea;
     if (!area) return;
 
+    if (cameraPosition) {
+      // Lichtrichtung = von der Kamera zum Spieler.
+      this.viewFill.position.copy(cameraPosition);
+      this.viewFill.target.position.set(playerX, playerY, playerZ);
+      this.viewFill.target.updateMatrixWorld();
+    }
+
     this.weatherSystem.update(deltaSeconds, playerX, playerY, playerZ);
+    this.skyTime += deltaSeconds;
 
     // Schattenkamera dem Spieler nachfuehren, damit die Aufloesung reicht.
     this.time.sunDirection(this.tmpVec);
+    // Gegenlicht aus der entgegengesetzten Richtung: ohne das versinken
+    // sonnenabgewandte Hauswaende in einer flachen, dunklen Flaeche.
+    this.fill.position.set(-this.tmpVec.x, Math.max(0.35, this.tmpVec.y * 0.6), -this.tmpVec.z);
     this.sun.position.set(
       playerX + this.tmpVec.x * 80,
       playerY + this.tmpVec.y * 80 + 20,
@@ -218,6 +259,14 @@ export class WorldManager {
     this.ambient.groundColor.set(area.palette.ground);
     this.ambient.intensity = lighting.ambientIntensity * weatherFactor.ambient
       + flash * 1.6;
+    // Gegenlicht mit dem Tageslicht skalieren, damit es nachts nicht auffaellt.
+    this.fill.intensity = 0.2 + lighting.sunIntensity * 0.3 * weatherFactor.ambient;
+    this.fill.color.copy(lighting.skyTint).lerp(new THREE.Color('#ffffff'), 0.35);
+    this.base.color.copy(lighting.ambientColor).lerp(new THREE.Color('#ffffff'), 0.5);
+    this.base.intensity = (0.16 + lighting.sunIntensity * 0.16) * weatherFactor.ambient
+      + flash * 0.8;
+    this.viewFill.intensity = (0.12 + lighting.sunIntensity * 0.2) * weatherFactor.ambient;
+    this.viewFill.color.copy(lighting.sunColor).lerp(new THREE.Color('#ffffff'), 0.5);
 
     const fog = this.scene.fog as THREE.Fog;
     fog.color.copy(lighting.fogColor).lerp(
@@ -230,10 +279,58 @@ export class WorldManager {
       const mat = area.sky.material as THREE.ShaderMaterial;
       const top = mat.uniforms.topColor!.value as THREE.Color;
       const bottom = mat.uniforms.bottomColor!.value as THREE.Color;
-      top.copy(lighting.skyTint).multiplyScalar(weatherFactor.sky);
-      bottom.copy(lighting.fogColor).lerp(lighting.skyTint, 0.3)
+      const night = this.nightAmount();
+
+      // Zenit bleibt blau und wird zur Nacht hin dunkel; nur der Horizont
+      // faerbt sich warm. Wird fuer beides derselbe Ton benutzt, sieht der
+      // Abendhimmel wie eine gleichmaessig braune Flaeche aus.
+      this.tmpColor.set(area.palette.skyTop);
+      top.copy(this.tmpColor)
+        .lerp(lighting.skyTint, 0.28)
+        .lerp(NIGHT_ZENITH, night * 0.85)
         .multiplyScalar(weatherFactor.sky);
+      bottom.copy(lighting.skyTint)
+        .lerp(lighting.fogColor, 0.35)
+        .lerp(NIGHT_HORIZON, night * 0.8)
+        .multiplyScalar(weatherFactor.sky);
+
+      // Sonnenstand, Wolkendichte, Nachtanteil und Zeit fuer den Shader.
+      const sunDir = mat.uniforms.sunDirection!.value as THREE.Vector3;
+      sunDir.copy(this.time.sunDirection(this.tmpVec));
+      (mat.uniforms.sunColor!.value as THREE.Color).copy(lighting.sunColor)
+        .multiplyScalar(0.5 + lighting.sunIntensity * 0.5);
+      mat.uniforms.cloudAmount!.value = this.cloudAmountFor();
+      mat.uniforms.nightAmount!.value = night;
+      this.buildings.setNightGlow(night);
+      this.props.setNightGlow(night);
+      mat.uniforms.time!.value = this.skyTime;
     }
+  }
+
+  /** Wolkendichte des Himmels nach Wetterlage (0 = klar, 1 = zugezogen). */
+  private cloudAmountFor(): number {
+    switch (this.weather) {
+      case 'clear': return 0.18;
+      case 'harshSun': return 0.06;
+      case 'cloudy': return 0.72;
+      case 'rain': return 0.86;
+      case 'heavyRain':
+      case 'thunderstorm': return 1;
+      case 'snow': return 0.8;
+      case 'blizzard': return 1;
+      case 'fog': return 0.7;
+      case 'sandstorm': return 0.9;
+      default: return 0.35;
+    }
+  }
+
+  /** Wie weit die Nacht fortgeschritten ist (0 = Tag, 1 = tiefe Nacht). */
+  private nightAmount(): number {
+    const hour = this.time.hour;
+    if (hour >= 21 || hour < 4.5) return 1;
+    if (hour >= 19) return (hour - 19) / 2;
+    if (hour < 6.5) return 1 - (hour - 4.5) / 2;
+    return 0;
   }
 
   private weatherLightFactor(): {
