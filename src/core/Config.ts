@@ -68,6 +68,8 @@ export const GameConfig = {
     respawnDelaySeconds: 26,
     /** Reichweite, in der ein Energiepunkt betreten werden kann. */
     raidDenRange: 3.4,
+    /** Kantenlaenge der Kacheln, in denen Requisiten zusammengefasst werden. */
+    propBatchTileSize: 48,
   },
 
   time: {

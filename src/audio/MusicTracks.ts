@@ -241,6 +241,15 @@ export const MUSIC_TRACKS: Record<string, TrackDefinition> = {
     drums: 'k-hhs-hhk-hhs-hh', lead: 'square', pad: 'triangle', bass: 'sawtooth',
     volume: 0.44,
   },
+  hallOfFame: {
+    id: 'hallOfFame', name: 'Ruhmeshalle', bpm: 82, root: 60, scale: 'major',
+    chords: [0, 3, 5, 4], barsPerChord: 2,
+    melody: [4, 4, 8, 4, 4, 8],
+    melodyShape: [0, 4, 7, 9, 7, 4],
+    bassPattern: [1, 0, 0, 0, 1, 0, 1, 0],
+    drums: '', lead: 'triangle', pad: 'sine', bass: 'sine',
+    volume: 0.34, noDrums: true,
+  },
 };
 
 export type MusicTrackId = keyof typeof MUSIC_TRACKS;

@@ -517,6 +517,10 @@ export interface BuildingPlacement {
   label?: string;
   /** Tuerposition relativ zum Gebaeude. */
   doorOffset?: [number, number];
+  /** Zugangsvoraussetzung fuer die Tuer (z.B. acht Orden fuer die Liga). */
+  requires?: { storyStage?: number; badge?: number; flag?: string };
+  /** Hinweistext, wenn die Voraussetzung fehlt. */
+  blockedText?: string;
 }
 
 export interface AreaData {
@@ -764,6 +768,28 @@ export type CutsceneStep =
   | { kind: 'battle'; trainer: string; gigantic?: boolean }
   | { kind: 'wildBattle'; species: string; level: number; legendary?: boolean }
   | { kind: 'teleport'; area: string; spawnPoint: string };
+
+export interface LeagueData {
+  id: string;
+  name: string;
+  /** Gebiet, in dem die Herausforderung stattfindet. */
+  area: string;
+  /** Benoetigte Orden fuer den Zutritt. */
+  requiredBadges: number;
+  /** Die Herausforderer in Reihenfolge. */
+  challengers: string[];
+  /** Der Champion als letzter Gegner. */
+  champion: string;
+  /** Zwischensequenz nach dem Sieg. */
+  victoryCutscene: string;
+  /** Story-Stufe nach dem Sieg. */
+  storyStageAfter: number;
+  /** Flag, das den Sieg festhaelt. */
+  victoryFlag: string;
+  rewardMoney: number;
+  /** Farben der Arena. */
+  colors: { primary: string; secondary: string };
+}
 
 export interface RaidData {
   id: string;

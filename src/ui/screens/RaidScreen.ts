@@ -9,7 +9,8 @@ import type { DenState } from '@/raids/RaidManager';
 
 export interface RaidBriefing {
   den: DenState;
-  bossSpecies: string;
+  /** Null, solange der Energiedetektor fehlt. */
+  bossSpecies: string | null;
   bossLevel: number;
   gigantic: boolean;
   allyNames: string[];
@@ -87,7 +88,7 @@ export class RaidScreen implements Screen {
       this.bodyNode.appendChild(el('div', { text: 'Dieser Energiepunkt ist erloschen.' }));
       return;
     }
-    const species = GameData.species.tryGet(b.bossSpecies);
+    const species = b.bossSpecies ? GameData.species.tryGet(b.bossSpecies) : null;
     const stars = '★'.repeat(b.den.tier) + '☆'.repeat(Math.max(0, 5 - b.den.tier));
 
     this.bodyNode.appendChild(el('div', {
@@ -102,7 +103,12 @@ export class RaidScreen implements Screen {
         }),
         el('div', {
           children: [
-            el('div', { className: 'entry-title', text: `${species?.name ?? 'Unbekannt'} · Lv. ${b.bossLevel}` }),
+            el('div', {
+              className: 'entry-title',
+              text: species
+                ? `${species.name} · Lv. ${b.bossLevel}`
+                : 'Unbekanntes Wesen · Stufe unbekannt',
+            }),
             el('div', { style: { margin: '6px 0' }, children: (species?.types ?? []).map(typeChip) }),
             el('div', { className: 'entry-sub', text: `Stufe ${b.den.tier} ${stars}` }),
             b.gigantic
@@ -120,7 +126,9 @@ export class RaidScreen implements Screen {
       className: 'entry-sub',
       style: { lineHeight: '1.8', marginBottom: '12px', whiteSpace: 'pre-line' },
       text: [
-        `Typ: ${(species?.types ?? []).map((t) => TYPE_NAMES[t]).join(' / ')}`,
+        species
+          ? `Typ: ${species.types.map((t) => TYPE_NAMES[t]).join(' / ')}`
+          : 'Typ: unbekannt - ein Energiedetektor wuerde mehr verraten.',
         `Schilde: ${b.shields}`,
         `Rundenlimit: ${b.turnLimit}`,
         `Verbuendete: ${b.allyNames.join(', ')}`,

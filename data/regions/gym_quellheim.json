@@ -187,6 +187,21 @@
    }
   ]
  },
+ "triggers": [
+  {
+   "id": "gym1_einzug",
+   "pos": [
+    15,
+    7.0
+   ],
+   "radius": 3.0,
+   "once": true,
+   "action": {
+    "kind": "cutscene",
+    "cutscene": "arena_einzug"
+   }
+  }
+ ],
  "ambience": {
   "fogNear": 40,
   "fogFar": 120

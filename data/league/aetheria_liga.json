@@ -1,0 +1,13 @@
+{
+  "id": "aetheria_liga",
+  "name": "Liga von Aetheria",
+  "area": "liga_arena",
+  "requiredBadges": 8,
+  "challengers": ["liga_aldo", "liga_yuki", "liga_dorn", "liga_sela"],
+  "champion": "champion_aurel",
+  "victoryCutscene": "liga_sieg",
+  "storyStageAfter": 14,
+  "victoryFlag": "ligaGewonnen",
+  "rewardMoney": 25000,
+  "colors": { "primary": "#3c6f4f", "secondary": "#d8b44a" }
+}

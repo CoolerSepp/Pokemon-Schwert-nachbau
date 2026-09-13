@@ -39,12 +39,21 @@
     },
     {
      "kind": "storyStage",
-     "stage": 13
+     "stage": 14
     },
     {
      "kind": "giveItem",
      "item": "meisterkugel",
      "quantity": 1
+    },
+    {
+     "kind": "giveItem",
+     "item": "tiefenschluessel",
+     "quantity": 1
+    },
+    {
+     "kind": "setFlag",
+     "flag": "tiefenschluessel"
     }
    ]
   },

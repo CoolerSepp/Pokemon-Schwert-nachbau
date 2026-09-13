@@ -408,9 +408,9 @@
    },
    "spawnPoint": "from_wildland",
    "requires": {
-    "badge": 8
+    "flag": "tiefenschluessel"
    },
-   "blockedText": "Ein uraltes Siegel versperrt den Abstieg. Acht Orden - nicht weniger."
+   "blockedText": "Ein uraltes Siegel versperrt den Abstieg. Es fehlt der Tiefenschluessel."
   }
  ],
  "spawnPoints": [

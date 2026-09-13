@@ -84,6 +84,14 @@
   {
    "item": "top_aether",
    "minBadges": 7
+  },
+  {
+   "item": "fahrrad",
+   "minBadges": 2
+  },
+  {
+   "item": "energiedetektor",
+   "minBadges": 4
   }
  ]
 }

@@ -261,3 +261,89 @@ describe('Inhaltliche Verweise', () => {
     }
   });
 });
+
+describe('Schluesselgegenstaende', () => {
+  /** Sammelt alle Gegenstands-Kennungen, die im Spiel vergeben oder verkauft werden. */
+  function obtainableItems(): Set<string> {
+    const out = new Set<string>();
+    const collectActions = (actions: readonly unknown[] | undefined) => {
+      for (const action of actions ?? []) {
+        const a = action as { kind?: string; item?: string };
+        if (a.kind === 'giveItem' && a.item) out.add(a.item);
+      }
+    };
+
+    for (const tree of GameData.dialogues.all()) {
+      for (const node of tree.nodes) {
+        collectActions(node.actions);
+        for (const choice of node.choices ?? []) collectActions(choice.actions);
+      }
+    }
+    for (const cutscene of GameData.cutscenes.all()) {
+      for (const step of cutscene.steps) {
+        if (step.kind === 'action') collectActions(step.actions);
+      }
+    }
+    for (const area of GameData.areas.all()) {
+      for (const item of area.items ?? []) out.add(item.item);
+    }
+    for (const shop of GameData.shops.all()) {
+      for (const entry of shop.stock) out.add(entry.item);
+    }
+    for (const gym of GameData.gyms.all()) {
+      for (const item of gym.rewardItems ?? []) out.add(item);
+    }
+    for (const quest of GameData.quests.all()) {
+      for (const reward of quest.rewards?.items ?? []) out.add(reward.item);
+    }
+    for (const raid of GameData.raids.all()) {
+      for (const reward of raid.rewardItems) out.add(reward.item);
+    }
+    return out;
+  }
+
+  it('ist jeder Schluesselgegenstand im Spiel erreichbar', () => {
+    const sources = obtainableItems();
+    const keyItems = GameData.items.filter((i) => i.category === 'key');
+    expect(keyItems.length).toBeGreaterThan(0);
+    const missing = keyItems.filter((i) => !sources.has(i.id)).map((i) => i.id);
+    expect(missing, `Ohne Quelle im Spiel: ${missing.join(', ')}`).toEqual([]);
+  });
+
+  it('wird jede Zwischensequenz auch ausgeloest', () => {
+    const referenced = new Set<string>();
+    for (const area of GameData.areas.all()) {
+      for (const trigger of area.triggers ?? []) {
+        const action = trigger.action as { kind: string; cutscene?: string };
+        if (action.kind === 'cutscene' && action.cutscene) referenced.add(action.cutscene);
+      }
+    }
+    const collect = (actions: readonly unknown[] | undefined) => {
+      for (const action of actions ?? []) {
+        const a = action as { kind?: string; cutscene?: string };
+        if (a.kind === 'cutscene' && a.cutscene) referenced.add(a.cutscene);
+      }
+    };
+    for (const tree of GameData.dialogues.all()) {
+      for (const node of tree.nodes) {
+        collect(node.actions);
+        for (const choice of node.choices ?? []) collect(choice.actions);
+      }
+    }
+    for (const league of GameData.leagues.all()) referenced.add(league.victoryCutscene);
+
+    const unused = GameData.cutscenes.all()
+      .map((c) => c.id)
+      .filter((id) => !referenced.has(id));
+    expect(unused, `Nie ausgeloeste Zwischensequenzen: ${unused.join(', ')}`).toEqual([]);
+  });
+
+  it('haben kaufbare Gegenstaende einen Preis', () => {
+    for (const shop of GameData.shops.all()) {
+      for (const entry of shop.stock) {
+        const price = entry.priceOverride ?? GameData.items.get(entry.item).price;
+        expect(price, `${shop.id}/${entry.item}`).toBeGreaterThan(0);
+      }
+    }
+  });
+});

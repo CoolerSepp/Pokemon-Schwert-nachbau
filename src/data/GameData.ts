@@ -2,7 +2,7 @@ import { Registry } from './Registry';
 import { Logger } from '@/core/Logger';
 import type {
   AbilityData, AreaData, CutsceneData, DialogueTreeData, ElementType, GymData,
-  ItemData, MoveData, NatureData, QuestData, RaidData, ShopData, SpeciesData,
+  ItemData, LeagueData, MoveData, NatureData, QuestData, RaidData, ShopData, SpeciesData,
   StoryStageData, TrainerData, TypeChartData,
 } from './schema';
 import { ELEMENT_TYPES } from './schema';
@@ -29,6 +29,7 @@ class GameDataRegistry {
   readonly shops = new Registry<ShopData>('Laden');
   readonly gyms = new Registry<GymData>('Arena');
   readonly raids = new Registry<RaidData>('Raid');
+  readonly leagues = new Registry<LeagueData>('Liga');
   readonly cutscenes = new Registry<CutsceneData>('Cutscene');
   readonly storyStages = new Registry<StoryStageData & { id: string }>('Story-Stufe');
   readonly natures = new Registry<NatureData>('Natur');
@@ -68,6 +69,7 @@ class GameDataRegistry {
       { dir: 'quests', sink: (v, p) => this.ingest(this.quests, v, p) },
       { dir: 'shops', sink: (v, p) => this.ingest(this.shops, v, p) },
       { dir: 'raids', sink: (v, p) => this.ingest(this.raids, v, p) },
+      { dir: 'league', sink: (v, p) => this.ingest(this.leagues, v, p) },
       { dir: 'story', sink: (v, p) => this.ingestStory(v, p) },
       { dir: 'natures', sink: (v, p) => this.ingest(this.natures, v, p) },
       { dir: 'types', sink: (v) => this.ingestTypeChart(v) },
@@ -157,7 +159,7 @@ class GameDataRegistry {
     for (const r of [
       this.species, this.moves, this.abilities, this.items, this.trainers,
       this.areas, this.dialogues, this.quests, this.shops, this.gyms,
-      this.raids, this.cutscenes, this.storyStages, this.natures,
+      this.raids, this.leagues, this.cutscenes, this.storyStages, this.natures,
     ]) {
       r.clear();
     }

@@ -97,7 +97,12 @@
    "doorOffset": [
     0,
     17.5
-   ]
+   ],
+   "requires": {
+    "badge": 8,
+    "flag": "ligaPass"
+   },
+   "blockedText": "Die Ligawache haelt dich auf: Ohne acht Orden und Liga-Pass kommt hier niemand hinein."
   },
   {
    "kind": "center",

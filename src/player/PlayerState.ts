@@ -28,6 +28,16 @@ export interface PlayerStateEvents extends Record<string, unknown> {
   dexUpdated: { speciesId: string; caught: boolean };
 }
 
+/** Ein Eintrag der Ruhmeshalle. */
+export interface HallOfFameEntry {
+  date: number;
+  playerName: string;
+  badges: number;
+  playtimeSeconds: number;
+  caughtCount: number;
+  team: { speciesId: string; name: string; level: number }[];
+}
+
 export interface SerializedPlayerState {
   name: string;
   money: number;
@@ -42,6 +52,7 @@ export interface SerializedPlayerState {
   quests: QuestProgress[];
   visitedAreas: string[];
   playtimeSeconds: number;
+  hallOfFame?: HallOfFameEntry[];
   areaId: string;
   spawnPoint: string;
   position: { x: number; z: number; facing: number; distance: number };
@@ -66,6 +77,8 @@ export class PlayerState {
   money = 3000;
   storyStage = 0;
   playtimeSeconds = 0;
+  /** Eintraege der Ruhmeshalle, aelteste zuerst. */
+  private readonly hallOfFameEntries: HallOfFameEntry[] = [];
   areaId = 'home_bedroom';
   spawnPoint = 'default';
 
@@ -244,6 +257,24 @@ export class PlayerState {
   }
 
   /** Maximales Level, das noch gehorcht - steigt mit jedem Orden. */
+  get hallOfFame(): readonly HallOfFameEntry[] { return this.hallOfFameEntries; }
+
+  /** Traegt das aktuelle Team in die Ruhmeshalle ein. */
+  recordHallOfFame(): HallOfFameEntry {
+    const entry: HallOfFameEntry = {
+      date: Date.now(),
+      playerName: this.name,
+      badges: this.badgeCount,
+      playtimeSeconds: Math.round(this.playtimeSeconds),
+      caughtCount: this.caughtSpecies.size,
+      team: this.party.map((c) => ({
+        speciesId: c.speciesId, name: c.name, level: c.level,
+      })),
+    };
+    this.hallOfFameEntries.push(entry);
+    return entry;
+  }
+
   get obedienceLevel(): number {
     const table = [20, 28, 36, 44, 52, 62, 72, 85, 100];
     return table[Math.min(table.length - 1, this.badgeCount)]!;
@@ -310,6 +341,7 @@ export class PlayerState {
       quests: this.quests.map((q) => ({ ...q })),
       visitedAreas: [...this.visitedAreas],
       playtimeSeconds: Math.round(this.playtimeSeconds),
+      hallOfFame: this.hallOfFameEntries.map((e) => ({ ...e, team: e.team.map((m) => ({ ...m })) })),
       areaId: this.areaId,
       spawnPoint: this.spawnPoint,
       ...extra,
@@ -354,6 +386,9 @@ export class PlayerState {
 
     this.visitedAreas.clear();
     for (const id of data.visitedAreas) this.visitedAreas.add(id);
+
+    this.hallOfFameEntries.length = 0;
+    for (const entry of data.hallOfFame ?? []) this.hallOfFameEntries.push(entry);
 
     this.quests.length = 0;
     for (const q of data.quests) {

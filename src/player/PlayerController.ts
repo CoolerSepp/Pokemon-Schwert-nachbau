@@ -45,6 +45,7 @@ export class PlayerController {
   private inTallGrass = false;
   private grassTimer = 0;
   private canRun = true;
+  private speedBonusValue = 1;
   private readonly tmpVec = new THREE.Vector3();
 
   constructor(
@@ -84,6 +85,14 @@ export class PlayerController {
   setRunUnlocked(unlocked: boolean): void {
     this.canRun = unlocked;
   }
+
+  /** Zusaetzlicher Geschwindigkeitsfaktor (Gelaenderad). */
+  setSpeedBonus(factor: number): void {
+    this.speedBonus = Math.max(0.5, Math.min(2.5, factor));
+  }
+
+  get speedBonus(): number { return this.speedBonusValue; }
+  private set speedBonus(value: number) { this.speedBonusValue = value; }
 
   setControlEnabled(enabled: boolean): void {
     this.controlEnabled = enabled;
@@ -145,7 +154,8 @@ export class PlayerController {
   private readInput(dt: number, cameraYaw: number): void {
     const axis = this.input.getMoveAxis();
     const wantsRun = this.canRun && this.input.isDown('sprint');
-    const maxSpeed = wantsRun ? GameConfig.player.runSpeed : GameConfig.player.walkSpeed;
+    const maxSpeed = (wantsRun ? GameConfig.player.runSpeed : GameConfig.player.walkSpeed)
+      * this.speedBonusValue;
 
     if (axis.x !== 0 || axis.y !== 0) {
       // Eingabe ist kamerarelativ: "vorwaerts" heisst immer "weg von der Kamera".

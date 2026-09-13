@@ -73,6 +73,14 @@
      "item": "laufschuhe"
     },
     {
+     "kind": "giveItem",
+     "item": "regionskarte"
+    },
+    {
+     "kind": "giveItem",
+     "item": "campkoffer"
+    },
+    {
      "kind": "setFlag",
      "flag": "indexErhalten"
     },
@@ -93,6 +101,7 @@
   {
    "id": "nach_wahl_b",
    "lines": [
+    "Die Karte und der Campkoffer sind auch dabei - unterwegs willst du rasten koennen.",
     "Geh nach Norden ueber Route 1 bis nach Quellheim. Dort gibt es die erste Arena der Region.",
     "Acht Orden brauchst du, um zur Liga zugelassen zu werden. Acht!",
     "Aber eins nach dem anderen. Viel Erfolg, {spieler}."

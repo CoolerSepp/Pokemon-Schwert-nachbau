@@ -5,7 +5,7 @@ import { EventBus } from '@/core/EventBus';
 import { Logger } from '@/core/Logger';
 import type { AssetManager } from '@/engine/AssetManager';
 import type { Renderer } from '@/engine/Renderer';
-import { AreaRuntime } from './AreaRuntime';
+import { AreaRuntime, type DoorTrigger } from './AreaRuntime';
 import { PropFactory } from './PropFactory';
 import { BuildingFactory } from './BuildingFactory';
 import { InteriorFactory } from './InteriorFactory';
@@ -271,13 +271,11 @@ export class WorldManager {
   }
 
   /** Prueft, ob der Spieler vor einer Tuer steht. */
-  checkDoor(x: number, z: number): { area: string; spawnPoint: string; label: string } | null {
+  checkDoor(x: number, z: number): DoorTrigger | null {
     const area = this.activeArea;
     if (!area) return null;
     for (const door of area.doors) {
-      if (Math.hypot(door.x - x, door.z - z) <= door.radius) {
-        return { area: door.area, spawnPoint: door.spawnPoint, label: door.label };
-      }
+      if (Math.hypot(door.x - x, door.z - z) <= door.radius) return door;
     }
     return null;
   }

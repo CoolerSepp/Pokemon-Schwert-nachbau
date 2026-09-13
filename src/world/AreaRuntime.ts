@@ -7,6 +7,7 @@ import { TerrainField, type FlattenZone } from './TerrainField';
 import { CollisionGrid } from './CollisionGrid';
 import { buildTerrainMesh, buildSky, BIOME_PALETTES, type BiomePalette } from './TerrainMesh';
 import { PropFactory, type PropKind } from './PropFactory';
+import { StaticBatcher } from './StaticBatcher';
 import { BuildingFactory } from './BuildingFactory';
 import { InteriorFactory } from './InteriorFactory';
 
@@ -20,6 +21,9 @@ export interface DoorTrigger {
   z: number;
   radius: number;
   label: string;
+  /** Zugangsvoraussetzung, falls die Tuer bewacht ist. */
+  requires?: { storyStage?: number; badge?: number; flag?: string };
+  blockedText?: string;
 }
 
 export interface GrassZoneRuntime {
@@ -135,6 +139,8 @@ export class AreaRuntime {
   readonly water: THREE.Mesh | null = null;
   /** Objekte, die abhaengig von der Entfernung ein-/ausgeblendet werden. */
   private readonly cullables: { object: THREE.Object3D; x: number; z: number; distSq: number }[] = [];
+  /** Requisiten vor dem Zusammenfassen. */
+  private readonly propObjects: { object: THREE.Object3D; x: number; z: number }[] = [];
   private disposed = false;
 
   constructor(
@@ -175,6 +181,7 @@ export class AreaRuntime {
     this.buildInterior();
     this.buildBuildings();
     this.buildProps();
+    this.batchProps();
     this.buildGrass();
     this.blockWater();
 
@@ -246,6 +253,8 @@ export class AreaRuntime {
           x: dx, z: dz,
           radius: Math.max(1.3, result.door.width * 0.6),
           label: placement.label ?? 'Eingang',
+          requires: placement.requires,
+          blockedText: placement.blockedText,
         });
         // Tuerbereich begehbar halten.
         this.collision.clearBox({ x: dx, z: dz, width: result.door.width, depth: 1.6 });
@@ -285,6 +294,9 @@ export class AreaRuntime {
       if (this.field.isUnderWater(x, z)) continue;
       if (this.isInGrassZone(x, z)) continue;
       if (this.isNearDoor(x, z, 4)) continue;
+      // Spawnpunkte und Gebietsuebergaenge freihalten: sonst steht die Kamera
+      // beim Betreten in einer Baumkrone.
+      if (this.isNearEntry(x, z, 7)) continue;
       // Steile Haenge bleiben frei, sonst schweben Objekte.
       if (this.field.slopeAt(x, z) > 0.42) continue;
       const entry = rng.weighted(weighted);
@@ -318,6 +330,51 @@ export class AreaRuntime {
     }
   }
 
+  /**
+   * Fasst die platzierten Requisiten kachelweise zu wenigen Zeichenaufrufen
+   * zusammen. Die Kacheln bleiben einzeln kullbar, damit entfernte Teile des
+   * Gebietes weiterhin uebersprungen werden.
+   */
+  private batchProps(): void {
+    if (this.propObjects.length === 0) return;
+    const tile = GameConfig.world.propBatchTileSize;
+    const groups = new Map<string, { objects: THREE.Object3D[]; x: number; z: number }>();
+
+    for (const entry of this.propObjects) {
+      const key = `${Math.floor(entry.x / tile)}:${Math.floor(entry.z / tile)}`;
+      let group = groups.get(key);
+      if (!group) {
+        group = { objects: [], x: 0, z: 0 };
+        groups.set(key, group);
+      }
+      group.objects.push(entry.object);
+      group.x += entry.x;
+      group.z += entry.z;
+    }
+
+    const before = this.propObjects.length;
+    let batches = 0;
+    for (const group of groups.values()) {
+      const batcher = new StaticBatcher();
+      for (const object of group.objects) batcher.add(object);
+      const merged = batcher.build('props');
+      for (const object of group.objects) this.root.remove(object);
+      if (!merged) continue;
+      this.root.add(merged);
+      batches++;
+      const centerX = group.x / group.objects.length;
+      const centerZ = group.z / group.objects.length;
+      // Reichweite um die halbe Kacheldiagonale erweitern, damit am Rand
+      // stehende Objekte nicht zu frueh verschwinden.
+      this.addCullable(
+        merged, centerX, centerZ,
+        GameConfig.world.propCullDistance + tile * 0.75,
+      );
+    }
+    this.propObjects.length = 0;
+    log.debug(`Gebiet "${this.data.id}": ${before} Requisiten in ${batches} Stapeln`);
+  }
+
   private placeProp(placement: PropPlacement, rng: RNG): void {
     const kind = placement.kind as PropKind;
     const result = this.props.create(
@@ -328,7 +385,7 @@ export class AreaRuntime {
     result.object.position.set(x, y, z);
     result.object.rotation.y = placement.rotation ?? 0;
     this.root.add(result.object);
-    this.addCullable(result.object, x, z, GameConfig.world.propCullDistance);
+    this.propObjects.push({ object: result.object, x, z });
     if (result.collisionRadius > 0) {
       this.collision.addCircle({ x, z, radius: result.collisionRadius });
     }
@@ -400,6 +457,20 @@ export class AreaRuntime {
     return this.doors.some((d) => Math.hypot(d.x - x, d.z - z) < radius + d.radius);
   }
 
+  /** Naehe zu Spawnpunkten und Uebergangsflaechen. */
+  private isNearEntry(x: number, z: number, radius: number): boolean {
+    for (const point of this.data.spawnPoints ?? []) {
+      if (Math.hypot(point.pos[0] - x, point.pos[1] - z) < radius) return true;
+    }
+    for (const conn of this.data.connections) {
+      const t = conn.trigger;
+      const cx = Math.max(t.x, Math.min(x, t.x + t.width));
+      const cz = Math.max(t.z, Math.min(z, t.z + t.depth));
+      if (Math.hypot(cx - x, cz - z) < radius) return true;
+    }
+    return false;
+  }
+
   getSpawnPoint(id: string): { x: number; z: number; facing: number } {
     const point = this.data.spawnPoints.find((p) => p.id === id) ?? this.data.spawnPoints[0];
     if (!point) {
@@ -433,9 +504,9 @@ export class AreaRuntime {
     this.root.traverse((obj) => {
       const mesh = obj as THREE.Mesh;
       // Nur gebietsspezifische Geometrien freigeben; geteilte bleiben im Cache.
-      if (mesh.geometry && (mesh.name === 'terrain' || mesh.name === 'water' || mesh.name === 'sky')) {
-        mesh.geometry.dispose();
-      }
+      const ownGeometry = mesh.name === 'terrain' || mesh.name === 'water'
+        || mesh.name === 'sky' || mesh.parent?.name === 'props';
+      if (mesh.geometry && ownGeometry) mesh.geometry.dispose();
       if (mesh.name === 'sky') {
         const mat = mesh.material as THREE.Material | THREE.Material[];
         if (Array.isArray(mat)) mat.forEach((m) => m.dispose());

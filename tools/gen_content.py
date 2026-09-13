@@ -117,11 +117,14 @@ tree("professorin",
             {"kind": "giveItem", "item": "kreaturenindex"},
             {"kind": "giveItem", "item": "fangkugel", "quantity": 10},
             {"kind": "giveItem", "item": "laufschuhe"},
+            {"kind": "giveItem", "item": "regionskarte"},
+            {"kind": "giveItem", "item": "campkoffer"},
             {"kind": "setFlag", "flag": "indexErhalten"},
             {"kind": "storyStage", "stage": 3},
             {"kind": "startQuest", "quest": "hauptquest_erster_orden"},
         ], next="nach_wahl_b"),
     node("nach_wahl_b", [
+        "Die Karte und der Campkoffer sind auch dabei - unterwegs willst du rasten koennen.",
         "Geh nach Norden ueber Route 1 bis nach Quellheim. Dort gibt es die erste Arena der Region.",
         "Acht Orden brauchst du, um zur Liga zugelassen zu werden. Acht!",
         "Aber eins nach dem anderen. Viel Erfolg, {spieler}.",
@@ -648,11 +651,22 @@ tree("liga_wache",
     node("blocked", [
         "Halt. Ohne acht Orden kommt hier niemand durch.",
     ], speaker="Ligawache", requires={"maxStoryStage": 11}),
-    node("open", [
+    node("pass", [
         "Acht Orden. Du hast es tatsaechlich geschafft.",
-        "Dahinter warten vier Spitzentrainer und der Champion. Viel Glueck.",
+        "Hier ist dein Liga-Pass. Damit oeffnet sich das Tor zur Arena.",
+        "Dahinter warten vier Spitzentrainer und der Champion - alle fuenf hintereinander, ohne Pause.",
+    ], speaker="Ligawache", requires={"badge": 8, "notFlag": "ligaPass"},
+        actions=[
+            {"kind": "giveItem", "item": "liga_pass"},
+            {"kind": "setFlag", "flag": "ligaPass"},
+        ]),
+    node("open", [
+        "Der Champion wartet. Nimm dir die Zeit, die du brauchst.",
+    ], speaker="Ligawache", requires={"flag": "ligaPass"}),
+    node("warten", [
+        "Sammle erst die acht Orden. Dann sprechen wir weiter.",
     ], speaker="Ligawache"),
-    entry=["blocked", "open"],
+    entry=["blocked", "pass", "open", "warten"],
 )
 
 # ==========================================================================
@@ -1131,6 +1145,8 @@ SHOPS.append({
         {"item": "aether", "minBadges": 5},
         {"item": "top_beleber", "minBadges": 6},
         {"item": "top_aether", "minBadges": 7},
+        {"item": "fahrrad", "minBadges": 2},
+        {"item": "energiedetektor", "minBadges": 4},
     ],
 })
 
@@ -1330,8 +1346,10 @@ STORY.append({
         ]},
         {"kind": "action", "actions": [
             {"kind": "setFlag", "flag": "ligaGewonnen"},
-            {"kind": "storyStage", "stage": 13},
+            {"kind": "storyStage", "stage": 14},
             {"kind": "giveItem", "item": "meisterkugel", "quantity": 1},
+            {"kind": "giveItem", "item": "tiefenschluessel", "quantity": 1},
+            {"kind": "setFlag", "flag": "tiefenschluessel"},
         ]},
         {"kind": "message", "speaker": "Prof. Farnholz", "lines": [
             "Ich habe jeden deiner Schritte verfolgt, {spieler}.",

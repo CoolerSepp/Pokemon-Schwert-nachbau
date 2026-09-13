@@ -2,7 +2,9 @@
  "id": "liga_wache",
  "entry": [
   "blocked",
-  "open"
+  "pass",
+  "open",
+  "warten"
  ],
  "nodes": [
   {
@@ -16,10 +18,42 @@
    }
   },
   {
-   "id": "open",
+   "id": "pass",
    "lines": [
     "Acht Orden. Du hast es tatsaechlich geschafft.",
-    "Dahinter warten vier Spitzentrainer und der Champion. Viel Glueck."
+    "Hier ist dein Liga-Pass. Damit oeffnet sich das Tor zur Arena.",
+    "Dahinter warten vier Spitzentrainer und der Champion - alle fuenf hintereinander, ohne Pause."
+   ],
+   "speaker": "Ligawache",
+   "actions": [
+    {
+     "kind": "giveItem",
+     "item": "liga_pass"
+    },
+    {
+     "kind": "setFlag",
+     "flag": "ligaPass"
+    }
+   ],
+   "requires": {
+    "badge": 8,
+    "notFlag": "ligaPass"
+   }
+  },
+  {
+   "id": "open",
+   "lines": [
+    "Der Champion wartet. Nimm dir die Zeit, die du brauchst."
+   ],
+   "speaker": "Ligawache",
+   "requires": {
+    "flag": "ligaPass"
+   }
+  },
+  {
+   "id": "warten",
+   "lines": [
+    "Sammle erst die acht Orden. Dann sprechen wir weiter."
    ],
    "speaker": "Ligawache"
   }

@@ -214,9 +214,16 @@ export class Game {
     }
     // Tueren erfordern eine Interaktion.
     const door = this.world.checkDoor(this.player.x, this.player.z);
-    if (door && this.input.wasPressed('interact') && GameData.areas.has(door.area)) {
-      this.pendingAreaChange = { to: door.area, spawnPoint: door.spawnPoint };
+    if (!door || !this.input.wasPressed('interact') || !GameData.areas.has(door.area)) return;
+    if (!this.transitionAllowed(door.requires)) {
+      this.events.emit('notice', {
+        text: door.blockedText ?? 'Diese Tuer ist dir noch verschlossen.',
+        kind: 'warn',
+      });
+      this.transitionCooldown = 1.2;
+      return;
     }
+    this.pendingAreaChange = { to: door.area, spawnPoint: door.spawnPoint };
   }
 
   /** Prueft die Voraussetzungen eines Gebietsuebergangs. */

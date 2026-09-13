@@ -50,8 +50,10 @@ export class MainMenuScreen implements Screen {
       },
       {
         id: 'map', title: 'Karte', screen: 'map',
-        sub: () => this.ctx.areaName(this.ctx.currentAreaId()),
-        enabled: () => true,
+        sub: () => this.ctx.player.hasItem('regionskarte')
+          ? this.ctx.areaName(this.ctx.currentAreaId())
+          : 'Regionskarte fehlt',
+        enabled: () => this.ctx.player.hasItem('regionskarte'),
       },
       {
         id: 'quests', title: 'Auftraege', screen: 'quests',
@@ -63,6 +65,13 @@ export class MainMenuScreen implements Screen {
         sub: () => this.ctx.player.hasItem('campkoffer')
           ? 'Zeit mit dem Team verbringen' : 'Campkoffer fehlt',
         enabled: () => this.ctx.player.hasItem('campkoffer') && this.ctx.player.party.length > 0,
+      },
+      {
+        id: 'hallOfFame', title: 'Ruhmeshalle', screen: 'hallOfFame',
+        sub: () => this.ctx.player.hallOfFame.length > 0
+          ? `${this.ctx.player.hallOfFame.length} Eintraege`
+          : 'Noch kein Ligasieg',
+        enabled: () => this.ctx.player.hallOfFame.length > 0,
       },
       {
         id: 'save', title: 'Speichern', screen: 'save',

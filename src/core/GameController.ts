@@ -19,6 +19,7 @@ import { SaveScreen } from '@/ui/screens/SaveScreen';
 import { OptionsScreen } from '@/ui/screens/OptionsScreen';
 import { BattleScreen } from '@/ui/screens/BattleScreen';
 import { RaidScreen, type RaidBriefing } from '@/ui/screens/RaidScreen';
+import { HallOfFameScreen } from '@/ui/screens/HallOfFameScreen';
 import type { MenuContext } from '@/ui/screens/MenuContext';
 import { PlayerState } from '@/player/PlayerState';
 import { NpcManager, type NpcInstance } from '@/npcs/NpcManager';
@@ -27,6 +28,7 @@ import { DialogueManager } from '@/story/DialogueManager';
 import { CutsceneManager, type CutsceneHost } from '@/story/CutsceneManager';
 import { QuestManager } from '@/quests/QuestManager';
 import { RaidManager, type DenState } from '@/raids/RaidManager';
+import { LeagueRun } from '@/gyms/LeagueRun';
 import { AudioManager } from '@/audio/AudioManager';
 import { BattleScene } from '@/battle/BattleScene';
 import { BattleEngine, type BattleSetup } from '@/battle/BattleEngine';
@@ -76,6 +78,7 @@ export class GameController {
   readonly cutscenes: CutsceneManager;
   readonly quests: QuestManager;
   readonly raids: RaidManager;
+  readonly league = new LeagueRun();
   readonly battleScene: BattleScene;
 
   private hud!: HudScreen;
@@ -87,6 +90,7 @@ export class GameController {
   private battleWildInstance: WildInstance | null = null;
   private battleTrainerNpc: NpcInstance | null = null;
   private raidScreen!: RaidScreen;
+  private hallOfFameScreen!: HallOfFameScreen;
   /** Nest des laufenden Raid-Kampfes. */
   private activeRaidDen: DenState | null = null;
 
@@ -215,6 +219,8 @@ export class GameController {
     this.ui.register(new OptionsScreen(ctx));
     this.raidScreen = new RaidScreen(ctx, this.audio, (den) => this.startRaidBattle(den));
     this.ui.register(this.raidScreen);
+    this.hallOfFameScreen = new HallOfFameScreen(ctx, this.audio);
+    this.ui.register(this.hallOfFameScreen);
   }
 
   private registerEvents(): void {
@@ -239,6 +245,10 @@ export class GameController {
         this.audio.playSfx('open');
         this.ui.push('mainMenu');
       } else if (action === 'map') {
+        if (!this.player.hasItem('regionskarte')) {
+          this.ui.toast('Du hast noch keine Regionskarte.', 'warn');
+          return;
+        }
         this.audio.playSfx('open');
         this.ui.push('map');
       } else if (action === 'interact') {
@@ -271,6 +281,7 @@ export class GameController {
       this.checkGiganticUnlock();
     });
     this.player.events.on('partyChanged', () => this.hud.forceRefresh());
+    this.player.events.on('itemChanged', () => this.applyKeyItems());
 
     this.game.time.events.on('timeOfDayChanged', () => this.updateMusic());
 
@@ -331,6 +342,8 @@ export class GameController {
     this.npcs.load(area);
     this.wild.load(area, this.spawnContext());
     this.raids.load(area, this.game.time.day);
+    this.applyKeyItems();
+    this.updateLeagueRun(areaId);
     this.loadGroundItems();
     this.updateMusic();
     this.hud.forceRefresh();
@@ -493,9 +506,18 @@ export class GameController {
   private handleNpcInteraction(npc: NpcInstance): void {
     const interaction = this.npcs.interactionFor(npc);
     switch (interaction.kind) {
-      case 'trainer':
+      case 'trainer': {
+        const trainerId = npc.placement.trainer;
+        if (trainerId && this.league.belongsToLeague(trainerId)) {
+          const blocked = this.league.blockedText(trainerId);
+          if (blocked) {
+            this.showQuickMessage(undefined, [blocked], () => undefined);
+            return;
+          }
+        }
         this.startTrainerBattleWithNpc(npc);
         return;
+      }
       case 'heal':
         this.healParty();
         return;
@@ -684,11 +706,18 @@ export class GameController {
     }
     this.game.setMode('cutscene');
     this.game.player.setControlEnabled(false);
-    this.cutscenes.play(cutsceneId, () => {
+    const started = this.cutscenes.play(cutsceneId, () => {
       this.game.player.setControlEnabled(true);
       if (this.game.mode === 'cutscene') this.game.setMode('world');
       onDone?.();
     });
+    // Abgelehnt (es laeuft bereits eine Sequenz): Steuerung sofort
+    // zurueckgeben, sonst bliebe das Spiel im Sequenzmodus haengen.
+    if (!started) {
+      this.game.player.setControlEnabled(true);
+      if (this.game.mode === 'cutscene') this.game.setMode('world');
+      onDone?.();
+    }
   }
 
   // ----------------------------------------------------------------- Kaempfe
@@ -743,9 +772,14 @@ export class GameController {
     );
     const gym = GameData.gyms.filter((g) => g.leader === trainerId)[0];
 
+    const league = this.league.data;
+    const isLeague = this.league.belongsToLeague(trainerId);
+    const isChampion = isLeague && league?.champion === trainerId;
+
     this.battleOnDone = onDone ?? null;
     this.startBattle({
-      kind: gym ? 'gym' : trainerId.includes('rival') ? 'rival' : 'trainer',
+      kind: isChampion ? 'final' : isLeague ? 'league'
+        : gym ? 'gym' : trainerId.includes('rival') ? 'rival' : 'trainer',
       playerParty: this.player.party,
       enemyParty: team,
       playerName: this.player.name,
@@ -760,8 +794,8 @@ export class GameController {
       enemyCanGigantic: trainer.canGigantic ?? false,
       allowCapture: false,
       allowFlee: false,
-      withCrowd: gym !== undefined,
-    }, trainer.appearance, gym?.colors, gigantic);
+      withCrowd: gym !== undefined || isLeague,
+    }, trainer.appearance, gym?.colors ?? (isLeague ? league?.colors : undefined), gigantic);
   }
 
   startWildBattleDirect(
@@ -938,6 +972,7 @@ export class GameController {
 
     const afterLines = () => {
       if (gym) this.awardBadge(gym.badgeIndex, gym.badgeName, gym);
+      this.onLeagueTrainerDefeated(trainerId);
     };
     if (trainer?.dialogue.defeat?.length) {
       this.showQuickMessage(trainer.name, trainer.dialogue.defeat, afterLines);
@@ -945,6 +980,67 @@ export class GameController {
       afterLines();
     }
     void npc;
+  }
+
+  // ------------------------------------------------------------------- Liga
+
+  /** Startet oder beendet die Ligaherausforderung beim Gebietswechsel. */
+  private updateLeagueRun(areaId: string): void {
+    const league = GameData.leagues.all().find((l) => l.area === areaId);
+    if (!league) {
+      if (this.league.isRunning) {
+        this.league.abort();
+        this.ui.toast('Die Ligaherausforderung wurde abgebrochen.', 'warn', 4);
+      }
+      return;
+    }
+    if (this.league.isRunning) return;
+    const result = this.league.start(areaId, this.player.badgeCount);
+    if (result.started) {
+      this.ui.toast(
+        `${league.name}: ${this.league.total} Kaempfe ohne Pause. Viel Erfolg!`,
+        'info', 5,
+      );
+    } else if (result.reason) {
+      this.ui.toast(result.reason, 'warn', 4);
+    }
+  }
+
+  /** Wertet den Sieg ueber einen Ligagegner aus. */
+  private onLeagueTrainerDefeated(trainerId: string): boolean {
+    if (!this.league.belongsToLeague(trainerId)) return false;
+    const league = this.league.data;
+    const step = this.league.defeat(trainerId);
+    if (!league || step === 'ignoriert') return false;
+
+    if (step === 'weiter' || step === 'champion') {
+      const nextId = this.league.currentTrainerId;
+      const next = nextId ? GameData.trainers.tryGet(nextId)?.name ?? nextId : '';
+      this.ui.toast(
+        step === 'champion'
+          ? `Alle Herausforderer besiegt! Jetzt wartet Champion ${next}.`
+          : `${this.league.defeated} / ${this.league.total} - als Naechstes: ${next}`,
+        'success', 5,
+      );
+      return true;
+    }
+
+    // Der Champion ist besiegt: Sieg festhalten und feiern.
+    this.player.setFlag(league.victoryFlag, true);
+    this.player.addMoney(league.rewardMoney);
+    this.player.setStoryStage(Math.max(this.player.storyStage, league.storyStageAfter));
+    const entry = this.player.recordHallOfFame();
+    this.quests.evaluate();
+    this.hud.forceRefresh();
+    log.info(`Liga gewonnen mit ${entry.team.length} Kreaturen`);
+
+    const showHall = () => {
+      this.audio.playMusic('hallOfFame');
+      this.hallOfFameScreen.showEntry(this.player.hallOfFame.length - 1);
+      this.ui.push('hallOfFame');
+    };
+    this.playCutscene(league.victoryCutscene, showHall);
+    return true;
   }
 
   private awardBadge(
@@ -960,6 +1056,10 @@ export class GameController {
 
   /** Niederlage: zurueck zur letzten Heilstation. */
   private handleBlackout(): void {
+    if (this.league.isRunning) {
+      this.league.abort();
+      this.ui.toast('Die Ligaherausforderung ist gescheitert.', 'warn', 4);
+    }
     this.player.healParty();
     const fallback = this.player.hasFlag('visited:quellheim') ? 'quellheim' : 'startdorf';
     const target = this.findNearestHealArea() ?? fallback;
@@ -1084,9 +1184,11 @@ export class GameController {
       return;
     }
 
+    // Ohne Energiedetektor bleibt verborgen, was im Nest steckt.
+    const detector = this.player.hasItem('energiedetektor');
     const briefing: RaidBriefing = {
       den,
-      bossSpecies: boss.species,
+      bossSpecies: detector ? boss.species : null,
       bossLevel: boss.level,
       gigantic: boss.gigantic === true,
       allyNames: raid.allies.map((id) => GameData.trainers.tryGet(id)?.name ?? id),
@@ -1195,6 +1297,17 @@ export class GameController {
     );
   }
 
+  /**
+   * Wirkung der Schluesselgegenstaende.
+   *
+   * Laufschuhe erlauben das Rennen, das Gelaenderad macht zusaetzlich
+   * schneller. Wird nach jeder Bestandsaenderung und beim Laden geprueft.
+   */
+  private applyKeyItems(): void {
+    this.game.player.setRunUnlocked(this.player.hasItem('laufschuhe'));
+    this.game.player.setSpeedBonus(this.player.hasItem('fahrrad') ? 1.35 : 1);
+  }
+
   private healParty(): void {
     this.player.healParty();
     this.audio.playSfx('heal');
@@ -1202,6 +1315,11 @@ export class GameController {
     this.hud.forceRefresh();
     this.ui.toast('Dein Team ist wieder vollstaendig erholt!', 'success', 3.5);
     this.player.setFlag(`visited:${this.game.world.areaId}`, true);
+  }
+
+  /** Gegenstand ausserhalb der Menues benutzen - fuer Tests und Skripte. */
+  useItemForTest(itemId: string, creature: Creature | null): string {
+    return this.useItem(itemId, creature);
   }
 
   private useItem(itemId: string, creature: Creature | null): string {

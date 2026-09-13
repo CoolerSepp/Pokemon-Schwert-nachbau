@@ -32,12 +32,14 @@ def conn(to, x, z, w, d, spawn, requires=None, blocked=None, label=None):
     return c
 
 def building(kind, x, z, rot=0.0, interior=None, spawn=None, label=None,
-             door=None, scale=1.0, variant=0):
+             door=None, scale=1.0, variant=0, requires=None, blocked_text=None):
     b = {"kind": kind, "pos": [x, z], "rotation": rot, "scale": scale, "variant": variant}
     if interior: b["interior"] = interior
     if spawn: b["spawnPoint"] = spawn
     if label: b["label"] = label
     if door: b["doorOffset"] = door
+    if requires: b["requires"] = requires
+    if blocked_text: b["blockedText"] = blocked_text
     return b
 
 def grass(x, z, w, d, density=1.6):
@@ -609,6 +611,10 @@ area(
             appearance={"skin": "#e0b894", "hair": "#4f8a42", "shirt": "#d8e8cf",
                         "pants": "#5f7a4f", "accent": "#7fc44b", "hat": "band", "height": 1.02}),
     ],
+    triggers=[
+        {"id": "gym1_einzug", "pos": [15, 7.0], "radius": 3.0, "once": True,
+         "action": {"kind": "cutscene", "cutscene": "arena_einzug"}},
+    ],
     ambience={"fogNear": 40, "fogFar": 120},
 )
 
@@ -681,7 +687,7 @@ def make_shop(city_id, seed, city_spawn, shop_id):
 
 
 def make_gym(gym_id, name, city_id, seed, colors, floor, leader, minions,
-             leader_look, minion_looks, size=(30, 44)):
+             leader_look, minion_looks, size=(30, 44), entry_cutscene=None):
     """Arena-Innenraum mit Vorkaempfern und Leiter."""
     w, d = size
     area(
@@ -716,6 +722,10 @@ def make_gym(gym_id, name, city_id, seed, colors, floor, leader, minions,
             npc(f"{gym_id}_leader", w / 2, d - 10, SOUTH, name="Arenaleitung",
                 trainer=leader, role="gymLeader", appearance=leader_look),
         ],
+        **({"triggers": [{"id": f"{gym_id}_einzug", "pos": [size[0] / 2, 7.0],
+                          "radius": 3.0, "once": True,
+                          "action": {"kind": "cutscene", "cutscene": entry_cutscene}}]}
+           if entry_cutscene else {}),
         ambience={"fogNear": 40, "fogFar": 130},
     )
 
@@ -1202,8 +1212,8 @@ area(
         conn("route_5", 257, 112, 3, 16, "from_wildland"),
         conn("route_7", 0, 112, 3, 16, "from_wildland"),
         conn("tiefenkammer", 122, 236, 16, 3, "from_wildland",
-             requires={"badge": 8},
-             blocked="Ein uraltes Siegel versperrt den Abstieg. Acht Orden - nicht weniger."),
+             requires={"flag": "tiefenschluessel"},
+             blocked="Ein uraltes Siegel versperrt den Abstieg. Es fehlt der Tiefenschluessel."),
     ],
     props=[
         prop("tree", 60, 30, 0.4, 1.4, 1), prop("tree", 214, 40, 1.2, 1.3, 2),
@@ -1618,7 +1628,9 @@ area(
                  sp("from_center", 22, 26, SOUTH), sp("from_shop", 98, 26, SOUTH)],
     connections=[conn("route_9", 52, 0, 16, 3, "from_liga")],
     buildings=[
-        building("stadium", 60, 74, SOUTH, "liga_arena", "entrance", "Ligastadion", [0, 17.5]),
+        building("stadium", 60, 74, SOUTH, "liga_arena", "entrance", "Ligastadion", [0, 17.5],
+                 requires={"badge": 8, "flag": "ligaPass"},
+                 blocked_text="Die Ligawache haelt dich auf: Ohne acht Orden und Liga-Pass kommt hier niemand hinein."),
         building("center", 22, 34, EAST, "center_ligastadion", "entrance", "Heilstation", [0, 4.6]),
         building("shop", 98, 34, WEST, "shop_ligastadion", "entrance", "Warenlager", [0, 3.8]),
     ],

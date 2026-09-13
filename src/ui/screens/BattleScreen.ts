@@ -1014,9 +1014,16 @@ export class BattleScreen implements Screen {
     const slot = creature.moves[this.selectedMove];
     if (!slot) return;
     if (slot.pp <= 0) {
-      this.ctx.audio.playSfx('error');
-      this.setMessage('Diese Attacke hat keine AP mehr!');
-      return;
+      // Sind alle Attacken leer, bleibt die Verzweiflungsattacke - die Engine
+      // setzt sie ein, sobald eine Attacke ohne AP gewaehlt wird. Sonst waere
+      // der Kampf ohne Fluchtmoeglichkeit nicht mehr zu beenden.
+      const allEmpty = creature.moves.every((m) => m.pp <= 0);
+      if (!allEmpty) {
+        this.ctx.audio.playSfx('error');
+        this.setMessage('Diese Attacke hat keine AP mehr!');
+        return;
+      }
+      this.setMessage(`${creature.name} hat keine AP mehr!`);
     }
     this.ctx.audio.playSfx('confirm');
     this.submit({ kind: 'move', moveIndex: this.selectedMove, gigantic: this.giganticArmed });

@@ -199,6 +199,18 @@ test.describe('Vertical Slice', () => {
       await page.waitForTimeout(260);
     }
 
+    // Nach dem Kampf koennen Entwicklungen anlaufen (der Test zieht das Team
+    // stark hoch); sie laufen selbstaendig ab - hier wird darauf gewartet.
+    for (let i = 0; i < 60; i++) {
+      const mode = await run(page, (c) => {
+        const top = c.ui.topScreen;
+        if (top && top.id.startsWith('message')) top.handleAction('confirm');
+        return c.game.mode as string;
+      });
+      if (mode === 'world') break;
+      await page.waitForTimeout(400);
+    }
+
     const afterGym = await run(page, (c) => ({
       badges: c.player.badgeCount,
       stage: c.player.storyStage,
