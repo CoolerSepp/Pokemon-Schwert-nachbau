@@ -48,7 +48,17 @@ export class SaveManager {
         resolve();
         return;
       }
-      const request = indexedDB.open(GameConfig.save.dbName, 1);
+      let request: IDBOpenDBRequest;
+      try {
+        request = indexedDB.open(GameConfig.save.dbName, 1);
+      } catch (err) {
+        // Beim Oeffnen einer Datei ueber file:// verweigert der Browser
+        // IndexedDB sofort - dann uebernimmt der localStorage-Pfad.
+        this.useFallback = true;
+        log.warn('IndexedDB gesperrt - localStorage wird benutzt', err);
+        resolve();
+        return;
+      }
       request.onupgradeneeded = () => {
         const db = request.result;
         if (!db.objectStoreNames.contains(GameConfig.save.storeName)) {
@@ -149,8 +159,13 @@ export class SaveManager {
   }
 
   private fallbackGet(slot: string): SaveData | null {
-    const raw = localStorage.getItem(this.fallbackKey(slot));
-    return raw ? (JSON.parse(raw) as SaveData) : null;
+    try {
+      const raw = localStorage.getItem(this.fallbackKey(slot));
+      return raw ? (JSON.parse(raw) as SaveData) : null;
+    } catch (err) {
+      log.warn(`Spielstand "${slot}" konnte nicht gelesen werden`, err);
+      return null;
+    }
   }
 
   private idbPut(slot: string, data: SaveData): Promise<void> {

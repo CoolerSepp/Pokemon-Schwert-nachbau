@@ -7,3 +7,4 @@ playwright-report/
 *.local
 .DS_Store
 tests/e2e/shots/
+dist-offline/

@@ -1,0 +1,30 @@
+AETHERIA - Offline-Fassung
+==========================
+
+Spielen:
+  1. Dieses Archiv vollstaendig entpacken.
+  2. Die Datei "Aetheria.html" doppelklicken.
+  3. Beim ersten Klick oder Tastendruck startet der Ton.
+
+Es wird kein Server und keine Internetverbindung benoetigt.
+Das gesamte Spiel steckt in dieser einen Datei.
+
+Steuerung:
+  WASD / Pfeiltasten  Bewegen
+  Umschalt            Rennen (ab den Laufschuhen)
+  Leertaste           Springen
+  E / Enter           Interagieren und Bestaetigen
+  Esc / X             Zurueck
+  M                   Menue
+  N                   Karte (ab der Regionskarte)
+  F5                  Schnellspeichern
+  F1                  Entwickleransicht (Bildrate, Zustand)
+
+Spielstaende:
+  Sie liegen im Speicher des Browsers (localStorage bzw. IndexedDB).
+  Wird die HTML-Datei verschoben, koennen aeltere Staende in manchen
+  Browsern nicht mehr gefunden werden - die Datei am besten liegen
+  lassen, wo sie ist.
+
+Empfohlene Browser: Chrome, Edge oder Firefox in aktueller Fassung.
+Benoetigt WebGL2.

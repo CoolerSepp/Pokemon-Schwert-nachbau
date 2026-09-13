@@ -12,7 +12,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "verify": "npm run typecheck && npm run test"
+    "verify": "npm run typecheck && npm run test && npm run build && npm run build:offline && npm run test:e2e",
+    "build:offline": "tsc --noEmit && node tools/build_offline.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
