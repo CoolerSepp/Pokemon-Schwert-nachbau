@@ -20,6 +20,36 @@
         </div>
       </div>
     </div>
+    <script>
+      // Diese Datei ist der Einstiegspunkt fuer den Entwicklungsserver und
+      // laedt TypeScript-Module. Ueber "file://" kann der Browser das nicht -
+      // dann bliebe nur ein haengender Ladebildschirm. Deshalb hier ein
+      // klarer Hinweis auf die spielbare Einzeldatei.
+      if (window.location.protocol === 'file:') {
+        document.addEventListener('DOMContentLoaded', function () {
+          var screenEl = document.getElementById('boot-screen');
+          if (!screenEl) return;
+          screenEl.innerHTML = ''
+            + '<div style="max-width:640px;margin:12vh auto;padding:28px 32px;'
+            + 'font-family:system-ui,sans-serif;line-height:1.7;color:#e8eef5;'
+            + 'background:#161c26;border:1px solid #2e3947;border-radius:14px">'
+            + '<h1 style="margin:0 0 12px;font-size:26px;letter-spacing:2px">AETHERIA</h1>'
+            + '<p style="margin:0 0 18px;color:#9fb4c8">Diese Datei ist nur der '
+            + 'Einstiegspunkt fuer die Entwicklung und braucht einen Server.</p>'
+            + '<p style="margin:0 0 10px"><strong>Zum Spielen:</strong> oeffne im '
+            + 'selben Ordner die Datei</p>'
+            + '<p style="margin:0 0 18px"><a href="release/Aetheria.html" '
+            + 'style="color:#7fc44b;font-size:18px;font-weight:700">release/Aetheria.html</a></p>'
+            + '<p style="margin:0;color:#9fb4c8">Sie enthaelt das vollstaendige Spiel '
+            + 'in einer einzigen Datei - ohne Server und ohne Installation.</p>'
+            + '</div>';
+          screenEl.setAttribute(
+            'style',
+            'position:fixed;inset:0;z-index:99;overflow:auto;background:#0d1117',
+          );
+        });
+      }
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -83,6 +83,24 @@ test.describe('Offline-Fassung', () => {
     expect(errors, errors.join('\n')).toEqual([]);
   });
 
+  test('weist von den Einstiegsdateien im Projekt auf die Spielfassung hin', async ({ page }) => {
+    test.setTimeout(120_000);
+    const projectRoot = path.resolve(here, '../..');
+
+    // index.html ist die Entwicklerdatei: ueber file:// laedt sie keine
+    // Module und muss deshalb den Weg zur spielbaren Datei zeigen.
+    await page.goto(pathToFileURL(path.join(projectRoot, 'index.html')).href);
+    await page.waitForTimeout(1200);
+    await expect(page.locator('#boot-screen')).toContainText('release/Aetheria.html');
+    const link = page.locator('#boot-screen a');
+    await expect(link).toHaveAttribute('href', 'release/Aetheria.html');
+
+    // SPIELEN.html leitet direkt weiter.
+    await page.goto(pathToFileURL(path.join(projectRoot, 'SPIELEN.html')).href);
+    await waitForGame(page);
+    expect(await run(page, (c) => c.game.world.areaId)).toBe('home_bedroom');
+  });
+
   test('enthaelt alles in einer einzigen Datei', () => {
     const html = fs.readFileSync(htmlPath, 'utf8');
     expect(html).not.toContain('type="module"');

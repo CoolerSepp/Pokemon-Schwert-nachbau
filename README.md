@@ -12,6 +12,12 @@ Musikstuecke oder Texte aus einem anderen Spiel verwendet.
 2. `Aetheria.html` doppelklicken.
 3. Beim ersten Klick oder Tastendruck startet der Ton.
 
+Wer stattdessen das ganze Projekt als ZIP heruntergeladen hat, oeffnet
+`SPIELEN.html` im Hauptordner (leitet weiter) oder direkt
+`release/Aetheria.html`. Die Datei `index.html` im Hauptordner ist **nicht**
+zum Spielen gedacht - sie ist der Einstiegspunkt des Entwicklungsservers und
+zeigt beim direkten Oeffnen einen Hinweis auf die richtige Datei.
+
 Die HTML-Datei enthaelt das komplette Spiel - kein Server, keine
 Internetverbindung, keine weiteren Dateien. Benoetigt wird ein aktueller
 Browser mit WebGL2 (Chrome, Edge oder Firefox).
