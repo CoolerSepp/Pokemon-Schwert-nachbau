@@ -1594,8 +1594,8 @@
   {
    "id": "hammerstadt_bauer",
    "pos": [
-    46.68,
-    51.01
+    73.71,
+    24.44
    ],
    "facing": 3.141592653589793,
    "name": "Baeuerin",
@@ -1681,8 +1681,8 @@
    "id": "hs_muskel",
    "item": "muskelband",
    "pos": [
-    195.0,
-    187.2
+    222.3,
+    152.1
    ],
    "quantity": 1,
    "hidden": false

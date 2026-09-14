@@ -1404,8 +1404,8 @@
   {
    "id": "geisterruine_bauer",
    "pos": [
-    42.61,
-    49.61
+    67.28,
+    23.77
    ],
    "facing": 3.141592653589793,
    "name": "Baeuerin",
@@ -1491,8 +1491,8 @@
    "id": "gr_disk",
    "item": "td14",
    "pos": [
-    191.1,
-    85.8
+    206.7,
+    42.9
    ],
    "quantity": 1,
    "hidden": false

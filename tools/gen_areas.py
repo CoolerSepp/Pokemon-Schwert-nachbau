@@ -116,6 +116,16 @@ BUILDING_SIZE = {
     "lab": 13, "station": 14, "tower": 8, "warehouse": 18, "ruin": 13,
 }
 
+# Requisiten mit Kollisionskoerper (siehe PropFactory). Figuren und
+# Gegenstaende duerfen nicht darin stehen.
+BLOCKING_PROPS = {
+    "tree", "pine", "palm", "deadTree", "rock", "boulder", "crystal", "stump",
+    "fence", "hedge", "sign", "lamp", "barrel", "crate", "cart", "well",
+    "bench", "mailbox", "pillar", "statue", "stalagmite", "cactus", "snowman",
+    "pipe", "container", "torch", "haystack", "scarecrow", "woodpile", "stall",
+    "planter", "windmill", "trough", "beehive", "sack", "ladder",
+}
+
 EAST = math.pi / 2     # Tuer zeigt nach +X
 WEST = -math.pi / 2    # Tuer zeigt nach -X
 SOUTH = math.pi        # Tuer zeigt nach -Z
@@ -1280,7 +1290,7 @@ def make_city(city_id, name, biome, size, seed, map_pos, description,
       + list(extra_props)
 
     farm_npcs = [
-        npc(f"{city_id}_bauer", w * 0.19, d * 0.24, SOUTH, name="Baeuerin",
+        npc(f"{city_id}_bauer", w * 0.3, d * 0.115, SOUTH, name="Baeuerin",
             dialogue="ort_bauer", wander=4,
             appearance={"skin": "#d8b08a", "hair": "#6b4f2b", "shirt": "#7a9b4b",
                         "pants": "#5f4a33", "accent": "#e0d8b8", "hat": "beanie"}),
@@ -1633,7 +1643,7 @@ make_city(
         npc("hs_guide", 63, 24, SOUTH, name="Werkmeister", dialogue="hammerstadt_guide"),
         trainer_npc("hs_t1", 96, 60, WEST, "Mechaniker Ruben", "mechaniker_ruben", "#8f8f8a"),
     ],
-    items=[item("hs_disk", "td07", 28, 26, 1), item("hs_muskel", "muskelband", 100, 96, 1)],
+    items=[item("hs_disk", "td07", 28, 26, 1), item("hs_muskel", "muskelband", 114, 78, 1)],
     weather=("clear", "cloudy", "rain", "fog"),
     music="industrial",
 )
@@ -1669,7 +1679,7 @@ make_city(
     extra_npcs=[
         npc("fa_guide", 57, 62, SOUTH, name="Stadtfuehrerin", dialogue="funkenau_guide"),
         trainer_npc("fa_t1", 86, 44, WEST, "Technikerin Ilva", "technikerin_ilva", "#e0cf4b"),
-        npc("rivale_fa", 57, 70, 0, name="Rivale Jorin", trainer="rivale_3",
+        npc("rivale_fa", 44, 62, 0, name="Rivale Jorin", trainer="rivale_3",
             minStoryStage=8, maxStoryStage=9, appearance={"skin": "#d8b08a", "hair": "#c24b4b", "shirt": "#4b8f7a", "pants": "#3f3f4a", "accent": "#f0e0c4", "hat": "cap", "height": 1.01}),
     ],
     items=[item("fa_disk", "td04", 26, 88, 1), item("fa_magnet", "magnetkern", 98, 60, 1)],
@@ -1968,7 +1978,7 @@ make_city(
         npc("gr_guide", 58, 24, SOUTH, name="Chronistin", dialogue="geisterruine_guide"),
         trainer_npc("gr_t1", 88, 62, WEST, "Grabwaechter Idris", "grabwaechter_idris", "#6b4f8f"),
     ],
-    items=[item("gr_nebel", "nebelkerze", 26, 90, 1), item("gr_disk", "td14", 98, 44, 1)],
+    items=[item("gr_nebel", "nebelkerze", 26, 90, 1), item("gr_disk", "td14", 106, 22, 1)],
     weather=("fog", "cloudy", "rain"),
     music="ruins",
 )
@@ -2476,6 +2486,30 @@ def main():
                     warnings.append(
                         f"{a['id']}: Requisite '{pr['kind']}' steckt im Grundriss "
                         f"von '{b.get('label') or b['kind']}'")
+
+    # Figuren und Gegenstaende duerfen nicht in einem Gebaeude oder in einer
+    # Requisite stecken. Im Spiel steht die Figur dann in der Wand und ist
+    # nicht ansprechbar - das faellt sonst erst im langen Browsertest auf.
+    for a in AREAS:
+        for what, entries in (("NPC", a["npcs"]), ("Gegenstand", a["items"])):
+            for e in entries:
+                ex, ez = e["pos"]
+                for b in a["buildings"]:
+                    # Etwas kleiner als die halbe Schaetzflaeche: die
+                    # Schaetzung ist grosszuegig, an ihrem Rand steht die
+                    # Figur noch vor dem Haus statt darin.
+                    r = BUILDING_SIZE.get(b["kind"], 10) * b.get("scale", 1.0) * 0.42
+                    if abs(ex - b["pos"][0]) < r and abs(ez - b["pos"][1]) < r:
+                        problems.append(
+                            f"{a['id']}: {what} '{e['id']}' steckt im Gebaeude "
+                            f"'{b.get('label') or b['kind']}'")
+                for pr in a["props"]:
+                    if pr["kind"] not in BLOCKING_PROPS:
+                        continue
+                    if math.dist(pr["pos"], [ex, ez]) < 1.6:
+                        problems.append(
+                            f"{a['id']}: {what} '{e['id']}' steckt in der "
+                            f"Requisite '{pr['kind']}'")
 
     # Aussengebiete muessen in beide Richtungen begehbar sein - eine Stadt
     # ohne Rueckweg ist eine Sackgasse und faellt sonst erst beim Spielen auf.

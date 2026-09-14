@@ -184,9 +184,17 @@ test.describe('Offline-Fassung', () => {
         return false;
       });
       if (done) break;
-      await page.waitForTimeout(70);
+      // Auf den naechsten Bildlauf warten statt auf eine feste Zeit: dieser
+      // Rechner rendert nur wenige Bilder je Sekunde, und die Kampfanzeige
+      // verarbeitet je Bild eine Eingabe. Mit fester Wartezeit lief der
+      // Test dem Spiel davon und der Kampf war nie zu Ende.
+      const before = await run(page, (c) => c.game.loop.frames);
+      await page.waitForFunction(
+        (f) => (window as any).__CONTROLLER__.game.loop.frames > (f as number) + 1,
+        before, { timeout: 8000 },
+      ).catch(() => undefined);
     }
-    await page.waitForTimeout(1200);
+    await page.waitForTimeout(1500);
     expect(await run(page, (c) => c.game.mode), 'Kampf endete nicht').toBe('world');
 
     // Speichern - auf file:// uebernimmt der localStorage-Pfad.
