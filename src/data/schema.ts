@@ -523,6 +523,10 @@ export interface BuildingPlacement {
   blockedText?: string;
 }
 
+/** Feldfruechte fuer Acker- und Gartenflaechen. */
+export const CROP_KINDS = ['wheat', 'corn', 'vegetable', 'lavender'] as const;
+export type CropKind = (typeof CROP_KINDS)[number];
+
 export interface AreaData {
   id: string;
   name: string;
@@ -559,6 +563,21 @@ export interface AreaData {
   grassZones?: { x: number; z: number; width: number; depth: number; density?: number }[];
   /** Wasserzonen. */
   waterZones?: { x: number; z: number; width: number; depth: number }[];
+  /**
+   * Felder: Getreide, Mais, Gemuese, Lavendel.
+   *
+   * Reine Optik - man laeuft hindurch. Ein Acker, der wie eine Mauer
+   * wirkt, waere fuer den Spieler nur ein Hindernis ohne Erklaerung; die
+   * Begrenzung uebernehmen Zaeune und Hecken als eigene Requisiten.
+   */
+  cropZones?: {
+    x: number; z: number; width: number; depth: number;
+    crop?: CropKind;
+    /** Reihenabstand in Metern (Standard 1.0). */
+    spacing?: number;
+    /** Ausrichtung der Reihen in Radiant (Standard 0 = entlang X). */
+    rotation?: number;
+  }[];
   spawnTable?: SpawnEntry[];
   /** Maximale gleichzeitige wilde Kreaturen. */
   maxWild?: number;

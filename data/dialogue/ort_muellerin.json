@@ -1,0 +1,16 @@
+{
+ "id": "ort_muellerin",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Hoerst du die Fluegel? Solange die sich drehen, gibt es Mehl.",
+    "Bei Windstille mahle ich von Hand. Das dauert."
+   ],
+   "speaker": "Muellerin"
+  }
+ ]
+}

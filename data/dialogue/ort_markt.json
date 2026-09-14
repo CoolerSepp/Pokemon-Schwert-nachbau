@@ -1,0 +1,16 @@
+{
+ "id": "ort_markt",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Frisch vom Feld, direkt vom Hof am Ortsrand!",
+    "Wenn du etwas fuer deine Kreaturen suchst - das Warenlager ist drueben."
+   ],
+   "speaker": "Marktfrau"
+  }
+ ]
+}

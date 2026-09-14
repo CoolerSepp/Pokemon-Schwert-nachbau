@@ -39,9 +39,21 @@ export class StaticBatcher {
   private readonly buckets = new Map<string, Bucket>();
   private sourceMeshes = 0;
 
-  /** Nimmt alle Meshes eines Objektbaums auf. */
-  add(object: THREE.Object3D): void {
+  /**
+   * Nimmt alle Meshes eines Objektbaums auf.
+   *
+   * `relativeTo` legt fest, in welchem Bezugssystem die Geometrien gebacken
+   * werden. Ohne Angabe ist das die Welt; fuer bewegte Teile (etwa den Arm
+   * einer Figur) muss es der bewegte Knoten selbst sein, sonst haette man
+   * die Pose des Aufbaumoments fest eingebacken.
+   */
+  add(object: THREE.Object3D, relativeTo?: THREE.Object3D): void {
     object.updateWorldMatrix(true, true);
+    let inverse: THREE.Matrix4 | null = null;
+    if (relativeTo) {
+      relativeTo.updateWorldMatrix(true, false);
+      inverse = relativeTo.matrixWorld.clone().invert();
+    }
     object.traverse((child) => {
       const mesh = child as THREE.Mesh;
       if (!mesh.isMesh || !mesh.visible) return;
@@ -63,7 +75,9 @@ export class StaticBatcher {
         this.buckets.set(key, bucket);
       }
       const baked = geometry.clone();
-      baked.applyMatrix4(mesh.matrixWorld);
+      baked.applyMatrix4(inverse
+        ? inverse.clone().multiply(mesh.matrixWorld)
+        : mesh.matrixWorld);
       // Nur die Attribute behalten, die alle Geometrien gemeinsam haben.
       for (const name of Object.keys(baked.attributes)) {
         if (name !== 'position' && name !== 'normal' && name !== 'uv') {

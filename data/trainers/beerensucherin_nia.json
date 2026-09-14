@@ -1,0 +1,41 @@
+{
+ "id": "beerensucherin_nia",
+ "name": "Beerensucherin Nia",
+ "trainerClass": "Sammlerin",
+ "ai": "basic",
+ "team": [
+  {
+   "species": "knollknospe",
+   "level": 9
+  },
+  {
+   "species": "giftkappe",
+   "level": 9
+  }
+ ],
+ "rewardBase": 70,
+ "dialogue": {
+  "intro": [
+   "Pssst - ich suche hier Beeren. Und Herausforderungen.",
+   "Du siehst nach beidem aus."
+  ],
+  "defeat": [
+   "Nimm den Waldweg, dort waechst das meiste."
+  ],
+  "victory": [
+   "Der Wald behaelt seine Beeren."
+  ],
+  "postBattle": [
+   "Im Unterholz liegt mehr, als man von oben sieht."
+  ]
+ },
+ "appearance": {
+  "skin": "#e8c19b",
+  "hair": "#5f3a2b",
+  "shirt": "#7a4f8f",
+  "pants": "#4a5f33",
+  "accent": "#e0c4e8",
+  "hat": "beanie",
+  "height": 0.93
+ }
+}

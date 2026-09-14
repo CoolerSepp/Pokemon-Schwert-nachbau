@@ -274,20 +274,36 @@ export function buildTerrainMesh(
  * dem Wetter folgt.
  */
 /**
- * Baut die Fernkulisse: zwei Bergketten hinter dem begehbaren Gebiet.
+ * Baut die Fernkulisse: drei gestaffelte Bergketten hinter dem Spielfeld.
  *
  * Ohne sie endet die Welt am Rand des Spielfelds und der Blick faellt ins
  * Leere - man kann nicht "in die Landschaft schauen". Die Ketten liegen
- * ausserhalb des Spielfelds, tragen keine Kollision und bestehen aus zwei
- * zusammengefassten Meshes, kosten also zwei Zeichenaufrufe.
+ * ausserhalb des Spielfelds, tragen keine Kollision und bestehen aus je
+ * einem zusammengefassten Mesh, kosten also drei Zeichenaufrufe.
  *
  * Die Hoehen kommen aus Rauschen, das auf dem Kreis abgetastet wird - so
  * schliesst die Kette nahtlos und hat trotzdem unregelmaessige Gipfel.
+ * Zerklueftet wird die Silhouette durch "ridged noise": dessen Spitzen
+ * ergeben Grate statt der weichen Buckel von reinem fBm.
  */
 const BACKDROP_LAYERS = [
-  // Naehere Kette: kraeftiger. Ferne Kette: hoeher, blasser, weiter weg.
-  { radius: 1.05, offset: 40, height: 26, spread: 34, blend: 0.32, freq: 3.2 },
-  { radius: 1.35, offset: 130, height: 78, spread: 90, blend: 0.6, freq: 1.9 },
+  // Vorgelagerte Huegel: begruent, niedrig, dicht am Spielfeld. Sie
+  // verdecken den Fuss der Hauptkette und geben dem Horizont Staffelung.
+  {
+    radius: 1.0, offset: 34, rise: 0.1, spread: 48,
+    blend: 0.12, freq: 3.4, ridge: 0.3, snowLine: 9, segments: 96, base: -8,
+  },
+  // Hauptkette: die Berge, die man sehen soll - Fels mit Schneegipfeln.
+  {
+    radius: 1.22, offset: 120, rise: 0.2, spread: 140,
+    blend: 0.32, freq: 2.0, ridge: 0.78, snowLine: 1.05, segments: 144, base: -30,
+  },
+  // Fernkette: schliesst den Horizont ab und lugt zwischen den Gipfeln der
+  // Hauptkette hervor.
+  {
+    radius: 1.6, offset: 280, rise: 0.2, spread: 230,
+    blend: 0.55, freq: 1.3, ridge: 0.85, snowLine: 1.1, segments: 112, base: -60,
+  },
 ] as const;
 
 /** Aussenradius der Kulisse - der Himmel muss weiter reichen als sie. */
@@ -306,30 +322,62 @@ export function buildBackdrop(
   group.name = 'backdrop';
   const noise = new ValueNoise2D(seed + 4211);
 
-  const layers = BACKDROP_LAYERS.map((l) => ({
-    ...l, radius: innerRadius * l.radius + l.offset, height: l.height * heightScale,
-  }));
-
-  for (let li = 0; li < layers.length; li++) {
-    const layer = layers[li]!;
-    const segments = 128;
+  for (let li = 0; li < BACKDROP_LAYERS.length; li++) {
+    const spec = BACKDROP_LAYERS[li]!;
+    // Die Hoehe haengt am eigenen Abstand: nur so sehen die Ketten aus
+    // jedem Gebiet gleich gross aus. Mit fester Hoehe in Metern fuellten
+    // sie im kleinen Startdorf den halben Himmel und verschwanden im
+    // grossen Wildland zu einem Streifen.
+    const radius = innerRadius * spec.radius + spec.offset;
+    const layer = { ...spec, radius, height: radius * spec.rise * heightScale };
+    const segments = layer.segments;
     const positions: number[] = [];
     const colors: number[] = [];
 
-    // Farben: unten Vegetation, oben Fels/Schnee - beide in Richtung
-    // Horizontfarbe verschoben, damit Entfernung auch ohne Nebel wirkt.
-    const haze = new THREE.Color(palette.skyBottom);
-    const low = new THREE.Color(palette.groundAlt).lerp(haze, layer.blend);
-    const high = new THREE.Color(palette.peak).lerp(haze, layer.blend * 0.8);
+    // Farben: unten bewaldeter Fuss, darueber Fels, ganz oben Schnee - alle
+    // zuerst abgedunkelt und dann in Richtung Horizontfarbe verschoben.
+    // Ohne die Abdunklung sind die Ketten heller als der Himmel dahinter
+    // und wirken wie Nebelbaenke statt wie Berge.
+    // Der Dunstton ist bewusst dunkler als der Horizonthimmel: mischt man
+    // direkt zur Himmelsfarbe, wird jede Kette heller als der Himmel und
+    // loest sich auf. Ferne Berge sind blaugrau, nicht weiss.
+    const haze = new THREE.Color(palette.skyBottom).multiplyScalar(0.7);
+    const foot = new THREE.Color(palette.groundAlt).multiplyScalar(0.58)
+      .lerp(haze, layer.blend);
+    const rock = new THREE.Color(palette.slope).multiplyScalar(0.68)
+      .lerp(haze, layer.blend * 0.9);
+    const snow = new THREE.Color(palette.peak).lerp(new THREE.Color('#f6fbff'), 0.6)
+      .lerp(haze, layer.blend * 0.35);
     const tmp = new THREE.Color();
 
-    const heightAt = (i: number): number => {
+    const crestAt = (i: number): number => {
       const a = (i / segments) * Math.PI * 2;
-      const n = noise.fbm(
-        Math.cos(a) * layer.freq + 10, Math.sin(a) * layer.freq + 10, 3, 2, 0.45,
-      );
-      const ridge = 1 - Math.abs(noise.sample(Math.cos(a) * 1.3, Math.sin(a) * 1.3) * 2 - 1);
-      return layer.height * (0.35 + n * 0.9 + ridge * 0.35);
+      const cx = Math.cos(a);
+      const cz = Math.sin(a);
+      // Zwei Anteile: weiche Grundform (fBm) und scharfe Grate (ridged).
+      // Der Anteil "ridge" entscheidet, wie zerklueftet die Kette wirkt.
+      const soft = noise.fbm(cx * layer.freq + 10, cz * layer.freq + 10, 3, 2, 0.45);
+      const sharp = noise.ridged(cx * layer.freq * 0.75 + 31, cz * layer.freq * 0.75 + 31, 3);
+      // Feine Zacken auf der Kammlinie - sonst wirkt die Silhouette gewalzt.
+      const jag = noise.sample(cx * layer.freq * 4.5 + 77, cz * layer.freq * 4.5 + 77);
+      const shape = soft * (1 - layer.ridge) * 1.15
+        + Math.pow(sharp, 1.35) * layer.ridge * 1.5
+        + jag * 0.12;
+      // Fester Sockel und gestauchte Spanne: ohne den Sockel fiel die Kette
+      // in manchen Himmelsrichtungen auf 44 % der Nennhoehe ab und war dort
+      // vom Spielfeld aus nur noch ein Streifen am Horizont.
+      return layer.height * (0.6 + shape * 0.66);
+    };
+
+    // Kammlinie einmal abtasten und die Schattierung aus der Steigung
+    // ZWISCHEN den Nachbarn bilden. Eine pro Segment konstante Helligkeit
+    // ergab sichtbare senkrechte Streifen ueber die ganze Kette.
+    const crest: number[] = [];
+    for (let i = 0; i < segments; i++) crest.push(crestAt(i));
+    const heightAt = (i: number): number => crest[((i % segments) + segments) % segments]!;
+    const shadeAt = (i: number): number => {
+      const rise = (heightAt(i + 1) - heightAt(i - 1)) / (layer.height * 0.8);
+      return 1 + Math.max(-1, Math.min(1, rise)) * 0.16;
     };
 
     // Schattierung steckt in den Scheitelfarben, nicht im Licht: eine
@@ -338,6 +386,17 @@ export function buildBackdrop(
     const push = (x: number, y: number, z: number, c: THREE.Color, shade = 1): void => {
       positions.push(x, y, z);
       colors.push(c.r * shade, c.g * shade, c.b * shade);
+    };
+
+    /** Flankenfarbe nach Hoehe: Wiese, Fels, Schnee. */
+    const colorFor = (h: number): THREE.Color => {
+      // Die tatsaechlichen Kammhoehen liegen im Mittel bei etwa dem
+      // Einfachen der Nennhoehe und reichen bis zum Doppelten; die
+      // Schwellen sind darauf bezogen, sonst ist die ganze Kette Fels.
+      const t = h / layer.height;
+      const rockMix = clamp01((t - 0.5) / 0.55);
+      const snowMix = clamp01((t - layer.snowLine) / 0.22);
+      return tmp.copy(foot).lerp(rock, rockMix).lerp(snow, snowMix).clone();
     };
 
     for (let i = 0; i < segments; i++) {
@@ -352,30 +411,43 @@ export function buildBackdrop(
       const p = (r: number, a: number, y: number): [number, number, number] =>
         [Math.cos(a) * r, y, Math.sin(a) * r];
 
-      const base0 = p(rIn, a0, -6);
-      const base1 = p(rIn, a1, -6);
+      const base0 = p(rIn, a0, layer.base);
+      const base1 = p(rIn, a1, layer.base);
       const peak0 = p(rMid, a0, h0);
       const peak1 = p(rMid, a1, h1);
       const back0 = p(rOut, a0, h0 * 0.28);
       const back1 = p(rOut, a1, h1 * 0.28);
 
-      const cPeak0 = tmp.copy(low).lerp(high, Math.min(1, h0 / layer.height)).clone();
-      const cPeak1 = tmp.copy(low).lerp(high, Math.min(1, h1 / layer.height)).clone();
+      const cPeak0 = colorFor(h0);
+      const cPeak1 = colorFor(h1);
+
+      // Schattierung entlang der Kammlinie: steigende Flanken werden heller,
+      // fallende dunkler. Eine Kette aus gleich hellen Dreiecken sieht sonst
+      // aus wie eine ausgeschnittene Pappsilhouette, egal wie zackig sie ist.
+      const s0 = shadeAt(i);
+      const s1 = shadeAt(i + 1);
 
       // Vorderflanke (zur Kamera hin, heller).
-      push(...base0, low); push(...peak1, cPeak1); push(...peak0, cPeak0);
-      push(...base0, low); push(...base1, low); push(...peak1, cPeak1);
+      push(...base0, foot, s0); push(...peak1, cPeak1, s1); push(...peak0, cPeak0, s0);
+      push(...base0, foot, s0); push(...base1, foot, s1); push(...peak1, cPeak1, s1);
       // Rueckflanke - verhindert eine offene Silhouette bei hohem Blickwinkel.
       const back = 0.78;
-      push(...peak0, cPeak0, back); push(...peak1, cPeak1, back); push(...back1, low, back);
-      push(...peak0, cPeak0, back); push(...back1, low, back); push(...back0, low, back);
+      push(...peak0, cPeak0, s0 * back); push(...peak1, cPeak1, s1 * back);
+      push(...back1, foot, s1 * back);
+      push(...peak0, cPeak0, s0 * back); push(...back1, foot, s1 * back);
+      push(...back0, foot, s0 * back);
     }
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+    // Bewusst ohne Szenennebel: dessen Reichweite haengt vom Geraeteprofil
+    // ab und lag auf schwachen Geraeten bei ~390 m. Die Kulisse beginnt
+    // aber erst bei 250 m - sie loeste sich dort vollstaendig in Dunst auf.
+    // Die Luftperspektive steckt stattdessen in den Scheitelfarben, die
+    // Tageszeit im Materialton (siehe WorldManager.applyLighting).
     const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-      vertexColors: true, side: THREE.DoubleSide, fog: true,
+      vertexColors: true, side: THREE.DoubleSide, fog: false,
     }));
     mesh.name = `backdrop-${li}`;
     mesh.frustumCulled = false;
@@ -383,6 +455,67 @@ export function buildBackdrop(
     group.add(mesh);
   }
   return group;
+}
+
+/**
+ * Flache Landflaeche unter und um das Spielfeld herum.
+ *
+ * Das Terrain endet an der Gebietsgrenze. Ohne diese Schuerze klafft
+ * zwischen Gebietsrand und Bergfuss ein Streifen, durch den man den
+ * blanken Himmel sieht - die Welt wirkt dann wie eine schwebende Platte.
+ * Die Scheibe liegt unter dem tiefsten Punkt des Terrains, verdeckt also
+ * nichts Begehbares, und kostet einen Zeichenaufruf.
+ */
+export function buildGroundSkirt(
+  palette: BiomePalette, radius: number, y: number,
+): THREE.Mesh {
+  const segments = 64;
+  const rings = 4;
+  const positions: number[] = [];
+  const colors: number[] = [];
+  // Gleicher gedaempfter Dunstton wie bei der Bergkulisse: mit der reinen
+  // Himmelsfarbe lag zwischen Gebietsrand und Bergen ein weisses Band.
+  const haze = new THREE.Color(palette.skyBottom).multiplyScalar(0.78);
+  const near = new THREE.Color(palette.groundAlt).multiplyScalar(0.88);
+  const tmp = new THREE.Color();
+
+  const colorAt = (t: number): THREE.Color =>
+    tmp.copy(near).lerp(haze, clamp01(t * t * 0.6)).clone();
+
+  for (let r = 0; r < rings; r++) {
+    const t0 = r / rings;
+    const t1 = (r + 1) / rings;
+    // Die Ringe werden nach aussen breiter: nahe Flaechen brauchen mehr
+    // Stuetzstellen fuer den Farbverlauf als der ferne Rand.
+    const r0 = radius * t0 * t0;
+    const r1 = radius * t1 * t1;
+    const c0 = colorAt(t0);
+    const c1 = colorAt(t1);
+    for (let i = 0; i < segments; i++) {
+      const a0 = (i / segments) * Math.PI * 2;
+      const a1 = ((i + 1) / segments) * Math.PI * 2;
+      const p = (rad: number, a: number): [number, number, number] =>
+        [Math.cos(a) * rad, 0, Math.sin(a) * rad];
+      const push = (v: [number, number, number], c: THREE.Color): void => {
+        positions.push(v[0], v[1], v[2]);
+        colors.push(c.r, c.g, c.b);
+      };
+      push(p(r0, a0), c0); push(p(r1, a0), c1); push(p(r1, a1), c1);
+      push(p(r0, a0), c0); push(p(r1, a1), c1); push(p(r0, a1), c0);
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+  const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+    vertexColors: true, side: THREE.DoubleSide, fog: false,
+  }));
+  mesh.name = 'groundSkirt';
+  mesh.position.y = y;
+  mesh.frustumCulled = false;
+  mesh.renderOrder = -2;
+  return mesh;
 }
 
 export function buildSky(top: string, bottom: string, radius: number): THREE.Mesh {

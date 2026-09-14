@@ -18,6 +18,7 @@ const log = Logger.scope('World');
 /** Himmelsfarben bei tiefer Nacht. */
 const NIGHT_ZENITH = new THREE.Color('#0d1430');
 const NIGHT_HORIZON = new THREE.Color('#243352');
+const WHITE = new THREE.Color('#ffffff');
 
 export interface WorldEvents extends Record<string, unknown> {
   areaLoaded: { area: AreaRuntime; spawnPoint: string };
@@ -293,11 +294,24 @@ export class WorldManager {
       * (area.data.indoor ? 1 : 2.2)
       * this.renderer.profile.drawDistance * weatherFactor.fogRange;
 
+    // Bergkulisse und ferne Landflaeche: sie liegen ausserhalb der
+    // Nebelreichweite und bekommen die Tageszeit als Materialton. Bei
+    // truebem Wetter zieht der Ton zusaetzlich zur Wetterfarbe, sonst
+    // staende die Ferne bei Nebel und Sturm unbeeindruckt klar da.
+    const night = this.nightAmount();
+    this.tmpColor.copy(lighting.skyTint).lerp(WHITE, 0.6)
+      .lerp(NIGHT_HORIZON, night * 0.72)
+      .lerp(
+        new THREE.Color(weatherFactor.fogColor),
+        (1 - weatherFactor.fogRange) * 0.7,
+      )
+      .multiplyScalar(0.72 + weatherFactor.sky * 0.28);
+    area.setDistantTint(this.tmpColor);
+
     if (area.sky) {
       const mat = area.sky.material as THREE.ShaderMaterial;
       const top = mat.uniforms.topColor!.value as THREE.Color;
       const bottom = mat.uniforms.bottomColor!.value as THREE.Color;
-      const night = this.nightAmount();
 
       // Zenit bleibt blau und wird zur Nacht hin dunkel; nur der Horizont
       // faerbt sich warm. Wird fuer beides derselbe Ton benutzt, sieht der

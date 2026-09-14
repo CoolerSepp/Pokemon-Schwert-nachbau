@@ -1,0 +1,40 @@
+{
+ "id": "felsgaenger_tom",
+ "name": "Felsgaenger Tom",
+ "trainerClass": "Wanderer",
+ "ai": "defensive",
+ "team": [
+  {
+   "species": "kieselkopf",
+   "level": 8
+  },
+  {
+   "species": "sandwuehler",
+   "level": 8
+  }
+ ],
+ "rewardBase": 64,
+ "dialogue": {
+  "intro": [
+   "Durch die Felsenge kommt nur, wer sie sich verdient.",
+   "Zwei Schritte weiter ist kein Platz zum Ausweichen - also hier."
+  ],
+  "defeat": [
+   "Geh durch. Der Stein laesst dich passieren."
+  ],
+  "victory": [
+   "Die Enge bleibt zu. Versuch es noch einmal."
+  ],
+  "postBattle": [
+   "Hinter der Enge teilt sich der Weg. Beide Seiten fuehren nach Norden."
+  ]
+ },
+ "appearance": {
+  "skin": "#c99a6b",
+  "hair": "#4a4a4a",
+  "shirt": "#8a8272",
+  "pants": "#4a4a52",
+  "accent": "#c9c0ae",
+  "hat": "beanie"
+ }
+}

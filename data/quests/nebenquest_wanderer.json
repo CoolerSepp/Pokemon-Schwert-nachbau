@@ -2,7 +2,7 @@
  "id": "nebenquest_wanderer",
  "name": "Die Pruefung der Route 1",
  "kind": "side",
- "description": "Besiege alle fuenf Trainer auf dem Weg nach Quellheim.",
+ "description": "Besiege alle acht Trainer auf dem Weg nach Quellheim.",
  "autoStartStage": 3,
  "steps": [
   {
@@ -44,18 +44,42 @@
     "kind": "defeatTrainer",
     "trainer": "steigwanderin_bea"
    }
+  },
+  {
+   "id": "tom",
+   "description": "Felsenge: Besiege Felsgaenger Tom.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "felsgaenger_tom"
+   }
+  },
+  {
+   "id": "nia",
+   "description": "Waldweg: Besiege Beerensucherin Nia.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "beerensucherin_nia"
+   }
+  },
+  {
+   "id": "ole",
+   "description": "Serpentinen: Besiege Serpentinenlaeufer Ole.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "serpentinenlaeufer_ole"
+   }
   }
  ],
  "rewards": {
-  "money": 1200,
+  "money": 1800,
   "items": [
    {
     "item": "aether",
-    "quantity": 2
+    "quantity": 3
    },
    {
     "item": "superkugel",
-    "quantity": 5
+    "quantity": 8
    }
   ]
  }

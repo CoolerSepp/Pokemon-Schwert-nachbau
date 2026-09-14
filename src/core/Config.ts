@@ -37,7 +37,11 @@ export const GameConfig = {
 
   camera: {
     fov: 58,
-    near: 0.15,
+    // Die Fernebene folgt jetzt der Bergkulisse und liegt je nach Gebiet bei
+    // ueber 1300 Metern. Eine etwas weiter vorn liegende Nahebene haelt die
+    // Tiefengenauigkeit stabil; naeher als 25 cm kommt die Kamera nie an
+    // Geometrie heran (Kollisionsradius 0.34).
+    near: 0.25,
     far: 900,
     distance: 7.2,
     minDistance: 2.6,
@@ -51,6 +55,8 @@ export const GameConfig = {
     mouseSensitivity: 0.0045,
     padSensitivity: 2.6,
     zoomSpeed: 0.0055,
+    /** Mindestabstand der Kamera ueber dem Gelaende. */
+    groundClearance: 0.55,
     collisionRadius: 0.34,
     collisionPadding: 0.25,
   },
@@ -76,7 +82,7 @@ export const GameConfig = {
      * die Zahl der Kacheln - und damit der Zeichenaufrufe - waechst mit der
      * Flaeche.
      */
-    propBatchTileSize: 76,
+    propBatchTileSize: 100,
   },
 
   time: {

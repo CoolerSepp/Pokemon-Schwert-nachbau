@@ -196,13 +196,15 @@ export class BattleScene {
     if (!options.indoor) {
       // Weit genug weg, damit die Berge als Ferne gelesen werden und nicht
       // als Wand direkt hinter der Buehne.
-      const inner = 120;
+      // Der Innenradius liegt hinter der Bodenscheibe (Radius 190), sonst
+      // wuechsen die Huegel mitten aus der Kampfflaeche heraus.
+      const inner = 175;
       this.sky = buildSky(
         palette.skyTop, palette.skyBottom,
         backdropOuterRadius(inner) + 180,
       );
       this.scene.add(this.sky);
-      this.backdrop = buildBackdrop(palette, inner, 7331, 0.9);
+      this.backdrop = buildBackdrop(palette, inner, 7331, 0.85);
       this.backdrop.position.y = -1.5;
       this.scene.add(this.backdrop);
     }

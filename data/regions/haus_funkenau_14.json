@@ -1,0 +1,134 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "haus_funkenau_14_bewohner",
+   "pos": [
+    8.84,
+    6.82
+   ],
+   "facing": 3.141592653589793,
+   "name": "Bewohner",
+   "dialogue": "haus_bewohner",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#8f6b3f",
+    "pants": "#3f3f4a",
+    "accent": "#e0d8c4",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "funkenau",
+   "trigger": {
+    "x": 5.3,
+    "z": 0,
+    "width": 2.4,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_haus_funkenau_14"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    6.5,
+    3.0
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    6.5,
+    2.4
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "haus_funkenau_14",
+ "name": "Wohnhaus",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  13,
+  11
+ ],
+ "seed": 2154,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "home",
+ "interiorStyle": {
+  "wallColor": "#dcd0e0",
+  "floorColor": "#9b7346",
+  "accentColor": "#6b4f8f",
+  "wallHeight": 3.0,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 6.5,
+    "z": 0,
+    "width": 2.4,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "sofa",
+    "pos": [
+     10.0,
+     6.4
+    ],
+    "rotation": -1.5707963267948966
+   },
+   {
+    "kind": "tv",
+    "pos": [
+     2.6,
+     6.4
+    ],
+    "rotation": 1.5707963267948966
+   },
+   {
+    "kind": "rug",
+    "pos": [
+     6.5,
+     6.4
+    ]
+   },
+   {
+    "kind": "table",
+    "pos": [
+     6.5,
+     8.6
+    ]
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     11.4,
+     9.0
+    ]
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     2.0,
+     9.0
+    ],
+    "rotation": 1.5707963267948966
+   }
+  ]
+ }
+}

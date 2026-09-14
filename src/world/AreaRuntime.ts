@@ -1,12 +1,13 @@
 import * as THREE from 'three';
-import type { AreaData, BuildingPlacement, PropPlacement } from '@/data/schema';
+import type { AreaData, BuildingPlacement, CropKind, PropPlacement } from '@/data/schema';
 import { GameConfig } from '@/core/Config';
 import { RNG } from '@/core/RNG';
 import { Logger } from '@/core/Logger';
 import { TerrainField, type FlattenZone } from './TerrainField';
 import { CollisionGrid } from './CollisionGrid';
 import {
-  buildTerrainMesh, buildSky, buildBackdrop, backdropOuterRadius, BIOME_PALETTES,
+  buildTerrainMesh, buildSky, buildBackdrop, backdropOuterRadius, buildGroundSkirt,
+  BIOME_PALETTES,
   type BiomePalette, type PathSegment,
 } from './TerrainMesh';
 import { PropFactory, type PropKind } from './PropFactory';
@@ -160,6 +161,10 @@ export class AreaRuntime {
   readonly sky: THREE.Mesh | null = null;
   /** Bergkulisse hinter dem Spielfeld (nur im Freien). */
   readonly backdrop: THREE.Group | null = null;
+  /** Flache Landflaeche zwischen Gebietsrand und Bergfuss. */
+  readonly groundSkirt: THREE.Mesh | null = null;
+  /** Materialien von Kulisse und Landflaeche - werden nach Tageszeit getoent. */
+  private readonly distantMaterials: THREE.MeshBasicMaterial[] = [];
   /** Radius der Himmelskugel - die Kamera muss weiter sehen als bis dorthin. */
   readonly skyRadius: number = 0;
   readonly water: THREE.Mesh | null = null;
@@ -169,6 +174,8 @@ export class AreaRuntime {
   private pathSegments: PathSegment[] = [];
   /** Requisiten vor dem Zusammenfassen. */
   private readonly propObjects: { object: THREE.Object3D; x: number; z: number }[] = [];
+  /** Gebaeude vor dem Zusammenfassen. */
+  private readonly buildingObjects: { object: THREE.Object3D; x: number; z: number }[] = [];
   private disposed = false;
 
   constructor(
@@ -200,7 +207,10 @@ export class AreaRuntime {
     }
 
     if (!data.indoor) {
-      const backdropInner = Math.max(data.size[0], data.size[1]) * 0.62;
+      // Mindestabstand: in kleinen Gebieten stuende die Kette sonst so nah,
+      // dass sie den halben Himmel fuellt. Berge sollen Ferne zeigen, nicht
+      // eine Wand hinter dem Gartenzaun sein.
+      const backdropInner = Math.max(190, Math.max(data.size[0], data.size[1]) * 0.62);
       // Der Himmel muss die Bergkulisse umschliessen, sonst ragen die
       // Gipfel durch die Himmelskugel hindurch.
       const radius = Math.max(
@@ -223,13 +233,33 @@ export class AreaRuntime {
         data.size[1] / 2,
       );
       this.root.add(this.backdrop);
+
+      // Land zwischen Gebietsrand und Bergfuss. Ohne sie sieht man dort
+      // den blanken Himmel und die Welt endet als schwebende Platte.
+      const skirtY = Math.min(
+        this.field.minHeight, this.field.waterLevel ?? Number.POSITIVE_INFINITY,
+      ) - 2;
+      this.groundSkirt = buildGroundSkirt(
+        this.palette, backdropOuterRadius(backdropInner), skirtY,
+      );
+      this.groundSkirt.position.x = data.size[0] / 2;
+      this.groundSkirt.position.z = data.size[1] / 2;
+      this.root.add(this.groundSkirt);
+
+      this.backdrop.traverse((o) => {
+        const mesh = o as THREE.Mesh;
+        if (mesh.isMesh) this.distantMaterials.push(mesh.material as THREE.MeshBasicMaterial);
+      });
+      this.distantMaterials.push(this.groundSkirt.material as THREE.MeshBasicMaterial);
     }
 
     this.buildInterior();
     this.buildBuildings();
+    this.batchBuildings();
     this.buildProps();
     this.batchProps();
     this.buildGrass();
+    this.buildCrops();
     this.buildGroundDetail();
     this.blockWater();
     this.clearConnections();
@@ -448,7 +478,9 @@ export class AreaRuntime {
       const merged = batcher.build('building');
       const object = merged ?? result.object;
       this.root.add(object);
-      this.addCullable(object, x, z, GameConfig.world.propCullDistance * 2.2);
+      // Nicht einzeln kullbar machen: die Gebaeude werden gleich noch
+      // kachelweise zusammengefasst (siehe batchBuildings).
+      this.buildingObjects.push({ object, x, z });
 
       this.collision.addBox({
         x, z,
@@ -554,12 +586,37 @@ export class AreaRuntime {
    * zusammen. Die Kacheln bleiben einzeln kullbar, damit entfernte Teile des
    * Gebietes weiterhin uebersprungen werden.
    */
+  /**
+   * Fasst die Gebaeude eines Ortes kachelweise zusammen.
+   *
+   * Ein Haus besteht aus einem Dutzend Materialien; neun Haeuser in einem
+   * Dorf waren deshalb rund hundert Zeichenaufrufe - mit Schattenwurf das
+   * Doppelte. Kachelweise zusammengefasst teilen sich benachbarte Haeuser
+   * ihre Materialien. Die Sichtweite bleibt groesser als bei Requisiten:
+   * Haeuser sind die Orientierungspunkte eines Ortes.
+   */
+  private batchBuildings(): void {
+    this.batchByTile(
+      this.buildingObjects, 'building',
+      GameConfig.world.propCullDistance * 2.2,
+    );
+  }
+
   private batchProps(): void {
-    if (this.propObjects.length === 0) return;
+    this.batchByTile(
+      this.propObjects, 'props', GameConfig.world.propCullDistance,
+    );
+  }
+
+  private batchByTile(
+    list: { object: THREE.Object3D; x: number; z: number }[],
+    name: string, cullDistance: number,
+  ): void {
+    if (list.length === 0) return;
     const tile = GameConfig.world.propBatchTileSize;
     const groups = new Map<string, { objects: THREE.Object3D[]; x: number; z: number }>();
 
-    for (const entry of this.propObjects) {
+    for (const entry of list) {
       const key = `${Math.floor(entry.x / tile)}:${Math.floor(entry.z / tile)}`;
       let group = groups.get(key);
       if (!group) {
@@ -571,12 +628,12 @@ export class AreaRuntime {
       group.z += entry.z;
     }
 
-    const before = this.propObjects.length;
+    const before = list.length;
     let batches = 0;
     for (const group of groups.values()) {
       const batcher = new StaticBatcher();
       for (const object of group.objects) batcher.add(object);
-      const merged = batcher.build('props');
+      const merged = batcher.build(name);
       for (const object of group.objects) this.root.remove(object);
       if (!merged) continue;
       this.root.add(merged);
@@ -585,13 +642,10 @@ export class AreaRuntime {
       const centerZ = group.z / group.objects.length;
       // Reichweite um die halbe Kacheldiagonale erweitern, damit am Rand
       // stehende Objekte nicht zu frueh verschwinden.
-      this.addCullable(
-        merged, centerX, centerZ,
-        GameConfig.world.propCullDistance + tile * 0.75,
-      );
+      this.addCullable(merged, centerX, centerZ, cullDistance + tile * 0.75);
     }
-    this.propObjects.length = 0;
-    log.debug(`Gebiet "${this.data.id}": ${before} Requisiten in ${batches} Stapeln`);
+    list.length = 0;
+    log.debug(`Gebiet "${this.data.id}": ${before} Objekte "${name}" in ${batches} Stapeln`);
   }
 
   private placeProp(placement: PropPlacement, rng: RNG): void {
@@ -643,6 +697,60 @@ export class AreaRuntime {
     this.root.add(mesh);
   }
 
+  /**
+   * Felder aus Getreide, Mais, Gemuese oder Lavendel.
+   *
+   * Gepflanzt wird in Reihen, nicht zufaellig gestreut: ein Acker ist
+   * angelegt, und die Reihen sind das, woran man ihn erkennt. Jede
+   * Feldfrucht eines Gebiets landet in einer Instanz-Zeichnung.
+   */
+  private buildCrops(): void {
+    const zones = this.data.cropZones ?? [];
+    if (zones.length === 0) return;
+    const rng = new RNG(`crops-${this.data.id}`);
+    const byCrop = new Map<CropKind, { x: number; y: number; z: number; scale: number }[]>();
+
+    for (const zone of zones) {
+      const crop = zone.crop ?? 'wheat';
+      const spacing = Math.max(0.35, zone.spacing ?? 1);
+      const rotation = zone.rotation ?? 0;
+      const cos = Math.cos(rotation);
+      const sin = Math.sin(rotation);
+      let list = byCrop.get(crop);
+      if (!list) { list = []; byCrop.set(crop, list); }
+
+      const rows = Math.max(1, Math.round(zone.depth / spacing));
+      const cols = Math.max(1, Math.round(zone.width / (spacing * 0.55)));
+      // Obergrenze je Feld: ein sehr grosses Feld soll die Bildrate nicht
+      // ueber die Instanzzahl auffressen.
+      const step = Math.max(1, Math.ceil((rows * cols) / 9000));
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c += step) {
+          const lx = (c / (cols - 1 || 1) - 0.5) * zone.width + rng.float(-0.12, 0.12);
+          const lz = (r / (rows - 1 || 1) - 0.5) * zone.depth + rng.float(-0.1, 0.1);
+          const x = zone.x + lx * cos + lz * sin;
+          const z = zone.z - lx * sin + lz * cos;
+          if (this.field.isUnderWater(x, z)) continue;
+          // Wege, Gebaeude und Hindernisse bleiben frei - sonst waechst
+          // das Getreide mitten durch eine Hauswand.
+          if (this.collision.isBlocked(x, z)) continue;
+          if (this.distanceToPath(x, z) < 1.4) continue;
+          list.push({
+            x, y: this.field.heightAt(x, z) - 0.05, z,
+            scale: rng.float(0.82, 1.18),
+          });
+        }
+      }
+    }
+
+    for (const [crop, positions] of byCrop) {
+      if (positions.length === 0) continue;
+      const mesh = this.props.createCropInstances(crop, positions);
+      this.root.add(mesh);
+      log.debug(`Gebiet "${this.data.id}": Feld "${crop}" mit ${positions.length} Pflanzen`);
+    }
+  }
+
   /** Tiefes Wasser blockieren, damit der Spieler nicht hineinlaeuft. */
   private blockWater(): void {
     if (this.field.waterLevel === null) return;
@@ -653,6 +761,17 @@ export class AreaRuntime {
         if (this.field.heightAt(x, z) < deepThreshold) this.collision.setBlocked(x, z, true);
       }
     }
+  }
+
+  /**
+   * Faerbt Bergkulisse und Landflaeche nach Tageszeit und Wetter.
+   *
+   * Beide haengen nicht im Szenennebel (dessen Reichweite ist geraete-
+   * abhaengig und kuerzer als der Abstand zur Kulisse). Ohne diesen Ton
+   * blieben die Berge nachts taghell.
+   */
+  setDistantTint(color: THREE.Color): void {
+    for (const material of this.distantMaterials) material.color.copy(color);
   }
 
   private addCullable(object: THREE.Object3D, x: number, z: number, distance: number): void {
@@ -732,9 +851,15 @@ export class AreaRuntime {
       const mesh = obj as THREE.Mesh;
       // Nur gebietsspezifische Geometrien freigeben; geteilte bleiben im Cache.
       const ownGeometry = mesh.name === 'terrain' || mesh.name === 'water'
-        || mesh.name === 'sky' || mesh.parent?.name === 'props'
+        || mesh.name === 'sky' || mesh.name === 'groundSkirt'
+        || mesh.name.startsWith('backdrop-')
+        || mesh.parent?.name === 'props'
         || mesh.parent?.name === 'building';
       if (mesh.geometry && ownGeometry) mesh.geometry.dispose();
+      // Kulisse und Landflaeche haben jeweils ein eigenes Material.
+      if (mesh.name === 'groundSkirt' || mesh.name.startsWith('backdrop-')) {
+        (mesh.material as THREE.Material).dispose();
+      }
       if (mesh.name === 'sky') {
         const mat = mesh.material as THREE.Material | THREE.Material[];
         if (Array.isArray(mat)) mat.forEach((m) => m.dispose());

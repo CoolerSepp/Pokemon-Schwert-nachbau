@@ -327,6 +327,35 @@ tree("haus_turm",
     ], speaker="Turmwaechter"),
 )
 
+# Bewohner der Hoefe, Felder und Marktplaetze in den Orten.
+tree("ort_bauer",
+    node("start", [
+        "Das Korn steht gut dieses Jahr. Der Regen kam zur rechten Zeit.",
+        "Geh ruhig durch die Reihen, du trittst schon nichts kaputt.",
+    ], speaker="Baeuerin"),
+)
+
+tree("ort_markt",
+    node("start", [
+        "Frisch vom Feld, direkt vom Hof am Ortsrand!",
+        "Wenn du etwas fuer deine Kreaturen suchst - das Warenlager ist drueben.",
+    ], speaker="Marktfrau"),
+)
+
+tree("ort_feld",
+    node("start", [
+        "Die Vogelscheuche haelt die Federflaeume ab. Meistens jedenfalls.",
+        "Gestern sass eines direkt auf ihrem Hut und hat sich ausgeruht.",
+    ], speaker="Feldhueter"),
+)
+
+tree("ort_muellerin",
+    node("start", [
+        "Hoerst du die Fluegel? Solange die sich drehen, gibt es Mehl.",
+        "Bei Windstille mahle ich von Hand. Das dauert.",
+    ], speaker="Muellerin"),
+)
+
 tree("route1_pfadfinder",
     node("start", [
         "Der Weg nach Quellheim ist laenger, als er aussieht.",
@@ -426,6 +455,48 @@ trainer(
     post=["Im hohen Gras findest du auch seltene Kaefer. Guck genau hin."],
     appearance={"skin": "#f0cfa8", "hair": "#8f5f2b", "shirt": "#9bc44b",
                 "pants": "#4a5f33", "accent": "#e0e8a0", "hat": "beanie", "height": 0.9},
+)
+
+trainer(
+    "felsgaenger_tom", "Felsgaenger Tom", "Wanderer", "defensive",
+    [mon("kieselkopf", 8), mon("sandwuehler", 8)],
+    reward=64,
+    intro=[
+        "Durch die Felsenge kommt nur, wer sie sich verdient.",
+        "Zwei Schritte weiter ist kein Platz zum Ausweichen - also hier."],
+    defeat=["Geh durch. Der Stein laesst dich passieren."],
+    victory=["Die Enge bleibt zu. Versuch es noch einmal."],
+    post=["Hinter der Enge teilt sich der Weg. Beide Seiten fuehren nach Norden."],
+    appearance={"skin": "#c99a6b", "hair": "#4a4a4a", "shirt": "#8a8272",
+                "pants": "#4a4a52", "accent": "#c9c0ae", "hat": "beanie"},
+)
+
+trainer(
+    "beerensucherin_nia", "Beerensucherin Nia", "Sammlerin", "basic",
+    [mon("knollknospe", 9), mon("giftkappe", 9)],
+    reward=70,
+    intro=[
+        "Pssst - ich suche hier Beeren. Und Herausforderungen.",
+        "Du siehst nach beidem aus."],
+    defeat=["Nimm den Waldweg, dort waechst das meiste."],
+    victory=["Der Wald behaelt seine Beeren."],
+    post=["Im Unterholz liegt mehr, als man von oben sieht."],
+    appearance={"skin": "#e8c19b", "hair": "#5f3a2b", "shirt": "#7a4f8f",
+                "pants": "#4a5f33", "accent": "#e0c4e8", "hat": "beanie", "height": 0.93},
+)
+
+trainer(
+    "serpentinenlaeufer_ole", "Serpentinenlaeufer Ole", "Wanderer", "aggressive",
+    [mon("federflaum", 9), mon("windfuchs", 10)],
+    reward=88,
+    intro=[
+        "Drei Kehren hoch, drei Kehren runter - jeden Tag.",
+        "Mal sehen, ob dir auf halber Hoehe die Puste ausgeht."],
+    defeat=["Sauber. Oben wartet der letzte Anstieg."],
+    victory=["Der Berg gewinnt meistens."],
+    post=["Nach der letzten Kehre siehst du schon die Daecher von Quellheim."],
+    appearance={"skin": "#d8b08a", "hair": "#2b2b2b", "shirt": "#3f7f9b",
+                "pants": "#5f4a33", "accent": "#d8e4f0", "hat": "cap", "height": 1.02},
 )
 
 trainer(
@@ -598,11 +669,11 @@ QUESTS.append({
     "rewards": {"money": 800, "items": [{"item": "hyperkugel", "quantity": 3}]},
 })
 
-# Die fuenf Trainer auf Route 1 sind die erste zusammenhaengende
-# Herausforderung des Spiels - je einer pro Abschnitt der Strecke.
+# Die acht Trainer auf Route 1 sind die erste zusammenhaengende
+# Herausforderung des Spiels - mindestens einer pro Abschnitt der Strecke.
 QUESTS.append({
     "id": "nebenquest_wanderer", "name": "Die Pruefung der Route 1", "kind": "side",
-    "description": "Besiege alle fuenf Trainer auf dem Weg nach Quellheim.",
+    "description": "Besiege alle acht Trainer auf dem Weg nach Quellheim.",
     "autoStartStage": 3,
     "steps": [
         {"id": "kai", "description": "Wiese: Besiege Wanderer Kai.",
@@ -615,9 +686,15 @@ QUESTS.append({
          "completion": {"kind": "defeatTrainer", "trainer": "kaeferfreundin_ida"}},
         {"id": "bea", "description": "Anstieg: Besiege Steigwanderin Bea.",
          "completion": {"kind": "defeatTrainer", "trainer": "steigwanderin_bea"}},
+        {"id": "tom", "description": "Felsenge: Besiege Felsgaenger Tom.",
+         "completion": {"kind": "defeatTrainer", "trainer": "felsgaenger_tom"}},
+        {"id": "nia", "description": "Waldweg: Besiege Beerensucherin Nia.",
+         "completion": {"kind": "defeatTrainer", "trainer": "beerensucherin_nia"}},
+        {"id": "ole", "description": "Serpentinen: Besiege Serpentinenlaeufer Ole.",
+         "completion": {"kind": "defeatTrainer", "trainer": "serpentinenlaeufer_ole"}},
     ],
-    "rewards": {"money": 1200, "items": [{"item": "aether", "quantity": 2},
-                                        {"item": "superkugel", "quantity": 5}]},
+    "rewards": {"money": 1800, "items": [{"item": "aether", "quantity": 3},
+                                        {"item": "superkugel", "quantity": 8}]},
 })
 
 # ==========================================================================

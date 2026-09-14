@@ -53,6 +53,8 @@ export class TerrainField {
   private readonly heights: Float32Array;
   private minH = Infinity;
   private maxH = -Infinity;
+  private readonly noise: ValueNoise2D;
+  private readonly detailNoise: ValueNoise2D;
 
   constructor(private readonly options: TerrainOptions) {
     this.width = options.width;
@@ -62,6 +64,8 @@ export class TerrainField {
     this.cols = Math.max(2, Math.ceil(options.width / options.resolution) + 1);
     this.rows = Math.max(2, Math.ceil(options.depth / options.resolution) + 1);
     this.heights = new Float32Array(this.cols * this.rows);
+    this.noise = new ValueNoise2D(options.seed);
+    this.detailNoise = new ValueNoise2D(options.seed + 7919);
     this.generate();
   }
 
@@ -87,34 +91,37 @@ export class TerrainField {
     });
   }
 
-  private generate(): void {
+  /**
+   * Gelaendehoehe ohne Wege und Bauplaetze.
+   *
+   * Wird auch von der Wegglaettung gebraucht: ein Weg soll sich an die
+   * Landschaft anlegen, nicht an eine feste Hoehe.
+   */
+  private rawHeight(x: number, z: number): number {
     const o = this.options;
-    const noise = new ValueNoise2D(o.seed);
-    const detail = new ValueNoise2D(o.seed + 7919);
+    let h = o.baseHeight;
+    if (!o.flat && o.amplitude > 0) {
+      // Kleines "gain" laesst die hohen Oktaven kaum durch: das Gelaende
+      // besteht dadurch aus wenigen grossen Formen statt aus vielen
+      // kleinen Buckeln. Genau die haben vorher jede Fernsicht zerhackt.
+      const n = o.ridged
+        ? this.noise.ridged(x * o.frequency, z * o.frequency, o.octaves)
+        : this.noise.fbm(x * o.frequency, z * o.frequency, o.octaves, 2, 0.38);
+      h += (n - 0.4) * o.amplitude;
+      // Sehr flache, langwellige Unruhe gegen eine zu glatte Oberflaeche.
+      h += (this.detailNoise.fbm(x * o.frequency * 2.1, z * o.frequency * 2.1, 2) - 0.5)
+        * o.amplitude * 0.05;
+    }
+    if (o.cliffBorder) h += this.borderRise(x, z);
+    return h;
+  }
 
+  private generate(): void {
     for (let r = 0; r < this.rows; r++) {
       const z = (r / (this.rows - 1)) * this.depth;
       for (let c = 0; c < this.cols; c++) {
         const x = (c / (this.cols - 1)) * this.width;
-        let h = o.baseHeight;
-
-        if (!o.flat && o.amplitude > 0) {
-          // Kleines "gain" laesst die hohen Oktaven kaum durch: das Gelaende
-          // besteht dadurch aus wenigen grossen Formen statt aus vielen
-          // kleinen Buckeln. Genau die haben vorher jede Fernsicht zerhackt.
-          const n = o.ridged
-            ? noise.ridged(x * o.frequency, z * o.frequency, o.octaves)
-            : noise.fbm(x * o.frequency, z * o.frequency, o.octaves, 2, 0.38);
-          h += (n - 0.4) * o.amplitude;
-          // Sehr flache, langwellige Unruhe gegen eine zu glatte Oberflaeche.
-          h += (detail.fbm(x * o.frequency * 2.1, z * o.frequency * 2.1, 2) - 0.5)
-            * o.amplitude * 0.05;
-        }
-
-        if (o.cliffBorder) h += this.borderRise(x, z);
-        h = this.applyPaths(x, z, h);
-
-        this.heights[r * this.cols + c] = h;
+        this.heights[r * this.cols + c] = this.applyPaths(x, z, this.rawHeight(x, z));
       }
     }
 
@@ -198,8 +205,14 @@ export class TerrainField {
   }
 
   /**
-   * Glaettet das Terrain entlang von Wegen.
-   * Wege interpolieren zur Hoehe des naechstgelegenen Streckenpunkts.
+   * Zieht das Gelaende entlang der Wege glatt.
+   *
+   * Frueher wurde jeder Weg auf "baseHeight" gezogen. Damit war jede Route
+   * schnurgerade eben und schnitt eine Rinne durch die Huegel: ein
+   * "Anstieg" gewann keinen einzigen Meter Hoehe und am Wegrand standen
+   * Kanten. Jetzt ist das Ziel die geglaettete Gelaendehoehe auf der
+   * Wegachse - der Weg rollt mit der Landschaft, ist aber quer zur
+   * Laufrichtung eben.
    */
   private applyPaths(x: number, z: number, height: number): number {
     const o = this.options;
@@ -214,10 +227,42 @@ export class TerrainField {
         if (dist > half + 3.5) continue;
         // Innerhalb des Weges vollstaendig eben, aussen weicher Uebergang.
         const blend = 1 - smoothstep(half, half + 3.5, dist);
-        result = result * (1 - blend) + o.baseHeight * blend;
+        result = result * (1 - blend) + this.pathHeight(x, z, a, b) * blend;
       }
     }
     return result;
+  }
+
+  /**
+   * Geglaettete Hoehe der Wegachse am naechstgelegenen Punkt.
+   *
+   * Es wird nicht nur ein Punkt abgetastet, sondern ein kurzes Stueck der
+   * Achse gemittelt. Ein einzelner Punkt uebernaehme das feine Rauschen und
+   * der Weg wuerde wellig.
+   */
+  private pathHeight(
+    x: number, z: number, a: [number, number], b: [number, number],
+  ): number {
+    const dx = b[0] - a[0];
+    const dz = b[1] - a[1];
+    const lenSq = dx * dx + dz * dz;
+    const t = lenSq > 1e-6
+      ? clamp(((x - a[0]) * dx + (z - a[1]) * dz) / lenSq, 0, 1)
+      : 0;
+    const px = a[0] + dx * t;
+    const pz = a[1] + dz * t;
+    const len = Math.sqrt(lenSq) || 1;
+    const ux = dx / len;
+    const uz = dz / len;
+
+    let sum = 0;
+    let weight = 0;
+    for (let i = -3; i <= 3; i++) {
+      const w = 4 - Math.abs(i);
+      sum += this.rawHeight(px + ux * i * 4, pz + uz * i * 4) * w;
+      weight += w;
+    }
+    return sum / weight;
   }
 
   /** Hoehe an beliebiger Weltposition (bilinear interpoliert). */

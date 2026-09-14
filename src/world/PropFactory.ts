@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import type { AssetManager } from '@/engine/AssetManager';
 import type { TextureKind } from '@/engine/TextureFactory';
 import { RNG } from '@/core/RNG';
+import type { CropKind } from '@/data/schema';
 import type { BiomePalette } from './TerrainMesh';
 
 export interface PropResult {
@@ -26,8 +27,27 @@ export const PROP_KINDS = [
   'crystal', 'stump', 'fence', 'sign', 'lamp', 'barrel', 'crate', 'cart',
   'well', 'bench', 'mailbox', 'pillar', 'statue', 'stalagmite', 'mushroom',
   'cactus', 'snowman', 'pipe', 'container', 'lilypad', 'reed', 'torch',
+  // Laendliches Inventar: Hoefe, Felder und Marktplaetze.
+  'haystack', 'scarecrow', 'woodpile', 'stall', 'laundry', 'planter',
+  'hedge', 'windmill', 'trough', 'beehive', 'sack', 'ladder',
 ] as const;
 export type PropKind = (typeof PROP_KINDS)[number];
+
+/**
+ * Masse und Farben je Feldfrucht.
+ *
+ * "ear" ist die Aehre oben auf dem Halm; bei Gemuese entfaellt sie, dort
+ * traegt die Pflanze ihre Farbe im Blattwerk.
+ */
+const CROP_SPECS: Record<CropKind, {
+  base: string; tip: string; height: number; width: number;
+  blades: number; ear: number;
+}> = {
+  wheat: { base: '#c9a94b', tip: '#e6d07a', height: 1.15, width: 0.42, blades: 3, ear: 0.3 },
+  corn: { base: '#5f8f3f', tip: '#8fbf5a', height: 1.9, width: 0.55, blades: 3, ear: 0.34 },
+  vegetable: { base: '#4f8a42', tip: '#7fb84b', height: 0.5, width: 0.5, blades: 2, ear: 0 },
+  lavender: { base: '#7f7fb8', tip: '#b8a8e0', height: 0.7, width: 0.3, blades: 3, ear: 0.22 },
+};
 
 /** Anzahl fester Blattfarbtoene je Biom. */
 const LEAF_VARIANTS = 4;
@@ -85,6 +105,18 @@ export class PropFactory {
       case 'lilypad': return this.lilypad(scale);
       case 'reed': return this.reed(rng, scale);
       case 'torch': return this.torch(scale);
+      case 'haystack': return this.haystack(rng, scale);
+      case 'scarecrow': return this.scarecrow(scale);
+      case 'woodpile': return this.woodpile(rng, scale);
+      case 'stall': return this.stall(rng, scale);
+      case 'laundry': return this.laundry(rng, scale);
+      case 'planter': return this.planter(rng, palette, scale);
+      case 'hedge': return this.hedge(rng, palette, scale);
+      case 'windmill': return this.windmill(scale);
+      case 'trough': return this.trough(scale);
+      case 'beehive': return this.beehive(scale);
+      case 'sack': return this.sack(rng, scale);
+      case 'ladder': return this.ladder(scale);
     }
   }
 
@@ -513,19 +545,263 @@ export class PropFactory {
    * Erzeugt hohes Gras als InstancedMesh.
    * Ein einziger Draw Call fuer tausende Bueschel.
    */
-  createGrassInstances(
+  // ------------------------------------------------------- Hof und Feld
+
+  private haystack(rng: RNG, scale: number): PropResult {
+    const g = new THREE.Group();
+    const r = rng.float(0.8, 1.0) * scale;
+    const h = r * 1.5;
+    // Rundballen: liegender Zylinder mit Bindegurten.
+    g.add(this.mesh('cylinder', [r, h, r], '#d8b866', [0, r, 0],
+      { rot: [0, 0, Math.PI / 2], detail: 2, texture: 'sand', repeat: 2 }));
+    for (const x of [-h * 0.22, h * 0.22]) {
+      g.add(this.mesh('cylinder', [r * 1.02, 0.06, r * 1.02], '#a88a4a', [x, r, 0],
+        { rot: [0, 0, Math.PI / 2], detail: 2 }));
+    }
+    return {
+      object: g, collisionRadius: 0, height: r * 2,
+      collisionBox: { width: h * 1.05, depth: r * 2.1 },
+    };
+  }
+
+  private scarecrow(scale: number): PropResult {
+    const g = new THREE.Group();
+    const h = 2.1 * scale;
+    g.add(this.mesh('box', [0.1, h, 0.1], DARK_WOOD, [0, h * 0.5, 0], { texture: 'plank' }));
+    g.add(this.mesh('box', [1.3 * scale, 0.09, 0.09], DARK_WOOD, [0, h * 0.72, 0]));
+    // Hemd, Kopf und Hut - der Kopf ist ein Strohsack, kein Kuerbis.
+    g.add(this.mesh('box', [0.62 * scale, 0.7 * scale, 0.3 * scale], '#a8483f',
+      [0, h * 0.62, 0]));
+    g.add(this.mesh('sphere', [0.24 * scale, 0.26 * scale, 0.24 * scale], '#d8bd7a',
+      [0, h * 0.95, 0], { detail: 1 }));
+    g.add(this.mesh('cone', [0.42 * scale, 0.3 * scale, 0.42 * scale], '#8a6b3f',
+      [0, h * 1.1, 0], { detail: 1 }));
+    return { object: g, collisionRadius: 0.4 * scale, height: h * 1.2 };
+  }
+
+  private woodpile(rng: RNG, scale: number): PropResult {
+    const g = new THREE.Group();
+    const w = 1.8 * scale;
+    const logR = 0.14 * scale;
+    // Drei Lagen gestapelter Scheite, jede leicht versetzt.
+    for (let row = 0; row < 3; row++) {
+      const count = 5 - row;
+      for (let i = 0; i < count; i++) {
+        const x = (i - (count - 1) / 2) * logR * 2.1;
+        g.add(this.mesh('cylinder', [logR, w, logR],
+          row % 2 === 0 ? TRUNK_BROWN : '#7a5a3a',
+          [x, logR + row * logR * 1.9, 0],
+          { rot: [Math.PI / 2, 0, rng.float(-0.04, 0.04)], detail: 1, texture: 'bark' }));
+      }
+    }
+    return {
+      object: g, collisionRadius: 0, height: logR * 6,
+      collisionBox: { width: 1.6 * scale, depth: w * 1.05 },
+    };
+  }
+
+  private stall(rng: RNG, scale: number): PropResult {
+    const g = new THREE.Group();
+    const w = 2.4 * scale;
+    const d = 1.4 * scale;
+    const h = 2.2 * scale;
+    for (const x of [-w / 2 + 0.1, w / 2 - 0.1]) {
+      for (const z of [-d / 2 + 0.1, d / 2 - 0.1]) {
+        g.add(this.mesh('box', [0.09, h, 0.09], DARK_WOOD, [x, h * 0.5, z]));
+      }
+    }
+    // Ladentisch mit Waren und ein gestreiftes Dach.
+    g.add(this.mesh('box', [w, 0.1, d], '#a8804f', [0, 0.95 * scale, 0],
+      { texture: 'plank', repeat: 2 }));
+    const cloth = ['#c4563f', '#3f7fbf', '#4b8f5f'][rng.int(0, 2)]!;
+    g.add(this.mesh('box', [w * 1.12, 0.09, d * 1.25], cloth, [0, h, 0], { rot: [0.12, 0, 0] }));
+    for (let i = 0; i < 3; i++) {
+      g.add(this.mesh('sphere', [0.16 * scale, 0.16 * scale, 0.16 * scale],
+        ['#d8553f', '#e0a83f', '#7fb84b'][i]!,
+        [(i - 1) * 0.5 * scale, 1.06 * scale, 0], { detail: 1 }));
+    }
+    return {
+      object: g, collisionRadius: 0, height: h,
+      collisionBox: { width: w, depth: d },
+    };
+  }
+
+  private laundry(rng: RNG, scale: number): PropResult {
+    const g = new THREE.Group();
+    const w = 3.2 * scale;
+    const h = 1.9 * scale;
+    for (const x of [-w / 2, w / 2]) {
+      g.add(this.mesh('box', [0.08, h, 0.08], DARK_WOOD, [x, h * 0.5, 0]));
+      g.add(this.mesh('box', [0.5 * scale, 0.07, 0.07], DARK_WOOD, [x, h * 0.92, 0]));
+    }
+    g.add(this.mesh('box', [w, 0.03, 0.03], '#d8d2c4', [0, h * 0.9, 0]));
+    // Vier Waeschestuecke haengen leicht unterschiedlich tief.
+    const colors = ['#e8e4d8', '#7fb0d8', '#d88fa8', '#bfd88f'];
+    for (let i = 0; i < 4; i++) {
+      const x = (i - 1.5) * w * 0.22;
+      const drop = rng.float(0.42, 0.62) * scale;
+      g.add(this.mesh('plane', [0.5 * scale, drop, 0.02], colors[i]!,
+        [x, h * 0.9 - drop / 2, 0]));
+    }
+    return { object: g, collisionRadius: 0, height: h };
+  }
+
+  private planter(rng: RNG, palette: BiomePalette, scale: number): PropResult {
+    const g = new THREE.Group();
+    const w = 1.8 * scale;
+    const d = 1.0 * scale;
+    g.add(this.mesh('box', [w, 0.42 * scale, d], '#8a6b45', [0, 0.21 * scale, 0],
+      { texture: 'plank', repeat: 2 }));
+    g.add(this.mesh('box', [w * 0.92, 0.08, d * 0.86], '#4a3a2a', [0, 0.42 * scale, 0]));
+    // Gemuesereihen: kleine Buschel in zwei Reihen.
+    for (let i = 0; i < 6; i++) {
+      const x = ((i % 3) - 1) * w * 0.3;
+      const z = (Math.floor(i / 3) - 0.5) * d * 0.45;
+      g.add(this.mesh('sphere', [0.19 * scale, 0.17 * scale, 0.19 * scale],
+        palette.grass, [x, 0.5 * scale, z], { detail: 1 }));
+      if (rng.chance(0.4)) {
+        g.add(this.mesh('sphere', [0.07 * scale, 0.07 * scale, 0.07 * scale],
+          '#d8553f', [x, 0.62 * scale, z], { detail: 0 }));
+      }
+    }
+    return {
+      object: g, collisionRadius: 0, height: 0.7 * scale,
+      collisionBox: { width: w, depth: d },
+    };
+  }
+
+  private hedge(rng: RNG, palette: BiomePalette, scale: number): PropResult {
+    const g = new THREE.Group();
+    const w = 2.4 * scale;
+    // Hoeher als Augenhoehe: eine 1,35 m hohe Hecke sieht von der
+    // Schulterkamera aus wie ein Busch, und ein Labyrinth aus Buescheln
+    // liest sich nicht als Labyrinth.
+    const h = 1.95 * scale;
+    const d = 0.95 * scale;
+    // Nur leicht dunkler als das Gras: mit -0.16 Helligkeit lagen die
+    // sonnenabgewandten Seiten unter reinem Umgebungslicht fast bei
+    // Schwarz - eine Heckenreihe sah dann aus wie eine Mauer aus Teer.
+    const leaf = new THREE.Color(palette.grass).offsetHSL(-0.02, 0.08, -0.07);
+    const body = `#${leaf.getHexString()}`;
+    g.add(this.mesh('box', [w, h, d], body, [0, h * 0.5, 0]));
+    // Heller Schnitt oben und dunkler Sockel: das gibt der Hecke Volumen.
+    g.add(this.mesh('box', [w * 1.03, 0.12 * scale, d * 1.04],
+      `#${leaf.clone().offsetHSL(0, 0, 0.08).getHexString()}`, [0, h, 0]));
+    g.add(this.mesh('box', [w * 1.01, 0.22 * scale, d * 1.02],
+      `#${leaf.clone().offsetHSL(0, 0, -0.06).getHexString()}`, [0, 0.11 * scale, 0]));
+    // Aufgesetzte Ballen brechen die Quaderform auf. Die Helligkeit kommt
+    // aus drei festen Stufen, nicht frei gewuerfelt: jede neue Farbe ist ein
+    // eigenes Material, und Materialien, die sich nur um ein Prozent
+    // unterscheiden, sprengen das Zusammenfassen der Requisiten.
+    const step = rng.int(0, 2);
+    for (let i = 0; i < 3; i++) {
+      const x = (i - 1) * w * 0.32;
+      const shade = ((i + step) % 3) * 0.035 - 0.02;
+      g.add(this.mesh('sphere', [w * 0.22, h * 0.22, d * 0.62],
+        `#${leaf.clone().offsetHSL(0, 0, shade).getHexString()}`,
+        [x, h * 1.01, 0], { detail: 1 }));
+    }
+    return {
+      object: g, collisionRadius: 0, height: h * 1.2,
+      // Wie beim Zaun grosszuegig: das Belegungsgitter hat 0,5-m-Zellen.
+      collisionBox: { width: w + 0.2, depth: d + 0.25 },
+    };
+  }
+
+  private windmill(scale: number): PropResult {
+    const g = new THREE.Group();
+    const h = 7.5 * scale;
+    const r = 1.5 * scale;
+    g.add(this.mesh('cylinder', [r, h, r * 0.72], '#d8d0bd', [0, h * 0.5, 0],
+      { detail: 2, texture: 'stone', repeat: 3 }));
+    g.add(this.mesh('cone', [r * 0.95, 1.4 * scale, r * 0.95], '#7a4f3f',
+      [0, h + 0.7 * scale, 0], { detail: 2, texture: 'shingle' }));
+    // Fluegelkreuz an der Vorderseite (lokal -Z).
+    const hub = new THREE.Group();
+    hub.position.set(0, h * 0.82, -r * 0.8);
+    for (let i = 0; i < 4; i++) {
+      const arm = new THREE.Group();
+      arm.rotation.z = (i / 4) * Math.PI * 2;
+      arm.add(this.mesh('box', [0.16 * scale, 3.4 * scale, 0.12 * scale], '#8a6b45',
+        [0, 1.7 * scale, 0], { texture: 'plank', repeat: 3 }));
+      arm.add(this.mesh('box', [0.62 * scale, 2.4 * scale, 0.05 * scale], '#e8e0cc',
+        [0.3 * scale, 1.9 * scale, 0.08 * scale]));
+      hub.add(arm);
+    }
+    hub.add(this.mesh('cylinder', [0.24 * scale, 0.4 * scale, 0.24 * scale], '#5a4a3a',
+      [0, 0, 0], { rot: [Math.PI / 2, 0, 0], detail: 1 }));
+    g.add(hub);
+    g.add(this.mesh('box', [1.1 * scale, 1.9 * scale, 0.14 * scale], DARK_WOOD,
+      [0, 0.95 * scale, -r * 0.72], { texture: 'plank' }));
+    return { object: g, collisionRadius: r * 1.1, height: h + 2 * scale };
+  }
+
+  private trough(scale: number): PropResult {
+    const g = new THREE.Group();
+    const w = 1.9 * scale;
+    const d = 0.7 * scale;
+    g.add(this.mesh('box', [w, 0.5 * scale, d], '#7a5f45', [0, 0.25 * scale, 0],
+      { texture: 'plank', repeat: 2 }));
+    g.add(this.mesh('box', [w * 0.9, 0.06, d * 0.78], '#3f6f8f', [0, 0.46 * scale, 0]));
+    return {
+      object: g, collisionRadius: 0, height: 0.55 * scale,
+      collisionBox: { width: w, depth: d },
+    };
+  }
+
+  private beehive(scale: number): PropResult {
+    const g = new THREE.Group();
+    const r = 0.44 * scale;
+    for (let i = 0; i < 4; i++) {
+      g.add(this.mesh('box', [r * 2, 0.22 * scale, r * 1.7], i % 2 === 0 ? '#e0d2a8' : '#d0c090',
+        [0, 0.12 * scale + i * 0.22 * scale, 0]));
+    }
+    g.add(this.mesh('box', [r * 2.3, 0.1 * scale, r * 2], '#8a6b45', [0, 1.02 * scale, 0]));
+    return { object: g, collisionRadius: r * 1.2, height: 1.1 * scale };
+  }
+
+  private sack(rng: RNG, scale: number): PropResult {
+    const g = new THREE.Group();
+    const r = rng.float(0.3, 0.38) * scale;
+    g.add(this.mesh('capsule', [r, r * 1.1, r], '#c9b088', [0, r * 1.1, 0], { detail: 1 }));
+    g.add(this.mesh('cylinder', [r * 0.4, 0.14 * scale, r * 0.4], '#a8926b',
+      [0, r * 2.15, 0], { detail: 1 }));
+    return { object: g, collisionRadius: r * 1.15, height: r * 2.4 };
+  }
+
+  private ladder(scale: number): PropResult {
+    const g = new THREE.Group();
+    const h = 2.8 * scale;
+    for (const x of [-0.26 * scale, 0.26 * scale]) {
+      g.add(this.mesh('box', [0.08, h, 0.08], '#a8804f', [x, h * 0.5, 0], { texture: 'plank' }));
+    }
+    for (let i = 1; i < 7; i++) {
+      g.add(this.mesh('box', [0.6 * scale, 0.06, 0.06], '#8a6b45', [0, (i / 7) * h, 0]));
+    }
+    g.rotation.x = -0.14;
+    return { object: g, collisionRadius: 0.4 * scale, height: h };
+  }
+
+  /**
+   * Getreide-, Mais- und Gemuesefelder als Instanzen.
+   *
+   * Ein Feld besteht aus mehreren tausend Halmen. Als Einzelobjekte waere
+   * das unbezahlbar; als Instanz-Zeichnung kostet ein ganzes Feld einen
+   * Zeichenaufruf - dieselbe Technik wie beim hohen Gras.
+   */
+  createCropInstances(
+    crop: CropKind,
     positions: { x: number; y: number; z: number; scale: number }[],
-    palette: BiomePalette,
   ): THREE.InstancedMesh {
-    const geometry = this.assets.getGeometry('grassTuft') ?? this.buildGrassTuftGeometry();
+    const spec = CROP_SPECS[crop];
+    const geometry = this.assets.getGeometry(`crop:${crop}`)
+      ?? this.buildCropGeometry(crop);
     const material = this.assets.getMaterial({
-      color: palette.grass, flatShading: true, doubleSided: true,
+      color: spec.base, flatShading: true, doubleSided: true, vertexColors: true,
     });
     const mesh = new THREE.InstancedMesh(geometry, material, Math.max(1, positions.length));
     const dummy = new THREE.Object3D();
     const color = new THREE.Color();
-    const baseA = new THREE.Color(palette.grass);
-    const baseB = new THREE.Color(palette.grassAlt);
 
     for (let i = 0; i < positions.length; i++) {
       const p = positions[i]!;
@@ -534,7 +810,120 @@ export class PropFactory {
       dummy.scale.setScalar(p.scale);
       dummy.updateMatrix();
       mesh.setMatrixAt(i, dummy.matrix);
-      color.copy(baseA).lerp(baseB, (Math.sin(i * 12.9898) * 43758.5453) % 1);
+      // Nur Helligkeitsstreuung: den Farbverlauf traegt die Geometrie.
+      const shade = 0.88 + Math.abs((Math.sin(i * 12.9898) * 43758.5453) % 1) * 0.24;
+      color.setRGB(shade, shade, shade);
+      mesh.setColorAt(i, color);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+    mesh.castShadow = false;
+    mesh.receiveShadow = true;
+    mesh.name = `crop:${crop}`;
+    mesh.count = positions.length;
+    return mesh;
+  }
+
+  private buildCropGeometry(crop: CropKind): THREE.BufferGeometry {
+    const spec = CROP_SPECS[crop];
+    const parts: { geometry: THREE.BufferGeometry; low: number; high: number }[] = [];
+
+    /**
+     * Ein einzelner Halm: unten breit, oben spitz und leicht geneigt.
+     * Ein Rechteck sah aus wie ein Brett im Boden, nicht wie Getreide.
+     */
+    const blade = (width: number, height: number, lean: number): THREE.BufferGeometry => {
+      const plane = new THREE.PlaneGeometry(width, height, 1, 1);
+      const pos = plane.attributes.position as THREE.BufferAttribute;
+      // Scheitel 0 und 1 liegen oben: dort auf einen Punkt zusammenziehen
+      // und seitlich versetzen, das gibt den Bogen des Halms.
+      for (const i of [0, 1]) {
+        pos.setX(i, pos.getX(i) * 0.12 + lean);
+      }
+      pos.needsUpdate = true;
+      plane.translate(0, height / 2, 0);
+      return plane;
+    };
+
+    for (let i = 0; i < spec.blades; i++) {
+      const t = i / spec.blades;
+      const height = spec.height * (0.82 + 0.3 * ((i * 0.37) % 1));
+      const g = blade(spec.width * 0.34, height, spec.width * (0.18 - 0.36 * t));
+      g.rotateY(t * Math.PI + 0.4);
+      g.translate(Math.cos(t * 7.1) * spec.width * 0.2, 0, Math.sin(t * 7.1) * spec.width * 0.2);
+      parts.push({ geometry: g, low: 0.62, high: 1.0 });
+    }
+
+    if (spec.ear > 0) {
+      // Aehre bzw. Kolben: zwei gekreuzte Flaechen ganz oben, heller als
+      // der Halm - sie traegt die Farbe, an der man die Frucht erkennt.
+      for (const angle of [0, Math.PI / 2]) {
+        const ear = new THREE.PlaneGeometry(spec.width * 0.46, spec.ear, 1, 1);
+        ear.translate(0, spec.height + spec.ear * 0.35, 0);
+        ear.rotateY(angle);
+        parts.push({ geometry: ear, low: 1.0, high: 1.0 });
+      }
+    }
+
+    // Scheitelfarben: dunkel am Boden, hell an der Spitze. Ohne sie waere
+    // ein Feld eine einzige flache Farbflaeche.
+    const tip = new THREE.Color(spec.tip);
+    const base = new THREE.Color(spec.base);
+    const ratio = (a: number, b: number): number => (b > 0.02 ? Math.min(2.5, a / b) : 1);
+    const earTint: [number, number, number] = [
+      ratio(tip.r, base.r), ratio(tip.g, base.g), ratio(tip.b, base.b),
+    ];
+
+    const geometries: THREE.BufferGeometry[] = [];
+    const maxY = spec.height + spec.ear;
+    for (const part of parts) {
+      const pos = part.geometry.attributes.position as THREE.BufferAttribute;
+      const colors = new Float32Array(pos.count * 3);
+      for (let v = 0; v < pos.count; v++) {
+        const t = Math.min(1, pos.getY(v) / maxY);
+        const shade = part.low + (part.high - part.low) * t;
+        const mix = part.low === 1 ? 1 : t;
+        colors[v * 3] = shade * (1 + (earTint[0] - 1) * mix);
+        colors[v * 3 + 1] = shade * (1 + (earTint[1] - 1) * mix);
+        colors[v * 3 + 2] = shade * (1 + (earTint[2] - 1) * mix);
+      }
+      part.geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+      geometries.push(part.geometry);
+    }
+    return this.assets.registerGeometry(`crop:${crop}`, mergeGeometries(geometries));
+  }
+
+  createGrassInstances(
+    positions: { x: number; y: number; z: number; scale: number }[],
+    palette: BiomePalette,
+  ): THREE.InstancedMesh {
+    const geometry = this.assets.getGeometry('grassTuft') ?? this.buildGrassTuftGeometry();
+    const material = this.assets.getMaterial({
+      color: palette.grass, flatShading: true, doubleSided: true, vertexColors: true,
+    });
+    const mesh = new THREE.InstancedMesh(geometry, material, Math.max(1, positions.length));
+    const dummy = new THREE.Object3D();
+    const color = new THREE.Color();
+    // Die Instanzfarbe wirkt multiplikativ auf die Materialfarbe: der
+    // Zielton "grassAlt" wird deshalb als Verhaeltnis zu "grass" gesetzt.
+    const baseA = new THREE.Color(palette.grass);
+    const baseB = new THREE.Color(palette.grassAlt);
+    const ratio = (a: number, b: number): number => (b > 0.02 ? Math.min(2.2, a / b) : 1);
+    const alt: [number, number, number] = [
+      ratio(baseB.r, baseA.r), ratio(baseB.g, baseA.g), ratio(baseB.b, baseA.b),
+    ];
+
+    for (let i = 0; i < positions.length; i++) {
+      const p = positions[i]!;
+      dummy.position.set(p.x, p.y, p.z);
+      dummy.rotation.set(0, (i * 2.399963) % (Math.PI * 2), 0);
+      dummy.scale.setScalar(p.scale);
+      dummy.updateMatrix();
+      mesh.setMatrixAt(i, dummy.matrix);
+      const t = Math.abs((Math.sin(i * 12.9898) * 43758.5453) % 1);
+      color.setRGB(
+        1 + (alt[0] - 1) * t, 1 + (alt[1] - 1) * t, 1 + (alt[2] - 1) * t,
+      );
       mesh.setColorAt(i, color);
     }
     mesh.instanceMatrix.needsUpdate = true;
@@ -680,6 +1069,18 @@ export class PropFactory {
       const plane = new THREE.PlaneGeometry(0.85, 0.95, 1, 2);
       plane.translate(0, 0.475, 0);
       plane.rotateY((i / 3) * Math.PI);
+      // Unten dunkel, oben hell - das Bueschel bekommt dadurch Tiefe und
+      // das Material darf Scheitelfarben nutzen (Vorbedingung dafuer,
+      // dass die Instanzfarbe ueberhaupt sichtbar wird).
+      const pos = plane.attributes.position as THREE.BufferAttribute;
+      const colors = new Float32Array(pos.count * 3);
+      for (let v = 0; v < pos.count; v++) {
+        const shade = 0.68 + Math.min(1, pos.getY(v) / 0.95) * 0.38;
+        colors[v * 3] = shade;
+        colors[v * 3 + 1] = shade;
+        colors[v * 3 + 2] = shade;
+      }
+      plane.setAttribute('color', new THREE.BufferAttribute(colors, 3));
       geometries.push(plane);
     }
     const merged = mergeGeometries(geometries);
@@ -687,18 +1088,23 @@ export class PropFactory {
   }
 }
 
-/** Verschmilzt mehrere Geometrien zu einer (nur Position/Normal/UV). */
+/** Verschmilzt mehrere Geometrien zu einer (Position/Normal/UV/Farbe). */
 export function mergeGeometries(list: THREE.BufferGeometry[]): THREE.BufferGeometry {
   const out = new THREE.BufferGeometry();
   let vertexCount = 0;
   let indexCount = 0;
+  // Scheitelfarben nur uebernehmen, wenn ALLE Teile welche haben - sonst
+  // blieben die uebrigen Scheitel schwarz und schluckten das Material.
+  let withColor = list.length > 0;
   for (const g of list) {
     vertexCount += g.attributes.position.count;
     indexCount += g.index ? g.index.count : g.attributes.position.count;
+    if (!g.attributes.color) withColor = false;
   }
   const positions = new Float32Array(vertexCount * 3);
   const normals = new Float32Array(vertexCount * 3);
   const uvs = new Float32Array(vertexCount * 2);
+  const colors = withColor ? new Float32Array(vertexCount * 3) : null;
   const indices = new Uint32Array(indexCount);
 
   let vOffset = 0;
@@ -707,6 +1113,7 @@ export function mergeGeometries(list: THREE.BufferGeometry[]): THREE.BufferGeome
     const pos = g.attributes.position as THREE.BufferAttribute;
     const nrm = g.attributes.normal as THREE.BufferAttribute | undefined;
     const uv = g.attributes.uv as THREE.BufferAttribute | undefined;
+    const col = g.attributes.color as THREE.BufferAttribute | undefined;
     for (let i = 0; i < pos.count; i++) {
       positions[(vOffset + i) * 3] = pos.getX(i);
       positions[(vOffset + i) * 3 + 1] = pos.getY(i);
@@ -719,6 +1126,11 @@ export function mergeGeometries(list: THREE.BufferGeometry[]): THREE.BufferGeome
       if (uv) {
         uvs[(vOffset + i) * 2] = uv.getX(i);
         uvs[(vOffset + i) * 2 + 1] = uv.getY(i);
+      }
+      if (colors && col) {
+        colors[(vOffset + i) * 3] = col.getX(i);
+        colors[(vOffset + i) * 3 + 1] = col.getY(i);
+        colors[(vOffset + i) * 3 + 2] = col.getZ(i);
       }
     }
     if (g.index) {
@@ -735,6 +1147,7 @@ export function mergeGeometries(list: THREE.BufferGeometry[]): THREE.BufferGeome
   out.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   out.setAttribute('normal', new THREE.BufferAttribute(normals, 3));
   out.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+  if (colors) out.setAttribute('color', new THREE.BufferAttribute(colors, 3));
   out.setIndex(new THREE.BufferAttribute(indices, 1));
   out.computeBoundingSphere();
   return out;

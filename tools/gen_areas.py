@@ -53,6 +53,12 @@ def building(kind, x, z, rot=0.0, interior=None, spawn=None, label=None,
 def grass(x, z, w, d, density=1.6):
     return {"x": x, "z": z, "width": w, "depth": d, "density": density}
 
+def field(x, z, w, d, crop="wheat", spacing=1.0, rotation=0.0):
+    """Ackerflaeche. Wird wie Gras- und Wasserzonen mitskaliert."""
+    return {"x": x, "z": z, "width": w, "depth": d,
+            "crop": crop, "spacing": spacing, "rotation": rotation}
+
+
 def npc(id, x, z, facing=0.0, **kw):
     n = {"id": id, "pos": [x, z], "facing": facing}
     n.update(kw)
@@ -86,6 +92,29 @@ def fence_line(x0, z0, x1, z1, count=None):
         t = (i + 0.5) / count
         out.append(prop("fence", x0 + (x1 - x0) * t, z0 + (z1 - z0) * t, ang, 1.0, i))
     return out
+
+# Breite eines Heckenstuecks (siehe PropFactory.hedge).
+HEDGE_SEGMENT = 2.4
+
+
+def hedge_line(x0, z0, x1, z1):
+    """Reiht Heckenstuecke luecklos entlang einer Strecke auf."""
+    length = math.hypot(x1 - x0, z1 - z0) * OUTDOOR_SCALE
+    count = max(1, int(math.ceil(length / HEDGE_SEGMENT)))
+    out = []
+    ang = math.atan2(x1 - x0, z1 - z0) + math.pi / 2
+    for i in range(count):
+        t = (i + 0.5) / count
+        out.append(prop("hedge", x0 + (x1 - x0) * t, z0 + (z1 - z0) * t, ang, 1.0, i))
+    return out
+
+
+# Grundflaeche der Gebaeudearten in Metern (bei scale 1.0). Muss zu
+# AreaRuntime.flattenZonesFor passen.
+BUILDING_SIZE = {
+    "house": 8, "hut": 6, "shop": 10, "center": 12, "gym": 17, "stadium": 38,
+    "lab": 13, "station": 14, "tower": 8, "warehouse": 18, "ruin": 13,
+}
 
 EAST = math.pi / 2     # Tuer zeigt nach +X
 WEST = -math.pi / 2    # Tuer zeigt nach -X
@@ -129,20 +158,54 @@ area(
         building("lab", 46, 64, SOUTH, "lab_interior", "entrance", "Forschungsstation", [0, 5.0]),
         building("hut", 20, 46, EAST, "house_a", "entrance", "Wohnhaus", [0, 2.8], variant=5),
         building("hut", 72, 46, WEST, "house_b", "entrance", "Wohnhaus", [0, 2.8], variant=7),
+        # Bauernhof und zwei weitere Wohnhaeuser: das Dorf soll bewohnt
+        # aussehen und nicht wie eine Kulisse aus drei Haeusern.
+        building("hut", 16, 66, EAST, None, None, "Bauernhaus", None, 1.0, 11),
+        building("warehouse", 76, 66, WEST, None, None, "Scheune", None, 0.5, 12),
+        building("house", 30, 76, SOUTH, None, None, "Wohnhaus", None, 0.9, 13),
+        building("house", 62, 76, SOUTH, None, None, "Wohnhaus", None, 0.9, 14),
+    ],
+    cropZones=[
+        field(20, 14, 24, 15, "wheat", 1.0),
+        field(72, 16, 20, 14, "corn", 1.3),
+        field(30, 56, 12, 8, "vegetable", 0.8),
     ],
     props=(
         fence_line(8, 6, 84, 6)
         + fence_line(8, 6, 8, 78)
         + fence_line(84, 6, 84, 78)
         + [prop("tree", 14, 16, 0.3, 1.2, 1), prop("tree", 78, 14, 1.1, 1.1, 2),
-           prop("tree", 16, 66, 2.2, 1.3, 3), prop("tree", 80, 68, 0.8, 1.15, 4),
+           prop("tree", 10, 58, 2.2, 1.3, 3), prop("tree", 86, 70, 0.8, 1.15, 4),
            prop("well", 46, 34, 0, 1.0, 0),
            prop("sign", 42, 74, 0, 1.0, 0),
            prop("bench", 38, 40, EAST, 1.0, 0), prop("bench", 54, 40, WEST, 1.0, 1),
            prop("flower", 30, 32, 0, 1.2, 1), prop("flower", 62, 32, 0, 1.1, 2),
            prop("flower", 34, 52, 0, 1.0, 3), prop("flower", 58, 52, 0, 1.3, 4),
            prop("mailbox", 36, 22, WEST, 1.0, 0), prop("mailbox", 56, 22, EAST, 1.0, 1),
-           prop("lamp", 40, 46, 0, 1.0, 0), prop("lamp", 52, 46, 0, 1.0, 1)]
+           prop("lamp", 40, 46, 0, 1.0, 0), prop("lamp", 52, 46, 0, 1.0, 1),
+           # --- Hof, Feld und Dorfleben ------------------------------
+           prop("windmill", 10, 24, 0.7, 0.9, 20),
+           prop("scarecrow", 20, 14, 0.5, 1.0, 21),
+           prop("scarecrow", 72, 16, 2.3, 1.0, 22),
+           prop("haystack", 38, 12, 0.4, 1.1, 23),
+           prop("haystack", 42, 16, 1.3, 1.0, 24),
+           prop("haystack", 84, 26, 2.1, 1.05, 25),
+           prop("cart", 14, 32, EAST, 1.0, 26),
+           prop("trough", 11, 40, 0, 1.0, 27),
+           prop("woodpile", 24, 64, EAST, 1.0, 28),
+           prop("woodpile", 68, 64, WEST, 1.0, 29),
+           prop("beehive", 82, 38, 0, 1.0, 30),
+           prop("sack", 70, 70, 0, 1.0, 31),
+           prop("sack", 73, 71, 0, 0.9, 32),
+           prop("ladder", 80, 60, WEST, 1.0, 33),
+           prop("laundry", 26, 40, EAST, 1.0, 34),
+           prop("laundry", 66, 40, WEST, 1.0, 35),
+           prop("planter", 56, 58, 0, 1.0, 36),
+           prop("planter", 60, 58, 0, 1.0, 37),
+           prop("stall", 40, 30, SOUTH, 1.0, 38),
+           prop("stall", 52, 30, SOUTH, 1.0, 39)]
+        + hedge_line(24, 50, 38, 50)
+        + hedge_line(54, 50, 68, 50)
     ),
     npcs=[
         npc("dorf_alt", 40, 38, EAST, name="Alter Nachbar", dialogue="startdorf_alt",
@@ -151,6 +214,15 @@ area(
         npc("dorf_kind", 56, 44, WEST, name="Kind", dialogue="startdorf_kind", wander=4,
             appearance={"skin": "#f0cfa8", "hair": "#8a5a2b", "shirt": "#4bbf7a",
                         "pants": "#3f5f8f", "accent": "#ffe08a", "hat": "cap", "height": 0.78}),
+        npc("dorf_bauer", 24, 20, SOUTH, name="Baeuerin", dialogue="ort_bauer", wander=5,
+            appearance={"skin": "#d8b08a", "hair": "#6b4f2b", "shirt": "#7a9b4b",
+                        "pants": "#5f4a33", "accent": "#e0d8b8", "hat": "beanie"}),
+        npc("dorf_muellerin", 14, 30, EAST, name="Muellerin", dialogue="ort_muellerin",
+            appearance={"skin": "#f0cfa8", "hair": "#cfcfcf", "shirt": "#6b7a8f",
+                        "pants": "#3f3f4a", "accent": "#e8e0cc", "hat": "none"}),
+        npc("dorf_markt", 46, 27, 0, name="Marktfrau", dialogue="ort_markt",
+            appearance={"skin": "#e8c19b", "hair": "#8f5f3f", "shirt": "#c4563f",
+                        "pants": "#4a4a52", "accent": "#f0e0c4", "hat": "none"}),
         npc("dorf_wache", 46, 72, SOUTH, name="Wegweiser", dialogue="startdorf_wache",
             maxStoryStage=2,
             appearance={"skin": "#c99a6b", "hair": "#2b2b2b", "shirt": "#8f6b3f",
@@ -342,155 +414,252 @@ area(
 # ==========================================================================
 # ROUTE 1
 # ==========================================================================
+# Der Weg zur ersten Arena ist die laengste Strecke des Spielanfangs und
+# soll sich auch so anfuehlen: sechs Abschnitte, ein Hauptweg, der quer
+# ueber die ganze Breite pendelt, zwei Nebenwege und acht Trainer.
+#
+# Der Weg ist bewusst NICHT gerade. Jede Kehre hat einen Grund im Gelaende -
+# eine Heckenreihe, eine Felsenge, ein Waldstueck, ein Anstieg -, damit die
+# Kurve gelesen und nicht nur gelaufen wird.
+ROUTE1_PATH = [
+    # Abschnitt 1: Wiese, weiter Bogen nach Westen.
+    [60, 2], [52, 24], [44, 48], [56, 70],
+    # Abschnitt 2: Heckenlabyrinth, drei versetzte Durchlaesse.
+    [60, 76], [34, 96], [30, 118], [52, 134],
+    # Abschnitt 3: Felsenge und Furt, scharf nach Osten.
+    [64, 140], [88, 158], [92, 182], [70, 200],
+    # Abschnitt 4: Waldstueck und grosses Grasfeld im Westen.
+    [58, 208], [30, 230], [28, 254], [50, 272],
+    # Abschnitt 5: Serpentinen den Anstieg hinauf.
+    [62, 280], [92, 296], [64, 316], [94, 336], [66, 356],
+    # Abschnitt 6: Rastplatz vor Quellheim.
+    [60, 378], [60, 398],
+]
+
+# Aussichtspunkt im Westen - Sackgasse mit dem versteckten Fund.
+ROUTE1_AUSSICHT = [[30, 118], [14, 126], [10, 146], [14, 166]]
+# Waldweg im Osten - laengerer, aber ergiebigerer Umweg um das Grasfeld.
+ROUTE1_WALDWEG = [[58, 208], [86, 222], [96, 244], [72, 262]]
+
+
+def _hedge_row(z, gap_from, gap_to, width=120):
+    """Heckenreihe quer ueber die Route mit genau einem Durchlass.
+
+    Die Reihe reicht bis an beide Gebietsraender. Endete sie ein paar Meter
+    davor, lief man aussen an der Boeschung vorbei und das Labyrinth war
+    wirkungslos - die Randboeschung ist mit 34 Grad begehbar.
+
+    Der Durchlass muss den Hauptweg enthalten: Hecken tragen Kollision und
+    wuerden die Strecke sonst dichtmachen.
+    """
+    return hedge_line(0, z, gap_from, z) + hedge_line(gap_to, z, width, z)
+
+
 area(
     id="route_1", name="Route 1", kind="route", biome="grassland",
     _noScale=True,
-    # Bewusst gross und in Abschnitte gegliedert: der Weg zur ersten Arena
-    # ist die laengste Strecke des Spielanfangs. Er liegt ueber der
-    # Skalierungsgrenze und ist deshalb schon in Endmassen beschrieben.
-    size=[108, 330], seed=1201,
+    # Liegt ueber der Skalierungsgrenze und ist deshalb schon in Endmassen
+    # beschrieben.
+    size=[120, 400], seed=1201,
     terrain={
-        "baseHeight": 0, "amplitude": 6.5, "frequency": 0.011, "octaves": 3,
+        # Groessere Amplitude als frueher: der Weg soll sich um echte Huegel
+        # winden. Die niedrige Frequenz haelt die Huegel breit, sodass man
+        # trotzdem in die Landschaft sehen kann.
+        "baseHeight": 0, "amplitude": 8.5, "frequency": 0.0095, "octaves": 3,
         "cliffBorder": True,
         "paths": [
-            # Hauptweg in fuenf Abschnitten: Wiese, Hecke, Furt, Grasfeld,
-            # Anstieg. Die Knicke machen die Strecke lesbar.
-            {"points": [[54, 2], [50, 46], [40, 92], [58, 140],
-                        [46, 196], [62, 250], [54, 300], [54, 328]], "width": 9},
-            # Nebenpfad zur Aussicht mit dem versteckten Fund.
-            {"points": [[40, 92], [18, 112], [16, 138]], "width": 5},
+            {"points": ROUTE1_PATH, "width": 9},
+            {"points": ROUTE1_AUSSICHT, "width": 5},
+            {"points": ROUTE1_WALDWEG, "width": 6},
         ],
     },
     music="route", mapPos=[50, 74],
-    description="Der lange Weg nach Quellheim: Wiesen, Hecken, eine Furt und ein steiler Anstieg.",
+    description="Der lange Weg nach Quellheim: Wiesen, ein Heckenlabyrinth, "
+                "eine Felsenge, eine Furt, ein Waldstueck und die Serpentinen.",
     weather=["clear", "cloudy", "rain", "fog"],
     grassZones=[
         # Abschnitt 1 - Wiese, niedrige Dichte zum Eingewoehnen.
-        grass(22, 30, 22, 24, 1.6),
-        grass(84, 38, 20, 22, 1.5),
-        # Abschnitt 2 - Hecke, Gras zwischen den Gaengen.
-        grass(24, 78, 18, 20, 2.0),
-        grass(80, 84, 18, 20, 1.9),
-        # Abschnitt 3 - Ufer der Furt.
-        grass(26, 132, 20, 22, 2.0),
-        grass(84, 148, 18, 20, 1.9),
+        grass(22, 26, 24, 26, 1.6),
+        grass(92, 40, 22, 24, 1.5),
+        # Abschnitt 2 - Gras in den Kammern des Labyrinths.
+        grass(18, 96, 18, 16, 2.0),
+        grass(92, 96, 22, 16, 1.9),
+        grass(76, 120, 24, 14, 1.8),
+        # Abschnitt 3 - Ufer an der Furt.
+        grass(30, 158, 26, 24, 2.0),
+        grass(106, 176, 18, 22, 1.9),
         # Abschnitt 4 - das grosse Grasfeld, hier steht am meisten.
-        grass(30, 188, 30, 34, 2.6),
-        grass(78, 206, 26, 30, 2.5),
-        # Abschnitt 5 - Anstieg.
-        grass(24, 252, 20, 24, 2.0),
-        grass(84, 268, 18, 22, 1.9),
-        grass(30, 300, 18, 20, 1.7),
+        grass(34, 226, 34, 30, 2.6),
+        grass(30, 258, 30, 28, 2.5),
+        grass(104, 236, 20, 28, 2.2),
+        # Abschnitt 5 - Anstieg zwischen den Kehren.
+        grass(24, 292, 24, 26, 2.0),
+        grass(34, 330, 24, 26, 1.9),
+        grass(108, 312, 18, 24, 1.8),
+        # Abschnitt 6 - letzte Wiese vor dem Rastplatz.
+        grass(26, 372, 20, 22, 1.7),
+        grass(98, 376, 20, 20, 1.6),
     ],
     spawnTable=[
-        {"species": "nagezahn", "minLevel": 2, "maxLevel": 6, "weight": 28, "behaviour": "skittish"},
-        {"species": "federflaum", "minLevel": 2, "maxLevel": 6, "weight": 24, "behaviour": "wander"},
-        {"species": "kribbelkaefer", "minLevel": 2, "maxLevel": 5, "weight": 18, "behaviour": "wander"},
-        {"species": "knollknospe", "minLevel": 3, "maxLevel": 6, "weight": 14, "behaviour": "static"},
-        {"species": "funkenfell", "minLevel": 3, "maxLevel": 7, "weight": 9, "behaviour": "shy", "rare": True},
+        {"species": "nagezahn", "minLevel": 2, "maxLevel": 6, "weight": 26, "behaviour": "skittish"},
+        {"species": "federflaum", "minLevel": 2, "maxLevel": 6, "weight": 22, "behaviour": "wander"},
+        {"species": "kribbelkaefer", "minLevel": 2, "maxLevel": 5, "weight": 17, "behaviour": "wander"},
+        {"species": "knollknospe", "minLevel": 3, "maxLevel": 6, "weight": 13, "behaviour": "static"},
+        {"species": "kieselkopf", "minLevel": 3, "maxLevel": 7, "weight": 10, "behaviour": "static"},
+        {"species": "funkenfell", "minLevel": 3, "maxLevel": 7, "weight": 8, "behaviour": "shy", "rare": True},
         {"species": "windfuchs", "minLevel": 4, "maxLevel": 7, "weight": 7, "behaviour": "skittish",
          "timeOfDay": ["dawn", "day"]},
         {"species": "nachtschleier", "minLevel": 4, "maxLevel": 7, "weight": 5, "behaviour": "aggressive",
          "timeOfDay": ["dusk", "night"], "rare": True},
     ],
-    maxWild=26,
+    maxWild=30,
     spawnPoints=[
-        sp("from_startdorf", 54, 8, 0),
-        sp("from_quellheim", 54, 322, math.pi),
-        sp("default", 54, 8, 0),
+        sp("from_startdorf", 60, 9, 0),
+        sp("from_quellheim", 60, 391, math.pi),
+        sp("default", 60, 9, 0),
     ],
     connections=[
-        conn("startdorf", 46, 0, 16, 3, "from_route1"),
-        conn("quellheim", 46, 327, 16, 3, "from_route1"),
+        conn("startdorf", 52, 0, 16, 3, "from_route1"),
+        conn("quellheim", 52, 396, 16, 3, "from_route1"),
     ],
     props=(
         # --- Abschnitt 2: Heckenlabyrinth --------------------------------
-        # Zwei versetzte Heckenreihen erzwingen einen Zickzackweg.
-        fence_line(10, 74, 44, 74)
-        + fence_line(60, 74, 98, 74)
-        + fence_line(10, 96, 34, 96)
-        + fence_line(50, 96, 98, 96)
-        + fence_line(24, 74, 24, 96)
-        + fence_line(80, 74, 80, 96)
-        # --- Abschnitt 3: Furt -------------------------------------------
-        + [prop("boulder", 30, 150, 0.4, 1.4, 11), prop("boulder", 74, 154, 1.1, 1.5, 12),
-           prop("rock", 44, 146, 0.7, 1.1, 13), prop("rock", 66, 160, 1.8, 1.0, 14),
-           prop("reed", 34, 142, 0, 1.2, 15), prop("reed", 70, 166, 0, 1.1, 16),
-           prop("sign", 50, 128, SOUTH, 1.0, 17)]
-        # --- Abschnitt 5: Anstieg ----------------------------------------
-        + [prop("boulder", 26, 258, 0.3, 1.6, 18), prop("boulder", 86, 272, 1.4, 1.5, 19),
-           prop("rock", 40, 266, 0.9, 1.2, 20), prop("rock", 70, 284, 2.1, 1.1, 21),
-           prop("stump", 58, 292, 0, 1.0, 22)]
-        # --- Rastplatz vor Quellheim -------------------------------------
-        + [prop("bench", 46, 310, EAST, 1.0, 23), prop("bench", 62, 310, WEST, 1.0, 24),
-           prop("lamp", 54, 304, 0, 1.0, 25), prop("sign", 50, 320, 0, 1.0, 26)]
-        # --- Baeume und Buesche ueber die ganze Strecke -------------------
-        + [prop("sign", 58, 12, SOUTH, 1.0, 0),
-           prop("tree", 12, 20, 0.4, 1.3, 1), prop("tree", 94, 26, 1.2, 1.2, 2),
-           prop("tree", 14, 56, 2.0, 1.35, 3), prop("tree", 92, 62, 0.6, 1.25, 4),
-           prop("tree", 10, 110, 1.6, 1.3, 5), prop("tree", 96, 118, 2.4, 1.2, 6),
-           prop("tree", 16, 176, 0.9, 1.28, 7), prop("tree", 90, 182, 1.9, 1.22, 8),
-           prop("tree", 12, 232, 1.1, 1.34, 9), prop("tree", 94, 240, 0.3, 1.26, 10),
-           prop("tree", 18, 288, 2.2, 1.3, 27), prop("tree", 88, 296, 1.4, 1.24, 28),
-           prop("bush", 64, 24, 0, 1.0, 29), prop("bush", 30, 48, 0, 1.1, 30),
-           prop("bush", 72, 118, 0, 1.05, 31), prop("bush", 36, 214, 0, 1.15, 32),
-           prop("bush", 76, 246, 0, 1.0, 33),
-           prop("flower", 44, 34, 0, 1.2, 34), prop("flower", 68, 60, 0, 1.1, 35),
-           prop("flower", 38, 200, 0, 1.25, 36), prop("flower", 72, 226, 0, 1.15, 37),
-           prop("mushroom", 20, 124, 0, 1.1, 38), prop("stump", 66, 90, 0, 1.0, 39)]
+        # Drei versetzte Reihen; die Durchlaesse liegen dort, wo der
+        # Hauptweg die Reihe kreuzt (x etwa 47, 32 und 41).
+        _hedge_row(86, 38, 56)
+        + _hedge_row(106, 22, 42)
+        # Die westliche Haelfte der dritten Reihe bleibt offen: dort zweigt
+        # der Aussichtspfad ab.
+        + hedge_line(16, 126, 31, 126)
+        + hedge_line(51, 126, 120, 126)
+        # Sackgassen in den Kammern - erst dadurch wird es ein Labyrinth.
+        + hedge_line(72, 86, 72, 104)
+        + hedge_line(14, 88, 14, 104)
+        + hedge_line(92, 106, 92, 124)
+        + hedge_line(36, 108, 36, 122)
+        # --- Abschnitt 3: Felsenge und Furt ------------------------------
+        + [prop("boulder", 68, 150, 0.4, 1.7, 11), prop("boulder", 87, 152, 1.1, 1.8, 12),
+           prop("boulder", 64, 146, 2.2, 1.5, 13), prop("boulder", 91, 147, 0.8, 1.6, 14),
+           prop("rock", 72, 144, 0.7, 1.2, 15), prop("rock", 84, 145, 1.8, 1.1, 16),
+           prop("sign", 60, 138, SOUTH, 1.0, 17),
+           prop("reed", 100, 172, 0, 1.2, 18), prop("reed", 104, 180, 0, 1.1, 19),
+           prop("rock", 96, 176, 0.5, 1.0, 20), prop("rock", 84, 186, 1.3, 1.1, 21),
+           prop("boulder", 78, 174, 0.9, 1.4, 22), prop("stump", 74, 164, 0, 1.0, 23)]
+        # Baumriegel, der die Abkuerzung quer ueber die Mitte verhindert.
+        + [prop("tree", 40 + (i % 4) * 7, 150 + i * 6, 0.3 * i, 1.25, 30 + i)
+           for i in range(9)]
+        # --- Abschnitt 4: Waldstueck am oestlichen Umweg ------------------
+        + [prop("tree", 78 + (i % 3) * 9, 212 + i * 6, 0.4 * i, 1.3, 50 + i)
+           for i in range(9)]
+        + [prop("bush", 88, 226, 0, 1.1, 60), prop("bush", 94, 238, 0, 1.05, 61),
+           prop("mushroom", 82, 248, 0, 1.2, 62), prop("mushroom", 92, 254, 0, 1.1, 63),
+           prop("stump", 86, 258, 0, 1.0, 64), prop("deadTree", 98, 230, 1.2, 1.1, 65)]
+        # --- Abschnitt 5: Serpentinen ------------------------------------
+        # Felsbaender an den Kehren: sie machen sichtbar, warum der Weg
+        # nicht geradeaus den Hang hinauffuehrt.
+        + [prop("boulder", 44 + i * 6, 288, 0.3 * i, 1.5, 70 + i) for i in range(6)]
+        + [prop("boulder", 78 - i * 6, 308, 0.5 * i, 1.4, 80 + i) for i in range(6)]
+        + [prop("boulder", 46 + i * 6, 328, 0.2 * i, 1.45, 90 + i) for i in range(6)]
+        + [prop("rock", 100, 300, 0.9, 1.2, 100), prop("rock", 52, 320, 2.1, 1.1, 101),
+           prop("stump", 86, 324, 0, 1.0, 102), prop("deadTree", 104, 318, 0.6, 1.15, 103)]
+        # --- Abschnitt 6: Rastplatz vor Quellheim ------------------------
+        + [prop("bench", 52, 372, EAST, 1.0, 110), prop("bench", 68, 372, WEST, 1.0, 111),
+           prop("lamp", 60, 366, 0, 1.0, 112), prop("sign", 54, 390, 0, 1.0, 113),
+           prop("barrel", 70, 366, 0, 1.0, 114), prop("crate", 50, 366, 0.4, 1.0, 115),
+           prop("haystack", 44, 380, 0.5, 1.0, 116)]
+        # --- Baeume, Buesche und Blumen ueber die ganze Strecke -----------
+        + [prop("sign", 66, 14, SOUTH, 1.0, 0),
+           prop("tree", 14, 22, 0.4, 1.3, 1), prop("tree", 104, 30, 1.2, 1.2, 2),
+           prop("tree", 16, 58, 2.0, 1.35, 3), prop("tree", 102, 64, 0.6, 1.25, 4),
+           prop("tree", 10, 112, 1.6, 1.3, 5), prop("tree", 110, 120, 2.4, 1.2, 6),
+           prop("tree", 18, 186, 0.9, 1.28, 7), prop("tree", 110, 196, 1.9, 1.22, 8),
+           prop("tree", 12, 246, 1.1, 1.34, 9), prop("tree", 112, 262, 0.3, 1.26, 10),
+           prop("tree", 20, 304, 2.2, 1.3, 120), prop("tree", 110, 346, 1.4, 1.24, 121),
+           prop("tree", 24, 384, 0.8, 1.28, 122), prop("tree", 104, 388, 1.7, 1.22, 123),
+           prop("bush", 70, 22, 0, 1.0, 124), prop("bush", 34, 44, 0, 1.1, 125),
+           prop("bush", 24, 142, 0, 1.05, 126), prop("bush", 40, 216, 0, 1.15, 127),
+           prop("bush", 46, 300, 0, 1.0, 128), prop("bush", 84, 364, 0, 1.05, 129),
+           prop("flower", 50, 34, 0, 1.2, 130), prop("flower", 74, 62, 0, 1.1, 131),
+           prop("flower", 22, 210, 0, 1.25, 132), prop("flower", 38, 268, 0, 1.15, 133),
+           prop("flower", 72, 348, 0, 1.2, 134),
+           prop("mushroom", 20, 132, 0, 1.1, 135), prop("stump", 74, 96, 0, 1.0, 136),
+           # Aussichtspunkt am Ende des Nebenpfads.
+           prop("bench", 16, 162, WEST, 1.0, 137), prop("sign", 20, 152, EAST, 1.0, 138)]
     ),
     npcs=[
         # Abschnitt 1: Hinweisgeber, damit die Strecke lesbar bleibt.
-        npc("route1_pfadfinder", 62, 30, WEST, name="Pfadfinder",
+        npc("route1_pfadfinder", 66, 26, WEST, name="Pfadfinder",
             dialogue="route1_pfadfinder",
             appearance={"skin": "#c99a6b", "hair": "#4a3524", "shirt": "#8f6b3f",
                         "pants": "#4a4a52", "accent": "#c4b08a", "hat": "beanie"}),
         # Abschnitt 1: erster Trainer, noch einfach.
-        npc("route1_trainer_1", 58, 52, SOUTH, name="Wanderer Kai", trainer="wanderer_kai",
+        npc("route1_trainer_1", 54, 56, SOUTH, name="Wanderer Kai", trainer="wanderer_kai",
             appearance={"skin": "#d8b08a", "hair": "#3a2a1c", "shirt": "#4b8f5f",
                         "pants": "#5f4a33", "accent": "#c4b08a", "hat": "cap"}),
-        # Abschnitt 2: in der Hecke, nicht zu umgehen.
-        npc("route1_trainer_2", 52, 86, SOUTH, name="Heckenlaeuferin Juli",
+        # Abschnitt 2: zwischen zwei Heckenreihen, nicht zu umgehen.
+        npc("route1_trainer_2", 36, 100, SOUTH, name="Heckenlaeuferin Juli",
             trainer="heckenlaeufer_juli",
             appearance={"skin": "#e8c19b", "hair": "#6b4f2b", "shirt": "#7aa84b",
                         "pants": "#4a5f33", "accent": "#e0e8a0", "hat": "beanie"}),
+        # Abschnitt 3: in der Felsenge.
+        npc("route1_trainer_6", 77, 154, SOUTH, name="Felsgaenger Tom",
+            trainer="felsgaenger_tom",
+            appearance={"skin": "#c99a6b", "hair": "#4a4a4a", "shirt": "#8a8272",
+                        "pants": "#4a4a52", "accent": "#c9c0ae", "hat": "beanie"}),
         # Abschnitt 3: an der Furt.
-        npc("route1_trainer_3", 52, 156, SOUTH, name="Furtwaechter Mats",
+        npc("route1_trainer_3", 88, 178, SOUTH, name="Furtwaechter Mats",
             trainer="furtwaechter_mats",
             appearance={"skin": "#c99a6b", "hair": "#3a2a1c", "shirt": "#4b8fbf",
                         "pants": "#3f4a5f", "accent": "#d8e4f0", "hat": "cap"}),
+        # Abschnitt 4: am oestlichen Waldweg - nur wer abbiegt, trifft sie.
+        npc("route1_trainer_7", 90, 234, WEST, name="Beerensucherin Nia",
+            trainer="beerensucherin_nia",
+            appearance={"skin": "#e8c19b", "hair": "#5f3a2b", "shirt": "#7a4f8f",
+                        "pants": "#4a5f33", "accent": "#e0c4e8", "hat": "beanie", "height": 0.93}),
         # Abschnitt 4: am grossen Grasfeld.
-        npc("route1_trainer_4", 50, 210, 0, name="Kaeferfreundin Ida",
+        npc("route1_trainer_4", 34, 242, 0, name="Kaeferfreundin Ida",
             trainer="kaeferfreundin_ida", minStoryStage=3,
             appearance={"skin": "#f0cfa8", "hair": "#8f5f2b", "shirt": "#9bc44b",
                         "pants": "#4a5f33", "accent": "#e0e8a0", "hat": "beanie", "height": 0.9}),
+        # Abschnitt 5: zwischen der ersten und zweiten Kehre.
+        npc("route1_trainer_8", 80, 302, SOUTH, name="Serpentinenlaeufer Ole",
+            trainer="serpentinenlaeufer_ole",
+            appearance={"skin": "#d8b08a", "hair": "#2b2b2b", "shirt": "#3f7f9b",
+                        "pants": "#5f4a33", "accent": "#d8e4f0", "hat": "cap", "height": 1.02}),
         # Abschnitt 5: der haerteste Kampf vor der Arena.
-        npc("route1_trainer_5", 58, 274, SOUTH, name="Steigwanderin Bea",
+        npc("route1_trainer_5", 84, 340, SOUTH, name="Steigwanderin Bea",
             trainer="steigwanderin_bea",
             appearance={"skin": "#d8b08a", "hair": "#8f3f2b", "shirt": "#c47a4b",
                         "pants": "#4a4a52", "accent": "#f0d8a0", "hat": "cap", "height": 1.03}),
-        npc("route1_rastplatz", 58, 312, WEST, name="Wirtin",
+        npc("route1_rastplatz", 66, 372, WEST, name="Wirtin",
             dialogue="route1_rastplatz",
             appearance={"skin": "#e8c19b", "hair": "#cfcfcf", "shirt": "#bf6b8f",
                         "pants": "#4a4a52", "accent": "#f0e0c4", "hat": "none"}),
-        npc("rivale_r1", 54, 318, SOUTH, name="Rivale Jorin", trainer="rivale_1",
+        npc("rivale_r1", 60, 388, SOUTH, name="Rivale Jorin", trainer="rivale_1",
             minStoryStage=3, maxStoryStage=4,
-            appearance={"skin": "#d8b08a", "hair": "#c24b4b", "shirt": "#4b8f7a", "pants": "#3f3f4a", "accent": "#f0e0c4", "hat": "cap", "height": 1.01}),
-        npc("route1_wanderer", 64, 240, WEST, name="Spaziergaengerin",
+            appearance={"skin": "#d8b08a", "hair": "#c24b4b", "shirt": "#4b8f7a",
+                        "pants": "#3f3f4a", "accent": "#f0e0c4", "hat": "cap", "height": 1.01}),
+        npc("route1_wanderer", 74, 268, WEST, name="Spaziergaengerin",
             dialogue="route1_spaziergaengerin", wander=5,
             appearance={"skin": "#c99a6b", "hair": "#5f3a2b", "shirt": "#c47a9b",
                         "pants": "#3f3f4a", "accent": "#f0e0c4", "hat": "none"}),
     ],
     items=[
-        item("route1_ball", "fangkugel", 26, 36, 3),
-        item("route1_trank", "trank", 88, 88, 1),
-        # Am Ende des Nebenpfads - nur wer abbiegt, findet ihn.
-        item("route1_versteck", "superkugel", 16, 136, 2, hidden=True),
-        item("route1_beere", "beere_rot", 34, 196, 2),
-        item("route1_trank2", "trank", 82, 258, 1),
-        item("route1_nugget", "nugget", 30, 304, 1, hidden=True),
+        item("route1_ball", "fangkugel", 26, 30, 3),
+        item("route1_trank", "trank", 96, 44, 1),
+        # In einer Sackgasse des Labyrinths.
+        item("route1_hecke", "beere_rot", 88, 116, 2),
+        # Am Ende des Aussichtspfads - nur wer abbiegt, findet ihn.
+        item("route1_versteck", "superkugel", 14, 162, 2, hidden=True),
+        item("route1_furt", "trank", 104, 186, 1),
+        # Auf dem oestlichen Waldweg.
+        item("route1_wald", "beere_blau", 92, 250, 2),
+        item("route1_beere", "beere_rot", 36, 232, 2),
+        item("route1_trank2", "trank", 24, 298, 1),
+        item("route1_kehre", "aether", 100, 332, 1, hidden=True),
+        item("route1_nugget", "nugget", 30, 388, 1, hidden=True),
     ],
-    ambience={"fogNear": 60, "fogFar": 340},
+    ambience={"fogNear": 60, "fogFar": 360},
 )
 
 # ==========================================================================
@@ -532,6 +701,17 @@ area(
         building("hut", 94, 76, WEST, "haus_quellheim_2", "entrance", "Wohnhaus", [0, 2.8], variant=9),
         building("house", 20, 18, EAST, None, None, "Wohnhaus", None, variant=4),
         building("house", 92, 18, WEST, None, None, "Wohnhaus", None, variant=6),
+        # Hoefe am Ortsrand und zwei weitere Wohnhaeuser.
+        building("hut", 14, 58, EAST, None, None, "Bauernhaus", None, 1.0, 11),
+        building("warehouse", 98, 58, WEST, None, None, "Scheune", None, 0.55, 12),
+        building("house", 32, 88, SOUTH, None, None, "Wohnhaus", None, 0.9, 13),
+        building("house", 80, 88, SOUTH, None, None, "Wohnhaus", None, 0.9, 14),
+    ],
+    cropZones=[
+        field(20, 32, 22, 16, "wheat", 1.0),
+        field(92, 32, 20, 16, "corn", 1.3),
+        field(16, 68, 14, 10, "vegetable", 0.8),
+        field(98, 68, 12, 10, "lavender", 0.9, rotation=math.pi / 2),
     ],
     props=(
         fence_line(6, 6, 44, 6)
@@ -545,7 +725,30 @@ area(
            prop("flower", 42, 44, 0, 1.2, 1), prop("flower", 70, 44, 0, 1.1, 2),
            prop("flower", 40, 68, 0, 1.0, 3), prop("flower", 72, 68, 0, 1.3, 4),
            prop("sign", 52, 12, 0, 1.0, 0),
-           prop("statue", 56, 88, SOUTH, 0.9, 0)]
+           prop("statue", 56, 88, SOUTH, 0.9, 0),
+           # --- Hof, Feld und Markt -----------------------------------
+           prop("windmill", 34, 20, 0.5, 1.0, 20),
+           prop("scarecrow", 20, 32, 0.6, 1.0, 21),
+           prop("scarecrow", 92, 32, 2.2, 1.0, 22),
+           prop("haystack", 10, 46, 0.3, 1.1, 23),
+           prop("haystack", 14, 48, 1.4, 1.0, 24),
+           prop("haystack", 102, 46, 2.0, 1.05, 25),
+           prop("cart", 20, 52, EAST, 1.0, 26),
+           prop("trough", 8, 52, 0, 1.0, 27),
+           prop("woodpile", 24, 62, EAST, 1.0, 28),
+           prop("woodpile", 88, 62, WEST, 1.0, 29),
+           prop("beehive", 6, 66, 0, 1.0, 30),
+           prop("sack", 94, 52, 0, 1.0, 31),
+           prop("ladder", 90, 54, WEST, 1.0, 32),
+           prop("laundry", 26, 82, EAST, 1.0, 33),
+           prop("laundry", 86, 82, WEST, 1.0, 34),
+           prop("planter", 44, 84, 0, 1.0, 35),
+           prop("planter", 68, 84, 0, 1.0, 36),
+           prop("stall", 48, 36, SOUTH, 1.0, 37),
+           prop("stall", 64, 36, SOUTH, 1.0, 38),
+           prop("stall", 56, 32, SOUTH, 1.0, 39)]
+        + hedge_line(30, 58, 42, 58)
+        + hedge_line(70, 58, 82, 58)
     ),
     npcs=[
         npc("quellheim_fuehrer", 56, 22, SOUTH, name="Stadtfuehrer", dialogue="quellheim_fuehrer",
@@ -554,6 +757,15 @@ area(
         npc("quellheim_kind", 66, 56, WEST, name="Kind", dialogue="quellheim_kind", wander=6,
             appearance={"skin": "#f0cfa8", "hair": "#c24b4b", "shirt": "#ffd84b",
                         "pants": "#4b6b8f", "accent": "#ffffff", "hat": "cap", "height": 0.76}),
+        npc("quellheim_bauer", 26, 40, SOUTH, name="Baeuerin", dialogue="ort_bauer", wander=5,
+            appearance={"skin": "#d8b08a", "hair": "#6b4f2b", "shirt": "#7a9b4b",
+                        "pants": "#5f4a33", "accent": "#e0d8b8", "hat": "beanie"}),
+        npc("quellheim_markt", 56, 28, 0, name="Marktfrau", dialogue="ort_markt",
+            appearance={"skin": "#e8c19b", "hair": "#8f5f3f", "shirt": "#c4563f",
+                        "pants": "#4a4a52", "accent": "#f0e0c4", "hat": "none"}),
+        npc("quellheim_feld", 88, 40, SOUTH, name="Feldhueter", dialogue="ort_feld", wander=5,
+            appearance={"skin": "#c99a6b", "hair": "#3a2a1c", "shirt": "#8f6b3f",
+                        "pants": "#4a4a52", "accent": "#c4b08a", "hat": "cap"}),
         npc("quellheim_trainerin", 84, 66, WEST, name="Schuelerin Mira", trainer="schuelerin_mira",
             minStoryStage=4,
             appearance={"skin": "#e8c19b", "hair": "#2b2b2b", "shirt": "#8f4bbf",
@@ -993,6 +1205,22 @@ def make_city(city_id, name, biome, size, seed, map_pos, description,
         building("house", w * 0.84, d * 0.68, WEST, None, None, "Wohnhaus", None, 1.0, 12),
         building("hut", w * 0.34, d * 0.88, SOUTH, None, None, "Kleines Haus", None, 1.0, 13),
         building("hut", w * 0.66, d * 0.88, SOUTH, None, None, "Kleines Haus", None, 1.0, 14),
+        # Bauernviertel am noerdlichen Ortsrand: Hof, Scheune und zwei
+        # weitere Wohnhaeuser. Ein Ort lebt von dem, was um ihn herum
+        # angebaut wird - ohne das bleibt er eine Ansammlung von Daechern.
+        building("hut", w * 0.1, d * 0.36, EAST, None, None, "Bauernhaus", None, 1.0, 15),
+        building("warehouse", w * 0.9, d * 0.36, WEST, None, None, "Scheune", None, 0.55, 16),
+        building("house", w * 0.3, d * 0.64, SOUTH, None, None, "Wohnhaus", None, 0.9, 17),
+        building("house", w * 0.7, d * 0.64, SOUTH, None, None, "Wohnhaus", None, 0.9, 18),
+    ]
+
+    # Felder am Ortsrand. Die Reihen laufen quer zur Ortsachse, damit man
+    # sie von der Hauptstrasse aus als Felder erkennt und nicht als Gras.
+    fields = [
+        field(w * 0.24, d * 0.17, w * 0.3, d * 0.2, "wheat", 1.0),
+        field(w * 0.76, d * 0.16, w * 0.28, d * 0.18, "corn", 1.3),
+        field(w * 0.12, d * 0.48, w * 0.12, d * 0.1, "vegetable", 0.8),
+        field(w * 0.88, d * 0.48, w * 0.12, d * 0.1, "lavender", 0.9, rotation=math.pi / 2),
     ]
 
     props = [
@@ -1016,7 +1244,59 @@ def make_city(city_id, name, biome, size, seed, map_pos, description,
         prop("tree", w * 0.9, d * 0.84, 0.8, 1.22, 11),
         prop("mailbox", w * 0.2, d * 0.64, EAST, 1.0, 12),
         prop("mailbox", w * 0.8, d * 0.64, WEST, 1.0, 13),
-    ] + list(extra_props)
+        # --- Hof, Feld und Markt ---------------------------------------
+        prop("windmill", w * 0.33, d * 0.08, 0.6, 1.0, 20),
+        prop("scarecrow", w * 0.24, d * 0.17, 0.4, 1.0, 21),
+        prop("scarecrow", w * 0.76, d * 0.16, 2.4, 1.0, 22),
+        prop("haystack", w * 0.08, d * 0.24, 0.3, 1.1, 23),
+        prop("haystack", w * 0.13, d * 0.26, 1.2, 1.0, 24),
+        prop("haystack", w * 0.92, d * 0.24, 2.0, 1.05, 25),
+        prop("cart", w * 0.17, d * 0.3, EAST, 1.0, 26),
+        prop("trough", w * 0.07, d * 0.44, 0, 1.0, 27),
+        prop("woodpile", w * 0.15, d * 0.42, EAST, 1.0, 28),
+        prop("woodpile", w * 0.85, d * 0.42, WEST, 1.0, 29),
+        prop("beehive", w * 0.05, d * 0.54, 0, 1.0, 30),
+        prop("beehive", w * 0.95, d * 0.54, 0, 1.0, 31),
+        prop("ladder", w * 0.87, d * 0.3, WEST, 1.0, 32),
+        prop("sack", w * 0.86, d * 0.44, 0, 1.0, 33),
+        prop("sack", w * 0.89, d * 0.45, 0, 0.9, 34),
+        prop("stall", w * 0.41, d * 0.4, SOUTH, 1.0, 35),
+        prop("stall", w * 0.59, d * 0.4, SOUTH, 1.0, 36),
+        prop("stall", w * 0.5, d * 0.36, SOUTH, 1.0, 37),
+        prop("laundry", w * 0.25, d * 0.74, EAST, 1.0, 38),
+        prop("laundry", w * 0.75, d * 0.74, WEST, 1.0, 39),
+        prop("planter", w * 0.14, d * 0.56, 0, 1.0, 40),
+        prop("planter", w * 0.86, d * 0.56, 0, 1.0, 41),
+        prop("planter", w * 0.14, d * 0.59, 0, 1.0, 42),
+        prop("planter", w * 0.86, d * 0.59, 0, 1.0, 43),
+        prop("flower", w * 0.44, d * 0.86, 0, 1.2, 44),
+        prop("flower", w * 0.56, d * 0.86, 0, 1.15, 45),
+        prop("tree", w * 0.42, d * 0.68, 1.1, 1.2, 46),
+        prop("tree", w * 0.58, d * 0.68, 2.3, 1.25, 47),
+    ] + hedge_line(w * 0.36, d * 0.3, w * 0.36, d * 0.44) \
+      + hedge_line(w * 0.64, d * 0.3, w * 0.64, d * 0.44) \
+      + fence_line(w * 0.06, d * 0.28, w * 0.42, d * 0.28) \
+      + fence_line(w * 0.58, d * 0.26, w * 0.96, d * 0.26) \
+      + list(extra_props)
+
+    farm_npcs = [
+        npc(f"{city_id}_bauer", w * 0.19, d * 0.24, SOUTH, name="Baeuerin",
+            dialogue="ort_bauer", wander=4,
+            appearance={"skin": "#d8b08a", "hair": "#6b4f2b", "shirt": "#7a9b4b",
+                        "pants": "#5f4a33", "accent": "#e0d8b8", "hat": "beanie"}),
+        npc(f"{city_id}_markt", w * 0.5, d * 0.33, 0, name="Marktfrau",
+            dialogue="ort_markt",
+            appearance={"skin": "#e8c19b", "hair": "#8f5f3f", "shirt": "#c4563f",
+                        "pants": "#4a4a52", "accent": "#f0e0c4", "hat": "none"}),
+        npc(f"{city_id}_feld", w * 0.72, d * 0.22, SOUTH, name="Feldhueter",
+            dialogue="ort_feld", wander=5,
+            appearance={"skin": "#c99a6b", "hair": "#3a2a1c", "shirt": "#8f6b3f",
+                        "pants": "#4a4a52", "accent": "#c4b08a", "hat": "cap"}),
+        npc(f"{city_id}_muellerin", w * 0.37, d * 0.12, EAST, name="Muellerin",
+            dialogue="ort_muellerin",
+            appearance={"skin": "#f0cfa8", "hair": "#cfcfcf", "shirt": "#6b7a8f",
+                        "pants": "#3f3f4a", "accent": "#e8e0cc", "hat": "none"}),
+    ]
 
     all_spawns = list(spawn_points) + [
         sp("from_center", w * 0.26, d * 0.5 - 8, SOUTH),
@@ -1039,7 +1319,8 @@ def make_city(city_id, name, biome, size, seed, map_pos, description,
         connections=list(connections),
         buildings=buildings,
         props=props,
-        npcs=list(extra_npcs),
+        cropZones=fields,
+        npcs=list(extra_npcs) + farm_npcs,
         items=list(items),
         triggers=list(triggers),
         ambience={"fogNear": 65, "fogFar": 340},
@@ -1339,8 +1620,10 @@ make_city(
     spawn_points=[sp("default", 63, 10, 0), sp("from_route4", 63, 8, 0),
                   sp("from_route5", 63, 102, math.pi)],
     extra_buildings=[
-        building("warehouse", 24, 86, EAST, None, None, "Werkhalle", None, 1.0, 1),
-        building("warehouse", 104, 86, WEST, None, None, "Werkhalle", None, 0.95, 4),
+        # Weiter nach Norden gerueckt: bei z=86 ueberschnitten sich die
+        # Grundrisse der Werkhallen mit den Wohnhaeusern des Ortsrasters.
+        building("warehouse", 24, 93, EAST, None, None, "Werkhalle", None, 1.0, 1),
+        building("warehouse", 104, 93, WEST, None, None, "Werkhalle", None, 0.95, 4),
         building("tower", 104, 24, WEST, None, None, "Schornstein", None, 0.9, 2),
     ],
     extra_props=[prop("pipe", 30, 30, 0, 1.2, 1), prop("pipe", 96, 34, 0, 1.1, 2),
@@ -2027,7 +2310,10 @@ def scale_area(a, factor):
         t["depth"] = _round(t["depth"] * factor)
     for s_ in a.get("spawnPoints", []):
         s_["pos"] = scale_pos(s_["pos"])
-    for zone in list(a.get("grassZones", [])) + list(a.get("waterZones", [])):
+    for zone in (list(a.get("grassZones", [])) + list(a.get("waterZones", []))
+                 + list(a.get("cropZones", []))):
+        # "spacing" bleibt absichtlich unskaliert: der Reihenabstand ist
+        # ein echtes Mass in Metern, die Pflanzen wachsen ja auch nicht mit.
         for key in ("x", "z", "width", "depth"):
             if key in zone:
                 zone[key] = _round(zone[key] * factor)
@@ -2048,6 +2334,39 @@ def scale_area(a, factor):
     if "maxWild" in a:
         a["maxWild"] = int(round(a["maxWild"] * factor))
     return a
+
+
+def prune_props_in_buildings():
+    """Entfernt Zaun- und Heckenstuecke, die im Grundriss eines Gebaeudes liegen.
+
+    Zaeune und Hecken werden als lange Reihen angelegt; einzelne Stuecke
+    landen dabei zwangslaeufig auf einem Bauplatz und ragten dort durch die
+    Hauswand. Von Hand gesetzte Requisiten werden NICHT entfernt - dort ist
+    eine Ueberschneidung ein Fehler und soll gemeldet werden.
+    """
+    removed = 0
+    for a in AREAS:
+        if a.get("indoor") or not a.get("buildings"):
+            continue
+        keep = []
+        for pr in a["props"]:
+            if pr["kind"] not in ("fence", "hedge"):
+                keep.append(pr)
+                continue
+            inside = False
+            for b in a["buildings"]:
+                r = BUILDING_SIZE.get(b["kind"], 10) * b.get("scale", 1.0) * 0.5 + 0.8
+                if (abs(pr["pos"][0] - b["pos"][0]) < r
+                        and abs(pr["pos"][1] - b["pos"][1]) < r):
+                    inside = True
+                    break
+            if inside:
+                removed += 1
+            else:
+                keep.append(pr)
+        a["props"] = keep
+    if removed:
+        print(f"  {removed} Zaun-/Heckenstuecke aus Gebaeudegrundrissen entfernt")
 
 
 def apply_scale():
@@ -2075,6 +2394,7 @@ def apply_scale():
 # ==========================================================================
 def main():
     open_all_buildings()
+    prune_props_in_buildings()
     apply_scale()
 
     ids = set()
@@ -2124,6 +2444,38 @@ def main():
         for b in a["buildings"]:
             if not (0 <= b["pos"][0] <= w and 0 <= b["pos"][1] <= d):
                 problems.append(f"{a['id']}: Gebaeude '{b['kind']}' liegt ausserhalb")
+
+    # Gebaeude duerfen sich nicht ueberlappen. Die Masse sind dieselben wie
+    # in AreaRuntime.flattenZonesFor - dort wird der Bauplatz eingeebnet,
+    # zwei sich ueberschneidende Platten ergaeben Stufen und Haeuser im Haus.
+    for a in AREAS:
+        bs = a["buildings"]
+        for i in range(len(bs)):
+            for j in range(i + 1, len(bs)):
+                b1, b2 = bs[i], bs[j]
+                r1 = BUILDING_SIZE.get(b1["kind"], 10) * b1.get("scale", 1.0) / 2
+                r2 = BUILDING_SIZE.get(b2["kind"], 10) * b2.get("scale", 1.0) / 2
+                dist = math.hypot(b1["pos"][0] - b2["pos"][0], b1["pos"][1] - b2["pos"][1])
+                if dist < r1 + r2:
+                    problems.append(
+                        f"{a['id']}: Gebaeude '{b1.get('label') or b1['kind']}' und "
+                        f"'{b2.get('label') or b2['kind']}' ueberlappen "
+                        f"(Abstand {dist:.1f} m, noetig {r1 + r2:.1f} m)")
+
+    # Requisiten im Grundriss eines Gebaeudes sind unsichtbar oder stecken in
+    # der Wand. Das ist kein Fehler in den Daten, aber immer ein Versehen.
+    for a in AREAS:
+        for pr in a["props"]:
+            for b in a["buildings"]:
+                # 0.75 der geschaetzten Grundflaeche: die Schaetzung ist
+                # bewusst grosszuegig, an ihrem Rand steht eine Requisite
+                # noch neben dem Haus und nicht darin.
+                r = BUILDING_SIZE.get(b["kind"], 10) * b.get("scale", 1.0) * 0.375
+                if (abs(pr["pos"][0] - b["pos"][0]) < r
+                        and abs(pr["pos"][1] - b["pos"][1]) < r):
+                    warnings.append(
+                        f"{a['id']}: Requisite '{pr['kind']}' steckt im Grundriss "
+                        f"von '{b.get('label') or b['kind']}'")
 
     # Aussengebiete muessen in beide Richtungen begehbar sein - eine Stadt
     # ohne Rueckweg ist eine Sackgasse und faellt sonst erst beim Spielen auf.

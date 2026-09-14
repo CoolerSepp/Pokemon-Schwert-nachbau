@@ -1543,8 +1543,8 @@
   {
    "kind": "tree",
    "pos": [
-    31.2,
-    128.7
+    19.5,
+    113.1
    ],
    "rotation": 2.2,
    "scale": 1.3,
@@ -1553,8 +1553,8 @@
   {
    "kind": "tree",
    "pos": [
-    156.0,
-    132.6
+    167.7,
+    136.5
    ],
    "rotation": 0.8,
    "scale": 1.15,
@@ -1679,6 +1679,386 @@
    "rotation": 0,
    "scale": 1.0,
    "variant": 1
+  },
+  {
+   "kind": "windmill",
+   "pos": [
+    19.5,
+    46.8
+   ],
+   "rotation": 0.7,
+   "scale": 0.9,
+   "variant": 20
+  },
+  {
+   "kind": "scarecrow",
+   "pos": [
+    39.0,
+    27.3
+   ],
+   "rotation": 0.5,
+   "scale": 1.0,
+   "variant": 21
+  },
+  {
+   "kind": "scarecrow",
+   "pos": [
+    140.4,
+    31.2
+   ],
+   "rotation": 2.3,
+   "scale": 1.0,
+   "variant": 22
+  },
+  {
+   "kind": "haystack",
+   "pos": [
+    74.1,
+    23.4
+   ],
+   "rotation": 0.4,
+   "scale": 1.1,
+   "variant": 23
+  },
+  {
+   "kind": "haystack",
+   "pos": [
+    81.9,
+    31.2
+   ],
+   "rotation": 1.3,
+   "scale": 1.0,
+   "variant": 24
+  },
+  {
+   "kind": "haystack",
+   "pos": [
+    163.8,
+    50.7
+   ],
+   "rotation": 2.1,
+   "scale": 1.05,
+   "variant": 25
+  },
+  {
+   "kind": "cart",
+   "pos": [
+    27.3,
+    62.4
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 26
+  },
+  {
+   "kind": "trough",
+   "pos": [
+    21.45,
+    78.0
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 27
+  },
+  {
+   "kind": "woodpile",
+   "pos": [
+    46.8,
+    124.8
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 28
+  },
+  {
+   "kind": "woodpile",
+   "pos": [
+    132.6,
+    124.8
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 29
+  },
+  {
+   "kind": "beehive",
+   "pos": [
+    159.9,
+    74.1
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 30
+  },
+  {
+   "kind": "sack",
+   "pos": [
+    136.5,
+    136.5
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 31
+  },
+  {
+   "kind": "sack",
+   "pos": [
+    142.35,
+    138.45
+   ],
+   "rotation": 0,
+   "scale": 0.9,
+   "variant": 32
+  },
+  {
+   "kind": "ladder",
+   "pos": [
+    156.0,
+    117.0
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 33
+  },
+  {
+   "kind": "laundry",
+   "pos": [
+    50.7,
+    78.0
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 34
+  },
+  {
+   "kind": "laundry",
+   "pos": [
+    128.7,
+    78.0
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 35
+  },
+  {
+   "kind": "planter",
+   "pos": [
+    109.2,
+    113.1
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 36
+  },
+  {
+   "kind": "planter",
+   "pos": [
+    117.0,
+    113.1
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 37
+  },
+  {
+   "kind": "stall",
+   "pos": [
+    78.0,
+    58.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 38
+  },
+  {
+   "kind": "stall",
+   "pos": [
+    101.4,
+    58.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 39
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    48.32,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    51.35,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    54.38,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    57.42,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    60.45,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    63.48,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    66.52,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    69.55,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    72.58,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    106.82,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    109.85,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    112.88,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    115.92,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    118.95,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    121.98,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    125.02,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    128.05,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    131.08,
+    97.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 8
   }
  ],
  "buildings": [
@@ -1766,6 +2146,74 @@
     0.0,
     5.46
    ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    31.2,
+    128.7
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.95,
+   "variant": 11,
+   "label": "Bauernhaus",
+   "interior": "haus_startdorf_6",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "warehouse",
+   "pos": [
+    148.2,
+    128.7
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 0.98,
+   "variant": 12,
+   "label": "Scheune",
+   "interior": "haus_startdorf_7",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    8.19
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    58.5,
+    148.2
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.76,
+   "variant": 13,
+   "label": "Wohnhaus",
+   "interior": "haus_startdorf_8",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    120.9,
+    148.2
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.76,
+   "variant": 14,
+   "label": "Wohnhaus",
+   "interior": "haus_startdorf_9",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   }
  ],
  "npcs": [
@@ -1806,6 +2254,61 @@
     "accent": "#ffe08a",
     "hat": "cap",
     "height": 0.78
+   }
+  },
+  {
+   "id": "dorf_bauer",
+   "pos": [
+    46.8,
+    39.0
+   ],
+   "facing": 3.141592653589793,
+   "name": "Baeuerin",
+   "dialogue": "ort_bauer",
+   "wander": 5,
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#6b4f2b",
+    "shirt": "#7a9b4b",
+    "pants": "#5f4a33",
+    "accent": "#e0d8b8",
+    "hat": "beanie"
+   }
+  },
+  {
+   "id": "dorf_muellerin",
+   "pos": [
+    27.3,
+    58.5
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Muellerin",
+   "dialogue": "ort_muellerin",
+   "appearance": {
+    "skin": "#f0cfa8",
+    "hair": "#cfcfcf",
+    "shirt": "#6b7a8f",
+    "pants": "#3f3f4a",
+    "accent": "#e8e0cc",
+    "hat": "none"
+   }
+  },
+  {
+   "id": "dorf_markt",
+   "pos": [
+    89.7,
+    52.65
+   ],
+   "facing": 0,
+   "name": "Marktfrau",
+   "dialogue": "ort_markt",
+   "appearance": {
+    "skin": "#e8c19b",
+    "hair": "#8f5f3f",
+    "shirt": "#c4563f",
+    "pants": "#4a4a52",
+    "accent": "#f0e0c4",
+    "hat": "none"
    }
   },
   {
@@ -1901,6 +2404,38 @@
     85.8
    ],
    "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_startdorf_6",
+   "pos": [
+    43.29,
+    128.7
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_haus_startdorf_7",
+   "pos": [
+    134.16,
+    128.7
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_startdorf_8",
+   "pos": [
+    58.5,
+    136.11
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_haus_startdorf_9",
+   "pos": [
+    120.9,
+    136.11
+   ],
+   "facing": 3.141592653589793
   }
  ],
  "id": "startdorf",
@@ -1957,6 +2492,35 @@
   "clear",
   "cloudy",
   "rain"
+ ],
+ "cropZones": [
+  {
+   "x": 39.0,
+   "z": 27.3,
+   "width": 46.8,
+   "depth": 29.25,
+   "crop": "wheat",
+   "spacing": 1.0,
+   "rotation": 0.0
+  },
+  {
+   "x": 140.4,
+   "z": 31.2,
+   "width": 39.0,
+   "depth": 27.3,
+   "crop": "corn",
+   "spacing": 1.3,
+   "rotation": 0.0
+  },
+  {
+   "x": 58.5,
+   "z": 109.2,
+   "width": 23.4,
+   "depth": 15.6,
+   "crop": "vegetable",
+   "spacing": 0.8,
+   "rotation": 0.0
+  }
  ],
  "triggers": [
   {

@@ -64,24 +64,35 @@ describe('Hoehenfeld', () => {
     expect(t.heightAt(79.5, 60)).toBeGreaterThan(t.heightAt(40, 60) + 3);
   });
 
-  it('ebnet Wege auf die Grundhoehe ein', () => {
+  it('legt Wege quer eben an, laesst sie aber dem Gelaende folgen', () => {
     const t = makeTerrain({
       baseHeight: 1, amplitude: 10,
-      paths: [{ points: [[10, 10], [10, 110]], width: 6 }],
+      paths: [{ points: [[20, 10], [20, 110]], width: 6 }],
     });
-    // Auf dem Weg: nahe der Grundhoehe.
+
+    // Quer zur Laufrichtung eben: links, Mitte und rechts auf gleicher Hoehe.
     for (let z = 20; z <= 100; z += 10) {
-      expect(Math.abs(t.heightAt(10, z) - 1)).toBeLessThan(0.35);
+      const mid = t.heightAt(20, z);
+      expect(Math.abs(t.heightAt(18, z) - mid)).toBeLessThan(0.3);
+      expect(Math.abs(t.heightAt(22, z) - mid)).toBeLessThan(0.3);
     }
-    // Abseits: das Gelaende muss erkennbar variieren (ein einzelner Punkt
-    // kann zufaellig nahe der Grundhoehe liegen, daher ueber eine Reihe pruefen).
-    let maxOffPath = 0;
-    for (let x = 30; x <= 75; x += 5) {
-      for (let z = 20; z <= 100; z += 10) {
-        maxOffPath = Math.max(maxOffPath, Math.abs(t.heightAt(x, z) - 1));
-      }
+
+    // Laengs weich: keine Stufen zwischen benachbarten Punkten.
+    for (let z = 20; z < 100; z += 2) {
+      expect(Math.abs(t.heightAt(20, z + 2) - t.heightAt(20, z))).toBeLessThan(1.2);
     }
-    expect(maxOffPath).toBeGreaterThan(1.5);
+
+    // Aber nicht flach: der Weg gewinnt und verliert Hoehe. Wurde er wie
+    // frueher auf die Grundhoehe gezogen, war jede Route eine Rinne durch
+    // die Huegel und jeder "Anstieg" gewann null Meter.
+    let lo = Infinity;
+    let hi = -Infinity;
+    for (let z = 12; z <= 108; z += 2) {
+      const h = t.heightAt(20, z);
+      lo = Math.min(lo, h);
+      hi = Math.max(hi, h);
+    }
+    expect(hi - lo).toBeGreaterThan(1.5);
   });
 
   it('erkennt Wasserflaechen', () => {

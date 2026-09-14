@@ -1,0 +1,41 @@
+{
+ "id": "serpentinenlaeufer_ole",
+ "name": "Serpentinenlaeufer Ole",
+ "trainerClass": "Wanderer",
+ "ai": "aggressive",
+ "team": [
+  {
+   "species": "federflaum",
+   "level": 9
+  },
+  {
+   "species": "windfuchs",
+   "level": 10
+  }
+ ],
+ "rewardBase": 88,
+ "dialogue": {
+  "intro": [
+   "Drei Kehren hoch, drei Kehren runter - jeden Tag.",
+   "Mal sehen, ob dir auf halber Hoehe die Puste ausgeht."
+  ],
+  "defeat": [
+   "Sauber. Oben wartet der letzte Anstieg."
+  ],
+  "victory": [
+   "Der Berg gewinnt meistens."
+  ],
+  "postBattle": [
+   "Nach der letzten Kehre siehst du schon die Daecher von Quellheim."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#2b2b2b",
+  "shirt": "#3f7f9b",
+  "pants": "#5f4a33",
+  "accent": "#d8e4f0",
+  "hat": "cap",
+  "height": 1.02
+ }
+}

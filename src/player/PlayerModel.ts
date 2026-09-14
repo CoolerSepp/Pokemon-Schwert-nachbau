@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { StaticBatcher } from '@/world/StaticBatcher';
 import type { AssetManager } from '@/engine/AssetManager';
 import type { NpcAppearance } from '@/data/schema';
 
@@ -205,9 +206,52 @@ export function buildHumanoid(
 
   root.traverse((o) => { o.castShadow = true; });
 
+  // Jedes Koerperteil zu einem Mesh je Material zusammenfassen.
+  //
+  // Eine Figur bestand aus ueber vierzig kleinen Meshes; sechs Bewohner in
+  // einem Dorf waren damit rund 250 Zeichenaufrufe - mehr als die ganze
+  // Bebauung. Die Teile eines Knochens bewegen sich nie gegeneinander,
+  // also lassen sie sich gefahrlos verschmelzen. Der Rucksack bleibt
+  // eigenstaendig, weil er von aussen ein- und ausgeblendet wird.
+  mergeBoneParts(torso, [backpack]);
+  for (const bone of [head, armLeft, armRight, legLeft, legRight]) mergeBoneParts(bone, []);
+
   return {
     root,
     parts: { hips, torso, head, armLeft, armRight, legLeft, legRight, backpack },
     height: 1.78 * scale,
   };
+}
+
+/**
+ * Gibt die beim Zusammenfassen erzeugten Geometrien einer Figur frei.
+ *
+ * Nur die verschmolzenen Knochen-Meshes gehoeren der Figur; alle anderen
+ * Geometrien kommen aus dem gemeinsamen Formenspeicher und duerfen nicht
+ * freigegeben werden - sonst verschwaenden sie fuer alle anderen Figuren.
+ */
+export function disposeHumanoid(model: HumanoidModel): void {
+  model.root.traverse((object) => {
+    const mesh = object as THREE.Mesh;
+    if (!mesh.isMesh) return;
+    if (mesh.parent?.name !== 'bone') return;
+    mesh.geometry.dispose();
+  });
+}
+
+/**
+ * Verschmilzt die Meshes eines Knochens, laesst aber die aufgezaehlten
+ * Unterobjekte unberuehrt.
+ */
+function mergeBoneParts(bone: THREE.Group, keep: THREE.Object3D[]): void {
+  const meshes = bone.children.filter(
+    (child) => (child as THREE.Mesh).isMesh && !keep.includes(child),
+  );
+  if (meshes.length < 2) return;
+  const batcher = new StaticBatcher();
+  for (const mesh of meshes) batcher.add(mesh, bone);
+  const merged = batcher.build('bone');
+  if (!merged) return;
+  for (const mesh of meshes) bone.remove(mesh);
+  bone.add(merged);
 }

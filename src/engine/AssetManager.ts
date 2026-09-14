@@ -17,6 +17,17 @@ export interface MaterialSpec {
   texture?: TextureKind;
   /** Wiederholungen der Textur auf der Flaeche. */
   textureRepeat?: number;
+  /**
+   * Scheitelfarben aus der Geometrie beruecksichtigen.
+   *
+   * Wichtig fuer Instanz-Zeichnungen: Three.js wertet die Farbe einer
+   * Instanz (`setColorAt`) im Fragment-Shader nur aus, wenn das Material
+   * Scheitelfarben nutzt. Ohne dieses Flag bleibt jede Instanz einfarbig
+   * wie das Material - die berechneten Farbverlaeufe waeren wirkungslos.
+   * Die Geometrie MUSS dann ein "color"-Attribut haben, sonst rechnet der
+   * Shader mit Schwarz.
+   */
+  vertexColors?: boolean;
 }
 
 /**
@@ -89,6 +100,7 @@ export class AssetManager {
       spec.color, spec.flatShading ? 1 : 0, spec.metalness ?? 0,
       spec.emissive ?? 0, spec.opacity ?? 1, spec.roughness ?? 0.85,
       spec.doubleSided ? 1 : 0, spec.texture ?? '-', spec.textureRepeat ?? 1,
+      spec.vertexColors ? 1 : 0,
     ].join('|');
     const cached = this.materials.get(key);
     if (cached) return cached;
@@ -118,6 +130,7 @@ export class AssetManager {
     if ((spec.metalness ?? 0) > 0.05) {
       material = new THREE.MeshStandardMaterial({
         color,
+        vertexColors: spec.vertexColors ?? false,
         flatShading: spec.flatShading ?? false,
         metalness: spec.metalness ?? 0,
         roughness: spec.roughness ?? 0.5,
@@ -132,6 +145,7 @@ export class AssetManager {
       // Lambert ist deutlich guenstiger und reicht fuer den Low-Poly-Stil.
       material = new THREE.MeshLambertMaterial({
         color,
+        vertexColors: spec.vertexColors ?? false,
         flatShading: spec.flatShading ?? false,
         transparent,
         opacity: spec.opacity ?? 1,

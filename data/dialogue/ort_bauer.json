@@ -1,0 +1,16 @@
+{
+ "id": "ort_bauer",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Das Korn steht gut dieses Jahr. Der Regen kam zur rechten Zeit.",
+    "Geh ruhig durch die Reihen, du trittst schon nichts kaputt."
+   ],
+   "speaker": "Baeuerin"
+  }
+ ]
+}

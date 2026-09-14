@@ -6,7 +6,7 @@ import { RNG } from '@/core/RNG';
 import { distance2D, moveTowardsAngle } from '@/core/MathUtils';
 import type { AssetManager } from '@/engine/AssetManager';
 import type { AreaRuntime } from '@/world/AreaRuntime';
-import { buildHumanoid, type HumanoidModel } from '@/player/PlayerModel';
+import { buildHumanoid, disposeHumanoid, type HumanoidModel } from '@/player/PlayerModel';
 import { HumanoidAnimator } from '@/player/HumanoidAnimator';
 import type { PlayerState } from '@/player/PlayerState';
 
@@ -311,6 +311,10 @@ export class NpcManager {
   clear(): void {
     for (const npc of this.npcs) {
       this.group.remove(npc.model.root);
+      // Die zusammengefassten Koerperteile sind eigene Geometrien je Figur.
+      // Ohne diese Freigabe waechst der Grafikspeicher bei jedem
+      // Gebietswechsel um mehrere hundert Geometrien.
+      disposeHumanoid(npc.model);
     }
     this.npcs.length = 0;
     this.area = null;

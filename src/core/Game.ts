@@ -83,6 +83,9 @@ export class Game {
     // Die Weltverwaltung meldet, wie weit die Kamera im geladenen Gebiet
     // sehen muss (Himmelskugel und Bergkulisse).
     this.world.onFarPlane = (distance) => this.camera.setFarPlane(distance);
+    // Die Kamera darf nicht im Hang verschwinden.
+    this.camera.groundAt = (x, z) => this.world.area?.heightAt(x, z)
+      ?? Number.NEGATIVE_INFINITY;
     this.world.scene.add(this.player.object);
     this.input.attach();
     this.registerLoopPhases();

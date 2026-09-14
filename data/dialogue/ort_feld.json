@@ -1,0 +1,16 @@
+{
+ "id": "ort_feld",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Die Vogelscheuche haelt die Federflaeume ab. Meistens jedenfalls.",
+    "Gestern sass eines direkt auf ihrem Hut und hat sich ausgeruht."
+   ],
+   "speaker": "Feldhueter"
+  }
+ ]
+}

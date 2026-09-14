@@ -201,6 +201,936 @@
    "variant": 13
   },
   {
+   "kind": "windmill",
+   "pos": [
+    72.07,
+    15.44
+   ],
+   "rotation": 0.6,
+   "scale": 1.0,
+   "variant": 20
+  },
+  {
+   "kind": "scarecrow",
+   "pos": [
+    52.42,
+    32.82
+   ],
+   "rotation": 0.4,
+   "scale": 1.0,
+   "variant": 21
+  },
+  {
+   "kind": "scarecrow",
+   "pos": [
+    165.98,
+    30.89
+   ],
+   "rotation": 2.4,
+   "scale": 1.0,
+   "variant": 22
+  },
+  {
+   "kind": "haystack",
+   "pos": [
+    17.47,
+    46.33
+   ],
+   "rotation": 0.3,
+   "scale": 1.1,
+   "variant": 23
+  },
+  {
+   "kind": "haystack",
+   "pos": [
+    28.39,
+    50.19
+   ],
+   "rotation": 1.2,
+   "scale": 1.0,
+   "variant": 24
+  },
+  {
+   "kind": "haystack",
+   "pos": [
+    200.93,
+    46.33
+   ],
+   "rotation": 2.0,
+   "scale": 1.05,
+   "variant": 25
+  },
+  {
+   "kind": "cart",
+   "pos": [
+    37.13,
+    57.92
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 26
+  },
+  {
+   "kind": "trough",
+   "pos": [
+    15.29,
+    84.94
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 27
+  },
+  {
+   "kind": "woodpile",
+   "pos": [
+    32.76,
+    81.08
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 28
+  },
+  {
+   "kind": "woodpile",
+   "pos": [
+    185.64,
+    81.08
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 29
+  },
+  {
+   "kind": "beehive",
+   "pos": [
+    10.92,
+    104.25
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 30
+  },
+  {
+   "kind": "beehive",
+   "pos": [
+    207.48,
+    104.25
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 31
+  },
+  {
+   "kind": "ladder",
+   "pos": [
+    190.01,
+    57.92
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 32
+  },
+  {
+   "kind": "sack",
+   "pos": [
+    187.82,
+    84.94
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 33
+  },
+  {
+   "kind": "sack",
+   "pos": [
+    194.38,
+    86.87
+   ],
+   "rotation": 0,
+   "scale": 0.9,
+   "variant": 34
+  },
+  {
+   "kind": "stall",
+   "pos": [
+    89.54,
+    77.22
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 35
+  },
+  {
+   "kind": "stall",
+   "pos": [
+    128.86,
+    77.22
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 36
+  },
+  {
+   "kind": "stall",
+   "pos": [
+    109.2,
+    69.5
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 37
+  },
+  {
+   "kind": "laundry",
+   "pos": [
+    54.6,
+    142.86
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 38
+  },
+  {
+   "kind": "laundry",
+   "pos": [
+    163.8,
+    142.86
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 39
+  },
+  {
+   "kind": "planter",
+   "pos": [
+    30.58,
+    108.11
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 40
+  },
+  {
+   "kind": "planter",
+   "pos": [
+    187.82,
+    108.11
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 41
+  },
+  {
+   "kind": "planter",
+   "pos": [
+    30.58,
+    113.9
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 42
+  },
+  {
+   "kind": "planter",
+   "pos": [
+    187.82,
+    113.9
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 43
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    96.1,
+    166.02
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 44
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    122.3,
+    166.02
+   ],
+   "rotation": 0,
+   "scale": 1.15,
+   "variant": 45
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    91.73,
+    131.27
+   ],
+   "rotation": 1.1,
+   "scale": 1.2,
+   "variant": 46
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    126.67,
+    131.27
+   ],
+   "rotation": 2.3,
+   "scale": 1.25,
+   "variant": 47
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    78.62,
+    59.42
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    78.62,
+    62.42
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    78.62,
+    65.42
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    78.62,
+    68.43
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    78.62,
+    71.43
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    78.62,
+    74.43
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    78.62,
+    77.43
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    78.62,
+    80.44
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    78.62,
+    83.44
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    139.78,
+    59.42
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    139.78,
+    62.42
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    139.78,
+    65.42
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    139.78,
+    68.43
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    139.78,
+    71.43
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    139.78,
+    74.43
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    139.78,
+    77.43
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    139.78,
+    80.44
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "hedge",
+   "pos": [
+    139.78,
+    83.44
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    14.51,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    17.32,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    20.12,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    22.93,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    25.74,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    28.55,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    31.36,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    48.2,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    51.01,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    53.82,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 14
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    56.63,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 15
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    59.44,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 16
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    62.24,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 17
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    65.05,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 18
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    67.86,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 19
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    70.67,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 20
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    73.48,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 21
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    76.28,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 22
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    79.09,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 23
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    81.9,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 24
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.71,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 25
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    87.52,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 26
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    90.32,
+    54.05
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 27
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    128.06,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 0
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    130.82,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    133.59,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    136.35,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    139.12,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    141.89,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    144.65,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 6
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    147.42,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 7
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    150.19,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 8
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    152.95,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 9
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    155.72,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 10
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    158.49,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 11
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    161.25,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    164.02,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    166.78,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 14
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    169.55,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 15
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    188.92,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 22
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    191.68,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 23
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    194.45,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 24
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    197.22,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 25
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    199.98,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 26
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    202.75,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 27
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    205.51,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 28
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    208.28,
+    50.19
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 29
+  },
+  {
    "kind": "torch",
    "pos": [
     78.0,
@@ -411,6 +1341,74 @@
     0.0,
     6.24
    ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    21.84,
+    69.5
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.95,
+   "variant": 15,
+   "label": "Bauernhaus",
+   "interior": "haus_aschenberg_11",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "warehouse",
+   "pos": [
+    196.56,
+    69.5
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.07,
+   "variant": 16,
+   "label": "Scheune",
+   "interior": "haus_aschenberg_12",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    8.19
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    65.52,
+    123.55
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.76,
+   "variant": 17,
+   "label": "Wohnhaus",
+   "interior": "haus_aschenberg_13",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    152.88,
+    123.55
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.76,
+   "variant": 18,
+   "label": "Wohnhaus",
+   "interior": "haus_aschenberg_14",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   }
  ],
  "npcs": [
@@ -441,6 +1439,80 @@
     "accent": "#ffffff",
     "hat": "cap",
     "height": 1.0
+   }
+  },
+  {
+   "id": "aschenberg_bauer",
+   "pos": [
+    41.5,
+    46.33
+   ],
+   "facing": 3.141592653589793,
+   "name": "Baeuerin",
+   "dialogue": "ort_bauer",
+   "wander": 4,
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#6b4f2b",
+    "shirt": "#7a9b4b",
+    "pants": "#5f4a33",
+    "accent": "#e0d8b8",
+    "hat": "beanie"
+   }
+  },
+  {
+   "id": "aschenberg_markt",
+   "pos": [
+    109.2,
+    63.71
+   ],
+   "facing": 0,
+   "name": "Marktfrau",
+   "dialogue": "ort_markt",
+   "appearance": {
+    "skin": "#e8c19b",
+    "hair": "#8f5f3f",
+    "shirt": "#c4563f",
+    "pants": "#4a4a52",
+    "accent": "#f0e0c4",
+    "hat": "none"
+   }
+  },
+  {
+   "id": "aschenberg_feld",
+   "pos": [
+    157.25,
+    42.47
+   ],
+   "facing": 3.141592653589793,
+   "name": "Feldhueter",
+   "dialogue": "ort_feld",
+   "wander": 5,
+   "appearance": {
+    "skin": "#c99a6b",
+    "hair": "#3a2a1c",
+    "shirt": "#8f6b3f",
+    "pants": "#4a4a52",
+    "accent": "#c4b08a",
+    "hat": "cap"
+   }
+  },
+  {
+   "id": "aschenberg_muellerin",
+   "pos": [
+    80.81,
+    23.17
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Muellerin",
+   "dialogue": "ort_muellerin",
+   "appearance": {
+    "skin": "#f0cfa8",
+    "hair": "#cfcfcf",
+    "shirt": "#6b7a8f",
+    "pants": "#3f3f4a",
+    "accent": "#e8e0cc",
+    "hat": "none"
    }
   }
  ],
@@ -592,6 +1664,38 @@
     157.79
    ],
    "facing": 3.141592653589793
+  },
+  {
+   "id": "from_haus_aschenberg_11",
+   "pos": [
+    33.93,
+    69.5
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_haus_aschenberg_12",
+   "pos": [
+    182.52,
+    69.5
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_aschenberg_13",
+   "pos": [
+    65.52,
+    111.46
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_haus_aschenberg_14",
+   "pos": [
+    152.88,
+    111.46
+   ],
+   "facing": 3.141592653589793
   }
  ],
  "id": "aschenberg",
@@ -649,6 +1753,44 @@
    }
   ]
  },
+ "cropZones": [
+  {
+   "x": 52.42,
+   "z": 32.82,
+   "width": 65.52,
+   "depth": 38.61,
+   "crop": "wheat",
+   "spacing": 1.0,
+   "rotation": 0.0
+  },
+  {
+   "x": 165.98,
+   "z": 30.89,
+   "width": 61.15,
+   "depth": 34.75,
+   "crop": "corn",
+   "spacing": 1.3,
+   "rotation": 0.0
+  },
+  {
+   "x": 26.21,
+   "z": 92.66,
+   "width": 26.21,
+   "depth": 19.31,
+   "crop": "vegetable",
+   "spacing": 0.8,
+   "rotation": 0.0
+  },
+  {
+   "x": 192.19,
+   "z": 92.66,
+   "width": 26.21,
+   "depth": 19.31,
+   "crop": "lavender",
+   "spacing": 0.9,
+   "rotation": 1.5707963267948966
+  }
+ ],
  "triggers": [],
  "ambience": {
   "fogNear": 65,

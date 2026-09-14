@@ -83,6 +83,16 @@ export class CameraManager {
    * stoesst. `null` hebt die Begrenzung auf (Aussenbereiche).
    */
   setCeiling(height: number | null): void { this.ceilingHeight = height; }
+
+  /**
+   * Bodenhoehe an einer Stelle - die Kamera bleibt darueber.
+   *
+   * Das Belegungsgitter kennt nur Hindernisse, kein Gelaende. Ohne diese
+   * Abfrage taucht die Kamera an jedem Hang in den Boden ein und man sieht
+   * die Erde von innen. Setzt der Aufrufer nichts, bleibt es beim alten
+   * Verhalten.
+   */
+  groundAt: ((x: number, z: number) => number) | null = null;
   setInvertY(value: boolean): void { this.invertY = value; }
   setMode(mode: CameraMode): void { this.mode = mode; }
 
@@ -193,6 +203,7 @@ export class CameraManager {
     this.distance = damp(this.distance, this.targetDistance, 0.12, dt);
     this.updateDesiredPosition();
     if (collision) this.resolveCollision(collision);
+    this.resolveGround();
     if (this.ceilingHeight !== null) {
       this.desiredPosition.y = Math.min(this.desiredPosition.y, this.ceilingHeight);
     }
@@ -249,6 +260,44 @@ export class CameraManager {
       const heightDiff = this.desiredPosition.y - this.smoothFocus.y;
       this.desiredPosition.y = this.smoothFocus.y + heightDiff * scale;
     }
+  }
+
+  /**
+   * Haelt die Kamera ueber dem Gelaende.
+   *
+   * Erst wird die Sichtlinie vom Spieler zur Kamera gegen das Hoehenfeld
+   * geprueft: steigt der Boden dazwischen an, rueckt die Kamera naeher
+   * heran. Danach wird die Hoehe hart auf den Boden begrenzt. Ohne beides
+   * steckte die Kamera an jedem Hang im Berg - man sah eine braune Flaeche
+   * statt der Landschaft, und der Anstieg auf Route 1 war unspielbar.
+   */
+  private resolveGround(): void {
+    if (!this.groundAt) return;
+    const clearance = GameConfig.camera.groundClearance;
+    const fx = this.smoothFocus.x;
+    const fy = this.smoothFocus.y;
+    const fz = this.smoothFocus.z;
+    const dx = this.desiredPosition.x - fx;
+    const dy = this.desiredPosition.y - fy;
+    const dz = this.desiredPosition.z - fz;
+    const dist = Math.hypot(dx, dy, dz);
+    if (dist < 0.05) return;
+
+    const steps = Math.max(4, Math.ceil(dist / 0.5));
+    let allowed = 1;
+    for (let i = 1; i <= steps; i++) {
+      const t = i / steps;
+      const py = fy + dy * t;
+      if (py < this.groundAt(fx + dx * t, fz + dz * t) + clearance) {
+        allowed = Math.max(0.28, (i - 1) / steps);
+        break;
+      }
+    }
+    if (allowed < 1) {
+      this.desiredPosition.set(fx + dx * allowed, fy + dy * allowed, fz + dz * allowed);
+    }
+    const floor = this.groundAt(this.desiredPosition.x, this.desiredPosition.z) + clearance;
+    if (this.desiredPosition.y < floor) this.desiredPosition.y = floor;
   }
 
   private updateCinematic(dt: number): void {
