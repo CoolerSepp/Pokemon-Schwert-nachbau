@@ -3,8 +3,8 @@
   {
    "kind": "lamp",
    "pos": [
-    45.6,
-    30.599999999999998
+    68.4,
+    45.9
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -13,8 +13,8 @@
   {
    "kind": "lamp",
    "pos": [
-    68.39999999999999,
-    30.599999999999998
+    102.6,
+    45.9
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -23,8 +23,8 @@
   {
    "kind": "lamp",
    "pos": [
-    45.6,
-    65.28
+    68.4,
+    97.92
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -33,8 +33,8 @@
   {
    "kind": "lamp",
    "pos": [
-    68.39999999999999,
-    65.28
+    102.6,
+    97.92
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -43,8 +43,8 @@
   {
    "kind": "bench",
    "pos": [
-    50.160000000000004,
-    53.04
+    75.24,
+    79.56
    ],
    "rotation": 1.5707963267948966,
    "scale": 1.0,
@@ -53,8 +53,8 @@
   {
    "kind": "bench",
    "pos": [
-    63.84,
-    53.04
+    95.76,
+    79.56
    ],
    "rotation": -1.5707963267948966,
    "scale": 1.0,
@@ -63,8 +63,8 @@
   {
    "kind": "sign",
    "pos": [
-    52.440000000000005,
-    12.24
+    78.66,
+    18.36
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -73,8 +73,8 @@
   {
    "kind": "well",
    "pos": [
-    57.0,
-    46.92
+    85.5,
+    70.38
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -83,8 +83,8 @@
   {
    "kind": "statue",
    "pos": [
-    40,
-    62
+    60.0,
+    93.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -93,8 +93,8 @@
   {
    "kind": "statue",
    "pos": [
-    74,
-    62
+    111.0,
+    93.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -103,8 +103,8 @@
   {
    "kind": "pillar",
    "pos": [
-    34,
-    38
+    51.0,
+    57.0
    ],
    "rotation": 0,
    "scale": 1.3,
@@ -113,8 +113,8 @@
   {
    "kind": "pillar",
    "pos": [
-    80,
-    38
+    120.0,
+    57.0
    ],
    "rotation": 0,
    "scale": 1.3,
@@ -123,8 +123,8 @@
   {
    "kind": "torch",
    "pos": [
-    48,
-    48
+    72.0,
+    72.0
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -133,8 +133,8 @@
   {
    "kind": "torch",
    "pos": [
-    66,
-    48
+    99.0,
+    72.0
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -145,84 +145,84 @@
   {
    "kind": "center",
    "pos": [
-    29.64,
-    51.0
+    44.46,
+    76.5
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "center_drachenhorst",
    "spawnPoint": "entrance",
    "label": "Heilstation",
    "doorOffset": [
-    0,
-    4.6
+    0.0,
+    6.9
    ]
   },
   {
    "kind": "shop",
    "pos": [
-    84.36,
-    51.0
+    126.54,
+    76.5
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "shop_drachenhorst",
    "spawnPoint": "entrance",
    "label": "Warenlager",
    "doorOffset": [
-    0,
-    3.8
+    0.0,
+    5.7
    ]
   },
   {
    "kind": "gym",
    "pos": [
-    57.0,
-    77.52
+    85.5,
+    116.28
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "gym_drachenhorst",
    "spawnPoint": "entrance",
    "label": "Arena des Horsts",
    "doorOffset": [
-    0,
-    6.4
+    0.0,
+    9.6
    ]
   },
   {
    "kind": "tower",
    "pos": [
-    22,
-    26
+    33.0,
+    39.0
    ],
    "rotation": 1.5707963267948966,
-   "scale": 0.9,
+   "scale": 1.35,
    "variant": 6,
    "label": "Wachturm"
   },
   {
    "kind": "tower",
    "pos": [
-    92,
-    26
+    138.0,
+    39.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 0.9,
+   "scale": 1.35,
    "variant": 7,
    "label": "Wachturm"
   },
   {
    "kind": "house",
    "pos": [
-    92,
-    82
+    138.0,
+    123.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 2,
    "label": "Hueterhaus"
   }
@@ -231,8 +231,8 @@
   {
    "id": "dh_guide",
    "pos": [
-    57,
-    24
+    85.5,
+    36.0
    ],
    "facing": 3.141592653589793,
    "name": "Hueter",
@@ -241,8 +241,8 @@
   {
    "id": "dh_t1",
    "pos": [
-    86,
-    60
+    129.0,
+    90.0
    ],
    "facing": -1.5707963267948966,
    "name": "Schuppenwaechter Rurik",
@@ -263,8 +263,8 @@
    "id": "dh_stein",
    "item": "sonnenstein",
    "pos": [
-    26,
-    88
+    39.0,
+    132.0
    ],
    "quantity": 1,
    "hidden": false
@@ -273,8 +273,8 @@
    "id": "dh_disk",
    "item": "td15",
    "pos": [
-    96,
-    44
+    144.0,
+    66.0
    ],
    "quantity": 1,
    "hidden": false
@@ -284,20 +284,20 @@
   {
    "to": "route_8",
    "trigger": {
-    "x": 49,
-    "z": 0,
-    "width": 16,
-    "depth": 3
+    "x": 73.5,
+    "z": 0.0,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_drachenhorst"
   },
   {
    "to": "route_9",
    "trigger": {
-    "x": 49,
-    "z": 99,
-    "width": 16,
-    "depth": 3
+    "x": 73.5,
+    "z": 148.5,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_drachenhorst",
    "requires": {
@@ -310,48 +310,48 @@
   {
    "id": "default",
    "pos": [
-    57,
-    10
+    85.5,
+    15.0
    ],
    "facing": 0
   },
   {
    "id": "from_route8",
    "pos": [
-    57,
-    8
+    85.5,
+    12.0
    ],
    "facing": 0
   },
   {
    "id": "from_route9",
    "pos": [
-    57,
-    96
+    85.5,
+    144.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_center",
    "pos": [
-    29.64,
-    43.0
+    44.46,
+    64.5
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_shop",
    "pos": [
-    84.36,
-    43.0
+    126.54,
+    64.5
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_gym",
    "pos": [
-    57.0,
-    67.52
+    85.5,
+    101.28
    ],
    "facing": 3.141592653589793
   }
@@ -361,8 +361,8 @@
  "kind": "city",
  "biome": "rocky",
  "size": [
-  114,
-  102
+  171.0,
+  153.0
  ],
  "seed": 3101,
  "mapPos": [
@@ -379,35 +379,35 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 1.8,
-  "frequency": 0.04,
+  "frequency": 0.02667,
   "octaves": 3,
   "cliffBorder": true,
   "paths": [
    {
     "points": [
      [
-      57.0,
-      2
+      85.5,
+      3.0
      ],
      [
-      57.0,
-      98
+      85.5,
+      147.0
      ]
     ],
-    "width": 9
+    "width": 13.5
    },
    {
     "points": [
      [
-      8,
-      51.0
+      12.0,
+      76.5
      ],
      [
-      106,
-      51.0
+      159.0,
+      76.5
      ]
     ],
-    "width": 7
+    "width": 10.5
    }
   ]
  },

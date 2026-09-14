@@ -3,8 +3,8 @@
   {
    "kind": "lamp",
    "pos": [
-    45.6,
-    30.0
+    68.4,
+    45.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -13,8 +13,8 @@
   {
    "kind": "lamp",
    "pos": [
-    68.39999999999999,
-    30.0
+    102.6,
+    45.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -23,8 +23,8 @@
   {
    "kind": "lamp",
    "pos": [
-    45.6,
-    64.0
+    68.4,
+    96.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -33,8 +33,8 @@
   {
    "kind": "lamp",
    "pos": [
-    68.39999999999999,
-    64.0
+    102.6,
+    96.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -43,8 +43,8 @@
   {
    "kind": "bench",
    "pos": [
-    50.160000000000004,
-    52.0
+    75.24,
+    78.0
    ],
    "rotation": 1.5707963267948966,
    "scale": 1.0,
@@ -53,8 +53,8 @@
   {
    "kind": "bench",
    "pos": [
-    63.84,
-    52.0
+    95.76,
+    78.0
    ],
    "rotation": -1.5707963267948966,
    "scale": 1.0,
@@ -63,8 +63,8 @@
   {
    "kind": "sign",
    "pos": [
-    52.440000000000005,
-    12.0
+    78.66,
+    18.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -73,8 +73,8 @@
   {
    "kind": "well",
    "pos": [
-    57.0,
-    46.0
+    85.5,
+    69.0
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -83,8 +83,8 @@
   {
    "kind": "lamp",
    "pos": [
-    30,
-    60
+    45.0,
+    90.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -93,8 +93,8 @@
   {
    "kind": "lamp",
    "pos": [
-    84,
-    60
+    126.0,
+    90.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -103,8 +103,8 @@
   {
    "kind": "bench",
    "pos": [
-    40,
-    74
+    60.0,
+    111.0
    ],
    "rotation": 1.5707963267948966,
    "scale": 1.0,
@@ -113,8 +113,8 @@
   {
    "kind": "flower",
    "pos": [
-    74,
-    74
+    111.0,
+    111.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -125,84 +125,84 @@
   {
    "kind": "center",
    "pos": [
-    29.64,
-    50.0
+    44.46,
+    75.0
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "center_funkenau",
    "spawnPoint": "entrance",
    "label": "Heilstation",
    "doorOffset": [
-    0,
-    4.6
+    0.0,
+    6.9
    ]
   },
   {
    "kind": "shop",
    "pos": [
-    84.36,
-    50.0
+    126.54,
+    75.0
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "shop_funkenau",
    "spawnPoint": "entrance",
    "label": "Warenlager",
    "doorOffset": [
-    0,
-    3.8
+    0.0,
+    5.7
    ]
   },
   {
    "kind": "gym",
    "pos": [
-    57.0,
-    76.0
+    85.5,
+    114.0
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "gym_funkenau",
    "spawnPoint": "entrance",
    "label": "Arena von Funkenau",
    "doorOffset": [
-    0,
-    6.4
+    0.0,
+    9.6
    ]
   },
   {
    "kind": "station",
    "pos": [
-    22,
-    24
+    33.0,
+    36.0
    ],
    "rotation": 1.5707963267948966,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 3,
    "label": "Bahnhof"
   },
   {
    "kind": "house",
    "pos": [
-    94,
-    24
+    141.0,
+    36.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 7,
    "label": "Wohnhaus"
   },
   {
    "kind": "tower",
    "pos": [
-    94,
-    82
+    141.0,
+    123.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 0.85,
+   "scale": 1.27,
    "variant": 5,
    "label": "Sendeturm"
   }
@@ -211,8 +211,8 @@
   {
    "id": "fa_guide",
    "pos": [
-    57,
-    62
+    85.5,
+    93.0
    ],
    "facing": 3.141592653589793,
    "name": "Stadtfuehrerin",
@@ -221,8 +221,8 @@
   {
    "id": "fa_t1",
    "pos": [
-    86,
-    44
+    129.0,
+    66.0
    ],
    "facing": -1.5707963267948966,
    "name": "Technikerin Ilva",
@@ -240,8 +240,8 @@
   {
    "id": "rivale_fa",
    "pos": [
-    57,
-    70
+    85.5,
+    105.0
    ],
    "facing": 0,
    "name": "Rivale Jorin",
@@ -264,8 +264,8 @@
    "id": "fa_disk",
    "item": "td04",
    "pos": [
-    26,
-    88
+    39.0,
+    132.0
    ],
    "quantity": 1,
    "hidden": false
@@ -274,8 +274,8 @@
    "id": "fa_magnet",
    "item": "magnetkern",
    "pos": [
-    98,
-    60
+    147.0,
+    90.0
    ],
    "quantity": 1,
    "hidden": false
@@ -285,20 +285,20 @@
   {
    "to": "schimmerhoehle",
    "trigger": {
-    "x": 0,
-    "z": 43,
-    "width": 3,
-    "depth": 14
+    "x": 0.0,
+    "z": 64.5,
+    "width": 4.5,
+    "depth": 21.0
    },
    "spawnPoint": "from_funkenau"
   },
   {
    "to": "wildland",
    "trigger": {
-    "x": 49,
-    "z": 97,
-    "width": 16,
-    "depth": 3
+    "x": 73.5,
+    "z": 145.5,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_funkenau"
   }
@@ -307,48 +307,48 @@
   {
    "id": "default",
    "pos": [
-    57,
-    50
+    85.5,
+    75.0
    ],
    "facing": 0
   },
   {
    "id": "from_hoehle",
    "pos": [
-    8,
-    50
+    12.0,
+    75.0
    ],
    "facing": 1.5707963267948966
   },
   {
    "id": "from_wildland",
    "pos": [
-    57,
-    94
+    85.5,
+    141.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_center",
    "pos": [
-    29.64,
-    42.0
+    44.46,
+    63.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_shop",
    "pos": [
-    84.36,
-    42.0
+    126.54,
+    63.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_gym",
    "pos": [
-    57.0,
-    66.0
+    85.5,
+    99.0
    ],
    "facing": 3.141592653589793
   }
@@ -358,8 +358,8 @@
  "kind": "city",
  "biome": "urban",
  "size": [
-  114,
-  100
+  171.0,
+  150.0
  ],
  "seed": 2101,
  "mapPos": [
@@ -377,35 +377,35 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 1.8,
-  "frequency": 0.04,
+  "frequency": 0.02667,
   "octaves": 3,
   "cliffBorder": true,
   "paths": [
    {
     "points": [
      [
-      57.0,
-      2
+      85.5,
+      3.0
      ],
      [
-      57.0,
-      96
+      85.5,
+      144.0
      ]
     ],
-    "width": 9
+    "width": 13.5
    },
    {
     "points": [
      [
-      8,
-      50.0
+      12.0,
+      75.0
      ],
      [
-      106,
-      50.0
+      159.0,
+      75.0
      ]
     ],
-    "width": 7
+    "width": 10.5
    }
   ]
  },

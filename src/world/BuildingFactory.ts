@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import type { AssetManager } from '@/engine/AssetManager';
 import { RNG } from '@/core/RNG';
 import type { BuildingPlacement } from '@/data/schema';
+import type { TextureKind } from '@/engine/TextureFactory';
 
 export interface BuildingResult {
   object: THREE.Group;
@@ -49,12 +50,16 @@ export class BuildingFactory {
 
   private box(
     size: [number, number, number], color: string, pos: [number, number, number],
-    opts: { rot?: [number, number, number]; metal?: number; emissive?: number; opacity?: number } = {},
+    opts: {
+      rot?: [number, number, number]; metal?: number; emissive?: number;
+      opacity?: number; texture?: TextureKind; repeat?: number;
+    } = {},
   ): THREE.Mesh {
     const geo = this.assets.getShape('box', 1);
     const mat = this.assets.getMaterial({
       color, flatShading: true, metalness: opts.metal ?? 0,
       emissive: opts.emissive ?? 0, opacity: opts.opacity ?? 1,
+      texture: opts.texture, textureRepeat: opts.repeat,
     });
     const m = new THREE.Mesh(geo, mat);
     m.scale.set(size[0] * 0.5, size[1] * 0.5, size[2] * 0.5);
@@ -68,12 +73,16 @@ export class BuildingFactory {
   private shape(
     kind: Parameters<AssetManager['getShape']>[0], size: [number, number, number],
     color: string, pos: [number, number, number],
-    opts: { rot?: [number, number, number]; detail?: number; metal?: number; emissive?: number; opacity?: number } = {},
+    opts: {
+      rot?: [number, number, number]; detail?: number; metal?: number;
+      emissive?: number; opacity?: number; texture?: TextureKind; repeat?: number;
+    } = {},
   ): THREE.Mesh {
     const geo = this.assets.getShape(kind, opts.detail ?? 2);
     const mat = this.assets.getMaterial({
       color, flatShading: true, metalness: opts.metal ?? 0,
       emissive: opts.emissive ?? 0, opacity: opts.opacity ?? 1,
+      texture: opts.texture, textureRepeat: opts.repeat,
     });
     const m = new THREE.Mesh(geo, mat);
     const halfY = kind === 'cone' || kind === 'cylinder' ? 0.5 : 1;
@@ -151,7 +160,8 @@ export class BuildingFactory {
 
   /** Sockel: dunkles Band am Fuss der Wand. */
   private addPlinth(g: THREE.Group, w: number, d: number, color: string, height = 0.34): void {
-    g.add(this.box([w + 0.22, height, d + 0.22], color, [0, height / 2, 0]));
+    g.add(this.box([w + 0.22, height, d + 0.22], color, [0, height / 2, 0],
+      { texture: 'stone', repeat: 2 }));
   }
 
   /** Eckbalken an den vier Hausecken. */
@@ -159,7 +169,9 @@ export class BuildingFactory {
     const t = 0.22;
     for (const sx of [-1, 1]) {
       for (const sz of [-1, 1]) {
-        g.add(this.box([t, h, t], color, [sx * (w / 2 - t * 0.3), h / 2, sz * (d / 2 - t * 0.3)]));
+        g.add(this.box([t, h, t], color,
+          [sx * (w / 2 - t * 0.3), h / 2, sz * (d / 2 - t * 0.3)],
+          { texture: 'plank' }));
       }
     }
   }
@@ -181,7 +193,9 @@ export class BuildingFactory {
     shape.closePath();
     const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.18, bevelEnabled: false });
     geometry.translate(0, 0, -0.09);
-    const material = this.assets.getMaterial({ color, flatShading: true });
+    const material = this.assets.getMaterial({
+      color, flatShading: true, texture: 'plaster', textureRepeat: 1,
+    });
     const mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(0, h, z);
     mesh.castShadow = true;
@@ -220,7 +234,7 @@ export class BuildingFactory {
     const roof = rng.pick(ROOF_COLORS);
     const trim = rng.pick(TRIM_COLORS);
 
-    g.add(this.box([w, h, d], wall, [0, h / 2, 0]));
+    g.add(this.box([w, h, d], wall, [0, h / 2, 0], { texture: 'plaster', repeat: 2 }));
     this.addPlinth(g, w, d, trim, 0.38 * scale);
     this.addCorners(g, w, h, d, trim);
 
@@ -231,7 +245,8 @@ export class BuildingFactory {
     const roofDepth = d * 1.18;
     for (const dir of [-1, 1]) {
       g.add(this.box([panelLen, 0.18 * scale, roofDepth], roof,
-        [(dir * w) / 4, h + roofH / 2, 0], { rot: [0, 0, -dir * slope] }));
+        [(dir * w) / 4, h + roofH / 2, 0],
+        { rot: [0, 0, -dir * slope], texture: 'shingle', repeat: 2 }));
       // Dunkles Randbrett an der Traufe.
       g.add(this.box([panelLen, 0.1 * scale, 0.2], trim,
         [(dir * w) / 4, h + roofH / 2 - 0.06, roofDepth / 2], { rot: [0, 0, -dir * slope] }));
@@ -272,8 +287,9 @@ export class BuildingFactory {
     const w = rng.float(7.6, 9.0) * scale;
     const d = rng.float(6.0, 7.0) * scale;
     const h = rng.float(3.4, 4.0) * scale;
-    g.add(this.box([w, h, d], '#eee6d8', [0, h / 2, 0]));
-    g.add(this.box([w * 1.06, 0.5 * scale, d * 1.06], accent, [0, h + 0.25 * scale, 0]));
+    g.add(this.box([w, h, d], '#eee6d8', [0, h / 2, 0], { texture: 'plaster', repeat: 2 }));
+    g.add(this.box([w * 1.06, 0.5 * scale, d * 1.06], accent, [0, h + 0.25 * scale, 0],
+      { texture: 'metal', repeat: 3 }));
     // Markise ueber dem Eingang.
     g.add(this.box([w * 0.6, 0.14, 1.5 * scale], accent,
       [0, h * 0.72, d / 2 + 0.7 * scale], { rot: [0.28, 0, 0] }));
@@ -292,7 +308,7 @@ export class BuildingFactory {
     const w = rng.float(9.0, 10.2) * scale;
     const d = rng.float(7.0, 8.2) * scale;
     const h = rng.float(3.6, 4.2) * scale;
-    g.add(this.box([w, h, d], '#f5f0e6', [0, h / 2, 0]));
+    g.add(this.box([w, h, d], '#f5f0e6', [0, h / 2, 0], { texture: 'plaster', repeat: 2 }));
     // Halbrundes Dach als Wiedererkennungsmerkmal.
     g.add(this.shape('cylinder', [w * 0.52, d * 1.02, w * 0.52], accent,
       [0, h, 0], { rot: [Math.PI / 2, 0, 0], detail: 3 }));
@@ -313,7 +329,7 @@ export class BuildingFactory {
     const w = rng.float(13, 15.5) * scale;
     const d = rng.float(10, 12) * scale;
     const h = rng.float(7.0, 8.4) * scale;
-    g.add(this.box([w, h, d], '#d8d2c4', [0, h / 2, 0]));
+    g.add(this.box([w, h, d], '#d8d2c4', [0, h / 2, 0], { texture: 'stone', repeat: 3 }));
     // Kuppel
     g.add(this.shape('sphere', [w * 0.5, h * 0.42, d * 0.5], accent, [0, h, 0], { detail: 3 }));
     // Bandmuster
@@ -338,7 +354,8 @@ export class BuildingFactory {
     const g = new THREE.Group();
     const r = rng.float(15, 18) * scale;
     const h = rng.float(8.5, 10.5) * scale;
-    g.add(this.shape('cylinder', [r, h, r], '#cfc9bb', [0, h / 2, 0], { detail: 4 }));
+    g.add(this.shape('cylinder', [r, h, r], '#cfc9bb', [0, h / 2, 0],
+      { detail: 4, texture: 'stone', repeat: 4 }));
     g.add(this.shape('cylinder', [r * 1.06, 1.2 * scale, r * 1.06], accent, [0, h, 0], { detail: 4 }));
     for (let i = 0; i < 8; i++) {
       const a = (i / 8) * Math.PI * 2;
@@ -359,7 +376,7 @@ export class BuildingFactory {
     const w = rng.float(10.4, 12) * scale;
     const d = rng.float(8, 9.4) * scale;
     const h = rng.float(4.4, 5.2) * scale;
-    g.add(this.box([w, h, d], '#e4eaee', [0, h / 2, 0]));
+    g.add(this.box([w, h, d], '#e4eaee', [0, h / 2, 0], { texture: 'plaster', repeat: 2 }));
     g.add(this.box([w * 1.03, 0.4 * scale, d * 1.03], '#8fa4b5', [0, h, 0]));
     g.add(this.shape('cylinder', [2.2 * scale, 2.6 * scale, 2.2 * scale], '#c4d8e6',
       [w * 0.26, h + 1.3 * scale, 0], { detail: 3, opacity: 0.85 }));

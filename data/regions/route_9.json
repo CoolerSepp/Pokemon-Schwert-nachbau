@@ -3,8 +3,8 @@
   {
    "kind": "pillar",
    "pos": [
-    22,
-    26
+    33.0,
+    39.0
    ],
    "rotation": 0,
    "scale": 1.4,
@@ -13,8 +13,8 @@
   {
    "kind": "pillar",
    "pos": [
-    48,
-    26
+    72.0,
+    39.0
    ],
    "rotation": 0,
    "scale": 1.4,
@@ -23,8 +23,8 @@
   {
    "kind": "statue",
    "pos": [
-    35,
-    56
+    52.5,
+    84.0
    ],
    "rotation": 3.141592653589793,
    "scale": 1.2,
@@ -33,8 +33,8 @@
   {
    "kind": "torch",
    "pos": [
-    26,
-    74
+    39.0,
+    111.0
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -43,8 +43,8 @@
   {
    "kind": "torch",
    "pos": [
-    44,
-    74
+    66.0,
+    111.0
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -53,8 +53,8 @@
   {
    "kind": "boulder",
    "pos": [
-    58,
-    100
+    87.0,
+    150.0
    ],
    "rotation": 0.8,
    "scale": 1.4,
@@ -66,8 +66,8 @@
   {
    "id": "r9_t1",
    "pos": [
-    38,
-    46
+    57.0,
+    69.0
    ],
    "facing": 3.141592653589793,
    "name": "Ligaanwaerter Ken",
@@ -85,8 +85,8 @@
   {
    "id": "r9_t2",
    "pos": [
-    32,
-    94
+    48.0,
+    141.0
    ],
    "facing": 0,
    "name": "Ligaanwaerterin Thea",
@@ -104,8 +104,8 @@
   {
    "id": "rivale_r9",
    "pos": [
-    35,
-    110
+    52.5,
+    165.0
    ],
    "facing": 3.141592653589793,
    "name": "Rivale Jorin",
@@ -127,8 +127,8 @@
    "id": "r9_top",
    "item": "top_trank",
    "pos": [
-    20,
-    62
+    30.0,
+    93.0
    ],
    "quantity": 2,
    "hidden": false
@@ -137,8 +137,8 @@
    "id": "r9_glueck",
    "item": "gluecksei",
    "pos": [
-    56,
-    108
+    84.0,
+    162.0
    ],
    "quantity": 1,
    "hidden": false
@@ -148,20 +148,20 @@
   {
    "to": "drachenhorst",
    "trigger": {
-    "x": 27,
-    "z": 0,
-    "width": 16,
-    "depth": 3
+    "x": 40.5,
+    "z": 0.0,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_route9"
   },
   {
    "to": "ligastadion",
    "trigger": {
-    "x": 27,
-    "z": 117,
-    "width": 16,
-    "depth": 3
+    "x": 40.5,
+    "z": 175.5,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_route9"
   }
@@ -170,24 +170,24 @@
   {
    "id": "from_drachenhorst",
    "pos": [
-    35,
-    6
+    52.5,
+    9.0
    ],
    "facing": 0
   },
   {
    "id": "from_liga",
    "pos": [
-    35,
-    114
+    52.5,
+    171.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "default",
    "pos": [
-    35,
-    6
+    52.5,
+    9.0
    ],
    "facing": 0
   }
@@ -197,8 +197,8 @@
  "kind": "route",
  "biome": "mountain",
  "size": [
-  70,
-  120
+  105.0,
+  180.0
  ],
  "seed": 3201,
  "mapPos": [
@@ -215,7 +215,7 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 13,
-  "frequency": 0.028,
+  "frequency": 0.01867,
   "octaves": 4,
   "cliffBorder": true,
   "ridged": true,
@@ -223,38 +223,38 @@
    {
     "points": [
      [
-      35.0,
-      2
+      52.5,
+      3.0
      ],
      [
-      35.0,
-      118
+      52.5,
+      177.0
      ]
     ],
-    "width": 7
+    "width": 10.5
    }
   ]
  },
  "grassZones": [
   {
-   "x": 16,
-   "z": 34,
-   "width": 16,
-   "depth": 20,
+   "x": 24.0,
+   "z": 51.0,
+   "width": 24.0,
+   "depth": 30.0,
    "density": 1.5
   },
   {
-   "x": 54,
-   "z": 60,
-   "width": 16,
-   "depth": 20,
+   "x": 81.0,
+   "z": 90.0,
+   "width": 24.0,
+   "depth": 30.0,
    "density": 1.5
   },
   {
-   "x": 18,
-   "z": 90,
-   "width": 16,
-   "depth": 20,
+   "x": 27.0,
+   "z": 135.0,
+   "width": 24.0,
+   "depth": 30.0,
    "density": 1.6
   }
  ],
@@ -317,7 +317,7 @@
    "rare": true
   }
  ],
- "maxWild": 14,
+ "maxWild": 21,
  "triggers": [],
  "ambience": {
   "fogNear": 55,

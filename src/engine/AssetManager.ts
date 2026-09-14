@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { Logger } from '@/core/Logger';
 import type { PartShape } from '@/data/schema';
+import { TextureFactory, type TextureKind } from './TextureFactory';
 
 const log = Logger.scope('Assets');
 
@@ -12,6 +13,10 @@ export interface MaterialSpec {
   opacity?: number;
   roughness?: number;
   doubleSided?: boolean;
+  /** Prozedurale Textur; ohne Angabe bleibt die Flaeche einfarbig. */
+  texture?: TextureKind;
+  /** Wiederholungen der Textur auf der Flaeche. */
+  textureRepeat?: number;
 }
 
 /**
@@ -23,6 +28,8 @@ export interface MaterialSpec {
 export class AssetManager {
   private readonly geometries = new Map<string, THREE.BufferGeometry>();
   private readonly materials = new Map<string, THREE.Material>();
+  /** Prozedurale Texturen - erzeugt keine Dateien, zeichnet auf Canvas. */
+  readonly textures = new TextureFactory();
   private readonly gltfCache = new Map<string, THREE.Group>();
   private disposed = false;
 
@@ -81,7 +88,7 @@ export class AssetManager {
     const key = [
       spec.color, spec.flatShading ? 1 : 0, spec.metalness ?? 0,
       spec.emissive ?? 0, spec.opacity ?? 1, spec.roughness ?? 0.85,
-      spec.doubleSided ? 1 : 0,
+      spec.doubleSided ? 1 : 0, spec.texture ?? '-', spec.textureRepeat ?? 1,
     ].join('|');
     const cached = this.materials.get(key);
     if (cached) return cached;
@@ -89,6 +96,24 @@ export class AssetManager {
     const color = new THREE.Color(spec.color);
     const transparent = (spec.opacity ?? 1) < 1;
     let material: THREE.Material;
+
+    // Textur in der Materialfarbe einfaerben und die Grundfarbe auf Weiss
+    // setzen, sonst wuerde die Farbe doppelt wirken.
+    let map: THREE.Texture | null = null;
+    if (spec.texture) {
+      const source = this.textures.get(spec.texture, spec.color);
+      const repeat = spec.textureRepeat ?? 1;
+      if (repeat === 1) {
+        map = source;
+      } else {
+        // Eigene Kopie, damit unterschiedliche Wiederholungen moeglich sind.
+        map = source.clone();
+        map.needsUpdate = true;
+        map.wrapS = THREE.RepeatWrapping;
+        map.wrapT = THREE.RepeatWrapping;
+        map.repeat.set(repeat, repeat);
+      }
+    }
 
     if ((spec.metalness ?? 0) > 0.05) {
       material = new THREE.MeshStandardMaterial({
@@ -101,6 +126,7 @@ export class AssetManager {
         side: spec.doubleSided ? THREE.DoubleSide : THREE.FrontSide,
         emissive: (spec.emissive ?? 0) > 0 ? color : new THREE.Color(0x000000),
         emissiveIntensity: spec.emissive ?? 0,
+        map,
       });
     } else {
       // Lambert ist deutlich guenstiger und reicht fuer den Low-Poly-Stil.
@@ -112,8 +138,12 @@ export class AssetManager {
         side: spec.doubleSided ? THREE.DoubleSide : THREE.FrontSide,
         emissive: (spec.emissive ?? 0) > 0 ? color : new THREE.Color(0x000000),
         emissiveIntensity: spec.emissive ?? 0,
+        map,
       });
     }
+    // Die Textur traegt die Farbe bereits; die Materialfarbe bleibt neutral,
+    // damit der Ton nicht doppelt aufgetragen wird.
+    if (map) (material as THREE.MeshLambertMaterial).color.set('#ffffff');
     material.name = key;
     this.materials.set(key, material);
     return material;
@@ -153,6 +183,7 @@ export class AssetManager {
   }
 
   dispose(): void {
+    this.textures.dispose();
     if (this.disposed) return;
     this.disposed = true;
     for (const g of this.geometries.values()) g.dispose();

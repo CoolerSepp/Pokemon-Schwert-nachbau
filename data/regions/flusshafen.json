@@ -3,8 +3,8 @@
   {
    "kind": "lamp",
    "pos": [
-    48.0,
-    31.2
+    72.0,
+    46.8
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -13,8 +13,8 @@
   {
    "kind": "lamp",
    "pos": [
-    72.0,
-    31.2
+    108.0,
+    46.8
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -23,8 +23,8 @@
   {
    "kind": "lamp",
    "pos": [
-    48.0,
-    66.56
+    72.0,
+    99.84
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -33,8 +33,8 @@
   {
    "kind": "lamp",
    "pos": [
-    72.0,
-    66.56
+    108.0,
+    99.84
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -43,8 +43,8 @@
   {
    "kind": "bench",
    "pos": [
-    52.8,
-    54.08
+    79.2,
+    81.12
    ],
    "rotation": 1.5707963267948966,
    "scale": 1.0,
@@ -53,8 +53,8 @@
   {
    "kind": "bench",
    "pos": [
-    67.2,
-    54.08
+    100.8,
+    81.12
    ],
    "rotation": -1.5707963267948966,
    "scale": 1.0,
@@ -63,8 +63,8 @@
   {
    "kind": "sign",
    "pos": [
-    55.2,
-    12.48
+    82.8,
+    18.72
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -73,8 +73,8 @@
   {
    "kind": "well",
    "pos": [
-    60.0,
-    47.84
+    90.0,
+    71.76
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -83,8 +83,8 @@
   {
    "kind": "palm",
    "pos": [
-    16,
-    34
+    24.0,
+    51.0
    ],
    "rotation": 0.3,
    "scale": 1.2,
@@ -93,8 +93,8 @@
   {
    "kind": "palm",
    "pos": [
-    104,
-    40
+    156.0,
+    60.0
    ],
    "rotation": 1.1,
    "scale": 1.15,
@@ -103,8 +103,8 @@
   {
    "kind": "barrel",
    "pos": [
-    30,
-    78
+    45.0,
+    117.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -113,8 +113,8 @@
   {
    "kind": "crate",
    "pos": [
-    34,
-    82
+    51.0,
+    123.0
    ],
    "rotation": 0.4,
    "scale": 1.0,
@@ -123,8 +123,8 @@
   {
    "kind": "lilypad",
    "pos": [
-    92,
-    64
+    138.0,
+    96.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -135,84 +135,84 @@
   {
    "kind": "center",
    "pos": [
-    31.200000000000003,
-    52.0
+    46.8,
+    78.0
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "center_flusshafen",
    "spawnPoint": "entrance",
    "label": "Heilstation",
    "doorOffset": [
-    0,
-    4.6
+    0.0,
+    6.9
    ]
   },
   {
    "kind": "shop",
    "pos": [
-    88.8,
-    52.0
+    133.2,
+    78.0
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "shop_flusshafen",
    "spawnPoint": "entrance",
    "label": "Warenlager",
    "doorOffset": [
-    0,
-    3.8
+    0.0,
+    5.7
    ]
   },
   {
    "kind": "gym",
    "pos": [
-    60.0,
-    79.04
+    90.0,
+    118.56
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "gym_flusshafen",
    "spawnPoint": "entrance",
    "label": "Arena von Flusshafen",
    "doorOffset": [
-    0,
-    6.4
+    0.0,
+    9.6
    ]
   },
   {
    "kind": "warehouse",
    "pos": [
-    22,
-    84
+    33.0,
+    126.0
    ],
    "rotation": 1.5707963267948966,
-   "scale": 0.9,
+   "scale": 1.35,
    "variant": 3,
    "label": "Lagerhalle"
   },
   {
    "kind": "house",
    "pos": [
-    100,
-    22
+    150.0,
+    33.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 5,
    "label": "Wohnhaus"
   },
   {
    "kind": "station",
    "pos": [
-    100,
-    84
+    150.0,
+    126.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 2,
    "label": "Bahnhof"
   }
@@ -221,8 +221,8 @@
   {
    "id": "fh_guide",
    "pos": [
-    60,
-    24
+    90.0,
+    36.0
    ],
    "facing": 3.141592653589793,
    "name": "Hafenmeister",
@@ -231,8 +231,8 @@
   {
    "id": "fh_kind",
    "pos": [
-    70,
-    58
+    105.0,
+    87.0
    ],
    "facing": -1.5707963267948966,
    "name": "Kind",
@@ -242,8 +242,8 @@
   {
    "id": "fh_t1",
    "pos": [
-    92,
-    66
+    138.0,
+    99.0
    ],
    "facing": -1.5707963267948966,
    "name": "Matrose Jens",
@@ -261,8 +261,8 @@
   {
    "id": "rivale_fh",
    "pos": [
-    60,
-    32
+    90.0,
+    48.0
    ],
    "facing": 3.141592653589793,
    "name": "Rivale Jorin",
@@ -285,8 +285,8 @@
    "id": "fh_disk",
    "item": "td03",
    "pos": [
-    24,
-    26
+    36.0,
+    39.0
    ],
    "quantity": 1,
    "hidden": false
@@ -296,20 +296,20 @@
   {
    "to": "route_2",
    "trigger": {
-    "x": 52,
-    "z": 0,
-    "width": 16,
-    "depth": 3
+    "x": 78.0,
+    "z": 0.0,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_flusshafen"
   },
   {
    "to": "route_3",
    "trigger": {
-    "x": 52,
-    "z": 101,
-    "width": 16,
-    "depth": 3
+    "x": 78.0,
+    "z": 151.5,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_flusshafen"
   }
@@ -318,48 +318,48 @@
   {
    "id": "default",
    "pos": [
-    60,
-    10
+    90.0,
+    15.0
    ],
    "facing": 0
   },
   {
    "id": "from_route2",
    "pos": [
-    60,
-    8
+    90.0,
+    12.0
    ],
    "facing": 0
   },
   {
    "id": "from_route3",
    "pos": [
-    60,
-    98
+    90.0,
+    147.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_center",
    "pos": [
-    31.200000000000003,
-    44.0
+    46.8,
+    66.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_shop",
    "pos": [
-    88.8,
-    44.0
+    133.2,
+    66.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_gym",
    "pos": [
-    60.0,
-    69.04
+    90.0,
+    103.56
    ],
    "facing": 3.141592653589793
   }
@@ -369,8 +369,8 @@
  "kind": "city",
  "biome": "coastal",
  "size": [
-  120,
-  104
+  180.0,
+  156.0
  ],
  "seed": 1501,
  "mapPos": [
@@ -389,35 +389,35 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 1.8,
-  "frequency": 0.04,
+  "frequency": 0.02667,
   "octaves": 3,
   "cliffBorder": true,
   "paths": [
    {
     "points": [
      [
-      60.0,
-      2
+      90.0,
+      3.0
      ],
      [
-      60.0,
-      100
+      90.0,
+      150.0
      ]
     ],
-    "width": 9
+    "width": 13.5
    },
    {
     "points": [
      [
-      8,
-      52.0
+      12.0,
+      78.0
      ],
      [
-      112,
-      52.0
+      168.0,
+      78.0
      ]
     ],
-    "width": 7
+    "width": 10.5
    }
   ]
  },

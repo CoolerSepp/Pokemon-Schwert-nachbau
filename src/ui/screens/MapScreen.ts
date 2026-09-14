@@ -4,14 +4,7 @@ import type { GameAction } from '@/engine/InputManager';
 import type { MenuContext } from './MenuContext';
 import { GameData } from '@/data/GameData';
 import type { AreaData } from '@/data/schema';
-
-const KIND_COLORS: Record<string, string> = {
-  town: '#7fc44b', city: '#4fa8e0', route: '#d8c98f', cave: '#7a6b5f',
-  forest: '#4f8a42', lake: '#3f8fc4', mountain: '#9b9384', snow: '#dfe9f2',
-  industrial: '#8f8f8a', ruins: '#a89f88', lab: '#8fc4e0', stadium: '#e0a84b',
-  wildarea: '#9bd85b', league: '#ffd76b', endgame: '#c46bd8', home: '#e0a8a8',
-  interior: '#6b6b76',
-};
+import { drawRegionMap, type MapNode } from '../RegionMap';
 
 /**
  * Weltkarte mit Spielerposition, besuchten Orten und Schnellreise.
@@ -25,21 +18,32 @@ export class MapScreen implements Screen {
 
   private root!: HTMLElement;
   private canvasNode!: HTMLElement;
+  private canvas!: HTMLCanvasElement;
   private infoNode!: HTMLElement;
-  private zoom = 1;
   private selected = 0;
+  /** Alle Orte der Karte - auch unbesuchte, diese als Schemen. */
   private places: AreaData[] = [];
+  /** Nur besuchte Orte; nur sie lassen sich anwaehlen. */
+  private known: AreaData[] = [];
+  private lastSize = { width: 0, height: 0 };
 
   constructor(private readonly ctx: MenuContext) {}
 
   mount(_context: ScreenContext): HTMLElement {
+    this.canvas = document.createElement('canvas');
+    this.canvas.style.width = '100%';
+    this.canvas.style.height = '100%';
+    this.canvas.style.display = 'block';
+    this.canvas.style.cursor = 'pointer';
+    this.canvas.addEventListener('click', (event) => this.pickAt(event));
+
     this.canvasNode = el('div', {
       style: {
-        position: 'relative', flex: '1', minHeight: '380px',
-        background: 'linear-gradient(160deg, #1a2634 0%, #16202c 100%)',
+        position: 'relative', flex: '1', minHeight: '420px',
         borderRadius: '12px', border: '1px solid var(--ui-border)',
         overflow: 'hidden',
       },
+      children: [this.canvas],
     });
     this.infoNode = el('div', { style: { width: '260px', flexShrink: '0' } });
 
@@ -68,7 +72,7 @@ export class MapScreen implements Screen {
               className: 'menu-footer',
               children: [
                 el('span', { text: 'W/S: Ort waehlen' }),
-                el('span', { text: '+/-: Zoom' }),
+                el('span', { text: 'Klick: Ort auf der Karte' }),
                 el('span', { text: 'E: Schnellreise' }),
                 el('span', { text: 'Esc: Zurueck' }),
               ],
@@ -85,103 +89,90 @@ export class MapScreen implements Screen {
     this.refresh();
   }
 
+  update(): void {
+    // Bei Groessenaenderung des Fensters neu zeichnen.
+    const width = this.canvasNode.clientWidth;
+    const height = this.canvasNode.clientHeight;
+    if (width !== this.lastSize.width || height !== this.lastSize.height) this.draw();
+  }
+
   private refresh(): void {
     const player = this.ctx.player;
+    // Alle Aussengebiete mit Kartenposition; unbesuchte bleiben als Schemen
+    // sichtbar, damit die Form der Region erkennbar ist.
     this.places = GameData.areas
-      .filter((a) => a.mapPos !== undefined && !a.indoor && player.visitedAreas.has(a.id))
+      .filter((a) => a.mapPos !== undefined && !a.indoor)
       .sort((a, b) => (b.mapPos![1] - a.mapPos![1]) || a.name.localeCompare(b.name));
+    this.known = this.places.filter((a) => player.visitedAreas.has(a.id));
 
-    if (this.places.length === 0) {
-      clearChildren(this.canvasNode);
-      this.canvasNode.appendChild(el('div', {
-        className: 'entry-sub',
-        style: { position: 'absolute', inset: '0', display: 'grid', placeItems: 'center' },
-        text: 'Noch keine Orte entdeckt.',
-      }));
-      clearChildren(this.infoNode);
-      return;
+    if (this.known.length === 0) {
+      this.selected = 0;
+    } else {
+      this.selected = Math.min(this.selected, this.known.length - 1);
     }
-    this.selected = Math.min(this.selected, this.places.length - 1);
-
-    clearChildren(this.canvasNode);
-    const currentId = this.ctx.currentAreaId();
-
-    // Verbindungen zwischen besuchten Orten zeichnen.
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('width', '100%');
-    svg.setAttribute('height', '100%');
-    svg.style.position = 'absolute';
-    svg.style.inset = '0';
-    svg.style.pointerEvents = 'none';
-    for (const area of this.places) {
-      for (const conn of area.connections) {
-        const target = this.places.find((p) => p.id === conn.to);
-        if (!target || target.mapPos![1] > area.mapPos![1]) continue;
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', `${this.mapX(area)}%`);
-        line.setAttribute('y1', `${this.mapY(area)}%`);
-        line.setAttribute('x2', `${this.mapX(target)}%`);
-        line.setAttribute('y2', `${this.mapY(target)}%`);
-        line.setAttribute('stroke', 'rgba(255,255,255,0.22)');
-        line.setAttribute('stroke-width', '2');
-        line.setAttribute('stroke-dasharray', '5 4');
-        svg.appendChild(line);
-      }
-    }
-    this.canvasNode.appendChild(svg);
-
-    this.places.forEach((area, index) => {
-      const isCurrent = area.id === currentId;
-      const isSelected = index === this.selected;
-      const size = (isCurrent ? 18 : 13) * this.zoom;
-      const marker = el('div', {
-        style: {
-          position: 'absolute',
-          left: `${this.mapX(area)}%`,
-          top: `${this.mapY(area)}%`,
-          transform: 'translate(-50%, -50%)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3px',
-          cursor: 'pointer',
-        },
-        children: [
-          el('div', {
-            style: {
-              width: `${size}px`, height: `${size}px`, borderRadius: '50%',
-              background: KIND_COLORS[area.kind] ?? '#8f8f8f',
-              border: isSelected ? '3px solid #fff' : '2px solid rgba(0,0,0,0.45)',
-              boxShadow: isCurrent ? '0 0 14px rgba(127,196,75,0.85)' : 'none',
-            },
-          }),
-          el('div', {
-            text: area.name,
-            style: {
-              fontSize: `${Math.max(9, 11 * this.zoom)}px`,
-              color: isSelected ? '#fff' : 'var(--ui-text-dim)',
-              textShadow: '0 1px 3px rgba(0,0,0,0.85)',
-              whiteSpace: 'nowrap',
-            },
-          }),
-        ],
-        onClick: () => { this.selected = index; this.refresh(); },
-      });
-      this.canvasNode.appendChild(marker);
-    });
-
+    this.draw();
     this.renderInfo();
   }
 
-  private mapX(area: AreaData): number {
-    return Math.max(4, Math.min(96, area.mapPos![0]));
+  /** Zeichnet die Karte in der aktuellen Groesse des Bereichs. */
+  private draw(): void {
+    const ctx = this.canvas.getContext('2d');
+    if (!ctx) return;
+    const ratio = Math.min(2, window.devicePixelRatio || 1);
+    const width = this.canvasNode.clientWidth || 640;
+    const height = this.canvasNode.clientHeight || 420;
+    this.canvas.width = Math.round(width * ratio);
+    this.canvas.height = Math.round(height * ratio);
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    const currentId = this.ctx.currentAreaId();
+    const selectedId = this.known[this.selected]?.id;
+    const nodes: MapNode[] = this.places.map((area) => ({
+      area,
+      x: Math.max(6, Math.min(94, area.mapPos![0])),
+      y: Math.max(7, Math.min(92, area.mapPos![1])),
+      visited: this.ctx.player.visitedAreas.has(area.id),
+      current: area.id === currentId,
+      selected: area.id === selectedId,
+      gym: GameData.gyms.all().some((g) => g.city === area.id),
+      dens: area.raidDens?.length ?? 0,
+    }));
+    drawRegionMap(ctx, width, height, nodes);
+    this.lastSize = { width, height };
   }
 
-  private mapY(area: AreaData): number {
-    return Math.max(6, Math.min(94, area.mapPos![1]));
+  /** Klick auf der Karte waehlt den naechstgelegenen besuchten Ort. */
+  private pickAt(event: MouseEvent): void {
+    if (this.known.length === 0) return;
+    const rect = this.canvas.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+    let bestIndex = -1;
+    let bestDist = 8;
+    this.known.forEach((area, index) => {
+      const dist = Math.hypot(area.mapPos![0] - x, area.mapPos![1] - y);
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestIndex = index;
+      }
+    });
+    if (bestIndex >= 0) {
+      this.selected = bestIndex;
+      this.refresh();
+    }
   }
 
   private renderInfo(): void {
     clearChildren(this.infoNode);
-    const area = this.places[this.selected];
-    if (!area) return;
+    const area = this.known[this.selected];
+    if (!area) {
+      this.infoNode.appendChild(el('div', {
+        className: 'entry-sub',
+        text: 'Noch keine Orte entdeckt. Geh hinaus und erkunde die Region.',
+      }));
+      return;
+    }
     const isCurrent = area.id === this.ctx.currentAreaId();
     const canTravel = this.ctx.canFastTravel() && !isCurrent;
 
@@ -221,7 +212,7 @@ export class MapScreen implements Screen {
   }
 
   private travel(): void {
-    const area = this.places[this.selected];
+    const area = this.known[this.selected];
     if (!area) return;
     if (area.id === this.ctx.currentAreaId()) {
       this.ctx.ui.toast('Du bist bereits hier.', 'info');
@@ -243,25 +234,21 @@ export class MapScreen implements Screen {
     switch (action) {
       case 'up':
       case 'moveForward':
-        if (this.places.length > 0) {
-          this.selected = (this.selected - 1 + this.places.length) % this.places.length;
+      case 'left':
+      case 'moveLeft':
+        if (this.known.length > 0) {
+          this.selected = (this.selected - 1 + this.known.length) % this.known.length;
           this.refresh();
         }
         return true;
       case 'down':
       case 'moveBackward':
-        if (this.places.length > 0) {
-          this.selected = (this.selected + 1) % this.places.length;
+      case 'right':
+      case 'moveRight':
+        if (this.known.length > 0) {
+          this.selected = (this.selected + 1) % this.known.length;
           this.refresh();
         }
-        return true;
-      case 'zoomIn':
-        this.zoom = Math.min(2.2, this.zoom + 0.2);
-        this.refresh();
-        return true;
-      case 'zoomOut':
-        this.zoom = Math.max(0.6, this.zoom - 0.2);
-        this.refresh();
         return true;
       case 'interact':
       case 'confirm':

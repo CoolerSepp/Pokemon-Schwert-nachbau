@@ -3,8 +3,8 @@
   {
    "kind": "tree",
    "pos": [
-    10,
-    20
+    15.0,
+    30.0
    ],
    "rotation": 0.4,
    "scale": 1.4,
@@ -13,8 +13,8 @@
   {
    "kind": "pine",
    "pos": [
-    56,
-    28
+    84.0,
+    42.0
    ],
    "rotation": 1.2,
    "scale": 1.3,
@@ -23,8 +23,8 @@
   {
    "kind": "tree",
    "pos": [
-    12,
-    60
+    18.0,
+    90.0
    ],
    "rotation": 2.0,
    "scale": 1.45,
@@ -33,8 +33,8 @@
   {
    "kind": "pine",
    "pos": [
-    54,
-    72
+    81.0,
+    108.0
    ],
    "rotation": 0.6,
    "scale": 1.35,
@@ -43,8 +43,8 @@
   {
    "kind": "mushroom",
    "pos": [
-    30,
-    56
+    45.0,
+    84.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -53,8 +53,8 @@
   {
    "kind": "stump",
    "pos": [
-    40,
-    96
+    60.0,
+    144.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -63,8 +63,8 @@
   {
    "kind": "tree",
    "pos": [
-    10,
-    116
+    15.0,
+    174.0
    ],
    "rotation": 1.5,
    "scale": 1.4,
@@ -73,8 +73,8 @@
   {
    "kind": "deadTree",
    "pos": [
-    56,
-    124
+    84.0,
+    186.0
    ],
    "rotation": 0.8,
    "scale": 1.1,
@@ -86,8 +86,8 @@
   {
    "id": "r3_t1",
    "pos": [
-    34,
-    52
+    51.0,
+    78.0
    ],
    "facing": 3.141592653589793,
    "name": "Kraeuterkundige Rina",
@@ -105,8 +105,8 @@
   {
    "id": "r3_t2",
    "pos": [
-    30,
-    100
+    45.0,
+    150.0
    ],
    "facing": 0,
    "name": "Waldlaeufer Ove",
@@ -127,8 +127,8 @@
    "id": "r3_stein",
    "item": "blattstein",
    "pos": [
-    18,
-    88
+    27.0,
+    132.0
    ],
    "quantity": 1,
    "hidden": false
@@ -137,8 +137,8 @@
    "id": "r3_beere",
    "item": "beere_gruen",
    "pos": [
-    52,
-    60
+    78.0,
+    90.0
    ],
    "quantity": 2,
    "hidden": false
@@ -148,20 +148,20 @@
   {
    "to": "flusshafen",
    "trigger": {
-    "x": 25,
-    "z": 0,
-    "width": 16,
-    "depth": 3
+    "x": 37.5,
+    "z": 0.0,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_route3"
   },
   {
    "to": "dornwald",
    "trigger": {
-    "x": 25,
-    "z": 137,
-    "width": 16,
-    "depth": 3
+    "x": 37.5,
+    "z": 205.5,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_route3"
   }
@@ -170,24 +170,24 @@
   {
    "id": "from_flusshafen",
    "pos": [
-    33,
-    6
+    49.5,
+    9.0
    ],
    "facing": 0
   },
   {
    "id": "from_dornwald",
    "pos": [
-    33,
-    134
+    49.5,
+    201.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "default",
    "pos": [
-    33,
-    6
+    49.5,
+    9.0
    ],
    "facing": 0
   }
@@ -197,8 +197,8 @@
  "kind": "route",
  "biome": "forest",
  "size": [
-  66,
-  140
+  99.0,
+  210.0
  ],
  "seed": 1601,
  "mapPos": [
@@ -216,7 +216,7 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 6.5,
-  "frequency": 0.028,
+  "frequency": 0.01867,
   "octaves": 4,
   "cliffBorder": true,
   "ridged": false,
@@ -224,45 +224,45 @@
    {
     "points": [
      [
-      33.0,
-      2
+      49.5,
+      3.0
      ],
      [
-      33.0,
-      138
+      49.5,
+      207.0
      ]
     ],
-    "width": 7
+    "width": 10.5
    }
   ]
  },
  "grassZones": [
   {
-   "x": 14,
-   "z": 30,
-   "width": 18,
-   "depth": 22,
+   "x": 21.0,
+   "z": 45.0,
+   "width": 27.0,
+   "depth": 33.0,
    "density": 2.2
   },
   {
-   "x": 50,
-   "z": 48,
-   "width": 18,
-   "depth": 22,
+   "x": 75.0,
+   "z": 72.0,
+   "width": 27.0,
+   "depth": 33.0,
    "density": 2.1
   },
   {
-   "x": 16,
-   "z": 82,
-   "width": 20,
-   "depth": 24,
+   "x": 24.0,
+   "z": 123.0,
+   "width": 30.0,
+   "depth": 36.0,
    "density": 2.2
   },
   {
-   "x": 50,
-   "z": 108,
-   "width": 18,
-   "depth": 22,
+   "x": 75.0,
+   "z": 162.0,
+   "width": 27.0,
+   "depth": 33.0,
    "density": 2.0
   }
  ],
@@ -334,7 +334,7 @@
    "rare": true
   }
  ],
- "maxWild": 14,
+ "maxWild": 21,
  "triggers": [],
  "ambience": {
   "fogNear": 55,

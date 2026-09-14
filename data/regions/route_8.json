@@ -3,8 +3,8 @@
   {
    "kind": "boulder",
    "pos": [
-    16,
-    30
+    24.0,
+    45.0
    ],
    "rotation": 0.4,
    "scale": 1.5,
@@ -13,8 +13,8 @@
   {
    "kind": "pine",
    "pos": [
-    60,
-    44
+    90.0,
+    66.0
    ],
    "rotation": 1.2,
    "scale": 1.2,
@@ -23,8 +23,8 @@
   {
    "kind": "boulder",
    "pos": [
-    18,
-    78
+    27.0,
+    117.0
    ],
    "rotation": 2.0,
    "scale": 1.45,
@@ -33,8 +33,8 @@
   {
    "kind": "crystal",
    "pos": [
-    62,
-    92
+    93.0,
+    138.0
    ],
    "rotation": 0.6,
    "scale": 1.3,
@@ -43,8 +43,8 @@
   {
    "kind": "torch",
    "pos": [
-    38,
-    20
+    57.0,
+    30.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -53,8 +53,8 @@
   {
    "kind": "torch",
    "pos": [
-    38,
-    110
+    57.0,
+    165.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -66,8 +66,8 @@
   {
    "id": "r8_t1",
    "pos": [
-    40,
-    60
+    60.0,
+    90.0
    ],
    "facing": 3.141592653589793,
    "name": "Gratlaeufer Ilan",
@@ -85,8 +85,8 @@
   {
    "id": "r8_t2",
    "pos": [
-    36,
-    104
+    54.0,
+    156.0
    ],
    "facing": 0,
    "name": "Drachenschuelerin Vi",
@@ -107,8 +107,8 @@
    "id": "r8_zahn",
    "item": "drachenzahn",
    "pos": [
-    22,
-    70
+    33.0,
+    105.0
    ],
    "quantity": 1,
    "hidden": false
@@ -117,8 +117,8 @@
    "id": "r8_top",
    "item": "top_beleber",
    "pos": [
-    64,
-    112
+    96.0,
+    168.0
    ],
    "quantity": 1,
    "hidden": false
@@ -128,20 +128,20 @@
   {
    "to": "frostgipfel",
    "trigger": {
-    "x": 30,
-    "z": 0,
-    "width": 16,
-    "depth": 3
+    "x": 45.0,
+    "z": 0.0,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_route8"
   },
   {
    "to": "drachenhorst",
    "trigger": {
-    "x": 30,
-    "z": 127,
-    "width": 16,
-    "depth": 3
+    "x": 45.0,
+    "z": 190.5,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_route8"
   }
@@ -150,24 +150,24 @@
   {
    "id": "from_frostgipfel",
    "pos": [
-    38,
-    6
+    57.0,
+    9.0
    ],
    "facing": 0
   },
   {
    "id": "from_drachenhorst",
    "pos": [
-    38,
-    124
+    57.0,
+    186.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "default",
    "pos": [
-    38,
-    6
+    57.0,
+    9.0
    ],
    "facing": 0
   }
@@ -177,8 +177,8 @@
  "kind": "route",
  "biome": "mountain",
  "size": [
-  76,
-  130
+  114.0,
+  195.0
  ],
  "seed": 3001,
  "mapPos": [
@@ -197,7 +197,7 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 16,
-  "frequency": 0.028,
+  "frequency": 0.01867,
   "octaves": 4,
   "cliffBorder": true,
   "ridged": true,
@@ -205,38 +205,38 @@
    {
     "points": [
      [
-      38.0,
-      2
+      57.0,
+      3.0
      ],
      [
-      38.0,
-      128
+      57.0,
+      192.0
      ]
     ],
-    "width": 7
+    "width": 10.5
    }
   ]
  },
  "grassZones": [
   {
-   "x": 18,
-   "z": 36,
-   "width": 16,
-   "depth": 20,
+   "x": 27.0,
+   "z": 54.0,
+   "width": 24.0,
+   "depth": 30.0,
    "density": 1.5
   },
   {
-   "x": 58,
-   "z": 62,
-   "width": 16,
-   "depth": 20,
+   "x": 87.0,
+   "z": 93.0,
+   "width": 24.0,
+   "depth": 30.0,
    "density": 1.5
   },
   {
-   "x": 20,
-   "z": 98,
-   "width": 16,
-   "depth": 20,
+   "x": 30.0,
+   "z": 147.0,
+   "width": 24.0,
+   "depth": 30.0,
    "density": 1.6
   }
  ],
@@ -310,7 +310,7 @@
    "behaviour": "static"
   }
  ],
- "maxWild": 14,
+ "maxWild": 21,
  "triggers": [],
  "ambience": {
   "fogNear": 55,

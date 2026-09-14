@@ -3,6 +3,7 @@ import type { Biome } from '@/data/schema';
 import { clamp01 } from '@/core/MathUtils';
 import { ValueNoise2D } from '@/core/Noise';
 import type { TerrainField } from './TerrainField';
+import type { TextureFactory, TextureKind } from '@/engine/TextureFactory';
 
 export interface BiomePalette {
   ground: string;
@@ -122,10 +123,21 @@ function distanceToSegment(x: number, z: number, s: PathSegment): number {
   return Math.hypot(x - (s.ax + dx * t), z - (s.az + dz * t));
 }
 
+/** Bodentextur je Biom. */
+const BIOME_GROUND_TEXTURE: Record<Biome, TextureKind> = {
+  grassland: 'grass', meadow: 'grass', forest: 'grass', wetland: 'grass',
+  rocky: 'rock', mountain: 'rock', cave: 'rock', ruins: 'stone',
+  snow: 'snow', desert: 'sand', coastal: 'sand',
+  volcanic: 'rock', urban: 'grass', industrial: 'dirt',
+};
+
 export function buildTerrainMesh(
   field: TerrainField,
   biome: Biome,
-  options: { segments?: number; seed?: number; paths?: PathSegment[] } = {},
+  options: {
+    segments?: number; seed?: number; paths?: PathSegment[];
+    textures?: TextureFactory;
+  } = {},
 ): TerrainMeshResult {
   const palette = BIOME_PALETTES[biome];
   // Aufloesung an die Gebietsgroesse koppeln, aber deckeln.
@@ -204,9 +216,27 @@ export function buildTerrainMesh(
   geometry.computeVertexNormals();
   geometry.computeBoundingSphere();
 
+  // Textur und Vertexfarben zusammen: die Textur bringt die feine Koernung,
+  // die Vertexfarben Biom, Hoehe, Haenge und Wege. Ohne Textur bleibt der
+  // Boden eine glatte Farbflaeche.
+  const groundTexture = options.textures
+    ? options.textures.get(BIOME_GROUND_TEXTURE[biome], '#ffffff')
+    : null;
+  let map: THREE.Texture | null = null;
+  if (groundTexture) {
+    map = groundTexture.clone();
+    map.needsUpdate = true;
+    map.wrapS = THREE.RepeatWrapping;
+    map.wrapT = THREE.RepeatWrapping;
+    // Eine Kachel je sechs Meter: fein genug fuer die Nahsicht, gross genug,
+    // dass die Wiederholung aus der Ferne nicht als Muster auffaellt.
+    map.repeat.set(field.width / 6, field.depth / 6);
+  }
+
   const material = new THREE.MeshLambertMaterial({
     vertexColors: true,
     flatShading: true,
+    map,
   });
   const mesh = new THREE.Mesh(geometry, material);
   mesh.name = 'terrain';

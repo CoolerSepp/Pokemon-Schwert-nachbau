@@ -3,8 +3,8 @@
   {
    "kind": "statue",
    "pos": [
-    34,
-    60
+    51.0,
+    90.0
    ],
    "rotation": 0,
    "scale": 1.4,
@@ -13,8 +13,8 @@
   {
    "kind": "statue",
    "pos": [
-    86,
-    60
+    129.0,
+    90.0
    ],
    "rotation": 0,
    "scale": 1.4,
@@ -23,8 +23,8 @@
   {
    "kind": "lamp",
    "pos": [
-    44,
-    24
+    66.0,
+    36.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -33,8 +33,8 @@
   {
    "kind": "lamp",
    "pos": [
-    76,
-    24
+    114.0,
+    36.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -43,8 +43,8 @@
   {
    "kind": "bench",
    "pos": [
-    48,
-    44
+    72.0,
+    66.0
    ],
    "rotation": 1.5707963267948966,
    "scale": 1.0,
@@ -53,8 +53,8 @@
   {
    "kind": "bench",
    "pos": [
-    72,
-    44
+    108.0,
+    66.0
    ],
    "rotation": -1.5707963267948966,
    "scale": 1.0,
@@ -63,8 +63,8 @@
   {
    "kind": "flower",
    "pos": [
-    40,
-    40
+    60.0,
+    60.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -73,8 +73,8 @@
   {
    "kind": "flower",
    "pos": [
-    80,
-    40
+    120.0,
+    60.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -85,18 +85,18 @@
   {
    "kind": "stadium",
    "pos": [
-    60,
-    74
+    90.0,
+    111.0
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "liga_arena",
    "spawnPoint": "entrance",
    "label": "Ligastadion",
    "doorOffset": [
-    0,
-    17.5
+    0.0,
+    26.25
    ],
    "requires": {
     "badge": 8,
@@ -107,35 +107,35 @@
   {
    "kind": "center",
    "pos": [
-    22,
-    34
+    33.0,
+    51.0
    ],
    "rotation": 1.5707963267948966,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "center_ligastadion",
    "spawnPoint": "entrance",
    "label": "Heilstation",
    "doorOffset": [
-    0,
-    4.6
+    0.0,
+    6.9
    ]
   },
   {
    "kind": "shop",
    "pos": [
-    98,
-    34
+    147.0,
+    51.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "shop_ligastadion",
    "spawnPoint": "entrance",
    "label": "Warenlager",
    "doorOffset": [
-    0,
-    3.8
+    0.0,
+    5.7
    ]
   }
  ],
@@ -143,8 +143,8 @@
   {
    "id": "liga_ansager",
    "pos": [
-    60,
-    26
+    90.0,
+    39.0
    ],
    "facing": 3.141592653589793,
    "name": "Ansager",
@@ -153,8 +153,8 @@
   {
    "id": "liga_wache",
    "pos": [
-    60,
-    56
+    90.0,
+    84.0
    ],
    "facing": 3.141592653589793,
    "name": "Ligawache",
@@ -163,8 +163,8 @@
   {
    "id": "rivale_liga",
    "pos": [
-    40,
-    26
+    60.0,
+    39.0
    ],
    "facing": 1.5707963267948966,
    "name": "Rivale Jorin",
@@ -186,10 +186,10 @@
   {
    "to": "route_9",
    "trigger": {
-    "x": 52,
-    "z": 0,
-    "width": 16,
-    "depth": 3
+    "x": 78.0,
+    "z": 0.0,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_liga"
   }
@@ -198,40 +198,40 @@
   {
    "id": "from_route9",
    "pos": [
-    60,
-    8
+    90.0,
+    12.0
    ],
    "facing": 0
   },
   {
    "id": "default",
    "pos": [
-    60,
-    8
+    90.0,
+    12.0
    ],
    "facing": 0
   },
   {
    "id": "from_arena",
    "pos": [
-    60,
-    54
+    90.0,
+    81.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_center",
    "pos": [
-    22,
-    26
+    33.0,
+    39.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_shop",
    "pos": [
-    98,
-    26
+    147.0,
+    39.0
    ],
    "facing": 3.141592653589793
   }
@@ -241,8 +241,8 @@
  "kind": "league",
  "biome": "urban",
  "size": [
-  120,
-  110
+  180.0,
+  165.0
  ],
  "seed": 3301,
  "mapPos": [
@@ -258,22 +258,22 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 1.2,
-  "frequency": 0.04,
+  "frequency": 0.02667,
   "octaves": 2,
   "cliffBorder": true,
   "paths": [
    {
     "points": [
      [
-      60,
-      2
+      90.0,
+      3.0
      ],
      [
-      60,
-      106
+      90.0,
+      159.0
      ]
     ],
-    "width": 12
+    "width": 18.0
    }
   ]
  },

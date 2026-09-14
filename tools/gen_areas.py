@@ -1725,9 +1725,91 @@ area(
 )
 
 # ==========================================================================
+# MASSSTAB
+# ==========================================================================
+# Aussengebiete werden am Ende vergroessert. Die Karte wurde zunaechst in
+# einem knappen Massstab entworfen; Doerfer und Routen wirkten dadurch eng.
+# Der Faktor wird auf saemtliche Koordinaten angewandt, damit Verbindungen,
+# Tueren und Spawnpunkte zueinander passen. Innenraeume bleiben unveraendert -
+# ein Wohnzimmer soll kein Saal werden.
+OUTDOOR_SCALE = 1.5
+# Sehr grosse Gebiete (Wildland) bleiben, wie sie sind.
+SCALE_LIMIT = 200
+
+
+def _round(value):
+    return round(value, 2)
+
+
+def scale_area(a, factor):
+    """Multipliziert alle Laengen und Positionen eines Gebietes."""
+    a["size"] = [_round(a["size"][0] * factor), _round(a["size"][1] * factor)]
+
+    def scale_pos(pos):
+        return [_round(pos[0] * factor), _round(pos[1] * factor)]
+
+    for p in a.get("props", []):
+        p["pos"] = scale_pos(p["pos"])
+    for b in a.get("buildings", []):
+        b["pos"] = scale_pos(b["pos"])
+        if "doorOffset" in b:
+            b["doorOffset"] = scale_pos(b["doorOffset"])
+        # Gebaeude wachsen mit, sonst stehen Miniaturhaeuser im Gelaende.
+        b["scale"] = _round(b.get("scale", 1.0) * factor)
+    for n in a.get("npcs", []):
+        n["pos"] = scale_pos(n["pos"])
+        if "patrol" in n:
+            n["patrol"] = [scale_pos(pt) for pt in n["patrol"]]
+        if "radius" in n:
+            n["radius"] = _round(n["radius"] * factor)
+    for i in a.get("items", []):
+        i["pos"] = scale_pos(i["pos"])
+    for c in a.get("connections", []):
+        t = c["trigger"]
+        t["x"] = _round(t["x"] * factor)
+        t["z"] = _round(t["z"] * factor)
+        t["width"] = _round(t["width"] * factor)
+        t["depth"] = _round(t["depth"] * factor)
+    for s_ in a.get("spawnPoints", []):
+        s_["pos"] = scale_pos(s_["pos"])
+    for zone in list(a.get("grassZones", [])) + list(a.get("waterZones", [])):
+        for key in ("x", "z", "width", "depth"):
+            if key in zone:
+                zone[key] = _round(zone[key] * factor)
+    for den in a.get("raidDens", []):
+        den["pos"] = scale_pos(den["pos"])
+    for t in a.get("triggers", []):
+        t["pos"] = scale_pos(t["pos"])
+        if "radius" in t:
+            t["radius"] = _round(t["radius"] * factor)
+    terrain = a.get("terrain", {})
+    if "frequency" in terrain:
+        # Gleiche Huegelgroesse in Metern behalten.
+        terrain["frequency"] = round(terrain["frequency"] / factor, 5)
+    for path in terrain.get("paths", []):
+        path["points"] = [scale_pos(pt) for pt in path["points"]]
+        path["width"] = _round(path["width"] * factor)
+    # Mehr Flaeche traegt mehr wilde Kreaturen.
+    if "maxWild" in a:
+        a["maxWild"] = int(round(a["maxWild"] * factor))
+    return a
+
+
+def apply_scale():
+    for a in AREAS:
+        if a.get("indoor"):
+            continue
+        if max(a["size"]) >= SCALE_LIMIT:
+            continue
+        scale_area(a, OUTDOOR_SCALE)
+
+
+# ==========================================================================
 # AUSGABE
 # ==========================================================================
 def main():
+    apply_scale()
+
     ids = set()
     problems = []
     warnings = []

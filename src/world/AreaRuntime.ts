@@ -168,6 +168,7 @@ export class AreaRuntime {
     this.pathSegments = AreaRuntime.pathsFor(data);
     const terrain = buildTerrainMesh(this.field, data.biome, {
       seed: data.seed, paths: data.indoor ? [] : this.pathSegments,
+      textures: this.props.textures,
     });
     this.root.add(terrain.mesh);
     if (terrain.water) {
@@ -464,7 +465,9 @@ export class AreaRuntime {
     switch (this.data.kind) {
       case 'town':
       case 'city':
-        return 0.008;
+        // Orte sind seit der Vergroesserung weitlaeufig; mit der alten Dichte
+        // wirkten die Flaechen zwischen den Haeusern leer.
+        return 0.018;
       case 'forest':
         return 0.055;
       case 'cave':

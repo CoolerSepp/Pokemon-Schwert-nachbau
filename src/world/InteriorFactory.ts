@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import type { InteriorStyle } from '@/data/schema';
 import type { AssetManager } from '@/engine/AssetManager';
+import type { TextureKind } from '@/engine/TextureFactory';
 import type { CollisionGrid } from './CollisionGrid';
 
 export interface InteriorResult {
@@ -27,7 +28,12 @@ export class InteriorFactory {
     const blockers: InteriorResult['blockers'] = [];
     const h = style.wallHeight;
 
-    g.add(this.box([width, 0.25, depth], style.floorColor, [width / 2, -0.12, depth / 2], true));
+    // Fliesenraster auf dem Boden: ein einfarbiger Innenraum wirkt wie eine
+    // leere Box. Die Kachelzahl richtet sich nach der Raumgroesse.
+    g.add(this.box(
+      [width, 0.25, depth], style.floorColor, [width / 2, -0.12, depth / 2], true, 0,
+      'tile', Math.max(2, Math.round(Math.max(width, depth) / 4)),
+    ));
 
     if (style.ceiling !== false) {
       g.add(this.box([width, 0.3, depth], style.accentColor, [width / 2, h + 0.15, depth / 2]));
@@ -70,7 +76,7 @@ export class InteriorFactory {
         const z = def.horizontal ? def.fixed : center;
         const w = def.horizontal ? len : WALL_THICKNESS;
         const d = def.horizontal ? WALL_THICKNESS : len;
-        g.add(this.box([w, h, d], style.wallColor, [x, h / 2, z]));
+        g.add(this.box([w, h, d], style.wallColor, [x, h / 2, z], false, 0, 'plaster', 2));
         // Zierleiste
         g.add(this.box([w * 1.01, 0.18, d * 1.01], style.accentColor, [x, 0.09, z]));
         blockers.push({ x, z, width: w, depth: d, rotation: 0 });
@@ -103,10 +109,13 @@ export class InteriorFactory {
   private box(
     size: [number, number, number], color: string, pos: [number, number, number],
     receive = false, emissive = 0,
+    texture?: TextureKind, repeat?: number,
   ): THREE.Mesh {
     const mesh = new THREE.Mesh(
       this.assets.getShape('box', 1),
-      this.assets.getMaterial({ color, flatShading: true, emissive }),
+      this.assets.getMaterial({
+        color, flatShading: true, emissive, texture, textureRepeat: repeat,
+      }),
     );
     mesh.scale.set(size[0] / 2, size[1] / 2, size[2] / 2);
     mesh.position.set(pos[0], pos[1], pos[2]);

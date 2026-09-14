@@ -3,8 +3,8 @@
   {
    "kind": "lamp",
    "pos": [
-    46.400000000000006,
-    31.2
+    69.6,
+    46.8
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -13,8 +13,8 @@
   {
    "kind": "lamp",
    "pos": [
-    69.6,
-    31.2
+    104.4,
+    46.8
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -23,8 +23,8 @@
   {
    "kind": "lamp",
    "pos": [
-    46.400000000000006,
-    66.56
+    69.6,
+    99.84
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -33,8 +33,8 @@
   {
    "kind": "lamp",
    "pos": [
-    69.6,
-    66.56
+    104.4,
+    99.84
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -43,8 +43,8 @@
   {
    "kind": "bench",
    "pos": [
-    51.04,
-    54.08
+    76.56,
+    81.12
    ],
    "rotation": 1.5707963267948966,
    "scale": 1.0,
@@ -53,8 +53,8 @@
   {
    "kind": "bench",
    "pos": [
-    64.96000000000001,
-    54.08
+    97.44,
+    81.12
    ],
    "rotation": -1.5707963267948966,
    "scale": 1.0,
@@ -63,8 +63,8 @@
   {
    "kind": "sign",
    "pos": [
-    53.36,
-    12.48
+    80.04,
+    18.72
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -73,8 +73,8 @@
   {
    "kind": "well",
    "pos": [
-    58.0,
-    47.84
+    87.0,
+    71.76
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -83,8 +83,8 @@
   {
    "kind": "pillar",
    "pos": [
-    34,
-    60
+    51.0,
+    90.0
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -93,8 +93,8 @@
   {
    "kind": "pillar",
    "pos": [
-    82,
-    60
+    123.0,
+    90.0
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -103,8 +103,8 @@
   {
    "kind": "statue",
    "pos": [
-    58,
-    88
+    87.0,
+    132.0
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -113,8 +113,8 @@
   {
    "kind": "torch",
    "pos": [
-    46,
-    40
+    69.0,
+    60.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -123,8 +123,8 @@
   {
    "kind": "torch",
    "pos": [
-    70,
-    40
+    105.0,
+    60.0
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -133,8 +133,8 @@
   {
    "kind": "rock",
    "pos": [
-    26,
-    76
+    39.0,
+    114.0
    ],
    "rotation": 0.5,
    "scale": 1.2,
@@ -145,84 +145,84 @@
   {
    "kind": "center",
    "pos": [
-    30.16,
-    52.0
+    45.24,
+    78.0
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "center_geisterruine",
    "spawnPoint": "entrance",
    "label": "Heilstation",
    "doorOffset": [
-    0,
-    4.6
+    0.0,
+    6.9
    ]
   },
   {
    "kind": "shop",
    "pos": [
-    85.84,
-    52.0
+    128.76,
+    78.0
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "shop_geisterruine",
    "spawnPoint": "entrance",
    "label": "Warenlager",
    "doorOffset": [
-    0,
-    3.8
+    0.0,
+    5.7
    ]
   },
   {
    "kind": "gym",
    "pos": [
-    58.0,
-    79.04
+    87.0,
+    118.56
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 0,
    "interior": "gym_geisterruine",
    "spawnPoint": "entrance",
    "label": "Arena der Ruine",
    "doorOffset": [
-    0,
-    6.4
+    0.0,
+    9.6
    ]
   },
   {
    "kind": "ruin",
    "pos": [
-    22,
-    26
+    33.0,
+    39.0
    ],
    "rotation": 1.5707963267948966,
-   "scale": 1.0,
+   "scale": 1.5,
    "variant": 1,
    "label": "Ruine"
   },
   {
    "kind": "ruin",
    "pos": [
-    94,
-    26
+    141.0,
+    39.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 0.9,
+   "scale": 1.35,
    "variant": 3,
    "label": "Ruine"
   },
   {
    "kind": "tower",
    "pos": [
-    94,
-    84
+    141.0,
+    126.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 0.85,
+   "scale": 1.27,
    "variant": 2,
    "label": "Glockenturm"
   }
@@ -231,8 +231,8 @@
   {
    "id": "gr_guide",
    "pos": [
-    58,
-    24
+    87.0,
+    36.0
    ],
    "facing": 3.141592653589793,
    "name": "Chronistin",
@@ -241,8 +241,8 @@
   {
    "id": "gr_t1",
    "pos": [
-    88,
-    62
+    132.0,
+    93.0
    ],
    "facing": -1.5707963267948966,
    "name": "Grabwaechter Idris",
@@ -263,8 +263,8 @@
    "id": "gr_nebel",
    "item": "nebelkerze",
    "pos": [
-    26,
-    90
+    39.0,
+    135.0
    ],
    "quantity": 1,
    "hidden": false
@@ -273,8 +273,8 @@
    "id": "gr_disk",
    "item": "td14",
    "pos": [
-    98,
-    44
+    147.0,
+    66.0
    ],
    "quantity": 1,
    "hidden": false
@@ -284,20 +284,20 @@
   {
    "to": "nebelmoor",
    "trigger": {
-    "x": 50,
-    "z": 0,
-    "width": 16,
-    "depth": 3
+    "x": 75.0,
+    "z": 0.0,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_geisterruine"
   },
   {
    "to": "route_7",
    "trigger": {
-    "x": 50,
-    "z": 101,
-    "width": 16,
-    "depth": 3
+    "x": 75.0,
+    "z": 151.5,
+    "width": 24.0,
+    "depth": 4.5
    },
    "spawnPoint": "from_geisterruine"
   }
@@ -306,48 +306,48 @@
   {
    "id": "default",
    "pos": [
-    58,
-    10
+    87.0,
+    15.0
    ],
    "facing": 0
   },
   {
    "id": "from_nebelmoor",
    "pos": [
-    58,
-    8
+    87.0,
+    12.0
    ],
    "facing": 0
   },
   {
    "id": "from_route7",
    "pos": [
-    58,
-    98
+    87.0,
+    147.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_center",
    "pos": [
-    30.16,
-    44.0
+    45.24,
+    66.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_shop",
    "pos": [
-    85.84,
-    44.0
+    128.76,
+    66.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_gym",
    "pos": [
-    58.0,
-    69.04
+    87.0,
+    103.56
    ],
    "facing": 3.141592653589793
   }
@@ -357,8 +357,8 @@
  "kind": "city",
  "biome": "ruins",
  "size": [
-  116,
-  104
+  174.0,
+  156.0
  ],
  "seed": 2701,
  "mapPos": [
@@ -375,35 +375,35 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 1.8,
-  "frequency": 0.04,
+  "frequency": 0.02667,
   "octaves": 3,
   "cliffBorder": true,
   "paths": [
    {
     "points": [
      [
-      58.0,
-      2
+      87.0,
+      3.0
      ],
      [
-      58.0,
-      100
+      87.0,
+      150.0
      ]
     ],
-    "width": 9
+    "width": 13.5
    },
    {
     "points": [
      [
-      8,
-      52.0
+      12.0,
+      78.0
      ],
      [
-      108,
-      52.0
+      162.0,
+      78.0
      ]
     ],
-    "width": 7
+    "width": 10.5
    }
   ]
  },

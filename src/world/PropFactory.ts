@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import type { AssetManager } from '@/engine/AssetManager';
+import type { TextureKind } from '@/engine/TextureFactory';
 import { RNG } from '@/core/RNG';
 import type { BiomePalette } from './TerrainMesh';
 
@@ -36,6 +37,9 @@ export class PropFactory {
   private readonly glowMaterials = new Map<string, THREE.MeshLambertMaterial>();
 
   constructor(private readonly assets: AssetManager) {}
+
+  /** Zugriff auf die prozeduralen Texturen (fuer Terrain und Gebaeude). */
+  get textures() { return this.assets.textures; }
 
   create(
     kind: PropKind, variant: number, palette: BiomePalette, scale = 1,
@@ -78,7 +82,10 @@ export class PropFactory {
   private mesh(
     shape: Parameters<AssetManager['getShape']>[0], size: [number, number, number],
     color: string, pos: [number, number, number],
-    opts: { rot?: [number, number, number]; emissive?: number; metal?: number; detail?: number; opacity?: number } = {},
+    opts: {
+      rot?: [number, number, number]; emissive?: number; metal?: number;
+      detail?: number; opacity?: number; texture?: TextureKind; repeat?: number;
+    } = {},
   ): THREE.Mesh {
     const geo = this.assets.getShape(shape, opts.detail ?? 1);
     const mat = this.assets.getMaterial({
@@ -86,6 +93,7 @@ export class PropFactory {
       emissive: opts.emissive ?? 0, metalness: opts.metal ?? 0,
       opacity: opts.opacity ?? 1,
       doubleSided: shape === 'plane',
+      texture: opts.texture, textureRepeat: opts.repeat,
     });
     const m = new THREE.Mesh(geo, mat);
     const fix = shape === 'box' || shape === 'plane' ? 0.5
@@ -106,7 +114,8 @@ export class PropFactory {
     const g = new THREE.Group();
     const h = rng.float(2.6, 4.4) * scale;
     const trunkR = h * 0.055;
-    g.add(this.mesh('cylinder', [trunkR, h * 0.62, trunkR], TRUNK_BROWN, [0, h * 0.31, 0]));
+    g.add(this.mesh('cylinder', [trunkR, h * 0.62, trunkR], TRUNK_BROWN, [0, h * 0.31, 0],
+      { texture: 'bark', repeat: 2 }));
 
     // Blattfarben aus einer festen kleinen Auswahl statt frei gewuerfelt:
     // gleiche Farbe heisst gleiches Material, und nur dann lassen sich die
@@ -211,10 +220,11 @@ export class PropFactory {
     const r = rng.float(0.4, 0.8) * scale * sizeFactor;
     const color = palette.slope;
     g.add(this.mesh('dodeca', [r, r * rng.float(0.6, 0.95), r * rng.float(0.8, 1.15)], color,
-      [0, r * 0.55, 0], { rot: [rng.float(0, 1), rng.float(0, 6.28), rng.float(0, 1)], detail: 0 }));
+      [0, r * 0.55, 0],
+      { rot: [rng.float(0, 1), rng.float(0, 6.28), rng.float(0, 1)], detail: 0, texture: 'rock' }));
     if (sizeFactor > 1) {
       g.add(this.mesh('dodeca', [r * 0.5, r * 0.4, r * 0.5], color,
-        [r * 0.7, r * 0.3, r * 0.3], { rot: [0.4, 1.2, 0.3], detail: 0 }));
+        [r * 0.7, r * 0.3, r * 0.3], { rot: [0.4, 1.2, 0.3], detail: 0, texture: 'rock' }));
     }
     return { object: g, collisionRadius: r * 0.85, height: r * 1.4 };
   }
@@ -246,10 +256,12 @@ export class PropFactory {
     const g = new THREE.Group();
     const w = 2.2 * scale;
     for (const x of [-w / 2, w / 2]) {
-      g.add(this.mesh('box', [0.09, 1.05 * scale, 0.09], DARK_WOOD, [x, 0.52 * scale, 0]));
+      g.add(this.mesh('box', [0.09, 1.05 * scale, 0.09], DARK_WOOD, [x, 0.52 * scale, 0],
+        { texture: 'plank' }));
     }
     for (const y of [0.4, 0.76]) {
-      g.add(this.mesh('box', [w, 0.08, 0.06], TRUNK_BROWN, [0, y * scale, 0]));
+      g.add(this.mesh('box', [w, 0.08, 0.06], TRUNK_BROWN, [0, y * scale, 0],
+        { texture: 'plank', repeat: 3 }));
     }
     return { object: g, collisionRadius: 0, height: 1.05 * scale };
   }
@@ -257,7 +269,8 @@ export class PropFactory {
   private sign(scale: number): PropResult {
     const g = new THREE.Group();
     g.add(this.mesh('cylinder', [0.05, 1.2 * scale, 0.05], DARK_WOOD, [0, 0.6 * scale, 0]));
-    g.add(this.mesh('box', [0.9 * scale, 0.55 * scale, 0.08], '#c9a06b', [0, 1.15 * scale, 0]));
+    g.add(this.mesh('box', [0.9 * scale, 0.55 * scale, 0.08], '#c9a06b', [0, 1.15 * scale, 0],
+      { texture: 'plank' }));
     g.add(this.mesh('box', [0.78 * scale, 0.42 * scale, 0.04], '#efe0c4', [0, 1.15 * scale, 0.055]));
     return { object: g, collisionRadius: 0.22, height: 1.45 * scale };
   }
@@ -301,7 +314,8 @@ export class PropFactory {
   private barrel(scale: number): PropResult {
     const g = new THREE.Group();
     const r = 0.34 * scale;
-    g.add(this.mesh('cylinder', [r, 0.9 * scale, r], '#7a5433', [0, 0.45 * scale, 0]));
+    g.add(this.mesh('cylinder', [r, 0.9 * scale, r], '#7a5433', [0, 0.45 * scale, 0],
+      { texture: 'plank', repeat: 2 }));
     for (const y of [0.24, 0.66]) {
       g.add(this.mesh('cylinder', [r * 1.06, 0.07, r * 1.06], '#4a4a4f', [0, y * scale, 0], { metal: 0.7 }));
     }
@@ -311,7 +325,7 @@ export class PropFactory {
   private crate(scale: number): PropResult {
     const g = new THREE.Group();
     const s = 0.7 * scale;
-    g.add(this.mesh('box', [s, s, s], '#a8804f', [0, s * 0.5, 0]));
+    g.add(this.mesh('box', [s, s, s], '#a8804f', [0, s * 0.5, 0], { texture: 'plank' }));
     g.add(this.mesh('box', [s * 1.02, s * 0.1, s * 0.1], DARK_WOOD, [0, s * 0.5, s * 0.5]));
     return { object: g, collisionRadius: s * 0.62, height: s };
   }
@@ -342,8 +356,10 @@ export class PropFactory {
 
   private bench(scale: number): PropResult {
     const g = new THREE.Group();
-    g.add(this.mesh('box', [1.6 * scale, 0.1, 0.5 * scale], '#8a6b45', [0, 0.45 * scale, 0]));
-    g.add(this.mesh('box', [1.6 * scale, 0.5 * scale, 0.09], '#8a6b45', [0, 0.7 * scale, -0.22 * scale]));
+    g.add(this.mesh('box', [1.6 * scale, 0.1, 0.5 * scale], '#8a6b45', [0, 0.45 * scale, 0],
+      { texture: 'plank', repeat: 2 }));
+    g.add(this.mesh('box', [1.6 * scale, 0.5 * scale, 0.09], '#8a6b45',
+      [0, 0.7 * scale, -0.22 * scale], { texture: 'plank', repeat: 2 }));
     for (const x of [-0.65, 0.65]) {
       g.add(this.mesh('box', [0.1, 0.45 * scale, 0.45 * scale], '#4a4a4f', [x * scale, 0.22 * scale, 0]));
     }
