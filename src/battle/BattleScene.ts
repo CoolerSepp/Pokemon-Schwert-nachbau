@@ -6,7 +6,9 @@ import { buildCreatureModel, disposeCreatureModel, type CreatureModel } from '@/
 import { CreatureAnimator, type AnimationState } from '@/animation/CreatureAnimator';
 import { buildHumanoid, type HumanoidModel } from '@/player/PlayerModel';
 import { HumanoidAnimator } from '@/player/HumanoidAnimator';
-import { BIOME_PALETTES, buildSky } from '@/world/TerrainMesh';
+import {
+  BIOME_PALETTES, BIOME_GROUND_TEXTURE, buildSky, buildBackdrop, backdropOuterRadius,
+} from '@/world/TerrainMesh';
 import { Effects } from '@/effects/Effects';
 import { damp } from '@/core/MathUtils';
 import { RNG } from '@/core/RNG';
@@ -29,6 +31,16 @@ interface SlotState {
  * sofort erfolgt. Die Buehne uebernimmt Biom und Wetter des Fundorts, damit
  * der Kampf nicht wie ein zusammenhangloser Raum wirkt.
  */
+/**
+ * Grundwinkel der Kampfkamera.
+ *
+ * Bewusst so gewaehlt, dass die eigene Kreatur links im Vordergrund steht und
+ * der Gegner rechts weiter hinten: dadurch ist ohne Beschriftung erkennbar,
+ * welche Seite wem gehoert. Bei einer Seitenansicht auf gleicher Tiefe wirkt
+ * die Zuordnung dagegen vertauscht.
+ */
+const BASE_VIEW_ANGLE = 0.30;
+
 export class BattleScene {
   readonly scene = new THREE.Scene();
   readonly camera: THREE.PerspectiveCamera;
@@ -37,11 +49,11 @@ export class BattleScene {
   private readonly slots: Record<BattleSlot, SlotState> = {
     player: {
       model: null, animator: null, creature: null,
-      basePosition: new THREE.Vector3(-3.4, 0, 1.6), visible: false,
+      basePosition: new THREE.Vector3(-2.8, 0, 3.2), visible: false,
     },
     enemy: {
       model: null, animator: null, creature: null,
-      basePosition: new THREE.Vector3(3.4, 0, -1.6), visible: false,
+      basePosition: new THREE.Vector3(2.8, 0, -3.2), visible: false,
     },
   };
 
@@ -52,6 +64,8 @@ export class BattleScene {
   private readonly platformEnemy: THREE.Mesh;
   private readonly ground: THREE.Mesh;
   private sky: THREE.Mesh | null = null;
+  /** Bergkulisse hinter der Kampfbuehne (nur im Freien). */
+  private backdrop: THREE.Group | null = null;
   private trainerModel: HumanoidModel | null = null;
   private trainerAnimator: HumanoidAnimator | null = null;
   private playerModel: HumanoidModel | null = null;
@@ -67,10 +81,10 @@ export class BattleScene {
 
   private cameraAngle = 0;
   private cameraTargetAngle = 0;
-  private cameraDistance = 11;
-  private cameraTargetDistance = 11;
-  private cameraHeight = 4.6;
-  private cameraTargetHeight = 4.6;
+  private cameraDistance = 11.5;
+  private cameraTargetDistance = 11.5;
+  private cameraHeight = 4.3;
+  private cameraTargetHeight = 4.3;
   private readonly lookTarget = new THREE.Vector3(0, 1.2, 0);
   private readonly smoothLook = new THREE.Vector3(0, 1.2, 0);
   private shake = 0;
@@ -80,7 +94,10 @@ export class BattleScene {
 
   constructor(private readonly assets: AssetManager, particleBudget = 900) {
     this.scene.name = 'battle';
-    this.camera = new THREE.PerspectiveCamera(52, 16 / 9, 0.15, 500);
+    // Die Fernebene muss hinter der Himmelskugel liegen. Lag sie davor,
+    // wurde der Himmel oberhalb der Berge weggeschnitten und es blieb ein
+    // schwarzes Loch im Bild.
+    this.camera = new THREE.PerspectiveCamera(52, 16 / 9, 0.15, 1600);
 
     this.ambient = new THREE.HemisphereLight(0xcfe4f2, 0x4a4030, 0.95);
     this.scene.add(this.ambient);
@@ -101,7 +118,9 @@ export class BattleScene {
     this.rim.position.set(-8, 5, -9);
     this.scene.add(this.rim);
 
-    const groundGeo = new THREE.CircleGeometry(34, 48);
+    // Der Boden reicht bis an die Bergkulisse: sonst klafft zwischen
+    // Buehnenrand und Horizont eine Luecke, durch die der Himmel scheint.
+    const groundGeo = new THREE.CircleGeometry(190, 64);
     groundGeo.rotateX(-Math.PI / 2);
     this.ground = new THREE.Mesh(
       groundGeo,
@@ -154,18 +173,58 @@ export class BattleScene {
     this.ambient.groundColor.set(palette.ground);
     this.ambient.intensity = Math.max(0.55, options.ambientIntensity);
     (this.scene.fog as THREE.Fog).color.copy(options.fogColor);
-    (this.scene.fog as THREE.Fog).near = options.indoor ? 14 : 24;
-    (this.scene.fog as THREE.Fog).far = options.indoor ? 52 : 82;
+    (this.scene.fog as THREE.Fog).near = options.indoor ? 14 : 70;
+    // Draussen reicht der Nebel bis hinter die Kulisse - sonst waere der
+    // Horizont eine leere Flaeche statt einer Landschaft.
+    (this.scene.fog as THREE.Fog).far = options.indoor ? 52 : 560;
 
+    // Boden bekommt die Bodentextur des Bioms; eine einfarbige Scheibe
+    // wirkt wie ein Platzhalter.
+    const groundMaterial = this.ground.material as THREE.MeshLambertMaterial;
+    groundMaterial.map = options.indoor
+      ? null
+      : this.assets.textures.get(BIOME_GROUND_TEXTURE[options.biome], palette.ground);
+    if (groundMaterial.map) {
+      groundMaterial.map = groundMaterial.map.clone();
+      groundMaterial.map.needsUpdate = true;
+      groundMaterial.map.repeat.set(30, 30);
+      groundMaterial.color.set('#ffffff');
+    }
+    groundMaterial.needsUpdate = true;
+
+    this.clearScenery();
+    if (!options.indoor) {
+      // Weit genug weg, damit die Berge als Ferne gelesen werden und nicht
+      // als Wand direkt hinter der Buehne.
+      const inner = 120;
+      this.sky = buildSky(
+        palette.skyTop, palette.skyBottom,
+        backdropOuterRadius(inner) + 180,
+      );
+      this.scene.add(this.sky);
+      this.backdrop = buildBackdrop(palette, inner, 7331, 0.9);
+      this.backdrop.position.y = -1.5;
+      this.scene.add(this.backdrop);
+    }
+  }
+
+  /** Entfernt Himmel und Kulisse der vorigen Kampfumgebung. */
+  private clearScenery(): void {
     if (this.sky) {
       this.scene.remove(this.sky);
       (this.sky.material as THREE.Material).dispose();
       this.sky.geometry.dispose();
       this.sky = null;
     }
-    if (!options.indoor) {
-      this.sky = buildSky(palette.skyTop, palette.skyBottom, 220);
-      this.scene.add(this.sky);
+    if (this.backdrop) {
+      this.scene.remove(this.backdrop);
+      this.backdrop.traverse((o) => {
+        const mesh = o as THREE.Mesh;
+        if (!mesh.isMesh) return;
+        mesh.geometry.dispose();
+        (mesh.material as THREE.Material).dispose();
+      });
+      this.backdrop = null;
     }
   }
 
@@ -208,7 +267,7 @@ export class BattleScene {
     }
     if (enemyAppearance) {
       this.trainerModel = buildHumanoid(this.assets, enemyAppearance);
-      this.trainerModel.root.position.set(6.4, 0, -4.6);
+      this.trainerModel.root.position.set(6.2, 0, -6.8);
       this.trainerModel.root.rotation.y = Math.PI * 1.25;
       this.scene.add(this.trainerModel.root);
       this.trainerAnimator = new HumanoidAnimator(this.trainerModel);
@@ -216,7 +275,7 @@ export class BattleScene {
     }
     if (!this.playerModel) {
       this.playerModel = buildHumanoid(this.assets, playerAppearance);
-      this.playerModel.root.position.set(-6.2, 0, 4.4);
+      this.playerModel.root.position.set(-6.8, 0, 6.6);
       this.playerModel.root.rotation.y = Math.PI * 0.25;
       this.scene.add(this.playerModel.root);
       this.playerAnimator = new HumanoidAnimator(this.playerModel);
@@ -232,9 +291,9 @@ export class BattleScene {
    */
   setAllies(allies: readonly { creature: Creature }[]): void {
     this.clearAllies();
-    // Links neben der Kreatur des Spielers, damit die Kamera sie zeigt,
-    // ohne dass sie die Textbox verdecken.
-    const spots: [number, number][] = [[-7.6, -0.8], [-9.0, 2.2], [-6.2, -3.6]];
+    // Hinter und links neben der eigenen Kreatur: dort sind sie sichtbar,
+    // verdecken aber weder die Textbox noch den Gegner.
+    const spots: [number, number][] = [[-5.4, 0.2], [-7.4, 2.6], [-4.0, -2.2]];
     allies.slice(0, spots.length).forEach((ally, index) => {
       const [x, z] = spots[index]!;
       const model = buildCreatureModel(ally.creature.species.model, this.assets, {
@@ -406,8 +465,8 @@ export class BattleScene {
     this.cameraAngle = damp(this.cameraAngle, this.cameraTargetAngle, 0.25, dt);
     this.cameraDistance = damp(this.cameraDistance, this.cameraTargetDistance, 0.25, dt);
     this.cameraHeight = damp(this.cameraHeight, this.cameraTargetHeight, 0.25, dt);
-    const drift = Math.sin(this.time * 0.18) * 0.06;
-    const angle = this.cameraAngle + drift + Math.PI * 0.16;
+    const drift = Math.sin(this.time * 0.18) * 0.05;
+    const angle = this.cameraAngle + drift + BASE_VIEW_ANGLE;
 
     this.camera.position.set(
       Math.sin(angle) * this.cameraDistance,
@@ -415,7 +474,9 @@ export class BattleScene {
       Math.cos(angle) * this.cameraDistance,
     );
 
-    this.lookTarget.set(0, 1.25, 0);
+    // Blickpunkt bewusst ueber Kopfhoehe: dadurch liegt der Horizont tiefer
+    // im Bild und der Himmel bleibt sichtbar.
+    this.lookTarget.set(0, 2.5, 0);
     this.smoothLook.x = damp(this.smoothLook.x, this.lookTarget.x, 0.16, dt);
     this.smoothLook.y = damp(this.smoothLook.y, this.lookTarget.y, 0.16, dt);
     this.smoothLook.z = damp(this.smoothLook.z, this.lookTarget.z, 0.16, dt);
@@ -473,10 +534,7 @@ export class BattleScene {
   dispose(): void {
     this.reset();
     this.effects.dispose();
-    if (this.sky) {
-      this.sky.geometry.dispose();
-      (this.sky.material as THREE.Material).dispose();
-    }
+    this.clearScenery();
     this.ground.geometry.dispose();
     (this.ground.material as THREE.Material).dispose();
     this.platformPlayer.geometry.dispose();

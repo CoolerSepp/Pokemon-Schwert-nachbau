@@ -99,13 +99,16 @@ export class TerrainField {
         let h = o.baseHeight;
 
         if (!o.flat && o.amplitude > 0) {
+          // Kleines "gain" laesst die hohen Oktaven kaum durch: das Gelaende
+          // besteht dadurch aus wenigen grossen Formen statt aus vielen
+          // kleinen Buckeln. Genau die haben vorher jede Fernsicht zerhackt.
           const n = o.ridged
             ? noise.ridged(x * o.frequency, z * o.frequency, o.octaves)
-            : noise.fbm(x * o.frequency, z * o.frequency, o.octaves);
+            : noise.fbm(x * o.frequency, z * o.frequency, o.octaves, 2, 0.38);
           h += (n - 0.4) * o.amplitude;
-          // Feindetail fuer eine weniger "digitale" Oberflaeche.
-          h += (detail.fbm(x * o.frequency * 4.3, z * o.frequency * 4.3, 2) - 0.5)
-            * o.amplitude * 0.12;
+          // Sehr flache, langwellige Unruhe gegen eine zu glatte Oberflaeche.
+          h += (detail.fbm(x * o.frequency * 2.1, z * o.frequency * 2.1, 2) - 0.5)
+            * o.amplitude * 0.05;
         }
 
         if (o.cliffBorder) h += this.borderRise(x, z);

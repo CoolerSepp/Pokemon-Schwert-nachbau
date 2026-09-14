@@ -40,17 +40,23 @@ test.describe('Darstellungsaufwand', () => {
 
     // Obergrenzen mit Reserve: ohne das Zusammenfassen der Requisiten lagen
     // Route 1 bei ~1800 und das Wildland bei ~2700 Zeichenaufrufen.
-    const budgets: Record<string, number> = {
-      startdorf: 700,
-      route_1: 1100,
-      wildland: 1400,
-      hammerstadt: 800,
+    // Zusaetzlich eine Schranke fuer die Dreiecke - sie bestimmt auf
+    // schwacher Hardware die Bildrate staerker als die Zeichenaufrufe.
+    const budgets: Record<string, { calls: number; triangles: number }> = {
+      startdorf: { calls: 750, triangles: 320_000 },
+      route_1: { calls: 1100, triangles: 700_000 },
+      quellheim: { calls: 800, triangles: 460_000 },
+      wildland: { calls: 1400, triangles: 950_000 },
+      hammerstadt: { calls: 800, triangles: 340_000 },
     };
 
     for (const [areaId, budget] of Object.entries(budgets)) {
       const stats = await statsFor(page, areaId);
       expect(stats.area).toBe(areaId);
-      expect(stats.calls, `${areaId}: ${stats.calls} Zeichenaufrufe`).toBeLessThan(budget);
+      expect(stats.calls, `${areaId}: ${stats.calls} Zeichenaufrufe`)
+        .toBeLessThan(budget.calls);
+      expect(stats.triangles, `${areaId}: ${stats.triangles} Dreiecke`)
+        .toBeLessThan(budget.triangles);
       expect(stats.triangles, `${areaId}: Geometrie fehlt`).toBeGreaterThan(1000);
     }
   });

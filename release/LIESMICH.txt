@@ -14,6 +14,11 @@ Steuerung:
   Umschalt            Rennen (ab den Laufschuhen)
   Leertaste           Springen
   E / Enter           Interagieren und Bestaetigen
+  Maus ziehen         Kamera frei um 360 Grad drehen
+  Q / C               Kamera nach links / rechts drehen
+  Bild auf / ab       Kamera neigen
+  R                   Kamera hinter die Figur zuruecksetzen
+  Mausrad             Heranzoomen und herauszoomen
   Esc / X             Zurueck
   M                   Menue
   N                   Karte (ab der Regionskarte)

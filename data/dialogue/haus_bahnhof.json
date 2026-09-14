@@ -1,0 +1,16 @@
+{
+ "id": "haus_bahnhof",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Der naechste Wagen faehrt, sobald genug Reisende da sind.",
+    "Bis dahin: setz dich ruhig, die Baenke sind frei."
+   ],
+   "speaker": "Schaffnerin"
+  }
+ ]
+}

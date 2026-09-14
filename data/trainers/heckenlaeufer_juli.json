@@ -1,0 +1,40 @@
+{
+ "id": "heckenlaeufer_juli",
+ "name": "Heckenlaeuferin Juli",
+ "trainerClass": "Pfadfinderin",
+ "ai": "basic",
+ "team": [
+  {
+   "species": "knollknospe",
+   "level": 7
+  },
+  {
+   "species": "kribbelkaefer",
+   "level": 8
+  }
+ ],
+ "rewardBase": 60,
+ "dialogue": {
+  "intro": [
+   "Wer sich in die Hecke wagt, kommt an mir nicht vorbei!",
+   "Zeig mir, ob du den Weg verdient hast."
+  ],
+  "defeat": [
+   "Gut gelaufen. Der Pfad nach Norden gehoert dir."
+  ],
+  "victory": [
+   "Die Hecke behaelt ihre Geheimnisse."
+  ],
+  "postBattle": [
+   "Hinter der Furt wird der Weg steiler. Nimm dir Zeit."
+  ]
+ },
+ "appearance": {
+  "skin": "#e8c19b",
+  "hair": "#6b4f2b",
+  "shirt": "#7aa84b",
+  "pants": "#4a5f33",
+  "accent": "#e0e8a0",
+  "hat": "beanie"
+ }
+}

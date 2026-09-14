@@ -3,8 +3,8 @@
   {
    "kind": "lamp",
    "pos": [
-    66.0,
-    44.1
+    85.8,
+    57.33
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -13,8 +13,8 @@
   {
    "kind": "lamp",
    "pos": [
-    99.0,
-    44.1
+    128.7,
+    57.33
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -23,8 +23,8 @@
   {
    "kind": "lamp",
    "pos": [
-    66.0,
-    94.08
+    85.8,
+    122.3
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -33,8 +33,8 @@
   {
    "kind": "lamp",
    "pos": [
-    99.0,
-    94.08
+    128.7,
+    122.3
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -43,8 +43,8 @@
   {
    "kind": "bench",
    "pos": [
-    72.6,
-    76.44
+    94.38,
+    99.37
    ],
    "rotation": 1.5707963267948966,
    "scale": 1.0,
@@ -53,8 +53,8 @@
   {
    "kind": "bench",
    "pos": [
-    92.4,
-    76.44
+    120.12,
+    99.37
    ],
    "rotation": -1.5707963267948966,
    "scale": 1.0,
@@ -63,8 +63,8 @@
   {
    "kind": "sign",
    "pos": [
-    75.9,
-    17.64
+    98.67,
+    22.93
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -73,18 +73,138 @@
   {
    "kind": "well",
    "pos": [
-    82.5,
-    67.62
+    107.25,
+    87.91
    ],
    "rotation": 0,
    "scale": 1.1,
    "variant": 0
   },
   {
+   "kind": "lamp",
+   "pos": [
+    47.19,
+    110.84
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    167.31,
+    110.84
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    64.35,
+    145.24
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    150.15,
+    145.24
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    81.51,
+    80.26
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 6
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    132.99,
+    80.26
+   ],
+   "rotation": 0,
+   "scale": 1.15,
+   "variant": 7
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    25.74,
+    53.51
+   ],
+   "rotation": 0.4,
+   "scale": 1.25,
+   "variant": 8
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    188.76,
+    57.33
+   ],
+   "rotation": 1.4,
+   "scale": 1.2,
+   "variant": 9
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    21.45,
+    164.35
+   ],
+   "rotation": 2.1,
+   "scale": 1.3,
+   "variant": 10
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    193.05,
+    160.52
+   ],
+   "rotation": 0.8,
+   "scale": 1.22,
+   "variant": 11
+  },
+  {
+   "kind": "mailbox",
+   "pos": [
+    42.9,
+    122.3
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "mailbox",
+   "pos": [
+    171.6,
+    122.3
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
    "kind": "snowman",
    "pos": [
-    63.0,
-    51.0
+    81.9,
+    66.3
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -93,8 +213,8 @@
   {
    "kind": "snowman",
    "pos": [
-    102.0,
-    51.0
+    132.6,
+    66.3
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -103,8 +223,8 @@
   {
    "kind": "pine",
    "pos": [
-    33.0,
-    93.0
+    42.9,
+    120.9
    ],
    "rotation": 0.4,
    "scale": 1.2,
@@ -113,8 +233,8 @@
   {
    "kind": "pine",
    "pos": [
-    132.0,
-    93.0
+    171.6,
+    120.9
    ],
    "rotation": 1.2,
    "scale": 1.15,
@@ -125,94 +245,180 @@
   {
    "kind": "center",
    "pos": [
-    42.9,
-    73.5
+    55.77,
+    95.55
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 0,
    "interior": "center_frostgipfel",
    "spawnPoint": "entrance",
    "label": "Heilstation",
    "doorOffset": [
     0.0,
-    6.9
+    8.97
    ]
   },
   {
    "kind": "shop",
    "pos": [
-    122.1,
-    73.5
+    158.73,
+    95.55
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 0,
    "interior": "shop_frostgipfel",
    "spawnPoint": "entrance",
    "label": "Warenlager",
    "doorOffset": [
     0.0,
-    5.7
+    7.41
    ]
   },
   {
    "kind": "gym",
    "pos": [
-    82.5,
-    111.72
+    107.25,
+    145.24
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 0,
    "interior": "gym_frostgipfel",
    "spawnPoint": "entrance",
    "label": "Arena von Frostgipfel",
    "doorOffset": [
     0.0,
-    9.6
+    12.48
    ]
   },
   {
    "kind": "hut",
    "pos": [
-    30.0,
-    36.0
+    39.0,
+    46.8
    ],
    "rotation": 1.5707963267948966,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 4,
-   "label": "Berghuette"
+   "label": "Berghuette",
+   "interior": "haus_frostgipfel_4",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   },
   {
    "kind": "hut",
    "pos": [
-    135.0,
-    36.0
+    175.5,
+    46.8
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 8,
-   "label": "Berghuette"
+   "label": "Berghuette",
+   "interior": "haus_frostgipfel_5",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   },
   {
    "kind": "station",
    "pos": [
-    135.0,
-    120.0
+    175.5,
+    156.0
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.35,
+   "scale": 1.76,
    "variant": 1,
-   "label": "Seilbahn"
+   "label": "Seilbahn",
+   "interior": "haus_frostgipfel_6",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    8.19
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    34.32,
+    129.95
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.95,
+   "variant": 11,
+   "label": "Wohnhaus",
+   "interior": "haus_frostgipfel_7",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    180.18,
+    129.95
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.95,
+   "variant": 12,
+   "label": "Wohnhaus",
+   "interior": "haus_frostgipfel_8",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    72.93,
+    168.17
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.95,
+   "variant": 13,
+   "label": "Kleines Haus",
+   "interior": "haus_frostgipfel_9",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    141.57,
+    168.17
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.95,
+   "variant": 14,
+   "label": "Kleines Haus",
+   "interior": "haus_frostgipfel_10",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   }
  ],
  "npcs": [
   {
    "id": "fg_guide",
    "pos": [
-    82.5,
-    36.0
+    107.25,
+    46.8
    ],
    "facing": 3.141592653589793,
    "name": "Bergwirtin",
@@ -221,8 +427,8 @@
   {
    "id": "fg_t1",
    "pos": [
-    123.0,
-    87.0
+    159.9,
+    113.1
    ],
    "facing": -1.5707963267948966,
    "name": "Schneelaeufer Nils",
@@ -243,8 +449,8 @@
    "id": "fg_frost",
    "item": "frostkristall",
    "pos": [
-    36.0,
-    129.0
+    46.8,
+    167.7
    ],
    "quantity": 1,
    "hidden": false
@@ -253,8 +459,8 @@
    "id": "fg_disk",
    "item": "td06",
    "pos": [
-    141.0,
-    66.0
+    183.3,
+    85.8
    ],
    "quantity": 1,
    "hidden": false
@@ -264,20 +470,20 @@
   {
    "to": "route_7",
    "trigger": {
-    "x": 70.5,
+    "x": 91.65,
     "z": 0.0,
-    "width": 24.0,
-    "depth": 4.5
+    "width": 31.2,
+    "depth": 5.85
    },
    "spawnPoint": "from_frostgipfel"
   },
   {
    "to": "route_8",
    "trigger": {
-    "x": 70.5,
-    "z": 142.5,
-    "width": 24.0,
-    "depth": 4.5
+    "x": 91.65,
+    "z": 185.25,
+    "width": 31.2,
+    "depth": 5.85
    },
    "spawnPoint": "from_frostgipfel"
   }
@@ -286,48 +492,104 @@
   {
    "id": "default",
    "pos": [
-    82.5,
-    15.0
+    107.25,
+    19.5
    ],
    "facing": 0
   },
   {
    "id": "from_route7",
    "pos": [
-    82.5,
-    12.0
+    107.25,
+    15.6
    ],
    "facing": 0
   },
   {
    "id": "from_route8",
    "pos": [
-    82.5,
-    138.0
+    107.25,
+    179.4
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_center",
    "pos": [
-    42.9,
-    61.5
+    55.77,
+    79.95
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_shop",
    "pos": [
-    122.1,
-    61.5
+    158.73,
+    79.95
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_gym",
    "pos": [
-    82.5,
-    96.72
+    107.25,
+    125.74
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_haus_frostgipfel_4",
+   "pos": [
+    51.09,
+    46.8
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_haus_frostgipfel_5",
+   "pos": [
+    163.41,
+    46.8
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_frostgipfel_6",
+   "pos": [
+    161.46,
+    156.0
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_frostgipfel_7",
+   "pos": [
+    46.41,
+    129.95
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_haus_frostgipfel_8",
+   "pos": [
+    168.09,
+    129.95
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_frostgipfel_9",
+   "pos": [
+    72.93,
+    156.08
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_haus_frostgipfel_10",
+   "pos": [
+    141.57,
+    156.08
    ],
    "facing": 3.141592653589793
   }
@@ -337,8 +599,8 @@
  "kind": "city",
  "biome": "snow",
  "size": [
-  165.0,
-  147.0
+  214.5,
+  191.1
  ],
  "seed": 2901,
  "mapPos": [
@@ -355,36 +617,36 @@
  ],
  "terrain": {
   "baseHeight": 0,
-  "amplitude": 1.8,
-  "frequency": 0.02667,
-  "octaves": 3,
+  "amplitude": 1.6,
+  "frequency": 0.01128,
+  "octaves": 2,
   "cliffBorder": true,
   "paths": [
    {
     "points": [
      [
-      82.5,
-      3.0
+      107.25,
+      3.9
      ],
      [
-      82.5,
-      141.0
+      107.25,
+      183.3
      ]
     ],
-    "width": 13.5
+    "width": 17.55
    },
    {
     "points": [
      [
-      12.0,
-      73.5
+      15.6,
+      95.55
      ],
      [
-      153.0,
-      73.5
+      198.9,
+      95.55
      ]
     ],
-    "width": 10.5
+    "width": 13.65
    }
   ]
  },

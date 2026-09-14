@@ -46,7 +46,11 @@ test.describe('Start und Weltdarstellung', () => {
     expect(state.sceneChildren).toBeGreaterThan(3);
 
     // Einige Bilder laufen lassen und Renderstatistik pruefen.
-    await page.waitForTimeout(1500);
+    // Das Zeitfenster ist grosszuegig: die Testumgebung rendert per
+    // Software und schafft nur wenige Bilder pro Sekunde. Geprueft wird,
+    // dass die Schleife laeuft - die Leistungsgrenzen stehen in
+    // performance.spec.ts.
+    await page.waitForTimeout(5000);
     const stats = await page.evaluate(() => {
       const game = (window as unknown as { __GAME__: any }).__GAME__;
       return {

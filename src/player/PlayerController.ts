@@ -158,11 +158,17 @@ export class PlayerController {
       * this.speedBonusValue;
 
     if (axis.x !== 0 || axis.y !== 0) {
-      // Eingabe ist kamerarelativ: "vorwaerts" heisst immer "weg von der Kamera".
+      // Eingabe ist kamerarelativ: "vorwaerts" heisst immer "weg von der
+      // Kamera", "rechts" immer "rechts im Bild".
+      //
+      // Die Kamera steht bei -(sin, cos) hinter der Figur, blickt also nach
+      // (sin, cos). Bildschirm-rechts ist das Kreuzprodukt aus Blick- und
+      // Hochachse: (-cos, sin). Ohne das Minus lief die Figur bei "D" nach
+      // links und bei "A" nach rechts.
       const sin = Math.sin(cameraYaw);
       const cos = Math.cos(cameraYaw);
-      const dirX = axis.x * cos + axis.y * sin;
-      const dirZ = -axis.x * sin + axis.y * cos;
+      const dirX = -axis.x * cos + axis.y * sin;
+      const dirZ = axis.x * sin + axis.y * cos;
       const len = Math.hypot(dirX, dirZ) || 1;
       const targetX = (dirX / len) * maxSpeed;
       const targetZ = (dirZ / len) * maxSpeed;

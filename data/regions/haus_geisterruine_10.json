@@ -1,0 +1,133 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "haus_geisterruine_10_bewohner",
+   "pos": [
+    8.16,
+    6.2
+   ],
+   "facing": 3.141592653589793,
+   "name": "Bewohnerin",
+   "dialogue": "haus_bewohner",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#4b8f7a",
+    "pants": "#3f3f4a",
+    "accent": "#e0d8c4",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "geisterruine",
+   "trigger": {
+    "x": 4.8,
+    "z": 0,
+    "width": 2.4,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_haus_geisterruine_10"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    6.0,
+    3.0
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    6.0,
+    2.4
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "haus_geisterruine_10",
+ "name": "Kleines Haus",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  12,
+  10
+ ],
+ "seed": 2750,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "home",
+ "interiorStyle": {
+  "wallColor": "#e6dcc8",
+  "floorColor": "#a8763f",
+  "accentColor": "#7a5f3f",
+  "wallHeight": 2.9,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 6.0,
+    "z": 0,
+    "width": 2.4,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "bed",
+    "pos": [
+     2.4,
+     7.4
+    ]
+   },
+   {
+    "kind": "table",
+    "pos": [
+     6.0,
+     5.6
+    ]
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     6.0,
+     7.0
+    ],
+    "rotation": 3.141592653589793
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     10.0,
+     7.2
+    ],
+    "rotation": -1.5707963267948966
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     1.6,
+     3.2
+    ]
+   },
+   {
+    "kind": "rug",
+    "pos": [
+     6.0,
+     3.6
+    ]
+   }
+  ]
+ }
+}

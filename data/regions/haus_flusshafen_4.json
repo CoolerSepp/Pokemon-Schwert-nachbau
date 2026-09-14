@@ -1,0 +1,140 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "haus_flusshafen_4_bewohner",
+   "pos": [
+    12.24,
+    8.68
+   ],
+   "facing": 3.141592653589793,
+   "name": "Lagerarbeiter",
+   "dialogue": "haus_lager",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#b5772f",
+    "pants": "#3f3f4a",
+    "accent": "#e0d8c4",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "flusshafen",
+   "trigger": {
+    "x": 7.8,
+    "z": 0,
+    "width": 2.4,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_haus_flusshafen_4"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    9.0,
+    3.0
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    9.0,
+    2.4
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "haus_flusshafen_4",
+ "name": "Lagerhalle",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  18,
+  14
+ ],
+ "seed": 1544,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "shop",
+ "interiorStyle": {
+  "wallColor": "#cfd4d8",
+  "floorColor": "#8f8a80",
+  "accentColor": "#5f6b7a",
+  "wallHeight": 4.6,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 9.0,
+    "z": 0,
+    "width": 2.4,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "crateStack",
+    "pos": [
+     3.0,
+     10.6
+    ]
+   },
+   {
+    "kind": "crateStack",
+    "pos": [
+     5.4,
+     10.6
+    ]
+   },
+   {
+    "kind": "crateStack",
+    "pos": [
+     15.0,
+     10.6
+    ]
+   },
+   {
+    "kind": "counter",
+    "pos": [
+     9.0,
+     8.0
+    ]
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     1.8,
+     6.0
+    ],
+    "rotation": 1.5707963267948966
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     16.2,
+     6.0
+    ],
+    "rotation": -1.5707963267948966
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     9.0,
+     11.6
+    ]
+   }
+  ]
+ }
+}

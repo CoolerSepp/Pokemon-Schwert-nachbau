@@ -1,33 +1,61 @@
 {
  "id": "nebenquest_wanderer",
- "name": "Kais Herausforderung",
+ "name": "Die Pruefung der Route 1",
  "kind": "side",
- "description": "Besiege die Trainer auf Route 1.",
+ "description": "Besiege alle fuenf Trainer auf dem Weg nach Quellheim.",
  "autoStartStage": 3,
  "steps": [
   {
    "id": "kai",
-   "description": "Besiege Wanderer Kai.",
+   "description": "Wiese: Besiege Wanderer Kai.",
    "completion": {
     "kind": "defeatTrainer",
     "trainer": "wanderer_kai"
    }
   },
   {
+   "id": "juli",
+   "description": "Hecke: Besiege Heckenlaeuferin Juli.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "heckenlaeufer_juli"
+   }
+  },
+  {
+   "id": "mats",
+   "description": "Furt: Besiege Furtwaechter Mats.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "furtwaechter_mats"
+   }
+  },
+  {
    "id": "ida",
-   "description": "Besiege Kaeferfreundin Ida.",
+   "description": "Grasfeld: Besiege Kaeferfreundin Ida.",
    "completion": {
     "kind": "defeatTrainer",
     "trainer": "kaeferfreundin_ida"
    }
+  },
+  {
+   "id": "bea",
+   "description": "Anstieg: Besiege Steigwanderin Bea.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "steigwanderin_bea"
+   }
   }
  ],
  "rewards": {
-  "money": 600,
+  "money": 1200,
   "items": [
    {
     "item": "aether",
     "quantity": 2
+   },
+   {
+    "item": "superkugel",
+    "quantity": 5
    }
   ]
  }

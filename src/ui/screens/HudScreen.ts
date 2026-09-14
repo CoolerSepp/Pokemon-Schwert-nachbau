@@ -36,7 +36,7 @@ export class HudScreen implements Screen {
 
   private root!: HTMLElement;
   private areaLabel!: HTMLElement;
-  private areaKind!: HTMLElement;
+  private phaseLabel!: HTMLElement;
   private clockLabel!: HTMLElement;
   private weatherLabel!: HTMLElement;
   private moneyLabel!: HTMLElement;
@@ -48,17 +48,19 @@ export class HudScreen implements Screen {
   private hintBox!: HTMLElement;
   private hintText!: HTMLElement;
 
+  private ui: UIManager | null = null;
   private partySignature = '';
   private lastQuestSignature = '';
   private refreshTimer = 0;
 
   constructor(private readonly ctx: HudContext) {}
 
-  mount(_context: ScreenContext): HTMLElement {
-    this.areaLabel = el('span', { text: '' });
-    this.areaKind = el('small', { text: '' });
-    this.clockLabel = el('span', { text: '00:00' });
-    this.weatherLabel = el('span', { text: '' });
+  mount(context: ScreenContext): HTMLElement {
+    this.ui = context.ui;
+    this.areaLabel = el('span', { className: 'hud-place-name', text: '' });
+    this.phaseLabel = el('span', { className: 'hud-place-phase', text: '' });
+    this.clockLabel = el('span', { className: 'hud-place-time', text: '00:00' });
+    this.weatherLabel = el('span', { className: 'hud-place-weather', text: '' });
     this.moneyLabel = el('span', { text: '' });
     this.badgeRow = el('div', { className: 'hud-badges' });
     this.questName = el('div', { className: 'quest-name' });
@@ -82,25 +84,35 @@ export class HudScreen implements Screen {
     this.root = el('div', {
       className: 'hud',
       children: [
+        // Kopfleiste ueber die volle Breite: links Ort/Zeit/Wetter und der
+        // laufende Auftrag, rechts Geld und Orden.
         el('div', {
-          className: 'hud-top-left',
+          className: 'hud-bar',
           children: [
             el('div', {
-              className: 'hud-area',
-              children: [this.areaLabel, this.areaKind],
+              className: 'hud-bar-left',
+              children: [
+                el('div', {
+                  className: 'hud-place',
+                  children: [
+                    this.areaLabel,
+                    el('span', { className: 'hud-sep' }),
+                    this.clockLabel,
+                    this.phaseLabel,
+                    el('span', { className: 'hud-sep' }),
+                    this.weatherLabel,
+                  ],
+                }),
+                this.questBox,
+              ],
             }),
             el('div', {
-              className: 'hud-clock',
-              children: [this.clockLabel, el('span', { text: '·' }), this.weatherLabel],
+              className: 'hud-bar-right',
+              children: [
+                el('div', { className: 'hud-money', children: [this.moneyLabel] }),
+                this.badgeRow,
+              ],
             }),
-            this.questBox,
-          ],
-        }),
-        el('div', {
-          className: 'hud-top-right',
-          children: [
-            el('div', { className: 'hud-money', children: [this.moneyLabel] }),
-            this.badgeRow,
           ],
         }),
         this.partyRow,
@@ -109,6 +121,7 @@ export class HudScreen implements Screen {
           className: 'hud-controls',
           children: [
             el('div', { text: 'WASD Bewegen · Umschalt Rennen · E Interagieren' }),
+            el('div', { text: 'Maus ziehen oder Q/C Kamera drehen · R zuruecksetzen' }),
             el('div', { text: 'M Menue · N Karte · F1 Entwickleransicht' }),
           ],
         }),
@@ -127,13 +140,16 @@ export class HudScreen implements Screen {
       this.refresh();
     }
     this.updateHint();
+    // Waehrend eines Dialogs oder Menues weichen Teamleiste und Tastenhilfe:
+    // sonst liegen sie unter dem Dialogfenster.
+    this.root.classList.toggle('hud-quiet', this.ui?.blocksGameplay === true);
   }
 
   private refresh(): void {
     const { player, time } = this.ctx;
 
     this.areaLabel.textContent = this.ctx.getAreaName();
-    this.areaKind.textContent = TIME_LABELS[time.timeOfDay];
+    this.phaseLabel.textContent = TIME_LABELS[time.timeOfDay];
     this.clockLabel.textContent = time.format();
     this.weatherLabel.textContent = WEATHER_LABELS[this.ctx.getWeather()];
     this.moneyLabel.textContent = formatMoney(player.money);

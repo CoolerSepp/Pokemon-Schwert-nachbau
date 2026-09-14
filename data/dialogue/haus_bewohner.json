@@ -1,0 +1,16 @@
+{
+ "id": "haus_bewohner",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Komm ruhig herein, die Tuer steht jedem offen.",
+    "Wir hoeren gern, was draussen in der Region passiert."
+   ],
+   "speaker": "Bewohner"
+  }
+ ]
+}

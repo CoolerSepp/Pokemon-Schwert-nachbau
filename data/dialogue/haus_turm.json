@@ -1,0 +1,16 @@
+{
+ "id": "haus_turm",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Von hier oben sieht man bei klarem Wetter bis zum naechsten Ort.",
+    "Nachts leuchten die Laternen der Staedte wie eine Kette."
+   ],
+   "speaker": "Turmwaechter"
+  }
+ ]
+}

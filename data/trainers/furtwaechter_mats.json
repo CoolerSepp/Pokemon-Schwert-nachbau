@@ -1,0 +1,40 @@
+{
+ "id": "furtwaechter_mats",
+ "name": "Furtwaechter Mats",
+ "trainerClass": "Fischer",
+ "ai": "defensive",
+ "team": [
+  {
+   "species": "schlammlurch",
+   "level": 8
+  },
+  {
+   "species": "nagezahn",
+   "level": 9
+  }
+ ],
+ "rewardBase": 72,
+ "dialogue": {
+  "intro": [
+   "Die Furt ist flach, aber nicht harmlos.",
+   "Wer hinueber will, kaempft erst gegen mich."
+  ],
+  "defeat": [
+   "Geh hinueber, du hast es dir verdient."
+  ],
+  "victory": [
+   "Das Wasser bleibt heute meins."
+  ],
+  "postBattle": [
+   "Weiter oben steht ein Feld voll hoher Graeser. Halte die Augen offen."
+  ]
+ },
+ "appearance": {
+  "skin": "#c99a6b",
+  "hair": "#3a2a1c",
+  "shirt": "#4b8fbf",
+  "pants": "#3f4a5f",
+  "accent": "#d8e4f0",
+  "hat": "cap"
+ }
+}

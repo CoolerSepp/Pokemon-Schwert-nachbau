@@ -1,0 +1,138 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "haus_frostgipfel_6_bewohner",
+   "pos": [
+    10.88,
+    7.4399999999999995
+   ],
+   "facing": 3.141592653589793,
+   "name": "Schaffnerin",
+   "dialogue": "haus_bahnhof",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#3f6b9b",
+    "pants": "#3f3f4a",
+    "accent": "#e0d8c4",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "frostgipfel",
+   "trigger": {
+    "x": 6.8,
+    "z": 0,
+    "width": 2.4,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_haus_frostgipfel_6"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    8.0,
+    3.0
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    8.0,
+    2.4
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "haus_frostgipfel_6",
+ "name": "Seilbahn",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  16,
+  12
+ ],
+ "seed": 2946,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "town",
+ "interiorStyle": {
+  "wallColor": "#dfe4ea",
+  "floorColor": "#9aa0a8",
+  "accentColor": "#4b6b8f",
+  "wallHeight": 4.2,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 8.0,
+    "z": 0,
+    "width": 2.4,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "counter",
+    "pos": [
+     8.0,
+     9.0
+    ]
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     3.4,
+     5.6
+    ]
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     5.0,
+     5.6
+    ]
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     11.0,
+     5.6
+    ]
+   },
+   {
+    "kind": "chair",
+    "pos": [
+     12.6,
+     5.6
+    ]
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     1.8,
+     9.4
+    ]
+   },
+   {
+    "kind": "plant",
+    "pos": [
+     14.2,
+     9.4
+    ]
+   }
+  ]
+ }
+}

@@ -207,8 +207,8 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 3.5,
-  "frequency": 0.02667,
-  "octaves": 3,
+  "frequency": 0.01333,
+  "octaves": 2,
   "waterLevel": -0.8,
   "cliffBorder": true,
   "paths": [

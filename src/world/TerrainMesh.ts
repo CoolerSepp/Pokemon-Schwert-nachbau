@@ -124,7 +124,7 @@ function distanceToSegment(x: number, z: number, s: PathSegment): number {
 }
 
 /** Bodentextur je Biom. */
-const BIOME_GROUND_TEXTURE: Record<Biome, TextureKind> = {
+export const BIOME_GROUND_TEXTURE: Record<Biome, TextureKind> = {
   grassland: 'grass', meadow: 'grass', forest: 'grass', wetland: 'grass',
   rocky: 'rock', mountain: 'rock', cave: 'rock', ruins: 'stone',
   snow: 'snow', desert: 'sand', coastal: 'sand',
@@ -273,6 +273,118 @@ export function buildTerrainMesh(
  * jede Bildwiederholung nachgefuehrt, damit der Himmel dem Tagesverlauf und
  * dem Wetter folgt.
  */
+/**
+ * Baut die Fernkulisse: zwei Bergketten hinter dem begehbaren Gebiet.
+ *
+ * Ohne sie endet die Welt am Rand des Spielfelds und der Blick faellt ins
+ * Leere - man kann nicht "in die Landschaft schauen". Die Ketten liegen
+ * ausserhalb des Spielfelds, tragen keine Kollision und bestehen aus zwei
+ * zusammengefassten Meshes, kosten also zwei Zeichenaufrufe.
+ *
+ * Die Hoehen kommen aus Rauschen, das auf dem Kreis abgetastet wird - so
+ * schliesst die Kette nahtlos und hat trotzdem unregelmaessige Gipfel.
+ */
+const BACKDROP_LAYERS = [
+  // Naehere Kette: kraeftiger. Ferne Kette: hoeher, blasser, weiter weg.
+  { radius: 1.05, offset: 40, height: 26, spread: 34, blend: 0.32, freq: 3.2 },
+  { radius: 1.35, offset: 130, height: 78, spread: 90, blend: 0.6, freq: 1.9 },
+] as const;
+
+/** Aussenradius der Kulisse - der Himmel muss weiter reichen als sie. */
+export function backdropOuterRadius(innerRadius: number): number {
+  let max = 0;
+  for (const l of BACKDROP_LAYERS) {
+    max = Math.max(max, innerRadius * l.radius + l.offset + l.spread);
+  }
+  return max;
+}
+
+export function buildBackdrop(
+  palette: BiomePalette, innerRadius: number, seed: number, heightScale = 1,
+): THREE.Group {
+  const group = new THREE.Group();
+  group.name = 'backdrop';
+  const noise = new ValueNoise2D(seed + 4211);
+
+  const layers = BACKDROP_LAYERS.map((l) => ({
+    ...l, radius: innerRadius * l.radius + l.offset, height: l.height * heightScale,
+  }));
+
+  for (let li = 0; li < layers.length; li++) {
+    const layer = layers[li]!;
+    const segments = 128;
+    const positions: number[] = [];
+    const colors: number[] = [];
+
+    // Farben: unten Vegetation, oben Fels/Schnee - beide in Richtung
+    // Horizontfarbe verschoben, damit Entfernung auch ohne Nebel wirkt.
+    const haze = new THREE.Color(palette.skyBottom);
+    const low = new THREE.Color(palette.groundAlt).lerp(haze, layer.blend);
+    const high = new THREE.Color(palette.peak).lerp(haze, layer.blend * 0.8);
+    const tmp = new THREE.Color();
+
+    const heightAt = (i: number): number => {
+      const a = (i / segments) * Math.PI * 2;
+      const n = noise.fbm(
+        Math.cos(a) * layer.freq + 10, Math.sin(a) * layer.freq + 10, 3, 2, 0.45,
+      );
+      const ridge = 1 - Math.abs(noise.sample(Math.cos(a) * 1.3, Math.sin(a) * 1.3) * 2 - 1);
+      return layer.height * (0.35 + n * 0.9 + ridge * 0.35);
+    };
+
+    // Schattierung steckt in den Scheitelfarben, nicht im Licht: eine
+    // Kulisse aus DoubleSide-Dreiecken bekommt sonst je nach Blickrichtung
+    // schwarze Flaechen, weil die Normalen von der Sonne wegzeigen.
+    const push = (x: number, y: number, z: number, c: THREE.Color, shade = 1): void => {
+      positions.push(x, y, z);
+      colors.push(c.r * shade, c.g * shade, c.b * shade);
+    };
+
+    for (let i = 0; i < segments; i++) {
+      const a0 = (i / segments) * Math.PI * 2;
+      const a1 = ((i + 1) / segments) * Math.PI * 2;
+      const h0 = heightAt(i);
+      const h1 = heightAt(i + 1);
+      const rIn = layer.radius;
+      const rMid = layer.radius + layer.spread * 0.55;
+      const rOut = layer.radius + layer.spread;
+
+      const p = (r: number, a: number, y: number): [number, number, number] =>
+        [Math.cos(a) * r, y, Math.sin(a) * r];
+
+      const base0 = p(rIn, a0, -6);
+      const base1 = p(rIn, a1, -6);
+      const peak0 = p(rMid, a0, h0);
+      const peak1 = p(rMid, a1, h1);
+      const back0 = p(rOut, a0, h0 * 0.28);
+      const back1 = p(rOut, a1, h1 * 0.28);
+
+      const cPeak0 = tmp.copy(low).lerp(high, Math.min(1, h0 / layer.height)).clone();
+      const cPeak1 = tmp.copy(low).lerp(high, Math.min(1, h1 / layer.height)).clone();
+
+      // Vorderflanke (zur Kamera hin, heller).
+      push(...base0, low); push(...peak1, cPeak1); push(...peak0, cPeak0);
+      push(...base0, low); push(...base1, low); push(...peak1, cPeak1);
+      // Rueckflanke - verhindert eine offene Silhouette bei hohem Blickwinkel.
+      const back = 0.78;
+      push(...peak0, cPeak0, back); push(...peak1, cPeak1, back); push(...back1, low, back);
+      push(...peak0, cPeak0, back); push(...back1, low, back); push(...back0, low, back);
+    }
+
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+      vertexColors: true, side: THREE.DoubleSide, fog: true,
+    }));
+    mesh.name = `backdrop-${li}`;
+    mesh.frustumCulled = false;
+    mesh.renderOrder = -1;
+    group.add(mesh);
+  }
+  return group;
+}
+
 export function buildSky(top: string, bottom: string, radius: number): THREE.Mesh {
   const geometry = new THREE.SphereGeometry(radius, 32, 20);
   const material = new THREE.ShaderMaterial({

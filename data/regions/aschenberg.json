@@ -3,8 +3,8 @@
   {
    "kind": "lamp",
    "pos": [
-    67.2,
-    45.0
+    87.36,
+    57.92
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -13,8 +13,8 @@
   {
    "kind": "lamp",
    "pos": [
-    100.8,
-    45.0
+    131.04,
+    57.92
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -23,8 +23,8 @@
   {
    "kind": "lamp",
    "pos": [
-    67.2,
-    96.0
+    87.36,
+    123.55
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -33,8 +33,8 @@
   {
    "kind": "lamp",
    "pos": [
-    100.8,
-    96.0
+    131.04,
+    123.55
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -43,8 +43,8 @@
   {
    "kind": "bench",
    "pos": [
-    73.92,
-    78.0
+    96.1,
+    100.39
    ],
    "rotation": 1.5707963267948966,
    "scale": 1.0,
@@ -53,8 +53,8 @@
   {
    "kind": "bench",
    "pos": [
-    94.08,
-    78.0
+    122.3,
+    100.39
    ],
    "rotation": -1.5707963267948966,
    "scale": 1.0,
@@ -63,8 +63,8 @@
   {
    "kind": "sign",
    "pos": [
-    77.28,
-    18.0
+    100.46,
+    23.17
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -73,18 +73,138 @@
   {
    "kind": "well",
    "pos": [
-    84.0,
-    69.0
+    109.2,
+    88.8
    ],
    "rotation": 0,
    "scale": 1.1,
    "variant": 0
   },
   {
+   "kind": "lamp",
+   "pos": [
+    48.05,
+    111.97
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "lamp",
+   "pos": [
+    170.35,
+    111.97
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    65.52,
+    146.72
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "bench",
+   "pos": [
+    152.88,
+    146.72
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    82.99,
+    81.08
+   ],
+   "rotation": 0,
+   "scale": 1.2,
+   "variant": 6
+  },
+  {
+   "kind": "flower",
+   "pos": [
+    135.41,
+    81.08
+   ],
+   "rotation": 0,
+   "scale": 1.15,
+   "variant": 7
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    26.21,
+    54.05
+   ],
+   "rotation": 0.4,
+   "scale": 1.25,
+   "variant": 8
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    192.19,
+    57.92
+   ],
+   "rotation": 1.4,
+   "scale": 1.2,
+   "variant": 9
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    21.84,
+    166.02
+   ],
+   "rotation": 2.1,
+   "scale": 1.3,
+   "variant": 10
+  },
+  {
+   "kind": "tree",
+   "pos": [
+    196.56,
+    162.16
+   ],
+   "rotation": 0.8,
+   "scale": 1.22,
+   "variant": 11
+  },
+  {
+   "kind": "mailbox",
+   "pos": [
+    43.68,
+    123.55
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "mailbox",
+   "pos": [
+    174.72,
+    123.55
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
    "kind": "torch",
    "pos": [
-    60.0,
-    45.0
+    78.0,
+    58.5
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -93,8 +213,8 @@
   {
    "kind": "torch",
    "pos": [
-    108.0,
-    45.0
+    140.4,
+    58.5
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -103,8 +223,8 @@
   {
    "kind": "boulder",
    "pos": [
-    33.0,
-    99.0
+    42.9,
+    128.7
    ],
    "rotation": 0.4,
    "scale": 1.3,
@@ -113,8 +233,8 @@
   {
    "kind": "rock",
    "pos": [
-    135.0,
-    93.0
+    175.5,
+    120.9
    ],
    "rotation": 1.2,
    "scale": 1.2,
@@ -125,94 +245,180 @@
   {
    "kind": "center",
    "pos": [
-    43.68,
-    75.0
+    56.78,
+    96.53
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 0,
    "interior": "center_aschenberg",
    "spawnPoint": "entrance",
    "label": "Heilstation",
    "doorOffset": [
     0.0,
-    6.9
+    8.97
    ]
   },
   {
    "kind": "shop",
    "pos": [
-    124.32,
-    75.0
+    161.62,
+    96.53
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 0,
    "interior": "shop_aschenberg",
    "spawnPoint": "entrance",
    "label": "Warenlager",
    "doorOffset": [
     0.0,
-    5.7
+    7.41
    ]
   },
   {
    "kind": "gym",
    "pos": [
-    84.0,
-    114.0
+    109.2,
+    146.72
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 0,
    "interior": "gym_aschenberg",
    "spawnPoint": "entrance",
    "label": "Arena von Aschenberg",
    "doorOffset": [
     0.0,
-    9.6
+    12.48
    ]
   },
   {
    "kind": "hut",
    "pos": [
-    30.0,
-    36.0
+    39.0,
+    46.8
    ],
    "rotation": 1.5707963267948966,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 2,
-   "label": "Steinhaus"
+   "label": "Steinhaus",
+   "interior": "haus_aschenberg_4",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   },
   {
    "kind": "hut",
    "pos": [
-    138.0,
-    36.0
+    179.4,
+    46.8
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 6,
-   "label": "Steinhaus"
+   "label": "Steinhaus",
+   "interior": "haus_aschenberg_5",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   },
   {
    "kind": "tower",
    "pos": [
-    138.0,
-    123.0
+    179.4,
+    159.9
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.2,
+   "scale": 1.56,
    "variant": 4,
-   "label": "Aussichtsturm"
+   "label": "Aussichtsturm",
+   "interior": "haus_aschenberg_6",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    8.19
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    34.94,
+    131.27
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.95,
+   "variant": 11,
+   "label": "Wohnhaus",
+   "interior": "haus_aschenberg_7",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "house",
+   "pos": [
+    183.46,
+    131.27
+   ],
+   "rotation": -1.5707963267948966,
+   "scale": 1.95,
+   "variant": 12,
+   "label": "Wohnhaus",
+   "interior": "haus_aschenberg_8",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    74.26,
+    169.88
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.95,
+   "variant": 13,
+   "label": "Kleines Haus",
+   "interior": "haus_aschenberg_9",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
+  },
+  {
+   "kind": "hut",
+   "pos": [
+    144.14,
+    169.88
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.95,
+   "variant": 14,
+   "label": "Kleines Haus",
+   "interior": "haus_aschenberg_10",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   }
  ],
  "npcs": [
   {
    "id": "ab_guide",
    "pos": [
-    84.0,
-    36.0
+    109.2,
+    46.8
    ],
    "facing": 3.141592653589793,
    "name": "Kraterwaechter",
@@ -221,8 +427,8 @@
   {
    "id": "ab_t1",
    "pos": [
-    126.0,
-    84.0
+    163.8,
+    109.2
    ],
    "facing": -1.5707963267948966,
    "name": "Schmiedin Vera",
@@ -243,8 +449,8 @@
    "id": "ab_holz",
    "item": "holzkohle",
    "pos": [
-    36.0,
-    132.0
+    46.8,
+    171.6
    ],
    "quantity": 1,
    "hidden": false
@@ -253,8 +459,8 @@
    "id": "ab_disk",
    "item": "td02",
    "pos": [
-    144.0,
-    60.0
+    187.2,
+    78.0
    ],
    "quantity": 1,
    "hidden": false
@@ -264,20 +470,20 @@
   {
    "to": "route_5",
    "trigger": {
-    "x": 72.0,
+    "x": 93.6,
     "z": 0.0,
-    "width": 24.0,
-    "depth": 4.5
+    "width": 31.2,
+    "depth": 5.85
    },
    "spawnPoint": "from_aschenberg"
   },
   {
    "to": "route_6",
    "trigger": {
-    "x": 72.0,
-    "z": 145.5,
-    "width": 24.0,
-    "depth": 4.5
+    "x": 93.6,
+    "z": 185.25,
+    "width": 31.2,
+    "depth": 5.85
    },
    "spawnPoint": "from_aschenberg"
   }
@@ -286,48 +492,104 @@
   {
    "id": "default",
    "pos": [
-    84.0,
-    15.0
+    109.2,
+    19.5
    ],
    "facing": 0
   },
   {
    "id": "from_route5",
    "pos": [
-    84.0,
-    12.0
+    109.2,
+    15.6
    ],
    "facing": 0
   },
   {
    "id": "from_route6",
    "pos": [
-    84.0,
-    141.0
+    109.2,
+    183.3
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_center",
    "pos": [
-    43.68,
-    63.0
+    56.78,
+    80.93
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_shop",
    "pos": [
-    124.32,
-    63.0
+    161.62,
+    80.93
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_gym",
    "pos": [
-    84.0,
-    99.0
+    109.2,
+    127.22
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_haus_aschenberg_4",
+   "pos": [
+    51.09,
+    46.8
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_haus_aschenberg_5",
+   "pos": [
+    167.31,
+    46.8
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_aschenberg_6",
+   "pos": [
+    165.36,
+    159.9
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_aschenberg_7",
+   "pos": [
+    47.03,
+    131.27
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_haus_aschenberg_8",
+   "pos": [
+    171.37,
+    131.27
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_aschenberg_9",
+   "pos": [
+    74.26,
+    157.79
+   ],
+   "facing": 3.141592653589793
+  },
+  {
+   "id": "from_haus_aschenberg_10",
+   "pos": [
+    144.14,
+    157.79
    ],
    "facing": 3.141592653589793
   }
@@ -337,8 +599,8 @@
  "kind": "city",
  "biome": "volcanic",
  "size": [
-  168.0,
-  150.0
+  218.4,
+  193.05
  ],
  "seed": 2401,
  "mapPos": [
@@ -354,36 +616,36 @@
  ],
  "terrain": {
   "baseHeight": 0,
-  "amplitude": 1.8,
-  "frequency": 0.02667,
-  "octaves": 3,
+  "amplitude": 1.6,
+  "frequency": 0.01128,
+  "octaves": 2,
   "cliffBorder": true,
   "paths": [
    {
     "points": [
      [
-      84.0,
-      3.0
+      109.2,
+      3.9
      ],
      [
-      84.0,
-      144.0
+      109.2,
+      185.25
      ]
     ],
-    "width": 13.5
+    "width": 17.55
    },
    {
     "points": [
      [
-      12.0,
-      75.0
+      15.6,
+      96.53
      ],
      [
-      156.0,
-      75.0
+      202.8,
+      96.53
      ]
     ],
-    "width": 10.5
+    "width": 13.65
    }
   ]
  },

@@ -199,7 +199,9 @@ export class InteriorFactory {
           g.add(this.box([1.4 * s, 0.24 * s, 0.4 * s], '#8a6b45',
             [0, (0.12 + i * 0.24) * s, (-i * 0.4) * s]));
         }
-        return { object: g, blockWidth: 1.5 * s, blockDepth: 2.6 * s };
+        // Treppen sind Uebergaenge, keine Hindernisse: mit Kollision kaeme
+        // man nie auf den Ausloeser und damit nie ins obere Stockwerk.
+        return { object: g, blockWidth: 0, blockDepth: 0 };
       }
       case 'machine':
         g.add(this.box([1.2 * s, 1.6 * s, 0.8 * s], color, [0, 0.8 * s, 0]));

@@ -298,9 +298,103 @@ tree("generic_npc",
     ]),
 )
 
+# Bewohner der allgemein erzeugten Innenraeume.
+tree("haus_bewohner",
+    node("start", [
+        "Komm ruhig herein, die Tuer steht jedem offen.",
+        "Wir hoeren gern, was draussen in der Region passiert.",
+    ], speaker="Bewohner"),
+)
+
+tree("haus_lager",
+    node("start", [
+        "Vorsicht, die Kisten stehen hoch.",
+        "Alles, was in der Region gehandelt wird, geht einmal durch diese Halle.",
+    ], speaker="Lagerarbeiter"),
+)
+
+tree("haus_bahnhof",
+    node("start", [
+        "Der naechste Wagen faehrt, sobald genug Reisende da sind.",
+        "Bis dahin: setz dich ruhig, die Baenke sind frei.",
+    ], speaker="Schaffnerin"),
+)
+
+tree("haus_turm",
+    node("start", [
+        "Von hier oben sieht man bei klarem Wetter bis zum naechsten Ort.",
+        "Nachts leuchten die Laternen der Staedte wie eine Kette.",
+    ], speaker="Turmwaechter"),
+)
+
+tree("route1_pfadfinder",
+    node("start", [
+        "Der Weg nach Quellheim ist laenger, als er aussieht.",
+        "Hinter der Hecke wird es unuebersichtlich - halte dich an den Pfad.",
+        "Und pass auf: In den hohen Graesern weiter oben lauert einiges.",
+    ], speaker="Pfadfinder"),
+)
+
+tree("route1_rastplatz",
+    node("start", [
+        "Setz dich ruhig. Von hier sind es nur noch ein paar Schritte.",
+        "Die Arena von Quellheim nimmt keine Ruecksicht auf muede Teams.",
+    ], speaker="Wirtin"),
+)
+
+tree("haus_ruine",
+    node("start", [
+        "Diese Mauern sind aelter als jede Aufzeichnung, die wir haben.",
+        "Wer hier gebaut hat, verstand etwas von Energie.",
+    ], speaker="Ruinenforscherin"),
+)
+
 # ==========================================================================
 # TRAINER
 # ==========================================================================
+trainer(
+    "heckenlaeufer_juli", "Heckenlaeuferin Juli", "Pfadfinderin", "basic",
+    [mon("knollknospe", 7), mon("kribbelkaefer", 8)],
+    reward=60,
+    intro=[
+        "Wer sich in die Hecke wagt, kommt an mir nicht vorbei!",
+        "Zeig mir, ob du den Weg verdient hast.",
+    ],
+    defeat=["Gut gelaufen. Der Pfad nach Norden gehoert dir."],
+    victory=["Die Hecke behaelt ihre Geheimnisse."],
+    post=["Hinter der Furt wird der Weg steiler. Nimm dir Zeit."],
+    appearance={"skin": "#e8c19b", "hair": "#6b4f2b", "shirt": "#7aa84b",
+                "pants": "#4a5f33", "accent": "#e0e8a0", "hat": "beanie"},
+)
+
+trainer(
+    "furtwaechter_mats", "Furtwaechter Mats", "Fischer", "defensive",
+    [mon("schlammlurch", 8), mon("nagezahn", 9)],
+    reward=72,
+    intro=[
+        "Die Furt ist flach, aber nicht harmlos.",
+        "Wer hinueber will, kaempft erst gegen mich."],
+    defeat=["Geh hinueber, du hast es dir verdient."],
+    victory=["Das Wasser bleibt heute meins."],
+    post=["Weiter oben steht ein Feld voll hoher Graeser. Halte die Augen offen."],
+    appearance={"skin": "#c99a6b", "hair": "#3a2a1c", "shirt": "#4b8fbf",
+                "pants": "#3f4a5f", "accent": "#d8e4f0", "hat": "cap"},
+)
+
+trainer(
+    "steigwanderin_bea", "Steigwanderin Bea", "Bergfreundin", "aggressive",
+    [mon("funkenfell", 9), mon("federflaum", 9), mon("nagezahn", 10)],
+    reward=96,
+    intro=[
+        "Der letzte Anstieg vor Quellheim - und der haerteste.",
+        "Wenn du hier bestehst, bist du bereit fuer die Arena."],
+    defeat=["Stark. Die Arena wird dich mit offenen Armen empfangen."],
+    victory=["Komm wieder, wenn dein Team den Anstieg schafft."],
+    post=["Quellheim liegt gleich hinter der Kuppe."],
+    appearance={"skin": "#d8b08a", "hair": "#8f3f2b", "shirt": "#c47a4b",
+                "pants": "#4a4a52", "accent": "#f0d8a0", "hat": "cap", "height": 1.03},
+)
+
 trainer(
     "wanderer_kai", "Wanderer Kai", "Wanderer", "basic",
     [mon("nagezahn", 6), mon("federflaum", 7)],
@@ -504,17 +598,26 @@ QUESTS.append({
     "rewards": {"money": 800, "items": [{"item": "hyperkugel", "quantity": 3}]},
 })
 
+# Die fuenf Trainer auf Route 1 sind die erste zusammenhaengende
+# Herausforderung des Spiels - je einer pro Abschnitt der Strecke.
 QUESTS.append({
-    "id": "nebenquest_wanderer", "name": "Kais Herausforderung", "kind": "side",
-    "description": "Besiege die Trainer auf Route 1.",
+    "id": "nebenquest_wanderer", "name": "Die Pruefung der Route 1", "kind": "side",
+    "description": "Besiege alle fuenf Trainer auf dem Weg nach Quellheim.",
     "autoStartStage": 3,
     "steps": [
-        {"id": "kai", "description": "Besiege Wanderer Kai.",
+        {"id": "kai", "description": "Wiese: Besiege Wanderer Kai.",
          "completion": {"kind": "defeatTrainer", "trainer": "wanderer_kai"}},
-        {"id": "ida", "description": "Besiege Kaeferfreundin Ida.",
+        {"id": "juli", "description": "Hecke: Besiege Heckenlaeuferin Juli.",
+         "completion": {"kind": "defeatTrainer", "trainer": "heckenlaeufer_juli"}},
+        {"id": "mats", "description": "Furt: Besiege Furtwaechter Mats.",
+         "completion": {"kind": "defeatTrainer", "trainer": "furtwaechter_mats"}},
+        {"id": "ida", "description": "Grasfeld: Besiege Kaeferfreundin Ida.",
          "completion": {"kind": "defeatTrainer", "trainer": "kaeferfreundin_ida"}},
+        {"id": "bea", "description": "Anstieg: Besiege Steigwanderin Bea.",
+         "completion": {"kind": "defeatTrainer", "trainer": "steigwanderin_bea"}},
     ],
-    "rewards": {"money": 600, "items": [{"item": "aether", "quantity": 2}]},
+    "rewards": {"money": 1200, "items": [{"item": "aether", "quantity": 2},
+                                        {"item": "superkugel", "quantity": 5}]},
 })
 
 # ==========================================================================

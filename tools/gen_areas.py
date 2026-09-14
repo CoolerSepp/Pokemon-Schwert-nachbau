@@ -10,6 +10,14 @@ import json, pathlib, math
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data/regions"
 
+# Der Faktor wird auf saemtliche Koordinaten angewandt, damit Verbindungen,
+# Tueren und Spawnpunkte zueinander passen. Innenraeume bleiben unveraendert -
+# ein Wohnzimmer soll kein Saal werden.
+OUTDOOR_SCALE = 1.5
+# Zusaetzlicher Faktor fuer bewohnte Orte.
+TOWN_BONUS = 1.3
+TOWN_KINDS = {"town", "city", "league"}
+
 AREAS = []
 
 def area(**kw):
@@ -58,8 +66,20 @@ def item(id, what, x, z, qty=1, hidden=False, stage=None):
 def prop(kind, x, z, rot=0.0, scale=1.0, variant=0):
     return {"kind": kind, "pos": [x, z], "rotation": rot, "scale": scale, "variant": variant}
 
-def fence_line(x0, z0, x1, z1, count):
-    """Reiht Zaunsegmente entlang einer Strecke auf."""
+# Breite eines Zaunsegments in Metern (siehe PropFactory.fence).
+FENCE_SEGMENT = 2.2
+
+
+def fence_line(x0, z0, x1, z1, count=None):
+    """Reiht Zaunsegmente luecklos entlang einer Strecke auf.
+
+    Die Anzahl wird aus der Laenge NACH der spaeteren Gebietsskalierung
+    bestimmt. Mit einer festen Anzahl entstanden Luecken von ueber einem
+    Meter zwischen den Segmenten - dort lief man einfach hindurch.
+    """
+    length = math.hypot(x1 - x0, z1 - z0) * OUTDOOR_SCALE
+    if count is None:
+        count = max(1, int(math.ceil(length / FENCE_SEGMENT)))
     out = []
     ang = math.atan2(x1 - x0, z1 - z0) + math.pi / 2
     for i in range(count):
@@ -79,7 +99,7 @@ area(
     id="startdorf", name="Startdorf", kind="town", biome="meadow",
     size=[92, 84], seed=1001,
     terrain={
-        "baseHeight": 0, "amplitude": 1.4, "frequency": 0.045, "octaves": 3,
+        "baseHeight": 0, "amplitude": 1.2, "frequency": 0.024, "octaves": 2,
         "cliffBorder": True,
         "paths": [
             {"points": [[46, 2], [46, 80]], "width": 8},
@@ -111,9 +131,9 @@ area(
         building("hut", 72, 46, WEST, "house_b", "entrance", "Wohnhaus", [0, 2.8], variant=7),
     ],
     props=(
-        fence_line(8, 6, 84, 6, 22)
-        + fence_line(8, 6, 8, 78, 20)
-        + fence_line(84, 6, 84, 78, 20)
+        fence_line(8, 6, 84, 6)
+        + fence_line(8, 6, 8, 78)
+        + fence_line(84, 6, 84, 78)
         + [prop("tree", 14, 16, 0.3, 1.2, 1), prop("tree", 78, 14, 1.1, 1.1, 2),
            prop("tree", 16, 66, 2.2, 1.3, 3), prop("tree", 80, 68, 0.8, 1.15, 4),
            prop("well", 46, 34, 0, 1.0, 0),
@@ -324,76 +344,153 @@ area(
 # ==========================================================================
 area(
     id="route_1", name="Route 1", kind="route", biome="grassland",
-    size=[64, 150], seed=1201,
+    _noScale=True,
+    # Bewusst gross und in Abschnitte gegliedert: der Weg zur ersten Arena
+    # ist die laengste Strecke des Spielanfangs. Er liegt ueber der
+    # Skalierungsgrenze und ist deshalb schon in Endmassen beschrieben.
+    size=[108, 330], seed=1201,
     terrain={
-        "baseHeight": 0, "amplitude": 5.5, "frequency": 0.028, "octaves": 4,
+        "baseHeight": 0, "amplitude": 6.5, "frequency": 0.011, "octaves": 3,
         "cliffBorder": True,
-        "paths": [{"points": [[32, 2], [28, 40], [36, 80], [30, 120], [32, 148]], "width": 7}],
+        "paths": [
+            # Hauptweg in fuenf Abschnitten: Wiese, Hecke, Furt, Grasfeld,
+            # Anstieg. Die Knicke machen die Strecke lesbar.
+            {"points": [[54, 2], [50, 46], [40, 92], [58, 140],
+                        [46, 196], [62, 250], [54, 300], [54, 328]], "width": 9},
+            # Nebenpfad zur Aussicht mit dem versteckten Fund.
+            {"points": [[40, 92], [18, 112], [16, 138]], "width": 5},
+        ],
     },
     music="route", mapPos=[50, 74],
-    description="Ein sanft geschwungener Weg zwischen Wiesen und Hecken.",
+    description="Der lange Weg nach Quellheim: Wiesen, Hecken, eine Furt und ein steiler Anstieg.",
     weather=["clear", "cloudy", "rain", "fog"],
     grassZones=[
-        grass(14, 26, 18, 20, 2.0),
-        grass(50, 34, 16, 18, 1.8),
-        grass(16, 66, 20, 22, 2.0),
-        grass(50, 78, 18, 20, 1.9),
-        grass(14, 108, 18, 22, 2.1),
-        grass(50, 118, 16, 20, 1.8),
+        # Abschnitt 1 - Wiese, niedrige Dichte zum Eingewoehnen.
+        grass(22, 30, 22, 24, 1.6),
+        grass(84, 38, 20, 22, 1.5),
+        # Abschnitt 2 - Hecke, Gras zwischen den Gaengen.
+        grass(24, 78, 18, 20, 2.0),
+        grass(80, 84, 18, 20, 1.9),
+        # Abschnitt 3 - Ufer der Furt.
+        grass(26, 132, 20, 22, 2.0),
+        grass(84, 148, 18, 20, 1.9),
+        # Abschnitt 4 - das grosse Grasfeld, hier steht am meisten.
+        grass(30, 188, 30, 34, 2.6),
+        grass(78, 206, 26, 30, 2.5),
+        # Abschnitt 5 - Anstieg.
+        grass(24, 252, 20, 24, 2.0),
+        grass(84, 268, 18, 22, 1.9),
+        grass(30, 300, 18, 20, 1.7),
     ],
     spawnTable=[
-        {"species": "nagezahn", "minLevel": 2, "maxLevel": 5, "weight": 30, "behaviour": "skittish"},
-        {"species": "federflaum", "minLevel": 2, "maxLevel": 5, "weight": 26, "behaviour": "wander"},
-        {"species": "kribbelkaefer", "minLevel": 2, "maxLevel": 4, "weight": 20, "behaviour": "wander"},
-        {"species": "knollknospe", "minLevel": 3, "maxLevel": 5, "weight": 14, "behaviour": "static"},
-        {"species": "funkenfell", "minLevel": 3, "maxLevel": 6, "weight": 8, "behaviour": "shy", "rare": True},
-        {"species": "windfuchs", "minLevel": 4, "maxLevel": 6, "weight": 6, "behaviour": "skittish",
+        {"species": "nagezahn", "minLevel": 2, "maxLevel": 6, "weight": 28, "behaviour": "skittish"},
+        {"species": "federflaum", "minLevel": 2, "maxLevel": 6, "weight": 24, "behaviour": "wander"},
+        {"species": "kribbelkaefer", "minLevel": 2, "maxLevel": 5, "weight": 18, "behaviour": "wander"},
+        {"species": "knollknospe", "minLevel": 3, "maxLevel": 6, "weight": 14, "behaviour": "static"},
+        {"species": "funkenfell", "minLevel": 3, "maxLevel": 7, "weight": 9, "behaviour": "shy", "rare": True},
+        {"species": "windfuchs", "minLevel": 4, "maxLevel": 7, "weight": 7, "behaviour": "skittish",
          "timeOfDay": ["dawn", "day"]},
-        {"species": "nachtschleier", "minLevel": 4, "maxLevel": 6, "weight": 5, "behaviour": "aggressive",
+        {"species": "nachtschleier", "minLevel": 4, "maxLevel": 7, "weight": 5, "behaviour": "aggressive",
          "timeOfDay": ["dusk", "night"], "rare": True},
     ],
-    maxWild=14,
+    maxWild=26,
     spawnPoints=[
-        sp("from_startdorf", 32, 6, 0),
-        sp("from_quellheim", 32, 144, math.pi),
-        sp("default", 32, 6, 0),
+        sp("from_startdorf", 54, 8, 0),
+        sp("from_quellheim", 54, 322, math.pi),
+        sp("default", 54, 8, 0),
     ],
     connections=[
-        conn("startdorf", 24, 0, 16, 3, "from_route1"),
-        conn("quellheim", 24, 147, 16, 3, "from_route1"),
+        conn("startdorf", 46, 0, 16, 3, "from_route1"),
+        conn("quellheim", 46, 327, 16, 3, "from_route1"),
     ],
-    props=[
-        prop("sign", 36, 10, SOUTH, 1.0, 0),
-        prop("sign", 28, 142, 0, 1.0, 1),
-        prop("tree", 8, 18, 0.4, 1.3, 1), prop("tree", 56, 22, 1.2, 1.2, 2),
-        prop("tree", 10, 52, 2.0, 1.35, 3), prop("tree", 54, 60, 0.6, 1.25, 4),
-        prop("tree", 8, 96, 1.6, 1.3, 5), prop("tree", 56, 104, 2.4, 1.2, 6),
-        prop("tree", 12, 134, 0.9, 1.28, 7), prop("tree", 52, 138, 1.9, 1.22, 8),
-        prop("stump", 40, 48, 0, 1.0, 0), prop("boulder", 22, 92, 0.5, 1.1, 0),
-        prop("bush", 44, 24, 0, 1.0, 1), prop("bush", 20, 44, 0, 1.1, 2),
-    ],
+    props=(
+        # --- Abschnitt 2: Heckenlabyrinth --------------------------------
+        # Zwei versetzte Heckenreihen erzwingen einen Zickzackweg.
+        fence_line(10, 74, 44, 74)
+        + fence_line(60, 74, 98, 74)
+        + fence_line(10, 96, 34, 96)
+        + fence_line(50, 96, 98, 96)
+        + fence_line(24, 74, 24, 96)
+        + fence_line(80, 74, 80, 96)
+        # --- Abschnitt 3: Furt -------------------------------------------
+        + [prop("boulder", 30, 150, 0.4, 1.4, 11), prop("boulder", 74, 154, 1.1, 1.5, 12),
+           prop("rock", 44, 146, 0.7, 1.1, 13), prop("rock", 66, 160, 1.8, 1.0, 14),
+           prop("reed", 34, 142, 0, 1.2, 15), prop("reed", 70, 166, 0, 1.1, 16),
+           prop("sign", 50, 128, SOUTH, 1.0, 17)]
+        # --- Abschnitt 5: Anstieg ----------------------------------------
+        + [prop("boulder", 26, 258, 0.3, 1.6, 18), prop("boulder", 86, 272, 1.4, 1.5, 19),
+           prop("rock", 40, 266, 0.9, 1.2, 20), prop("rock", 70, 284, 2.1, 1.1, 21),
+           prop("stump", 58, 292, 0, 1.0, 22)]
+        # --- Rastplatz vor Quellheim -------------------------------------
+        + [prop("bench", 46, 310, EAST, 1.0, 23), prop("bench", 62, 310, WEST, 1.0, 24),
+           prop("lamp", 54, 304, 0, 1.0, 25), prop("sign", 50, 320, 0, 1.0, 26)]
+        # --- Baeume und Buesche ueber die ganze Strecke -------------------
+        + [prop("sign", 58, 12, SOUTH, 1.0, 0),
+           prop("tree", 12, 20, 0.4, 1.3, 1), prop("tree", 94, 26, 1.2, 1.2, 2),
+           prop("tree", 14, 56, 2.0, 1.35, 3), prop("tree", 92, 62, 0.6, 1.25, 4),
+           prop("tree", 10, 110, 1.6, 1.3, 5), prop("tree", 96, 118, 2.4, 1.2, 6),
+           prop("tree", 16, 176, 0.9, 1.28, 7), prop("tree", 90, 182, 1.9, 1.22, 8),
+           prop("tree", 12, 232, 1.1, 1.34, 9), prop("tree", 94, 240, 0.3, 1.26, 10),
+           prop("tree", 18, 288, 2.2, 1.3, 27), prop("tree", 88, 296, 1.4, 1.24, 28),
+           prop("bush", 64, 24, 0, 1.0, 29), prop("bush", 30, 48, 0, 1.1, 30),
+           prop("bush", 72, 118, 0, 1.05, 31), prop("bush", 36, 214, 0, 1.15, 32),
+           prop("bush", 76, 246, 0, 1.0, 33),
+           prop("flower", 44, 34, 0, 1.2, 34), prop("flower", 68, 60, 0, 1.1, 35),
+           prop("flower", 38, 200, 0, 1.25, 36), prop("flower", 72, 226, 0, 1.15, 37),
+           prop("mushroom", 20, 124, 0, 1.1, 38), prop("stump", 66, 90, 0, 1.0, 39)]
+    ),
     npcs=[
-        npc("route1_trainer_1", 34, 56, SOUTH, name="Wanderer Kai", trainer="wanderer_kai",
+        # Abschnitt 1: Hinweisgeber, damit die Strecke lesbar bleibt.
+        npc("route1_pfadfinder", 62, 30, WEST, name="Pfadfinder",
+            dialogue="route1_pfadfinder",
+            appearance={"skin": "#c99a6b", "hair": "#4a3524", "shirt": "#8f6b3f",
+                        "pants": "#4a4a52", "accent": "#c4b08a", "hat": "beanie"}),
+        # Abschnitt 1: erster Trainer, noch einfach.
+        npc("route1_trainer_1", 58, 52, SOUTH, name="Wanderer Kai", trainer="wanderer_kai",
             appearance={"skin": "#d8b08a", "hair": "#3a2a1c", "shirt": "#4b8f5f",
                         "pants": "#5f4a33", "accent": "#c4b08a", "hat": "cap"}),
-        npc("route1_trainer_2", 30, 104, 0, name="Kaeferfreundin Ida", trainer="kaeferfreundin_ida",
-            minStoryStage=3,
+        # Abschnitt 2: in der Hecke, nicht zu umgehen.
+        npc("route1_trainer_2", 52, 86, SOUTH, name="Heckenlaeuferin Juli",
+            trainer="heckenlaeufer_juli",
+            appearance={"skin": "#e8c19b", "hair": "#6b4f2b", "shirt": "#7aa84b",
+                        "pants": "#4a5f33", "accent": "#e0e8a0", "hat": "beanie"}),
+        # Abschnitt 3: an der Furt.
+        npc("route1_trainer_3", 52, 156, SOUTH, name="Furtwaechter Mats",
+            trainer="furtwaechter_mats",
+            appearance={"skin": "#c99a6b", "hair": "#3a2a1c", "shirt": "#4b8fbf",
+                        "pants": "#3f4a5f", "accent": "#d8e4f0", "hat": "cap"}),
+        # Abschnitt 4: am grossen Grasfeld.
+        npc("route1_trainer_4", 50, 210, 0, name="Kaeferfreundin Ida",
+            trainer="kaeferfreundin_ida", minStoryStage=3,
             appearance={"skin": "#f0cfa8", "hair": "#8f5f2b", "shirt": "#9bc44b",
                         "pants": "#4a5f33", "accent": "#e0e8a0", "hat": "beanie", "height": 0.9}),
-        npc("rivale_r1", 32, 138, SOUTH, name="Rivale Jorin", trainer="rivale_1",
+        # Abschnitt 5: der haerteste Kampf vor der Arena.
+        npc("route1_trainer_5", 58, 274, SOUTH, name="Steigwanderin Bea",
+            trainer="steigwanderin_bea",
+            appearance={"skin": "#d8b08a", "hair": "#8f3f2b", "shirt": "#c47a4b",
+                        "pants": "#4a4a52", "accent": "#f0d8a0", "hat": "cap", "height": 1.03}),
+        npc("route1_rastplatz", 58, 312, WEST, name="Wirtin",
+            dialogue="route1_rastplatz",
+            appearance={"skin": "#e8c19b", "hair": "#cfcfcf", "shirt": "#bf6b8f",
+                        "pants": "#4a4a52", "accent": "#f0e0c4", "hat": "none"}),
+        npc("rivale_r1", 54, 318, SOUTH, name="Rivale Jorin", trainer="rivale_1",
             minStoryStage=3, maxStoryStage=4,
             appearance={"skin": "#d8b08a", "hair": "#c24b4b", "shirt": "#4b8f7a", "pants": "#3f3f4a", "accent": "#f0e0c4", "hat": "cap", "height": 1.01}),
-        npc("route1_wanderer", 38, 128, WEST, name="Spaziergaengerin", dialogue="route1_spaziergaengerin",
-            wander=5,
+        npc("route1_wanderer", 64, 240, WEST, name="Spaziergaengerin",
+            dialogue="route1_spaziergaengerin", wander=5,
             appearance={"skin": "#c99a6b", "hair": "#5f3a2b", "shirt": "#c47a9b",
                         "pants": "#3f3f4a", "accent": "#f0e0c4", "hat": "none"}),
     ],
     items=[
-        item("route1_ball", "fangkugel", 18, 40, 3),
-        item("route1_trank", "trank", 52, 88, 1),
-        item("route1_beere", "beere_rot", 20, 122, 2),
+        item("route1_ball", "fangkugel", 26, 36, 3),
+        item("route1_trank", "trank", 88, 88, 1),
+        # Am Ende des Nebenpfads - nur wer abbiegt, findet ihn.
+        item("route1_versteck", "superkugel", 16, 136, 2, hidden=True),
+        item("route1_beere", "beere_rot", 34, 196, 2),
+        item("route1_trank2", "trank", 82, 258, 1),
+        item("route1_nugget", "nugget", 30, 304, 1, hidden=True),
     ],
-    ambience={"fogNear": 55, "fogFar": 300},
+    ambience={"fogNear": 60, "fogFar": 340},
 )
 
 # ==========================================================================
@@ -403,7 +500,7 @@ area(
     id="quellheim", name="Quellheim", kind="town", biome="grassland",
     size=[112, 98], seed=1301,
     terrain={
-        "baseHeight": 0, "amplitude": 1.8, "frequency": 0.04, "octaves": 3,
+        "baseHeight": 0, "amplitude": 1.6, "frequency": 0.022, "octaves": 2,
         "cliffBorder": True,
         "paths": [
             {"points": [[56, 2], [56, 94]], "width": 9},
@@ -437,8 +534,8 @@ area(
         building("house", 92, 18, WEST, None, None, "Wohnhaus", None, variant=6),
     ],
     props=(
-        fence_line(6, 6, 44, 6, 10)
-        + fence_line(68, 6, 106, 6, 10)
+        fence_line(6, 6, 44, 6)
+        + fence_line(68, 6, 106, 6)
         + [prop("well", 56, 46, 0, 1.3, 0),
            prop("lamp", 46, 30, 0, 1.0, 0), prop("lamp", 66, 30, 0, 1.0, 1),
            prop("lamp", 46, 62, 0, 1.0, 2), prop("lamp", 66, 62, 0, 1.0, 3),
@@ -735,6 +832,147 @@ def arena_look(shirt, hair="#3a2a1c", skin="#d8b08a", hat="cap", height=1.0):
             "accent": "#ffffff", "hat": hat, "height": height}
 
 
+
+# ==========================================================================
+# ALLGEMEINE INNENRAEUME
+#
+# Jedes sichtbare Gebaeude soll betretbar sein. Damit das nicht in 24 von
+# Hand gepflegten Raeumen endet, entsteht der Innenraum hier aus der
+# Gebaeudeart - Groesse, Einrichtung, Musik und Bewohner inklusive.
+# ==========================================================================
+
+ROOM_TEMPLATES = {
+    "hut": dict(
+        name="Wohnhaus", size=(12, 10), music="home", wall="#e6dcc8",
+        floor="#a8763f", accent="#7a5f3f", height=2.9,
+        furniture=[("bed", 2.4, 7.4, 0), ("table", 6.0, 5.6, 0),
+                   ("chair", 6.0, 7.0, "PI"), ("shelf", 10.0, 7.2, "WEST"),
+                   ("plant", 1.6, 3.2, 0), ("rug", 6.0, 3.6, 0)],
+    ),
+    "house": dict(
+        name="Wohnhaus", size=(13, 11), music="home", wall="#dcd0e0",
+        floor="#9b7346", accent="#6b4f8f", height=3.0,
+        furniture=[("sofa", 10.0, 6.4, "WEST"), ("tv", 2.6, 6.4, "EAST"),
+                   ("rug", 6.5, 6.4, 0), ("table", 6.5, 8.6, 0),
+                   ("plant", 11.4, 9.0, 0), ("shelf", 2.0, 9.0, "EAST")],
+    ),
+    "warehouse": dict(
+        name="Lagerhalle", size=(18, 14), music="shop", wall="#cfd4d8",
+        floor="#8f8a80", accent="#5f6b7a", height=4.6,
+        furniture=[("crateStack", 3.0, 10.6, 0), ("crateStack", 5.4, 10.6, 0),
+                   ("crateStack", 15.0, 10.6, 0), ("counter", 9.0, 8.0, 0),
+                   ("shelf", 1.8, 6.0, "EAST"), ("shelf", 16.2, 6.0, "WEST"),
+                   ("lamp", 9.0, 11.6, 0)],
+    ),
+    "station": dict(
+        name="Bahnhof", size=(16, 12), music="town", wall="#dfe4ea",
+        floor="#9aa0a8", accent="#4b6b8f", height=4.2,
+        furniture=[("counter", 8.0, 9.0, 0), ("chair", 3.4, 5.6, 0),
+                   ("chair", 5.0, 5.6, 0), ("chair", 11.0, 5.6, 0),
+                   ("chair", 12.6, 5.6, 0), ("plant", 1.8, 9.4, 0),
+                   ("plant", 14.2, 9.4, 0)],
+    ),
+    "tower": dict(
+        name="Turmstube", size=(12, 12), music="town", wall="#d8d2c4",
+        floor="#8a7a5f", accent="#7a6b4f", height=5.2,
+        furniture=[("stairs", 9.6, 9.6, 0), ("table", 4.0, 7.0, 0),
+                   ("computer", 4.0, 9.2, 0), ("shelf", 1.8, 5.0, "EAST"),
+                   ("lamp", 6.0, 3.4, 0)],
+    ),
+    "ruin": dict(
+        name="Ruinenkammer", size=(14, 12), music="ruins", wall="#9aa094",
+        floor="#7a7a70", accent="#5f6b5f", height=4.0,
+        furniture=[("podium", 7.0, 9.0, 0), ("crateStack", 2.2, 8.6, 0),
+                   ("shelf", 12.2, 6.4, "WEST"), ("plant", 2.0, 4.0, 0),
+                   ("lamp", 7.0, 4.4, 0)],
+    ),
+}
+
+# Bewohner: Name, Dialog und Aussehen je Gebaeudeart.
+ROOM_PEOPLE = {
+    "hut": ("Bewohnerin", "haus_bewohner", "#4b8f7a"),
+    "house": ("Bewohner", "haus_bewohner", "#8f6b3f"),
+    "warehouse": ("Lagerarbeiter", "haus_lager", "#b5772f"),
+    "station": ("Schaffnerin", "haus_bahnhof", "#3f6b9b"),
+    "tower": ("Turmwaechter", "haus_turm", "#6b5f8f"),
+    "ruin": ("Ruinenforscherin", "haus_ruine", "#7a6b4f"),
+}
+
+_ANGLES = {"PI": math.pi, "EAST": math.pi / 2, "WEST": -math.pi / 2, "SOUTH": math.pi}
+
+
+def make_room(room_id, kind, city_id, back_spawn, seed, label=None):
+    """Erzeugt einen begehbaren Innenraum fuer ein beliebiges Gebaeude."""
+    tpl = ROOM_TEMPLATES.get(kind, ROOM_TEMPLATES["hut"])
+    w, d = tpl["size"]
+    person, dialogue, shirt = ROOM_PEOPLE.get(kind, ROOM_PEOPLE["hut"])
+    furniture = [
+        {"kind": f[0], "pos": [f[1], f[2]],
+         **({"rotation": _ANGLES[f[3]]} if isinstance(f[3], str) else {})}
+        for f in tpl["furniture"]
+    ]
+    area(
+        id=room_id, name=label or tpl["name"], kind="interior", biome="urban",
+        size=[w, d], seed=seed, indoor=True,
+        terrain={"baseHeight": 0, "amplitude": 0, "frequency": 0.1, "flat": True},
+        music=tpl["music"],
+        interiorStyle={
+            "wallColor": tpl["wall"], "floorColor": tpl["floor"],
+            "accentColor": tpl["accent"], "wallHeight": tpl["height"],
+            "ceiling": True,
+            "exits": [{"x": w / 2, "z": 0, "width": 2.4, "side": "south"}],
+            "furniture": furniture,
+        },
+        spawnPoints=[sp("default", w / 2, 3.0, 0), sp("entrance", w / 2, 2.4, 0)],
+        connections=[conn(city_id, w / 2 - 1.2, 0, 2.4, 1.6, back_spawn)],
+        npcs=[npc(f"{room_id}_bewohner", w * 0.68, d * 0.62, SOUTH, name=person,
+                  dialogue=dialogue, appearance={
+                      "skin": "#d8b08a", "hair": "#3a2a1c", "shirt": shirt,
+                      "pants": "#3f3f4a", "accent": "#e0d8c4", "hat": "none"})],
+    )
+
+
+def open_all_buildings():
+    """Laesst jedes sichtbare Gebaeude betretbar werden.
+
+    Laeuft ueber alle Aussengebiete, nachdem sie definiert sind - so gilt die
+    Regel auch fuer von Hand gebaute Orte und nicht nur fuer die aus
+    make_city erzeugten Staedte.
+    """
+    for a in list(AREAS):
+        if a.get("indoor") or not a.get("buildings"):
+            continue
+        open_extra_buildings(a["id"], a["buildings"], a.get("seed", 1), a["spawnPoints"])
+
+
+def open_extra_buildings(city_id, buildings, seed, spawn_points):
+    """Gibt jedem Gebaeude ohne Innenraum einen eigenen Raum.
+
+    Der Rueckkehrpunkt liegt vor der Tuer; die Tuerrichtung ergibt sich aus
+    der Drehung des Gebaeudes (lokal +Z, gedreht um die Y-Achse).
+    """
+    for index, b in enumerate(buildings):
+        if b.get("interior"):
+            continue
+        kind = b["kind"]
+        if kind in ("gym", "center", "shop", "stadium", "lab"):
+            continue
+        room_id = f"haus_{city_id}_{index + 1}"
+        back = f"from_{room_id}"
+        depth = 3.2 if kind in ("hut", "house") else 4.2
+        b["interior"] = room_id
+        b["spawnPoint"] = "entrance"
+        b["doorOffset"] = [0, depth]
+        rot = b.get("rotation", 0.0)
+        # Weltrichtung der Tuer: lokal (0, 1) um rot gedreht.
+        dirx = math.sin(rot)
+        dirz = math.cos(rot)
+        x = b["pos"][0] + dirx * (depth + 3.0)
+        z = b["pos"][1] + dirz * (depth + 3.0)
+        spawn_points.append(sp(back, round(x, 2), round(z, 2), rot))
+        make_room(room_id, kind, city_id, back, seed + 40 + index, b.get("label"))
+
+
 def make_city(city_id, name, biome, size, seed, map_pos, description,
               gym_id, gym_name, shop_id, connections, spawn_points,
               extra_buildings=(), extra_npcs=(), extra_props=(), items=(),
@@ -748,7 +986,14 @@ def make_city(city_id, name, biome, size, seed, map_pos, description,
                  "entrance", "Warenlager", [0, 3.8]),
         building("gym", w * 0.5, d * 0.76, SOUTH, gym_id,
                  "entrance", gym_name, [0, 6.4]),
-    ] + list(extra_buildings)
+    ] + list(extra_buildings) + [
+        # Zusaetzliche Wohnhaeuser, damit die groesseren Orte bewohnt
+        # wirken. Innenraeume entstehen automatisch (open_all_buildings).
+        building("house", w * 0.16, d * 0.68, EAST, None, None, "Wohnhaus", None, 1.0, 11),
+        building("house", w * 0.84, d * 0.68, WEST, None, None, "Wohnhaus", None, 1.0, 12),
+        building("hut", w * 0.34, d * 0.88, SOUTH, None, None, "Kleines Haus", None, 1.0, 13),
+        building("hut", w * 0.66, d * 0.88, SOUTH, None, None, "Kleines Haus", None, 1.0, 14),
+    ]
 
     props = [
         prop("lamp", w * 0.4, d * 0.3, 0, 1.0, 0),
@@ -759,25 +1004,38 @@ def make_city(city_id, name, biome, size, seed, map_pos, description,
         prop("bench", w * 0.56, d * 0.52, WEST, 1.0, 1),
         prop("sign", w * 0.46, d * 0.12, 0, 1.0, 0),
         prop("well", w * 0.5, d * 0.46, 0, 1.1, 0),
+        prop("lamp", w * 0.22, d * 0.58, 0, 1.0, 4),
+        prop("lamp", w * 0.78, d * 0.58, 0, 1.0, 5),
+        prop("bench", w * 0.3, d * 0.76, SOUTH, 1.0, 2),
+        prop("bench", w * 0.7, d * 0.76, SOUTH, 1.0, 3),
+        prop("flower", w * 0.38, d * 0.42, 0, 1.2, 6),
+        prop("flower", w * 0.62, d * 0.42, 0, 1.15, 7),
+        prop("tree", w * 0.12, d * 0.28, 0.4, 1.25, 8),
+        prop("tree", w * 0.88, d * 0.3, 1.4, 1.2, 9),
+        prop("tree", w * 0.1, d * 0.86, 2.1, 1.3, 10),
+        prop("tree", w * 0.9, d * 0.84, 0.8, 1.22, 11),
+        prop("mailbox", w * 0.2, d * 0.64, EAST, 1.0, 12),
+        prop("mailbox", w * 0.8, d * 0.64, WEST, 1.0, 13),
     ] + list(extra_props)
 
+    all_spawns = list(spawn_points) + [
+        sp("from_center", w * 0.26, d * 0.5 - 8, SOUTH),
+        sp("from_shop", w * 0.74, d * 0.5 - 8, SOUTH),
+        sp("from_gym", w * 0.5, d * 0.76 - 10, SOUTH),
+    ]
     area(
         id=city_id, name=name, kind="city", biome=biome,
         size=[w, d], seed=seed, mapPos=list(map_pos),
         description=description, music=music, weather=list(weather),
         terrain={
-            "baseHeight": 0, "amplitude": 1.8, "frequency": 0.04, "octaves": 3,
+            "baseHeight": 0, "amplitude": 1.6, "frequency": 0.022, "octaves": 2,
             "cliffBorder": True,
             "paths": [
                 {"points": [[w * 0.5, 2], [w * 0.5, d - 4]], "width": 9},
                 {"points": [[8, d * 0.5], [w - 8, d * 0.5]], "width": 7},
             ],
         },
-        spawnPoints=list(spawn_points) + [
-            sp("from_center", w * 0.26, d * 0.5 - 8, SOUTH),
-            sp("from_shop", w * 0.74, d * 0.5 - 8, SOUTH),
-            sp("from_gym", w * 0.5, d * 0.76 - 10, SOUTH),
-        ],
+        spawnPoints=all_spawns,
         connections=list(connections),
         buildings=buildings,
         props=props,
@@ -798,9 +1056,12 @@ def make_route(route_id, name, num, biome, size, seed, map_pos, description,
     """Route zwischen zwei Orten."""
     w, d = size
     terrain = {
-        "baseHeight": 0, "amplitude": amplitude, "frequency": 0.028, "octaves": 4,
+        # Niedrige Frequenz und wenige Oktaven: breite, ruhige Huegel, ueber
+        # die man hinwegsehen kann. Mit 0.028 und vier Oktaven stand alle
+        # paar Meter ein kleiner Buckel im Weg.
+        "baseHeight": 0, "amplitude": amplitude, "frequency": 0.016, "octaves": 3,
         "cliffBorder": cliff, "ridged": ridged,
-        "paths": [{"points": path or [[w / 2, 2], [w / 2, d - 2]], "width": 7}],
+        "paths": [{"points": path or [[w / 2, 2], [w / 2, d - 2]], "width": 9}],
     }
     if water_level is not None:
         terrain["waterLevel"] = water_level
@@ -878,7 +1139,7 @@ make_route(
 
 # ------------------------------------------------------------ FLUSSHAFEN
 make_city(
-    "flusshafen", "Flusshafen", "coastal", (120, 104), 1501, (26, 58),
+    "flusshafen", "Flusshafen", "coastal", (120, 106), 1501, (26, 58),
     "Eine Hafenstadt, in der Fluss und Meer aufeinandertreffen.",
     gym_id="gym_flusshafen", gym_name="Arena von Flusshafen", shop_id="shop_standard",
     connections=[
@@ -953,7 +1214,7 @@ area(
     size=[130, 120], seed=1701, mapPos=[44, 46],
     description="Ein dichter Urwald, in dem selbst mittags Daemmerung herrscht.",
     music="forest", weather=["clear", "cloudy", "rain", "fog"],
-    terrain={"baseHeight": 0, "amplitude": 7.5, "frequency": 0.03, "octaves": 4,
+    terrain={"baseHeight": 0, "amplitude": 7.5, "frequency": 0.017, "octaves": 3,
              "cliffBorder": True,
              "paths": [{"points": [[65, 2], [50, 40], [78, 76], [65, 118]], "width": 6}]},
     grassZones=[grass(26, 30, 26, 26, 2.4), grass(100, 36, 24, 24, 2.3),
@@ -1068,7 +1329,7 @@ area(
 
 # ------------------------------------------------------------ HAMMERSTADT
 make_city(
-    "hammerstadt", "Hammerstadt", "industrial", (126, 108), 2001, (56, 42),
+    "hammerstadt", "Hammerstadt", "industrial", (126, 109), 2001, (56, 42),
     "Eine Stadt aus Stahl und Dampf - hier wird die halbe Region beliefert.",
     gym_id="gym_hammerstadt", gym_name="Arena von Hammerstadt", shop_id="shop_standard",
     connections=[
@@ -1106,12 +1367,12 @@ make_gym(
 
 # ------------------------------------------------------------ FUNKENAU
 make_city(
-    "funkenau", "Funkenau", "urban", (114, 100), 2101, (80, 36),
+    "funkenau", "Funkenau", "urban", (114, 99), 2101, (80, 36),
     "Eine helle Stadt, deren Lichter nie ausgehen.",
     gym_id="gym_funkenau", gym_name="Arena von Funkenau", shop_id="shop_standard",
     connections=[
         conn("schimmerhoehle", 0, 43, 3, 14, "from_funkenau"),
-        conn("wildland", 49, 97, 16, 3, "from_funkenau"),
+        conn("wildland", 49, 95, 16, 3, "from_funkenau"),
     ],
     spawn_points=[sp("default", 57, 50, 0), sp("from_hoehle", 8, 50, EAST),
                   sp("from_wildland", 57, 94, math.pi)],
@@ -1144,13 +1405,14 @@ make_gym(
 # ------------------------------------------------------------ WILDLAND
 area(
     id="wildland", name="Das Wildland", kind="wildarea", biome="grassland",
+    _noScale=True,
     size=[260, 240], seed=2201, mapPos=[50, 32],
     description="Ein riesiges, ungezaehmtes Gebiet mit eigenen Regeln - hier lebt alles.",
     music="wildarea",
     weather=["clear", "cloudy", "rain", "heavyRain", "thunderstorm",
              "fog", "harshSun", "snow", "sandstorm"],
     terrain={
-        "baseHeight": 0, "amplitude": 16, "frequency": 0.014, "octaves": 5,
+        "baseHeight": 0, "amplitude": 18, "frequency": 0.009, "octaves": 4,
         "waterLevel": -3.2, "cliffBorder": True,
         "paths": [
             {"points": [[130, 4], [110, 60], [150, 130], [120, 236]], "width": 8},
@@ -1293,12 +1555,12 @@ make_route(
 
 # ------------------------------------------------------------ ASCHENBERG
 make_city(
-    "aschenberg", "Aschenberg", "volcanic", (112, 100), 2401, (74, 20),
+    "aschenberg", "Aschenberg", "volcanic", (112, 99), 2401, (74, 20),
     "Eine Siedlung am Kraterrand, gebaut aus schwarzem Stein.",
     gym_id="gym_aschenberg", gym_name="Arena von Aschenberg", shop_id="shop_standard",
     connections=[
         conn("route_5", 48, 0, 16, 3, "from_aschenberg"),
-        conn("route_6", 48, 97, 16, 3, "from_aschenberg"),
+        conn("route_6", 48, 95, 16, 3, "from_aschenberg"),
     ],
     spawn_points=[sp("default", 56, 10, 0), sp("from_route5", 56, 8, 0),
                   sp("from_route6", 56, 94, math.pi)],
@@ -1366,7 +1628,7 @@ area(
     size=[120, 110], seed=2601, mapPos=[44, 22],
     description="Ein Moor, in dem der Nebel selbst bei Sonne nicht weicht.",
     music="forest", weather=["fog", "rain", "heavyRain", "cloudy"],
-    terrain={"baseHeight": 0, "amplitude": 3.5, "frequency": 0.04, "octaves": 3,
+    terrain={"baseHeight": 0, "amplitude": 3.5, "frequency": 0.02, "octaves": 2,
              "waterLevel": -0.8, "cliffBorder": True,
              "paths": [{"points": [[60, 2], [48, 50], [70, 106]], "width": 6}]},
     grassZones=[grass(24, 32, 24, 24, 2.2), grass(94, 40, 22, 22, 2.1),
@@ -1402,7 +1664,7 @@ area(
 
 # ------------------------------------------------------------ GEISTERRUINE
 make_city(
-    "geisterruine", "Geisterruine", "ruins", (116, 104), 2701, (32, 18),
+    "geisterruine", "Geisterruine", "ruins", (115, 106), 2701, (32, 18),
     "Eine halb versunkene Stadt, die nie ganz aufgegeben wurde.",
     gym_id="gym_geisterruine", gym_name="Arena der Ruine", shop_id="shop_standard",
     connections=[
@@ -1620,12 +1882,13 @@ area(
     size=[120, 110], seed=3301, mapPos=[50, 3],
     description="Das groesste Stadion Aetherias - hier endet jede Reise oder beginnt neu.",
     music="league", weather=["clear", "cloudy"],
-    terrain={"baseHeight": 0, "amplitude": 1.2, "frequency": 0.04, "octaves": 2,
+    terrain={"baseHeight": 0, "amplitude": 1.2, "frequency": 0.022, "octaves": 2,
              "cliffBorder": True,
              "paths": [{"points": [[60, 2], [60, 106]], "width": 12}]},
     spawnPoints=[sp("from_route9", 60, 8, 0), sp("default", 60, 8, 0),
                  sp("from_arena", 60, 54, math.pi),
-                 sp("from_center", 22, 26, SOUTH), sp("from_shop", 98, 26, SOUTH)],
+                 # Direkt vor der jeweiligen Tuer - beide Gebaeude stehen quer.
+                 sp("from_center", 30, 34, EAST), sp("from_shop", 90, 34, WEST)],
     connections=[conn("route_9", 52, 0, 16, 3, "from_liga")],
     buildings=[
         building("stadium", 60, 74, SOUTH, "liga_arena", "entrance", "Ligastadion", [0, 17.5],
@@ -1690,7 +1953,7 @@ area(
     size=[130, 120], seed=3401, mapPos=[50, 40], indoor=True,
     description="Weit unter dem Wildland - der Ort, an dem Aetheria begonnen haben soll.",
     music="finalBattle", weather=[],
-    terrain={"baseHeight": 0, "amplitude": 6, "frequency": 0.04, "octaves": 4,
+    terrain={"baseHeight": 0, "amplitude": 6, "frequency": 0.026, "octaves": 3,
              "cliffBorder": True,
              "paths": [{"points": [[65, 4], [65, 116]], "width": 9}]},
     spawnTable=[
@@ -1729,14 +1992,6 @@ area(
 # ==========================================================================
 # Aussengebiete werden am Ende vergroessert. Die Karte wurde zunaechst in
 # einem knappen Massstab entworfen; Doerfer und Routen wirkten dadurch eng.
-# Der Faktor wird auf saemtliche Koordinaten angewandt, damit Verbindungen,
-# Tueren und Spawnpunkte zueinander passen. Innenraeume bleiben unveraendert -
-# ein Wohnzimmer soll kein Saal werden.
-OUTDOOR_SCALE = 1.5
-# Sehr grosse Gebiete (Wildland) bleiben, wie sie sind.
-SCALE_LIMIT = 200
-
-
 def _round(value):
     return round(value, 2)
 
@@ -1796,18 +2051,30 @@ def scale_area(a, factor):
 
 
 def apply_scale():
+    """Skaliert die Aussengebiete auf ihre Endgroesse.
+
+    Gebiete, die bereits in Endmassen beschrieben sind (Wildland, Route 1),
+    tragen "_noScale" und bleiben unveraendert. Frueher entschied eine
+    Groessengrenze darueber - das war eine Stolperfalle: sobald ein Gebiet
+    beim Wachsen die Grenze ueberschritt, wurde es ploetzlich gar nicht
+    mehr skaliert und fiel wieder auf ein Drittel zusammen.
+    """
     for a in AREAS:
+        if a.pop("_noScale", False):
+            continue
         if a.get("indoor"):
             continue
-        if max(a["size"]) >= SCALE_LIMIT:
-            continue
-        scale_area(a, OUTDOOR_SCALE)
+        # Orte bekommen zusaetzlich Platz: Doerfer und Staedte sollen sich
+        # wie Orte anfuehlen und nicht wie ein Platz mit drei Haeusern.
+        factor = OUTDOOR_SCALE * (TOWN_BONUS if a.get("kind") in TOWN_KINDS else 1.0)
+        scale_area(a, factor)
 
 
 # ==========================================================================
 # AUSGABE
 # ==========================================================================
 def main():
+    open_all_buildings()
     apply_scale()
 
     ids = set()

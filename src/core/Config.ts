@@ -43,12 +43,12 @@ export const GameConfig = {
     minDistance: 2.6,
     maxDistance: 14,
     height: 1.55,
-    pitchMin: (-28 * Math.PI) / 180,
-    pitchMax: (62 * Math.PI) / 180,
+    pitchMin: (-34 * Math.PI) / 180,
+    pitchMax: (74 * Math.PI) / 180,
     defaultPitch: (14 * Math.PI) / 180,
     positionHalfLife: 0.07,
     rotationHalfLife: 0.05,
-    mouseSensitivity: 0.0026,
+    mouseSensitivity: 0.0045,
     padSensitivity: 2.6,
     zoomSpeed: 0.0055,
     collisionRadius: 0.34,
@@ -68,8 +68,15 @@ export const GameConfig = {
     respawnDelaySeconds: 26,
     /** Reichweite, in der ein Energiepunkt betreten werden kann. */
     raidDenRange: 3.4,
-    /** Kantenlaenge der Kacheln, in denen Requisiten zusammengefasst werden. */
-    propBatchTileSize: 48,
+    /**
+     * Kantenlaenge der Kacheln, in denen Requisiten zusammengefasst werden.
+     *
+     * Groesser heisst weniger Zeichenaufrufe, aber groebere Sichtbarkeits-
+     * pruefung. Mit den gewachsenen Orten waeren 48 m zu klein gewesen:
+     * die Zahl der Kacheln - und damit der Zeichenaufrufe - waechst mit der
+     * Flaeche.
+     */
+    propBatchTileSize: 76,
   },
 
   time: {

@@ -466,9 +466,20 @@ export class BuildingFactory {
         [-w / 2 + (i + 0.5) * (w / 4), hh / 2, d / 2 - 0.5], { detail: 2 }));
     }
     g.add(this.box([w, 0.25 * scale, d], '#9b9384', [0, 0.12 * scale, 0]));
+
+    // Torbogen an der Vorderseite: ohne begehbaren Durchgang waere die Ruine
+    // reine Kulisse - man soll sie betreten koennen.
+    const gateW = 2.6 * scale;
+    const gateH = 3.0 * scale;
+    for (const x of [-gateW / 2, gateW / 2]) {
+      g.add(this.shape('cylinder', [0.34 * scale, gateH, 0.34 * scale], '#b5ab95',
+        [x, gateH / 2, d / 2 + 0.3], { texture: 'stone', detail: 2 }));
+    }
+    g.add(this.box([gateW + 0.9 * scale, 0.5 * scale, 0.8 * scale], '#a89f88',
+      [0, gateH + 0.2 * scale, d / 2 + 0.3], { texture: 'stone' }));
     return {
       object: g, footprint: { width: w, depth: d },
-      door: null, height: h,
+      door: { x: 0, z: d / 2 + 0.9, width: gateW }, height: h + gateH,
     };
   }
 }

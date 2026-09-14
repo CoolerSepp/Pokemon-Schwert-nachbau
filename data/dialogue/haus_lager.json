@@ -1,0 +1,16 @@
+{
+ "id": "haus_lager",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Vorsicht, die Kisten stehen hoch.",
+    "Alles, was in der Region gehandelt wird, geht einmal durch diese Halle."
+   ],
+   "speaker": "Lagerarbeiter"
+  }
+ ]
+}

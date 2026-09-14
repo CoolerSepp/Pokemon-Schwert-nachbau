@@ -1,0 +1,17 @@
+{
+ "id": "route1_pfadfinder",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Der Weg nach Quellheim ist laenger, als er aussieht.",
+    "Hinter der Hecke wird es unuebersichtlich - halte dich an den Pfad.",
+    "Und pass auf: In den hohen Graesern weiter oben lauert einiges."
+   ],
+   "speaker": "Pfadfinder"
+  }
+ ]
+}

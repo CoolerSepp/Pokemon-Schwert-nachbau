@@ -191,7 +191,13 @@
    "rotation": -1.5707963267948966,
    "scale": 1.0,
    "variant": 3,
-   "label": "Wildlandlager"
+   "label": "Wildlandlager",
+   "interior": "haus_wildland_1",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0,
+    3.2
+   ]
   }
  ],
  "npcs": [
@@ -461,6 +467,14 @@
     8
    ],
    "facing": 0
+  },
+  {
+   "id": "from_haus_wildland_1",
+   "pos": [
+    139.8,
+    118.0
+   ],
+   "facing": -1.5707963267948966
   }
  ],
  "id": "wildland",
@@ -491,9 +505,9 @@
  ],
  "terrain": {
   "baseHeight": 0,
-  "amplitude": 16,
-  "frequency": 0.014,
-  "octaves": 5,
+  "amplitude": 18,
+  "frequency": 0.009,
+  "octaves": 4,
   "waterLevel": -3.2,
   "cliffBorder": true,
   "paths": [

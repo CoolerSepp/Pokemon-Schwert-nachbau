@@ -1,0 +1,16 @@
+{
+ "id": "haus_ruine",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Diese Mauern sind aelter als jede Aufzeichnung, die wir haben.",
+    "Wer hier gebaut hat, verstand etwas von Energie."
+   ],
+   "speaker": "Ruinenforscherin"
+  }
+ ]
+}

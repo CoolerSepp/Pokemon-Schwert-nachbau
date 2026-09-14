@@ -3,8 +3,8 @@
   {
    "kind": "fence",
    "pos": [
-    11.85,
-    9.0
+    13.13,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -13,8 +13,8 @@
   {
    "kind": "fence",
    "pos": [
-    17.55,
-    9.0
+    15.98,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -23,8 +23,8 @@
   {
    "kind": "fence",
    "pos": [
-    23.25,
-    9.0
+    18.82,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -33,8 +33,8 @@
   {
    "kind": "fence",
    "pos": [
-    28.95,
-    9.0
+    21.68,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -43,8 +43,8 @@
   {
    "kind": "fence",
    "pos": [
-    34.65,
-    9.0
+    24.53,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -53,8 +53,8 @@
   {
    "kind": "fence",
    "pos": [
-    40.35,
-    9.0
+    27.38,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -63,8 +63,8 @@
   {
    "kind": "fence",
    "pos": [
-    46.05,
-    9.0
+    30.23,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -73,8 +73,8 @@
   {
    "kind": "fence",
    "pos": [
-    51.75,
-    9.0
+    33.08,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -83,8 +83,8 @@
   {
    "kind": "fence",
    "pos": [
-    57.45,
-    9.0
+    35.93,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -93,8 +93,8 @@
   {
    "kind": "fence",
    "pos": [
-    63.15,
-    9.0
+    38.77,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -103,8 +103,168 @@
   {
    "kind": "fence",
    "pos": [
-    104.85,
-    9.0
+    41.63,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 10
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    44.48,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 11
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    47.33,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    50.18,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    53.03,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 14
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    55.88,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 15
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    58.73,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 16
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    61.58,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 17
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    64.43,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 18
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    67.28,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 19
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    70.12,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 20
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    72.97,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 21
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    75.83,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 22
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    78.68,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 23
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    81.53,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 24
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    84.38,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 25
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    134.03,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -113,8 +273,8 @@
   {
    "kind": "fence",
    "pos": [
-    110.55,
-    9.0
+    136.88,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -123,8 +283,8 @@
   {
    "kind": "fence",
    "pos": [
-    116.25,
-    9.0
+    139.73,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -133,8 +293,8 @@
   {
    "kind": "fence",
    "pos": [
-    121.95,
-    9.0
+    142.58,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -143,8 +303,8 @@
   {
    "kind": "fence",
    "pos": [
-    127.65,
-    9.0
+    145.43,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -153,8 +313,8 @@
   {
    "kind": "fence",
    "pos": [
-    133.35,
-    9.0
+    148.28,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -163,8 +323,8 @@
   {
    "kind": "fence",
    "pos": [
-    139.05,
-    9.0
+    151.12,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -173,8 +333,8 @@
   {
    "kind": "fence",
    "pos": [
-    144.75,
-    9.0
+    153.97,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -183,8 +343,8 @@
   {
    "kind": "fence",
    "pos": [
-    150.45,
-    9.0
+    156.83,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
@@ -193,18 +353,178 @@
   {
    "kind": "fence",
    "pos": [
-    156.15,
-    9.0
+    159.68,
+    11.7
    ],
    "rotation": 3.141592653589793,
    "scale": 1.0,
    "variant": 9
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    162.53,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 10
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    165.38,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 11
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    168.23,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    171.08,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    173.93,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 14
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    176.78,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 15
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    179.62,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 16
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    182.48,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 17
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    185.33,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 18
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    188.18,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 19
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    191.03,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 20
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    193.88,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 21
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    196.73,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 22
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    199.58,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 23
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    202.43,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 24
+  },
+  {
+   "kind": "fence",
+   "pos": [
+    205.28,
+    11.7
+   ],
+   "rotation": 3.141592653589793,
+   "scale": 1.0,
+   "variant": 25
   },
   {
    "kind": "well",
    "pos": [
-    84.0,
-    69.0
+    109.2,
+    89.7
    ],
    "rotation": 0,
    "scale": 1.3,
@@ -213,8 +533,8 @@
   {
    "kind": "lamp",
    "pos": [
-    69.0,
-    45.0
+    89.7,
+    58.5
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -223,8 +543,8 @@
   {
    "kind": "lamp",
    "pos": [
-    99.0,
-    45.0
+    128.7,
+    58.5
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -233,8 +553,8 @@
   {
    "kind": "lamp",
    "pos": [
-    69.0,
-    93.0
+    89.7,
+    120.9
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -243,8 +563,8 @@
   {
    "kind": "lamp",
    "pos": [
-    99.0,
-    93.0
+    128.7,
+    120.9
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -253,8 +573,8 @@
   {
    "kind": "bench",
    "pos": [
-    72.0,
-    78.0
+    93.6,
+    101.4
    ],
    "rotation": 1.5707963267948966,
    "scale": 1.0,
@@ -263,8 +583,8 @@
   {
    "kind": "bench",
    "pos": [
-    96.0,
-    78.0
+    124.8,
+    101.4
    ],
    "rotation": -1.5707963267948966,
    "scale": 1.0,
@@ -273,8 +593,8 @@
   {
    "kind": "tree",
    "pos": [
-    18.0,
-    48.0
+    23.4,
+    62.4
    ],
    "rotation": 0.4,
    "scale": 1.2,
@@ -283,8 +603,8 @@
   {
    "kind": "tree",
    "pos": [
-    150.0,
-    48.0
+    195.0,
+    62.4
    ],
    "rotation": 1.4,
    "scale": 1.15,
@@ -293,8 +613,8 @@
   {
    "kind": "tree",
    "pos": [
-    21.0,
-    135.0
+    27.3,
+    175.5
    ],
    "rotation": 2.1,
    "scale": 1.25,
@@ -303,8 +623,8 @@
   {
    "kind": "tree",
    "pos": [
-    147.0,
-    135.0
+    191.1,
+    175.5
    ],
    "rotation": 0.7,
    "scale": 1.2,
@@ -313,8 +633,8 @@
   {
    "kind": "flower",
    "pos": [
-    63.0,
-    66.0
+    81.9,
+    85.8
    ],
    "rotation": 0,
    "scale": 1.2,
@@ -323,8 +643,8 @@
   {
    "kind": "flower",
    "pos": [
-    105.0,
-    66.0
+    136.5,
+    85.8
    ],
    "rotation": 0,
    "scale": 1.1,
@@ -333,8 +653,8 @@
   {
    "kind": "flower",
    "pos": [
-    60.0,
-    102.0
+    78.0,
+    132.6
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -343,8 +663,8 @@
   {
    "kind": "flower",
    "pos": [
-    108.0,
-    102.0
+    140.4,
+    132.6
    ],
    "rotation": 0,
    "scale": 1.3,
@@ -353,8 +673,8 @@
   {
    "kind": "sign",
    "pos": [
-    78.0,
-    18.0
+    101.4,
+    23.4
    ],
    "rotation": 0,
    "scale": 1.0,
@@ -363,8 +683,8 @@
   {
    "kind": "statue",
    "pos": [
-    84.0,
-    132.0
+    109.2,
+    171.6
    ],
    "rotation": 3.141592653589793,
    "scale": 0.9,
@@ -375,117 +695,129 @@
   {
    "kind": "center",
    "pos": [
-    45.0,
-    72.0
+    58.5,
+    93.6
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 0,
    "interior": "center_quellheim",
    "spawnPoint": "entrance",
    "label": "Heilstation",
    "doorOffset": [
     0.0,
-    6.9
+    8.97
    ]
   },
   {
    "kind": "shop",
    "pos": [
-    123.0,
-    72.0
+    159.9,
+    93.6
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 0,
    "interior": "shop_quellheim",
    "spawnPoint": "entrance",
    "label": "Warenlager",
    "doorOffset": [
     0.0,
-    5.7
+    7.41
    ]
   },
   {
    "kind": "gym",
    "pos": [
-    84.0,
-    111.0
+    109.2,
+    144.3
    ],
    "rotation": 3.141592653589793,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 0,
    "interior": "gym_quellheim",
    "spawnPoint": "entrance",
    "label": "Arena von Quellheim",
    "doorOffset": [
     0.0,
-    9.6
+    12.48
    ]
   },
   {
    "kind": "hut",
    "pos": [
-    27.0,
-    114.0
+    35.1,
+    148.2
    ],
    "rotation": 1.5707963267948966,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 2,
    "interior": "haus_quellheim_1",
    "spawnPoint": "entrance",
    "label": "Wohnhaus",
    "doorOffset": [
     0.0,
-    4.2
+    5.46
    ]
   },
   {
    "kind": "hut",
    "pos": [
-    141.0,
-    114.0
+    183.3,
+    148.2
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 9,
    "interior": "haus_quellheim_2",
    "spawnPoint": "entrance",
    "label": "Wohnhaus",
    "doorOffset": [
     0.0,
-    4.2
+    5.46
    ]
   },
   {
    "kind": "house",
    "pos": [
-    30.0,
-    27.0
+    39.0,
+    35.1
    ],
    "rotation": 1.5707963267948966,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 4,
-   "label": "Wohnhaus"
+   "label": "Wohnhaus",
+   "interior": "haus_quellheim_6",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   },
   {
    "kind": "house",
    "pos": [
-    138.0,
-    27.0
+    179.4,
+    35.1
    ],
    "rotation": -1.5707963267948966,
-   "scale": 1.5,
+   "scale": 1.95,
    "variant": 6,
-   "label": "Wohnhaus"
+   "label": "Wohnhaus",
+   "interior": "haus_quellheim_7",
+   "spawnPoint": "entrance",
+   "doorOffset": [
+    0.0,
+    6.24
+   ]
   }
  ],
  "npcs": [
   {
    "id": "quellheim_fuehrer",
    "pos": [
-    84.0,
-    33.0
+    109.2,
+    42.9
    ],
    "facing": 3.141592653589793,
    "name": "Stadtfuehrer",
@@ -502,8 +834,8 @@
   {
    "id": "quellheim_kind",
    "pos": [
-    99.0,
-    84.0
+    128.7,
+    109.2
    ],
    "facing": -1.5707963267948966,
    "name": "Kind",
@@ -522,8 +854,8 @@
   {
    "id": "quellheim_trainerin",
    "pos": [
-    126.0,
-    99.0
+    163.8,
+    128.7
    ],
    "facing": -1.5707963267948966,
    "name": "Schuelerin Mira",
@@ -545,8 +877,8 @@
    "id": "quellheim_disk",
    "item": "td19",
    "pos": [
-    150.0,
-    132.0
+    195.0,
+    171.6
    ],
    "quantity": 1,
    "hidden": false
@@ -556,20 +888,20 @@
   {
    "to": "route_1",
    "trigger": {
-    "x": 72.0,
+    "x": 93.6,
     "z": 0.0,
-    "width": 24.0,
-    "depth": 4.5
+    "width": 31.2,
+    "depth": 5.85
    },
    "spawnPoint": "from_quellheim"
   },
   {
    "to": "route_2",
    "trigger": {
-    "x": 72.0,
-    "z": 142.5,
-    "width": 24.0,
-    "depth": 4.5
+    "x": 93.6,
+    "z": 185.25,
+    "width": 31.2,
+    "depth": 5.85
    },
    "spawnPoint": "from_quellheim"
   }
@@ -578,64 +910,80 @@
   {
    "id": "default",
    "pos": [
-    84.0,
-    15.0
+    109.2,
+    19.5
    ],
    "facing": 0
   },
   {
    "id": "from_route1",
    "pos": [
-    84.0,
-    12.0
+    109.2,
+    15.6
    ],
    "facing": 0
   },
   {
    "id": "from_route2",
    "pos": [
-    84.0,
-    138.0
+    109.2,
+    179.4
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_center",
    "pos": [
-    45.0,
-    60.0
+    58.5,
+    78.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_shop",
    "pos": [
-    123.0,
-    60.0
+    159.9,
+    78.0
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_gym",
    "pos": [
-    84.0,
-    96.0
+    109.2,
+    124.8
    ],
    "facing": 3.141592653589793
   },
   {
    "id": "from_haus1",
    "pos": [
-    30.0,
-    111.0
+    39.0,
+    144.3
    ],
    "facing": 1.5707963267948966
   },
   {
    "id": "from_haus2",
    "pos": [
-    138.0,
-    111.0
+    179.4,
+    144.3
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "from_haus_quellheim_6",
+   "pos": [
+    51.09,
+    35.1
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_haus_quellheim_7",
+   "pos": [
+    167.31,
+    35.1
    ],
    "facing": -1.5707963267948966
   }
@@ -645,42 +993,42 @@
  "kind": "town",
  "biome": "grassland",
  "size": [
-  168.0,
-  147.0
+  218.4,
+  191.1
  ],
  "seed": 1301,
  "terrain": {
   "baseHeight": 0,
-  "amplitude": 1.8,
-  "frequency": 0.02667,
-  "octaves": 3,
+  "amplitude": 1.6,
+  "frequency": 0.01128,
+  "octaves": 2,
   "cliffBorder": true,
   "paths": [
    {
     "points": [
      [
-      84.0,
-      3.0
+      109.2,
+      3.9
      ],
      [
-      84.0,
-      141.0
+      109.2,
+      183.3
      ]
     ],
-    "width": 13.5
+    "width": 17.55
    },
    {
     "points": [
      [
-      15.0,
-      69.0
+      19.5,
+      89.7
      ],
      [
-      153.0,
-      69.0
+      198.9,
+      89.7
      ]
     ],
-    "width": 10.5
+    "width": 13.65
    }
   ]
  },

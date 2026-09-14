@@ -1,0 +1,45 @@
+{
+ "id": "steigwanderin_bea",
+ "name": "Steigwanderin Bea",
+ "trainerClass": "Bergfreundin",
+ "ai": "aggressive",
+ "team": [
+  {
+   "species": "funkenfell",
+   "level": 9
+  },
+  {
+   "species": "federflaum",
+   "level": 9
+  },
+  {
+   "species": "nagezahn",
+   "level": 10
+  }
+ ],
+ "rewardBase": 96,
+ "dialogue": {
+  "intro": [
+   "Der letzte Anstieg vor Quellheim - und der haerteste.",
+   "Wenn du hier bestehst, bist du bereit fuer die Arena."
+  ],
+  "defeat": [
+   "Stark. Die Arena wird dich mit offenen Armen empfangen."
+  ],
+  "victory": [
+   "Komm wieder, wenn dein Team den Anstieg schafft."
+  ],
+  "postBattle": [
+   "Quellheim liegt gleich hinter der Kuppe."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#8f3f2b",
+  "shirt": "#c47a4b",
+  "pants": "#4a4a52",
+  "accent": "#f0d8a0",
+  "hat": "cap",
+  "height": 1.03
+ }
+}

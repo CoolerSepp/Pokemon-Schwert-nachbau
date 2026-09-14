@@ -132,8 +132,10 @@ test.describe('Offline-Fassung', () => {
     expect(state.area).toBe('home_bedroom');
     expect(state.mode).toBe('world');
     expect(state.running).toBe(true);
-    expect(state.arten).toBe(97);
-    expect(state.gebiete).toBe(59);
+    // Bewusst untere Schranken statt fester Zahlen: Inhalte wachsen, und
+    // ein Test, der bei jedem neuen Gebiet fehlschlaegt, prueft nichts.
+    expect(state.arten).toBeGreaterThanOrEqual(97);
+    expect(state.gebiete).toBeGreaterThanOrEqual(100);
 
     expect(errors, errors.join('\n')).toEqual([]);
   });

@@ -126,13 +126,20 @@ export class BattleScreen implements Screen {
     container: HTMLElement, withExp: boolean,
   ): { root: HTMLElement; fill: HTMLElement; text: HTMLElement } {
     clearChildren(container);
+    // Eindeutige Kennzeichnung: ohne sie ist auf den ersten Blick nicht
+    // erkennbar, welche Anzeige zur eigenen Kreatur gehoert.
+    const owner = el('span', {
+      className: `battle-info-owner ${withExp ? 'own' : 'foe'}`,
+      text: withExp ? 'DEINE KREATUR' : 'GEGNER',
+    });
     const name = el('span', { className: 'battle-info-name' });
     const level = el('span', { className: 'battle-info-level' });
-    const types = el('span', {});
+    const types = el('span', { className: 'battle-info-types' });
     const bar = hpBar(1);
     const text = el('div', { className: 'battle-hp-text' });
     const stages = el('div', { className: 'battle-stage-row' });
 
+    container.appendChild(owner);
     container.appendChild(el('div', {
       className: 'battle-info-head',
       children: [name, level],
@@ -598,8 +605,10 @@ export class BattleScreen implements Screen {
         `${creature.name}${creature.isVariant ? ' ✦' : ''}`;
       (head.children[1] as HTMLElement).textContent = `Lv. ${creature.level}`;
     }
-    // Typen und Status neu setzen (zweites Kind des Panels).
-    const typeRow = container.children[1] as HTMLElement | undefined;
+    // Typen und Status neu setzen. Bewusst ueber die Klasse gesucht und
+    // nicht ueber die Kindposition: ein zusaetzliches Element im Panel
+    // verschob sonst die Zaehlung und loeschte die Namenszeile.
+    const typeRow = container.querySelector('.battle-info-types') as HTMLElement | null;
     if (typeRow) {
       clearChildren(typeRow);
       for (const type of creature.types) typeRow.appendChild(typeChip(type));

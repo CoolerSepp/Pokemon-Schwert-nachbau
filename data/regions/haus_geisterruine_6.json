@@ -1,0 +1,125 @@
+{
+ "props": [],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "haus_geisterruine_6_bewohner",
+   "pos": [
+    8.16,
+    7.4399999999999995
+   ],
+   "facing": 3.141592653589793,
+   "name": "Turmwaechter",
+   "dialogue": "haus_turm",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#6b5f8f",
+    "pants": "#3f3f4a",
+    "accent": "#e0d8c4",
+    "hat": "none"
+   }
+  }
+ ],
+ "items": [],
+ "connections": [
+  {
+   "to": "geisterruine",
+   "trigger": {
+    "x": 4.8,
+    "z": 0,
+    "width": 2.4,
+    "depth": 1.6
+   },
+   "spawnPoint": "from_haus_geisterruine_6"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "default",
+   "pos": [
+    6.0,
+    3.0
+   ],
+   "facing": 0
+  },
+  {
+   "id": "entrance",
+   "pos": [
+    6.0,
+    2.4
+   ],
+   "facing": 0
+  }
+ ],
+ "id": "haus_geisterruine_6",
+ "name": "Glockenturm",
+ "kind": "interior",
+ "biome": "urban",
+ "size": [
+  12,
+  12
+ ],
+ "seed": 2746,
+ "indoor": true,
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 0,
+  "frequency": 0.1,
+  "flat": true
+ },
+ "music": "town",
+ "interiorStyle": {
+  "wallColor": "#d8d2c4",
+  "floorColor": "#8a7a5f",
+  "accentColor": "#7a6b4f",
+  "wallHeight": 5.2,
+  "ceiling": true,
+  "exits": [
+   {
+    "x": 6.0,
+    "z": 0,
+    "width": 2.4,
+    "side": "south"
+   }
+  ],
+  "furniture": [
+   {
+    "kind": "stairs",
+    "pos": [
+     9.6,
+     9.6
+    ]
+   },
+   {
+    "kind": "table",
+    "pos": [
+     4.0,
+     7.0
+    ]
+   },
+   {
+    "kind": "computer",
+    "pos": [
+     4.0,
+     9.2
+    ]
+   },
+   {
+    "kind": "shelf",
+    "pos": [
+     1.8,
+     5.0
+    ],
+    "rotation": 1.5707963267948966
+   },
+   {
+    "kind": "lamp",
+    "pos": [
+     6.0,
+     3.4
+    ]
+   }
+  ]
+ }
+}

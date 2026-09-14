@@ -49,79 +49,104 @@
   font-size: 13px;
 }
 
-.hud-top-left {
+/* Kopfleiste: eine durchgehende Leiste ueber die volle Breite statt
+   freischwebender Kaesten. Beide Kanten sind verankert, dadurch kann die
+   Leiste nicht seitlich aus dem Bild wandern. */
+.hud-bar {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 16px;
 }
 
-.hud-area {
-  padding: 9px 15px;
+.hud-bar-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  max-width: min(420px, 46%);
+}
+
+.hud-bar-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex: none;
+}
+
+.hud-place {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 100%;
+  padding: 8px 14px;
   border-radius: 11px;
   background: var(--ui-bg);
   border: 1px solid var(--ui-border);
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  box-shadow: var(--ui-shadow);
+  white-space: nowrap;
 }
 
-.hud-area small {
+.hud-place-name {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hud-place-phase,
+.hud-place-weather {
   color: var(--ui-text-dim);
-  font-weight: 400;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-size: 10px;
 }
 
-.hud-clock {
-  padding: 6px 12px;
-  border-radius: 9px;
-  background: var(--ui-bg-soft);
-  border: 1px solid var(--ui-border);
-  color: var(--ui-text-dim);
-  display: flex;
-  gap: 9px;
-  align-items: center;
-  width: fit-content;
+.hud-place-time {
+  font-variant-numeric: tabular-nums;
+  color: var(--ui-text);
+}
+
+.hud-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--ui-border);
+  flex: none;
 }
 
 .hud-quest {
-  max-width: 300px;
+  max-width: 100%;
   padding: 10px 14px;
   border-radius: 11px;
   background: var(--ui-bg-soft);
   border: 1px solid var(--ui-border);
   border-left: 3px solid var(--ui-accent);
+  box-shadow: var(--ui-shadow);
 }
 
 .hud-quest .quest-name {
   font-weight: 600;
   margin-bottom: 3px;
+  overflow-wrap: anywhere;
 }
 
 .hud-quest .quest-step {
   color: var(--ui-text-dim);
   font-size: 12px;
   line-height: 1.4;
-}
-
-.hud-top-right {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
+  overflow-wrap: anywhere;
 }
 
 .hud-money {
   padding: 8px 14px;
+  box-shadow: var(--ui-shadow);
   border-radius: 10px;
   background: var(--ui-bg);
   border: 1px solid var(--ui-border);
@@ -131,6 +156,7 @@
 .hud-badges {
   display: flex;
   gap: 5px;
+  box-shadow: var(--ui-shadow);
   padding: 7px 11px;
   border-radius: 10px;
   background: var(--ui-bg-soft);
@@ -149,6 +175,15 @@
   background: linear-gradient(145deg, #ffd76b, #e0a020);
   border-color: #ffe9a8;
   box-shadow: 0 0 8px rgba(255, 200, 80, 0.5);
+}
+
+/* Ruhige Fassung: waehrend Dialogen und Menues treten die unteren
+   Einblendungen zurueck, damit das Dialogfenster frei steht. */
+.hud-quiet .hud-party,
+.hud-quiet .hud-controls,
+.hud-quiet .hud-hint {
+  opacity: 0;
+  transition: opacity 0.14s ease;
 }
 
 .hud-party {
@@ -185,7 +220,7 @@
 
 .hud-hint {
   position: absolute;
-  bottom: 22px;
+  bottom: 26px;
   left: 50%;
   transform: translateX(-50%);
   padding: 9px 17px;
@@ -228,24 +263,36 @@
 }
 
 /* --------------------------------------------------------------- Dialoge */
+/* Das Dialogfenster sitzt unten in der Mitte. Beide Seitenkanten sind
+   verankert und die Breite wird innen begrenzt - so bleibt es auch dann
+   vollstaendig im Bild, wenn das Fenster sehr schmal ist. */
 .dialogue {
   position: absolute;
-  left: 50%;
-  bottom: 26px;
-  transform: translateX(-50%);
-  width: min(880px, calc(100vw - 44px));
+  /* Wichtig: die Bildschirmebene setzt "inset: 0". Ohne dieses "top: auto"
+     bleibt die Oberkante bei 0 kleben, der Kasten wird ueber die volle Hoehe
+     aufgezogen und sitzt dadurch am oberen Bildrand statt unten. */
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 16px;
 }
 
 .dialogue-box {
-  padding: 18px 22px 20px;
-  min-height: 116px;
+  width: min(880px, 100%);
+  padding: 14px 22px 18px;
+  min-height: 112px;
   position: relative;
 }
 
+/* Der Name steht im Kasten, nicht darueber: ausserhalb ragte er ueber die
+   Oberkante hinaus und wirkte wie ein verrutschtes Element. */
 .dialogue-speaker {
-  position: absolute;
-  top: -13px;
-  left: 22px;
+  display: inline-block;
+  margin-bottom: 9px;
   padding: 4px 14px;
   border-radius: 8px;
   background: var(--ui-accent);
@@ -475,12 +522,12 @@
   transition: padding 0.2s ease;
 }
 
-/* Bei geoeffnetem Menue sitzen die Einblendungen unten, damit sie den
-   Panelinhalt nicht verdecken. */
+/* Bei geoeffnetem Menue oder Dialog ruecken die Einblendungen unter die
+   Kopfleiste. Unten ist kein Platz: dort steht das Dialogfenster. */
 .ui-toasts.modal-open {
-  justify-content: flex-end;
-  padding-top: 0;
-  padding-bottom: 12px;
+  justify-content: flex-start;
+  padding-top: 96px;
+  padding-bottom: 0;
 }
 
 .ui-toast {
@@ -539,8 +586,31 @@
   box-shadow: var(--ui-shadow);
 }
 
-.battle-info.enemy { top: 26px; left: 28px; }
-.battle-info.player { bottom: 252px; right: 28px; }
+.battle-info.enemy { top: 22px; left: 24px; }
+.battle-info.player { bottom: 250px; right: 24px; }
+
+/* Besitzkennzeichen ueber Namen und Balken. */
+.battle-info-owner {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 2px 9px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.battle-info-owner.own {
+  background: rgba(127, 196, 75, 0.25);
+  color: #cdf0ab;
+  border: 1px solid rgba(127, 196, 75, 0.55);
+}
+
+.battle-info-owner.foe {
+  background: rgba(224, 90, 90, 0.22);
+  color: #ffcaca;
+  border: 1px solid rgba(224, 90, 90, 0.5);
+}
 
 .battle-info-head {
   display: flex;

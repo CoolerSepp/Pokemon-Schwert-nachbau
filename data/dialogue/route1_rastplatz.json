@@ -1,0 +1,16 @@
+{
+ "id": "route1_rastplatz",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Setz dich ruhig. Von hier sind es nur noch ein paar Schritte.",
+    "Die Arena von Quellheim nimmt keine Ruecksicht auf muede Teams."
+   ],
+   "speaker": "Wirtin"
+  }
+ ]
+}

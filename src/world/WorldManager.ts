@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { GameConfig } from '@/core/Config';
 import { GameData } from '@/data/GameData';
 import type { AreaData, WeatherKind } from '@/data/schema';
 import { EventBus } from '@/core/EventBus';
@@ -58,6 +59,13 @@ export class WorldManager {
   /** Laufzeit fuer Wolkenbewegung und Sternenflimmern. */
   private skyTime = 0;
   readonly weatherSystem: WeatherSystem;
+  /**
+   * Rueckruf fuer die noetige Sichtweite.
+   *
+   * Die Kamera gehoert nicht der Weltverwaltung, die noetige Fernebene
+   * ergibt sich aber aus dem geladenen Gebiet - deshalb dieser Weg.
+   */
+  onFarPlane: ((distance: number) => void) | null = null;
 
   constructor(
     assets: AssetManager,
@@ -174,10 +182,19 @@ export class WorldManager {
 
   private applyAmbience(area: AreaRuntime): void {
     const ambience = area.data.ambience;
+    // Die Sichtweite muss hinter die Himmelskugel reichen. War sie kuerzer,
+    // wurde der Himmel weggeschnitten und es blieb ein schwarzes Loch.
+    this.onFarPlane?.(Math.max(
+      GameConfig.camera.far * this.renderer.profile.drawDistance,
+      area.skyRadius * 1.2 + 40,
+    ));
     const fog = this.scene.fog as THREE.Fog;
     const drawScale = this.renderer.profile.drawDistance;
     fog.near = (ambience?.fogNear ?? (area.data.indoor ? 18 : 45)) * drawScale;
-    fog.far = (ambience?.fogFar ?? (area.data.indoor ? 70 : 280)) * drawScale;
+    // Im Freien reicht der Nebel bis hinter die Bergkulisse: sonst waere
+    // die Ferne eine graue Wand statt einer Landschaft.
+    fog.far = (ambience?.fogFar ?? (area.data.indoor ? 70 : 280))
+      * (area.data.indoor ? 1 : 2.2) * drawScale;
     if (ambience?.fogColor) fog.color.set(ambience.fogColor);
 
     // Innenraeume bekommen konstantes, warmes Licht statt Tagesverlauf.
@@ -273,6 +290,7 @@ export class WorldManager {
       new THREE.Color(weatherFactor.fogColor), weatherFactor.fogBlend,
     );
     fog.far = (area.data.ambience?.fogFar ?? 280)
+      * (area.data.indoor ? 1 : 2.2)
       * this.renderer.profile.drawDistance * weatherFactor.fogRange;
 
     if (area.sky) {

@@ -23,11 +23,20 @@
    fuer [hidden]. Ohne dieses !important bleiben ausgeblendete Panels sichtbar. */
 [hidden] { display: none !important; }
 
+/* Fenster fest verankern.
+   "position: fixed" statt "100vw/100vh": 100vw ist in manchen Browsern
+   breiter als das sichtbare Fenster, und ein versehentlicher Bildlauf
+   verschiebt dann die gesamte Oberflaeche seitlich aus dem Bild. Mit fester
+   Verankerung ist der Bezugsrahmen immer exakt das sichtbare Fenster. */
 html, body {
   margin: 0;
   padding: 0;
+  position: fixed;
+  inset: 0;
+  width: 100%;
   height: 100%;
   overflow: hidden;
+  overscroll-behavior: none;
   background: #0b0e14;
   color: var(--ui-text);
   font-family: var(--font-ui);
@@ -36,9 +45,10 @@ html, body {
 }
 
 #app {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -47,10 +57,14 @@ html, body {
   width: 100%;
   height: 100%;
   outline: none;
+  cursor: grab;
 }
 
+/* Waehrend die Kamera gezogen wird, zeigt der Mauszeiger das an. */
+#game-canvas.dragging { cursor: grabbing; }
+
 #ui-root {
-  position: absolute;
+  position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 10;

@@ -133,7 +133,13 @@ test.describe('Wildland, Wetter und Raids', () => {
     expect(inBattle.mode, 'Raid-Kampf nicht gestartet').toBe('battle');
 
     // Kampf ausspielen: immer die erste Attacke.
-    for (let i = 0; i < 220; i++) {
+    //
+    // Zwischen zwei Eingaben muss die Kampfanzeige mindestens ein Bild
+    // gezeichnet haben, sonst laufen die Eingaben ins Leere. Deshalb wird
+    // auf den Bildzaehler gewartet statt auf eine feste Zeit - in der
+    // Testumgebung liegen zwischen zwei Bildern mehrere hundert
+    // Millisekunden.
+    for (let i = 0; i < 320; i++) {
       const done = await run(page, (c) => {
         const screen: any = c.ui.get('battle');
         if (!screen || c.game.mode !== 'battle') return true;
@@ -142,7 +148,11 @@ test.describe('Wildland, Wetter und Raids', () => {
         return false;
       });
       if (done) break;
-      await page.waitForTimeout(120);
+      const before = await run(page, (c) => c.game.loop.frames);
+      await page.waitForFunction(
+        (f) => (window as any).__CONTROLLER__.game.loop.frames > (f as number) + 1,
+        before, { timeout: 8000 },
+      ).catch(() => undefined);
     }
     await page.waitForTimeout(1500);
 

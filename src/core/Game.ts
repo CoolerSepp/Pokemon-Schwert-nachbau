@@ -80,6 +80,9 @@ export class Game {
     this.creatures = new CreatureFactory(this.rng.fork('creatures'));
 
     this.camera.setFarPlane(GameConfig.camera.far * this.renderer.profile.drawDistance);
+    // Die Weltverwaltung meldet, wie weit die Kamera im geladenen Gebiet
+    // sehen muss (Himmelskugel und Bergkulisse).
+    this.world.onFarPlane = (distance) => this.camera.setFarPlane(distance);
     this.world.scene.add(this.player.object);
     this.input.attach();
     this.registerLoopPhases();

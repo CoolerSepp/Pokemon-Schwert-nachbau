@@ -240,6 +240,10 @@ export class GameController {
         this.ui.toast(shown ? 'Debug-Anzeige an' : 'Debug-Anzeige aus', 'info', 1.6);
         return;
       }
+      if (action === 'cameraReset') {
+        this.game.camera.recenterBehind(this.game.player.yaw);
+        return;
+      }
       if (this.ui.blocksGameplay) return;
       if (action === 'menu') {
         this.audio.playSfx('open');

@@ -6,7 +6,7 @@ import { Logger } from '@/core/Logger';
 import { TerrainField, type FlattenZone } from './TerrainField';
 import { CollisionGrid } from './CollisionGrid';
 import {
-  buildTerrainMesh, buildSky, BIOME_PALETTES,
+  buildTerrainMesh, buildSky, buildBackdrop, backdropOuterRadius, BIOME_PALETTES,
   type BiomePalette, type PathSegment,
 } from './TerrainMesh';
 import { PropFactory, type PropKind } from './PropFactory';
@@ -130,6 +130,25 @@ const BIOME_SCATTER: Record<string, { kind: PropKind; weight: number; scale: [nu
  * Gebiete werden vollstaendig aus `AreaData` erzeugt. Alles Sichtbare ist
  * prozedural; die JSON-Datei beschreibt nur Layout und Parameter.
  */
+/**
+ * Dreht einen gebaeudelokalen Versatz in Weltkoordinaten.
+ *
+ * Muss exakt der Drehung des Objekts um die Y-Achse entsprechen: dort wird
+ * lokal (x, z) zu (x*cos + z*sin, -x*sin + z*cos). Mit einem Vorzeichenfehler
+ * landet der Tuer-Ausloeser auf der gegenueberliegenden Hauswand - die
+ * sichtbare Tuer waere dann unbenutzbar.
+ */
+function rotateOffset(
+  baseX: number, baseZ: number, offsetX: number, offsetZ: number, rotation: number,
+): [number, number] {
+  const cos = Math.cos(rotation);
+  const sin = Math.sin(rotation);
+  return [
+    baseX + offsetX * cos + offsetZ * sin,
+    baseZ - offsetX * sin + offsetZ * cos,
+  ];
+}
+
 export class AreaRuntime {
   readonly root = new THREE.Group();
   readonly data: AreaData;
@@ -139,6 +158,10 @@ export class AreaRuntime {
   readonly doors: DoorTrigger[] = [];
   readonly grassZones: GrassZoneRuntime[] = [];
   readonly sky: THREE.Mesh | null = null;
+  /** Bergkulisse hinter dem Spielfeld (nur im Freien). */
+  readonly backdrop: THREE.Group | null = null;
+  /** Radius der Himmelskugel - die Kamera muss weiter sehen als bis dorthin. */
+  readonly skyRadius: number = 0;
   readonly water: THREE.Mesh | null = null;
   /** Objekte, die abhaengig von der Entfernung ein-/ausgeblendet werden. */
   private readonly cullables: { object: THREE.Object3D; x: number; z: number; distSq: number }[] = [];
@@ -177,7 +200,14 @@ export class AreaRuntime {
     }
 
     if (!data.indoor) {
-      const radius = Math.max(data.size[0], data.size[1]) * 1.5 + 120;
+      const backdropInner = Math.max(data.size[0], data.size[1]) * 0.62;
+      // Der Himmel muss die Bergkulisse umschliessen, sonst ragen die
+      // Gipfel durch die Himmelskugel hindurch.
+      const radius = Math.max(
+        Math.max(data.size[0], data.size[1]) * 1.5 + 120,
+        backdropOuterRadius(backdropInner) + 160,
+      );
+      this.skyRadius = radius;
       this.sky = buildSky(
         data.ambience?.skyTop ?? this.palette.skyTop,
         data.ambience?.skyBottom ?? this.palette.skyBottom,
@@ -185,6 +215,14 @@ export class AreaRuntime {
       );
       this.sky.position.set(data.size[0] / 2, 0, data.size[1] / 2);
       this.root.add(this.sky);
+
+      // Bergkulisse ausserhalb des Spielfelds: gibt dem Horizont Tiefe.
+      this.backdrop = buildBackdrop(this.palette, backdropInner, data.seed);
+      this.backdrop.position.set(
+        data.size[0] / 2, this.field.heightAt(data.size[0] / 2, data.size[1] / 2) - 2,
+        data.size[1] / 2,
+      );
+      this.root.add(this.backdrop);
     }
 
     this.buildInterior();
@@ -194,6 +232,7 @@ export class AreaRuntime {
     this.buildGrass();
     this.buildGroundDetail();
     this.blockWater();
+    this.clearConnections();
 
     log.info(
       `Gebiet "${data.id}" aufgebaut in ${Math.round(performance.now() - started)} ms ` +
@@ -215,10 +254,7 @@ export class AreaRuntime {
     for (const b of data.buildings ?? []) {
       const rotation = b.rotation ?? 0;
       const offset = b.doorOffset ?? [0, 3];
-      const cos = Math.cos(rotation);
-      const sin = Math.sin(rotation);
-      const dx = b.pos[0] + offset[0] * cos - offset[1] * sin;
-      const dz = b.pos[1] + offset[0] * sin + offset[1] * cos;
+      const [dx, dz] = rotateOffset(b.pos[0], b.pos[1], offset[0], offset[1], rotation);
       segments.push({ ax: dx, az: dz, bx: centerX, bz: centerZ, width: 2.2 });
     }
 
@@ -279,11 +315,15 @@ export class AreaRuntime {
     const pebbles: typeof blades = [];
 
     // Halme muessen dicht stehen, damit sie als Bewuchs und nicht als
-    // einzelne Objekte gelesen werden.
-    const bladeTarget = Math.min(9000, Math.round(area * 0.55));
-    const flowerTarget = Math.min(1100, Math.round(area * 0.016));
+    // einzelne Objekte gelesen werden. Sie wachsen in Buescheln statt
+    // gleichmaessig verteilt: bei gleicher Anzahl wirkt die Wiese dadurch
+    // deutlich dichter, weil freie Flaechen und dichte Flecken abwechseln.
+    const bladeTarget = Math.min(11000, Math.round(area * 0.62));
+    const flowerTarget = Math.min(1300, Math.round(area * 0.018));
     const pebbleTarget = Math.min(900, Math.round(area * 0.012));
     const attempts = (bladeTarget + flowerTarget + pebbleTarget) * 2;
+    /** Wie viele Halme aus einem Bueschel wachsen. */
+    const clumpSize = 5;
 
     let placedBlades = 0;
     let placedFlowers = 0;
@@ -311,8 +351,20 @@ export class AreaRuntime {
         continue;
       }
       if (placedBlades < bladeTarget && rng.chance(0.93)) {
-        blades.push({ x, y, z, scale: rng.float(0.55, 1.25), tint });
-        placedBlades++;
+        // Ein Bueschel: mehrere Halme dicht beieinander, leicht versetzt.
+        const baseScale = rng.float(0.6, 1.3);
+        for (let k = 0; k < clumpSize && placedBlades < bladeTarget; k++) {
+          const a = rng.float(0, Math.PI * 2);
+          const r = k === 0 ? 0 : rng.float(0.12, 0.62);
+          const bx = x + Math.cos(a) * r;
+          const bz = z + Math.sin(a) * r;
+          blades.push({
+            x: bx, y: this.field.heightAt(bx, bz) - 0.02, z: bz,
+            scale: baseScale * rng.float(0.7, 1.15),
+            tint: Math.min(1, Math.max(0, tint + rng.float(-0.12, 0.12))),
+          });
+          placedBlades++;
+        }
       } else if (placedFlowers < flowerTarget) {
         flowers.push({ x, y, z, scale: rng.float(0.75, 1.3), tint });
         placedFlowers++;
@@ -350,6 +402,24 @@ export class AreaRuntime {
   // ------------------------------------------------------------------ Aufbau
 
   /** Baut Waende, Decke und Einrichtung eines Innenraums. */
+  /**
+   * Haelt alle Gebietsuebergaenge frei.
+   *
+   * Moebel, Requisiten und Waende werden unabhaengig voneinander gesetzt;
+   * ohne diesen letzten Schritt kann ein Ausloeser zugebaut sein und das
+   * Zielgebiet waere unerreichbar (so war die Treppe ins Obergeschoss
+   * durch das Treppenmoebel selbst versperrt).
+   */
+  private clearConnections(): void {
+    for (const conn of this.data.connections) {
+      const t = conn.trigger;
+      this.collision.clearBox({
+        x: t.x + t.width / 2, z: t.z + t.depth / 2,
+        width: t.width, depth: t.depth,
+      });
+    }
+  }
+
   private buildInterior(): void {
     const style = this.data.interiorStyle;
     if (!style || !this.interiors) return;
@@ -389,10 +459,7 @@ export class AreaRuntime {
 
       if (result.door && placement.interior) {
         const offset = placement.doorOffset ?? [result.door.x, result.door.z];
-        const cos = Math.cos(rotation);
-        const sin = Math.sin(rotation);
-        const dx = x + offset[0] * cos - offset[1] * sin;
-        const dz = z + offset[0] * sin + offset[1] * cos;
+        const [dx, dz] = rotateOffset(x, z, offset[0], offset[1], rotation);
         this.doors.push({
           area: placement.interior,
           spawnPoint: placement.spawnPoint ?? 'entrance',
@@ -465,9 +532,10 @@ export class AreaRuntime {
     switch (this.data.kind) {
       case 'town':
       case 'city':
-        // Orte sind seit der Vergroesserung weitlaeufig; mit der alten Dichte
-        // wirkten die Flaechen zwischen den Haeusern leer.
-        return 0.018;
+        // Orte sind weitlaeufig, aber keine Waelder: die Dichte ist so
+        // gewaehlt, dass die Zahl der Streuobjekte trotz der gewachsenen
+        // Flaeche etwa gleich bleibt.
+        return 0.012;
       case 'forest':
         return 0.055;
       case 'cave':
@@ -537,7 +605,15 @@ export class AreaRuntime {
     result.object.rotation.y = placement.rotation ?? 0;
     this.root.add(result.object);
     this.propObjects.push({ object: result.object, x, z });
-    if (result.collisionRadius > 0) {
+    const rotation = placement.rotation ?? 0;
+    if (result.collisionBox) {
+      this.collision.addBox({
+        x, z,
+        width: result.collisionBox.width,
+        depth: result.collisionBox.depth,
+        rotation,
+      });
+    } else if (result.collisionRadius > 0) {
       this.collision.addCircle({ x, z, radius: result.collisionRadius });
     }
   }

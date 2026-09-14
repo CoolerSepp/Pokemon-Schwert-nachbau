@@ -8,6 +8,15 @@ export interface PropResult {
   object: THREE.Object3D;
   /** Kollisionsradius in Metern; 0 = begehbar. */
   collisionRadius: number;
+  /**
+   * Rechteckige Kollision in lokalen Massen (Breite in X, Tiefe in Z).
+   *
+   * Laengliche Objekte wie Zaeune lassen sich mit einem Kreis nicht
+   * abbilden: ein Kreis um die Mitte laesst die Enden frei, ein Kreis ueber
+   * die ganze Laenge sperrt viel zu viel. Deshalb hier ein gedrehtes
+   * Rechteck. Wenn gesetzt, hat es Vorrang vor dem Radius.
+   */
+  collisionBox?: { width: number; depth: number };
   /** Hoehe fuer Culling-Entscheidungen. */
   height: number;
 }
@@ -263,7 +272,15 @@ export class PropFactory {
       g.add(this.mesh('box', [w, 0.08, 0.06], TRUNK_BROWN, [0, y * scale, 0],
         { texture: 'plank', repeat: 3 }));
     }
-    return { object: g, collisionRadius: 0, height: 1.05 * scale };
+    // Zaeune sind Sperren, keine Deko: ohne Kollisionskoerper laeuft man
+    // einfach hindurch. Der Kasten deckt die ganze Laenge ab.
+    return {
+      object: g, collisionRadius: 0, height: 1.05 * scale,
+      // Die Tiefe ist bewusst groesser als das sichtbare Holz: das
+      // Belegungsgitter hat 0,5 m Zellen, ein duenneres Band liesse bei
+      // schraeg stehenden Zaeunen einzelne Zellen frei.
+      collisionBox: { width: w + 0.25, depth: 0.8 },
+    };
   }
 
   private sign(scale: number): PropResult {
@@ -327,7 +344,10 @@ export class PropFactory {
     const s = 0.7 * scale;
     g.add(this.mesh('box', [s, s, s], '#a8804f', [0, s * 0.5, 0], { texture: 'plank' }));
     g.add(this.mesh('box', [s * 1.02, s * 0.1, s * 0.1], DARK_WOOD, [0, s * 0.5, s * 0.5]));
-    return { object: g, collisionRadius: s * 0.62, height: s };
+    return {
+      object: g, collisionRadius: 0, height: s,
+      collisionBox: { width: s * 1.05, depth: s * 1.05 },
+    };
   }
 
   private cart(scale: number): PropResult {
@@ -339,7 +359,10 @@ export class PropFactory {
           [x * scale, 0.34 * scale, z * scale], { rot: [0, Math.PI / 2, 0], detail: 1 }));
       }
     }
-    return { object: g, collisionRadius: 0.9 * scale, height: 0.95 * scale };
+    return {
+      object: g, collisionRadius: 0, height: 0.95 * scale,
+      collisionBox: { width: 1.6 * scale, depth: 1.1 * scale },
+    };
   }
 
   private well(scale: number): PropResult {
@@ -363,7 +386,10 @@ export class PropFactory {
     for (const x of [-0.65, 0.65]) {
       g.add(this.mesh('box', [0.1, 0.45 * scale, 0.45 * scale], '#4a4a4f', [x * scale, 0.22 * scale, 0]));
     }
-    return { object: g, collisionRadius: 0.55 * scale, height: 0.95 * scale };
+    return {
+      object: g, collisionRadius: 0, height: 0.95 * scale,
+      collisionBox: { width: 1.7 * scale, depth: 0.6 * scale },
+    };
   }
 
   private mailbox(scale: number): PropResult {
@@ -450,7 +476,10 @@ export class PropFactory {
       g.add(this.mesh('box', [0.06, 1.3 * scale, 1.22 * scale], '#00000022',
         [i * 0.45 * scale, 0.65 * scale, 0], { metal: 0.4 }));
     }
-    return { object: g, collisionRadius: 1.3 * scale, height: 1.3 * scale };
+    return {
+      object: g, collisionRadius: 0, height: 1.3 * scale,
+      collisionBox: { width: 2.5 * scale, depth: 1.3 * scale },
+    };
   }
 
   private lilypad(scale: number): PropResult {

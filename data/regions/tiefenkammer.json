@@ -184,8 +184,8 @@
  "terrain": {
   "baseHeight": 0,
   "amplitude": 6,
-  "frequency": 0.04,
-  "octaves": 4,
+  "frequency": 0.026,
+  "octaves": 3,
   "cliffBorder": true,
   "paths": [
    {

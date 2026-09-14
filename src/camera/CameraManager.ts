@@ -46,6 +46,8 @@ export class CameraManager {
   private cinematicFrom = { position: new THREE.Vector3(), target: new THREE.Vector3() };
   private cinematicDone: (() => void) | null = null;
   private lockOnTarget: THREE.Object3D | null = null;
+  /** Zielwinkel beim Zuruecksetzen hinter die Figur; null = kein Zuruecksetzen. */
+  private recenterYaw: number | null = null;
 
   constructor(aspect: number, private readonly input: InputManager) {
     this.camera = new THREE.PerspectiveCamera(
@@ -67,6 +69,16 @@ export class CameraManager {
   setSensitivity(value: number): void { this.sensitivity = clamp(value, 0.1, 4); }
 
   /**
+   * Schwenkt die Kamera weich hinter die Figur.
+   *
+   * Bei freier 360-Grad-Sicht verliert man leicht die Orientierung; ein
+   * Tastendruck stellt die gewohnte Ansicht wieder her, ohne zu springen.
+   */
+  recenterBehind(facing: number): void {
+    this.recenterYaw = wrapAngle(facing);
+  }
+
+  /**
    * Begrenzt die Kamerahoehe, damit sie in Innenraeumen nicht durch die Decke
    * stoesst. `null` hebt die Begrenzung auf (Aussenbereiche).
    */
@@ -81,6 +93,7 @@ export class CameraManager {
 
   /** Setzt die Kamera hinter ein Ziel, ohne Ueberblendung. */
   snapBehind(x: number, y: number, z: number, facing: number): void {
+    this.recenterYaw = null;
     this.yaw = facing;
     this.focus.set(x, y + GameConfig.camera.height, z);
     this.smoothFocus.copy(this.focus);
@@ -142,6 +155,8 @@ export class CameraManager {
 
     if (allowInput) {
       const look = this.input.getLookDelta(dt, this.sensitivity);
+      // Eigene Eingabe hat Vorrang: sie bricht ein laufendes Zuruecksetzen ab.
+      if (look.x !== 0 || look.y !== 0) this.recenterYaw = null;
       this.yaw = wrapAngle(this.yaw - look.x);
       this.pitch = clamp(
         this.pitch + (this.invertY ? -look.y : look.y),
@@ -157,6 +172,14 @@ export class CameraManager {
     this.smoothFocus.x = damp(this.smoothFocus.x, this.focus.x, GameConfig.camera.positionHalfLife, dt);
     this.smoothFocus.y = damp(this.smoothFocus.y, this.focus.y, GameConfig.camera.positionHalfLife * 1.8, dt);
     this.smoothFocus.z = damp(this.smoothFocus.z, this.focus.z, GameConfig.camera.positionHalfLife, dt);
+
+    if (this.recenterYaw !== null) {
+      this.yaw = dampAngle(this.yaw, this.recenterYaw, 0.1, dt);
+      if (Math.abs(wrapAngle(this.recenterYaw - this.yaw)) < 0.02) {
+        this.yaw = this.recenterYaw;
+        this.recenterYaw = null;
+      }
+    }
 
     if (this.mode === 'lockOn' && this.lockOnTarget) {
       // Blickrichtung auf das Ziel ausrichten, Abstand beibehalten.

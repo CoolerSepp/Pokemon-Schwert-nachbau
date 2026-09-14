@@ -5,7 +5,7 @@ import { clamp } from '@/core/MathUtils';
 export const GAME_ACTIONS = [
   'moveForward', 'moveBackward', 'moveLeft', 'moveRight',
   'sprint', 'jump', 'interact', 'cancel', 'menu', 'map',
-  'cameraLeft', 'cameraRight', 'cameraUp', 'cameraDown',
+  'cameraLeft', 'cameraRight', 'cameraUp', 'cameraDown', 'cameraReset',
   'zoomIn', 'zoomOut', 'quickSave', 'debug', 'nextItem', 'prevItem',
   'confirm', 'up', 'down', 'left', 'right',
 ] as const;
@@ -28,6 +28,7 @@ export const DEFAULT_BINDINGS: Bindings = {
   cameraRight: ['KeyC'],
   cameraUp: ['PageUp'],
   cameraDown: ['PageDown'],
+  cameraReset: ['KeyR'],
   zoomIn: ['Equal', 'NumpadAdd'],
   zoomOut: ['Minus', 'NumpadSubtract'],
   quickSave: ['F5'],
@@ -52,6 +53,7 @@ const PAD_BUTTONS: Partial<Record<GameAction, number[]>> = {
   sprint: [2],
   zoomIn: [5],
   zoomOut: [4],
+  cameraReset: [10],
   up: [12], down: [13], left: [14], right: [15],
   moveForward: [12], moveBackward: [13], moveLeft: [14], moveRight: [15],
 };
@@ -83,6 +85,8 @@ export class InputManager {
   private wheelDelta = 0;
   private pointerLocked = false;
   private rightMouseDown = false;
+  /** Ziehen mit gedrueckter linker Maustaste auf der Spielflaeche. */
+  private dragLook = false;
   private padIndex: number | null = null;
   private padAxes: AxisState = { x: 0, y: 0 };
   private padCameraAxes: AxisState = { x: 0, y: 0 };
@@ -127,16 +131,26 @@ export class InputManager {
     };
     const onBlur = () => this.releaseAll();
     const onMouseMove = (e: MouseEvent) => {
-      if (this.pointerLocked || this.rightMouseDown) {
+      if (this.pointerLocked || this.rightMouseDown || this.dragLook) {
         this.mouseDelta.x += e.movementX;
         this.mouseDelta.y += e.movementY;
       }
     };
     const onMouseDown = (e: MouseEvent) => {
       if (e.button === 2) this.rightMouseDown = true;
+      // Linke Taste dreht die Kamera, aber nur wenn der Zug auf der
+      // Spielflaeche beginnt - sonst waeren Menueklicks nicht mehr moeglich.
+      if (e.button === 0 && e.target === this.target) {
+        this.dragLook = true;
+        this.target.classList.add('dragging');
+      }
     };
     const onMouseUp = (e: MouseEvent) => {
       if (e.button === 2) this.rightMouseDown = false;
+      if (e.button === 0 && this.dragLook) {
+        this.dragLook = false;
+        this.target.classList.remove('dragging');
+      }
     };
     const onWheel = (e: WheelEvent) => {
       this.wheelDelta += e.deltaY;
@@ -193,6 +207,9 @@ export class InputManager {
     this.rawKeys.clear();
     this.padButtonsDown.clear();
     this.mouseDelta = { x: 0, y: 0 };
+    this.dragLook = false;
+    this.rightMouseDown = false;
+    this.target.classList.remove('dragging');
   }
 
   setBindings(bindings: Partial<Bindings>): void {
@@ -295,8 +312,10 @@ export class InputManager {
 
     const keyTurn = (this.isDown('cameraRight') ? 1 : 0) - (this.isDown('cameraLeft') ? 1 : 0);
     const keyPitch = (this.isDown('cameraDown') ? 1 : 0) - (this.isDown('cameraUp') ? 1 : 0);
-    x += keyTurn * 2.2 * deltaSeconds * sensitivity;
-    y += keyPitch * 1.6 * deltaSeconds * sensitivity;
+    // Eine volle Umdrehung dauert rund zwei Sekunden - schnell genug, um
+    // sich umzusehen, langsam genug zum genauen Ausrichten.
+    x += keyTurn * 3.0 * deltaSeconds * sensitivity;
+    y += keyPitch * 1.9 * deltaSeconds * sensitivity;
 
     if (this.padIndex !== null) {
       x += this.padCameraAxes.x * GameConfig.camera.padSensitivity * deltaSeconds * sensitivity;
@@ -312,6 +331,9 @@ export class InputManager {
       * 6 * deltaSeconds;
     return clamp(zoom, -3, 3);
   }
+
+  /** Dreht die spielende Person gerade aktiv die Kamera? */
+  get isLookDragging(): boolean { return this.dragLook || this.rightMouseDown; }
 
   get isPointerLocked(): boolean { return this.pointerLocked; }
   get hasGamepad(): boolean { return this.padIndex !== null; }
