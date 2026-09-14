@@ -85,7 +85,15 @@ test('Kamera laesst sich frei um 360 Grad drehen', async ({ page }) => {
   // Zuruecksetzen richtet die Kamera hinter die Figur aus.
   await run(page, (c) => { c.game.player.teleport(c.game.player.x, c.game.player.z, 1.2); });
   await page.keyboard.press('KeyR');
-  await page.waitForTimeout(1200);
+  // Auf das Ende der Ausrichtung warten statt auf eine feste Zeit: das
+  // Zuruecksetzen ist gedaempft und braucht ein paar Bilder. Dieser Rechner
+  // rendert je nach Gebiet nur wenige Bilder je Sekunde - mit fester
+  // Wartezeit meldete der Test eine halb fertige Drehung als Fehler.
+  await page.waitForFunction(() => {
+    const c = (window as any).__CONTROLLER__;
+    const diff = c.game.camera.yawAngle - c.game.player.yaw;
+    return Math.abs(Math.atan2(Math.sin(diff), Math.cos(diff))) < 0.05;
+  }, undefined, { timeout: 20_000 }).catch(() => undefined);
   const after = await run(page, (c) => ({
     yaw: c.game.camera.yawAngle, facing: c.game.player.yaw,
   }));
