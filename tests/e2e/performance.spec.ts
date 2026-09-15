@@ -48,6 +48,7 @@ test.describe('Darstellungsaufwand', () => {
       quellheim: { calls: 800, triangles: 460_000 },
       wildland: { calls: 1400, triangles: 950_000 },
       hammerstadt: { calls: 800, triangles: 340_000 },
+      alte_mine: { calls: 700, triangles: 420_000 },
     };
 
     for (const [areaId, budget] of Object.entries(budgets)) {

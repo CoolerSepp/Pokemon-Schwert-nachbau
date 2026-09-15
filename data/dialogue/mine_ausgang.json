@@ -1,0 +1,16 @@
+{
+ "id": "mine_ausgang",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Das Tageslicht riechst du schon, was?",
+    "Draussen geht es rechts weiter, immer am Bach entlang nach Quellheim."
+   ],
+   "speaker": "Anschlaeger"
+  }
+ ]
+}

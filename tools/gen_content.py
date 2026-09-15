@@ -356,6 +356,45 @@ tree("ort_muellerin",
     ], speaker="Muellerin"),
 )
 
+# Alte Grube: die Sperre auf Route 1 und die Leute unter Tage.
+tree("mine_sperre",
+    node("start", [
+        "Weiter geht es hier nicht, der Hang ist abgerutscht.",
+        "Wir haben den Weg zugemacht, bevor sich noch jemand den Hals bricht.",
+        "Wenn du nach Quellheim willst: durch die Alte Grube da drueben.",
+        "Sie ist wieder in Betrieb, die Leute unter Tage zeigen dir den Weg.",
+    ], speaker="Streckenwaerter"),
+)
+
+tree("mine_arbeiter",
+    node("start", [
+        "Vorsicht mit dem Kopf, das Grubenholz haengt tief.",
+        "Der Hauptstollen fuehrt nach Osten. Was nach Norden abgeht, ist taub.",
+    ], speaker="Minenarbeiter"),
+)
+
+tree("mine_lore",
+    node("start", [
+        "Die Lore ist festgefahren, seit die Schienen krumm sind.",
+        "Frueher ist das Erz von allein bis zum Schacht gerollt.",
+    ], speaker="Foerdermann"),
+)
+
+tree("mine_einsturz",
+    node("start", [
+        "Da vorn ist der Stollen zu, seit das Dach nachgegeben hat.",
+        "Nimm die Nebenstrecke im Norden, die kommt hinter dem Bruch wieder raus.",
+        "Und pass auf, was da unten kreucht - das war vor uns hier.",
+    ], speaker="Hauerin"),
+)
+
+tree("mine_ausgang",
+    node("start", [
+        "Das Tageslicht riechst du schon, was?",
+        "Draussen geht es rechts weiter, immer am Bach entlang nach Quellheim.",
+    ], speaker="Anschlaeger"),
+)
+
 tree("route1_pfadfinder",
     node("start", [
         "Der Weg nach Quellheim ist laenger, als er aussieht.",
@@ -497,6 +536,64 @@ trainer(
     post=["Nach der letzten Kehre siehst du schon die Daecher von Quellheim."],
     appearance={"skin": "#d8b08a", "hair": "#2b2b2b", "shirt": "#3f7f9b",
                 "pants": "#5f4a33", "accent": "#d8e4f0", "hat": "cap", "height": 1.02},
+)
+
+trainer(
+    "minenarbeiter_rolf", "Minenarbeiter Rolf", "Bergmann", "defensive",
+    [mon("kieselkopf", 9), mon("sandwuehler", 10)],
+    reward=76,
+    intro=[
+        "Schichtende ist erst in zwei Stunden. Bis dahin ist der Stollen meiner.",
+        "Willst du durch, musst du dich anstrengen."],
+    defeat=["Geh weiter, aber halt dich an die Lampen."],
+    victory=["Unter Tage gewinnt, wer Geduld hat."],
+    post=["Wo die Schienen aufhoeren, faengt der schlechte Teil an."],
+    appearance={"skin": "#c99a6b", "hair": "#3a2a1c", "shirt": "#6f6455",
+                "pants": "#4a4238", "accent": "#e0b84b", "hat": "beanie"},
+)
+
+trainer(
+    "schienenleger_pit", "Schienenleger Pit", "Bergmann", "basic",
+    [mon("kribbelkaefer", 9), mon("glutkohle", 10), mon("kieselkopf", 10)],
+    reward=84,
+    intro=[
+        "Jede Schiene, die hier liegt, habe ich verlegt.",
+        "Ueber meine Strecke laeuft keiner einfach so."],
+    defeat=["Sauber. Die Strecke gehoert dir."],
+    victory=["Bleib, wo der Boden fest ist."],
+    post=["Hinter dem Bruch wird es eng. Nimm die Nordstrecke."],
+    appearance={"skin": "#d8b08a", "hair": "#5f3a2b", "shirt": "#7a5a3a",
+                "pants": "#4a4238", "accent": "#e0b84b", "hat": "cap"},
+)
+
+trainer(
+    "sprengmeisterin_edda", "Sprengmeisterin Edda", "Bergmaennin", "aggressive",
+    [mon("glutkohle", 11), mon("giftkappe", 11)],
+    reward=96,
+    intro=[
+        "Zwei Schritte zurueck. Hier wird gleich gearbeitet.",
+        "Oder du haeltst dagegen - auch recht."],
+    defeat=["Guter Schlag. Ich lasse die Ladung heute stecken."],
+    victory=["Gestein gibt nach. Du noch nicht."],
+    post=["Der Steiger steht am Ausgang. An dem kommt niemand vorbei."],
+    appearance={"skin": "#e8c19b", "hair": "#8f3f2b", "shirt": "#a8483f",
+                "pants": "#4a4238", "accent": "#e0b84b", "hat": "beanie", "height": 0.97},
+)
+
+trainer(
+    "steiger_baldur", "Steiger Baldur", "Bergmann", "smart",
+    [mon("kieselkopf", 12), mon("nachtschleier", 12), mon("sandwuehler", 13)],
+    reward=140,
+    intro=[
+        "Ich bin hier fuer die Sicherheit zustaendig, und du bist ein Risiko.",
+        "Drei Kreaturen, ein Kampf. Bestehst du, lasse ich dich ans Tageslicht."],
+    defeat=[
+        "Angenommen. Du weisst, was du tust.",
+        "Der Ausgang ist offen - und Quellheim liegt keine Stunde entfernt."],
+    victory=["Noch nicht. Sammle dich und komm wieder."],
+    post=["Grubenlicht aus, Tageslicht an. Guten Weg."],
+    appearance={"skin": "#c99a6b", "hair": "#cfcfcf", "shirt": "#4a4238",
+                "pants": "#3a3a42", "accent": "#e0b84b", "hat": "cap", "height": 1.05},
 )
 
 trainer(
@@ -695,6 +792,26 @@ QUESTS.append({
     ],
     "rewards": {"money": 1800, "items": [{"item": "aether", "quantity": 3},
                                         {"item": "superkugel", "quantity": 8}]},
+})
+
+# Die Alte Grube ist der Pflichtweg nach Quellheim; der Auftrag begleitet
+# die Durchquerung und belohnt, wer alle vier Trainer unter Tage schlaegt.
+QUESTS.append({
+    "id": "nebenquest_grube", "name": "Durch die Alte Grube", "kind": "side",
+    "description": "Der Weg ueber Route 1 ist gesperrt. Schlage dich durch die Grube.",
+    "autoStartStage": 3,
+    "steps": [
+        {"id": "rolf", "description": "Hauptstollen: Besiege Minenarbeiter Rolf.",
+         "completion": {"kind": "defeatTrainer", "trainer": "minenarbeiter_rolf"}},
+        {"id": "pit", "description": "Foerderstrecke: Besiege Schienenleger Pit.",
+         "completion": {"kind": "defeatTrainer", "trainer": "schienenleger_pit"}},
+        {"id": "edda", "description": "Nordstrecke: Besiege Sprengmeisterin Edda.",
+         "completion": {"kind": "defeatTrainer", "trainer": "sprengmeisterin_edda"}},
+        {"id": "baldur", "description": "Ausfahrt: Besiege Steiger Baldur.",
+         "completion": {"kind": "defeatTrainer", "trainer": "steiger_baldur"}},
+    ],
+    "rewards": {"money": 1500, "items": [{"item": "superkugel", "quantity": 6},
+                                        {"item": "trank", "quantity": 4}]},
 })
 
 # ==========================================================================

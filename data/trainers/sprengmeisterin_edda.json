@@ -1,0 +1,41 @@
+{
+ "id": "sprengmeisterin_edda",
+ "name": "Sprengmeisterin Edda",
+ "trainerClass": "Bergmaennin",
+ "ai": "aggressive",
+ "team": [
+  {
+   "species": "glutkohle",
+   "level": 11
+  },
+  {
+   "species": "giftkappe",
+   "level": 11
+  }
+ ],
+ "rewardBase": 96,
+ "dialogue": {
+  "intro": [
+   "Zwei Schritte zurueck. Hier wird gleich gearbeitet.",
+   "Oder du haeltst dagegen - auch recht."
+  ],
+  "defeat": [
+   "Guter Schlag. Ich lasse die Ladung heute stecken."
+  ],
+  "victory": [
+   "Gestein gibt nach. Du noch nicht."
+  ],
+  "postBattle": [
+   "Der Steiger steht am Ausgang. An dem kommt niemand vorbei."
+  ]
+ },
+ "appearance": {
+  "skin": "#e8c19b",
+  "hair": "#8f3f2b",
+  "shirt": "#a8483f",
+  "pants": "#4a4238",
+  "accent": "#e0b84b",
+  "hat": "beanie",
+  "height": 0.97
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "id": "steiger_baldur",
+ "name": "Steiger Baldur",
+ "trainerClass": "Bergmann",
+ "ai": "smart",
+ "team": [
+  {
+   "species": "kieselkopf",
+   "level": 12
+  },
+  {
+   "species": "nachtschleier",
+   "level": 12
+  },
+  {
+   "species": "sandwuehler",
+   "level": 13
+  }
+ ],
+ "rewardBase": 140,
+ "dialogue": {
+  "intro": [
+   "Ich bin hier fuer die Sicherheit zustaendig, und du bist ein Risiko.",
+   "Drei Kreaturen, ein Kampf. Bestehst du, lasse ich dich ans Tageslicht."
+  ],
+  "defeat": [
+   "Angenommen. Du weisst, was du tust.",
+   "Der Ausgang ist offen - und Quellheim liegt keine Stunde entfernt."
+  ],
+  "victory": [
+   "Noch nicht. Sammle dich und komm wieder."
+  ],
+  "postBattle": [
+   "Grubenlicht aus, Tageslicht an. Guten Weg."
+  ]
+ },
+ "appearance": {
+  "skin": "#c99a6b",
+  "hair": "#cfcfcf",
+  "shirt": "#4a4238",
+  "pants": "#3a3a42",
+  "accent": "#e0b84b",
+  "hat": "cap",
+  "height": 1.05
+ }
+}

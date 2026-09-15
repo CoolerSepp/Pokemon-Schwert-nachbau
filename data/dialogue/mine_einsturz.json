@@ -1,0 +1,17 @@
+{
+ "id": "mine_einsturz",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Da vorn ist der Stollen zu, seit das Dach nachgegeben hat.",
+    "Nimm die Nebenstrecke im Norden, die kommt hinter dem Bruch wieder raus.",
+    "Und pass auf, was da unten kreucht - das war vor uns hier."
+   ],
+   "speaker": "Hauerin"
+  }
+ ]
+}

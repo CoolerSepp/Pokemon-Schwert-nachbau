@@ -1,0 +1,40 @@
+{
+ "id": "minenarbeiter_rolf",
+ "name": "Minenarbeiter Rolf",
+ "trainerClass": "Bergmann",
+ "ai": "defensive",
+ "team": [
+  {
+   "species": "kieselkopf",
+   "level": 9
+  },
+  {
+   "species": "sandwuehler",
+   "level": 10
+  }
+ ],
+ "rewardBase": 76,
+ "dialogue": {
+  "intro": [
+   "Schichtende ist erst in zwei Stunden. Bis dahin ist der Stollen meiner.",
+   "Willst du durch, musst du dich anstrengen."
+  ],
+  "defeat": [
+   "Geh weiter, aber halt dich an die Lampen."
+  ],
+  "victory": [
+   "Unter Tage gewinnt, wer Geduld hat."
+  ],
+  "postBattle": [
+   "Wo die Schienen aufhoeren, faengt der schlechte Teil an."
+  ]
+ },
+ "appearance": {
+  "skin": "#c99a6b",
+  "hair": "#3a2a1c",
+  "shirt": "#6f6455",
+  "pants": "#4a4238",
+  "accent": "#e0b84b",
+  "hat": "beanie"
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "id": "mine_arbeiter",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Vorsicht mit dem Kopf, das Grubenholz haengt tief.",
+    "Der Hauptstollen fuehrt nach Osten. Was nach Norden abgeht, ist taub."
+   ],
+   "speaker": "Minenarbeiter"
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "id": "mine_lore",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Die Lore ist festgefahren, seit die Schienen krumm sind.",
+    "Frueher ist das Erz von allein bis zum Schacht gerollt."
+   ],
+   "speaker": "Foerdermann"
+  }
+ ]
+}

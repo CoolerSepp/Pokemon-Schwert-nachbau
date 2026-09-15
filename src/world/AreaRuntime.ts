@@ -7,7 +7,7 @@ import { TerrainField, type FlattenZone } from './TerrainField';
 import { CollisionGrid } from './CollisionGrid';
 import {
   buildTerrainMesh, buildSky, buildBackdrop, backdropOuterRadius, buildGroundSkirt,
-  BIOME_PALETTES,
+  buildCaveCeiling, BIOME_PALETTES,
   type BiomePalette, type PathSegment,
 } from './TerrainMesh';
 import { PropFactory, type PropKind } from './PropFactory';
@@ -163,6 +163,10 @@ export class AreaRuntime {
   readonly backdrop: THREE.Group | null = null;
   /** Flache Landflaeche zwischen Gebietsrand und Bergfuss. */
   readonly groundSkirt: THREE.Mesh | null = null;
+  /** Hoehlendecke - nur in Hoehlen, dort gibt es keine Innenraumwaende. */
+  readonly caveCeiling: THREE.Mesh | null = null;
+  /** Abstand der Hoehlendecke ueber dem Boden, 0 = keine Decke. */
+  private ceilingClearance = 0;
   /** Materialien von Kulisse und Landflaeche - werden nach Tageszeit getoent. */
   private readonly distantMaterials: THREE.MeshBasicMaterial[] = [];
   /** Radius der Himmelskugel - die Kamera muss weiter sehen als bis dorthin. */
@@ -251,6 +255,18 @@ export class AreaRuntime {
         if (mesh.isMesh) this.distantMaterials.push(mesh.material as THREE.MeshBasicMaterial);
       });
       this.distantMaterials.push(this.groundSkirt.material as THREE.MeshBasicMaterial);
+    }
+
+    // Hoehlen haben keine Innenraumwaende - ohne Decke endet der Stollen
+    // nach oben im Nichts und man steht in einem schwarzen Raum.
+    if (data.kind === 'cave') {
+      const clearance = 7;
+      this.caveCeiling = buildCaveCeiling(
+        this.palette, data.size[0], data.size[1],
+        (x, z) => this.field.heightAt(x, z), clearance,
+      );
+      this.root.add(this.caveCeiling);
+      this.ceilingClearance = clearance;
     }
 
     this.buildInterior();
@@ -770,6 +786,24 @@ export class AreaRuntime {
    * abhaengig und kuerzer als der Abstand zur Kulisse). Ohne diesen Ton
    * blieben die Berge nachts taghell.
    */
+  /**
+   * Hoehe, unter der die Kamera bleiben muss - oder null im Freien.
+   *
+   * Bewusst ortsabhaengig: in einer Hoehle folgt die Decke dem Boden. Eine
+   * feste Hoehe fuer das ganze Gebiet druecke die Kamera in den tiefsten
+   * Stollen hinunter, sobald das Gelaende irgendwo tiefer liegt.
+   */
+  ceilingAt(x: number, z: number): number | null {
+    const style = this.data.interiorStyle;
+    if (style && style.ceiling !== false) {
+      return this.field.heightAt(x, z) + style.wallHeight - 0.35;
+    }
+    if (this.ceilingClearance > 0) {
+      return this.field.heightAt(x, z) + this.ceilingClearance - 1.2;
+    }
+    return null;
+  }
+
   setDistantTint(color: THREE.Color): void {
     for (const material of this.distantMaterials) material.color.copy(color);
   }
@@ -852,12 +886,14 @@ export class AreaRuntime {
       // Nur gebietsspezifische Geometrien freigeben; geteilte bleiben im Cache.
       const ownGeometry = mesh.name === 'terrain' || mesh.name === 'water'
         || mesh.name === 'sky' || mesh.name === 'groundSkirt'
+        || mesh.name === 'caveCeiling'
         || mesh.name.startsWith('backdrop-')
         || mesh.parent?.name === 'props'
         || mesh.parent?.name === 'building';
       if (mesh.geometry && ownGeometry) mesh.geometry.dispose();
       // Kulisse und Landflaeche haben jeweils ein eigenes Material.
-      if (mesh.name === 'groundSkirt' || mesh.name.startsWith('backdrop-')) {
+      if (mesh.name === 'groundSkirt' || mesh.name === 'caveCeiling'
+        || mesh.name.startsWith('backdrop-')) {
         (mesh.material as THREE.Material).dispose();
       }
       if (mesh.name === 'sky') {

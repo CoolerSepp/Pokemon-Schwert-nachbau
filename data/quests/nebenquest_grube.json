@@ -1,0 +1,54 @@
+{
+ "id": "nebenquest_grube",
+ "name": "Durch die Alte Grube",
+ "kind": "side",
+ "description": "Der Weg ueber Route 1 ist gesperrt. Schlage dich durch die Grube.",
+ "autoStartStage": 3,
+ "steps": [
+  {
+   "id": "rolf",
+   "description": "Hauptstollen: Besiege Minenarbeiter Rolf.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "minenarbeiter_rolf"
+   }
+  },
+  {
+   "id": "pit",
+   "description": "Foerderstrecke: Besiege Schienenleger Pit.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "schienenleger_pit"
+   }
+  },
+  {
+   "id": "edda",
+   "description": "Nordstrecke: Besiege Sprengmeisterin Edda.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "sprengmeisterin_edda"
+   }
+  },
+  {
+   "id": "baldur",
+   "description": "Ausfahrt: Besiege Steiger Baldur.",
+   "completion": {
+    "kind": "defeatTrainer",
+    "trainer": "steiger_baldur"
+   }
+  }
+ ],
+ "rewards": {
+  "money": 1500,
+  "items": [
+   {
+    "item": "superkugel",
+    "quantity": 6
+   },
+   {
+    "item": "trank",
+    "quantity": 4
+   }
+  ]
+ }
+}

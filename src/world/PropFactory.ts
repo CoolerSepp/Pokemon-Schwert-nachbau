@@ -30,6 +30,8 @@ export const PROP_KINDS = [
   // Laendliches Inventar: Hoefe, Felder und Marktplaetze.
   'haystack', 'scarecrow', 'woodpile', 'stall', 'laundry', 'planter',
   'hedge', 'windmill', 'trough', 'beehive', 'sack', 'ladder',
+  // Bergbau: Stollenmund, Grubenholz, Gleis, Lore und Foerderturm.
+  'mineEntrance', 'support', 'rail', 'minecart', 'headframe',
 ] as const;
 export type PropKind = (typeof PROP_KINDS)[number];
 
@@ -117,6 +119,11 @@ export class PropFactory {
       case 'beehive': return this.beehive(scale);
       case 'sack': return this.sack(rng, scale);
       case 'ladder': return this.ladder(scale);
+      case 'mineEntrance': return this.mineEntrance(scale);
+      case 'support': return this.support(scale);
+      case 'rail': return this.rail(scale);
+      case 'minecart': return this.minecart(rng, scale);
+      case 'headframe': return this.headframe(scale);
     }
   }
 
@@ -780,6 +787,136 @@ export class PropFactory {
     }
     g.rotation.x = -0.14;
     return { object: g, collisionRadius: 0.4 * scale, height: h };
+  }
+
+  // ----------------------------------------------------------- Bergbau
+
+  /**
+   * Stollenmund: ein gezimmertes Portal mit dunklem Eingang.
+   *
+   * Der Eingang selbst bleibt frei begehbar - dort liegt der Uebergang in
+   * die Mine. Kollision tragen nur die beiden Pfosten, sonst stuende man
+   * vor einer unsichtbaren Wand statt im Stollen.
+   */
+  private mineEntrance(scale: number): PropResult {
+    const g = new THREE.Group();
+    const w = 4.6 * scale;
+    const h = 3.8 * scale;
+    const postW = 0.5 * scale;
+
+    for (const sx of [-1, 1]) {
+      const x = sx * (w / 2 - postW / 2);
+      g.add(this.mesh('box', [postW, h, postW * 1.2], '#6b4f33', [x, h * 0.5, 0],
+        { texture: 'plank', repeat: 2 }));
+      // Schraege Strebe nach innen - ohne sie sieht das Portal aus wie ein
+      // Tuerrahmen und nicht wie Grubenholz.
+      g.add(this.mesh('box', [0.3 * scale, 1.5 * scale, 0.22 * scale], DARK_WOOD,
+        [x - sx * 0.55 * scale, h * 0.78, 0], { rot: [0, 0, sx * 0.62] }));
+    }
+    g.add(this.mesh('box', [w * 1.12, 0.55 * scale, postW * 1.4], '#7a5a3a',
+      [0, h - 0.28 * scale, 0], { texture: 'plank', repeat: 3 }));
+    g.add(this.mesh('box', [w * 1.2, 0.3 * scale, postW * 1.6], DARK_WOOD,
+      [0, h + 0.15 * scale, 0]));
+    // Der Berg HINTER dem Rahmen und die dunkle Oeffnung darin. Beides
+    // liegt auf der +Z-Seite: der Spieler kommt von -Z und sieht sonst
+    // den Fels vor dem Portal statt dahinter.
+    g.add(this.mesh('box', [w * 1.5, h * 1.25, 1.6 * scale], '#6f6455',
+      [0, h * 0.62, 1.4 * scale], { texture: 'rock', repeat: 2 }));
+    g.add(this.mesh('box', [w * 0.78, h * 0.82, 0.3 * scale], '#100d0b',
+      [0, h * 0.41, 0.55 * scale]));
+    return {
+      object: g, collisionRadius: 0, height: h * 1.4,
+      // Nur die Pfosten und der Fels dahinter sperren; die Mitte bleibt frei.
+      collisionBox: { width: w * 1.5, depth: 1.0 * scale },
+    };
+  }
+
+  /** Grubenholz: zwei Stempel mit Kappe, quer ueber den Stollen. */
+  private support(scale: number): PropResult {
+    const g = new THREE.Group();
+    const w = 3.4 * scale;
+    const h = 2.9 * scale;
+    for (const sx of [-1, 1]) {
+      g.add(this.mesh('box', [0.36 * scale, h, 0.36 * scale],
+        '#6b4f33', [sx * (w / 2), h * 0.5, 0], { texture: 'plank', repeat: 2 }));
+    }
+    g.add(this.mesh('box', [w * 1.16, 0.34 * scale, 0.4 * scale], '#7a5a3a',
+      [0, h - 0.17 * scale, 0], { texture: 'plank', repeat: 3 }));
+    return {
+      object: g, collisionRadius: 0, height: h,
+      // Nur die Stempel sperren - unter der Kappe laeuft man hindurch.
+      collisionBox: { width: w * 1.18, depth: 0.5 * scale },
+    };
+  }
+
+  /** Grubengleis: zwei Schienen auf Schwellen, vollstaendig begehbar. */
+  private rail(scale: number): PropResult {
+    const g = new THREE.Group();
+    const len = 3.2 * scale;
+    for (let i = 0; i < 4; i++) {
+      g.add(this.mesh('box', [1.5 * scale, 0.12 * scale, 0.26 * scale], '#5a4433',
+        [0, 0.06 * scale, (i / 3 - 0.5) * len], { texture: 'plank' }));
+    }
+    for (const sx of [-1, 1]) {
+      g.add(this.mesh('box', [0.12 * scale, 0.14 * scale, len], '#8f8a80',
+        [sx * 0.52 * scale, 0.17 * scale, 0], { metal: 0.5 }));
+    }
+    return { object: g, collisionRadius: 0, height: 0.3 * scale };
+  }
+
+  /** Lore: Holzkasten auf vier Raedern. */
+  private minecart(rng: RNG, scale: number): PropResult {
+    const g = new THREE.Group();
+    const w = 1.5 * scale;
+    const d = 1.0 * scale;
+    const h = 0.9 * scale;
+    g.add(this.mesh('box', [w, h, d], '#7a5a3a', [0, h * 0.62, 0],
+      { texture: 'plank', repeat: 2 }));
+    g.add(this.mesh('box', [w * 0.9, 0.12 * scale, d * 0.86], '#4a4238',
+      [0, h * 1.06, 0]));
+    // Erzbrocken in der Lore.
+    for (let i = 0; i < 3; i++) {
+      g.add(this.mesh('sphere', [0.2 * scale, 0.16 * scale, 0.2 * scale],
+        i === 1 ? '#8f8272' : '#6f6455',
+        [(i - 1) * 0.42 * scale, h * 1.16, rng.float(-0.12, 0.12) * scale],
+        { detail: 1 }));
+    }
+    for (const sx of [-1, 1]) {
+      for (const sz of [-1, 1]) {
+        g.add(this.mesh('cylinder', [0.22 * scale, 0.1 * scale, 0.22 * scale], '#3f3a33',
+          [sx * w * 0.34, 0.22 * scale, sz * d * 0.4],
+          { rot: [0, 0, Math.PI / 2], detail: 1, metal: 0.4 }));
+      }
+    }
+    return {
+      object: g, collisionRadius: 0, height: h * 1.4,
+      collisionBox: { width: w * 1.05, depth: d * 1.05 },
+    };
+  }
+
+  /** Foerderturm ueber dem Schacht - Wahrzeichen der Grube. */
+  private headframe(scale: number): PropResult {
+    const g = new THREE.Group();
+    const h = 8.5 * scale;
+    const base = 2.4 * scale;
+    for (const sx of [-1, 1]) {
+      for (const sz of [-1, 1]) {
+        // Nach innen geneigte Beine.
+        g.add(this.mesh('box', [0.3 * scale, h, 0.3 * scale], '#6b4f33',
+          [sx * base * 0.45, h * 0.5, sz * base * 0.45],
+          { rot: [sz * -0.06, 0, sx * -0.06], texture: 'plank', repeat: 3 }));
+      }
+    }
+    for (const y of [0.3, 0.6, 0.9]) {
+      g.add(this.mesh('box', [base * 1.5, 0.2 * scale, base * 1.5], DARK_WOOD,
+        [0, h * y, 0]));
+    }
+    // Seilscheibe oben.
+    g.add(this.mesh('torus', [1.1 * scale, 1.1 * scale, 1.1 * scale], '#57534a',
+      [0, h + 0.5 * scale, 0], { rot: [0, Math.PI / 2, 0], detail: 2, metal: 0.5 }));
+    g.add(this.mesh('box', [0.25 * scale, 0.25 * scale, 2.4 * scale], '#4a4238',
+      [0, h + 0.5 * scale, 0], { metal: 0.5 }));
+    return { object: g, collisionRadius: base * 0.9, height: h + 2 * scale };
   }
 
   /**

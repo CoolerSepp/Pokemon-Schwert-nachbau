@@ -1,0 +1,18 @@
+{
+ "id": "mine_sperre",
+ "entry": [
+  "start"
+ ],
+ "nodes": [
+  {
+   "id": "start",
+   "lines": [
+    "Weiter geht es hier nicht, der Hang ist abgerutscht.",
+    "Wir haben den Weg zugemacht, bevor sich noch jemand den Hals bricht.",
+    "Wenn du nach Quellheim willst: durch die Alte Grube da drueben.",
+    "Sie ist wieder in Betrieb, die Leute unter Tage zeigen dir den Weg."
+   ],
+   "speaker": "Streckenwaerter"
+  }
+ ]
+}

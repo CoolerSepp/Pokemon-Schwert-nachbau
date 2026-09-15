@@ -431,13 +431,21 @@ area(
 # Der Weg ist bewusst NICHT gerade. Jede Kehre hat einen Grund im Gelaende -
 # eine Heckenreihe, eine Felsenge, ein Waldstueck, ein Anstieg -, damit die
 # Kurve gelesen und nicht nur gelaufen wird.
-ROUTE1_PATH = [
+# Der Weg ist bei z=147 dauerhaft gesperrt: dort ist der Hang abgerutscht,
+# ein Zaun riegelt die ganze Breite ab. Weiter geht es nur durch die Alte
+# Grube - deshalb zwei getrennte Wegstuecke statt eines durchgehenden.
+ROUTE1_PATH_SUED = [
     # Abschnitt 1: Wiese, weiter Bogen nach Westen.
     [60, 2], [52, 24], [44, 48], [56, 70],
     # Abschnitt 2: Heckenlabyrinth, drei versetzte Durchlaesse.
-    [60, 76], [34, 96], [30, 118], [52, 134],
-    # Abschnitt 3: Felsenge und Furt, scharf nach Osten.
-    [64, 140], [88, 158], [92, 182], [70, 200],
+    [60, 76], [34, 96], [30, 118], [46, 132],
+    # Abschnitt 3a: Abzweig nach Westen zum Stollenmund.
+    [34, 138], [25, 142],
+]
+
+ROUTE1_PATH_NORD = [
+    # Abschnitt 3b: aus der Grube heraus, dann nach Osten zur Furt.
+    [96, 158], [90, 166], [92, 182], [70, 200],
     # Abschnitt 4: Waldstueck und grosses Grasfeld im Westen.
     [58, 208], [30, 230], [28, 254], [50, 272],
     # Abschnitt 5: Serpentinen den Anstieg hinauf.
@@ -447,7 +455,7 @@ ROUTE1_PATH = [
 ]
 
 # Aussichtspunkt im Westen - Sackgasse mit dem versteckten Fund.
-ROUTE1_AUSSICHT = [[30, 118], [14, 126], [10, 146], [14, 166]]
+ROUTE1_AUSSICHT = [[30, 118], [14, 126], [10, 140]]
 # Waldweg im Osten - laengerer, aber ergiebigerer Umweg um das Grasfeld.
 ROUTE1_WALDWEG = [[58, 208], [86, 222], [96, 244], [72, 262]]
 
@@ -478,7 +486,8 @@ area(
         "baseHeight": 0, "amplitude": 8.5, "frequency": 0.0095, "octaves": 3,
         "cliffBorder": True,
         "paths": [
-            {"points": ROUTE1_PATH, "width": 9},
+            {"points": ROUTE1_PATH_SUED, "width": 9},
+            {"points": ROUTE1_PATH_NORD, "width": 9},
             {"points": ROUTE1_AUSSICHT, "width": 5},
             {"points": ROUTE1_WALDWEG, "width": 6},
         ],
@@ -526,11 +535,16 @@ area(
     spawnPoints=[
         sp("from_startdorf", 60, 9, 0),
         sp("from_quellheim", 60, 391, math.pi),
+        sp("from_mine_sued", 25, 136, math.pi),
+        sp("from_mine_nord", 96, 161, 0),
         sp("default", 60, 9, 0),
     ],
     connections=[
         conn("startdorf", 52, 0, 16, 3, "from_route1"),
         conn("quellheim", 52, 396, 16, 3, "from_route1"),
+        # Stollenmund suedlich der Sperre und Ausfahrt noerdlich davon.
+        conn("alte_mine", 20.5, 139, 9, 3, "from_route1_sued", label="Alte Grube"),
+        conn("alte_mine", 91.5, 153, 9, 3, "from_route1_nord", label="Alte Grube"),
     ],
     props=(
         # --- Abschnitt 2: Heckenlabyrinth --------------------------------
@@ -547,16 +561,34 @@ area(
         + hedge_line(14, 88, 14, 104)
         + hedge_line(92, 106, 92, 124)
         + hedge_line(36, 108, 36, 122)
-        # --- Abschnitt 3: Felsenge und Furt ------------------------------
-        + [prop("boulder", 68, 150, 0.4, 1.7, 11), prop("boulder", 87, 152, 1.1, 1.8, 12),
-           prop("boulder", 64, 146, 2.2, 1.5, 13), prop("boulder", 91, 147, 0.8, 1.6, 14),
-           prop("rock", 72, 144, 0.7, 1.2, 15), prop("rock", 84, 145, 1.8, 1.1, 16),
-           prop("sign", 60, 138, SOUTH, 1.0, 17),
+        # --- Abschnitt 3: Sperre, Stollenmund und Furt --------------------
+        # Der Zaun riegelt die volle Breite ab. Endete er ein paar Meter vor
+        # dem Rand, liefe man aussen an der begehbaren Boeschung vorbei -
+        # dieselbe Falle wie bei den Heckenreihen.
+        + fence_line(0, 147, 120, 147)
+        # Abgerutschter Hang hinter dem Zaun. Die Ausfahrt der Grube bei
+        # x 92..101 bleibt frei, sonst stuende dort ein Fels im Weg.
+        + [prop("boulder", 6 + i * 9, 152, 0.3 * i, 1.7, 11 + i) for i in range(10)]
+        + [prop("boulder", 108 + i * 7, 152, 0.4 * i, 1.6, 21 + i) for i in range(2)]
+        + [prop("boulder", 12 + i * 11, 158, 0.5 * i, 1.5, 23 + i) for i in range(6)]
+        # Stollenmund suedlich der Sperre, Ausfahrt noerdlich davon.
+        + [prop("mineEntrance", 25, 145.5, 0, 1.0, 40),
+           prop("mineEntrance", 96, 150.5, SOUTH, 1.0, 41),
+           prop("headframe", 15, 138, 0.4, 1.0, 42),
+           prop("minecart", 33, 141, EAST, 1.0, 43),
+           prop("rail", 29, 142, EAST, 1.0, 44),
+           prop("rail", 32.2, 142, EAST, 1.0, 45),
+           prop("crate", 18, 133, 0.3, 1.0, 46),
+           prop("barrel", 21, 132, 0, 1.0, 47),
+           prop("sign", 40, 136, SOUTH, 1.0, 17),
+           prop("lamp", 30, 136, 0, 1.0, 48),
+           prop("lamp", 90, 158, 0, 1.0, 49),
+           prop("minecart", 102, 157, WEST, 1.0, 50),
            prop("reed", 100, 172, 0, 1.2, 18), prop("reed", 104, 180, 0, 1.1, 19),
            prop("rock", 96, 176, 0.5, 1.0, 20), prop("rock", 84, 186, 1.3, 1.1, 21),
            prop("boulder", 78, 174, 0.9, 1.4, 22), prop("stump", 74, 164, 0, 1.0, 23)]
-        # Baumriegel, der die Abkuerzung quer ueber die Mitte verhindert.
-        + [prop("tree", 40 + (i % 4) * 7, 150 + i * 6, 0.3 * i, 1.25, 30 + i)
+        # Baumriegel entlang der Sperre, damit sie als Waldrand gelesen wird.
+        + [prop("tree", 44 + (i % 4) * 7, 160 + i * 6, 0.3 * i, 1.25, 30 + i)
            for i in range(9)]
         # --- Abschnitt 4: Waldstueck am oestlichen Umweg ------------------
         + [prop("tree", 78 + (i % 3) * 9, 212 + i * 6, 0.4 * i, 1.3, 50 + i)
@@ -611,8 +643,13 @@ area(
             trainer="heckenlaeufer_juli",
             appearance={"skin": "#e8c19b", "hair": "#6b4f2b", "shirt": "#7aa84b",
                         "pants": "#4a5f33", "accent": "#e0e8a0", "hat": "beanie"}),
-        # Abschnitt 3: in der Felsenge.
-        npc("route1_trainer_6", 77, 154, SOUTH, name="Felsgaenger Tom",
+        # An der Sperre: erklaert, warum es hier nicht weitergeht.
+        npc("route1_sperre", 44, 141, SOUTH, name="Streckenwaerter",
+            dialogue="mine_sperre",
+            appearance={"skin": "#c99a6b", "hair": "#4a4a4a", "shirt": "#c4763f",
+                        "pants": "#4a4238", "accent": "#e0b84b", "hat": "cap"}),
+        # Abschnitt 3: hinter der Grube, am Aufstieg zur Furt.
+        npc("route1_trainer_6", 84, 170, SOUTH, name="Felsgaenger Tom",
             trainer="felsgaenger_tom",
             appearance={"skin": "#c99a6b", "hair": "#4a4a4a", "shirt": "#8a8272",
                         "pants": "#4a4a52", "accent": "#c9c0ae", "hat": "beanie"}),
@@ -660,7 +697,7 @@ area(
         # In einer Sackgasse des Labyrinths.
         item("route1_hecke", "beere_rot", 88, 116, 2),
         # Am Ende des Aussichtspfads - nur wer abbiegt, findet ihn.
-        item("route1_versteck", "superkugel", 14, 162, 2, hidden=True),
+        item("route1_versteck", "superkugel", 11, 137, 2, hidden=True),
         item("route1_furt", "trank", 104, 186, 1),
         # Auf dem oestlichen Waldweg.
         item("route1_wald", "beere_blau", 92, 250, 2),
@@ -670,6 +707,146 @@ area(
         item("route1_nugget", "nugget", 30, 388, 1, hidden=True),
     ],
     ambience={"fogNear": 60, "fogFar": 360},
+)
+
+# ==========================================================================
+# ALTE GRUBE - PFLICHTWEG UNTER DER SPERRE HINDURCH
+# ==========================================================================
+# Route 1 ist bei z=147 gesperrt. Der einzige Weg nach Norden fuehrt durch
+# diese Grube: hinein im Westen, hinaus im Osten.
+#
+# Die Waende sind Gelaende, nicht Requisiten: hohe Amplitude mit "ridged"
+# Rauschen ergibt scharfe Felsrippen, die Stollen entstehen als geglaettete
+# Wege dazwischen. Der Bruch im Hauptstollen ist dagegen aus Felsbloecken
+# gebaut - er muss eine echte Sperre sein und nicht nur eine steile Flanke.
+MINE_HAUPTSTOLLEN = [[6, 60], [34, 56], [58, 64], [80, 58], [100, 66]]
+MINE_NORDSTRECKE = [[58, 64], [62, 34], [92, 24], [118, 36], [128, 60]]
+MINE_AUSFAHRT = [[128, 60], [146, 56], [164, 60]]
+MINE_SACKGASSE = [[80, 58], [88, 86], [78, 104]]
+
+area(
+    id="alte_mine", name="Alte Grube", kind="cave", biome="cave",
+    size=[170, 120], seed=1250, mapPos=[42, 66], indoor=True,
+    description="Ein wieder in Betrieb genommenes Bergwerk. Der einzige Weg "
+                "nach Norden, seit der Hang auf Route 1 abgerutscht ist.",
+    music="cave", weather=[],
+    terrain={
+        # Kraeftige, scharfkantige Rippen: sie sind die Stollenwaende.
+        "baseHeight": 0, "amplitude": 15, "frequency": 0.042, "octaves": 3,
+        "ridged": True, "cliffBorder": True,
+        "paths": [
+            {"points": MINE_HAUPTSTOLLEN, "width": 8},
+            {"points": MINE_NORDSTRECKE, "width": 7},
+            {"points": MINE_AUSFAHRT, "width": 8},
+            {"points": MINE_SACKGASSE, "width": 6},
+        ],
+    },
+    # Ausgeschrieben statt ueber den Helfer "spawn": der wird erst weiter
+    # unten definiert, und die Grube soll bei Route 1 stehen bleiben.
+    spawnTable=[
+        {"species": "kieselkopf", "minLevel": 7, "maxLevel": 11, "weight": 24, "behaviour": "static"},
+        {"species": "sandwuehler", "minLevel": 7, "maxLevel": 11, "weight": 20, "behaviour": "wander"},
+        {"species": "kribbelkaefer", "minLevel": 6, "maxLevel": 10, "weight": 16, "behaviour": "wander"},
+        {"species": "giftkappe", "minLevel": 8, "maxLevel": 12, "weight": 13, "behaviour": "static"},
+        {"species": "nachtschleier", "minLevel": 8, "maxLevel": 12, "weight": 12, "behaviour": "aggressive"},
+        {"species": "glutkohle", "minLevel": 8, "maxLevel": 12, "weight": 9, "behaviour": "static"},
+        {"species": "tintenschleim", "minLevel": 8, "maxLevel": 12, "weight": 6, "behaviour": "shy", "rare": True},
+    ],
+    maxWild=20,
+    spawnPoints=[
+        sp("from_route1_sued", 10, 60, EAST),
+        sp("from_route1_nord", 160, 60, WEST),
+        sp("default", 10, 60, EAST),
+    ],
+    connections=[
+        conn("route_1", 0, 53, 4, 14, "from_mine_sued", label="Zurueck ins Freie"),
+        conn("route_1", 166, 53, 4, 14, "from_mine_nord", label="Ausfahrt"),
+    ],
+    props=(
+        # --- Der Bruch: hier ist der Hauptstollen zu ---------------------
+        # Zwei versetzte Reihen Felsbloecke quer durch den Stollen. Sie
+        # tragen Kollision und sind damit die einzige echte Sperre der
+        # Grube; alles andere sind Felswaende aus dem Gelaende.
+        [prop("boulder", 106, 46 + i * 6, 0.4 * i, 1.8, 100 + i) for i in range(9)]
+        + [prop("boulder", 112, 49 + i * 6, 0.7 * i, 1.7, 110 + i) for i in range(9)]
+        + [prop("rock", 100, 72, 0.5, 1.3, 120), prop("rock", 103, 58, 1.4, 1.2, 121),
+           prop("support", 98, 66, EAST, 1.0, 122),
+           prop("crate", 95, 71, 0.2, 1.0, 123), prop("barrel", 93, 62, 0, 1.0, 124)]
+        # --- Hauptstollen: Grubenholz, Gleis und Loren -------------------
+        + [prop("support", 18, 59, EAST, 1.0, 1), prop("support", 30, 56, EAST, 1.0, 2),
+           prop("support", 46, 58, EAST, 1.0, 3), prop("support", 68, 61, EAST, 1.0, 4),
+           prop("support", 88, 59, EAST, 1.0, 5)]
+        + [prop("rail", 12 + i * 3.2, 59.5, EAST, 1.0, 10 + i) for i in range(8)]
+        + [prop("rail", 62 + i * 3.2, 62, EAST, 1.0, 20 + i) for i in range(6)]
+        + [prop("minecart", 40, 57, EAST, 1.0, 30),
+           prop("minecart", 84, 60, EAST, 1.0, 31),
+           prop("ladder", 24, 68, 0.3, 1.0, 32),
+           prop("crate", 36, 51, 0.4, 1.0, 33), prop("crate", 38, 50, 1.2, 0.9, 34),
+           prop("barrel", 52, 69, 0, 1.0, 35), prop("sack", 55, 68, 0, 1.0, 36)]
+        # --- Licht: Fackeln entlang aller begehbaren Strecken -------------
+        + [prop("torch", 14, 56, 0, 1.0, 40), prop("torch", 34, 61, 0, 1.0, 41),
+           prop("torch", 58, 58, 0, 1.0, 42), prop("torch", 76, 62, 0, 1.0, 43),
+           prop("torch", 62, 40, 0, 1.0, 44), prop("torch", 76, 27, 0, 1.0, 45),
+           prop("torch", 98, 24, 0, 1.0, 46), prop("torch", 118, 31, 0, 1.0, 47),
+           prop("torch", 126, 54, 0, 1.0, 48), prop("torch", 142, 60, 0, 1.0, 49),
+           prop("torch", 158, 56, 0, 1.0, 50), prop("torch", 86, 80, 0, 1.0, 51)]
+        # --- Nordstrecke: der Umweg um den Bruch -------------------------
+        + [prop("support", 62, 44, 0, 1.0, 60), prop("support", 70, 30, 0.9, 1.0, 61),
+           prop("support", 100, 26, 1.4, 1.0, 62), prop("support", 122, 44, 0.3, 1.0, 63),
+           prop("minecart", 88, 29, 1.2, 1.0, 64),
+           prop("crystal", 66, 22, 0.3, 1.3, 65), prop("crystal", 110, 22, 1.1, 1.2, 66),
+           prop("stalagmite", 78, 40, 0, 1.5, 67), prop("stalagmite", 108, 44, 0, 1.4, 68),
+           prop("stalagmite", 52, 26, 0, 1.3, 69), prop("rock", 96, 38, 0.8, 1.2, 70)]
+        # --- Sackgasse im Sueden: Fund fuer alle, die abbiegen -----------
+        + [prop("stalagmite", 84, 74, 0, 1.4, 80), prop("crystal", 82, 96, 0.5, 1.5, 81),
+           prop("boulder", 72, 100, 1.2, 1.4, 82), prop("barrel", 76, 99, 0, 1.0, 83),
+           prop("crate", 74, 97, 0.6, 1.0, 84)]
+        # --- Ausfahrt ----------------------------------------------------
+        + [prop("support", 134, 58, EAST, 1.0, 90), prop("support", 152, 57, EAST, 1.0, 91),
+           prop("minecart", 140, 62, EAST, 1.0, 92),
+           prop("crate", 156, 66, 0.3, 1.0, 93), prop("sack", 158, 65, 0, 1.0, 94),
+           prop("stalagmite", 130, 70, 0, 1.3, 95), prop("crystal", 148, 48, 0.9, 1.2, 96)]
+    ),
+    npcs=[
+        npc("mine_arbeiter_1", 22, 63, EAST, name="Minenarbeiter", dialogue="mine_arbeiter",
+            appearance={"skin": "#c99a6b", "hair": "#3a2a1c", "shirt": "#6f6455",
+                        "pants": "#4a4238", "accent": "#e0b84b", "hat": "cap"}),
+        npc("mine_t1", 44, 57, EAST, name="Minenarbeiter Rolf", trainer="minenarbeiter_rolf",
+            appearance={"skin": "#d8b08a", "hair": "#3a2a1c", "shirt": "#6f6455",
+                        "pants": "#3a3a42", "accent": "#e0b84b", "hat": "cap",
+                        "height": 1.0}),
+        npc("mine_lore_1", 66, 66, WEST, name="Foerdermann", dialogue="mine_lore", wander=3,
+            appearance={"skin": "#d8b08a", "hair": "#5f3a2b", "shirt": "#7a5a3a",
+                        "pants": "#4a4238", "accent": "#e0b84b", "hat": "beanie"}),
+        npc("mine_t2", 78, 60, EAST, name="Schienenleger Pit", trainer="schienenleger_pit",
+            appearance={"skin": "#d8b08a", "hair": "#5f3a2b", "shirt": "#7a5a3a",
+                        "pants": "#3a3a42", "accent": "#e0b84b", "hat": "cap",
+                        "height": 1.0}),
+        # Steht vor dem Bruch und schickt den Spieler auf die Nordstrecke.
+        npc("mine_einsturz_1", 96, 62, EAST, name="Hauerin", dialogue="mine_einsturz",
+            appearance={"skin": "#e8c19b", "hair": "#8f5f3f", "shirt": "#a8483f",
+                        "pants": "#4a4238", "accent": "#e0b84b", "hat": "beanie"}),
+        npc("mine_t3", 92, 28, SOUTH, name="Sprengmeisterin Edda", trainer="sprengmeisterin_edda",
+            appearance={"skin": "#d8b08a", "hair": "#8f3f2b", "shirt": "#a8483f",
+                        "pants": "#3a3a42", "accent": "#e0b84b", "hat": "cap",
+                        "height": 0.97}),
+        npc("mine_t4", 150, 58, WEST, name="Steiger Baldur", trainer="steiger_baldur",
+            appearance={"skin": "#d8b08a", "hair": "#cfcfcf", "shirt": "#4a4238",
+                        "pants": "#3a3a42", "accent": "#e0b84b", "hat": "cap",
+                        "height": 1.05}),
+        npc("mine_ausgang_1", 160, 66, WEST, name="Anschlaeger", dialogue="mine_ausgang",
+            appearance={"skin": "#c99a6b", "hair": "#cfcfcf", "shirt": "#6f6455",
+                        "pants": "#3a3a42", "accent": "#e0b84b", "hat": "cap"}),
+    ],
+    items=[
+        item("mine_trank", "trank", 30, 64, 2),
+        item("mine_kugel", "fangkugel", 52, 55, 3),
+        item("mine_stein", "hartstein", 80, 102, 1, hidden=True),
+        item("mine_nugget", "nugget", 116, 26, 1),
+        item("mine_beere", "beere_gruen", 64, 30, 2),
+        item("mine_aether", "aether", 144, 50, 1, hidden=True),
+    ],
+    ambience={"fogColor": "#1b1814", "fogNear": 14, "fogFar": 62, "lightIntensity": 0.5},
 )
 
 # ==========================================================================

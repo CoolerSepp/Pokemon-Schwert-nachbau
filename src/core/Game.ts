@@ -86,6 +86,8 @@ export class Game {
     // Die Kamera darf nicht im Hang verschwinden.
     this.camera.groundAt = (x, z) => this.world.area?.heightAt(x, z)
       ?? Number.NEGATIVE_INFINITY;
+    // In Innenraeumen und Hoehlen bleibt die Kamera unter der Decke.
+    this.camera.ceilingAt = (x, z) => this.world.area?.ceilingAt(x, z) ?? null;
     this.world.scene.add(this.player.object);
     this.input.attach();
     this.registerLoopPhases();
@@ -131,13 +133,9 @@ export class Game {
     this.player.teleport(point.x, point.z, point.facing);
     this.camera.snapBehind(this.player.x, this.player.y, this.player.z, point.facing);
 
-    // In Innenraeumen mit Decke die Kamera unter der Decke halten.
-    const style = area.data.interiorStyle;
-    this.camera.setCeiling(
-      style && style.ceiling !== false
-        ? area.heightAt(point.x, point.z) + style.wallHeight - 0.35
-        : null,
-    );
+    // Die Decke wird ortsabhaengig ueber camera.ceilingAt abgefragt; die
+    // feste Grenze bleibt ungenutzt.
+    this.camera.setCeiling(null);
 
     this.world.setWeather(this.weather.enterArea(area.data));
     this.transitionCooldown = 0.6;

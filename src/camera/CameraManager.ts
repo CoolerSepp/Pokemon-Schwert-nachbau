@@ -93,6 +93,14 @@ export class CameraManager {
    * Verhalten.
    */
   groundAt: ((x: number, z: number) => number) | null = null;
+
+  /**
+   * Deckenhoehe an einer Stelle - die Kamera bleibt darunter, oder null.
+   *
+   * Wie `groundAt` ortsabhaengig: in einer Hoehle folgt die Decke dem
+   * Boden, eine feste Hoehe waere je nach Stelle zu hoch oder zu tief.
+   */
+  ceilingAt: ((x: number, z: number) => number | null) | null = null;
   setInvertY(value: boolean): void { this.invertY = value; }
   setMode(mode: CameraMode): void { this.mode = mode; }
 
@@ -203,10 +211,15 @@ export class CameraManager {
     this.distance = damp(this.distance, this.targetDistance, 0.12, dt);
     this.updateDesiredPosition();
     if (collision) this.resolveCollision(collision);
-    this.resolveGround();
-    if (this.ceilingHeight !== null) {
-      this.desiredPosition.y = Math.min(this.desiredPosition.y, this.ceilingHeight);
+    // Erst die Decke, dann der Boden: umgekehrt koennte die Deckengrenze
+    // die Kamera unter das Gelaende druecken.
+    const ceiling = this.ceilingAt
+      ? this.ceilingAt(this.desiredPosition.x, this.desiredPosition.z)
+      : this.ceilingHeight;
+    if (ceiling !== null) {
+      this.desiredPosition.y = Math.min(this.desiredPosition.y, ceiling);
     }
+    this.resolveGround();
 
     this.camera.position.x = damp(this.camera.position.x, this.desiredPosition.x, GameConfig.camera.rotationHalfLife, dt);
     this.camera.position.y = damp(this.camera.position.y, this.desiredPosition.y, GameConfig.camera.rotationHalfLife, dt);

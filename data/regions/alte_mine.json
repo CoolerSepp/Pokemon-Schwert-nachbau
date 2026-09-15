@@ -1,0 +1,1278 @@
+{
+ "props": [
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    46
+   ],
+   "rotation": 0.0,
+   "scale": 1.8,
+   "variant": 100
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    52
+   ],
+   "rotation": 0.4,
+   "scale": 1.8,
+   "variant": 101
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    58
+   ],
+   "rotation": 0.8,
+   "scale": 1.8,
+   "variant": 102
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    64
+   ],
+   "rotation": 1.2000000000000002,
+   "scale": 1.8,
+   "variant": 103
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    70
+   ],
+   "rotation": 1.6,
+   "scale": 1.8,
+   "variant": 104
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    76
+   ],
+   "rotation": 2.0,
+   "scale": 1.8,
+   "variant": 105
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    82
+   ],
+   "rotation": 2.4000000000000004,
+   "scale": 1.8,
+   "variant": 106
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    88
+   ],
+   "rotation": 2.8000000000000003,
+   "scale": 1.8,
+   "variant": 107
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    106,
+    94
+   ],
+   "rotation": 3.2,
+   "scale": 1.8,
+   "variant": 108
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    112,
+    49
+   ],
+   "rotation": 0.0,
+   "scale": 1.7,
+   "variant": 110
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    112,
+    55
+   ],
+   "rotation": 0.7,
+   "scale": 1.7,
+   "variant": 111
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    112,
+    61
+   ],
+   "rotation": 1.4,
+   "scale": 1.7,
+   "variant": 112
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    112,
+    67
+   ],
+   "rotation": 2.0999999999999996,
+   "scale": 1.7,
+   "variant": 113
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    112,
+    73
+   ],
+   "rotation": 2.8,
+   "scale": 1.7,
+   "variant": 114
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    112,
+    79
+   ],
+   "rotation": 3.5,
+   "scale": 1.7,
+   "variant": 115
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    112,
+    85
+   ],
+   "rotation": 4.199999999999999,
+   "scale": 1.7,
+   "variant": 116
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    112,
+    91
+   ],
+   "rotation": 4.8999999999999995,
+   "scale": 1.7,
+   "variant": 117
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    112,
+    97
+   ],
+   "rotation": 5.6,
+   "scale": 1.7,
+   "variant": 118
+  },
+  {
+   "kind": "rock",
+   "pos": [
+    100,
+    72
+   ],
+   "rotation": 0.5,
+   "scale": 1.3,
+   "variant": 120
+  },
+  {
+   "kind": "rock",
+   "pos": [
+    103,
+    58
+   ],
+   "rotation": 1.4,
+   "scale": 1.2,
+   "variant": 121
+  },
+  {
+   "kind": "support",
+   "pos": [
+    98,
+    66
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 122
+  },
+  {
+   "kind": "crate",
+   "pos": [
+    95,
+    71
+   ],
+   "rotation": 0.2,
+   "scale": 1.0,
+   "variant": 123
+  },
+  {
+   "kind": "barrel",
+   "pos": [
+    93,
+    62
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 124
+  },
+  {
+   "kind": "support",
+   "pos": [
+    18,
+    59
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 1
+  },
+  {
+   "kind": "support",
+   "pos": [
+    30,
+    56
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 2
+  },
+  {
+   "kind": "support",
+   "pos": [
+    46,
+    58
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 3
+  },
+  {
+   "kind": "support",
+   "pos": [
+    68,
+    61
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 4
+  },
+  {
+   "kind": "support",
+   "pos": [
+    88,
+    59
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 5
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    12.0,
+    59.5
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 10
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    15.2,
+    59.5
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 11
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    18.4,
+    59.5
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 12
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    21.6,
+    59.5
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 13
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    24.8,
+    59.5
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 14
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    28.0,
+    59.5
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 15
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    31.200000000000003,
+    59.5
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 16
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    34.400000000000006,
+    59.5
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 17
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    62.0,
+    62
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 20
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    65.2,
+    62
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 21
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    68.4,
+    62
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 22
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    71.6,
+    62
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 23
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    74.8,
+    62
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 24
+  },
+  {
+   "kind": "rail",
+   "pos": [
+    78.0,
+    62
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 25
+  },
+  {
+   "kind": "minecart",
+   "pos": [
+    40,
+    57
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 30
+  },
+  {
+   "kind": "minecart",
+   "pos": [
+    84,
+    60
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 31
+  },
+  {
+   "kind": "ladder",
+   "pos": [
+    24,
+    68
+   ],
+   "rotation": 0.3,
+   "scale": 1.0,
+   "variant": 32
+  },
+  {
+   "kind": "crate",
+   "pos": [
+    36,
+    51
+   ],
+   "rotation": 0.4,
+   "scale": 1.0,
+   "variant": 33
+  },
+  {
+   "kind": "crate",
+   "pos": [
+    38,
+    50
+   ],
+   "rotation": 1.2,
+   "scale": 0.9,
+   "variant": 34
+  },
+  {
+   "kind": "barrel",
+   "pos": [
+    52,
+    69
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 35
+  },
+  {
+   "kind": "sack",
+   "pos": [
+    55,
+    68
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 36
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    14,
+    56
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 40
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    34,
+    61
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 41
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    58,
+    58
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 42
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    76,
+    62
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 43
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    62,
+    40
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 44
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    76,
+    27
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 45
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    98,
+    24
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 46
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    118,
+    31
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 47
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    126,
+    54
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 48
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    142,
+    60
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 49
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    158,
+    56
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 50
+  },
+  {
+   "kind": "torch",
+   "pos": [
+    86,
+    80
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 51
+  },
+  {
+   "kind": "support",
+   "pos": [
+    62,
+    44
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 60
+  },
+  {
+   "kind": "support",
+   "pos": [
+    70,
+    30
+   ],
+   "rotation": 0.9,
+   "scale": 1.0,
+   "variant": 61
+  },
+  {
+   "kind": "support",
+   "pos": [
+    100,
+    26
+   ],
+   "rotation": 1.4,
+   "scale": 1.0,
+   "variant": 62
+  },
+  {
+   "kind": "support",
+   "pos": [
+    122,
+    44
+   ],
+   "rotation": 0.3,
+   "scale": 1.0,
+   "variant": 63
+  },
+  {
+   "kind": "minecart",
+   "pos": [
+    88,
+    29
+   ],
+   "rotation": 1.2,
+   "scale": 1.0,
+   "variant": 64
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    66,
+    22
+   ],
+   "rotation": 0.3,
+   "scale": 1.3,
+   "variant": 65
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    110,
+    22
+   ],
+   "rotation": 1.1,
+   "scale": 1.2,
+   "variant": 66
+  },
+  {
+   "kind": "stalagmite",
+   "pos": [
+    78,
+    40
+   ],
+   "rotation": 0,
+   "scale": 1.5,
+   "variant": 67
+  },
+  {
+   "kind": "stalagmite",
+   "pos": [
+    108,
+    44
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 68
+  },
+  {
+   "kind": "stalagmite",
+   "pos": [
+    52,
+    26
+   ],
+   "rotation": 0,
+   "scale": 1.3,
+   "variant": 69
+  },
+  {
+   "kind": "rock",
+   "pos": [
+    96,
+    38
+   ],
+   "rotation": 0.8,
+   "scale": 1.2,
+   "variant": 70
+  },
+  {
+   "kind": "stalagmite",
+   "pos": [
+    84,
+    74
+   ],
+   "rotation": 0,
+   "scale": 1.4,
+   "variant": 80
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    82,
+    96
+   ],
+   "rotation": 0.5,
+   "scale": 1.5,
+   "variant": 81
+  },
+  {
+   "kind": "boulder",
+   "pos": [
+    72,
+    100
+   ],
+   "rotation": 1.2,
+   "scale": 1.4,
+   "variant": 82
+  },
+  {
+   "kind": "barrel",
+   "pos": [
+    76,
+    99
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 83
+  },
+  {
+   "kind": "crate",
+   "pos": [
+    74,
+    97
+   ],
+   "rotation": 0.6,
+   "scale": 1.0,
+   "variant": 84
+  },
+  {
+   "kind": "support",
+   "pos": [
+    134,
+    58
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 90
+  },
+  {
+   "kind": "support",
+   "pos": [
+    152,
+    57
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 91
+  },
+  {
+   "kind": "minecart",
+   "pos": [
+    140,
+    62
+   ],
+   "rotation": 1.5707963267948966,
+   "scale": 1.0,
+   "variant": 92
+  },
+  {
+   "kind": "crate",
+   "pos": [
+    156,
+    66
+   ],
+   "rotation": 0.3,
+   "scale": 1.0,
+   "variant": 93
+  },
+  {
+   "kind": "sack",
+   "pos": [
+    158,
+    65
+   ],
+   "rotation": 0,
+   "scale": 1.0,
+   "variant": 94
+  },
+  {
+   "kind": "stalagmite",
+   "pos": [
+    130,
+    70
+   ],
+   "rotation": 0,
+   "scale": 1.3,
+   "variant": 95
+  },
+  {
+   "kind": "crystal",
+   "pos": [
+    148,
+    48
+   ],
+   "rotation": 0.9,
+   "scale": 1.2,
+   "variant": 96
+  }
+ ],
+ "buildings": [],
+ "npcs": [
+  {
+   "id": "mine_arbeiter_1",
+   "pos": [
+    22,
+    63
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Minenarbeiter",
+   "dialogue": "mine_arbeiter",
+   "appearance": {
+    "skin": "#c99a6b",
+    "hair": "#3a2a1c",
+    "shirt": "#6f6455",
+    "pants": "#4a4238",
+    "accent": "#e0b84b",
+    "hat": "cap"
+   }
+  },
+  {
+   "id": "mine_t1",
+   "pos": [
+    44,
+    57
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Minenarbeiter Rolf",
+   "trainer": "minenarbeiter_rolf",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#3a2a1c",
+    "shirt": "#6f6455",
+    "pants": "#3a3a42",
+    "accent": "#e0b84b",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "mine_lore_1",
+   "pos": [
+    66,
+    66
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Foerdermann",
+   "dialogue": "mine_lore",
+   "wander": 3,
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#5f3a2b",
+    "shirt": "#7a5a3a",
+    "pants": "#4a4238",
+    "accent": "#e0b84b",
+    "hat": "beanie"
+   }
+  },
+  {
+   "id": "mine_t2",
+   "pos": [
+    78,
+    60
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Schienenleger Pit",
+   "trainer": "schienenleger_pit",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#5f3a2b",
+    "shirt": "#7a5a3a",
+    "pants": "#3a3a42",
+    "accent": "#e0b84b",
+    "hat": "cap",
+    "height": 1.0
+   }
+  },
+  {
+   "id": "mine_einsturz_1",
+   "pos": [
+    96,
+    62
+   ],
+   "facing": 1.5707963267948966,
+   "name": "Hauerin",
+   "dialogue": "mine_einsturz",
+   "appearance": {
+    "skin": "#e8c19b",
+    "hair": "#8f5f3f",
+    "shirt": "#a8483f",
+    "pants": "#4a4238",
+    "accent": "#e0b84b",
+    "hat": "beanie"
+   }
+  },
+  {
+   "id": "mine_t3",
+   "pos": [
+    92,
+    28
+   ],
+   "facing": 3.141592653589793,
+   "name": "Sprengmeisterin Edda",
+   "trainer": "sprengmeisterin_edda",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#8f3f2b",
+    "shirt": "#a8483f",
+    "pants": "#3a3a42",
+    "accent": "#e0b84b",
+    "hat": "cap",
+    "height": 0.97
+   }
+  },
+  {
+   "id": "mine_t4",
+   "pos": [
+    150,
+    58
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Steiger Baldur",
+   "trainer": "steiger_baldur",
+   "appearance": {
+    "skin": "#d8b08a",
+    "hair": "#cfcfcf",
+    "shirt": "#4a4238",
+    "pants": "#3a3a42",
+    "accent": "#e0b84b",
+    "hat": "cap",
+    "height": 1.05
+   }
+  },
+  {
+   "id": "mine_ausgang_1",
+   "pos": [
+    160,
+    66
+   ],
+   "facing": -1.5707963267948966,
+   "name": "Anschlaeger",
+   "dialogue": "mine_ausgang",
+   "appearance": {
+    "skin": "#c99a6b",
+    "hair": "#cfcfcf",
+    "shirt": "#6f6455",
+    "pants": "#3a3a42",
+    "accent": "#e0b84b",
+    "hat": "cap"
+   }
+  }
+ ],
+ "items": [
+  {
+   "id": "mine_trank",
+   "item": "trank",
+   "pos": [
+    30,
+    64
+   ],
+   "quantity": 2,
+   "hidden": false
+  },
+  {
+   "id": "mine_kugel",
+   "item": "fangkugel",
+   "pos": [
+    52,
+    55
+   ],
+   "quantity": 3,
+   "hidden": false
+  },
+  {
+   "id": "mine_stein",
+   "item": "hartstein",
+   "pos": [
+    80,
+    102
+   ],
+   "quantity": 1,
+   "hidden": true
+  },
+  {
+   "id": "mine_nugget",
+   "item": "nugget",
+   "pos": [
+    116,
+    26
+   ],
+   "quantity": 1,
+   "hidden": false
+  },
+  {
+   "id": "mine_beere",
+   "item": "beere_gruen",
+   "pos": [
+    64,
+    30
+   ],
+   "quantity": 2,
+   "hidden": false
+  },
+  {
+   "id": "mine_aether",
+   "item": "aether",
+   "pos": [
+    144,
+    50
+   ],
+   "quantity": 1,
+   "hidden": true
+  }
+ ],
+ "connections": [
+  {
+   "to": "route_1",
+   "trigger": {
+    "x": 0,
+    "z": 53,
+    "width": 4,
+    "depth": 14
+   },
+   "spawnPoint": "from_mine_sued",
+   "label": "Zurueck ins Freie"
+  },
+  {
+   "to": "route_1",
+   "trigger": {
+    "x": 166,
+    "z": 53,
+    "width": 4,
+    "depth": 14
+   },
+   "spawnPoint": "from_mine_nord",
+   "label": "Ausfahrt"
+  }
+ ],
+ "spawnPoints": [
+  {
+   "id": "from_route1_sued",
+   "pos": [
+    10,
+    60
+   ],
+   "facing": 1.5707963267948966
+  },
+  {
+   "id": "from_route1_nord",
+   "pos": [
+    160,
+    60
+   ],
+   "facing": -1.5707963267948966
+  },
+  {
+   "id": "default",
+   "pos": [
+    10,
+    60
+   ],
+   "facing": 1.5707963267948966
+  }
+ ],
+ "id": "alte_mine",
+ "name": "Alte Grube",
+ "kind": "cave",
+ "biome": "cave",
+ "size": [
+  170,
+  120
+ ],
+ "seed": 1250,
+ "mapPos": [
+  42,
+  66
+ ],
+ "indoor": true,
+ "description": "Ein wieder in Betrieb genommenes Bergwerk. Der einzige Weg nach Norden, seit der Hang auf Route 1 abgerutscht ist.",
+ "music": "cave",
+ "weather": [],
+ "terrain": {
+  "baseHeight": 0,
+  "amplitude": 15,
+  "frequency": 0.042,
+  "octaves": 3,
+  "ridged": true,
+  "cliffBorder": true,
+  "paths": [
+   {
+    "points": [
+     [
+      6,
+      60
+     ],
+     [
+      34,
+      56
+     ],
+     [
+      58,
+      64
+     ],
+     [
+      80,
+      58
+     ],
+     [
+      100,
+      66
+     ]
+    ],
+    "width": 8
+   },
+   {
+    "points": [
+     [
+      58,
+      64
+     ],
+     [
+      62,
+      34
+     ],
+     [
+      92,
+      24
+     ],
+     [
+      118,
+      36
+     ],
+     [
+      128,
+      60
+     ]
+    ],
+    "width": 7
+   },
+   {
+    "points": [
+     [
+      128,
+      60
+     ],
+     [
+      146,
+      56
+     ],
+     [
+      164,
+      60
+     ]
+    ],
+    "width": 8
+   },
+   {
+    "points": [
+     [
+      80,
+      58
+     ],
+     [
+      88,
+      86
+     ],
+     [
+      78,
+      104
+     ]
+    ],
+    "width": 6
+   }
+  ]
+ },
+ "spawnTable": [
+  {
+   "species": "kieselkopf",
+   "minLevel": 7,
+   "maxLevel": 11,
+   "weight": 24,
+   "behaviour": "static"
+  },
+  {
+   "species": "sandwuehler",
+   "minLevel": 7,
+   "maxLevel": 11,
+   "weight": 20,
+   "behaviour": "wander"
+  },
+  {
+   "species": "kribbelkaefer",
+   "minLevel": 6,
+   "maxLevel": 10,
+   "weight": 16,
+   "behaviour": "wander"
+  },
+  {
+   "species": "giftkappe",
+   "minLevel": 8,
+   "maxLevel": 12,
+   "weight": 13,
+   "behaviour": "static"
+  },
+  {
+   "species": "nachtschleier",
+   "minLevel": 8,
+   "maxLevel": 12,
+   "weight": 12,
+   "behaviour": "aggressive"
+  },
+  {
+   "species": "glutkohle",
+   "minLevel": 8,
+   "maxLevel": 12,
+   "weight": 9,
+   "behaviour": "static"
+  },
+  {
+   "species": "tintenschleim",
+   "minLevel": 8,
+   "maxLevel": 12,
+   "weight": 6,
+   "behaviour": "shy",
+   "rare": true
+  }
+ ],
+ "maxWild": 20,
+ "ambience": {
+  "fogColor": "#1b1814",
+  "fogNear": 14,
+  "fogFar": 62,
+  "lightIntensity": 0.5
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "id": "schienenleger_pit",
+ "name": "Schienenleger Pit",
+ "trainerClass": "Bergmann",
+ "ai": "basic",
+ "team": [
+  {
+   "species": "kribbelkaefer",
+   "level": 9
+  },
+  {
+   "species": "glutkohle",
+   "level": 10
+  },
+  {
+   "species": "kieselkopf",
+   "level": 10
+  }
+ ],
+ "rewardBase": 84,
+ "dialogue": {
+  "intro": [
+   "Jede Schiene, die hier liegt, habe ich verlegt.",
+   "Ueber meine Strecke laeuft keiner einfach so."
+  ],
+  "defeat": [
+   "Sauber. Die Strecke gehoert dir."
+  ],
+  "victory": [
+   "Bleib, wo der Boden fest ist."
+  ],
+  "postBattle": [
+   "Hinter dem Bruch wird es eng. Nimm die Nordstrecke."
+  ]
+ },
+ "appearance": {
+  "skin": "#d8b08a",
+  "hair": "#5f3a2b",
+  "shirt": "#7a5a3a",
+  "pants": "#4a4238",
+  "accent": "#e0b84b",
+  "hat": "cap"
+ }
+}

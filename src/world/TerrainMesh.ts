@@ -518,6 +518,79 @@ export function buildGroundSkirt(
   return mesh;
 }
 
+/**
+ * Hoehlendecke: ein Dach, das dem Boden im Abstand folgt.
+ *
+ * Ohne sie endet eine Hoehle nach oben im Nichts - man steht in einem
+ * schwarzen Raum statt in einem Stollen. Weil das Dach den Boden
+ * nachzeichnet, treffen die Felsrippen, die die Waende bilden, sauber auf
+ * die Decke und es entstehen keine Spalten.
+ *
+ * Ein Zeichenaufruf; die Hoehe wird grob abgetastet, feiner braucht es
+ * nicht - man sieht die Decke immer nur im Streiflicht.
+ */
+export function buildCaveCeiling(
+  palette: BiomePalette, width: number, depth: number,
+  heightAt: (x: number, z: number) => number, clearance: number,
+): THREE.Mesh {
+  const step = 4;
+  const cols = Math.max(2, Math.ceil(width / step) + 1);
+  const rows = Math.max(2, Math.ceil(depth / step) + 1);
+  const noise = new ValueNoise2D(4711);
+  const positions = new Float32Array(cols * rows * 3);
+  const colors = new Float32Array(cols * rows * 3);
+  // Bewusst die hellen Toene der Palette: die Decke bekommt nur
+  // Umgebungslicht ab. Mit der Hangfarbe (im Hoehlenbiom fast schwarz)
+  // war sie vom leeren Nichts nicht zu unterscheiden.
+  const rock = new THREE.Color(palette.peak).multiplyScalar(0.95);
+  const deep = new THREE.Color(palette.ground).multiplyScalar(0.9);
+  const tmp = new THREE.Color();
+
+  for (let r = 0; r < rows; r++) {
+    const z = (r / (rows - 1)) * depth;
+    for (let c = 0; c < cols; c++) {
+      const x = (c / (cols - 1)) * width;
+      // Unruhe im Gestein, damit die Decke nicht wie eine Platte wirkt.
+      const bump = (noise.fbm(x * 0.06, z * 0.06, 3, 2, 0.5) - 0.5) * clearance * 0.5;
+      const y = heightAt(x, z) + clearance + bump;
+      const i = r * cols + c;
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
+      // Tiefer haengende Stellen werden dunkler - das gibt Tiefe.
+      tmp.copy(deep).lerp(rock, clamp01(0.35 + bump / clearance + 0.5));
+      colors[i * 3] = tmp.r;
+      colors[i * 3 + 1] = tmp.g;
+      colors[i * 3 + 2] = tmp.b;
+    }
+  }
+
+  const indices: number[] = [];
+  for (let r = 0; r < rows - 1; r++) {
+    for (let c = 0; c < cols - 1; c++) {
+      const a = r * cols + c;
+      const b = a + 1;
+      const d = a + cols;
+      const e = d + 1;
+      // Gegen den Uhrzeigersinn: die sichtbare Seite zeigt nach unten.
+      indices.push(a, b, d, b, e, d);
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
+  const mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({
+    vertexColors: true, flatShading: true, side: THREE.DoubleSide, fog: true,
+  }));
+  mesh.name = 'caveCeiling';
+  mesh.receiveShadow = false;
+  mesh.castShadow = false;
+  return mesh;
+}
+
 export function buildSky(top: string, bottom: string, radius: number): THREE.Mesh {
   const geometry = new THREE.SphereGeometry(radius, 32, 20);
   const material = new THREE.ShaderMaterial({
