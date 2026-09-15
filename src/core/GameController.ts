@@ -100,6 +100,8 @@ export class GameController {
   private pendingEvolutions: PendingEvolution[] = [];
   private interactHint: string | null = null;
   private fadeLayer!: HTMLElement;
+  /** Zeitpunkt des letzten Hinweises auf das kampfunfaehige Team. */
+  private partyDownWarnedAt = 0;
   private debugOverlay!: DebugOverlay;
   private autosaveTimer = 0;
   private approachingTrainer: NpcInstance | null = null;
@@ -408,7 +410,9 @@ export class GameController {
     this.checkGroundItems();
 
     // Trainer, der den Spieler erblickt, laeuft heran und fordert heraus.
-    if (!this.approachingTrainer) {
+    // Mit kampfunfaehigem Team sieht niemand hin: sonst stuende man nach
+    // einer Niederlage sofort wieder vor demselben Trainer.
+    if (!this.approachingTrainer && !this.partyIsDown) {
       const spotter = this.npcs.findSpottingTrainer(this.game.player.x, this.game.player.z);
       if (spotter) {
         spotter.spotted = true;
@@ -443,7 +447,15 @@ export class GameController {
     const contact = this.wild.update(
       dt, this.game.player.x, this.game.player.z, this.spawnContext(),
     );
-    if (contact) this.startWildEncounter(contact);
+    if (!contact) return;
+    if (this.partyIsDown) {
+      // Die Begegnung wird aufgeloest, sonst meldet sie sich im naechsten
+      // Bild sofort wieder und der Rueckweg waere unpassierbar.
+      this.wild.resolveEncounter(contact, false);
+      this.warnPartyDown();
+      return;
+    }
+    this.startWildEncounter(contact);
   }
 
   private updateInteractHint(): void {
@@ -832,7 +844,10 @@ export class GameController {
     forceGigantic = false,
   ): void {
     if (this.player.party.length === 0 || !this.player.hasUsableCreature) {
-      this.ui.toast('Du hast keine einsatzfaehige Kreatur!', 'warn');
+      this.ui.toast(
+        'Du hast keine einsatzfaehige Kreatur - bring dein Team zu einer Heilstation.',
+        'warn', 4,
+      );
       this.battleWildInstance = null;
       this.battleTrainerNpc = null;
       return;
@@ -920,7 +935,11 @@ export class GameController {
       return;
     }
 
+    // Vorher/nachher messen: bei wenig Geld zahlt der Spieler weniger als
+    // die Niederlagensumme, und gemeldet werden soll der echte Verlust.
+    const moneyBefore = this.player.money;
     if (result.moneyDelta !== 0) this.player.addMoney(result.moneyDelta);
+    const moneyPaid = Math.max(0, moneyBefore - this.player.money);
 
     if (result.caughtCreature) {
       const creature = result.caughtCreature;
@@ -949,7 +968,7 @@ export class GameController {
       this.grantRaidRewards(raidDen);
     }
     if (result.outcome === 'loss') {
-      this.handleBlackout();
+      this.handleBlackout(moneyPaid);
       return;
     }
 
@@ -1059,28 +1078,77 @@ export class GameController {
   }
 
   /** Niederlage: zurueck zur letzten Heilstation. */
-  private handleBlackout(): void {
+  /**
+   * Niederlage: das Team bleibt am Boden und der Spieler bleibt, wo er ist.
+   *
+   * Frueher wurde das Team kostenlos geheilt und der Spieler sofort zur
+   * letzten Heilstation versetzt - eine Niederlage kostete damit nichts
+   * ausser ein paar Sekunden. Jetzt bleibt sie stehen: kein Teleport,
+   * keine Heilung, nur die Bergungskosten. Den Rueckweg zur Heilstation
+   * geht man selbst.
+   */
+  private handleBlackout(moneyPaid: number): void {
     if (this.league.isRunning) {
       this.league.abort();
       this.ui.toast('Die Ligaherausforderung ist gescheitert.', 'warn', 4);
     }
-    this.player.healParty();
-    const fallback = this.player.hasFlag('visited:quellheim') ? 'quellheim' : 'startdorf';
-    const target = this.findNearestHealArea() ?? fallback;
-    this.ui.toast('Du bist zur letzten Heilstation zurueckgekehrt.', 'warn', 4);
-    this.game.enterArea(target, 'default');
+
+    this.game.player.setControlEnabled(false);
     this.hud.forceRefresh();
     this.updateMusic();
-    this.finishBattleCallback();
+
+    this.fadeToBlack(1.3, () => {
+      const lines = [
+        'Dein Team ist am Ende - keine Kreatur kann weiterkaempfen.',
+        moneyPaid > 0
+          ? `Fuer die Bergung gehen ${moneyPaid} M drauf.`
+          : 'Du hast nicht einmal mehr Geld fuer die Bergung.',
+        'Niemand traegt dich zurueck. Bring dein Team selbst zur naechsten '
+          + 'Heilstation - angegriffen wirst du auf dem Weg nicht.',
+      ];
+      this.showQuickMessage('Niederlage', lines, () => {
+        this.game.player.setControlEnabled(true);
+        this.hud.forceRefresh();
+        this.finishBattleCallback();
+      });
+    });
   }
 
-  private findNearestHealArea(): string | null {
-    // Bevorzugt die zuletzt besuchte Stadt mit Heilstation.
-    const candidates = GameData.areas.filter(
-      (a) => this.player.visitedAreas.has(a.id)
-        && (a.buildings ?? []).some((b) => b.kind === 'center'),
+  /**
+   * Blendet den Bildschirm schwarz, ruft in der Dunkelheit den Rueckruf auf
+   * und blendet wieder auf. Der Rueckruf laeuft im dunkelsten Moment - dort
+   * gehoert die Meldung hin.
+   */
+  private fadeToBlack(seconds: number, onDark: () => void): void {
+    const half = Math.max(0.2, seconds / 2);
+    this.fadeLayer.style.background = '#000000';
+    this.fadeLayer.style.transition = `opacity ${half}s ease`;
+    this.fadeLayer.style.opacity = '1';
+    window.setTimeout(() => {
+      onDark();
+      this.fadeLayer.style.opacity = '0';
+    }, half * 1000);
+  }
+
+  /** Ohne einsatzfaehige Kreatur laesst die Welt den Spieler in Ruhe. */
+  private get partyIsDown(): boolean {
+    return !this.player.hasUsableCreature;
+  }
+
+  /**
+   * Weist auf das kampfunfaehige Team hin - hoechstens alle 12 Sekunden.
+   *
+   * Ohne die Sperre kaeme der Hinweis bei jedem Grasbueschel erneut und
+   * der Rueckweg waere eine Wand aus Meldungen.
+   */
+  private warnPartyDown(): void {
+    const now = performance.now();
+    if (now - this.partyDownWarnedAt < 12_000) return;
+    this.partyDownWarnedAt = now;
+    this.ui.toast(
+      'Dein Team ist kampfunfaehig - niemand greift dich an. Such eine Heilstation.',
+      'warn', 3.5,
     );
-    return candidates[candidates.length - 1]?.id ?? null;
   }
 
   // ------------------------------------------------------------- Aktionen

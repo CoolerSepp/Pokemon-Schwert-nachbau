@@ -6,7 +6,13 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  /* Ueber der Abblendebene (z-index 60): sonst verschwindet eine Meldung,
+     die waehrend einer Schwarzblende erscheint, hinter dem schwarzen
+     Vorhang - man saehe nur eine schwarze Flaeche ohne Text. */
+  z-index: 70;
 }
+
+.ui-toasts { z-index: 80; }
 
 .ui-toasts * { pointer-events: none; }
 
